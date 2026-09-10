@@ -98,10 +98,10 @@ public:
         Normal,         ///< Normal Notation (default)
         SlashBeats,     ///< Slash Notation (on beats)
         Rhythmic,       ///< Rhythmic Notation
-        Blank,          ///< Blank Notation
         OneBarRepeat,   ///< One Bar Repeat(s)
         TwoBarRepeat,   ///< Two Bar Repeat(s)
-        BlankWithRests  ///< Blank Notation with Rests
+        BlankWithRests, ///< Blank Notation with Rests
+        Blank           ///< Blank Notation
     };
 
     /**
