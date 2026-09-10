@@ -690,6 +690,19 @@ TEST(StaffText, StaffLines)
         <topRepeatDotOff>-3</topRepeatDotOff>
         <vertTabNumOff>-1024</vertTabNumOff>
       </staffSpec>
+      <staffSpec cmper="7">
+        <staffLines>0</staffLines>
+        <lineSpace>24</lineSpace>
+        <instUuid>54422b22-4627-4100-abbf-064eedc15fe3</instUuid>
+        <dwRestOffset>-4</dwRestOffset>
+        <wRestOffset>-4</wRestOffset>
+        <hRestOffset>-4</hRestOffset>
+        <otherRestOffset>-4</otherRestOffset>
+        <stemReversal>-4</stemReversal>
+        <botRepeatDotOff>-5</botRepeatDotOff>
+        <topRepeatDotOff>-3</topRepeatDotOff>
+        <vertTabNumOff>-1024</vertTabNumOff>
+      </staffSpec>
     </others>
   </finale>
     )xml";
@@ -700,7 +713,7 @@ TEST(StaffText, StaffLines)
 
     auto staves = others->getArray<others::Staff>(SCORE_PARTID);
 
-    const std::vector<int> expectedValues = { -4, -4, 0, -7, -2, -4 };
+    const std::vector<int> expectedValues = { -4, -4, 0, -7, -2, -4, -4 };
     size_t x = 0;
     for (; x < staves.size(); x++) {
       EXPECT_LT(x, expectedValues.size()) << "too few expected values";
@@ -709,6 +722,11 @@ TEST(StaffText, StaffLines)
       EXPECT_EQ(staff->calcMiddleStaffPosition(), expectedValues[x]);
     }
     EXPECT_EQ(x, staves.size());
+
+    auto emptyCustomStaff = const_cast<others::Staff*>(staves.back().get());
+    emptyCustomStaff->staffLines.reset();
+    emptyCustomStaff->customStaff.emplace();
+    EXPECT_EQ(emptyCustomStaff->calcMiddleStaffPosition(), -4);
 }
 
 TEST(StaffTest, Transposition)

@@ -609,6 +609,9 @@ int Staff::calcNumberOfStafflines() const
 
 int Staff::calcMiddleStaffPosition() const
 {
+    if (calcNumberOfStafflines() == 0) {
+        return -(music_theory::STANDARD_NUMBER_OF_STAFFLINES - 1);
+    }
     if (staffLines.has_value()) {
         return -(staffLines.value() - 1);
     } else if (customStaff.has_value()) {
