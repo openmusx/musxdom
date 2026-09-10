@@ -88,13 +88,13 @@ var NAVTREEINDEX =
 "classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#a347640f292abaa7ead07973429b082eb",
 "classmusx_1_1xml_1_1load__error.html",
 "namespacemembers_vars_q.html",
-"namespacemusx_1_1dom.html#a9da9d8587a1c6dbc6c8462bcc0e4e69da377ff04d7fda7b8f81da92ae09eed72d",
-"namespacemusx_1_1dom_1_1uuid.html#a273801b05ed3400f6ac49606d22e0983",
-"namespacemusx_1_1dom_1_1uuid.html#a77d4098439c788868e9c63c4565f0fb3",
-"namespacemusx_1_1dom_1_1uuid.html#ac3c120027decc578cbe019754ac99882",
+"namespacemusx_1_1dom.html#a9da9d8587a1c6dbc6c8462bcc0e4e69da16389d7891bf359091ac2ec878524d85",
+"namespacemusx_1_1dom_1_1uuid.html#a26ead813fb47219ffd975d24e5de794e",
+"namespacemusx_1_1dom_1_1uuid.html#a772d5eee2fb1d2de9c83cabccfcf8f0a",
+"namespacemusx_1_1dom_1_1uuid.html#ac3bc006b9451d2f808bf0567e8223577",
 "structmusx_1_1dom_1_1Entry_1_1EntryLocation.html#a5f3ea520de7a7338f5662045d5ffe648",
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Slur.html#afacf9521cbb1bf5480f8792f3a81d22e",
-"structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#ab09e22a3f0365fa5bfcb9f1bb81d4f8d"
+"structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#a5eac2b7120a8cf60f9b6aef64c1efd1c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

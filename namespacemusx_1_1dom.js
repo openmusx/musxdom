@@ -1107,6 +1107,7 @@ var namespacemusx_1_1dom =
     [ "SCORE_PARTID", "namespacemusx_1_1dom.html#a5dd453394b3375a5be17055a82ddd9f0", null ],
     [ "SPECIAL_PART_EXTRACTION_SYSTEM_ID", "namespacemusx_1_1dom.html#af126d786c0d562de2e24d358782dea9e", null ],
     [ "STAFF_SET_1_SYSTEM_ID", "namespacemusx_1_1dom.html#a4b9366303184d73bffbde1123caeb358", null ],
+    [ "STUDIO_VIEW_STAFF_ID", "namespacemusx_1_1dom.html#a548c5f616a9b123bdb38cc2f8a0b48fd", null ],
     [ "STUDIO_VIEW_SYSTEM_ID", "namespacemusx_1_1dom.html#a3c02ff3efcac252fc9358187a6bee09c", null ],
     [ "TEMP_SYSTEM_ID", "namespacemusx_1_1dom.html#aee7cd6e29b5e38d3437a608c29672a57", null ]
 ];

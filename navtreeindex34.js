@@ -1,5 +1,6 @@
 var NAVTREEINDEX34 =
 {
+"namespacemusx_1_1dom_1_1uuid.html#ac3bc006b9451d2f808bf0567e8223577":[1,0,1,0,5,774],
 "namespacemusx_1_1dom_1_1uuid.html#ac3c120027decc578cbe019754ac99882":[1,0,1,0,5,482],
 "namespacemusx_1_1dom_1_1uuid.html#ac3e911a3306cb1b4a9b0e1c62a949c1f":[1,0,1,0,5,530],
 "namespacemusx_1_1dom_1_1uuid.html#ac44a2e83f472a9cd6b9db87c1e06e4e8":[1,0,1,0,5,393],
@@ -248,6 +249,5 @@ var NAVTREEINDEX34 =
 "structmusx_1_1dom_1_1Entry_1_1EntryLocation.html#a20a2369d78fd99d56b61ce477f37945c":[2,0,1,0,18,0,2],
 "structmusx_1_1dom_1_1Entry_1_1EntryLocation.html#a20a2369d78fd99d56b61ce477f37945c":[1,0,1,0,17,0,2],
 "structmusx_1_1dom_1_1Entry_1_1EntryLocation.html#a3ffd38b57681d5cce3de07a2c1d8bb08":[1,0,1,0,17,0,1],
-"structmusx_1_1dom_1_1Entry_1_1EntryLocation.html#a3ffd38b57681d5cce3de07a2c1d8bb08":[2,0,1,0,18,0,1],
-"structmusx_1_1dom_1_1Entry_1_1EntryLocation.html#a5f3ea520de7a7338f5662045d5ffe648":[2,0,1,0,18,0,4]
+"structmusx_1_1dom_1_1Entry_1_1EntryLocation.html#a3ffd38b57681d5cce3de07a2c1d8bb08":[2,0,1,0,18,0,1]
 };

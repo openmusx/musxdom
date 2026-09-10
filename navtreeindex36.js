@@ -1,5 +1,6 @@
 var NAVTREEINDEX36 =
 {
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1Slur.html#afacf9521cbb1bf5480f8792f3a81d22e":[1,0,1,0,53,15,5],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Slur.html#afacf9521cbb1bf5480f8792f3a81d22e":[2,0,1,0,54,15,5],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Slur.html#afca0dc120732de17c38cf9ad26a84bbd":[2,0,1,0,54,15,1],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Slur.html#afca0dc120732de17c38cf9ad26a84bbd":[1,0,1,0,53,15,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX36 =
 "structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html":[2,0,1,0,4,0],
 "structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#a095f3a424a82de980c2a059dceaf66c5":[2,0,1,0,4,0,8],
 "structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#a215243cfba60d98d89b91dcdb9726f96":[2,0,1,0,4,0,4],
-"structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#a45ff1c745cae559548ba979ff8d86ddd":[2,0,1,0,4,0,3],
-"structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#a5eac2b7120a8cf60f9b6aef64c1efd1c":[2,0,1,0,4,0,7]
+"structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#a45ff1c745cae559548ba979ff8d86ddd":[2,0,1,0,4,0,3]
 };
