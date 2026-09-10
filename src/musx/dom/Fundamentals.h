@@ -100,6 +100,7 @@ constexpr Cmper BASE_SYSTEM_ID = 0; ///< The base system cmper that gives a list
 constexpr Cmper STAFF_SET_1_SYSTEM_ID = 65500;  ///< The system cmoper for the first Scroll View staff set. Add 0..7 to this value to get one of the
                                                 ///< 8 staff sets.
 constexpr Cmper STUDIO_VIEW_SYSTEM_ID = 65400;  ///< The system cmper for Studio View. Studio View has entries for every click in the click track.
+constexpr Cmper STUDIO_VIEW_STAFF_ID = 32767;   ///< The staff cmper Finale reserves for Studio View.
 constexpr Cmper SPECIAL_PART_EXTRACTION_SYSTEM_ID = 65528;  ///< The system comper for Special Part Extraction (mostly obsolete in Finale 27.)
                                                             ///< See #others::PartGlobals::specialPartExtractionIUList for more information.
 constexpr Cmper TEMP_SYSTEM_ID = 65529;     ///< This is a scratch value. Finale and/or plugins can use this systemId to aggregate an arbitary list
