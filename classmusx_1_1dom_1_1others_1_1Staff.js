@@ -8,10 +8,10 @@ var classmusx_1_1dom_1_1others_1_1Staff =
       [ "Normal", "classmusx_1_1dom_1_1others_1_1Staff.html#a0a3bc01d0f78962930fc34ea6fb31bb9a960b44c579bc2f6818d2daaf9e4c16f0", null ],
       [ "SlashBeats", "classmusx_1_1dom_1_1others_1_1Staff.html#a0a3bc01d0f78962930fc34ea6fb31bb9ac2af9795625aa114ba1cf3c288ae6277", null ],
       [ "Rhythmic", "classmusx_1_1dom_1_1others_1_1Staff.html#a0a3bc01d0f78962930fc34ea6fb31bb9ad79c32de1167803cb967f13f23a7c87d", null ],
-      [ "Blank", "classmusx_1_1dom_1_1others_1_1Staff.html#a0a3bc01d0f78962930fc34ea6fb31bb9ae4ef81cce7e4e10033ebb10962dfdd5e", null ],
       [ "OneBarRepeat", "classmusx_1_1dom_1_1others_1_1Staff.html#a0a3bc01d0f78962930fc34ea6fb31bb9a25320a755aed9eeb52d4687818dcee86", null ],
       [ "TwoBarRepeat", "classmusx_1_1dom_1_1others_1_1Staff.html#a0a3bc01d0f78962930fc34ea6fb31bb9a3a2d4092991ee686a813743a0d02b608", null ],
-      [ "BlankWithRests", "classmusx_1_1dom_1_1others_1_1Staff.html#a0a3bc01d0f78962930fc34ea6fb31bb9a554abfcfa334385616487a34e549b909", null ]
+      [ "BlankWithRests", "classmusx_1_1dom_1_1others_1_1Staff.html#a0a3bc01d0f78962930fc34ea6fb31bb9a554abfcfa334385616487a34e549b909", null ],
+      [ "Blank", "classmusx_1_1dom_1_1others_1_1Staff.html#a0a3bc01d0f78962930fc34ea6fb31bb9ae4ef81cce7e4e10033ebb10962dfdd5e", null ]
     ] ],
     [ "AutoNumberingStyle", "classmusx_1_1dom_1_1others_1_1Staff.html#a03805868cff56f8b8e45afcb891e81e1", [
       [ "ArabicSuffix", "classmusx_1_1dom_1_1others_1_1Staff.html#a03805868cff56f8b8e45afcb891e81e1a059ce5872a2158ce93a9c3320f8acc33", null ],
