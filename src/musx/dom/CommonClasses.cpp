@@ -286,7 +286,7 @@ bool FontInfo::calcIsSMuFL() const
     }
 
     // Mirrors the SMuFL fonts configured in source_json/smufl_fonts.json of the smufl-mapping
-    // project (https://github.com/rpatters1/smufl-mapping). That project is deliberately not a
+    // project (https://github.com/openmusx/smufl-mapping). That project is deliberately not a
     // dependency of musxdom, so this list is maintained by hand and may need updating when
     // smufl-mapping adds fonts. Entries are stored pre-normalized (see normalizeFontName), i.e.
     // the family name lowercased with whitespace removed: add new fonts in that form. The comment
