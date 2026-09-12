@@ -134,7 +134,9 @@ void Staff::calcAllRuntimeValues(const DocumentPtr& document)
                 mutableItem->percussionMapId = drumStaff->whichDrumLib;
             } else {
                 mutableItem->percussionMapId = Cmper(0);
-                MUSX_INTEGRITY_ERROR("Staff or StaffStyle " + std::to_string(item->getCmper()) + " is percussion style but has no DrumStaff record.");
+                util::Logger::log(util::Logger::LogLevel::Verbose,
+                    "Staff or StaffStyle " + std::to_string(item->getCmper())
+                        + " is percussion style but has no DrumStaff record.");
             }
         } else {
             mutableItem->percussionMapId = std::nullopt;
@@ -1249,10 +1251,7 @@ MusxInstance<StaffComposite> StaffComposite::createCurrent(const DocumentPtr& do
 
 bool StaffStyle::containsInstrumentChange() const
 {
-    if (masks->notationStyle || masks->defaultClef || masks->showNoteColors || masks->hideKeySigsShowAccis) {
-        return true;
-    }
-    return this->hasInstrumentAssigned();
+    return masks->notationStyle || hasInstrumentAssigned();
 }
 
 MusxInstanceList<StaffStyle> StaffStyle::findAllOverlappingStyles(const DocumentPtr& document,

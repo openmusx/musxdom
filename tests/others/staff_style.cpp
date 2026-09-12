@@ -84,6 +84,14 @@ constexpr static musxtest::string_view staffStyleXml = R"xml(
       <startEdu>512</startEdu>
       <endMeas>4</endMeas>
     </staffStyleAssign>
+    <staffStyle cmper="2">
+      <staffLines>5</staffLines>
+      <lineSpace>24</lineSpace>
+      <styleName>Legacy Notation Style</styleName>
+      <mask>
+        <notationStyle/>
+      </mask>
+    </staffStyle>
   </others>
 </finale>
 )xml";
@@ -145,6 +153,11 @@ TEST(StaffStyleTest, PopulateFields)
     EXPECT_TRUE(staffStyle->masks->altNotation);
     EXPECT_TRUE(staffStyle->masks->showStems);
     EXPECT_TRUE(staffStyle->masks->showNameParts);
+    EXPECT_FALSE(staffStyle->containsInstrumentChange());
+
+    auto legacyNotationStyle = others->get<others::StaffStyle>(SCORE_PARTID, 2);
+    ASSERT_TRUE(legacyNotationStyle);
+    EXPECT_TRUE(legacyNotationStyle->containsInstrumentChange());
 }
 
 TEST(StaffStyleAssignTest, PopulateFields)

@@ -655,25 +655,11 @@ public:
 
     /// @brief Determines whether this staff style represents or includes an instrument change.
     ///
-    /// Beginning with Finale 2012, a dedicated group of staff style masks was reserved exclusively
-    /// for instrument changes. These masks always appear together and never occur in staff styles
-    /// used for other purposes. The masks are `notationStyle`, `defaultClef`, `showNoteColors`, and
-    /// `hideKeySigsShowAccis`. If the #instUuid is a real instrument (rather than Blank or Unknown),
-    /// that also indicates an instrument change.
-    ///
-    /// Earlier Finale files may not follow this convention. They could potentially contain
-    /// staff styles where one or more instrument-change masks are set independently. To handle both
-    /// modern and legacy cases, this function tests whether *any* of the instrument-change masks is
-    /// active in the current staff style.
-    ///
-    /// In addition, there is a set of masks that may be included in an instrument change staff style
-    /// or also may be included in a regular staff style. These are `staffType`, `transposition`, `fullName`,
-    /// and `abrvName`. This function ignores these optional masks.
-    ///
-    /// @note If the current instance is a @ref StaffComposite, it incorporates all masks in effect at the
-    /// music location for which it was created. For this reason, testing for any instrument-change
-    /// masks (rather than all) remains useful even in modern files.
-    /// @return `true` if one or more instrument-change masks are set in the current his staff style;
+    /// A notation-style override identifies legacy and modern instrument-changing styles. A real
+    /// #instUuid (rather than Blank or Unknown) also identifies an instrument change. Other masks
+    /// that Finale groups with instrument changes beginning in Finale 2012 are not independently
+    /// conclusive because older ordinary staff styles may use them separately.
+    /// @return `true` if the style changes the notation style or assigns an instrument;
     ///         `false` otherwise.
     bool containsInstrumentChange() const;
 
