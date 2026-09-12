@@ -12,7 +12,7 @@ Document object model for the EnigmaXml format in Finale musx files. It is compa
 
 ### Documentation
 
-[MUSX Document Model](https://rpatters1.github.io/musxdom/)
+[MUSX Document Model](https://openmusx.github.io/musxdom/)
 
 Here is a simple example to create a document from a buffer containing EnigmaXml. It loops through every staff, measure, and layer in the Musx document.
 
@@ -63,7 +63,7 @@ include(FetchContent)
 
 FetchContent_Declare(
   musx
-  GIT_REPOSITORY https://github.com/rpatters1/musx-object-model
+  GIT_REPOSITORY https://github.com/openmusx/musxdom
   GIT_TAG main # Replace with the desired commit hash, tag, or branch
 )
 FetchContent_MakeAvailable(musx)
