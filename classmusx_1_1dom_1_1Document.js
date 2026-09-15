@@ -4,7 +4,7 @@ var classmusx_1_1dom_1_1Document =
     [ "calcHasVaryingSystemStaves", "classmusx_1_1dom_1_1Document.html#abf79aabe5f131018df3561b9302b3585", null ],
     [ "calcJumpFromMeasures", "classmusx_1_1dom_1_1Document.html#a8380a5d30f4df6b6464e8898a7172e1f", null ],
     [ "calcPageFromMeasure", "classmusx_1_1dom_1_1Document.html#a3b1cdc185b66bf8fa55be29d36280e66", null ],
-    [ "calcScrollViewCmper", "classmusx_1_1dom_1_1Document.html#a8ea1ce4314627bcd01d5dcd48d279c94", null ],
+    [ "calcScrollViewCmper", "classmusx_1_1dom_1_1Document.html#ac8d1b2a9048dec847e81ef88b28997d8", null ],
     [ "calcSystemFromMeasure", "classmusx_1_1dom_1_1Document.html#a58c106af9d550b67ae51bafca0987a6c", null ],
     [ "createInstrumentMap", "classmusx_1_1dom_1_1Document.html#ad7512a1daf902e8580a8b4418a31ded8", null ],
     [ "getCachedFontIsSMuFL", "classmusx_1_1dom_1_1Document.html#a6aaba95d9a34eecd9ca1db29c309bb82", null ],
