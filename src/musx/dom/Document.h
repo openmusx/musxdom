@@ -167,11 +167,7 @@ public:
     /// @brief Returns the Scroll View Cmper for the given @p partId.
     /// @param partId The linked part to check.
     [[nodiscard]]
-    constexpr Cmper calcScrollViewCmper([[maybe_unused]]Cmper partId) const noexcept
-    {
-        // as of now, there is no calculation, but keep that assumption encapsulated.
-        return BASE_SYSTEM_ID;
-    }
+    Cmper calcScrollViewCmper(Cmper partId) const noexcept;
 
     /// @brief Returns the Scroll View staves for the given @p partId.
     /// @param partId The linked part to check.
