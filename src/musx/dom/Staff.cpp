@@ -36,7 +36,9 @@ namespace others {
 
 void Staff::calcAllAutoNumberValues(const DocumentPtr& document)
 {
-    auto scrollViewList = document->getScrollViewStaves(SCORE_PARTID);
+    // Auto-numbering must consider every staff in the file, so use the base system list rather than
+    // the Scroll View list, which may be the Special Part Extraction subset for the score.
+    auto scrollViewList = document->getOthers()->getArray<StaffUsed>(SCORE_PARTID, BASE_SYSTEM_ID);
 
     // Map to track counts for instUuid
     std::unordered_map<std::string, int> instUuidCounts;
