@@ -591,6 +591,83 @@ TEST(StaffTest, AutoNumbering)
     EXPECT_EQ(staff3->addAutoNumbering("Name"), "3. Name");
 }
 
+TEST(StaffTest, AutoNumberingIgnoresSpecialPartExtraction)
+{
+    // The score's Special Part Extraction list (65528) contains only staff 1. Auto-numbering must
+    // still see both staves via the base system list, so neither staff is treated as a singleton.
+    constexpr static musxtest::string_view xml = R"xml(
+<?xml version="1.0" encoding="UTF-8"?>
+<finale>
+  <others>
+    <partGlobals cmper="65534">
+      <studioViewIUlist>65400</studioViewIUlist>
+      <pageViewIUlist>65528</pageViewIUlist>
+    </partGlobals>
+    <instUsed cmper="0" inci="0">
+      <inst>1</inst>
+      <trackType>staff</trackType>
+      <distFromTop>0</distFromTop>
+      <range>
+        <startMeas>1</startMeas>
+        <startEdu>0</startEdu>
+        <endMeas>32767</endMeas>
+        <endEdu>2147483647</endEdu>
+      </range>
+    </instUsed>
+    <instUsed cmper="0" inci="1">
+      <inst>2</inst>
+      <trackType>staff</trackType>
+      <distFromTop>-288</distFromTop>
+      <range>
+        <startMeas>1</startMeas>
+        <startEdu>0</startEdu>
+        <endMeas>32767</endMeas>
+        <endEdu>2147483647</endEdu>
+      </range>
+    </instUsed>
+    <instUsed cmper="65528" inci="0">
+      <inst>1</inst>
+      <trackType>staff</trackType>
+      <distFromTop>0</distFromTop>
+      <range>
+        <startMeas>1</startMeas>
+        <startEdu>0</startEdu>
+        <endMeas>32767</endMeas>
+        <endEdu>2147483647</endEdu>
+      </range>
+    </instUsed>
+    <staffSpec cmper="1">
+      <staffLines>5</staffLines>
+      <lineSpace>24</lineSpace>
+      <instUuid>54422b22-4627-4100-abbf-064eedc15fe3</instUuid>
+      <useAutoNum/>
+    </staffSpec>
+    <staffSpec cmper="2">
+      <staffLines>5</staffLines>
+      <lineSpace>24</lineSpace>
+      <instUuid>54422b22-4627-4100-abbf-064eedc15fe3</instUuid>
+      <useAutoNum/>
+    </staffSpec>
+  </others>
+</finale>
+    )xml";
+
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(xml);
+    auto others = doc->getOthers();
+    ASSERT_TRUE(others);
+
+    ASSERT_EQ(doc->calcScrollViewCmper(SCORE_PARTID), SPECIAL_PART_EXTRACTION_SYSTEM_ID);
+    ASSERT_EQ(doc->getScrollViewStaves(SCORE_PARTID).size(), 1u);
+
+    auto staff1 = others->get<others::Staff>(SCORE_PARTID, 1);
+    ASSERT_TRUE(staff1);
+    auto staff2 = others->get<others::Staff>(SCORE_PARTID, 2);
+    ASSERT_TRUE(staff2);
+
+    EXPECT_EQ(staff1->autoNumberValue.value_or(-1), 1);
+    EXPECT_EQ(staff2->autoNumberValue.value_or(-1), 2);
+}
+
 TEST(StaffText, StaffLines)
 {
   constexpr static musxtest::string_view staffLinesXml = R"xml(
