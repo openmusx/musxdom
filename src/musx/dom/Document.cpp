@@ -130,6 +130,14 @@ std::optional<std::filesystem::path> resolveMacAliasData(const std::vector<std::
 // ***** Document *****
 // ********************
 
+Cmper Document::calcScrollViewCmper(Cmper partId) const noexcept
+{
+    if (const auto partGlobals = getOthers()->get<others::PartGlobals>(partId, MUSX_GLOBALS_CMPER)) {
+        return partGlobals->calcScrollViewCmper();
+    }
+    return BASE_SYSTEM_ID;
+}
+
 MusxInstanceList<others::StaffUsed> Document::getScrollViewStaves(Cmper partId) const
 {
     return getOthers()->getArray<others::StaffUsed>(partId, calcScrollViewCmper(partId));
