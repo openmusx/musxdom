@@ -169,6 +169,15 @@ public:
     [[nodiscard]]
     Cmper calcScrollViewCmper(Cmper partId) const noexcept;
 
+    /// @brief Returns true if @p systemCmper identifies the Scroll View staff list for the given @p partId.
+    ///
+    /// This is the only safe way to determine whether a @ref others::StaffUsed cmper refers to Scroll View.
+    /// Comparing against #BASE_SYSTEM_ID is incorrect when Special Part Extraction is active.
+    /// @param partId The linked part to check.
+    /// @param systemCmper The @ref others::StaffUsed cmper to test.
+    [[nodiscard]]
+    bool isScrollViewCmper(Cmper partId, Cmper systemCmper) const noexcept { return systemCmper == calcScrollViewCmper(partId); }
+
     /// @brief Returns the Scroll View staves for the given @p partId.
     /// @param partId The linked part to check.
     [[nodiscard]]

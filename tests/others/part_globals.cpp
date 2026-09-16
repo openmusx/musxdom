@@ -56,6 +56,8 @@ TEST(PartGlobalsTest, PartGlobalsPropertiesTest)
     EXPECT_EQ(partGlobals->studioViewIUlist, STUDIO_VIEW_SYSTEM_ID);
     EXPECT_EQ(partGlobals->specialPartExtractionIUList, 0);
     EXPECT_EQ(doc->calcScrollViewCmper(27), BASE_SYSTEM_ID);
+    EXPECT_TRUE(doc->isScrollViewCmper(27, BASE_SYSTEM_ID));
+    EXPECT_FALSE(doc->isScrollViewCmper(27, SPECIAL_PART_EXTRACTION_SYSTEM_ID));
 
     auto partGlobalsForScore = doc->getOthers()->get<others::PartGlobals>(SCORE_PARTID, MUSX_GLOBALS_CMPER);
     ASSERT_TRUE(partGlobalsForScore);
@@ -65,9 +67,12 @@ TEST(PartGlobalsTest, PartGlobalsPropertiesTest)
     EXPECT_EQ(partGlobalsForScore->studioViewIUlist, STUDIO_VIEW_SYSTEM_ID);
     EXPECT_EQ(partGlobalsForScore->specialPartExtractionIUList, SPECIAL_PART_EXTRACTION_SYSTEM_ID);
     EXPECT_EQ(doc->calcScrollViewCmper(SCORE_PARTID), SPECIAL_PART_EXTRACTION_SYSTEM_ID);
+    EXPECT_TRUE(doc->isScrollViewCmper(SCORE_PARTID, SPECIAL_PART_EXTRACTION_SYSTEM_ID));
+    EXPECT_FALSE(doc->isScrollViewCmper(SCORE_PARTID, BASE_SYSTEM_ID));
 
     // This should return nothing: correctly formatted enigmaxml should have a part global for every part
     auto partGlobalsForNonexistent = doc->getOthers()->get<others::PartGlobals>(1, MUSX_GLOBALS_CMPER);
     ASSERT_FALSE(partGlobalsForNonexistent);
     EXPECT_EQ(doc->calcScrollViewCmper(1), BASE_SYSTEM_ID);
+    EXPECT_TRUE(doc->isScrollViewCmper(1, BASE_SYSTEM_ID));
 }
