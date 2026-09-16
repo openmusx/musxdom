@@ -31,6 +31,7 @@
 
 #include "musx/dom/Fundamentals.h"
 #include "musx/dom/MusxInstance.h"
+#include "musx/dom/ResolvedFontInfo.h"
 
 namespace musx {
 
@@ -46,6 +47,8 @@ enum class AccidentalInsertSymbolType;
 } // namespace dom
 
 namespace util {
+
+struct EnigmaResolvedStyles;
 
 /// @class EnigmaStyles
 /// @brief Text styles for enigma strings
@@ -71,11 +74,36 @@ struct EnigmaStyles
     /// @brief Creates a deep copy of the styles, including copying any shared pointer instances
     EnigmaStyles createDeepCopy() const;
 
+    /// @brief Creates a document-independent snapshot of the styles.
+    /// @details Call while the document is still alive, because resolving the font name requires it.
+    /// @throws std::invalid_argument if #font has no font definition in the document.
+    EnigmaResolvedStyles resolve() const;
+
     std::shared_ptr<dom::FontInfo> font;    ///< the font to use
     CategoryTracking categoryFont{};        ///< how this font is tracked against a marking category
     dom::Evpu baseline{};                   ///< baseline setting (positive means up)
     dom::Evpu superscript{};                ///< superscript setting added to #baseline (positive means up)
     int tracking{};                         ///< inter-character tracking in EMs (1/1000 font size)
+};
+
+/// @class EnigmaResolvedStyles
+/// @brief Document-independent snapshot of #EnigmaStyles. (See #EnigmaStyles::resolve.)
+///
+/// Every member is a value, so an instance remains valid after the @ref dom::Document that produced it is released.
+struct EnigmaResolvedStyles
+{
+    dom::ResolvedFontInfo font;                     ///< the resolved font
+    EnigmaStyles::CategoryTracking categoryFont{};  ///< how the font is tracked against a marking category
+    dom::Evpu baseline{};                           ///< baseline setting (positive means up)
+    dom::Evpu superscript{};                        ///< superscript setting added to #baseline (positive means up)
+    int tracking{};                                 ///< inter-character tracking in EMs (1/1000 font size)
+};
+
+/// @brief A text chunk with a document-independent snapshot of its styles. (See #EnigmaTextChunk::resolve.)
+struct EnigmaResolvedTextChunk
+{
+    std::string text;               ///< the chunk as valid UTF-8 (see #EnigmaTextChunk::text)
+    EnigmaResolvedStyles styles;    ///< the resolved styles active for the chunk
 };
 
 /// @brief A text chunk with the Enigma styles active for that chunk.
@@ -86,7 +114,11 @@ struct EnigmaTextChunk
     /// #dom::FontInfo::calcIsSymbolFont on the font in #styles to identify those chunks.
     std::string text;
     EnigmaStyles styles;    ///< the styles active for the chunk
+
+    /// @brief Creates a document-independent snapshot of the chunk. (See #EnigmaStyles::resolve.)
+    EnigmaResolvedTextChunk resolve() const;
 };
+
 
 class EnigmaParsingContext;
 

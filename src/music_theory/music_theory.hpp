@@ -25,6 +25,7 @@
 #define MUSIC_THEORY_HPP
 
 #include <array>
+#include <cassert>
 #include <vector>
 #include <cmath>
 #include <algorithm>
@@ -101,6 +102,27 @@ struct Pitch
 static constexpr std::array<music_theory::NoteName, music_theory::STANDARD_DIATONIC_STEPS> noteNames = {
     NoteName::C, NoteName::D, NoteName::E, NoteName::F, NoteName::G, NoteName::A, NoteName::B
 };
+
+/**
+ * @brief Returns the uppercase letter that names a diatonic note, such as 'C' for #NoteName::C.
+ * @param noteName The note name.
+ * @return The letter.
+ * @throws std::invalid_argument if @p noteName is not a value of the enumeration. (In constant evaluation this is a compile error.)
+ */
+constexpr char calcNoteNameLetter(NoteName noteName)
+{
+    switch (noteName) {
+    case NoteName::C: return 'C';
+    case NoteName::D: return 'D';
+    case NoteName::E: return 'E';
+    case NoteName::F: return 'F';
+    case NoteName::G: return 'G';
+    case NoteName::A: return 'A';
+    case NoteName::B: return 'B';
+    }
+    assert(false);
+    throw std::invalid_argument("invalid NoteName value " + std::to_string(int(noteName)));
+}
 
 /// @enum DiatonicMode
 /// @brief Represents the seven standard diatonic musical modes.

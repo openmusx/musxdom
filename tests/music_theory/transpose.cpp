@@ -467,3 +467,15 @@ TEST(MusicTheoryTest, CalcPitchClass)
     static_assert(positiveModulus(-13, 12) == 11);
     static_assert(signedModulus(-13, 12) == -1);
 }
+
+TEST(NoteNameTest, CalcNoteNameLetter)
+{
+    static_assert(calcNoteNameLetter(NoteName::C) == 'C');
+    static_assert(calcNoteNameLetter(NoteName::B) == 'B');
+    for (const auto noteName : noteNames) {
+        const char letter = calcNoteNameLetter(noteName);
+        EXPECT_GE(letter, 'A');
+        EXPECT_LE(letter, 'G');
+        EXPECT_EQ(calcNoteNameLetter(noteNames[size_t(noteName)]), letter);
+    }
+}

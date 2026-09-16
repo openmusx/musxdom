@@ -706,6 +706,7 @@ TEST(NoteheadInfoTest, DefaultByDuration)
     ASSERT_EQ(noteInfo.getEntryInfo()->getEntry()->duration, 1024); // quarter note: below the "half" threshold
 
     auto noteheadInfo = noteInfo.calcNoteheadInfo();
+    EXPECT_EQ(noteheadInfo.source, NoteInfoPtr::NoteheadInfo::Source::Default);
     EXPECT_EQ(noteheadInfo.character, symbolOptions->noteheadQuarter);
     ASSERT_TRUE(noteheadInfo.font);
     EXPECT_EQ(noteheadInfo.font->fontId, noteheadFont->fontId);
@@ -738,6 +739,7 @@ TEST(NoteheadInfoTest, NoteAlterationsOverrideTakesPrecedence)
     ASSERT_EQ(noteInfo.getEntryInfo()->getEntry()->getEntryNumber(), 14);
 
     auto noteheadInfo = noteInfo.calcNoteheadInfo();
+    EXPECT_EQ(noteheadInfo.source, NoteInfoPtr::NoteheadInfo::Source::NoteAlteration);
     EXPECT_EQ(noteheadInfo.character, char32_t(250));
     ASSERT_TRUE(noteheadInfo.font);
     EXPECT_EQ(noteheadInfo.font->fontId, noteheadFont->fontId);
@@ -767,6 +769,7 @@ TEST(NoteheadInfoTest, PercussionNoteOverride)
     ASSERT_TRUE(firstNote);
     ASSERT_EQ(firstNote.getEntryInfo()->getEntry()->getEntryNumber(), 125);
     auto firstNoteheadInfo = firstNote.calcNoteheadInfo();
+    EXPECT_EQ(firstNoteheadInfo.source, NoteInfoPtr::NoteheadInfo::Source::PercussionMap);
     EXPECT_EQ(firstNoteheadInfo.character, char32_t(57508));
     ASSERT_TRUE(firstNoteheadInfo.font);
     EXPECT_EQ(firstNoteheadInfo.font->fontId, percussionFont->fontId);

@@ -3123,6 +3123,7 @@ NoteInfoPtr::NoteheadInfo NoteInfoPtr::calcNoteheadInfo() const
         if (auto noteAlts = document->getDetails()->getForNote<details::NoteAlterations>(*this)) {
             if (noteAlts->altNhead != char32_t{}) {
                 NoteheadInfo result;
+                result.source = NoteheadInfo::Source::NoteAlteration;
                 result.font = (noteAlts->useOwnFont && noteAlts->customFont) ? noteAlts->customFont : defaultFont;
                 result.character = noteAlts->altNhead;
                 result.percent = noteAlts->percent ? noteAlts->percent : 100;
@@ -3136,6 +3137,7 @@ NoteInfoPtr::NoteheadInfo NoteInfoPtr::calcNoteheadInfo() const
     // Next: the note's percussion shape, if it is a mapped percussion note.
     if (auto percNoteInfo = calcPercussionNoteInfo()) {
         NoteheadInfo result;
+        result.source = NoteheadInfo::Source::PercussionMap;
         if (auto fontOptions = document->getOptions()->get<options::FontOptions>()) {
             result.font = fontOptions->getFontInfo(options::FontOptions::FontType::Percussion);
         }
@@ -3153,6 +3155,7 @@ NoteInfoPtr::NoteheadInfo NoteInfoPtr::calcNoteheadInfo() const
             if (index < noteShapes->noteShapes.size() && noteShapes->noteShapes[index]) {
                 const auto& shape = noteShapes->noteShapes[index];
                 NoteheadInfo result;
+                result.source = NoteheadInfo::Source::ShapeNotes;
                 result.font = defaultFont;
                 result.character = selectByDuration(entry->duration, shape->quarter, shape->half, shape->whole, shape->doubleWhole);
                 return result;

@@ -30,6 +30,7 @@
 #include <utility>
 #include <vector>
 
+#include "musx/dom/ResolvedFontInfo.h"
 #include "musx/util/EnigmaString.h"
 #include "musx/util/Fraction.h"
 #include "BaseClasses.h"
@@ -229,6 +230,13 @@ public:
      * @brief Calculates whether this is a SMuFL font.
      */
     bool calcIsSMuFL() const;
+
+    /**
+     * @brief Creates a document-independent snapshot of the font.
+     * @details Call while the document is still alive, because resolving the name requires it.
+     * @throws std::invalid_argument if the font has no font definition in the document.
+     */
+    ResolvedFontInfo resolve() const;
 
     /**
      * @brief Returns the standard SMuFL font folder.
