@@ -96,7 +96,7 @@ constexpr Edu EDU_PER_WHOLE_NOTE = 0x1000;    ///< Number of Edu units per whole
 
 constexpr Cmper BASE_SYSTEM_ID = 0; ///< The base system cmper that gives a list of all available staves and their score order (@ref others::StaffUsed cmper)
                                     ///< Generally you should avoid using this directly and instead use #Document::calcScrollViewCmper or
-                                    ///< #Document::getScrollViewStaves for the list of scroll view staves.
+                                    ///< #Document::getScrollViewStaves for the list of scroll view staves, and #Document::isScrollViewCmper to test a cmper.
 constexpr Cmper STAFF_SET_1_SYSTEM_ID = 65500;  ///< The system cmoper for the first Scroll View staff set. Add 0..7 to this value to get one of the
                                                 ///< 8 staff sets.
 constexpr Cmper STUDIO_VIEW_SYSTEM_ID = 65400;  ///< The system cmper for Studio View. Studio View has entries for every click in the click track.
