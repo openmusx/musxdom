@@ -677,6 +677,44 @@ TEST(TextsTest, FontFromEnigma)
     );
 }
 
+TEST(TextsTest, ResolveEnigmaStyles)
+{
+    using texts::ExpressionText;
+
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::pugi::Document>(textXml);
+    auto texts = doc->getTexts();
+    ASSERT_TRUE(texts);
+
+    auto text = texts->get<ExpressionText>(216);
+    ASSERT_TRUE(text);
+
+    std::vector<musx::util::EnigmaResolvedTextChunk> chunks;
+    text->getRawTextCtx(text, SCORE_PARTID).parseEnigmaText([&](const std::string& chunkText, const musx::util::EnigmaStyles& styles) {
+        chunks.push_back(musx::util::EnigmaTextChunk{ chunkText, styles }.resolve());
+        return true;
+    });
+    doc.reset(); // the snapshot must not depend on the document
+
+    ASSERT_EQ(chunks.size(), 1u);
+    const auto& chunk = chunks.front();
+    EXPECT_EQ(chunk.text, "skip ties");
+    EXPECT_EQ(chunk.styles.font.name, "Times");
+    EXPECT_EQ(chunk.styles.font.size, 12);
+    EXPECT_FALSE(chunk.styles.font.sizeIsPercent);
+    EXPECT_FALSE(chunk.styles.font.bold);
+    EXPECT_TRUE(chunk.styles.font.italic);
+    EXPECT_FALSE(chunk.styles.font.underline);
+    EXPECT_FALSE(chunk.styles.font.strikeout);
+    EXPECT_FALSE(chunk.styles.font.absolute);
+    EXPECT_TRUE(chunk.styles.font.hidden);
+    EXPECT_FALSE(chunk.styles.font.isSymbolFont);
+    EXPECT_FALSE(chunk.styles.font.isSmufl);
+    EXPECT_EQ(chunk.styles.categoryFont, musx::util::EnigmaStyles::CategoryTracking::TextFont);
+    EXPECT_EQ(chunk.styles.baseline, 0);
+    EXPECT_EQ(chunk.styles.superscript, 0);
+    EXPECT_EQ(chunk.styles.tracking, 0);
+}
+
 TEST(TextsTest, ParseEnigmaTextLowLevel)
 {
     using namespace musx::util;

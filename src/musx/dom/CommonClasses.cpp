@@ -277,6 +277,23 @@ std::optional<std::filesystem::path> FontInfo::calcSMuFLMetaDataPath(const std::
     return std::nullopt;
 }
 
+ResolvedFontInfo FontInfo::resolve() const
+{
+    ResolvedFontInfo result;
+    result.name = getName();
+    result.size = fontSize;
+    result.sizeIsPercent = getSizeIsPercent();
+    result.bold = bold;
+    result.italic = italic;
+    result.underline = underline;
+    result.strikeout = strikeout;
+    result.absolute = absolute;
+    result.hidden = hidden;
+    result.isSymbolFont = calcIsSymbolFont();
+    result.isSmufl = calcIsSMuFL();
+    return result;
+}
+
 bool FontInfo::calcIsSMuFL() const
 {
     const auto document = getDocument();

@@ -103,6 +103,24 @@ EnigmaStyles EnigmaStyles::createDeepCopy() const
     return result;
 }
 
+EnigmaResolvedStyles EnigmaStyles::resolve() const
+{
+    EnigmaResolvedStyles result;
+    if (font) {
+        result.font = font->resolve();
+    }
+    result.categoryFont = categoryFont;
+    result.baseline = baseline;
+    result.superscript = superscript;
+    result.tracking = tracking;
+    return result;
+}
+
+EnigmaResolvedTextChunk EnigmaTextChunk::resolve() const
+{
+    return { text, styles.resolve() };
+}
+
 std::string EnigmaString::toU8(char32_t cp)
 {
     if (cp == 0) {

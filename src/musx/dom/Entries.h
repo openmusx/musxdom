@@ -1685,6 +1685,17 @@ public:
     /// @brief The resolved font, character, size, and offset for a note's notehead.
     struct NoteheadInfo
     {
+        /// @enum Source
+        /// @brief The setting that supplied the notehead. (See #calcNoteheadInfo for the order of precedence.)
+        enum class Source
+        {
+            Default,        ///< The document's default notehead for the note's duration category.
+            NoteAlteration, ///< A per-note #details::NoteAlterations::altNhead override.
+            PercussionMap,  ///< The shape of a mapped percussion note.
+            ShapeNotes      ///< The staff's shape-note convention.
+        };
+
+        Source source{};               ///< The setting that supplied #character.
         MusxInstance<FontInfo> font;   ///< The font that #character is drawn from.
         char32_t character{};          ///< The notehead character, interpreted in #font.
         int percent{100};              ///< Size percentage for the notehead. (100 means 100%.)
