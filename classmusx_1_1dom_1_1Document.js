@@ -33,6 +33,7 @@ var classmusx_1_1dom_1_1Document =
     [ "getStudioViewStaves", "classmusx_1_1dom_1_1Document.html#a8007e3abd2fde240fe374c81c82e1065", null ],
     [ "getTexts", "classmusx_1_1dom_1_1Document.html#ac1bf9233c31c0ef654d2cead254f7ae7", null ],
     [ "getTexts", "classmusx_1_1dom_1_1Document.html#a2c77b6f1a626b8ce48552d4b58f72446", null ],
+    [ "isScrollViewCmper", "classmusx_1_1dom_1_1Document.html#a4308a3e9bb194af96a86e1e40316b8bf", null ],
     [ "iterateEntries", "classmusx_1_1dom_1_1Document.html#a284ebc5093ab40aaa65ba82696003160", null ],
     [ "resolveExternalGraphicPath", "classmusx_1_1dom_1_1Document.html#a7faa5f48201ebde9262502435ece74d8", null ],
     [ "setCachedFontIsSMuFL", "classmusx_1_1dom_1_1Document.html#ac679b119f955e0548323d0d20edbb1f3", null ],

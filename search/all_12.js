@@ -155,7 +155,7 @@ var searchData=
   ['showrests_152',['showRests',['../classmusx_1_1dom_1_1others_1_1StaffStyle_1_1Masks.html#addbc52df67e02067395b9fb554226afe',1,'musx::dom::others::StaffStyle::Masks']]],
   ['showroot_153',['showRoot',['../classmusx_1_1dom_1_1details_1_1ChordAssign.html#a12781953747f8e34b66ebd0287f49155',1,'musx::dom::details::ChordAssign']]],
   ['showshape_154',['showShape',['../classmusx_1_1dom_1_1others_1_1TextBlock.html#a8156491d2fec35dbe7748081c623dd43',1,'musx::dom::others::TextBlock']]],
-  ['showstafflist_155',['showstafflist',['../classmusx_1_1dom_1_1others_1_1MeasureExprAssign.html#a11ed0e75e9db218768bd46f0b9adc7a6',1,'musx::dom::others::MeasureExprAssign::showStaffList'],['../classmusx_1_1dom_1_1others_1_1MeasureExprAssign.html#a086834c0cd00799bce31cdc0522ce0d3',1,'musx::dom::others::MeasureExprAssign::ShowStaffList']]],
+  ['showstafflist_155',['showstafflist',['../classmusx_1_1dom_1_1others_1_1MeasureExprAssign.html#a086834c0cd00799bce31cdc0522ce0d3',1,'musx::dom::others::MeasureExprAssign::ShowStaffList'],['../classmusx_1_1dom_1_1others_1_1MeasureExprAssign.html#a11ed0e75e9db218768bd46f0b9adc7a6',1,'musx::dom::others::MeasureExprAssign::showStaffList']]],
   ['showstems_156',['showStems',['../classmusx_1_1dom_1_1others_1_1StaffStyle_1_1Masks.html#ace6de717138d94ea77f15b5e74a90466',1,'musx::dom::others::StaffStyle::Masks']]],
   ['showsuffix_157',['showSuffix',['../classmusx_1_1dom_1_1details_1_1ChordAssign.html#a4439c8ee588b1a196bca01717ab6f9ed',1,'musx::dom::details::ChordAssign']]],
   ['showtabclefallsys_158',['showTabClefAllSys',['../classmusx_1_1dom_1_1others_1_1Staff.html#af6727847fd677c25612e919b89b6d4b9',1,'musx::dom::others::Staff']]],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX37 =
 {
+"structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#a215243cfba60d98d89b91dcdb9726f96":[2,0,1,0,4,0,4],
+"structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#a45ff1c745cae559548ba979ff8d86ddd":[2,0,1,0,4,0,3],
 "structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#a5eac2b7120a8cf60f9b6aef64c1efd1c":[2,0,1,0,4,0,7],
 "structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#ab09e22a3f0365fa5bfcb9f1bb81d4f8d":[2,0,1,0,4,0,0],
 "structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#ad1254c9dd4e6f255ecdb3aeef49d15e3":[2,0,1,0,4,0,2],
