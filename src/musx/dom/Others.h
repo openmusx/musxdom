@@ -3097,9 +3097,8 @@ public:
             MUSX_INTEGRITY_ERROR("Text options specify both a percent and an absolute line spacing. "
                 "The absolute value was discarded.");
         } else if (!lineSpacingPercentage && !lineSpacingEvpu) {
+            // this is what Finale reads when neither lineSpacingPercentage nor lineSpacingEvpu is present
             lineSpacingEvpu = 0;
-            util::Logger::log(util::Logger::LogLevel::Verbose,
-                "Text block specifies no line spacing. Zero EVPU was assumed.");
         }
     }
 
