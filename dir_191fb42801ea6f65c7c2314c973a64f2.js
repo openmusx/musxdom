@@ -19,6 +19,7 @@ var dir_191fb42801ea6f65c7c2314c973a64f2 =
     [ "Others.h", "Others_8h_source.html", null ],
     [ "PercussionNoteType.h", "PercussionNoteType_8h_source.html", null ],
     [ "Playback.h", "Playback_8h_source.html", null ],
+    [ "ResolvedFontInfo.h", "ResolvedFontInfo_8h_source.html", null ],
     [ "ShapeDesigner.h", "ShapeDesigner_8h_source.html", null ],
     [ "SmartShape.h", "SmartShape_8h_source.html", null ],
     [ "Staff.h", "Staff_8h_source.html", null ],

@@ -163,6 +163,9 @@ std::optional&lt; std::filesystem::path &gt;&#160;</td><td class="memItemRight" 
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsSMuFL</b> () const</td></tr>
 <tr class="memdesc:aa2673e6e95e16b3d5cf524dfa2ccc979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates whether this is a SMuFL font. <br /></td></tr>
 <tr class="separator:aa2673e6e95e16b3d5cf524dfa2ccc979"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca07d6654d28e72cf1c85655d3c90d70" id="r_aca07d6654d28e72cf1c85655d3c90d70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmusx_1_1dom_1_1ResolvedFontInfo.html">ResolvedFontInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1FontInfo.html#aca07d6654d28e72cf1c85655d3c90d70">resolve</a> () const</td></tr>
+<tr class="memdesc:aca07d6654d28e72cf1c85655d3c90d70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a document-independent snapshot of the font.  <br /></td></tr>
+<tr class="separator:aca07d6654d28e72cf1c85655d3c90d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classmusx_1_1dom_1_1CommonClassBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classmusx_1_1dom_1_1CommonClassBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmusx_1_1dom_1_1CommonClassBase.html">musx::dom::CommonClassBase</a></td></tr>
 <tr class="memitem:ace51e53d99e83c6ae95d2b89fd1733d7 inherit pub_methods_classmusx_1_1dom_1_1CommonClassBase" id="r_ace51e53d99e83c6ae95d2b89fd1733d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1CommonClassBase.html#ace51e53d99e83c6ae95d2b89fd1733d7">CommonClassBase</a> (const <a class="el" href="namespacemusx_1_1dom.html#aa76356b1ad3580081294898c79615c4d">DocumentWeakPtr</a> &amp;document)</td></tr>
 <tr class="memdesc:ace51e53d99e83c6ae95d2b89fd1733d7 inherit pub_methods_classmusx_1_1dom_1_1CommonClassBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classmusx_1_1dom_1_1CommonClassBase.html" title="EnigmaBase class for classes that are commonly used among others, details, entries,...">CommonClassBase</a> object.  <br /></td></tr>
@@ -515,6 +518,31 @@ Additional Inherited Members</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">src</td><td>The input font to compare with. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aca07d6654d28e72cf1c85655d3c90d70" name="aca07d6654d28e72cf1c85655d3c90d70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca07d6654d28e72cf1c85655d3c90d70">&#9670;&#160;</a></span>resolve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmusx_1_1dom_1_1ResolvedFontInfo.html">ResolvedFontInfo</a> musx::dom::FontInfo::resolve </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a document-independent snapshot of the font. </p>
+<p>Call while the document is still alive, because resolving the name requires it. </p><dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if the font has no font definition in the document. </td></tr>
   </table>
   </dd>
 </dl>

@@ -158,6 +158,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a02251605be8d40b29cb728290aeffb99" id="r_a02251605be8d40b29cb728290aeffb99"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemusic__theory.html#a02251605be8d40b29cb728290aeffb99">calcNoteNameLetter</a> (<a class="el" href="namespacemusic__theory.html#acb68e55d250cfd1ba7a7d5ca0bcbb869">NoteName</a> noteName)</td></tr>
+<tr class="memdesc:a02251605be8d40b29cb728290aeffb99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the uppercase letter that names a diatonic note, such as 'C' for NoteName::C.  <br /></td></tr>
+<tr class="separator:a02251605be8d40b29cb728290aeffb99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25d2e2ec4727f853dc7cd1448e713a7e" id="r_a25d2e2ec4727f853dc7cd1448e713a7e"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemusic__theory.html#a25d2e2ec4727f853dc7cd1448e713a7e">calcDisplacement</a> (const <a class="el" href="structmusic__theory_1_1Pitch.html">Pitch</a> &amp;pitch)</td></tr>
 <tr class="memdesc:a25d2e2ec4727f853dc7cd1448e713a7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the displacement value for a spelled pitch.  <br /></td></tr>
 <tr class="separator:a25d2e2ec4727f853dc7cd1448e713a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -524,6 +527,47 @@ constexpr std::array&lt; int, <a class="el" href="namespacemusic__theory.html#ab
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The change in key signature (positive for sharps added or flats removed, negative for flats added or sharps removed). </dd></dl>
+
+</div>
+</div>
+<a id="a02251605be8d40b29cb728290aeffb99" name="a02251605be8d40b29cb728290aeffb99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02251605be8d40b29cb728290aeffb99">&#9670;&#160;</a></span>calcNoteNameLetter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr char music_theory::calcNoteNameLetter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemusic__theory.html#acb68e55d250cfd1ba7a7d5ca0bcbb869">NoteName</a>&#160;</td>
+          <td class="paramname"><em>noteName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the uppercase letter that names a diatonic note, such as 'C' for NoteName::C. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">noteName</td><td>The note name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The letter. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if <code>noteName</code> is not a value of the enumeration. (In constant evaluation this is a compile error.) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('structmusx_1_1dom_1_1NoteInfoPtr_1_1No
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">musx::dom::NoteInfoPtr::NoteheadInfo Struct Reference</div></div>
@@ -104,8 +105,22 @@ $(document).ready(function(){initNavTree('structmusx_1_1dom_1_1NoteInfoPtr_1_1No
 
 <p><code>#include &lt;<a class="el" href="Entries_8h_source.html">Entries.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ae569164db9ef19b6355ddf986080de93" id="r_ae569164db9ef19b6355ddf986080de93"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html#ae569164db9ef19b6355ddf986080de93">Source</a> { <a class="el" href="structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html#ae569164db9ef19b6355ddf986080de93a7a1920d61156abc05a60135aefe8bc67">Default</a>
+, <a class="el" href="structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html#ae569164db9ef19b6355ddf986080de93aba0e63c87e15371b2c72b166734be0ff">NoteAlteration</a>
+, <a class="el" href="structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html#ae569164db9ef19b6355ddf986080de93ad073cce1f1b8bb8bb675979d102c4edf">PercussionMap</a>
+, <a class="el" href="structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html#ae569164db9ef19b6355ddf986080de93a28c124252962cb3726be5c97a790eac3">ShapeNotes</a>
+ }</td></tr>
+<tr class="memdesc:ae569164db9ef19b6355ddf986080de93"><td class="mdescLeft">&#160;</td><td class="mdescRight">The setting that supplied the notehead. (See <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a16f03e5030d5d4995c87d9899341ce48" title="Resolves the effective font and character used to render this note&#39;s notehead, along with any size or...">calcNoteheadInfo</a> for the order of precedence.)  <a href="structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html#ae569164db9ef19b6355ddf986080de93">More...</a><br /></td></tr>
+<tr class="separator:ae569164db9ef19b6355ddf986080de93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a81030c2513e65697a48e58df87b8fe6f" id="r_a81030c2513e65697a48e58df87b8fe6f"><td class="memItemLeft" align="right" valign="top"><a id="a81030c2513e65697a48e58df87b8fe6f" name="a81030c2513e65697a48e58df87b8fe6f"></a>
+<a class="el" href="structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html#ae569164db9ef19b6355ddf986080de93">Source</a>&#160;</td><td class="memItemRight" valign="bottom"><b>source</b> {}</td></tr>
+<tr class="memdesc:a81030c2513e65697a48e58df87b8fe6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The setting that supplied <a class="el" href="structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html#ac363743a76409e17a4bdfa0b6673b9b7" title="The notehead character, interpreted in font.">character</a>. <br /></td></tr>
+<tr class="separator:a81030c2513e65697a48e58df87b8fe6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a392100843d4f13542557308302601b74" id="r_a392100843d4f13542557308302601b74"><td class="memItemLeft" align="right" valign="top"><a id="a392100843d4f13542557308302601b74" name="a392100843d4f13542557308302601b74"></a>
 <a class="el" href="namespacemusx_1_1dom.html#a4223cd531120dbef7acd854c3d2631b8">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1FontInfo.html">FontInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>font</b></td></tr>
 <tr class="memdesc:a392100843d4f13542557308302601b74"><td class="mdescLeft">&#160;</td><td class="mdescRight">The font that <a class="el" href="structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html#ac363743a76409e17a4bdfa0b6673b9b7" title="The notehead character, interpreted in font.">character</a> is drawn from. <br /></td></tr>
@@ -127,7 +142,42 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>percent</b> {100}</td>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The resolved font, character, size, and offset for a note's notehead. </p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="ae569164db9ef19b6355ddf986080de93" name="ae569164db9ef19b6355ddf986080de93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae569164db9ef19b6355ddf986080de93">&#9670;&#160;</a></span>Source</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html#ae569164db9ef19b6355ddf986080de93">musx::dom::NoteInfoPtr::NoteheadInfo::Source</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The setting that supplied the notehead. (See <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a16f03e5030d5d4995c87d9899341ce48" title="Resolves the effective font and character used to render this note&#39;s notehead, along with any size or...">calcNoteheadInfo</a> for the order of precedence.) </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae569164db9ef19b6355ddf986080de93a7a1920d61156abc05a60135aefe8bc67" name="ae569164db9ef19b6355ddf986080de93a7a1920d61156abc05a60135aefe8bc67"></a>Default&#160;</td><td class="fielddoc"><p>The document's default notehead for the note's duration category. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae569164db9ef19b6355ddf986080de93aba0e63c87e15371b2c72b166734be0ff" name="ae569164db9ef19b6355ddf986080de93aba0e63c87e15371b2c72b166734be0ff"></a>NoteAlteration&#160;</td><td class="fielddoc"><p>A per-note <a class="el" href="classmusx_1_1dom_1_1details_1_1NoteAlterations.html#a5c62d56a41a9d7ba35bab536bd9b4b58" title="Alternate notehead character. Zero (the default) means no override is specified.">details::NoteAlterations::altNhead</a> override. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae569164db9ef19b6355ddf986080de93ad073cce1f1b8bb8bb675979d102c4edf" name="ae569164db9ef19b6355ddf986080de93ad073cce1f1b8bb8bb675979d102c4edf"></a>PercussionMap&#160;</td><td class="fielddoc"><p>The shape of a mapped percussion note. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae569164db9ef19b6355ddf986080de93a28c124252962cb3726be5c97a790eac3" name="ae569164db9ef19b6355ddf986080de93a28c124252962cb3726be5c97a790eac3"></a>ShapeNotes&#160;</td><td class="fielddoc"><p>The staff's shape-note convention. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="ac810575f93c6d3c4c4210e7b4ed03b3d" name="ac810575f93c6d3c4c4210e7b4ed03b3d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac810575f93c6d3c4c4210e7b4ed03b3d">&#9670;&#160;</a></span>vertOffset</h2>
 

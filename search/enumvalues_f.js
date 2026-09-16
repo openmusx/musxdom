@@ -14,13 +14,14 @@ var searchData=
   ['percussion_11',['percussion',['../classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aacb5c10c0b488ed4f3826ba628d18ca6a',1,'musx::dom::options::FontOptions::Percussion'],['../namespacemusx_1_1dom.html#a86d8f1c0b9cc21018e4d1257c193f67facb5c10c0b488ed4f3826ba628d18ca6a',1,'musx::dom::Percussion']]],
   ['percussion1_12',['Percussion1',['../namespacemusic__theory.html#a815d2a1e748a138127d59c252e4fa946ae45a3c65bbd13b82efb95ddfce95ee28',1,'music_theory']]],
   ['percussion2_13',['Percussion2',['../namespacemusic__theory.html#a815d2a1e748a138127d59c252e4fa946a50fdf989a6b1d1c6999550038f0a46f4',1,'music_theory']]],
-  ['percussionmidimap_14',['PercussionMidiMap',['../namespacemusx_1_1dom_1_1others.html#a8ca1afe21691e4db1cdfd8b62344ecfea9886936a49e92031e21d52724cb2e0de',1,'musx::dom::others']]],
-  ['phrygian_15',['Phrygian',['../namespacemusic__theory.html#a04ed1b374e50ea532b72ed1bb66683cea805db0fe201d84ac80b9572cb7d262ea',1,'music_theory']]],
-  ['pianobrace_16',['PianoBrace',['../classmusx_1_1dom_1_1details_1_1Bracket.html#a94b9ba6a2a06355200a730432e7788c2aaf8f1f518c9abfade56624f83e4d399c',1,'musx::dom::details::Bracket']]],
-  ['picas_17',['Picas',['../classmusx_1_1util_1_1SvgConvert.html#aec8aa781edbb07156c2299287a118e7ba87f77e575f5cc4a838eb75067569a0a6',1,'musx::util::SvgConvert']]],
-  ['pixels_18',['Pixels',['../classmusx_1_1util_1_1SvgConvert.html#aec8aa781edbb07156c2299287a118e7bac3d2f5d37334dc978fd8b17fc77408a1',1,'musx::util::SvgConvert']]],
-  ['playtempotoolchanges_19',['PlayTempoToolChanges',['../namespacemusx_1_1dom_1_1others.html#a8ca1afe21691e4db1cdfd8b62344ecfeaa0cbb728784176e49dae513294122965',1,'musx::dom::others']]],
-  ['plus_20',['Plus',['../classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#ad089ab13497a1e9197571632e31c2757a32ba78fe43257d3e7f88e3935a8ea0d4',1,'musx::dom::others::ChordSuffixElement']]],
-  ['points_21',['Points',['../classmusx_1_1util_1_1SvgConvert.html#aec8aa781edbb07156c2299287a118e7ba75dd5f1160a3f02b6fae89c54361a1b3',1,'musx::util::SvgConvert']]],
-  ['positioninmeasure_22',['PositionInMeasure',['../classmusx_1_1dom_1_1others_1_1MeasureExprAssign.html#ac9f93b9b37f2319e87e8c33ec0bed159ae7fc6b9e306b7c9b939b8caca872a9e0',1,'musx::dom::others::MeasureExprAssign']]]
+  ['percussionmap_14',['PercussionMap',['../structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html#ae569164db9ef19b6355ddf986080de93ad073cce1f1b8bb8bb675979d102c4edf',1,'musx::dom::NoteInfoPtr::NoteheadInfo']]],
+  ['percussionmidimap_15',['PercussionMidiMap',['../namespacemusx_1_1dom_1_1others.html#a8ca1afe21691e4db1cdfd8b62344ecfea9886936a49e92031e21d52724cb2e0de',1,'musx::dom::others']]],
+  ['phrygian_16',['Phrygian',['../namespacemusic__theory.html#a04ed1b374e50ea532b72ed1bb66683cea805db0fe201d84ac80b9572cb7d262ea',1,'music_theory']]],
+  ['pianobrace_17',['PianoBrace',['../classmusx_1_1dom_1_1details_1_1Bracket.html#a94b9ba6a2a06355200a730432e7788c2aaf8f1f518c9abfade56624f83e4d399c',1,'musx::dom::details::Bracket']]],
+  ['picas_18',['Picas',['../classmusx_1_1util_1_1SvgConvert.html#aec8aa781edbb07156c2299287a118e7ba87f77e575f5cc4a838eb75067569a0a6',1,'musx::util::SvgConvert']]],
+  ['pixels_19',['Pixels',['../classmusx_1_1util_1_1SvgConvert.html#aec8aa781edbb07156c2299287a118e7bac3d2f5d37334dc978fd8b17fc77408a1',1,'musx::util::SvgConvert']]],
+  ['playtempotoolchanges_20',['PlayTempoToolChanges',['../namespacemusx_1_1dom_1_1others.html#a8ca1afe21691e4db1cdfd8b62344ecfeaa0cbb728784176e49dae513294122965',1,'musx::dom::others']]],
+  ['plus_21',['Plus',['../classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#ad089ab13497a1e9197571632e31c2757a32ba78fe43257d3e7f88e3935a8ea0d4',1,'musx::dom::others::ChordSuffixElement']]],
+  ['points_22',['Points',['../classmusx_1_1util_1_1SvgConvert.html#aec8aa781edbb07156c2299287a118e7ba75dd5f1160a3f02b6fae89c54361a1b3',1,'musx::util::SvgConvert']]],
+  ['positioninmeasure_23',['PositionInMeasure',['../classmusx_1_1dom_1_1others_1_1MeasureExprAssign.html#ac9f93b9b37f2319e87e8c33ec0bed159ae7fc6b9e306b7c9b939b8caca872a9e0',1,'musx::dom::others::MeasureExprAssign']]]
 ];

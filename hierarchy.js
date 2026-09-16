@@ -343,6 +343,8 @@ var hierarchy =
     ] ],
     [ "musx::util::EnigmaParsingContext", "classmusx_1_1util_1_1EnigmaParsingContext.html", null ],
     [ "musx::util::EnigmaString::EnigmaParsingOptions", "structmusx_1_1util_1_1EnigmaString_1_1EnigmaParsingOptions.html", null ],
+    [ "musx::util::EnigmaResolvedStyles", "structmusx_1_1util_1_1EnigmaResolvedStyles.html", null ],
+    [ "musx::util::EnigmaResolvedTextChunk", "structmusx_1_1util_1_1EnigmaResolvedTextChunk.html", null ],
     [ "musx::util::EnigmaString", "classmusx_1_1util_1_1EnigmaString.html", null ],
     [ "musx::util::EnigmaStyles", "structmusx_1_1util_1_1EnigmaStyles.html", null ],
     [ "musx::util::EnigmaTextChunk", "structmusx_1_1util_1_1EnigmaTextChunk.html", null ],
@@ -422,6 +424,7 @@ var hierarchy =
     [ "musx::utils::PseudoTieShapeInfo", "structmusx_1_1utils_1_1PseudoTieShapeInfo.html", null ],
     [ "musx::dom::ShapeDefInstruction::Rectangle", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Rectangle.html", null ],
     [ "musx::dom::RehearsalMarkInfo", "structmusx_1_1dom_1_1RehearsalMarkInfo.html", null ],
+    [ "musx::dom::ResolvedFontInfo", "structmusx_1_1dom_1_1ResolvedFontInfo.html", null ],
     [ "musx::dom::ShapeDefInstruction::RLineTo", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1RLineTo.html", null ],
     [ "musx::dom::ShapeDefInstruction::RMoveTo", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html", null ],
     [ "std::runtime_error", null, [

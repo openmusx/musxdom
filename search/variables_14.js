@@ -5,7 +5,7 @@ var searchData=
   ['udu_2',['Udu',['../namespacemusx_1_1dom_1_1uuid.html#ad751440ba2a492b437074fc1a0cd256c',1,'musx::dom::uuid']]],
   ['uilleannpipes_3',['UilleannPipes',['../namespacemusx_1_1dom_1_1uuid.html#a10c65a4be0b315db27885f0eda805cb3',1,'musx::dom::uuid']]],
   ['ukulele_4',['Ukulele',['../namespacemusx_1_1dom_1_1uuid.html#ae4773fcb8e605b099ce717ec04f52ba9',1,'musx::dom::uuid']]],
-  ['underline_5',['underline',['../classmusx_1_1dom_1_1FontInfo.html#ae189960b62af0ed50c12ca3ca5af18f5',1,'musx::dom::FontInfo']]],
+  ['underline_5',['underline',['../structmusx_1_1dom_1_1ResolvedFontInfo.html#a21164d3743a49662892316295c8af819',1,'musx::dom::ResolvedFontInfo::underline'],['../classmusx_1_1dom_1_1FontInfo.html#ae189960b62af0ed50c12ca3ca5af18f5',1,'musx::dom::FontInfo::underline']]],
   ['unit_6',['unit',['../classmusx_1_1dom_1_1others_1_1TempoChange.html#a3d2145143923dc45001ad8ed551b2a99',1,'musx::dom::others::TempoChange::unit'],['../classmusx_1_1dom_1_1others_1_1TimeCompositeLower_1_1CompositeItem.html#afc7c2243666bdc5e1233751740aca723',1,'musx::dom::others::TimeCompositeLower::CompositeItem::unit']]],
   ['units_7',['units',['../structmusx_1_1dom_1_1TimeSignature_1_1TimeSigComponent.html#a4559fc2bddd84f1c05f1f82366e1c8ea',1,'musx::dom::TimeSignature::TimeSigComponent']]],
   ['unknown_8',['Unknown',['../namespacemusx_1_1dom_1_1uuid.html#a5b14144dfe51aef14205dec46b54d6d2',1,'musx::dom::uuid']]],

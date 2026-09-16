@@ -10,6 +10,7 @@ var classmusx_1_1dom_1_1FontInfo =
     [ "getName", "classmusx_1_1dom_1_1FontInfo.html#aae053f64458e79327a569d25bfd3b814", null ],
     [ "getSizeIsPercent", "classmusx_1_1dom_1_1FontInfo.html#ab118e9ff06bed0ce3aab78b76c093250", null ],
     [ "isSame", "classmusx_1_1dom_1_1FontInfo.html#ab16918facac73b28273576d8df541eab", null ],
+    [ "resolve", "classmusx_1_1dom_1_1FontInfo.html#aca07d6654d28e72cf1c85655d3c90d70", null ],
     [ "setEnigmaStyles", "classmusx_1_1dom_1_1FontInfo.html#ab482bb76fdb37df80d5eba5a8b0006b0", null ],
     [ "setFontIdByName", "classmusx_1_1dom_1_1FontInfo.html#a7342806d12d9d725edcb9b897f784e07", null ],
     [ "absolute", "classmusx_1_1dom_1_1FontInfo.html#ae66037621c9581081b74d52dee8e65b1", null ],

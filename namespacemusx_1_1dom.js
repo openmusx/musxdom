@@ -853,6 +853,7 @@ var namespacemusx_1_1dom =
     [ "OthersName", "classmusx_1_1dom_1_1OthersName.html", "classmusx_1_1dom_1_1OthersName" ],
     [ "OthersPool", "classmusx_1_1dom_1_1OthersPool.html", "classmusx_1_1dom_1_1OthersPool" ],
     [ "RehearsalMarkInfo", "structmusx_1_1dom_1_1RehearsalMarkInfo.html", "structmusx_1_1dom_1_1RehearsalMarkInfo" ],
+    [ "ResolvedFontInfo", "structmusx_1_1dom_1_1ResolvedFontInfo.html", "structmusx_1_1dom_1_1ResolvedFontInfo" ],
     [ "ShapeDefInstruction", "structmusx_1_1dom_1_1ShapeDefInstruction.html", "structmusx_1_1dom_1_1ShapeDefInstruction" ],
     [ "StaffPositionPitchOptions", "structmusx_1_1dom_1_1StaffPositionPitchOptions.html", "structmusx_1_1dom_1_1StaffPositionPitchOptions" ],
     [ "TextsBase", "classmusx_1_1dom_1_1TextsBase.html", "classmusx_1_1dom_1_1TextsBase" ],

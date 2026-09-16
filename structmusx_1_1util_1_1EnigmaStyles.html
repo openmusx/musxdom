@@ -126,6 +126,9 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="structmusx_1_1util_1_1EnigmaStyles.html">EnigmaStyles</a>&#160;</td><td class="memItemRight" valign="bottom"><b>createDeepCopy</b> () const</td></tr>
 <tr class="memdesc:a6f6cd93795becf51ee465644f5d69021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a deep copy of the styles, including copying any shared pointer instances. <br /></td></tr>
 <tr class="separator:a6f6cd93795becf51ee465644f5d69021"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20631d8d96de70fccae8e2c638897881" id="r_a20631d8d96de70fccae8e2c638897881"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmusx_1_1util_1_1EnigmaResolvedStyles.html">EnigmaResolvedStyles</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmusx_1_1util_1_1EnigmaStyles.html#a20631d8d96de70fccae8e2c638897881">resolve</a> () const</td></tr>
+<tr class="memdesc:a20631d8d96de70fccae8e2c638897881"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a document-independent snapshot of the styles.  <br /></td></tr>
+<tr class="separator:a20631d8d96de70fccae8e2c638897881"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -185,6 +188,32 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>tracking</b> {}</td></
 <tr><td class="fieldname"><a id="a5c7a62c1475b70521ba54e0ccec5768da2db06b134b30d1a9303e42979b213050" name="a5c7a62c1475b70521ba54e0ccec5768da2db06b134b30d1a9303e42979b213050"></a>NumberFont&#160;</td><td class="fielddoc"><p>tracks the category's number font (not implemented in Finale U.I.) </p>
 </td></tr>
 </table>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a20631d8d96de70fccae8e2c638897881" name="a20631d8d96de70fccae8e2c638897881"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20631d8d96de70fccae8e2c638897881">&#9670;&#160;</a></span>resolve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmusx_1_1util_1_1EnigmaResolvedStyles.html">EnigmaResolvedStyles</a> musx::util::EnigmaStyles::resolve </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a document-independent snapshot of the styles. </p>
+<p>Call while the document is still alive, because resolving the font name requires it. </p><dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if <a class="el" href="structmusx_1_1util_1_1EnigmaStyles.html#a5a7ee150f534afc35cc5a5545742ed80" title="the font to use">font</a> has no font definition in the document. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

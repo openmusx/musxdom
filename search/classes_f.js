@@ -11,6 +11,7 @@ var searchData=
   ['repeatindividualpositioning_8',['RepeatIndividualPositioning',['../classmusx_1_1dom_1_1others_1_1RepeatIndividualPositioning.html',1,'musx::dom::others']]],
   ['repeatoptions_9',['RepeatOptions',['../classmusx_1_1dom_1_1options_1_1RepeatOptions.html',1,'musx::dom::options']]],
   ['repeatpasslist_10',['RepeatPassList',['../classmusx_1_1dom_1_1others_1_1RepeatPassList.html',1,'musx::dom::others']]],
-  ['rlineto_11',['RLineTo',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1RLineTo.html',1,'musx::dom::ShapeDefInstruction']]],
-  ['rmoveto_12',['RMoveTo',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html',1,'musx::dom::ShapeDefInstruction']]]
+  ['resolvedfontinfo_11',['ResolvedFontInfo',['../structmusx_1_1dom_1_1ResolvedFontInfo.html',1,'musx::dom']]],
+  ['rlineto_12',['RLineTo',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1RLineTo.html',1,'musx::dom::ShapeDefInstruction']]],
+  ['rmoveto_13',['RMoveTo',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html',1,'musx::dom::ShapeDefInstruction']]]
 ];
