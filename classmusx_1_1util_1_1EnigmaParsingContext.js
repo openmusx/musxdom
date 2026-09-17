@@ -11,6 +11,7 @@ var classmusx_1_1util_1_1EnigmaParsingContext =
     [ "operator bool", "classmusx_1_1util_1_1EnigmaParsingContext.html#ab0f1e95ab3aef8cfb056a401c49023af", null ],
     [ "parseEnigmaText", "classmusx_1_1util_1_1EnigmaParsingContext.html#a23f780f83313f40a9ca0a1f192584078", null ],
     [ "parseEnigmaText", "classmusx_1_1util_1_1EnigmaParsingContext.html#abcd0e1d0d91de8906a647a39d4faf394", null ],
+    [ "parseEnigmaText", "classmusx_1_1util_1_1EnigmaParsingContext.html#ac3729ca68c6949c0b8bbdac02f4e39fa", null ],
     [ "parseFirstFontInfo", "classmusx_1_1util_1_1EnigmaParsingContext.html#a1e7ed77d559996441a91a8d058a2c67a", null ],
     [ "affixIsPrefix", "classmusx_1_1util_1_1EnigmaParsingContext.html#a04534e2885dd5ed69b055e0ed8d0cbc2", null ],
     [ "affixText", "classmusx_1_1util_1_1EnigmaParsingContext.html#ac8772ecbc5f87a0584264be27f413e3b", null ]

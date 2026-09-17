@@ -348,6 +348,7 @@ var hierarchy =
     [ "musx::util::EnigmaString", "classmusx_1_1util_1_1EnigmaString.html", null ],
     [ "musx::util::EnigmaStyles", "structmusx_1_1util_1_1EnigmaStyles.html", null ],
     [ "musx::util::EnigmaTextChunk", "structmusx_1_1util_1_1EnigmaTextChunk.html", null ],
+    [ "musx::util::EnigmaTextInsert", "structmusx_1_1util_1_1EnigmaTextInsert.html", null ],
     [ "musx::util::Cue::EntryAnalysis", "structmusx_1_1util_1_1Cue_1_1EntryAnalysis.html", null ],
     [ "musx::factory::EntryFactory", "classmusx_1_1factory_1_1EntryFactory.html", null ],
     [ "musx::dom::EntryInfo", "classmusx_1_1dom_1_1EntryInfo.html", null ],

@@ -124,6 +124,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abcd0e1d0d91de8906a647a39d4faf394" id="r_abcd0e1d0d91de8906a647a39d4faf394"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1util_1_1EnigmaParsingContext.html#abcd0e1d0d91de8906a647a39d4faf394">parseEnigmaText</a> (const <a class="el" href="classmusx_1_1util_1_1EnigmaString.html#ab7774814f864c7fc4e840f73af322936">EnigmaString::TextChunkCallback</a> &amp;onText, const <a class="el" href="classmusx_1_1util_1_1EnigmaString.html#ad0503e291556abece57b9c47b16bbf1e">EnigmaString::TextInsertCallback</a> &amp;onInsert, const <a class="el" href="structmusx_1_1util_1_1EnigmaString_1_1EnigmaParsingOptions.html">EnigmaString::EnigmaParsingOptions</a> &amp;options={}) const</td></tr>
 <tr class="memdesc:abcd0e1d0d91de8906a647a39d4faf394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the Enigma text into structured chunks with insert handling.  <br /></td></tr>
 <tr class="separator:abcd0e1d0d91de8906a647a39d4faf394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3729ca68c6949c0b8bbdac02f4e39fa" id="r_ac3729ca68c6949c0b8bbdac02f4e39fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1util_1_1EnigmaParsingContext.html#ac3729ca68c6949c0b8bbdac02f4e39fa">parseEnigmaText</a> (const <a class="el" href="classmusx_1_1util_1_1EnigmaString.html#a60d94b7036eee10ce56191c7bf826909">EnigmaString::TextChunkWithInsertCallback</a> &amp;onText, const <a class="el" href="classmusx_1_1util_1_1EnigmaString.html#ad0503e291556abece57b9c47b16bbf1e">EnigmaString::TextInsertCallback</a> &amp;onInsert, const <a class="el" href="structmusx_1_1util_1_1EnigmaString_1_1EnigmaParsingOptions.html">EnigmaString::EnigmaParsingOptions</a> &amp;options={}) const</td></tr>
+<tr class="memdesc:ac3729ca68c6949c0b8bbdac02f4e39fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variant of <a class="el" href="classmusx_1_1util_1_1EnigmaParsingContext.html#abcd0e1d0d91de8906a647a39d4faf394" title="Parse the Enigma text into structured chunks with insert handling.">parseEnigmaText</a> whose text handler also receives the insert each chunk was substituted for.  <br /></td></tr>
+<tr class="separator:ac3729ca68c6949c0b8bbdac02f4e39fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23f780f83313f40a9ca0a1f192584078" id="r_a23f780f83313f40a9ca0a1f192584078"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1util_1_1EnigmaParsingContext.html#a23f780f83313f40a9ca0a1f192584078">parseEnigmaText</a> (const <a class="el" href="classmusx_1_1util_1_1EnigmaString.html#ab7774814f864c7fc4e840f73af322936">EnigmaString::TextChunkCallback</a> &amp;onText, const <a class="el" href="structmusx_1_1util_1_1EnigmaString_1_1EnigmaParsingOptions.html">EnigmaString::EnigmaParsingOptions</a> &amp;options={}) const</td></tr>
 <tr class="memdesc:a23f780f83313f40a9ca0a1f192584078"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the Enigma text into structured chunks with insert handling.  <br /></td></tr>
 <tr class="separator:a23f780f83313f40a9ca0a1f192584078"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -336,7 +339,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>affixIsPrefix</b> {}<
 </div>
 </div>
 <a id="a23f780f83313f40a9ca0a1f192584078" name="a23f780f83313f40a9ca0a1f192584078"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23f780f83313f40a9ca0a1f192584078">&#9670;&#160;</a></span>parseEnigmaText() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a23f780f83313f40a9ca0a1f192584078">&#9670;&#160;</a></span>parseEnigmaText() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -382,10 +385,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>affixIsPrefix</b> {}<
 </div>
 </div>
 <a id="abcd0e1d0d91de8906a647a39d4faf394" name="abcd0e1d0d91de8906a647a39d4faf394"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abcd0e1d0d91de8906a647a39d4faf394">&#9670;&#160;</a></span>parseEnigmaText() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#abcd0e1d0d91de8906a647a39d4faf394">&#9670;&#160;</a></span>parseEnigmaText() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool musx::util::EnigmaParsingContext::parseEnigmaText </td>
@@ -411,12 +417,62 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>affixIsPrefix</b> {}<
           <td></td><td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Parse the Enigma text into structured chunks with insert handling. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">onText</td><td>The handler for font and text style changes. </td></tr>
+    <tr><td class="paramname">onInsert</td><td>The handler for insert conversions. This function is called first. If it returns a string, the default insert value is skipped. </td></tr>
+    <tr><td class="paramname">options</td><td>The options for the parsing session. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if parsing was successful. </dd></dl>
+
+</div>
+</div>
+<a id="ac3729ca68c6949c0b8bbdac02f4e39fa" name="ac3729ca68c6949c0b8bbdac02f4e39fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3729ca68c6949c0b8bbdac02f4e39fa">&#9670;&#160;</a></span>parseEnigmaText() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool musx::util::EnigmaParsingContext::parseEnigmaText </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classmusx_1_1util_1_1EnigmaString.html#a60d94b7036eee10ce56191c7bf826909">EnigmaString::TextChunkWithInsertCallback</a> &amp;&#160;</td>
+          <td class="paramname"><em>onText</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classmusx_1_1util_1_1EnigmaString.html#ad0503e291556abece57b9c47b16bbf1e">EnigmaString::TextInsertCallback</a> &amp;&#160;</td>
+          <td class="paramname"><em>onInsert</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structmusx_1_1util_1_1EnigmaString_1_1EnigmaParsingOptions.html">EnigmaString::EnigmaParsingOptions</a> &amp;&#160;</td>
+          <td class="paramname"><em>options</em> = <code>{}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variant of <a class="el" href="classmusx_1_1util_1_1EnigmaParsingContext.html#abcd0e1d0d91de8906a647a39d4faf394" title="Parse the Enigma text into structured chunks with insert handling.">parseEnigmaText</a> whose text handler also receives the insert each chunk was substituted for. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onText</td><td>The handler for font and text style changes, receiving the chunk's insert or nullptr. </td></tr>
     <tr><td class="paramname">onInsert</td><td>The handler for insert conversions. This function is called first. If it returns a string, the default insert value is skipped. </td></tr>
     <tr><td class="paramname">options</td><td>The options for the parsing session. </td></tr>
   </table>

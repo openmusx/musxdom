@@ -86,15 +86,15 @@ var NAVTREEINDEX =
 "classmusx_1_1dom_1_1others_1_1StaffPlayData.html#ac91dcdc83724864a02e767c3252e684fa2ca9469819fb0fb61ff98e914a7ccca0",
 "classmusx_1_1dom_1_1others_1_1SystemLock.html#abc2ae56f0a50eae89ef3e46ab66f0ad0",
 "classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#a00d74b5dfaf87ddf5cd91b0d34922332",
-"classmusx_1_1xml_1_1IXmlElement.html#ab347b25d18d6e17265cc5efc2ed97f16",
-"namespacemembers_vars_l.html",
-"namespacemusx_1_1dom.html#a93764339b56e531ea37af5181b20b113ae6c8603537164df7d6f44cc48b44d1b3",
-"namespacemusx_1_1dom_1_1uuid.html#a24c8727e2d5480b6c2dd9aef7d8c25ac",
-"namespacemusx_1_1dom_1_1uuid.html#a74d4869f2d7e0feece1b187da62ee001",
-"namespacemusx_1_1dom_1_1uuid.html#ac1dd196125b91145f53c771ae0d27419",
-"structmusx_1_1dom_1_1Entry_1_1EntryLocation.html#a0d01ab840faabbdd90b5a022a9a62a9a",
-"structmusx_1_1dom_1_1ShapeDefInstruction_1_1Rectangle.html#ac5c80aeeaa3f37449fca7cb913af1dc6",
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlStyle.html#a15c4ceea7ebe34998c32b3487835c231"
+"classmusx_1_1xml_1_1IXmlElement.html#a9c93cce2635b22156c8a3528f5639425",
+"namespacemembers_vars_j.html",
+"namespacemusx_1_1dom.html#a93764339b56e531ea37af5181b20b113ade9a94c8c7949a8fc462d3bdf33a76cc",
+"namespacemusx_1_1dom_1_1uuid.html#a241ff696105695dd04e8f1a639c8fd60",
+"namespacemusx_1_1dom_1_1uuid.html#a74312786c75c9763ac1b51fabd1153af",
+"namespacemusx_1_1dom_1_1uuid.html#ac1501c28881612ae750a2c369e6b0cfc",
+"structmusx_1_1dom_1_1Entry_1_1EntryLocation.html",
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1Rectangle.html#a78125d0b84c2a3135950be32ae43c941",
+"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlStyle.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
