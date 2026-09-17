@@ -690,7 +690,7 @@ TEST(TextsTest, ResolveEnigmaStyles)
 
     std::vector<musx::util::EnigmaResolvedTextChunk> chunks;
     text->getRawTextCtx(text, SCORE_PARTID).parseEnigmaText([&](const std::string& chunkText, const musx::util::EnigmaStyles& styles) {
-        chunks.push_back(musx::util::EnigmaTextChunk{ chunkText, styles }.resolve());
+        chunks.push_back(musx::util::EnigmaTextChunk{ chunkText, styles, std::nullopt }.resolve());
         return true;
     });
     doc.reset(); // the snapshot must not depend on the document
@@ -776,8 +776,11 @@ TEST(TextsTest, ParseEnigmaTextLowLevel)
             if (parsed[0] == "page") return "3";
             return std::nullopt;
         });
+    // The insert's substitution is a chunk of its own.
     std::vector<std::pair<std::string, std::string>> expected3 = {
-        {"TEXT", "Before 3 after"}
+        {"TEXT", "Before "},
+        {"TEXT", "3"},
+        {"TEXT", " after"}
     };
     EXPECT_EQ(output, expected3);
 
@@ -833,18 +836,24 @@ TEST(TextsTest, CollectEnigmaTextChunks)
     auto styleChangeText = texts->get<texts::BlockText>(27);
     ASSERT_TRUE(styleChangeText);
     chunks = styleChangeText->getRawTextCtx(styleChangeText, SCORE_PARTID).collectEnigmaTextChunks();
-    ASSERT_EQ(chunks.size(), 2);
-    EXPECT_EQ(chunks[0].text, "My Piece\n");
-    EXPECT_EQ(chunks[1].text, "for");
+    ASSERT_EQ(chunks.size(), 3); // the ^title() substitution is a chunk of its own
+    EXPECT_EQ(chunks[0].text, "My Piece");
+    ASSERT_TRUE(chunks[0].insert);
+    EXPECT_EQ(chunks[0].insert->command, "title");
+    EXPECT_EQ(chunks[1].text, "\n");
+    EXPECT_FALSE(chunks[1].insert);
+    EXPECT_EQ(chunks[2].text, "for");
     EXPECT_EQ(EnigmaString::plainTextFromChunks(chunks), "My Piece\nfor");
     ASSERT_TRUE(chunks[0].styles.font);
     ASSERT_TRUE(chunks[1].styles.font);
-    EXPECT_NE(chunks[0].styles.font, chunks[1].styles.font);
+    ASSERT_TRUE(chunks[2].styles.font);
+    EXPECT_NE(chunks[0].styles.font, chunks[2].styles.font);
     EXPECT_EQ(chunks[0].styles.font->fontSize, 24);
     EXPECT_EQ(chunks[0].styles.font->getEnigmaStyles(), 65);
-    EXPECT_EQ(chunks[1].styles.font->fontSize, 10);
-    EXPECT_EQ(chunks[1].styles.font->getEnigmaStyles(), 66);
-    chunks[1].styles.font->setEnigmaStyles(0);
+    EXPECT_EQ(chunks[1].styles.font->fontSize, 24);
+    EXPECT_EQ(chunks[2].styles.font->fontSize, 10);
+    EXPECT_EQ(chunks[2].styles.font->getEnigmaStyles(), 66);
+    chunks[2].styles.font->setEnigmaStyles(0);
     EXPECT_EQ(chunks[0].styles.font->getEnigmaStyles(), 65);
 
     auto pageText = texts->get<texts::BlockText>(17);
@@ -858,12 +867,63 @@ TEST(TextsTest, CollectEnigmaTextChunks)
         });
     ASSERT_EQ(chunks.size(), 1);
     EXPECT_EQ(chunks[0].text, "custom page");
+    ASSERT_TRUE(chunks[0].insert);
+    EXPECT_EQ(chunks[0].insert->command, "page");
+    ASSERT_EQ(chunks[0].insert->parameters.size(), 1);
+    EXPECT_EQ(chunks[0].insert->parameters[0], "0");
+    EXPECT_EQ(chunks[0].resolve().insert->command, "page");
 
     auto titleText = texts->get<texts::BlockText>(18);
     ASSERT_TRUE(titleText);
     chunks = titleText->getRawTextCtx(titleText, SCORE_PARTID).collectEnigmaTextChunks();
     ASSERT_EQ(chunks.size(), 1);
     EXPECT_EQ(chunks[0].text, "My Piece");
+    ASSERT_TRUE(chunks[0].insert);
+    EXPECT_EQ(chunks[0].insert->command, "title");
+}
+
+TEST(TextsTest, CollectEnigmaTextChunksSplitsInserts)
+{
+    using namespace musx::dom;
+    using namespace musx::util;
+
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::pugi::Document>(textXml);
+    ASSERT_TRUE(doc);
+
+    std::vector<EnigmaTextChunk> chunks;
+    EnigmaString::parseEnigmaText(doc, SCORE_PARTID, "Clarinet in B^flat() (^page(1) of ^totpages())",
+        [&](const std::string& text, const EnigmaStyles& styles, const EnigmaTextInsert* insert) {
+            chunks.push_back({ text, styles.createDeepCopy(), insert ? std::optional(*insert) : std::nullopt });
+            return true;
+        },
+        EnigmaString::defaultInsertsCallback, EnigmaString::EnigmaParsingOptions(EnigmaString::AccidentalStyle::Unicode));
+
+    ASSERT_EQ(chunks.size(), 7);
+    EXPECT_EQ(chunks[0].text, "Clarinet in B");
+    EXPECT_FALSE(chunks[0].insert);
+    EXPECT_EQ(chunks[1].text, EnigmaString::fromU8(u8"\u266D"));
+    ASSERT_TRUE(chunks[1].insert);
+    EXPECT_EQ(chunks[1].insert->command, "flat");
+    EXPECT_TRUE(chunks[1].insert->parameters.empty());
+    EXPECT_EQ(chunks[2].text, " (");
+    EXPECT_FALSE(chunks[2].insert);
+    ASSERT_TRUE(chunks[3].insert);
+    EXPECT_EQ(chunks[3].insert->command, "page");
+    EXPECT_EQ(chunks[4].text, " of ");
+    ASSERT_TRUE(chunks[5].insert);
+    EXPECT_EQ(chunks[5].insert->command, "totpages");
+    EXPECT_EQ(chunks[6].text, ")");
+    EXPECT_FALSE(chunks[6].insert);
+    // A stripped insert leaves the surrounding text as one chunk.
+    chunks.clear();
+    EnigmaString::parseEnigmaText(doc, SCORE_PARTID, "Hi ^url(0) Bye",
+        [&](const std::string& text, const EnigmaStyles& styles, const EnigmaTextInsert* insert) {
+            chunks.push_back({ text, styles.createDeepCopy(), insert ? std::optional(*insert) : std::nullopt });
+            return true;
+        },
+        EnigmaString::defaultInsertsCallback);
+    ASSERT_EQ(chunks.size(), 1);
+    EXPECT_EQ(chunks[0].text, "Hi  Bye");
 }
 
 TEST(TextsTest, EnigmaAccidentalSubstitution)
