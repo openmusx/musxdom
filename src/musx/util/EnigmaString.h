@@ -99,11 +99,19 @@ struct EnigmaResolvedStyles
     int tracking{};                                 ///< inter-character tracking in EMs (1/1000 font size)
 };
 
+/// @brief The Enigma text insert a chunk was substituted for. (See #EnigmaTextChunk::insert.)
+struct EnigmaTextInsert
+{
+    std::string command;                    ///< the insert name without the leading caret, e.g. "value" or "flat"
+    std::vector<std::string> parameters;    ///< the insert's parameters as written, e.g. {"1"} for `^page(1)`
+};
+
 /// @brief A text chunk with a document-independent snapshot of its styles. (See #EnigmaTextChunk::resolve.)
 struct EnigmaResolvedTextChunk
 {
-    std::string text;               ///< the chunk as valid UTF-8 (see #EnigmaTextChunk::text)
-    EnigmaResolvedStyles styles;    ///< the resolved styles active for the chunk
+    std::string text;                           ///< the chunk as valid UTF-8 (see #EnigmaTextChunk::text)
+    EnigmaResolvedStyles styles;                ///< the resolved styles active for the chunk
+    std::optional<EnigmaTextInsert> insert;     ///< the insert the chunk was substituted for (see #EnigmaTextChunk::insert)
 };
 
 /// @brief A text chunk with the Enigma styles active for that chunk.
@@ -114,6 +122,11 @@ struct EnigmaTextChunk
     /// #dom::FontInfo::calcIsSymbolFont on the font in #styles to identify those chunks.
     std::string text;
     EnigmaStyles styles;    ///< the styles active for the chunk
+    /// @brief The insert the chunk was substituted for, when it was.
+    /// @details The substituted text of an insert is always its own chunk, never merged with the text
+    /// around it, so a consumer can replace it as a whole. Text that a recursively parsed insert
+    /// (such as `^partname`) produces carries that insert. Style commands are not inserts.
+    std::optional<EnigmaTextInsert> insert;
 
     /// @brief Creates a document-independent snapshot of the chunk. (See #EnigmaStyles::resolve.)
     EnigmaResolvedTextChunk resolve() const;
@@ -370,6 +383,18 @@ public:
         const std::string& text,
         const EnigmaStyles& styles
     )>;
+    /// @brief Variant of #TextChunkCallback that also receives the insert a chunk was substituted for,
+    /// or nullptr for ordinary text. (See #EnigmaTextChunk::insert.)
+    using TextChunkWithInsertCallback = std::function<bool(
+        const std::string& text,
+        const EnigmaStyles& styles,
+        const EnigmaTextInsert* insert
+    )>;
+    /// @brief Adapts a #TextChunkCallback to a #TextChunkWithInsertCallback that ignores the insert.
+    static TextChunkWithInsertCallback ignoringInserts(const TextChunkCallback& onText)
+    {
+        return [&onText](const std::string& text, const EnigmaStyles& styles, const EnigmaTextInsert*) { return onText(text, styles); };
+    }
 
     /// @brief Iteration function type that the parser calls back when it encounters an Enigma text insert
     /// that requires text subtitution. If the function returns an empty string, the insert is stripped from the
@@ -416,7 +441,15 @@ public:
         const TextChunkCallback& onText, const TextInsertCallback& onInsert,
         const EnigmaParsingOptions& options = {}, const EnigmaParsingContext* parsingContext = nullptr)
     {
-        return parseEnigmaTextImpl(document, forPartId, rawText, onText, onInsert, options, parsingContext, EnigmaStyles(document));
+        return parseEnigmaTextImpl(document, forPartId, rawText, ignoringInserts(onText), onInsert, options, parsingContext, EnigmaStyles(document), nullptr);
+    }
+
+    /// @brief Variant of #parseEnigmaText whose text handler also receives the insert each chunk was substituted for.
+    static bool parseEnigmaText(const std::shared_ptr<dom::Document>& document, dom::Cmper forPartId, const std::string& rawText,
+        const TextChunkWithInsertCallback& onText, const TextInsertCallback& onInsert,
+        const EnigmaParsingOptions& options = {}, const EnigmaParsingContext* parsingContext = nullptr)
+    {
+        return parseEnigmaTextImpl(document, forPartId, rawText, onText, onInsert, options, parsingContext, EnigmaStyles(document), nullptr);
     }
 
     /// @brief Simplified version of #parseEnigmaText that strips unhandled inserts.
@@ -431,7 +464,7 @@ public:
     static bool parseEnigmaText(const std::shared_ptr<dom::Document>& document, dom::Cmper forPartId, const std::string& rawText, const TextChunkCallback& onText,
         const EnigmaParsingOptions& options = {}, const EnigmaParsingContext* parsingContext = nullptr)
     {
-        return parseEnigmaTextImpl(document, forPartId, rawText, onText, defaultInsertsCallback, options, parsingContext, EnigmaStyles(document));
+        return parseEnigmaTextImpl(document, forPartId, rawText, ignoringInserts(onText), defaultInsertsCallback, options, parsingContext, EnigmaStyles(document), nullptr);
     }
 
     /**
@@ -451,10 +484,11 @@ public:
     static std::string plainTextFromChunks(const std::vector<EnigmaTextChunk>& chunks);
 
 private:
+    /// @param enclosingInsert The insert whose recursive expansion this parse is, or nullptr at the top level.
     static bool parseEnigmaTextImpl(const std::shared_ptr<dom::Document>& document, dom::Cmper forPartId, const std::string& rawText,
-        const TextChunkCallback& onText, const TextInsertCallback& onInsert,
+        const TextChunkWithInsertCallback& onText, const TextInsertCallback& onInsert,
         const EnigmaParsingOptions& options, const EnigmaParsingContext* parsingContext,
-        const EnigmaStyles& startingStyles);
+        const EnigmaStyles& startingStyles, const EnigmaTextInsert* enclosingInsert);
 };
 
 /// @class EnigmaParsingContext
@@ -511,6 +545,19 @@ public:
     /// @param options The options for the parsing session.
     /// @return True if parsing was successful.
     bool parseEnigmaText(const EnigmaString::TextChunkCallback& onText,
+        const EnigmaString::TextInsertCallback& onInsert,
+        const EnigmaString::EnigmaParsingOptions& options = {}) const
+    {
+        return parseEnigmaText(EnigmaString::ignoringInserts(onText), onInsert, options);
+    }
+
+    /// @brief Variant of #parseEnigmaText whose text handler also receives the insert each chunk was substituted for.
+    /// @param onText The handler for font and text style changes, receiving the chunk's insert or nullptr.
+    /// @param onInsert The handler for insert conversions. This function is called first. If it returns a string,
+    /// the default insert value is skipped.
+    /// @param options The options for the parsing session.
+    /// @return True if parsing was successful.
+    bool parseEnigmaText(const EnigmaString::TextChunkWithInsertCallback& onText,
         const EnigmaString::TextInsertCallback& onInsert,
         const EnigmaString::EnigmaParsingOptions& options = {}) const;
 

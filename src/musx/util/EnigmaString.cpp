@@ -118,7 +118,7 @@ EnigmaResolvedStyles EnigmaStyles::resolve() const
 
 EnigmaResolvedTextChunk EnigmaTextChunk::resolve() const
 {
-    return { text, styles.resolve() };
+    return { text, styles.resolve(), insert };
 }
 
 std::string EnigmaString::toU8(char32_t cp)
@@ -319,8 +319,8 @@ std::optional<options::AccidentalInsertSymbolType> EnigmaString::commandIsAccide
 }
 
 bool EnigmaString::parseEnigmaTextImpl(const std::shared_ptr<dom::Document>& document, Cmper forPartId, const std::string& rawText,
-    const TextChunkCallback& onText, const TextInsertCallback& onInsert, const EnigmaParsingOptions& options,
-    const EnigmaParsingContext* parsingContext, const EnigmaStyles& startingStyles)
+    const TextChunkWithInsertCallback& onText, const TextInsertCallback& onInsert, const EnigmaParsingOptions& options,
+    const EnigmaParsingContext* parsingContext, const EnigmaStyles& startingStyles, const EnigmaTextInsert* enclosingInsert)
 {
     auto currentStyles = startingStyles;
     std::string prefix = parsingContext && parsingContext->affixIsPrefix ? parsingContext->affixText : std::string();
@@ -354,9 +354,10 @@ bool EnigmaString::parseEnigmaTextImpl(const std::shared_ptr<dom::Document>& doc
         }
     };
 
-    auto processChunk = [&](const EnigmaStyles& styles) -> bool {
+    // Emits the buffered text as one chunk. Text inside a recursively parsed insert carries that insert.
+    auto processChunk = [&](const EnigmaStyles& styles, const EnigmaTextInsert* insert = nullptr) -> bool {
         if (textBuffer.has_value() && !textBuffer->empty()) {
-            bool result = onText(textBuffer.value(), styles);
+            bool result = onText(textBuffer.value(), styles, insert ? insert : enclosingInsert);
             textBuffer = std::nullopt;
             if (!result) {
                 return false;
@@ -364,6 +365,20 @@ bool EnigmaString::parseEnigmaTextImpl(const std::shared_ptr<dom::Document>& doc
         }
         textBuffer.emplace(""); // after parsing a style command, make sure the style change is reported even if no text.
         return true;
+    };
+
+    // Emits an insert's substituted text as a chunk of its own, so that a consumer can replace it as a whole.
+    auto emitInsert = [&](const EnigmaTextInsert& insert, const std::string_view text) -> bool {
+        if (text.empty()) {
+            return true; // a stripped insert leaves the surrounding text as one chunk
+        }
+        if (!processChunk(currentStyles)) {
+            return false;
+        }
+        addToBuf(text);
+        const bool result = processChunk(currentStyles, &insert);
+        textBuffer = std::nullopt; // only a style command needs an empty chunk reported
+        return result;
     };
 
     while (!remaining.empty()) {
@@ -411,10 +426,14 @@ bool EnigmaString::parseEnigmaTextImpl(const std::shared_ptr<dom::Document>& doc
             continue;
         }
 
+        const EnigmaTextInsert insert{ components[0], std::vector<std::string>(components.begin() + 1, components.end()) };
+
         // Send command to the handler and use that if the handler handles it.
         std::optional<std::string> replacement = onInsert(components);
         if (replacement.has_value()) {
-            addToBuf(replacement.value());
+            if (!emitInsert(insert, replacement.value())) {
+                return false;
+            }
             continue;
         }
 
@@ -425,16 +444,20 @@ bool EnigmaString::parseEnigmaTextImpl(const std::shared_ptr<dom::Document>& doc
                     auto it = accidentalSymbols.find(accidentalType.value());
                     if (it != accidentalSymbols.end()) {
                         const auto [smufl, ucode, asciiStr] = it->second;
+                        std::string substitution;
                         switch (options.substitutionStyle) {
                         case AccidentalStyle::Smufl:
-                            addToBuf(toU8(smufl));
+                            substitution = toU8(smufl);
                             break;
                         case AccidentalStyle::Unicode:
-                            addToBuf(toU8(ucode));
+                            substitution = toU8(ucode);
                             break;
                         case AccidentalStyle::Ascii:
-                            addToBuf(asciiStr);
+                            substitution = asciiStr;
                             break;
+                        }
+                        if (!emitInsert(insert, substitution)) {
+                            return false;
                         }
                     } else {
                         assert(false);
@@ -457,7 +480,7 @@ bool EnigmaString::parseEnigmaTextImpl(const std::shared_ptr<dom::Document>& doc
                                 return false;
                             }
                             textBuffer.emplace(toU8(insertInfo->symChar));
-                            if (!processChunk(acciStyles)) {
+                            if (!processChunk(acciStyles, &insert)) {
                                 return false;
                             }
                         } else {
@@ -485,35 +508,37 @@ bool EnigmaString::parseEnigmaTextImpl(const std::shared_ptr<dom::Document>& doc
             return util::DateTime::formatDate(time, style);
         };
 
+        // Built-in substitutions are collected here and emitted as the insert's own chunk below.
+        std::optional<std::string> builtin;
         if (options.ignoreTags.find(components[0]) != options.ignoreTags.end()) {
             continue;
         } else if (components[0] == "arranger") {
             if (auto textInsert = document->getTexts()->get<texts::FileInfoText>(Cmper(texts::FileInfoText::TextType::Arranger))) {
-                addToBuf(trimTags(textInsert->text));
+                builtin = trimTags(textInsert->text);
             }
         } else if (components[0] == "composer") {
             if (auto textInsert = document->getTexts()->get<texts::FileInfoText>(Cmper(texts::FileInfoText::TextType::Composer))) {
-                addToBuf(trimTags(textInsert->text));
+                builtin = trimTags(textInsert->text);
             }
         } else if (components[0] == "copyright") {
             if (auto textInsert = document->getTexts()->get<texts::FileInfoText>(Cmper(texts::FileInfoText::TextType::Copyright))) {
-                addToBuf(trimTags(textInsert->text));
+                builtin = trimTags(textInsert->text);
             }
         } else if (components[0] == "cprsym") {
-            addToBuf("@");
+            builtin = "@";
         } else if (components[0] == "date") {
-            addToBuf(processDate(std::time(nullptr)));
+            builtin = processDate(std::time(nullptr));
         } else if (components[0] == "description") {
             if (auto textInsert = document->getTexts()->get<texts::FileInfoText>(Cmper(texts::FileInfoText::TextType::Description))) {
-                addToBuf(trimTags(textInsert->text));
+                builtin = trimTags(textInsert->text);
             }
         } else if (components[0] == "fdate") {
             const auto& modified = document->getHeader()->modified;
             std::time_t fdate = util::DateTime::makeTimeT(modified.year, modified.month, modified.day);
-            addToBuf(processDate(fdate));
+            builtin = processDate(fdate);
         } else if (components[0] == "lyricist") {
             if (auto textInsert = document->getTexts()->get<texts::FileInfoText>(Cmper(texts::FileInfoText::TextType::Lyricist))) {
-                addToBuf(trimTags(textInsert->text));
+                builtin = trimTags(textInsert->text);
             }
         } else if (components[0] == "perftime") {
             if (auto scoreDuration = document->getScoreDurationSeconds(); scoreDuration.has_value()) {
@@ -521,10 +546,10 @@ bool EnigmaString::parseEnigmaTextImpl(const std::shared_ptr<dom::Document>& doc
                 if (components.size() > 1) {
                     format = std::stoi(components[1]);
                 }
-                addToBuf(formatPerfTime(scoreDuration.value(), format));
+                builtin = formatPerfTime(scoreDuration.value(), format);
             }
         } else if (components[0] == "page") {
-            addToBuf("#");
+            builtin = "#";
         } else if (components[0] == "partname") {
             if (auto linkedPart = document->getOthers()->get<others::PartDefinition>(SCORE_PARTID, forPartId)) {
                 if (auto nameRawText = linkedPart->getNameRawTextCtx().getRawText()) {
@@ -534,7 +559,7 @@ bool EnigmaString::parseEnigmaTextImpl(const std::shared_ptr<dom::Document>& doc
                     if (!processChunk(currentStyles)) {
                         break;
                     }
-                    bool parseResult = parseEnigmaTextImpl(document, forPartId, nameRawText->text, onText, onInsert, partnameOptions, nullptr, currentStyles);
+                    bool parseResult = parseEnigmaTextImpl(document, forPartId, nameRawText->text, onText, onInsert, partnameOptions, nullptr, currentStyles, &insert);
                     if (!parseResult) {
                         return false;
                     }
@@ -543,26 +568,26 @@ bool EnigmaString::parseEnigmaTextImpl(const std::shared_ptr<dom::Document>& doc
                     if (options.insertHandling == AccidentalInsertHandling::Substitute) {
                         acciStyle = options.substitutionStyle;
                     }
-                    addToBuf(linkedPart->getName(acciStyle));
+                    builtin = linkedPart->getName(acciStyle);
                 }
             }
         } else if (components[0] == "subtitle") {
             if (auto textInsert = document->getTexts()->get<texts::FileInfoText>(Cmper(texts::FileInfoText::TextType::Subtitle))) {
-                addToBuf(trimTags(textInsert->text));
+                builtin = trimTags(textInsert->text);
             }
         } else if (components[0] == "time") {
             bool includeSeconds = false;
             if (components.size() > 1) {
                 includeSeconds = bool(std::stoi(components[1]));
             }
-            addToBuf(util::DateTime::formatTime(std::time(nullptr), includeSeconds));
+            builtin = util::DateTime::formatTime(std::time(nullptr), includeSeconds);
         } else if (components[0] == "title") {
             if (auto textInsert = document->getTexts()->get<texts::FileInfoText>(Cmper(texts::FileInfoText::TextType::Title))) {
-                addToBuf(trimTags(textInsert->text));
+                builtin = trimTags(textInsert->text);
             }
         } else if (components[0] == "totpages") {
             auto pages = document->getOthers()->getArray<others::Page>(forPartId);
-            addToBuf(std::to_string(pages.size()));
+            builtin = std::to_string(pages.size());
         } else if (components[0] == "url") {
             continue;
         } else {
@@ -570,6 +595,9 @@ bool EnigmaString::parseEnigmaTextImpl(const std::shared_ptr<dom::Document>& doc
             if (!options.stripUnknownTags) {
                 addToBuf(fullCommand);
             }
+        }
+        if (builtin && !emitInsert(insert, builtin.value())) {
+            return false;
         }
     }
 
@@ -579,7 +607,7 @@ bool EnigmaString::parseEnigmaTextImpl(const std::shared_ptr<dom::Document>& doc
 
     // Emit any remaining buffered text
     if (textBuffer.has_value()) {
-        onText(textBuffer.value(), currentStyles);
+        onText(textBuffer.value(), currentStyles, enclosingInsert);
     }
 
     return true;
@@ -629,7 +657,7 @@ std::string EnigmaString::plainTextFromChunks(const std::vector<EnigmaTextChunk>
     return result;
 }
 
-bool EnigmaParsingContext::parseEnigmaText(const util::EnigmaString::TextChunkCallback& onText, const util::EnigmaString::TextInsertCallback& onInsert,
+bool EnigmaParsingContext::parseEnigmaText(const util::EnigmaString::TextChunkWithInsertCallback& onText, const util::EnigmaString::TextInsertCallback& onInsert,
     const util::EnigmaString::EnigmaParsingOptions& options) const
 {
     if (!m_rawText) {
@@ -657,8 +685,8 @@ std::vector<EnigmaTextChunk> EnigmaParsingContext::collectEnigmaTextChunks(
     const util::EnigmaString::EnigmaParsingOptions& options) const
 {
     std::vector<EnigmaTextChunk> result;
-    parseEnigmaText([&](const std::string& text, const musx::util::EnigmaStyles& styles) -> bool {
-        result.push_back({ text, styles.createDeepCopy() });
+    parseEnigmaText([&](const std::string& text, const musx::util::EnigmaStyles& styles, const EnigmaTextInsert* insert) -> bool {
+        result.push_back({ text, styles.createDeepCopy(), insert ? std::optional(*insert) : std::nullopt });
         return true;
     }, onInsert, options);
     return result;
