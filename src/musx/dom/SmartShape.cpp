@@ -185,19 +185,39 @@ MusxInstance<others::StaffComposite> smartshape::EndPoint::createCurrentStaff() 
         throw std::logic_error("Unknown parent type for SmartShape::EndPoint.");
     }
     return others::StaffComposite::createCurrent(getDocument(), shapeParent->getRequestedPartId(),
-        staffId, measId, calcPosition().calcEduDuration());
+        calcStaff(), calcMeasure(), calcPosition().calcEduDuration());
+}
+
+StaffCmper smartshape::EndPoint::calcStaff() const
+{
+    if (entryNumber) {
+        if (const auto entryInfo = calcAssociatedEntry()) {
+            return entryInfo.getStaff();
+        }
+    }
+    return staffId;
+}
+
+// Inserting or deleting measures (at least by some plugins) leaves an endpoint's measId and its measure
+// marks as they were while the entry link survives, and Finale draws the shape from the entry. So the
+// entry is the truth for where the endpoint is, and the recorded fields remain the truth only for
+// where its assignments are kept.
+MeasCmper smartshape::EndPoint::calcMeasure() const
+{
+    if (entryNumber) {
+        if (const auto entryInfo = calcAssociatedEntry()) {
+            return entryInfo.getMeasure();
+        }
+    }
+    return measId;
 }
 
 bool smartshape::EndPoint::calcIsValid() const
 {
-    if (entryNumber) {
-        const auto entryInfo = calcAssociatedEntry();
-        if (!entryInfo) return false;
-        if (entryInfo.getMeasure() != measId || entryInfo.getStaff() != staffId) {
-            return false;
-        }
+    if (entryNumber && !calcAssociatedEntry()) {
+        return false;
     }
-    return getDocument()->getOthers()->get<others::Measure>(SCORE_PARTID, measId) != nullptr;
+    return getDocument()->getOthers()->get<others::Measure>(SCORE_PARTID, calcMeasure()) != nullptr;
 }
 
 util::Fraction smartshape::EndPoint::calcPosition() const
@@ -233,13 +253,12 @@ util::Fraction smartshape::EndPoint::calcGlobalPosition() const
 int smartshape::EndPoint::compareMetricPosition(const EndPoint& other) const
 {
     if (this->entryNumber != 0 && other.entryNumber != 0 && this->entryNumber == other.entryNumber) {
-        MUSX_ASSERT_IF(measId != other.measId) {
-            // nothing to do, but trap it in debug mode.
-        }
         return 0;
     }
-    if (measId != other.measId) {
-        return (measId < other.measId) ? -1 : +1;
+    const auto thisMeasure = calcMeasure();
+    const auto otherMeasure = other.calcMeasure();
+    if (thisMeasure != otherMeasure) {
+        return (thisMeasure < otherMeasure) ? -1 : +1;
     }
     const auto thisPosition = this->calcPosition();
     const auto otherPosition = other.calcPosition();
@@ -324,10 +343,10 @@ bool others::SmartShape::calcAppliesTo(const EntryInfoPtr& entryInfo) const
     }
     const StaffCmper entryStaffId = entryInfo.getStaff();
     const MeasCmper entryMeasureId = entryInfo.getMeasure();
-    if (entryStaffId != startTermSeg->endPoint->staffId && entryStaffId != endTermSeg->endPoint->staffId) {
+    if (entryStaffId != startTermSeg->endPoint->calcStaff() && entryStaffId != endTermSeg->endPoint->calcStaff()) {
         return false;
     }
-    if (entryMeasureId < startTermSeg->endPoint->measId || entryMeasureId > endTermSeg->endPoint->measId) {
+    if (entryMeasureId < startTermSeg->endPoint->calcMeasure() || entryMeasureId > endTermSeg->endPoint->calcMeasure()) {
         return false;
     }
     const auto entryPos = entryInfo->elapsedDuration;
@@ -349,12 +368,12 @@ bool others::SmartShape::calcAppliesTo(const EntryInfoPtr& entryInfo) const
 
 MusicRange others::SmartShape::createMusicRange() const
 {
-    return MusicRange(getDocument(), startTermSeg->endPoint->measId, startTermSeg->endPoint->calcPosition(), endTermSeg->endPoint->measId, endTermSeg->endPoint->calcPosition());
+    return MusicRange(getDocument(), startTermSeg->endPoint->calcMeasure(), startTermSeg->endPoint->calcPosition(), endTermSeg->endPoint->calcMeasure(), endTermSeg->endPoint->calcPosition());
 }
 
 MusicRange others::SmartShape::createGlobalMusicRange() const
 {
-    return MusicRange(getDocument(), startTermSeg->endPoint->measId, startTermSeg->endPoint->calcGlobalPosition(), endTermSeg->endPoint->measId, endTermSeg->endPoint->calcGlobalPosition());
+    return MusicRange(getDocument(), startTermSeg->endPoint->calcMeasure(), startTermSeg->endPoint->calcGlobalPosition(), endTermSeg->endPoint->calcMeasure(), endTermSeg->endPoint->calcGlobalPosition());
 }
 
 bool others::SmartShape::iterateEntries(std::function<bool(const EntryInfoPtr&)> iterator, DeferredReference<MusxInstanceList<others::StaffUsed>> staffList) const
@@ -362,8 +381,8 @@ bool others::SmartShape::iterateEntries(std::function<bool(const EntryInfoPtr&)>
     if (!staffList) {
         staffList.emplace(getDocument()->getScrollViewStaves(getRequestedPartId()));
     }
-    auto startIndex = staffList->getIndexForStaff(startTermSeg->endPoint->staffId);
-    auto endIndex = staffList->getIndexForStaff(endTermSeg->endPoint->staffId);
+    auto startIndex = staffList->getIndexForStaff(startTermSeg->endPoint->calcStaff());
+    auto endIndex = staffList->getIndexForStaff(endTermSeg->endPoint->calcStaff());
     MUSX_ASSERT_IF(!startIndex || !endIndex) {
         throw std::logic_error("Smart shape spans staves that do not exist on the supplied staff list.");
     }

@@ -859,6 +859,19 @@ public:
     /// See #EntryFrame::TupletInfo::calcCreatesSingletonBeamRight for more information.
     [[nodiscard]] bool calcCreatesSingletonBeamRight() const;
 
+    /// @brief Determines if this entry is the extra entry of a singleton beam workaround, which the
+    /// interpreted iterator skips. That is the entry itself when it creates a singleton beam left, or
+    /// the next entry in the voice when the entry before it creates a singleton beam right.
+    /// See #EntryFrame::TupletInfo::calcCreatesSingletonBeamRight for more information.
+    [[nodiscard]] bool calcIsSingletonBeamExtraEntry() const;
+
+    /// @brief Finds the extra entry of a singleton beam workaround that this (kept) entry stands in for.
+    ///
+    /// The extra entry may carry a tie flag the kept entry lacks: the tie start for a singleton beam right,
+    /// the tie end for a singleton beam left. See #NoteInfoPtr::calcHasTieStart and #NoteInfoPtr::calcHasTieEnd.
+    /// @return The extra entry, or null if this entry is not the kept entry of a singleton beam workaround.
+    [[nodiscard]] EntryInfoPtr findSingletonBeamExtraEntry() const;
+
     /// @brief Determines if this entry continues a beam across a barline from the previous measure.
     ///
     /// @note The Beam Over Barlines plugin has poor support for v1/v2. This function detects v1/v2 correctly on the chance
@@ -1313,16 +1326,19 @@ public:
         /// @brief Calculates if this tuplet is being used to create a singleton beam to the right.
         ///
         /// Finale has no built-in support for beams on singleton notes. As a workaround, users and (especially)
-        /// plugins such as Beam Over Barline create singleton beams using a 0-length tuplet and hiding either the tuplet
-        /// note or its next neighbor, depending on whether the beam goes to the left or the right. You should never
-        /// encounter a 0-length tuplet encompassing more than one entry, but these functions guarantee this if they return @c true.
+        /// plugins such as Beam Over Barlines create singleton beams using a 0-length tuplet on one of two beamed
+        /// entries. The extra entry is either hidden (ledger lines suppressed, hidden stem, hidden noteheads, offset out
+        /// of the way) or, as the plugin does it, an exact duplicate of its neighbor at the same position with a beam
+        /// extension reaching the barline. Which entry is the extra one depends on whether the beam goes to the left
+        /// or the right. You should never encounter a 0-length tuplet encompassing more than one entry, but these
+        /// functions guarantee this if they return @c true.
         ///
         /// @return True if this tuplet creates a singleton beam to the right. You may handle this as follows.
         ///     - The entry with the tuplet is the visible entry to use. You can mark this entry as having a singleton beam right, if your application allows it.
         ///     - Ignore the tuplet on the visible entry. If you need the entry's actual duration in context, its next neighbor in the same voice
         /// has the correct value.
-        ///     - Ignore the entry's next neighbor in the same voice. It will have its leger lines suppressed and non-visible notehead(s) and stem.
-        /// Its `hidden` flag, however, will still be false. (This function guarantees these conditions if it returns `true`.)
+        ///     - Ignore the entry's next neighbor in the same voice. It is either hidden (leger lines suppressed, non-visible notehead(s)
+        /// and stem) or a duplicate of this entry drawn on top of it. Its `hidden` flag is false either way.
         [[nodiscard]]
         bool calcCreatesSingletonBeamRight() const { return calcCreatesSingleton(false); }
 
@@ -1333,8 +1349,8 @@ public:
         /// @return True if this tuplet creates a singleton beam to the left. You may handle this as follows.
         ///     - Skip the entry and its tuplet.
         ///     - You can mark the next entry in the same voice as having a singleton beam left, if your application allows it.
-        ///     - The current entry with the 0-length tuplet will have its leger lines suppressed and non-visible notehead(s) and stem.
-        /// Its `hidden` flag, however, will still be false. (This function guarantees these conditions if it returns `true`.)
+        ///     - The current entry with the 0-length tuplet is either hidden (leger lines suppressed, non-visible notehead(s)
+        /// and stem) or a duplicate of the next entry drawn on top of it. Its `hidden` flag is false either way.
         [[nodiscard]]
         bool calcCreatesSingletonBeamLeft() const { return calcCreatesSingleton(true); }
 
@@ -1722,14 +1738,32 @@ public:
     [[nodiscard]]
     NoteheadInfo calcNoteheadInfo() const;
 
-    /// @brief Calculates the note that this note could tie to. Check the return value's #Note::tieEnd
+    /// @brief Returns whether a tie starts on this note, taking the singleton beam workaround into account.
+    ///
+    /// The kept entry of a singleton beam workaround reports #Note::tieStart from its extra entry as well,
+    /// since the workaround can leave the flag there. Prefer this over reading #Note::tieStart.
+    [[nodiscard]]
+    bool calcHasTieStart() const;
+
+    /// @brief Returns whether a tie ends on this note, taking the singleton beam workaround into account.
+    ///
+    /// The kept entry of a singleton beam workaround reports #Note::tieEnd from its extra entry as well,
+    /// since the workaround can leave the flag there. Prefer this over reading #Note::tieEnd.
+    [[nodiscard]]
+    bool calcHasTieEnd() const;
+
+    /// @brief Calculates the note that this note could tie to. Check the return value's #calcHasTieEnd
     /// to see if there is actually a tie end. (Note that Finale shows a tie whether there #Note::tieEnd is true or not.)
+    ///
+    /// Entries the interpreted iterator skips are passed over, so the result is always a note on a kept entry.
     /// @return The candidate note or an empty NoteInfoPtr if no candidate was found.
     [[nodiscard]]
     NoteInfoPtr calcTieTo() const;
 
     /// @brief Calculates the note that this note could tie from.
-    /// @param requireTie If @p requireTie is true, the returned value must have its #Note::tieStart flag set to true.
+    ///
+    /// Entries the interpreted iterator skips are passed over, so the result is always a note on a kept entry.
+    /// @param requireTie If @p requireTie is true, the returned value must have a tie start per #calcHasTieStart.
     /// You can set @p requireTie to false to find the *potential* note this note might be tied from.
     /// @return The candidate note or an empty NoteInfoPtr if no candidate was found.
     [[nodiscard]]

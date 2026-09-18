@@ -594,8 +594,8 @@ std::optional<ArpeggioSpanCandidate> calcNonArpeggioSpanForSmartShape(
         return std::nullopt;
     }
     const Cmper partId = frame->getRequestedPartId();
-    if (smartShape->startTermSeg->endPoint->measId != sourceEntryInfo.getMeasure()
-        || smartShape->endTermSeg->endPoint->measId != sourceEntryInfo.getMeasure()
+    if (smartShape->startTermSeg->endPoint->calcMeasure() != sourceEntryInfo.getMeasure()
+        || smartShape->endTermSeg->endPoint->calcMeasure() != sourceEntryInfo.getMeasure()
         || smartShape->startTermSeg->endPoint->calcGlobalPosition() != sourceEntryInfo.calcGlobalElapsedDuration()
         || smartShape->endTermSeg->endPoint->calcGlobalPosition() != sourceEntryInfo.calcGlobalElapsedDuration()) {
         return std::nullopt;
@@ -605,7 +605,7 @@ std::optional<ArpeggioSpanCandidate> calcNonArpeggioSpanForSmartShape(
         document,
         partId,
         sourceEntryInfo.getStaff(),
-        smartShape->startTermSeg->endPoint->staffId,
+        smartShape->startTermSeg->endPoint->calcStaff(),
         sourceEntryInfo.getMeasure(),
         sourceEntryInfo.calcGlobalElapsedDuration().calcEduDuration(),
         options);
@@ -613,7 +613,7 @@ std::optional<ArpeggioSpanCandidate> calcNonArpeggioSpanForSmartShape(
         document,
         partId,
         sourceEntryInfo.getStaff(),
-        smartShape->endTermSeg->endPoint->staffId,
+        smartShape->endTermSeg->endPoint->calcStaff(),
         sourceEntryInfo.getMeasure(),
         sourceEntryInfo.calcGlobalElapsedDuration().calcEduDuration(),
         options);

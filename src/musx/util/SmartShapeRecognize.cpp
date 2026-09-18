@@ -64,7 +64,7 @@ static bool calcIsPotentialTie(const SmartShape& smartShape, const dom::EntryInf
             return false;
         }
     } else {
-        if (smartShape.startTermSeg->endPoint->staffId != smartShape.endTermSeg->endPoint->staffId) {
+        if (smartShape.startTermSeg->endPoint->calcStaff() != smartShape.endTermSeg->endPoint->calcStaff()) {
             return false;
         }
         const auto thisStartEntry = smartShape.startTermSeg->endPoint->calcAssociatedEntry();
@@ -140,8 +140,8 @@ KnownSmartShapeType recognizeSmartShape(const SmartShape& smartShape)
                     return KnownSmartShapeType::Unrecognized;
                 }
                 const auto scrollView = smartShape.getDocument()->getScrollViewStaves(smartShape.getRequestedPartId());
-                const auto startStaffIndex = scrollView.getIndexForStaff(smartShape.startTermSeg->endPoint->staffId);
-                const auto endStaffIndex = scrollView.getIndexForStaff(smartShape.endTermSeg->endPoint->staffId);
+                const auto startStaffIndex = scrollView.getIndexForStaff(smartShape.startTermSeg->endPoint->calcStaff());
+                const auto endStaffIndex = scrollView.getIndexForStaff(smartShape.endTermSeg->endPoint->calcStaff());
                 if (!startStaffIndex || !endStaffIndex) {
                     return KnownSmartShapeType::Unrecognized;
                 }
@@ -218,7 +218,7 @@ NoteInfoPtr calcSmartShapeArpeggiatedTieToNote(const SmartShape& smartShape, con
     }
 
     const auto noteInfoPtr = NoteInfoPtr(forStartEntry, 0);
-    if ((noteInfoPtr->tieStart || forStartEntry.calcIsImmediatelyFollowedBy(endEntry)) && noteInfoPtr.calcTieTo()) {
+    if ((noteInfoPtr.calcHasTieStart() || forStartEntry.calcIsImmediatelyFollowedBy(endEntry)) && noteInfoPtr.calcTieTo()) {
         // If Finale already provides a real tie target, this smart shape is not a stand-in.
         return {};
     }

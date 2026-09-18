@@ -34,11 +34,11 @@ NoteInfoPtr calcTiedTo(const NoteInfoPtr& noteInfo, bool requireTie)
     if (!noteInfo) {
         return {};
     }
-    if (requireTie && !noteInfo->tieStart) {
+    if (requireTie && !noteInfo.calcHasTieStart()) {
         return {};
     }
     auto tiedTo = noteInfo.calcTieTo();
-    if (requireTie && tiedTo && !tiedTo->tieEnd) {
+    if (requireTie && tiedTo && !tiedTo.calcHasTieEnd()) {
         return {};
     }
     return tiedTo;
@@ -322,11 +322,11 @@ CurveContourDirection Tie::calcDefaultDirection(const dom::NoteInfoPtr& noteInfo
     const auto thisNote = noteInfo.operator->();
 
     if (forTieEnd) {
-        if (!thisNote->tieEnd) {
+        if (!noteInfo.calcHasTieEnd()) {
             return CurveContourDirection::Unspecified;
         }
     } else {
-        if (!thisNote->tieStart) {
+        if (!noteInfo.calcHasTieStart()) {
             return CurveContourDirection::Unspecified;
         }
     }
@@ -545,7 +545,7 @@ std::optional<std::pair<TieConnectStyleType, TieConnectStyleType>> Tie::calcConn
     if (!noteInfo) {
         return std::nullopt;
     }
-    if ((forTieEnd && !noteInfo->tieEnd) || (!forTieEnd && !noteInfo->tieStart)) {
+    if ((forTieEnd && !noteInfo.calcHasTieEnd()) || (!forTieEnd && !noteInfo.calcHasTieStart())) {
         return std::nullopt;
     }
     const auto entryInfo = noteInfo.getEntryInfo();
@@ -707,7 +707,7 @@ std::optional<details::TieAlterBase::ConnectionType> Tie::calcConnectionType(
     const bool noteIsNonAligned = calcNoteIsNonAlignedSecond(noteInfo, upStem);
     const bool hasNonAligned = calcEntryHasNonAlignedSecond(entryInfo);
     NoteInfoPtr tieAlterContext = noteInfo;
-    if (!forTieEnd && !noteInfo->tieStart && noteInfo->tieEnd) {
+    if (!forTieEnd && !noteInfo.calcHasTieStart() && noteInfo.calcHasTieEnd()) {
         if (auto fromNote = noteInfo.calcTieFrom(true)) {
             tieAlterContext = fromNote;
         }
