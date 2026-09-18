@@ -1003,11 +1003,17 @@ bool EntryInfoPtr::calcDisplaysAsRest() const
     return false;
 }
 
+bool EntryInfoPtr::calcIsZeroNote() const
+{
+    const auto& entry = (*this)->getEntry();
+    return entry->notes.empty() || (!entry->isNote && entry->floatRest);
+}
+
 int EntryInfoPtr::calcZeroNotePosition() const
 {
     const auto entry = (*this)->getEntry();
-    MUSX_ASSERT_IF(!entry->notes.empty()) {
-        throw std::logic_error("calcZeroNotePosition() called on an entry with note data.");
+    MUSX_ASSERT_IF(!calcIsZeroNote()) {
+        throw std::logic_error("calcZeroNotePosition() called on an entry that is not a zero-note entry.");
     }
     if (entry->isNote) {
         return 0;
@@ -1049,7 +1055,7 @@ int EntryInfoPtr::calcZeroNotePosition() const
 std::pair<int, int> EntryInfoPtr::calcTopBottomStaffPositions() const
 {
     const auto& entry = (*this)->getEntry();
-    if (entry->notes.empty() || (!entry->isNote && entry->floatRest)) {
+    if (calcIsZeroNote()) {
         const auto restPos = calcZeroNotePosition();
         return std::make_pair(restPos, restPos);
     }
@@ -1121,7 +1127,7 @@ bool EntryInfoPtr::calcUpStemDefault() const
         const auto& entry = next->getEntry();
         if (!entry->graceNote) {
             gotNonGrace = true;
-            if (!entry->isNote && (entry->notes.empty() || entry->floatRest)) {
+            if (!entry->isNote && next.calcIsZeroNote()) {
                 continue;
             }
             gotPositionedEntry = true;

@@ -783,12 +783,17 @@ public:
     /// @return A std::pair<int, int> with the first being the top staff position and the second being the bottom staff position.
     [[nodiscard]] std::pair<int, int> calcTopBottomStaffPositions() const;
 
-    /// @brief Calculates the staff position for an entry with no note data.
+    /// @brief Calculates if the entry is a zero-note entry, i.e., its staff position does not come from note data.
+    /// @details This is true for entries with no note data and for floating rests. Use this to determine whether
+    /// #calcZeroNotePosition may be called on the entry.
+    [[nodiscard]] bool calcIsZeroNote() const;
+
+    /// @brief Calculates the staff position for a zero-note entry. (See #calcIsZeroNote.)
     /// @details Empty non-rest entries are positioned on the staff reference line. For rests, this applies the floating-rest
-    /// and default-rest positioning rules. A rest with note data gets its staff position from its RESTID note through
+    /// and default-rest positioning rules. A non-floating rest with note data gets its staff position from its RESTID note through
     /// #NoteInfoPtr::calcNoteProperties.
     /// @return The staff position used to place the entry.
-    /// @throw std::logic_error if the entry has note data, or if required positioning data is unavailable.
+    /// @throw std::logic_error if the entry is not a zero-note entry, or if required positioning data is unavailable.
     [[nodiscard]] int calcZeroNotePosition() const;
 
     /// @brief Calculates the top and bottom EVPU extent of the entry's approximate visual footprint.
