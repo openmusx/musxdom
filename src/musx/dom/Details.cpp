@@ -654,7 +654,7 @@ EntryInfoPtr LyricAssign::calcWordExtensionEndpoint() const
     }
     const auto doc = getDocument();
     if (auto lyricOptions = doc->getOptions()->get<options::LyricOptions>()) {
-        if (!lyricOptions->useSmartHyphens) {
+        if (!lyricOptions->useSmartWordExtensions) {
             return {};
         }
     }

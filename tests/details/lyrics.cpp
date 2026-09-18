@@ -20,6 +20,10 @@
  * THE SOFTWARE.
  */
 
+#include <string>
+#include <string_view>
+#include <vector>
+
 #include "gtest/gtest.h"
 #include "musx/musx.h"
 #include "test_utils.h"
@@ -80,6 +84,32 @@ TEST(LyricsTest, WordExtensions)
             EXPECT_EQ(wextEndPoint.getIndexInFrame(), 5);
         }
     }
+}
+
+TEST(LyricsTest, WordExtensionEndpointFollowsSmartWordExtensionOption)
+{
+    std::vector<char> xml;
+    musxtest::readFile(musxtest::getInputPath() / "wordext.enigmaxml", xml);
+    std::string text(xml.begin(), xml.end());
+
+    auto endpointWithOptions = [&](std::string_view removedOption) {
+        std::string modified = text;
+        const auto pos = modified.find(removedOption);
+        EXPECT_NE(pos, std::string::npos) << removedOption;
+        modified.erase(pos, removedOption.size());
+        std::vector<char> modifiedXml(modified.begin(), modified.end());
+        auto doc = musx::factory::DocumentFactory::create<musx::xml::tinyxml2::Document>(modifiedXml);
+        EXPECT_TRUE(doc);
+        auto staff = others::StaffComposite::createCurrent(doc, SCORE_PARTID, 1, 1, 0);
+        EXPECT_TRUE(staff);
+        auto lyricLineInfos = staff->createLyricsLineInfo(1);
+        EXPECT_EQ(lyricLineInfos.size(), 2);
+        return lyricLineInfos[0].assignments[0]->calcWordExtensionEndpoint();
+    };
+
+    // Smart hyphens do not decide whether a word extension has a shape; smart word extensions do.
+    EXPECT_TRUE(endpointWithOptions("<useSmartHyphens/>"));
+    EXPECT_FALSE(endpointWithOptions("<useSmartWordExtensions/>"));
 }
 
 constexpr static musxtest::string_view displayNumberXml = R"xml(
