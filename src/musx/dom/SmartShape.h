@@ -138,8 +138,21 @@ public:
     Edu eduPosition{};              ///< Edu position of endpoint (xml node is `<edu>`)
     EntryNumber entryNumber{};      ///< Entry number. Zero if the endpoint is not entry-attached. (xml node is `<entryNum>`)
 
-    /// @brief Finale can leave dead smart shapes around. This function calculates if the endpoint's staff and measure match its
-    /// endpoint, if any. It also verifies that the endpoint measure exists in the document.
+    /// @brief Calculates the staff the endpoint is on.
+    ///
+    /// An entry-attached endpoint is on its entry's staff, even when #staffId disagrees; any other endpoint is on
+    /// #staffId. Prefer this over reading #staffId, except to find the endpoint's assignments, which Finale keeps
+    /// at the recorded #staffId and #measId. (See #getMeasureAssignment.)
+    [[nodiscard]] StaffCmper calcStaff() const;
+
+    /// @brief Calculates the measure the endpoint is in.
+    ///
+    /// An entry-attached endpoint is in its entry's measure, even when #measId disagrees; any other endpoint is in
+    /// #measId. Prefer this over reading #measId, with the same exception as #calcStaff.
+    [[nodiscard]] MeasCmper calcMeasure() const;
+
+    /// @brief Finale can leave dead smart shapes around. This function calculates if the endpoint's entry, if any, exists
+    /// and that the endpoint measure (see #calcMeasure) exists in the document.
     [[nodiscard]] bool calcIsValid() const;
 
     /// @brief Calculates the staff-level position of the endpoint within its measure, based on whether it is measure- or entry-attached

@@ -445,13 +445,42 @@ bool EntryFrame::TupletInfo::calcCreatesSingleton(bool left) const
     if (!entryInfo.calcIsBeamStart()) {
         return false;
     }
-    auto hiddenEntryInfo = left ? entryInfo : entryInfo.getNextInBeamGroup();
-    if (!hiddenEntryInfo) {
+    auto nextEntryInfo = entryInfo.getNextInBeamGroup();
+    if (!nextEntryInfo) {
         return false;
     }
+    auto hiddenEntryInfo = left ? entryInfo : nextEntryInfo;
     auto hiddenEntry = hiddenEntryInfo->getEntry();
-    // must be a non-rest, not hidden as a whole, have suppressed ledger lines, a custom stem, and hidden noteheads.
-    if (!hiddenEntry->isNote || hiddenEntry->isHidden || !hiddenEntry->noLeger || !hiddenEntry->stemDetail || !hiddenEntry->noteDetail) {
+    // must be a non-rest and not hidden as a whole.
+    if (!hiddenEntry->isNote || hiddenEntry->isHidden) {
+        return false;
+    }
+    // The Beam Over Barlines plugin hides nothing. Its phantom is an exact duplicate of the real entry at the
+    // same horizontal position, so the two draw as one, and the beam extension on the tuplet entry is what
+    // reaches the barline. The extension names the direction, since the entries are in the same order either way.
+    const auto isOverlappingDuplicate = [&]() {
+        const auto tupletEntry = entryInfo->getEntry();
+        const auto nextEntry = nextEntryInfo->getEntry();
+        if (!nextEntry->isNote || nextEntry->isHidden || tupletEntry->duration != nextEntry->duration
+            || tupletEntry->notes.size() != nextEntry->notes.size() || entryInfo.calcManuaOffset() != nextEntryInfo.calcManuaOffset()) {
+            return false;
+        }
+        for (size_t x = 0; x < tupletEntry->notes.size(); x++) {
+            if (tupletEntry->notes[x]->harmLev != nextEntry->notes[x]->harmLev || tupletEntry->notes[x]->harmAlt != nextEntry->notes[x]->harmAlt) {
+                return false;
+            }
+        }
+        const auto extension = details::BeamExtension::getForStem(entryInfo);
+        if (!extension) {
+            return false;
+        }
+        return left ? extension->leftOffset < 0 : extension->rightOffset > 0;
+    };
+    if (isOverlappingDuplicate()) {
+        return true;
+    }
+    // Otherwise the hidden entry must have suppressed ledger lines, a custom stem, and hidden noteheads.
+    if (!hiddenEntry->noLeger || !hiddenEntry->stemDetail || !hiddenEntry->noteDetail) {
         return false;
     }
     // must have manual note positioning in the correct direction.
@@ -1315,6 +1344,28 @@ bool EntryInfoPtr::calcCreatesSingletonBeamLeft() const
         }
     }
     return false;
+}
+
+bool EntryInfoPtr::calcIsSingletonBeamExtraEntry() const
+{
+    if (calcCreatesSingletonBeamLeft()) {
+        return true;
+    }
+    if (auto prev = getPreviousInVoice(getVoice())) {
+        return prev.calcCreatesSingletonBeamRight();
+    }
+    return false;
+}
+
+EntryInfoPtr EntryInfoPtr::findSingletonBeamExtraEntry() const
+{
+    if (calcCreatesSingletonBeamRight()) {
+        return getNextInVoice(getVoice());
+    }
+    if (auto prev = getPreviousInVoice(getVoice()); prev && prev.calcCreatesSingletonBeamLeft()) {
+        return prev;
+    }
+    return {};
 }
 
 bool EntryInfoPtr::calcCreatesSingletonBeamRight() const
@@ -2924,6 +2975,9 @@ NoteInfoPtr NoteInfoPtr::calcTieToWithNextMeasure(Cmper nextMeasure) const
             if (nextEntry->getEntry()->graceNote) { // grace note tie to the next non grace entry, if there is a note there to tie to
                 continue;
             }
+            if (nextEntry.calcIsSingletonBeamExtraEntry()) { // the kept entry of the workaround is the one to tie to
+                continue;
+            }
             if (auto result = findEqualPitch(nextEntry)) {
                 return result;
             }
@@ -2962,7 +3016,7 @@ NoteInfoPtr NoteInfoPtr::findTieFromCandidate(const NoteInfoPtr& note, Cmper pre
             currPreviousMeasure.reset();
         }
         auto prevEntry = prev->getEntry();
-        if (!prevEntry->isNote) {
+        if (!prevEntry->isNote || prev.calcIsSingletonBeamExtraEntry()) {
             continue;
         }
         for (size_t noteIndex = 0; noteIndex < prevEntry->notes.size(); noteIndex++) {
@@ -2988,11 +3042,37 @@ NoteInfoPtr NoteInfoPtr::calcTieFromWithPreviousMeasure(Cmper previousMeasure, b
         if (!tieMatches) {
             return TieFromSearchAction::Continue;
         }
-        if (!requireTie || tryFrom->tieStart) {
+        if (!requireTie || tryFrom.calcHasTieStart()) {
             return TieFromSearchAction::Accept;
         }
         return TieFromSearchAction::Stop;
     });
+}
+
+bool NoteInfoPtr::calcHasTieStart() const
+{
+    if ((*this)->tieStart) {
+        return true;
+    }
+    if (auto extra = m_entry.findSingletonBeamExtraEntry()) {
+        if (NoteInfoPtr extraNote(extra, m_noteIndex); extraNote) {
+            return extraNote->tieStart;
+        }
+    }
+    return false;
+}
+
+bool NoteInfoPtr::calcHasTieEnd() const
+{
+    if ((*this)->tieEnd) {
+        return true;
+    }
+    if (auto extra = m_entry.findSingletonBeamExtraEntry()) {
+        if (NoteInfoPtr extraNote(extra, m_noteIndex); extraNote) {
+            return extraNote->tieEnd;
+        }
+    }
+    return false;
 }
 
 NoteInfoPtr NoteInfoPtr::calcTieTo() const
@@ -3502,7 +3582,7 @@ std::vector<std::pair<NoteInfoPtr, CurveContourDirection>> NoteInfoPtr::calcJump
         return {};
     }
 
-    if (!(*this)->tieEnd) {
+    if (!calcHasTieEnd()) {
         const auto pseudoTieEnd = calcPseudoTieEndInfo();
         if (!pseudoTieEnd) {
             return {};
@@ -3514,7 +3594,7 @@ std::vector<std::pair<NoteInfoPtr, CurveContourDirection>> NoteInfoPtr::calcJump
     const auto document = frame->getDocument();
     const auto partId = frame->getRequestedPartId();
     const auto currentMeasure = frame->getMeasure();
-    if ((*this)->tieEnd) {
+    if (calcHasTieEnd()) {
         if (const auto tieAlter = document->getDetails()->getForNote<details::TieAlterEnd>(*this, partId)) {
             if (tieAlter->freezeDirection) {
                 tieDirection = tieAlter->down ? CurveContourDirection::Down : CurveContourDirection::Up;
@@ -3536,7 +3616,7 @@ std::vector<std::pair<NoteInfoPtr, CurveContourDirection>> NoteInfoPtr::calcJump
             if (!isSamePitch(tryFrom)) {
                 return TieFromSearchAction::Continue;
             }
-            if (tryFrom->tieStart) {
+            if (tryFrom.calcHasTieStart()) {
                 return TieFromSearchAction::Accept;
             }
             if (const auto arpeggiatedTie = tryFrom.calcArpeggiatedTieInfo()) {
