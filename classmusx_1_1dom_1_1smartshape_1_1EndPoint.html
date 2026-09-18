@@ -121,9 +121,15 @@ $(document).ready(function(){initNavTree('classmusx_1_1dom_1_1smartshape_1_1EndP
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a2c8b73811eaa3935e2bac58fea34d7f1" id="r_a2c8b73811eaa3935e2bac58fea34d7f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#ada2c0787f5b7cb764d2a344d491ab99c">StaffCmper</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#a2c8b73811eaa3935e2bac58fea34d7f1">calcStaff</a> () const</td></tr>
+<tr class="memdesc:a2c8b73811eaa3935e2bac58fea34d7f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the staff the endpoint is on.  <br /></td></tr>
+<tr class="separator:a2c8b73811eaa3935e2bac58fea34d7f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a375e6f7453ef08857a79ac90bd0f6700" id="r_a375e6f7453ef08857a79ac90bd0f6700"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a3d5af8a8174c235d3292c076def44817">MeasCmper</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#a375e6f7453ef08857a79ac90bd0f6700">calcMeasure</a> () const</td></tr>
+<tr class="memdesc:a375e6f7453ef08857a79ac90bd0f6700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the measure the endpoint is in.  <br /></td></tr>
+<tr class="separator:a375e6f7453ef08857a79ac90bd0f6700"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5e145bf9b29cd720f41f226326b071f" id="r_ab5e145bf9b29cd720f41f226326b071f"><td class="memItemLeft" align="right" valign="top"><a id="ab5e145bf9b29cd720f41f226326b071f" name="ab5e145bf9b29cd720f41f226326b071f"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsValid</b> () const</td></tr>
-<tr class="memdesc:ab5e145bf9b29cd720f41f226326b071f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finale can leave dead smart shapes around. This function calculates if the endpoint's staff and measure match its endpoint, if any. It also verifies that the endpoint measure exists in the document. <br /></td></tr>
+<tr class="memdesc:ab5e145bf9b29cd720f41f226326b071f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finale can leave dead smart shapes around. This function calculates if the endpoint's entry, if any, exists and that the endpoint measure (see <a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#a375e6f7453ef08857a79ac90bd0f6700" title="Calculates the measure the endpoint is in.">calcMeasure</a>) exists in the document. <br /></td></tr>
 <tr class="separator:ab5e145bf9b29cd720f41f226326b071f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a323e31a14fcd66725881171714e04cf4" id="r_a323e31a14fcd66725881171714e04cf4"><td class="memItemLeft" align="right" valign="top"><a id="a323e31a14fcd66725881171714e04cf4" name="a323e31a14fcd66725881171714e04cf4"></a>
 <a class="el" href="classmusx_1_1util_1_1Fraction.html">util::Fraction</a>&#160;</td><td class="memItemRight" valign="bottom"><b>calcPosition</b> () const</td></tr>
@@ -308,6 +314,46 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The entry if the endpoint is entry-attached or measure-attached within 1 Edu of an entry. Null if not. </dd></dl>
+
+</div>
+</div>
+<a id="a375e6f7453ef08857a79ac90bd0f6700" name="a375e6f7453ef08857a79ac90bd0f6700"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a375e6f7453ef08857a79ac90bd0f6700">&#9670;&#160;</a></span>calcMeasure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#a3d5af8a8174c235d3292c076def44817">MeasCmper</a> musx::dom::smartshape::EndPoint::calcMeasure </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the measure the endpoint is in. </p>
+<p>An entry-attached endpoint is in its entry's measure, even when <a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#ab3c0f43eb609192c74450412f5397d78" title="Measure ID (xml node is &lt;meas&gt;)">measId</a> disagrees; any other endpoint is in <a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#ab3c0f43eb609192c74450412f5397d78" title="Measure ID (xml node is &lt;meas&gt;)">measId</a>. Prefer this over reading <a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#ab3c0f43eb609192c74450412f5397d78" title="Measure ID (xml node is &lt;meas&gt;)">measId</a>, with the same exception as <a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#a2c8b73811eaa3935e2bac58fea34d7f1" title="Calculates the staff the endpoint is on.">calcStaff</a>. </p>
+
+</div>
+</div>
+<a id="a2c8b73811eaa3935e2bac58fea34d7f1" name="a2c8b73811eaa3935e2bac58fea34d7f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c8b73811eaa3935e2bac58fea34d7f1">&#9670;&#160;</a></span>calcStaff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#ada2c0787f5b7cb764d2a344d491ab99c">StaffCmper</a> musx::dom::smartshape::EndPoint::calcStaff </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the staff the endpoint is on. </p>
+<p>An entry-attached endpoint is on its entry's staff, even when <a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#aec2422cd2b6691d77e31a9b2e2766cf4" title="Staff ID (xml node is &lt;inst&gt;)">staffId</a> disagrees; any other endpoint is on <a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#aec2422cd2b6691d77e31a9b2e2766cf4" title="Staff ID (xml node is &lt;inst&gt;)">staffId</a>. Prefer this over reading <a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#aec2422cd2b6691d77e31a9b2e2766cf4" title="Staff ID (xml node is &lt;inst&gt;)">staffId</a>, except to find the endpoint's assignments, which Finale keeps at the recorded <a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#aec2422cd2b6691d77e31a9b2e2766cf4" title="Staff ID (xml node is &lt;inst&gt;)">staffId</a> and <a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#ab3c0f43eb609192c74450412f5397d78" title="Measure ID (xml node is &lt;meas&gt;)">measId</a>. (See <a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#a6348bd306404e772e995dc0ef1820cd4" title="Gets the measure assignment for this endpoint or null if none.">getMeasureAssignment</a>.) </p>
 
 </div>
 </div>

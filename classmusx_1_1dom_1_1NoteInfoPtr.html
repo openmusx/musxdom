@@ -160,8 +160,14 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getNoteIndex</b> ()
 <tr class="memitem:a16f03e5030d5d4995c87d9899341ce48" id="r_a16f03e5030d5d4995c87d9899341ce48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html">NoteheadInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a16f03e5030d5d4995c87d9899341ce48">calcNoteheadInfo</a> () const</td></tr>
 <tr class="memdesc:a16f03e5030d5d4995c87d9899341ce48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves the effective font and character used to render this note's notehead, along with any size or position adjustments.  <br /></td></tr>
 <tr class="separator:a16f03e5030d5d4995c87d9899341ce48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b7eac61cb13fa0bb409ee448070d288" id="r_a7b7eac61cb13fa0bb409ee448070d288"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a7b7eac61cb13fa0bb409ee448070d288">calcHasTieStart</a> () const</td></tr>
+<tr class="memdesc:a7b7eac61cb13fa0bb409ee448070d288"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether a tie starts on this note, taking the singleton beam workaround into account.  <br /></td></tr>
+<tr class="separator:a7b7eac61cb13fa0bb409ee448070d288"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4656faf7f4a1ea79cb3b3da6dd10fa0" id="r_ae4656faf7f4a1ea79cb3b3da6dd10fa0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#ae4656faf7f4a1ea79cb3b3da6dd10fa0">calcHasTieEnd</a> () const</td></tr>
+<tr class="memdesc:ae4656faf7f4a1ea79cb3b3da6dd10fa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether a tie ends on this note, taking the singleton beam workaround into account.  <br /></td></tr>
+<tr class="separator:ae4656faf7f4a1ea79cb3b3da6dd10fa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac535914f03c0ac61fe184134c1584d9b" id="r_ac535914f03c0ac61fe184134c1584d9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#ac535914f03c0ac61fe184134c1584d9b">calcTieTo</a> () const</td></tr>
-<tr class="memdesc:ac535914f03c0ac61fe184134c1584d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the note that this note could tie to. Check the return value's <a class="el" href="classmusx_1_1dom_1_1Note.html#a6f312eed82f216e8b14500319fa36549" title="Indicates a tie ends on this note.">Note::tieEnd</a> to see if there is actually a tie end. (<a class="el" href="classmusx_1_1dom_1_1Note.html" title="Represents a single note element in an entry.">Note</a> that Finale shows a tie whether there <a class="el" href="classmusx_1_1dom_1_1Note.html#a6f312eed82f216e8b14500319fa36549" title="Indicates a tie ends on this note.">Note::tieEnd</a> is true or not.)  <br /></td></tr>
+<tr class="memdesc:ac535914f03c0ac61fe184134c1584d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the note that this note could tie to. Check the return value's <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#ae4656faf7f4a1ea79cb3b3da6dd10fa0" title="Returns whether a tie ends on this note, taking the singleton beam workaround into account.">calcHasTieEnd</a> to see if there is actually a tie end. (<a class="el" href="classmusx_1_1dom_1_1Note.html" title="Represents a single note element in an entry.">Note</a> that Finale shows a tie whether there <a class="el" href="classmusx_1_1dom_1_1Note.html#a6f312eed82f216e8b14500319fa36549" title="Indicates a tie ends on this note.">Note::tieEnd</a> is true or not.)  <br /></td></tr>
 <tr class="separator:ac535914f03c0ac61fe184134c1584d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d4472ff1bfd27358ea69f33a3e82d18" id="r_a8d4472ff1bfd27358ea69f33a3e82d18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a8d4472ff1bfd27358ea69f33a3e82d18">calcTieFrom</a> (bool requireTie=true) const</td></tr>
 <tr class="memdesc:a8d4472ff1bfd27358ea69f33a3e82d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the note that this note could tie from.  <br /></td></tr>
@@ -473,6 +479,46 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 
 </div>
 </div>
+<a id="ae4656faf7f4a1ea79cb3b3da6dd10fa0" name="ae4656faf7f4a1ea79cb3b3da6dd10fa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4656faf7f4a1ea79cb3b3da6dd10fa0">&#9670;&#160;</a></span>calcHasTieEnd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool musx::dom::NoteInfoPtr::calcHasTieEnd </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns whether a tie ends on this note, taking the singleton beam workaround into account. </p>
+<p>The kept entry of a singleton beam workaround reports <a class="el" href="classmusx_1_1dom_1_1Note.html#a6f312eed82f216e8b14500319fa36549" title="Indicates a tie ends on this note.">Note::tieEnd</a> from its extra entry as well, since the workaround can leave the flag there. Prefer this over reading <a class="el" href="classmusx_1_1dom_1_1Note.html#a6f312eed82f216e8b14500319fa36549" title="Indicates a tie ends on this note.">Note::tieEnd</a>. </p>
+
+</div>
+</div>
+<a id="a7b7eac61cb13fa0bb409ee448070d288" name="a7b7eac61cb13fa0bb409ee448070d288"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b7eac61cb13fa0bb409ee448070d288">&#9670;&#160;</a></span>calcHasTieStart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool musx::dom::NoteInfoPtr::calcHasTieStart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns whether a tie starts on this note, taking the singleton beam workaround into account. </p>
+<p>The kept entry of a singleton beam workaround reports <a class="el" href="classmusx_1_1dom_1_1Note.html#a8020db4ad0f674e86e386af23a6d0eca" title="Indicates a tie starts on this note.">Note::tieStart</a> from its extra entry as well, since the workaround can leave the flag there. Prefer this over reading <a class="el" href="classmusx_1_1dom_1_1Note.html#a8020db4ad0f674e86e386af23a6d0eca" title="Indicates a tie starts on this note.">Note::tieStart</a>. </p>
+
+</div>
+</div>
 <a id="a6043bdd2ea1ce370c5d4d31acd455f73" name="a6043bdd2ea1ce370c5d4d31acd455f73"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6043bdd2ea1ce370c5d4d31acd455f73">&#9670;&#160;</a></span>calcIsBottom()</h2>
 
@@ -644,9 +690,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 </div><div class="memdoc">
 
 <p>Calculates the note that this note could tie from. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Entries the interpreted iterator skips are passed over, so the result is always a note on a kept entry. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">requireTie</td><td>If <code>requireTie</code> is true, the returned value must have its <a class="el" href="classmusx_1_1dom_1_1Note.html#a8020db4ad0f674e86e386af23a6d0eca" title="Indicates a tie starts on this note.">Note::tieStart</a> flag set to true. You can set <code>requireTie</code> to false to find the <em>potential</em> note this note might be tied from. </td></tr>
+    <tr><td class="paramname">requireTie</td><td>If <code>requireTie</code> is true, the returned value must have a tie start per <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a7b7eac61cb13fa0bb409ee448070d288" title="Returns whether a tie starts on this note, taking the singleton beam workaround into account.">calcHasTieStart</a>. You can set <code>requireTie</code> to false to find the <em>potential</em> note this note might be tied from. </td></tr>
   </table>
   </dd>
 </dl>
@@ -669,8 +715,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
       </table>
 </div><div class="memdoc">
 
-<p>Calculates the note that this note could tie to. Check the return value's <a class="el" href="classmusx_1_1dom_1_1Note.html#a6f312eed82f216e8b14500319fa36549" title="Indicates a tie ends on this note.">Note::tieEnd</a> to see if there is actually a tie end. (<a class="el" href="classmusx_1_1dom_1_1Note.html" title="Represents a single note element in an entry.">Note</a> that Finale shows a tie whether there <a class="el" href="classmusx_1_1dom_1_1Note.html#a6f312eed82f216e8b14500319fa36549" title="Indicates a tie ends on this note.">Note::tieEnd</a> is true or not.) </p>
-<dl class="section return"><dt>Returns</dt><dd>The candidate note or an empty <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html" title="Wraps an EntryInfo instance and a note index.">NoteInfoPtr</a> if no candidate was found. </dd></dl>
+<p>Calculates the note that this note could tie to. Check the return value's <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#ae4656faf7f4a1ea79cb3b3da6dd10fa0" title="Returns whether a tie ends on this note, taking the singleton beam workaround into account.">calcHasTieEnd</a> to see if there is actually a tie end. (<a class="el" href="classmusx_1_1dom_1_1Note.html" title="Represents a single note element in an entry.">Note</a> that Finale shows a tie whether there <a class="el" href="classmusx_1_1dom_1_1Note.html#a6f312eed82f216e8b14500319fa36549" title="Indicates a tie ends on this note.">Note::tieEnd</a> is true or not.) </p>
+<p>Entries the interpreted iterator skips are passed over, so the result is always a note on a kept entry. </p><dl class="section return"><dt>Returns</dt><dd>The candidate note or an empty <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html" title="Wraps an EntryInfo instance and a note index.">NoteInfoPtr</a> if no candidate was found. </dd></dl>
 
 </div>
 </div>

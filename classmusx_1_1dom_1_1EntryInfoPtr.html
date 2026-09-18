@@ -303,6 +303,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcCreatesSingletonB
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcCreatesSingletonBeamRight</b> () const</td></tr>
 <tr class="memdesc:adb48db1bf8c0191d200259066363759a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if this entry contains a tuplet that creates a singleton beam right. See <a class="el" href="structmusx_1_1dom_1_1EntryFrame_1_1TupletInfo.html#a2149bb5d012a0a22a0e4b76a0db00a5f" title="Calculates if this tuplet is being used to create a singleton beam to the right.">EntryFrame::TupletInfo::calcCreatesSingletonBeamRight</a> for more information. <br /></td></tr>
 <tr class="separator:adb48db1bf8c0191d200259066363759a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39d40c466b2626e61d38f7227545644c" id="r_a39d40c466b2626e61d38f7227545644c"><td class="memItemLeft" align="right" valign="top"><a id="a39d40c466b2626e61d38f7227545644c" name="a39d40c466b2626e61d38f7227545644c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsSingletonBeamExtraEntry</b> () const</td></tr>
+<tr class="memdesc:a39d40c466b2626e61d38f7227545644c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if this entry is the extra entry of a singleton beam workaround, which the interpreted iterator skips. That is the entry itself when it creates a singleton beam left, or the next entry in the voice when the entry before it creates a singleton beam right. See <a class="el" href="structmusx_1_1dom_1_1EntryFrame_1_1TupletInfo.html#a2149bb5d012a0a22a0e4b76a0db00a5f" title="Calculates if this tuplet is being used to create a singleton beam to the right.">EntryFrame::TupletInfo::calcCreatesSingletonBeamRight</a> for more information. <br /></td></tr>
+<tr class="separator:a39d40c466b2626e61d38f7227545644c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8487f4f3af4653e1f1a9a405429cab4" id="r_aa8487f4f3af4653e1f1a9a405429cab4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#aa8487f4f3af4653e1f1a9a405429cab4">findSingletonBeamExtraEntry</a> () const</td></tr>
+<tr class="memdesc:aa8487f4f3af4653e1f1a9a405429cab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the extra entry of a singleton beam workaround that this (kept) entry stands in for.  <br /></td></tr>
+<tr class="separator:aa8487f4f3af4653e1f1a9a405429cab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15d67f4ab95cc0685c21f2cb95f4e019" id="r_a15d67f4ab95cc0685c21f2cb95f4e019"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#a15d67f4ab95cc0685c21f2cb95f4e019">calcBeamContinuesLeftOverBarline</a> () const</td></tr>
 <tr class="memdesc:a15d67f4ab95cc0685c21f2cb95f4e019"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if this entry continues a beam across a barline from the previous measure.  <br /></td></tr>
 <tr class="separator:a15d67f4ab95cc0685c21f2cb95f4e019"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1554,6 +1561,26 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html" title="Wraps an EntryInfo instance and a note index.">NoteInfoPtr</a> corresponding to the input noteId or null if the note is not in the requested entry. </dd></dl>
+
+</div>
+</div>
+<a id="aa8487f4f3af4653e1f1a9a405429cab4" name="aa8487f4f3af4653e1f1a9a405429cab4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8487f4f3af4653e1f1a9a405429cab4">&#9670;&#160;</a></span>findSingletonBeamExtraEntry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> musx::dom::EntryInfoPtr::findSingletonBeamExtraEntry </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds the extra entry of a singleton beam workaround that this (kept) entry stands in for. </p>
+<p>The extra entry may carry a tie flag the kept entry lacks: the tie start for a singleton beam right, the tie end for a singleton beam left. See <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a7b7eac61cb13fa0bb409ee448070d288" title="Returns whether a tie starts on this note, taking the singleton beam workaround into account.">NoteInfoPtr::calcHasTieStart</a> and <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#ae4656faf7f4a1ea79cb3b3da6dd10fa0" title="Returns whether a tie ends on this note, taking the singleton beam workaround into account.">NoteInfoPtr::calcHasTieEnd</a>. </p><dl class="section return"><dt>Returns</dt><dd>The extra entry, or null if this entry is not the kept entry of a singleton beam workaround. </dd></dl>
 
 </div>
 </div>

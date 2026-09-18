@@ -1,5 +1,15 @@
 var NAVTREEINDEX36 =
 {
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RLineTo.html":[2,0,1,0,55,9],
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RLineTo.html":[1,0,1,0,54,9],
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RLineTo.html#a30ba24f635e58331dc885cb5a24154bf":[2,0,1,0,55,9,0],
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RLineTo.html#a30ba24f635e58331dc885cb5a24154bf":[1,0,1,0,54,9,0],
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RLineTo.html#a76e8ff1e75cd92294d9fa92afd1a17bb":[2,0,1,0,55,9,1],
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RLineTo.html#a76e8ff1e75cd92294d9fa92afd1a17bb":[1,0,1,0,54,9,1],
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html":[2,0,1,0,55,10],
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html":[1,0,1,0,54,10],
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html#a442016520f66a4622a6fc3c0772694b0":[1,0,1,0,54,10,0],
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html#a442016520f66a4622a6fc3c0772694b0":[2,0,1,0,55,10,0],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html#a6ede684051d5a874df791f68014b525b":[1,0,1,0,54,10,1],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html#a6ede684051d5a874df791f68014b525b":[2,0,1,0,55,10,1],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Rectangle.html":[1,0,1,0,54,8],
@@ -239,15 +249,5 @@ var NAVTREEINDEX36 =
 "structmusx_1_1dom_1_1options_1_1TextOptions_1_1InsertSymbolInfo.html#ae2d93cb453eabd285b1680f1dfe782a2":[1,0,1,0,2,24,0,6],
 "structmusx_1_1dom_1_1options_1_1TextOptions_1_1InsertSymbolInfo.html#ae2d93cb453eabd285b1680f1dfe782a2":[2,0,1,0,2,24,0,6],
 "structmusx_1_1dom_1_1options_1_1TextOptions_1_1InsertSymbolInfo.html#af200cadce559f5246025b0f2e837a47c":[1,0,1,0,2,24,0,1],
-"structmusx_1_1dom_1_1options_1_1TextOptions_1_1InsertSymbolInfo.html#af200cadce559f5246025b0f2e837a47c":[2,0,1,0,2,24,0,1],
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ConnectStyle.html":[2,0,1,0,2,25,0],
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ConnectStyle.html":[1,0,1,0,2,25,0],
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ConnectStyle.html#ac6eefffa4606f7d0d2dccd281c886ae2":[1,0,1,0,2,25,0,1],
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ConnectStyle.html#ac6eefffa4606f7d0d2dccd281c886ae2":[2,0,1,0,2,25,0,1],
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ConnectStyle.html#ac7f9189d5a1f626f3cadc19984ba9093":[2,0,1,0,2,25,0,0],
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ConnectStyle.html#ac7f9189d5a1f626f3cadc19984ba9093":[1,0,1,0,2,25,0,0],
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlPoint.html":[2,0,1,0,2,25,1],
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlPoint.html":[1,0,1,0,2,25,1],
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlPoint.html#a0c5e6582015464b75322fd77aa391b76":[1,0,1,0,2,25,1,1],
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlPoint.html#a0c5e6582015464b75322fd77aa391b76":[2,0,1,0,2,25,1,1]
+"structmusx_1_1dom_1_1options_1_1TextOptions_1_1InsertSymbolInfo.html#af200cadce559f5246025b0f2e837a47c":[2,0,1,0,2,24,0,1]
 };

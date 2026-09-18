@@ -13,6 +13,8 @@ var classmusx_1_1dom_1_1NoteInfoPtr =
     [ "calcFreezeTieDirection", "classmusx_1_1dom_1_1NoteInfoPtr.html#a0160d32691946e7c62db97e76f57fea3", null ],
     [ "calcHasInnerTie", "classmusx_1_1dom_1_1NoteInfoPtr.html#a33fc628d0949601ef6f8cc6a083e9afe", null ],
     [ "calcHasOuterTie", "classmusx_1_1dom_1_1NoteInfoPtr.html#aa8d4784bb1418f49c677a9e6d95b95de", null ],
+    [ "calcHasTieEnd", "classmusx_1_1dom_1_1NoteInfoPtr.html#ae4656faf7f4a1ea79cb3b3da6dd10fa0", null ],
+    [ "calcHasTieStart", "classmusx_1_1dom_1_1NoteInfoPtr.html#a7b7eac61cb13fa0bb409ee448070d288", null ],
     [ "calcIsBottom", "classmusx_1_1dom_1_1NoteInfoPtr.html#a6043bdd2ea1ce370c5d4d31acd455f73", null ],
     [ "calcIsEnharmonicRespell", "classmusx_1_1dom_1_1NoteInfoPtr.html#aaa7136caca4301202a455a113f136553", null ],
     [ "calcIsEnharmonicRespellInAnyPart", "classmusx_1_1dom_1_1NoteInfoPtr.html#a84f3b5f320d4e1dd16a71d82a3db7a4a", null ],

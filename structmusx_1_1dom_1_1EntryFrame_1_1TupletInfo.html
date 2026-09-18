@@ -189,7 +189,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>voice2</b></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>True if this tuplet creates a singleton beam to the left. You may handle this as follows.<ul>
 <li>Skip the entry and its tuplet.</li>
 <li>You can mark the next entry in the same voice as having a singleton beam left, if your application allows it.</li>
-<li>The current entry with the 0-length tuplet will have its leger lines suppressed and non-visible notehead(s) and stem. Its <code>hidden</code> flag, however, will still be false. (This function guarantees these conditions if it returns <code>true</code>.) </li>
+<li>The current entry with the 0-length tuplet is either hidden (leger lines suppressed, non-visible notehead(s) and stem) or a duplicate of the next entry drawn on top of it. Its <code>hidden</code> flag is false either way. </li>
 </ul>
 </dd></dl>
 
@@ -219,11 +219,11 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>voice2</b></td></tr>
 </div><div class="memdoc">
 
 <p>Calculates if this tuplet is being used to create a singleton beam to the right. </p>
-<p>Finale has no built-in support for beams on singleton notes. As a workaround, users and (especially) plugins such as Beam Over Barline create singleton beams using a 0-length tuplet and hiding either the tuplet note or its next neighbor, depending on whether the beam goes to the left or the right. You should never encounter a 0-length tuplet encompassing more than one entry, but these functions guarantee this if they return <code>true</code>.</p>
+<p>Finale has no built-in support for beams on singleton notes. As a workaround, users and (especially) plugins such as Beam Over Barlines create singleton beams using a 0-length tuplet on one of two beamed entries. The extra entry is either hidden (ledger lines suppressed, hidden stem, hidden noteheads, offset out of the way) or, as the plugin does it, an exact duplicate of its neighbor at the same position with a beam extension reaching the barline. Which entry is the extra one depends on whether the beam goes to the left or the right. You should never encounter a 0-length tuplet encompassing more than one entry, but these functions guarantee this if they return <code>true</code>.</p>
 <dl class="section return"><dt>Returns</dt><dd>True if this tuplet creates a singleton beam to the right. You may handle this as follows.<ul>
 <li>The entry with the tuplet is the visible entry to use. You can mark this entry as having a singleton beam right, if your application allows it.</li>
 <li>Ignore the tuplet on the visible entry. If you need the entry's actual duration in context, its next neighbor in the same voice has the correct value.</li>
-<li>Ignore the entry's next neighbor in the same voice. It will have its leger lines suppressed and non-visible notehead(s) and stem. Its <code>hidden</code> flag, however, will still be false. (This function guarantees these conditions if it returns <code>true</code>.) </li>
+<li>Ignore the entry's next neighbor in the same voice. It is either hidden (leger lines suppressed, non-visible notehead(s) and stem) or a duplicate of this entry drawn on top of it. Its <code>hidden</code> flag is false either way. </li>
 </ul>
 </dd></dl>
 
