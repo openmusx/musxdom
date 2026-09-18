@@ -40,6 +40,7 @@ var classmusx_1_1dom_1_1EntryInfoPtr =
     [ "calcIsSamePitchContentAndDuration", "classmusx_1_1dom_1_1EntryInfoPtr.html#a8a3212f5b3f06487fc8e80616c98d672", null ],
     [ "calcIsSingletonGrace", "classmusx_1_1dom_1_1EntryInfoPtr.html#a7734e3bd5c6129f3a3ebd60ec7bbc11e", null ],
     [ "calcIsTrillToGraceEntry", "classmusx_1_1dom_1_1EntryInfoPtr.html#abbc23ba4b700547661988121b7ca6c06", null ],
+    [ "calcIsZeroNote", "classmusx_1_1dom_1_1EntryInfoPtr.html#a6b15081e804d4f3482ed2f4531dca0cd", null ],
     [ "calcLowestBeamEnd", "classmusx_1_1dom_1_1EntryInfoPtr.html#a732360a72b106e98b7735f3991b9e173", null ],
     [ "calcLowestBeamEndAcrossBarlines", "classmusx_1_1dom_1_1EntryInfoPtr.html#a7f17a8678379ab539e273f2452245efa", null ],
     [ "calcLowestBeamStart", "classmusx_1_1dom_1_1EntryInfoPtr.html#a441c57e3ee92d6eb229a2383f343fb93", null ],

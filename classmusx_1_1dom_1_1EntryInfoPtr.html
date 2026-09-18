@@ -264,8 +264,11 @@ std::optional&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"
 <tr class="memitem:aa7cecd561c595a6685ab1204b919e442" id="r_aa7cecd561c595a6685ab1204b919e442"><td class="memItemLeft" align="right" valign="top">std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#aa7cecd561c595a6685ab1204b919e442">calcTopBottomStaffPositions</a> () const</td></tr>
 <tr class="memdesc:aa7cecd561c595a6685ab1204b919e442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the top and bottom staff positions of the entry, taking into account percussion notes. This function must not be called on a floating rest. It asserts and throws if so.  <br /></td></tr>
 <tr class="separator:aa7cecd561c595a6685ab1204b919e442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b15081e804d4f3482ed2f4531dca0cd" id="r_a6b15081e804d4f3482ed2f4531dca0cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#a6b15081e804d4f3482ed2f4531dca0cd">calcIsZeroNote</a> () const</td></tr>
+<tr class="memdesc:a6b15081e804d4f3482ed2f4531dca0cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates if the entry is a zero-note entry, i.e., its staff position does not come from note data.  <br /></td></tr>
+<tr class="separator:a6b15081e804d4f3482ed2f4531dca0cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b974c77c6258f700c14a003d2790448" id="r_a0b974c77c6258f700c14a003d2790448"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#a0b974c77c6258f700c14a003d2790448">calcZeroNotePosition</a> () const</td></tr>
-<tr class="memdesc:a0b974c77c6258f700c14a003d2790448"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the staff position for an entry with no note data.  <br /></td></tr>
+<tr class="memdesc:a0b974c77c6258f700c14a003d2790448"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the staff position for a zero-note entry. (See <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#a6b15081e804d4f3482ed2f4531dca0cd" title="Calculates if the entry is a zero-note entry, i.e., its staff position does not come from note data.">calcIsZeroNote</a>.)  <br /></td></tr>
 <tr class="separator:a0b974c77c6258f700c14a003d2790448"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee5a24c2959499b513c8bee591ecd5f0" id="r_aee5a24c2959499b513c8bee591ecd5f0"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="namespacemusx_1_1dom.html#a7f27f66bcae06e7ccf1173bfca211da2">Evpu</a>, <a class="el" href="namespacemusx_1_1dom.html#a7f27f66bcae06e7ccf1173bfca211da2">Evpu</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#aee5a24c2959499b513c8bee591ecd5f0">calcTopBottomExtent</a> () const</td></tr>
 <tr class="memdesc:aee5a24c2959499b513c8bee591ecd5f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the top and bottom EVPU extent of the entry's approximate visual footprint.  <br /></td></tr>
@@ -1090,6 +1093,26 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a6b15081e804d4f3482ed2f4531dca0cd" name="a6b15081e804d4f3482ed2f4531dca0cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b15081e804d4f3482ed2f4531dca0cd">&#9670;&#160;</a></span>calcIsZeroNote()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool musx::dom::EntryInfoPtr::calcIsZeroNote </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates if the entry is a zero-note entry, i.e., its staff position does not come from note data. </p>
+<p>This is true for entries with no note data and for floating rests. Use this to determine whether <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#a0b974c77c6258f700c14a003d2790448" title="Calculates the staff position for a zero-note entry. (See calcIsZeroNote.)">calcZeroNotePosition</a> may be called on the entry. </p>
+
+</div>
+</div>
 <a id="a732360a72b106e98b7735f3991b9e173" name="a732360a72b106e98b7735f3991b9e173"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a732360a72b106e98b7735f3991b9e173">&#9670;&#160;</a></span>calcLowestBeamEnd()</h2>
 
@@ -1361,11 +1384,11 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Calculates the staff position for an entry with no note data. </p>
-<p>Empty non-rest entries are positioned on the staff reference line. For rests, this applies the floating-rest and default-rest positioning rules. A rest with note data gets its staff position from its RESTID note through <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a4766cf96435ed81abdf8309f4e267b95" title="Calculates the note name, octave number, actual alteration, and staff position. The staff position ta...">NoteInfoPtr::calcNoteProperties</a>. </p><dl class="section return"><dt>Returns</dt><dd>The staff position used to place the entry. </dd></dl>
+<p>Calculates the staff position for a zero-note entry. (See <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#a6b15081e804d4f3482ed2f4531dca0cd" title="Calculates if the entry is a zero-note entry, i.e., its staff position does not come from note data.">calcIsZeroNote</a>.) </p>
+<p>Empty non-rest entries are positioned on the staff reference line. For rests, this applies the floating-rest and default-rest positioning rules. A non-floating rest with note data gets its staff position from its RESTID note through <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a4766cf96435ed81abdf8309f4e267b95" title="Calculates the note name, octave number, actual alteration, and staff position. The staff position ta...">NoteInfoPtr::calcNoteProperties</a>. </p><dl class="section return"><dt>Returns</dt><dd>The staff position used to place the entry. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::logic_error</td><td>if the entry has note data, or if required positioning data is unavailable. </td></tr>
+    <tr><td class="paramname">std::logic_error</td><td>if the entry is not a zero-note entry, or if required positioning data is unavailable. </td></tr>
   </table>
   </dd>
 </dl>

@@ -1,5 +1,7 @@
 var NAVTREEINDEX36 =
 {
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html#a6ede684051d5a874df791f68014b525b":[1,0,1,0,54,10,1],
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html#a6ede684051d5a874df791f68014b525b":[2,0,1,0,55,10,1],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Rectangle.html":[1,0,1,0,54,8],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Rectangle.html":[2,0,1,0,55,8],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Rectangle.html#a78125d0b84c2a3135950be32ae43c941":[2,0,1,0,55,8,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX36 =
 "structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlPoint.html":[2,0,1,0,2,25,1],
 "structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlPoint.html":[1,0,1,0,2,25,1],
 "structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlPoint.html#a0c5e6582015464b75322fd77aa391b76":[1,0,1,0,2,25,1,1],
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlPoint.html#a0c5e6582015464b75322fd77aa391b76":[2,0,1,0,2,25,1,1],
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlPoint.html#a3681523f5bd1ce2e0c3fdbb93d2de521":[2,0,1,0,2,25,1,2],
-"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlPoint.html#a3681523f5bd1ce2e0c3fdbb93d2de521":[1,0,1,0,2,25,1,2]
+"structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlPoint.html#a0c5e6582015464b75322fd77aa391b76":[2,0,1,0,2,25,1,1]
 };
