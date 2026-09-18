@@ -394,6 +394,11 @@ public:
     [[nodiscard]]
     bool calcIsSlur() const;
 
+    /// @brief Returns true if this smart shape is a lyric hyphen or word extension, which Finale
+    /// creates for lyric assignments rather than through the Smart Shape tool.
+    [[nodiscard]]
+    bool calcIsLyricShape() const;
+
     /// @brief Calculates if the smart shape applies to the specified entry.
     ///
     /// This function is most useful for shape types like ottavas and hairpins. It does
