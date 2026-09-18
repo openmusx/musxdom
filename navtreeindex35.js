@@ -1,5 +1,7 @@
 var NAVTREEINDEX35 =
 {
+"structmusx_1_1dom_1_1EntryFrame_1_1TupletInfo.html#afcfe75d7a7e9c43bec0ad246dae8cb15":[2,0,1,0,20,0,3],
+"structmusx_1_1dom_1_1EntryFrame_1_1TupletInfo.html#afcfe75d7a7e9c43bec0ad246dae8cb15":[1,0,1,0,19,0,3],
 "structmusx_1_1dom_1_1Entry_1_1EntryLocation.html":[2,0,1,0,18,0],
 "structmusx_1_1dom_1_1Entry_1_1EntryLocation.html":[1,0,1,0,17,0],
 "structmusx_1_1dom_1_1Entry_1_1EntryLocation.html#a0d01ab840faabbdd90b5a022a9a62a9a":[2,0,1,0,18,0,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX35 =
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html#a442016520f66a4622a6fc3c0772694b0":[1,0,1,0,54,10,0],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html#a442016520f66a4622a6fc3c0772694b0":[2,0,1,0,55,10,0],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html#a6ede684051d5a874df791f68014b525b":[1,0,1,0,54,10,1],
-"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html#a6ede684051d5a874df791f68014b525b":[2,0,1,0,55,10,1],
-"structmusx_1_1dom_1_1ShapeDefInstruction_1_1Rectangle.html":[1,0,1,0,54,8],
-"structmusx_1_1dom_1_1ShapeDefInstruction_1_1Rectangle.html":[2,0,1,0,55,8]
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html#a6ede684051d5a874df791f68014b525b":[2,0,1,0,55,10,1]
 };
