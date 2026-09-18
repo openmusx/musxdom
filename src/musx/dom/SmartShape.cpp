@@ -428,6 +428,11 @@ bool others::SmartShape::calcIsSlur() const
     return false;
 }
 
+bool others::SmartShape::calcIsLyricShape() const
+{
+    return shapeType == ShapeType::Hyphen || shapeType == ShapeType::WordExtension;
+}
+
 CurveContourDirection others::SmartShape::calcContourDirection() const
 {
     using ST = ShapeType;

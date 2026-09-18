@@ -923,6 +923,43 @@ TEST(SmartShapes, EndpointNotesRequireEntryAttachment)
     EXPECT_FALSE(shape->calcEndNote());
 }
 
+TEST(SmartShapes, LyricShapes)
+{
+    constexpr static musxtest::string_view xml = R"xml(
+    <?xml version="1.0" encoding="UTF-8"?>
+    <finale>
+        <others>
+            <smartShape cmper="1">
+                <shapeType>hyphen</shapeType>
+            </smartShape>
+            <smartShape cmper="2">
+                <shapeType>wordExt</shapeType>
+            </smartShape>
+            <smartShape cmper="3">
+                <shapeType>slurAuto</shapeType>
+            </smartShape>
+            <smartShape cmper="4">
+                <shapeType>smartLine</shapeType>
+            </smartShape>
+        </others>
+    </finale>
+    )xml";
+
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::tinyxml2::Document>(xml);
+    auto others = doc->getOthers();
+    ASSERT_TRUE(others);
+
+    const auto isLyricShape = [&](Cmper shapeId) {
+        auto shape = others->get<others::SmartShape>(SCORE_PARTID, shapeId);
+        EXPECT_TRUE(shape) << "SmartShape " << shapeId << " not found";
+        return shape && shape->calcIsLyricShape();
+    };
+    EXPECT_TRUE(isLyricShape(1));
+    EXPECT_TRUE(isLyricShape(2));
+    EXPECT_FALSE(isLyricShape(3));
+    EXPECT_FALSE(isLyricShape(4));
+}
+
 TEST(SmartShapes, VerticalPlacementForBeatAttached)
 {
     constexpr static musxtest::string_view xml = R"xml(
