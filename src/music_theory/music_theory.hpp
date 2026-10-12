@@ -255,6 +255,18 @@ constexpr int calc12EdoHalfstepsInInterval(int interval, int chromaticAlteration
     return MAJOR_KEYMAP[diatonic] + (octaves * STANDARD_12EDO_STEPS) + chromaticAlteration;
 }
 
+/// @brief Calculates the MIDI key number of a spelled pitch in 12-EDO.
+/// @param pitch The pitch to convert, with alteration measured in semitones and C4 as middle C.
+/// @return The MIDI key number, where C4 is 60. Values outside the MIDI range 0–127 are
+/// returned unchanged; the caller decides whether they are usable.
+/// @note Accidentals can cross octave boundaries: B-sharp 3 and C4 both return 60.
+/// This function does not interpret key signatures or non-12-EDO alterations.
+constexpr int calcMidiKey(const Pitch& pitch)
+{
+    return STANDARD_12EDO_STEPS * (pitch.octave + 1)
+        + calc12EdoHalfstepsInInterval(int(pitch.noteName), pitch.alteration);
+}
+
 /// @brief Calculates the alteration in chromatic halfsteps for the specified interval/halfsteps combination
 /// @param interval         The diatonic displacement (negative for downward transposition).
 /// @param halfsteps        The number of 12-EDO chromatic halfsteps in the interval (negative means down).

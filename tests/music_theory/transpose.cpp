@@ -479,3 +479,26 @@ TEST(NoteNameTest, CalcNoteNameLetter)
         EXPECT_EQ(calcNoteNameLetter(noteNames[size_t(noteName)]), letter);
     }
 }
+
+TEST(MusicTheoryTest, CalcMidiKey)
+{
+    using namespace music_theory;
+    static_assert(calcMidiKey(Pitch(NoteName::C, 4)) == 60);
+    static_assert(calcMidiKey(Pitch(NoteName::B, 3, 1)) == 60);
+    static_assert(calcMidiKey(Pitch(NoteName::C, 4, -1)) == 59);
+
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::A, 4)), 69);
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::B, 4)), 71);
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::G, 5)), 79);
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::F, 3, 1)), 54);
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::C, 4, 1)), calcMidiKey(Pitch(NoteName::D, 4, -1)));
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::B, 3, 2)), 61);
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::C, 4, -2)), 58);
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::C, 4, 13)), 73);
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::C, 4, -13)), 47);
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::C, -1)), 0);
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::G, 9)), 127);
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::C, -1, -1)), -1);
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::G, 9, 1)), 128);
+    EXPECT_EQ(calcMidiKey(Pitch(NoteName::C, -2)), -12);
+}
