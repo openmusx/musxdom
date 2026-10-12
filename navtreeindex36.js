@@ -1,5 +1,6 @@
 var NAVTREEINDEX36 =
 {
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1Ellipse.html":[1,0,1,0,54,5],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Ellipse.html":[2,0,1,0,55,5],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Ellipse.html#a35c350296ca4f628a3872ad288a16441":[1,0,1,0,54,5,0],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Ellipse.html#a35c350296ca4f628a3872ad288a16441":[2,0,1,0,55,5,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX36 =
 "structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ControlStyle.html#a4271fc4ede58d23f55ecf612075441f5":[2,0,1,0,2,21,1,0],
 "structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ControlStyle.html#a4271fc4ede58d23f55ecf612075441f5":[1,0,1,0,2,21,1,0],
 "structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ControlStyle.html#a57f2e610406323a25fa00ea7554e2899":[2,0,1,0,2,21,1,1],
-"structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ControlStyle.html#a57f2e610406323a25fa00ea7554e2899":[1,0,1,0,2,21,1,1],
-"structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ControlStyle.html#ae8162b4c016df9cd1984991d5253162c":[1,0,1,0,2,21,1,2]
+"structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ControlStyle.html#a57f2e610406323a25fa00ea7554e2899":[1,0,1,0,2,21,1,1]
 };

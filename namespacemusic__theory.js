@@ -35,6 +35,7 @@ var namespacemusic__theory =
     [ "calcAlterationFromKeySigChange", "namespacemusic__theory.html#aa8135fae68fcafc7da27d3540d2a04b3", null ],
     [ "calcDisplacement", "namespacemusic__theory.html#a25d2e2ec4727f853dc7cd1448e713a7e", null ],
     [ "calcKeySigChangeFromInterval", "namespacemusic__theory.html#aa537406e4ca826927f9dfe4f3c238d52", null ],
+    [ "calcMidiKey", "namespacemusic__theory.html#a96ba309b14fd59b53ee6f13cb374f933", null ],
     [ "calcNoteNameLetter", "namespacemusic__theory.html#a02251605be8d40b29cb728290aeffb99", null ],
     [ "calcPitchClass", "namespacemusic__theory.html#a8177c164efac95187c5c4fa3be61c69c", null ],
     [ "calcPitchClass", "namespacemusic__theory.html#a576b1f677b0f4523577220da415d7f03", null ],

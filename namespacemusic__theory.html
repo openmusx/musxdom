@@ -185,6 +185,9 @@ Functions</h2></td></tr>
 <tr class="memitem:acf8c49a568a6a6043714a796c4de89e4" id="r_acf8c49a568a6a6043714a796c4de89e4"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemusic__theory.html#acf8c49a568a6a6043714a796c4de89e4">calc12EdoHalfstepsInInterval</a> (int interval, int chromaticAlteration)</td></tr>
 <tr class="memdesc:acf8c49a568a6a6043714a796c4de89e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the number of 12-EDO chromatic halfsteps in the specified interval.  <br /></td></tr>
 <tr class="separator:acf8c49a568a6a6043714a796c4de89e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96ba309b14fd59b53ee6f13cb374f933" id="r_a96ba309b14fd59b53ee6f13cb374f933"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemusic__theory.html#a96ba309b14fd59b53ee6f13cb374f933">calcMidiKey</a> (const <a class="el" href="structmusic__theory_1_1Pitch.html">Pitch</a> &amp;pitch)</td></tr>
+<tr class="memdesc:a96ba309b14fd59b53ee6f13cb374f933"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the MIDI key number of a spelled pitch in 12-EDO.  <br /></td></tr>
+<tr class="separator:a96ba309b14fd59b53ee6f13cb374f933"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d580efb2fd53b410d55ecd25b268376" id="r_a5d580efb2fd53b410d55ecd25b268376"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemusic__theory.html#a5d580efb2fd53b410d55ecd25b268376">calcAlterationFrom12EdoHalfsteps</a> (int interval, int halfsteps)</td></tr>
 <tr class="memdesc:a5d580efb2fd53b410d55ecd25b268376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the alteration in chromatic halfsteps for the specified interval/halfsteps combination.  <br /></td></tr>
 <tr class="separator:a5d580efb2fd53b410d55ecd25b268376"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -527,6 +530,42 @@ constexpr std::array&lt; int, <a class="el" href="namespacemusic__theory.html#ab
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The change in key signature (positive for sharps added or flats removed, negative for flats added or sharps removed). </dd></dl>
+
+</div>
+</div>
+<a id="a96ba309b14fd59b53ee6f13cb374f933" name="a96ba309b14fd59b53ee6f13cb374f933"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96ba309b14fd59b53ee6f13cb374f933">&#9670;&#160;</a></span>calcMidiKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int music_theory::calcMidiKey </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structmusic__theory_1_1Pitch.html">Pitch</a> &amp;&#160;</td>
+          <td class="paramname"><em>pitch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the MIDI key number of a spelled pitch in 12-EDO. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pitch</td><td>The pitch to convert, with alteration measured in semitones and C4 as middle C. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The MIDI key number, where C4 is 60. Values outside the MIDI range 0–127 are returned unchanged; the caller decides whether they are usable. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Accidentals can cross octave boundaries: B-sharp 3 and C4 both return 60. This function does not interpret key signatures or non-12-EDO alterations. </dd></dl>
 
 </div>
 </div>

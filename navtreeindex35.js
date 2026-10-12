@@ -1,5 +1,6 @@
 var NAVTREEINDEX35 =
 {
+"structmusx_1_1dom_1_1EmbeddedGraphicData.html#a3f11648513a274e89136b8a2dabc2368":[2,0,1,0,16,0],
 "structmusx_1_1dom_1_1EmbeddedGraphicData.html#a3f11648513a274e89136b8a2dabc2368":[1,0,1,0,15,0],
 "structmusx_1_1dom_1_1EmbeddedGraphicData.html#a4fcb4768de1e4b04b01da74ffcf8b908":[2,0,1,0,16,1],
 "structmusx_1_1dom_1_1EmbeddedGraphicData.html#a4fcb4768de1e4b04b01da74ffcf8b908":[1,0,1,0,15,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX35 =
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1DrawChar.html":[1,0,1,0,54,4],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1DrawChar.html":[2,0,1,0,55,4],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1DrawChar.html#a0cb71d1267494145afff2e0500ec61af":[1,0,1,0,54,4,0],
-"structmusx_1_1dom_1_1ShapeDefInstruction_1_1DrawChar.html#a0cb71d1267494145afff2e0500ec61af":[2,0,1,0,55,4,0],
-"structmusx_1_1dom_1_1ShapeDefInstruction_1_1Ellipse.html":[1,0,1,0,54,5]
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1DrawChar.html#a0cb71d1267494145afff2e0500ec61af":[2,0,1,0,55,4,0]
 };
