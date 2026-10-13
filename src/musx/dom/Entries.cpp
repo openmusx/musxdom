@@ -2580,11 +2580,15 @@ std::shared_ptr<const EntryFrame> details::GFrameHoldContext::createEntryFrame(L
     if (frame) {
         const auto measure = m_hold->getDocument()->getOthers()->get<others::Measure>(getRequestedPartId(), m_hold->getMeasure());
         if (!measure) {
-            throw std::invalid_argument("Measure instance for measure " + std::to_string(m_hold->getMeasure()) + " does not exist.");
+            util::Logger::log(util::Logger::LogLevel::Warning,
+                "Measure instance for measure " + std::to_string(m_hold->getMeasure()) + " does not exist; skipping entry frame.");
+            return nullptr;
         }
         const auto staff = others::StaffComposite::createCurrent(m_hold->getDocument(), getRequestedPartId(), m_hold->getStaff(), m_hold->getMeasure(), 0);
         if (!staff) {
-            throw std::invalid_argument("Staff instance for staff " + std::to_string(m_hold->getStaff()) + " does not exist.");
+            util::Logger::log(util::Logger::LogLevel::Warning,
+                "Staff instance for staff " + std::to_string(m_hold->getStaff()) + " does not exist; skipping entry frame.");
+            return nullptr;
         }
         const util::Fraction timeStretch = staff->floatTime
                                          ? measure->calcTimeStretch(staff->getCmper())

@@ -55,6 +55,7 @@ TEST(PartGlobalsTest, PartGlobalsPropertiesTest)
     EXPECT_EQ(partGlobals->scrollViewIUlist, 0);
     EXPECT_EQ(partGlobals->studioViewIUlist, STUDIO_VIEW_SYSTEM_ID);
     EXPECT_EQ(partGlobals->specialPartExtractionIUList, 0);
+    EXPECT_FALSE(partGlobals->isSpecialPartExtraction());
     EXPECT_EQ(doc->calcScrollViewCmper(27), BASE_SYSTEM_ID);
     EXPECT_TRUE(doc->isScrollViewCmper(27, BASE_SYSTEM_ID));
     EXPECT_FALSE(doc->isScrollViewCmper(27, SPECIAL_PART_EXTRACTION_SYSTEM_ID));
@@ -66,6 +67,7 @@ TEST(PartGlobalsTest, PartGlobalsPropertiesTest)
     EXPECT_EQ(partGlobalsForScore->scrollViewIUlist, STAFF_SET_1_SYSTEM_ID + 7);
     EXPECT_EQ(partGlobalsForScore->studioViewIUlist, STUDIO_VIEW_SYSTEM_ID);
     EXPECT_EQ(partGlobalsForScore->specialPartExtractionIUList, SPECIAL_PART_EXTRACTION_SYSTEM_ID);
+    EXPECT_TRUE(partGlobalsForScore->isSpecialPartExtraction());
     EXPECT_EQ(doc->calcScrollViewCmper(SCORE_PARTID), SPECIAL_PART_EXTRACTION_SYSTEM_ID);
     EXPECT_TRUE(doc->isScrollViewCmper(SCORE_PARTID, SPECIAL_PART_EXTRACTION_SYSTEM_ID));
     EXPECT_FALSE(doc->isScrollViewCmper(SCORE_PARTID, BASE_SYSTEM_ID));
@@ -75,4 +77,9 @@ TEST(PartGlobalsTest, PartGlobalsPropertiesTest)
     ASSERT_FALSE(partGlobalsForNonexistent);
     EXPECT_EQ(doc->calcScrollViewCmper(1), BASE_SYSTEM_ID);
     EXPECT_TRUE(doc->isScrollViewCmper(1, BASE_SYSTEM_ID));
+
+    auto mutableGlobals = std::const_pointer_cast<others::PartGlobals>(partGlobalsForScore);
+    mutableGlobals->specialPartExtractionIUList = STAFF_SET_1_SYSTEM_ID;
+    EXPECT_FALSE(mutableGlobals->isSpecialPartExtraction());
+    EXPECT_EQ(mutableGlobals->calcScrollViewCmper(), STAFF_SET_1_SYSTEM_ID);
 }

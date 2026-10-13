@@ -427,76 +427,152 @@ util::Fraction Measure::calcDuration(const std::optional<StaffCmper>& forStaff) 
     return timeSig->calcTotalDuration();
 }
 
-Measure::Spacing Measure::calcSpacing() const
+Measure::Spacing Measure::calcSpacing(BeatChartJustification justification) const
 {
     const auto doc = getDocument();
     const auto spacingOptions = doc->getOptions()->get<options::MusicSpacingOptions>();
-    const Evpu musFront = spacingOptions ? spacingOptions->musFront : 0;
-    const Evpu musBack = spacingOptions ? spacingOptions->musBack : 0;
+    Spacing spacing;
+    spacing.musicStart = frontSpaceExtra + (spacingOptions ? spacingOptions->musFront : 0);
+    spacing.musicWidth = width - spacing.musicStart - backSpaceExtra - (spacingOptions ? spacingOptions->musBack : 0);
+    spacing.endEdu = calcDuration().calcEduDuration();
+    const Edu duration = spacing.endEdu;
+    const Evpu musicWidth = spacing.musicWidth;
+    const auto chart = doc->getOthers()->getArray<BeatChartElement>(getRequestedPartId(), getCmper());
+    const bool usesChart = positioningMode == PositioningType::BeatChart
+        || positioningMode == PositioningType::BeatChartPlusPositioning;
+    if (duration == 0 || !usesChart || chart.size() < 2 || !chart.front()->control || chart.front()->control->totalDur == 0) {
+        spacing.slots.push_back({0, musicWidth, 0});
+        return spacing;
+    }
+    using Span = SpacingSlot;
+    const auto& control = *chart.front()->control;
+    const Evpu totalWidth = (std::max)(Evpu(1), control.totalWidth);
+    const Evpu minWidth = (std::max)(Evpu(1), control.minWidth);
+    const Evpu allotWidth = control.allotWidth ? control.allotWidth : totalWidth;
+    const Evpu firstMin = chart[1]->minPos;
+    const bool legacy = justification == BeatChartJustification::Legacy;
+    const double durationRatio = double(control.totalDur) / duration;
+    const size_t count = chart.size() - 1;
+    auto& spans = spacing.slots;
+    spans.resize(count);
+    auto rounded = [](double value) { return static_cast<Evpu>(std::lround(value)); };
+    auto blend = [&](Span a, Span b, double fraction) {
+        return Span{a.offset + rounded((b.offset - a.offset) * fraction),
+                    a.endOffset + rounded((b.endOffset - a.endOffset) * fraction)};
+    };
+    auto ideal = [&](size_t index, double scale) {
+        return Span{firstMin + rounded(chart[index + 1]->pos * scale),
+                    firstMin + rounded(chart[index + 1]->endPos * scale)};
+    };
 
-    // The music area begins after the extra space at the front and runs to the barline, less the music-back space.
-    Spacing result;
-    result.musicStart = musFront + frontSpaceExtra;
-    // backSpaceExtra is intentionally not part of this calculation.
-    result.musicWidth = width - musBack - result.musicStart;
-
-    const auto beatChart = doc->getOthers()->getArray<BeatChartElement>(getRequestedPartId(), getCmper());
-    if (!beatChart.empty() && beatChart[0]->control && beatChart.size() > 1) {
-        const auto& control = *beatChart[0]->control;
-        const auto& first = *beatChart[1];
-        // Finale lays the chart out at whichever is wider: its ideal positions, which end at the control's total
-        // width, or its minimum positions, which end at the control's minimum width. Ideal positions are moved right
-        // by the first element's minimum position, which holds extra space before the first element. A manually
-        // edited chart stores a minimum width of 1 and a chart from before Finale 3.0 none, so both use ideal positions.
-        const bool usesMinPositions = control.minWidth > control.totalWidth;
-        for (size_t i = 1; i < beatChart.size(); i++) {
-            const auto& element = *beatChart[i];
-            result.slots.push_back({usesMinPositions ? first.pos + element.minPos : element.pos + first.minPos, element.dur});
+    if (musicWidth <= minWidth) {
+        const double scale = double(musicWidth) / minWidth * (legacy ? durationRatio : 1.0);
+        for (size_t i = 0; i < count; ++i) {
+            spans[i].offset = rounded(chart[i + 1]->minPos * scale);
+            if (i > 0) {
+                spans[i - 1].endOffset = spans[i].offset;
+            }
         }
-        result.spacingWidth = usesMinPositions ? first.pos + control.minWidth : control.totalWidth + first.minPos;
-        result.endEdu = control.totalDur;
+        spans.back().endOffset = musicWidth;
+    } else if (minWidth < 2 || musicWidth >= allotWidth) {
+        const double scale = double(musicWidth - firstMin) / totalWidth * (legacy ? durationRatio : 1.0);
+        for (size_t i = 0; i < count; ++i) {
+            spans[i] = ideal(i, scale);
+        }
+    } else if (legacy) {
+        const double scale = double(allotWidth - firstMin) / totalWidth * durationRatio;
+        const double fraction = double(musicWidth - minWidth) / (allotWidth - minWidth);
+        for (size_t i = 0; i < count; ++i) {
+            const Span minimum{rounded(chart[i + 1]->minPos * durationRatio),
+                i + 1 < count ? rounded(chart[i + 2]->minPos * durationRatio) : minWidth};
+            spans[i] = blend(minimum, ideal(i, scale), fraction);
+        }
     } else {
-        result.slots.push_back({0, 0});
-        result.spacingWidth = result.musicWidth;
-        result.endEdu = calcDuration().calcEduDuration();
+        // Natural spacing preserves both the ideal distances between starts and the minimum distances.
+        // Its span ends retain any gap between an ideal span end and the following start.
+        std::vector<Span> natural(count);
+        Evpu naturalWidth = firstMin;
+        for (size_t i = 0; i < count; ++i) {
+            const auto& element = *chart[i + 1];
+            const Evpu nextPos = i + 1 < count ? chart[i + 2]->pos : totalWidth;
+            const Evpu nextMin = i + 1 < count ? chart[i + 2]->minPos : minWidth;
+            natural[i].offset = naturalWidth;
+            naturalWidth += (std::max)(nextPos - element.pos, nextMin - element.minPos);
+            natural[i].endOffset = naturalWidth - nextPos + element.endPos;
+        }
+        const double scale = double(allotWidth - firstMin) / totalWidth;
+        for (size_t i = 0; i < count; ++i) {
+            if (musicWidth < naturalWidth) {
+                const Span minimum{chart[i + 1]->minPos, i + 1 < count ? chart[i + 2]->minPos : minWidth};
+                const double fraction = naturalWidth == minWidth ? 0
+                    : double(musicWidth - minWidth) / (naturalWidth - minWidth);
+                spans[i] = blend(minimum, natural[i], fraction);
+            } else {
+                const double fraction = allotWidth == naturalWidth ? 0
+                    : double(musicWidth - naturalWidth) / (allotWidth - naturalWidth);
+                spans[i] = blend(natural[i], ideal(i, scale), fraction);
+            }
+            if (duration != control.totalDur) {
+                spans[i].offset = firstMin + rounded(double(spans[i].offset - firstMin) / durationRatio);
+                spans[i].endOffset = firstMin + rounded(double(spans[i].endOffset - firstMin) / durationRatio);
+            }
+        }
+    }
+    for (size_t i = 0; i + 1 < count; ++i) {
+        spans[i].endOffset = (std::min)(spans[i].endOffset, spans[i + 1].offset);
+    }
+
+    for (size_t i = 0; i < count; ++i) {
+        spacing.slots[i].edu = chart[i + 1]->dur;
+    }
+    spacing.chartDuration = control.totalDur;
+    return spacing;
+}
+
+EvpuFloat Measure::calcFirstBeatEvpu(BeatChartJustification justification) const
+{
+    const auto spacing = calcSpacing(justification);
+    return spacing.musicStart + spacing.slots.front().offset;
+}
+
+Edu Measure::calcEduFromEvpu(Evpu evpuFromLeftEdge, BeatChartJustification justification, bool allowNegative) const
+{
+    const auto spacing = calcSpacing(justification);
+    const Edu duration = spacing.endEdu;
+    if (duration == 0) {
+        return 0;
+    }
+    const Evpu offset = evpuFromLeftEdge - spacing.musicStart;
+    if (!allowNegative && offset < 0) {
+        return 0;
+    }
+    if (spacing.chartDuration == 0) {
+        return offset <= 0 || spacing.musicWidth == 0 ? offset
+            : static_cast<Edu>(std::lround(double(offset) * duration / spacing.musicWidth));
+    }
+    const auto& slots = spacing.slots;
+    size_t index = 0;
+    while (index + 1 < slots.size() && offset >= slots[index].endOffset) {
+        ++index;
+    }
+    Edu result = slots[index].edu;
+    const Evpu start = slots[index].offset;
+    // Use the stored span end until it is reached, then extrapolate to the available width.
+    const Evpu end = offset < slots[index].endOffset ? slots[index].endOffset : spacing.musicWidth;
+    const Edu nextEdu = index + 1 < slots.size() ? slots[index + 1].edu : duration;
+    if (offset < start) {
+        const auto miscOptions = getDocument()->getOptions()->get<options::MiscOptions>();
+        const Edu pickup = getCmper() == 1 && miscOptions ? miscOptions->pickupValue : 0;
+        if (result == 0 || result == duration - pickup) {
+            result = offset - start;
+        }
+    } else if (end != start) {
+        result += static_cast<Edu>(std::lround(double(nextEdu - result) * (offset - start) / (end - start)));
+    }
+    if (result > 0 && spacing.chartDuration != duration) {
+        result = static_cast<Edu>(std::lround(double(result) * duration / spacing.chartDuration));
     }
     return result;
-}
-
-EvpuFloat Measure::calcFirstBeatEvpu() const
-{
-    const auto spacing = calcSpacing();
-    if (spacing.musicWidth <= 0 || spacing.spacingWidth <= 0) {
-        return spacing.musicStart;
-    }
-    return spacing.musicStart + EvpuFloat(spacing.slots.front().offset) * spacing.musicWidth / spacing.spacingWidth;
-}
-
-EduFloat Measure::calcEduFromEvpu(EvpuFloat evpuFromLeftEdge) const
-{
-    const auto spacing = calcSpacing();
-    if (spacing.musicWidth <= 0 || spacing.spacingWidth <= 0) {
-        return spacing.slots.front().edu;
-    }
-    // Interpolate in the unstretched spacing, where the offset of a position in the music area is scaled
-    // by spacingWidth / musicWidth. The end of the spacing closes the last slot.
-    std::vector<SpacingSlot> points = spacing.slots;
-    points.push_back({spacing.spacingWidth, spacing.endEdu});
-    const EvpuFloat offset = (evpuFromLeftEdge - spacing.musicStart) * spacing.spacingWidth / spacing.musicWidth;
-    if (offset <= points.front().offset) {
-        return points.front().edu;
-    }
-    size_t next = 1;
-    while (next + 1 < points.size() && offset > points[next].offset) {
-        next++;
-    }
-    // Past the end, this continues along the last segment, as Finale does for an offset beyond the barline.
-    const auto& prev = points[next - 1];
-    const auto& last = points[next];
-    if (last.offset <= prev.offset) {
-        return last.edu;
-    }
-    return prev.edu + (offset - prev.offset) * (last.edu - prev.edu) / (last.offset - prev.offset);
 }
 
 // *****************************
