@@ -361,8 +361,8 @@ public:
  * is stored in totalWidth. Finale also sets the first minPos to 0 and all others (including
  * control->minWidth) to 1.
  *
- * The control->allotWidth member has a purpose and effect, but it has proved elusive to document
- * exactly how it works.
+ * The control->allotWidth member is the width at which justification transitions to scaled ideal
+ * positions. Measure::calcEduFromEvpu uses it when justifying intermediate-width charts.
  *
  * This class is identified by the XML node name "beatChart".
  */
@@ -1308,56 +1308,63 @@ public:
     /// Otherwise, it returns the global duration of the measure.
     util::Fraction calcDuration(const std::optional<StaffCmper>& forStaff = std::nullopt) const;
 
-    /// @brief One beat position in a measure's unstretched spacing. See #Spacing.
+    /// @brief Selects the beat-chart justification used for spacing and coordinate conversion.
+    enum class BeatChartJustification
+    {
+        Legacy, ///< Uses legacy duration scaling and minimum-to-allotted interpolation.
+        Modern  ///< Uses minimum, natural, and allotted spacing; the default for XML documents.
+    };
+
+    /// @brief A justified beat span. Coordinates are integral Evpu relative to Spacing::musicStart.
     struct SpacingSlot
     {
-        Evpu offset{};  ///< The slot's offset in the unstretched spacing, in Evpu from the start of the music area.
-        Edu edu{};      ///< The slot's global Edu position in the measure.
+        Evpu offset{};     ///< Start of the justified span.
+        Evpu endOffset{};  ///< End of the span, which may precede the following start.
+        Edu edu{};         ///< Stored chart Edu at the start; zero for proportional spacing.
     };
 
-    /// @brief A measure's horizontal spacing as Finale uses it to place metric positions.
+    /// @brief Justified horizontal beat spacing for the measure's current width and positioning mode.
     ///
-    /// The music area runs from @ref options::MusicSpacingOptions::musFront plus #frontSpaceExtra to #width less
-    /// @ref options::MusicSpacingOptions::musBack. With a @ref BeatChartElement array, each element is a slot, and
-    /// the chart is laid out at whichever is wider, its ideal or its minimum positions. When
-    /// @ref BeatChartElement::Control::minWidth exceeds @ref BeatChartElement::Control::totalWidth, each slot is at the
-    /// first element's @ref BeatChartElement::pos plus the element's @ref BeatChartElement::minPos, and the spacing ends
-    /// at the first element's position plus the minimum width. Otherwise each slot is at its own position plus the
-    /// first element's minimum position, and the spacing ends at the total width plus that minimum position. A manually
-    /// edited chart (minimum width 1) and one from before Finale 3.0 (no minimum width) always use their positions.
-    /// Without a beat chart there is one slot, at the start of the music area.
-    ///
-    /// Finale stretches the spacing uniformly to fill the music area, so a slot is drawn at #musicStart plus its offset
-    /// times #musicWidth / #spacingWidth. Either width can be zero or negative in a malformed or degenerate measure.
+    /// Coordinates include integer rounding and need no further stretching. Add #musicStart to a slot's
+    /// offset or endOffset to obtain its position from the measure's left edge. The music area excludes
+    /// both front/back spacing options and measure extras. Gaps between spans retain their separate endpoints.
+    /// For proportional spacing there is one span from zero to #musicWidth. A chart's final span end may
+    /// differ from #musicWidth; coordinate conversion uses that span end until it is reached, then
+    /// uses #musicWidth for extrapolation.
     struct Spacing
     {
-        Evpu musicStart{};          ///< Where the music area begins, in Evpu from the measure's left edge.
-        Evpu musicWidth{};          ///< The width of the music area, in Evpu.
-        Evpu spacingWidth{};        ///< The unstretched width of the spacing, in Evpu.
-        Edu endEdu{};               ///< The Edu position at the end of the spacing (the measure's duration).
-        std::vector<SpacingSlot> slots;    ///< The slots in increasing order. There is always at least one.
+        Evpu musicStart{};  ///< Music-area origin, from the measure's left edge.
+        Evpu musicWidth{};  ///< Available music width; may be nonpositive in a degenerate measure.
+        Edu endEdu{};      ///< Global measure duration and final interpolation endpoint.
+        Edu chartDuration{}; ///< Chart duration, or zero for proportional spacing. Positive interpolated chart
+                             ///< positions are rounded after multiplication by endEdu / chartDuration.
+        std::vector<SpacingSlot> slots; ///< Justified spans in chart order. Always contains at least one span.
     };
 
-    /// @brief Calculates the measure's horizontal spacing. See #Spacing.
-    [[nodiscard]] Spacing calcSpacing() const;
+    /// @brief Calculates justified horizontal beat spans, respecting the measure's positioning mode.
+    /// @param justification The beat-chart justification algorithm.
+    [[nodiscard]] Spacing calcSpacing(BeatChartJustification justification = BeatChartJustification::Modern) const;
 
-    /// @brief Calculates the horizontal position of the first beat, in Evpu from the measure's left edge.
-    ///
-    /// The first beat is the first slot of #calcSpacing, stretched into the music area.
-    [[nodiscard]] EvpuFloat calcFirstBeatEvpu() const;
+    /// @brief Returns the first justified beat's position in Evpu from the measure's left edge.
+    /// @param justification The beat-chart justification algorithm, also used by #calcSpacing.
+    [[nodiscard]] EvpuFloat calcFirstBeatEvpu(BeatChartJustification justification = BeatChartJustification::Modern) const;
 
-    /// @brief Converts a horizontal offset from the measure's left edge to a global Edu position in the measure.
+    /// @brief Converts a horizontal offset from the measure's left edge to an integral global Edu position.
     ///
-    /// This approximates Finale's own conversion, as used when it upgrades legacy horizontal offsets and places
-    /// @ref SplitMeasure points. It interpolates linearly between the slots of #calcSpacing as stretched into the
-    /// music area, reaching #Spacing::endEdu at the end of it. Entries are not consulted, so the result is
-    /// approximate when the measure has a beat chart.
+    /// Uses the measure's positioning mode, front/back spacing and extras, and justified beat-chart spans.
+    /// Justified positions and interpolated durations are rounded to nearest integers, half away from zero.
+    /// Positions beyond the music area extrapolate along the last span. A position before a span's start
+    /// returns that span's Edu, except before the initial beat or pickup, where it returns the negative
+    /// Evpu distance from that start. With no usable chart, conversion is proportional to measure duration.
     ///
     /// @param evpuFromLeftEdge The horizontal offset from the measure's left edge, in Scroll View.
-    /// @return The Edu position, unrounded. Positions before the first beat return zero. Positions past the end of
-    /// the music area continue at the slope of its last segment, so they exceed the measure's duration. Finale's
-    /// own conversions round to the nearest Edu, half away from zero.
-    [[nodiscard]] EduFloat calcEduFromEvpu(EvpuFloat evpuFromLeftEdge) const;
+    /// @param justification The beat-chart justification algorithm.
+    /// @param allowNegative Whether offsets before the music area's origin may produce negative positions.
+    /// Otherwise such offsets return zero, before the chart is consulted.
+    /// @return The rounded Edu position. Zero-duration measures return zero; zero-width linear conversion
+    /// returns the offset from the music area's origin.
+    [[nodiscard]] Edu calcEduFromEvpu(Evpu evpuFromLeftEdge,
+        BeatChartJustification justification = BeatChartJustification::Modern, bool allowNegative = false) const;
 
     /// @brief Calculates the time stretch. This is the value by which independent time edus are multiplied to get global edus.
     /// @param forStaff The staff for which to calculate the time stretch.
@@ -2171,8 +2178,8 @@ public:
     Cmper scrollViewIUlist{};               ///< If this value is non-zero, it is the iuList @ref Cmper of the current Staff List in Scroll View.
     Cmper studioViewIUlist{};               ///< The iuList @ref Cmper for Studio View.
     /**
-     * @brief If non-zero, Special Part Extraction is enabled and this is the @ref Cmper
-     * for its legacy @ref StaffUsed array.
+     * @brief Special Part Extraction is enabled when this equals #SPECIAL_PART_EXTRACTION_SYSTEM_ID,
+     * the @ref Cmper for its legacy @ref StaffUsed array.
      *
      * In older (pre-optimization) Finale files, this Cmper identified the staff list
      * used for Page View layout of an extracted part. In modern Finale, including all
@@ -2187,6 +2194,9 @@ public:
      * (xml node is `<pageViewIUlist>`)
     */
     Cmper specialPartExtractionIUList{};
+
+    /// @brief Returns whether Special Part Extraction is enabled for this part.
+    bool isSpecialPartExtraction() const { return specialPartExtractionIUList == SPECIAL_PART_EXTRACTION_SYSTEM_ID; }
 
     /**
      * @brief Return the @ref StaffUsed cmper for Scroll View for this part.
@@ -2665,8 +2675,8 @@ public:
  * break positions depending on spacing. See the warning below for the actual behavior.
  *
  * The array entries are Evpu offsets from the measure's left edge in Scroll View. Determining the exact split location
- * would require Finale's layout process. #Measure::calcEduFromEvpu approximates the beat position of a split
- * point from the measure's beat chart and spacing.
+ * would require Finale's layout process. #Measure::calcEduFromEvpu converts the stored offset to an integral
+ * beat position using the measure's beat chart and spacing.
  *
  * @note This is a legacy Finale feature. It was never consistently implemented across the program,
  * and over time it became less useful as newer features were developed without support for it.

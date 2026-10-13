@@ -1005,3 +1005,43 @@ TEST(GFrameHold, CalcNearestEntryNoExactLayer)
         EXPECT_EQ(entryInfo.getIndexInFrame(), 2);
     }
 }
+
+TEST(GFrameHoldTest, MissingMeasureOrStaffSkipsEntryFrame)
+{
+    std::vector<char> xml;
+    musxtest::readFile(musxtest::getInputPath() / "quintuplet.enigmaxml", xml);
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::tinyxml2::Document>(xml);
+    constexpr StaffCmper validStaffId = 1;
+    constexpr MeasCmper validMeasureId = 1;
+    constexpr Cmper missingId = 30000;
+    auto validHold = doc->getDetails()->get<details::GFrameHold>(SCORE_PARTID, validStaffId, validMeasureId);
+    ASSERT_TRUE(validHold);
+    ASSERT_TRUE(details::GFrameHoldContext(validHold).createEntryFrame(0));
+    ASSERT_FALSE(doc->getOthers()->get<others::Staff>(SCORE_PARTID, missingId));
+    ASSERT_FALSE(doc->getOthers()->get<others::Measure>(SCORE_PARTID, missingId));
+    struct LoggerRestorer {
+        Logger::LogCallback callback;
+        ~LoggerRestorer() { Logger::setCallback(std::move(callback)); }
+    } restorer{Logger::getCallback()};
+    std::vector<std::pair<Logger::LogLevel, std::string>> diagnostics;
+    Logger::setCallback([&](Logger::LogLevel level, const std::string& message) {
+        diagnostics.emplace_back(level, message);
+    });
+    for (bool missingMeasure : {true, false}) {
+        auto hold = std::make_shared<details::GFrameHold>(doc, SCORE_PARTID, EnigmaBase::ShareMode::All,
+            missingMeasure ? validStaffId : missingId, missingMeasure ? missingId : validMeasureId);
+        hold->frames = validHold->frames;
+        details::GFrameHoldContext context(hold);
+        diagnostics.clear();
+        EXPECT_EQ(context.createEntryFrame(0), nullptr);
+        ASSERT_EQ(diagnostics.size(), 1u);
+        EXPECT_EQ(diagnostics.front().first, Logger::LogLevel::Warning);
+        EXPECT_NE(diagnostics.front().second.find(missingMeasure ? "Measure instance" : "Staff instance"), std::string::npos);
+        bool visited = false;
+        EXPECT_TRUE(context.iterateEntries(0, [&](const EntryInfoPtr&) {
+            visited = true;
+            return true;
+        }));
+        EXPECT_FALSE(visited);
+    }
+}

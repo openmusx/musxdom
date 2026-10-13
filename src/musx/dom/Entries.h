@@ -144,7 +144,9 @@ public:
     /** @brief Returns the @ref EntryFrame for all entries in the given layer.
      *
      * @param layerIndex The layer index (0..3) to iterate.
-     * @return EntryFrame for layer or nullptr if none.
+     * @return EntryFrame for layer or nullptr if none, or if its measure or staff is missing.
+     * @details A missing measure or staff logs a warning and skips the frame.
+     * @throws std::invalid_argument if the layer index is out of range.
      */
     [[nodiscard]]
     std::shared_ptr<const EntryFrame> createEntryFrame(LayerIndex layerIndex) const;

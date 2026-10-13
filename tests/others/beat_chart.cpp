@@ -219,6 +219,7 @@ static std::string beatChartMeasureXml(int width)
     </beatChart>
     <measSpec cmper="1">
       <width>)xml" + std::to_string(width) + R"xml(</width>
+      <posMode>beatchart</posMode>
       <beats>4</beats>
       <divbeat>1024</divbeat>
     </measSpec>
@@ -236,9 +237,9 @@ TEST(BeatChartElement, EduFromEvpuWithBeatChart)
 
     EXPECT_DOUBLE_EQ(measure->calcFirstBeatEvpu(), 46.0);
     EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(46), 0.0);
-    EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(146), 1024.0);
+    EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(146), 2048.0);
     EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(246), 2048.0);
-    EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(371), 2560.0);
+    EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(371), 3072.0);
     // The last element's span ends at the barline.
     EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(521), 3584.0);
     EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(546), 4096.0);
@@ -254,7 +255,7 @@ TEST(BeatChartElement, EduFromEvpuWithStretchedBeatChart)
     ASSERT_TRUE(measure);
 
     EXPECT_DOUBLE_EQ(measure->calcFirstBeatEvpu(), 56.0);
-    EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(256), 1024.0);
+    EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(256), 2048.0);
     EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(456), 2048.0);
     EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(1006), 3584.0);
     EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(1056), 4096.0);
@@ -292,6 +293,7 @@ TEST(BeatChartElement, EduFromEvpuWithAutomaticBeatChart)
     </beatChart>
     <measSpec cmper="1">
       <width>351</width>
+      <posMode>beatchart</posMode>
       <beats>4</beats>
       <divbeat>1024</divbeat>
     </measSpec>
@@ -309,13 +311,15 @@ TEST(BeatChartElement, EduFromEvpuWithAutomaticBeatChart)
     const auto spacing = measure->calcSpacing();
     EXPECT_EQ(spacing.musicStart, 36);
     EXPECT_EQ(spacing.musicWidth, 315);
-    EXPECT_EQ(spacing.spacingWidth, 315);
+    EXPECT_EQ(spacing.chartDuration, 4096);
     EXPECT_EQ(spacing.endEdu, 4096);
     ASSERT_EQ(spacing.slots.size(), 2u);
     EXPECT_EQ(spacing.slots[0].offset, 3);
     EXPECT_EQ(spacing.slots[0].edu, 0);
+    EXPECT_EQ(spacing.slots[0].endOffset, 99);
     EXPECT_EQ(spacing.slots[1].offset, 99);
     EXPECT_EQ(spacing.slots[1].edu, 2048);
+    EXPECT_EQ(spacing.slots[1].endOffset, 195);
 
     EXPECT_DOUBLE_EQ(measure->calcFirstBeatEvpu(), 39.0);
     EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(87), 1024.0);
@@ -330,23 +334,18 @@ TEST(BeatChartElement, EduFromEvpuForSplitPoints)
     musxtest::readFile(musxtest::getInputPath() / "beatchart_splitpoint.enigmaxml", xml);
     auto doc = musx::factory::DocumentFactory::create<musx::xml::pugi::Document>(xml);
 
-    // Every measure has an automatically spaced beat chart whose display positions follow minPos, and extra space at
-    // each end. Respacing with musBack 73 widened every measure without changing its chart, and the splits were
-    // realigned; the helper stretches each chart to fill its measure. Each split point was placed by eye: in measure 1 at the start of a hairpin that begins at Edu 3584,
-    // and in measure 2 at the end of a hairpin that ends at Edu 1600. Measure 3 copies measure 1 without its time
-    // signature, which changes nothing stored. Measure 4 copies measure 2 with the split at the start of a hairpin
-    // that begins at Edu 3840, after the last beat chart element. Measure 5 copies measure 3 with its last three
-    // beat chart elements removed and the split at the end of a hairpin that ends at Edu 3968, in the last element's
-    // span. Measures 4 and 5 place the end of the music area at the barline, not before the extra space at the back.
-    // These values check the conversion, not its accuracy: each split was aligned by eye.
+    // Split positions are graphical offsets; the converter subtracts both measure extras.
+    // Measures 1/3/5 have available width 1939, equal to their minimum width. Measures 2/4
+    // have available width 895, equal to their natural width. The first-beat drawing estimate
+    // uses the same justified spans as the integer coordinate conversion.
     struct Expected
     {
         MeasCmper measureId;
         Evpu firstBeat;
         Edu splitEdu;
     };
-    for (const auto& expected : {Expected{1, 176, 3597}, Expected{2, 140, 1529}, Expected{3, 176, 3597}, Expected{4, 140, 3972},
-             Expected{5, 176, 4008}}) {
+    for (const auto& expected : {Expected{1, 176, 3806}, Expected{2, 135, 1939}, Expected{3, 176, 3806}, Expected{4, 135, 4532},
+             Expected{5, 176, 4257}}) {
         auto measure = doc->getOthers()->get<others::Measure>(SCORE_PARTID, expected.measureId);
         auto split = doc->getOthers()->get<others::SplitMeasure>(SCORE_PARTID, expected.measureId);
         ASSERT_TRUE(measure);
@@ -354,5 +353,130 @@ TEST(BeatChartElement, EduFromEvpuForSplitPoints)
         ASSERT_FALSE(split->values.empty());
         EXPECT_EQ(std::lround(measure->calcFirstBeatEvpu()), expected.firstBeat);
         EXPECT_EQ(std::lround(measure->calcEduFromEvpu(split->values[0])), expected.splitEdu);
+    }
+}
+
+TEST(BeatChartElement, EduFromEvpuJustificationBranches)
+{
+    const auto doc = musx::factory::DocumentFactory::create<musx::xml::pugi::Document>(musxtest::string_view(R"xml(
+<finale><others>
+<measSpec cmper="1"><width>90</width><beats>4</beats><divbeat>1024</divbeat><posMode>beatchart</posMode></measSpec>
+<beatChart cmper="1" inci="0"><control><totalDur>4096</totalDur><totalWidth>100</totalWidth><minWidth>60</minWidth><allotWidth>200</allotWidth></control></beatChart>
+<beatChart cmper="1" inci="1"><endPos>20</endPos><minPos>10</minPos></beatChart>
+<beatChart cmper="1" inci="2"><dur>1024</dur><pos>30</pos><endPos>70</endPos><minPos>50</minPos></beatChart>
+<beatChart cmper="1" inci="3"><dur>3072</dur><pos>80</pos><endPos>100</endPos><minPos>55</minPos></beatChart>
+</others></finale>)xml"));
+    auto measure = std::const_pointer_cast<others::Measure>(doc->getOthers()->get<others::Measure>(SCORE_PARTID, 1));
+    using Justification = others::Measure::BeatChartJustification;
+    const auto spacing = measure->calcSpacing();
+    ASSERT_EQ(spacing.slots.size(), 3u);
+    EXPECT_EQ(spacing.musicStart, 0);
+    EXPECT_EQ(spacing.musicWidth, 90);
+    EXPECT_EQ(spacing.slots[0].offset, 10);
+    EXPECT_EQ(spacing.slots[0].endOffset, 45);
+    EXPECT_EQ(spacing.slots[1].offset, 50);
+    EXPECT_EQ(spacing.slots[1].endOffset, 73);
+    EXPECT_EQ(spacing.slots[2].offset, 78);
+    EXPECT_EQ(spacing.slots[2].endOffset, 90);
+    EXPECT_EQ(measure->calcFirstBeatEvpu(), 10);
+    const auto legacy = measure->calcSpacing(Justification::Legacy);
+    EXPECT_EQ(legacy.slots[1].offset, 54);
+    EXPECT_EQ(legacy.slots[1].endOffset, 74);
+    // Minimum and natural layouts at width 90 produce spans [10,45], [50,73], [78,90].
+    EXPECT_EQ(measure->calcEduFromEvpu(45), 1024);
+    EXPECT_EQ(measure->calcEduFromEvpu(48), 1024); // gap before the next span
+    EXPECT_EQ(measure->calcEduFromEvpu(52), 1202);
+    EXPECT_EQ(measure->calcEduFromEvpu(84), 3584);
+    EXPECT_EQ(measure->calcEduFromEvpu(96), 4608);
+    // Legacy interpolation instead produces [10,50], [54,74], [78,90].
+    EXPECT_EQ(measure->calcEduFromEvpu(52, Justification::Legacy), 1024);
+    EXPECT_EQ(measure->calcEduFromEvpu(64, Justification::Legacy), 2048);
+    // Below minimum width, rounded minimum positions determine all span boundaries.
+    measure->width = 30;
+    EXPECT_EQ(measure->calcEduFromEvpu(15), 512);
+    EXPECT_EQ(measure->calcEduFromEvpu(28), 3072);
+    // Between natural and allotted widths: [10,44], [59,117], [131,160].
+    measure->width = 160;
+    EXPECT_EQ(measure->calcEduFromEvpu(27), 512);
+    EXPECT_EQ(measure->calcEduFromEvpu(88), 2048);
+    EXPECT_EQ(measure->calcEduFromEvpu(131), 3072);
+    // At and above the allotted width, ideal spans are scaled around the first minimum.
+    measure->width = 240;
+    EXPECT_EQ(measure->calcEduFromEvpu(33), 512);
+    EXPECT_EQ(measure->calcEduFromEvpu(125), 2048);
+    EXPECT_EQ(measure->calcEduFromEvpu(194), 3072);
+    measure->width = 60;
+    EXPECT_EQ(measure->calcEduFromEvpu(50), 1024);
+    measure->width = 120;
+    EXPECT_EQ(measure->calcEduFromEvpu(50), 1024);
+    measure->width = 200;
+    EXPECT_EQ(measure->calcEduFromEvpu(67), 1024);
+    measure->width = 90;
+    measure->beats = 2;
+    // Modern intermediate spans are duration-adjusted around the first minimum position.
+    // Interpolation gives 1195, then duration normalization rounds 597.5 to 598.
+    EXPECT_EQ(measure->calcEduFromEvpu(31), 598);
+}
+
+TEST(BeatChartElement, EduFromEvpuRoundingModesAndDuration)
+{
+    const auto doc = musx::factory::DocumentFactory::create<musx::xml::pugi::Document>(musxtest::string_view(R"xml(
+<finale><others>
+<measSpec cmper="1"><width>101</width><beats>2</beats><divbeat>1024</divbeat><posMode>beatchart</posMode></measSpec>
+<beatChart cmper="1" inci="0"><control><totalDur>2048</totalDur><totalWidth>100</totalWidth></control></beatChart>
+<beatChart cmper="1" inci="1"><endPos>50</endPos></beatChart>
+<beatChart cmper="1" inci="2"><dur>1024</dur><pos>50</pos><endPos>100</endPos></beatChart>
+</others></finale>)xml"));
+    auto measure = std::const_pointer_cast<others::Measure>(doc->getOthers()->get<others::Measure>(SCORE_PARTID, 1));
+    using Justification = others::Measure::BeatChartJustification;
+    // Round the middle coordinate from 50.5 to 51 before interpolating, not just the final Edu.
+    EXPECT_EQ(measure->calcEduFromEvpu(25), 502);
+    EXPECT_EQ(measure->calcEduFromEvpu(51), 1024);
+    EXPECT_EQ(measure->calcEduFromEvpu(126), 2560);
+    measure->positioningMode = others::Measure::PositioningType::TimeSignature;
+    EXPECT_EQ(measure->calcEduFromEvpu(25), 507);
+    measure->positioningMode = others::Measure::PositioningType::BeatChartPlusPositioning;
+    measure->frontSpaceExtra = 10;
+    measure->backSpaceExtra = 11;
+    EXPECT_EQ(measure->calcEduFromEvpu(50), 1024);
+    EXPECT_EQ(measure->calcEduFromEvpu(90), 2048);
+    EXPECT_EQ(measure->calcEduFromEvpu(5), 0);
+    EXPECT_EQ(measure->calcEduFromEvpu(5, Justification::Modern, true), -5);
+    auto control = doc->getOthers()->get<others::BeatChartElement>(SCORE_PARTID, 1, Inci(0))->control;
+    control->totalDur = 4096;
+    // Modern expanded positions are unchanged, then positive Edu is normalized by duration/chart duration.
+    EXPECT_EQ(measure->calcEduFromEvpu(30), 256);
+    EXPECT_EQ(measure->calcEduFromEvpu(30, Justification::Legacy), 128);
+    control->totalDur = 0; // an unusable chart falls back to linear conversion
+    EXPECT_EQ(measure->calcEduFromEvpu(30), 512);
+    measure->width = 21; // no available music width
+    EXPECT_EQ(measure->calcEduFromEvpu(30), 20);
+}
+
+TEST(BeatChartElement, EduFromEvpuFinalSpanEndpoint)
+{
+    const auto doc = musx::factory::DocumentFactory::create<musx::xml::pugi::Document>(musxtest::string_view(R"xml(
+<finale><others>
+<measSpec cmper="1"><width>100</width><beats>2</beats><divbeat>1024</divbeat><posMode>beatchart</posMode></measSpec>
+<beatChart cmper="1" inci="0"><control><totalDur>2048</totalDur><totalWidth>100</totalWidth></control></beatChart>
+<beatChart cmper="1" inci="1"><endPos>80</endPos></beatChart>
+</others></finale>)xml"));
+    const auto measure = doc->getOthers()->get<others::Measure>(SCORE_PARTID, 1);
+    auto span = std::const_pointer_cast<others::BeatChartElement>(
+        doc->getOthers()->get<others::BeatChartElement>(SCORE_PARTID, 1, Inci(1)));
+    ASSERT_TRUE(measure);
+    ASSERT_TRUE(span);
+    using Justification = others::Measure::BeatChartJustification;
+    for (const auto mode : {Justification::Legacy, Justification::Modern}) {
+        span->endPos = 80;
+        EXPECT_EQ(measure->calcEduFromEvpu(40, mode), 1024);
+        EXPECT_EQ(measure->calcEduFromEvpu(79, mode), 2022);
+        EXPECT_EQ(measure->calcEduFromEvpu(80, mode), 1638);
+        EXPECT_EQ(measure->calcEduFromEvpu(100, mode), 2048);
+        span->endPos = 120;
+        EXPECT_EQ(measure->calcEduFromEvpu(100, mode), 1707);
+        EXPECT_EQ(measure->calcEduFromEvpu(119, mode), 2031);
+        EXPECT_EQ(measure->calcEduFromEvpu(120, mode), 2458);
+        EXPECT_EQ(measure->calcEduFromEvpu(150, mode), 3072);
     }
 }
