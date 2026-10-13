@@ -544,7 +544,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcPolicyVoicingIncl
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classmusx_1_1dom_1_1EntryFrame.html" title="Represents a vector of EntryInfo instances for a given frame, along with computed information.">EntryFrame</a> for layer or nullptr if none. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classmusx_1_1dom_1_1EntryFrame.html" title="Represents a vector of EntryInfo instances for a given frame, along with computed information.">EntryFrame</a> for layer or nullptr if none, or if its measure or staff is missing.</dd></dl>
+<p>A missing measure or staff logs a warning and skips the frame. </p><dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if the layer index is out of range. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

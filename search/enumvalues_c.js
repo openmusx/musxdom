@@ -21,8 +21,9 @@ var searchData=
   ['minus_18',['Minus',['../classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#ad089ab13497a1e9197571632e31c2757a453fb623e752c5993f65bc410fd74fe5',1,'musx::dom::others::ChordSuffixElement']]],
   ['misc_19',['Misc',['../classmusx_1_1dom_1_1others_1_1MarkingCategory.html#a7c1e56af5492f30cfe846f592e06039aa74248c725e00bf9fe04df4e35b249a19',1,'musx::dom::others::MarkingCategory']]],
   ['mixolydian_20',['Mixolydian',['../namespacemusic__theory.html#a04ed1b374e50ea532b72ed1bb66683ceac1992ab744a3d5a14cb387c34a42c7ed',1,'music_theory']]],
-  ['multimeasrest_21',['MultiMeasRest',['../classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aa4be43c50e31a6d791c9fcf20ba698660',1,'musx::dom::options::FontOptions']]],
-  ['music_22',['Music',['../classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aa47dcbd834e669233d7eb8a51456ed217',1,'musx::dom::options::FontOptions']]],
-  ['musicfont_23',['MusicFont',['../structmusx_1_1util_1_1EnigmaStyles.html#a5c7a62c1475b70521ba54e0ccec5768daa04c4b5345691a366bf4015c05d9e664',1,'musx::util::EnigmaStyles']]],
-  ['muted_24',['Muted',['../classmusx_1_1dom_1_1details_1_1FretboardDiagram.html#a6d4d2c889167564a58c02dcdc073f231a70a51c85067ce6cd7fa1630b5a2d4951',1,'musx::dom::details::FretboardDiagram']]]
+  ['modern_21',['Modern',['../classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08aad1c9cd3e7b07e2c364c985f73188054',1,'musx::dom::others::Measure']]],
+  ['multimeasrest_22',['MultiMeasRest',['../classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aa4be43c50e31a6d791c9fcf20ba698660',1,'musx::dom::options::FontOptions']]],
+  ['music_23',['Music',['../classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aa47dcbd834e669233d7eb8a51456ed217',1,'musx::dom::options::FontOptions']]],
+  ['musicfont_24',['MusicFont',['../structmusx_1_1util_1_1EnigmaStyles.html#a5c7a62c1475b70521ba54e0ccec5768daa04c4b5345691a366bf4015c05d9e664',1,'musx::util::EnigmaStyles']]],
+  ['muted_25',['Muted',['../classmusx_1_1dom_1_1details_1_1FretboardDiagram.html#a6d4d2c889167564a58c02dcdc073f231a70a51c85067ce6cd7fa1630b5a2d4951',1,'musx::dom::details::FretboardDiagram']]]
 ];

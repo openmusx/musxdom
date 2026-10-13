@@ -125,10 +125,10 @@ $(document).ready(function(){initNavTree('classmusx_1_1dom_1_1others_1_1Measure.
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html">Spacing</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A measure's horizontal spacing as Finale uses it to place metric positions.  <a href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Justified horizontal beat spacing for the measure's current width and positioning mode.  <a href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1SpacingSlot.html">SpacingSlot</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">One beat position in a measure's unstretched spacing. See #Spacing.  <a href="structmusx_1_1dom_1_1others_1_1Measure_1_1SpacingSlot.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A justified beat span. Coordinates are integral Evpu relative to <a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#a914295a942e51a4ba5505cf2027002a3" title="Music-area origin, from the measure&#39;s left edge.">Spacing::musicStart</a>.  <a href="structmusx_1_1dom_1_1others_1_1Measure_1_1SpacingSlot.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -172,6 +172,11 @@ Public Types</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a9ddff943859253bd689e6c0a93c543b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">How and whether to show a Time Signature in this measure.  <a href="classmusx_1_1dom_1_1others_1_1Measure.html#a9ddff943859253bd689e6c0a93c543b6">More...</a><br /></td></tr>
 <tr class="separator:a9ddff943859253bd689e6c0a93c543b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb2ed58b3b12a5f12b79e0506f13ce08" id="r_afb2ed58b3b12a5f12b79e0506f13ce08"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08">BeatChartJustification</a> { <a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08a0cc0a0507cf3d31e5089f420a4cf8b4b">Legacy</a>
+, <a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08aad1c9cd3e7b07e2c364c985f73188054">Modern</a>
+ }</td></tr>
+<tr class="memdesc:afb2ed58b3b12a5f12b79e0506f13ce08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selects the beat-chart justification used for spacing and coordinate conversion.  <a href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08">More...</a><br /></td></tr>
+<tr class="separator:afb2ed58b3b12a5f12b79e0506f13ce08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_types_classmusx_1_1dom_1_1EnigmaBase"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classmusx_1_1dom_1_1EnigmaBase')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html">musx::dom::EnigmaBase</a></td></tr>
 <tr class="memitem:ac655bdce0724d5e32cfcd6203c9a5d1f inherit pub_types_classmusx_1_1dom_1_1EnigmaBase" id="r_ac655bdce0724d5e32cfcd6203c9a5d1f"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#ac655bdce0724d5e32cfcd6203c9a5d1f">ShareMode</a> { <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#ac655bdce0724d5e32cfcd6203c9a5d1fab1c94ca2fbc3e78fc30069c8d0f01680">All</a>
 , <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#ac655bdce0724d5e32cfcd6203c9a5d1fa44ffd38a6dea695cbe2b34efdcc6cf27">Partial</a>
@@ -220,16 +225,15 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcShouldShowFullNam
 <tr class="memitem:acae376781db54c20039e5a6c6626f17b" id="r_acae376781db54c20039e5a6c6626f17b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1util_1_1Fraction.html">util::Fraction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#acae376781db54c20039e5a6c6626f17b">calcDuration</a> (const std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#ada2c0787f5b7cb764d2a344d491ab99c">StaffCmper</a> &gt; &amp;forStaff=std::nullopt) const</td></tr>
 <tr class="memdesc:acae376781db54c20039e5a6c6626f17b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the duration of the measure according to the time signature.  <br /></td></tr>
 <tr class="separator:acae376781db54c20039e5a6c6626f17b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc382fd3592b0376f733e2ba14a4e7ba" id="r_acc382fd3592b0376f733e2ba14a4e7ba"><td class="memItemLeft" align="right" valign="top"><a id="acc382fd3592b0376f733e2ba14a4e7ba" name="acc382fd3592b0376f733e2ba14a4e7ba"></a>
-<a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html">Spacing</a>&#160;</td><td class="memItemRight" valign="bottom"><b>calcSpacing</b> () const</td></tr>
-<tr class="memdesc:acc382fd3592b0376f733e2ba14a4e7ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the measure's horizontal spacing. See #Spacing. <br /></td></tr>
-<tr class="separator:acc382fd3592b0376f733e2ba14a4e7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af44bc969121ffda2bf7283fbc27470b0" id="r_af44bc969121ffda2bf7283fbc27470b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a901fc57f5455ae033180b2401434b6a9">EvpuFloat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#af44bc969121ffda2bf7283fbc27470b0">calcFirstBeatEvpu</a> () const</td></tr>
-<tr class="memdesc:af44bc969121ffda2bf7283fbc27470b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the horizontal position of the first beat, in Evpu from the measure's left edge.  <br /></td></tr>
-<tr class="separator:af44bc969121ffda2bf7283fbc27470b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fa06bfafb05e7bccbc95efa2946d94e" id="r_a1fa06bfafb05e7bccbc95efa2946d94e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#aea2ad29fab8a84e0bc89e8d209068a2e">EduFloat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#a1fa06bfafb05e7bccbc95efa2946d94e">calcEduFromEvpu</a> (<a class="el" href="namespacemusx_1_1dom.html#a901fc57f5455ae033180b2401434b6a9">EvpuFloat</a> evpuFromLeftEdge) const</td></tr>
-<tr class="memdesc:a1fa06bfafb05e7bccbc95efa2946d94e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a horizontal offset from the measure's left edge to a global Edu position in the measure.  <br /></td></tr>
-<tr class="separator:a1fa06bfafb05e7bccbc95efa2946d94e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cb7eb5091039098364cfdfe50ec22e2" id="r_a1cb7eb5091039098364cfdfe50ec22e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html">Spacing</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#a1cb7eb5091039098364cfdfe50ec22e2">calcSpacing</a> (<a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08">BeatChartJustification</a> justification=<a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08aad1c9cd3e7b07e2c364c985f73188054">BeatChartJustification::Modern</a>) const</td></tr>
+<tr class="memdesc:a1cb7eb5091039098364cfdfe50ec22e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates justified horizontal beat spans, respecting the measure's positioning mode.  <br /></td></tr>
+<tr class="separator:a1cb7eb5091039098364cfdfe50ec22e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a8b17431b7859448ef4060f96bf60e7" id="r_a1a8b17431b7859448ef4060f96bf60e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a901fc57f5455ae033180b2401434b6a9">EvpuFloat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#a1a8b17431b7859448ef4060f96bf60e7">calcFirstBeatEvpu</a> (<a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08">BeatChartJustification</a> justification=<a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08aad1c9cd3e7b07e2c364c985f73188054">BeatChartJustification::Modern</a>) const</td></tr>
+<tr class="memdesc:a1a8b17431b7859448ef4060f96bf60e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the first justified beat's position in Evpu from the measure's left edge.  <br /></td></tr>
+<tr class="separator:a1a8b17431b7859448ef4060f96bf60e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32b70c0bf56007e087e3440f976aef63" id="r_a32b70c0bf56007e087e3440f976aef63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a907ef641c247f1a5dbe75bbc972661f5">Edu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#a32b70c0bf56007e087e3440f976aef63">calcEduFromEvpu</a> (<a class="el" href="namespacemusx_1_1dom.html#a7f27f66bcae06e7ccf1173bfca211da2">Evpu</a> evpuFromLeftEdge, <a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08">BeatChartJustification</a> justification=<a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08aad1c9cd3e7b07e2c364c985f73188054">BeatChartJustification::Modern</a>, bool allowNegative=false) const</td></tr>
+<tr class="memdesc:a32b70c0bf56007e087e3440f976aef63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a horizontal offset from the measure's left edge to an integral global Edu position.  <br /></td></tr>
+<tr class="separator:a32b70c0bf56007e087e3440f976aef63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af967a7eb6a48dbd1c5515884e593382f" id="r_af967a7eb6a48dbd1c5515884e593382f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1util_1_1Fraction.html">util::Fraction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#af967a7eb6a48dbd1c5515884e593382f">calcTimeStretch</a> (<a class="el" href="namespacemusx_1_1dom.html#ada2c0787f5b7cb764d2a344d491ab99c">StaffCmper</a> forStaff) const</td></tr>
 <tr class="memdesc:af967a7eb6a48dbd1c5515884e593382f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the time stretch. This is the value by which independent time edus are multiplied to get global edus.  <br /></td></tr>
 <tr class="separator:af967a7eb6a48dbd1c5515884e593382f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -566,6 +570,36 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="afb2ed58b3b12a5f12b79e0506f13ce08" name="afb2ed58b3b12a5f12b79e0506f13ce08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb2ed58b3b12a5f12b79e0506f13ce08">&#9670;&#160;</a></span>BeatChartJustification</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08">musx::dom::others::Measure::BeatChartJustification</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Selects the beat-chart justification used for spacing and coordinate conversion. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="afb2ed58b3b12a5f12b79e0506f13ce08a0cc0a0507cf3d31e5089f420a4cf8b4b" name="afb2ed58b3b12a5f12b79e0506f13ce08a0cc0a0507cf3d31e5089f420a4cf8b4b"></a>Legacy&#160;</td><td class="fielddoc"><p>Uses legacy duration scaling and minimum-to-allotted interpolation. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afb2ed58b3b12a5f12b79e0506f13ce08aad1c9cd3e7b07e2c364c985f73188054" name="afb2ed58b3b12a5f12b79e0506f13ce08aad1c9cd3e7b07e2c364c985f73188054"></a>Modern&#160;</td><td class="fielddoc"><p>Uses minimum, natural, and allotted spacing; the default for XML documents. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="a1a2145e4dfc1cbddbb720b384c2fd88f" name="a1a2145e4dfc1cbddbb720b384c2fd88f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1a2145e4dfc1cbddbb720b384c2fd88f">&#9670;&#160;</a></span>PositioningType</h2>
 
@@ -755,36 +789,54 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a1fa06bfafb05e7bccbc95efa2946d94e" name="a1fa06bfafb05e7bccbc95efa2946d94e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1fa06bfafb05e7bccbc95efa2946d94e">&#9670;&#160;</a></span>calcEduFromEvpu()</h2>
+<a id="a32b70c0bf56007e087e3440f976aef63" name="a32b70c0bf56007e087e3440f976aef63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32b70c0bf56007e087e3440f976aef63">&#9670;&#160;</a></span>calcEduFromEvpu()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#aea2ad29fab8a84e0bc89e8d209068a2e">EduFloat</a> musx::dom::others::Measure::calcEduFromEvpu </td>
+          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#a907ef641c247f1a5dbe75bbc972661f5">Edu</a> musx::dom::others::Measure::calcEduFromEvpu </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a901fc57f5455ae033180b2401434b6a9">EvpuFloat</a>&#160;</td>
-          <td class="paramname"><em>evpuFromLeftEdge</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a7f27f66bcae06e7ccf1173bfca211da2">Evpu</a>&#160;</td>
+          <td class="paramname"><em>evpuFromLeftEdge</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08">BeatChartJustification</a>&#160;</td>
+          <td class="paramname"><em>justification</em> = <code><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08aad1c9cd3e7b07e2c364c985f73188054">BeatChartJustification::Modern</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>allowNegative</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Converts a horizontal offset from the measure's left edge to a global Edu position in the measure. </p>
-<p>This approximates Finale's own conversion, as used when it upgrades legacy horizontal offsets and places <a class="el" href="classmusx_1_1dom_1_1others_1_1SplitMeasure.html">SplitMeasure</a> points. It interpolates linearly between the slots of <a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#acc382fd3592b0376f733e2ba14a4e7ba" title="Calculates the measure&#39;s horizontal spacing. See #Spacing.">calcSpacing</a> as stretched into the music area, reaching <a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#a83138bc42022b6ed7478a4af105bde21" title="The Edu position at the end of the spacing (the measure&#39;s duration).">Spacing::endEdu</a> at the end of it. Entries are not consulted, so the result is approximate when the measure has a beat chart.</p>
+<p>Converts a horizontal offset from the measure's left edge to an integral global Edu position. </p>
+<p>Uses the measure's positioning mode, front/back spacing and extras, and justified beat-chart spans. Justified positions and interpolated durations are rounded to nearest integers, half away from zero. Positions beyond the music area extrapolate along the last span. A position before a span's start returns that span's Edu, except before the initial beat or pickup, where it returns the negative Evpu distance from that start. With no usable chart, conversion is proportional to measure duration.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">evpuFromLeftEdge</td><td>The horizontal offset from the measure's left edge, in Scroll View. </td></tr>
+    <tr><td class="paramname">justification</td><td>The beat-chart justification algorithm. </td></tr>
+    <tr><td class="paramname">allowNegative</td><td>Whether offsets before the music area's origin may produce negative positions. Otherwise such offsets return zero, before the chart is consulted. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The Edu position, unrounded. Positions before the first beat return zero. Positions past the end of the music area continue at the slope of its last segment, so they exceed the measure's duration. Finale's own conversions round to the nearest Edu, half away from zero. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The rounded Edu position. Zero-duration measures return zero; zero-width linear conversion returns the offset from the music area's origin. </dd></dl>
 
 </div>
 </div>
-<a id="af44bc969121ffda2bf7283fbc27470b0" name="af44bc969121ffda2bf7283fbc27470b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af44bc969121ffda2bf7283fbc27470b0">&#9670;&#160;</a></span>calcFirstBeatEvpu()</h2>
+<a id="a1a8b17431b7859448ef4060f96bf60e7" name="a1a8b17431b7859448ef4060f96bf60e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a8b17431b7859448ef4060f96bf60e7">&#9670;&#160;</a></span>calcFirstBeatEvpu()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -792,14 +844,20 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#a901fc57f5455ae033180b2401434b6a9">EvpuFloat</a> musx::dom::others::Measure::calcFirstBeatEvpu </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08">BeatChartJustification</a>&#160;</td>
+          <td class="paramname"><em>justification</em> = <code><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08aad1c9cd3e7b07e2c364c985f73188054">BeatChartJustification::Modern</a></code></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Calculates the horizontal position of the first beat, in Evpu from the measure's left edge. </p>
-<p>The first beat is the first slot of <a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#acc382fd3592b0376f733e2ba14a4e7ba" title="Calculates the measure&#39;s horizontal spacing. See #Spacing.">calcSpacing</a>, stretched into the music area. </p>
+<p>Returns the first justified beat's position in Evpu from the measure's left edge. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">justification</td><td>The beat-chart justification algorithm, also used by <a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#a1cb7eb5091039098364cfdfe50ec22e2" title="Calculates justified horizontal beat spans, respecting the measure&#39;s positioning mode.">calcSpacing</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -847,6 +905,32 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The smallest legacy pickup spacer encountered in a layer for this measure and staff. Zero if none. </dd></dl>
+
+</div>
+</div>
+<a id="a1cb7eb5091039098364cfdfe50ec22e2" name="a1cb7eb5091039098364cfdfe50ec22e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cb7eb5091039098364cfdfe50ec22e2">&#9670;&#160;</a></span>calcSpacing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html">Measure::Spacing</a> musx::dom::others::Measure::calcSpacing </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08">BeatChartJustification</a>&#160;</td>
+          <td class="paramname"><em>justification</em> = <code><a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08aad1c9cd3e7b07e2c364c985f73188054">BeatChartJustification::Modern</a></code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates justified horizontal beat spans, respecting the measure's positioning mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">justification</td><td>The beat-chart justification algorithm. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

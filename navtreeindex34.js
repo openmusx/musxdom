@@ -1,5 +1,13 @@
 var NAVTREEINDEX34 =
 {
+"namespacemusx_1_1dom_1_1uuid.html#ab70d353ac3e0cc3249032eb9e3f5ac44":[1,0,1,0,5,406],
+"namespacemusx_1_1dom_1_1uuid.html#ab75aea63a4f99f79a44438c767a700af":[1,0,1,0,5,453],
+"namespacemusx_1_1dom_1_1uuid.html#ab7869a19290b7983e25a2b44cd54c585":[1,0,1,0,5,776],
+"namespacemusx_1_1dom_1_1uuid.html#ab78a473204b089c388c443201dda74cc":[1,0,1,0,5,134],
+"namespacemusx_1_1dom_1_1uuid.html#ab7c0953a00f8ba2c40bd738a2baa7525":[1,0,1,0,5,523],
+"namespacemusx_1_1dom_1_1uuid.html#ab7e245b338ed7751f3d38987dc5a2482":[1,0,1,0,5,264],
+"namespacemusx_1_1dom_1_1uuid.html#ab7fa669cc18180325b0e3352199df472":[1,0,1,0,5,267],
+"namespacemusx_1_1dom_1_1uuid.html#ab849aedade34d546dab3b05e3156b177":[1,0,1,0,5,83],
 "namespacemusx_1_1dom_1_1uuid.html#ab87b4b4a61f29e1295d0a78fabe05dec":[1,0,1,0,5,423],
 "namespacemusx_1_1dom_1_1uuid.html#ab87f47f13fe9d8f092e0ed379fbe49e0":[1,0,1,0,5,122],
 "namespacemusx_1_1dom_1_1uuid.html#ab8ce3547e07794b6b7e6fc1ebea34eb7":[1,0,1,0,5,88],
@@ -241,13 +249,5 @@ var NAVTREEINDEX34 =
 "structmusic__theory_1_1Pitch.html#a417284fb2ecf0dea7193240c78b3e1d4":[2,0,0,0,3],
 "structmusic__theory_1_1Pitch.html#a417284fb2ecf0dea7193240c78b3e1d4":[1,0,0,0,3],
 "structmusic__theory_1_1Pitch.html#a4f6043243691e1a652b488ebc855a742":[1,0,0,0,0],
-"structmusic__theory_1_1Pitch.html#a4f6043243691e1a652b488ebc855a742":[2,0,0,0,0],
-"structmusic__theory_1_1Pitch.html#a59d9a25515c9b894481fb111524147d1":[2,0,0,0,4],
-"structmusic__theory_1_1Pitch.html#a59d9a25515c9b894481fb111524147d1":[1,0,0,0,4],
-"structmusic__theory_1_1Pitch.html#a75dd7e1355d0f4dfb8bea60195ce4727":[1,0,0,0,1],
-"structmusic__theory_1_1Pitch.html#a75dd7e1355d0f4dfb8bea60195ce4727":[2,0,0,0,1],
-"structmusic__theory_1_1Pitch.html#aee7354814c377218f9a53a17b594e1a6":[1,0,0,0,2],
-"structmusic__theory_1_1Pitch.html#aee7354814c377218f9a53a17b594e1a6":[2,0,0,0,2],
-"structmusx_1_1dom_1_1EmbeddedGraphicData.html":[2,0,1,0,16],
-"structmusx_1_1dom_1_1EmbeddedGraphicData.html":[1,0,1,0,15]
+"structmusic__theory_1_1Pitch.html#a4f6043243691e1a652b488ebc855a742":[2,0,0,0,0]
 };

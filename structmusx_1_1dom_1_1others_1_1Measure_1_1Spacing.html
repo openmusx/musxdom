@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('structmusx_1_1dom_1_1others_1_1Measure
 </div><!--header-->
 <div class="contents">
 
-<p>A measure's horizontal spacing as Finale uses it to place metric positions.  
+<p>Justified horizontal beat spacing for the measure's current width and positioning mode.  
  <a href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Others_8h_source.html">Others.h</a>&gt;</code></p>
@@ -108,30 +108,43 @@ $(document).ready(function(){initNavTree('structmusx_1_1dom_1_1others_1_1Measure
 Public Attributes</h2></td></tr>
 <tr class="memitem:a914295a942e51a4ba5505cf2027002a3" id="r_a914295a942e51a4ba5505cf2027002a3"><td class="memItemLeft" align="right" valign="top"><a id="a914295a942e51a4ba5505cf2027002a3" name="a914295a942e51a4ba5505cf2027002a3"></a>
 <a class="el" href="namespacemusx_1_1dom.html#a7f27f66bcae06e7ccf1173bfca211da2">Evpu</a>&#160;</td><td class="memItemRight" valign="bottom"><b>musicStart</b> {}</td></tr>
-<tr class="memdesc:a914295a942e51a4ba5505cf2027002a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Where the music area begins, in Evpu from the measure's left edge. <br /></td></tr>
+<tr class="memdesc:a914295a942e51a4ba5505cf2027002a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Music-area origin, from the measure's left edge. <br /></td></tr>
 <tr class="separator:a914295a942e51a4ba5505cf2027002a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb05a48dcf23991b57aec8bcf6745e51" id="r_afb05a48dcf23991b57aec8bcf6745e51"><td class="memItemLeft" align="right" valign="top"><a id="afb05a48dcf23991b57aec8bcf6745e51" name="afb05a48dcf23991b57aec8bcf6745e51"></a>
 <a class="el" href="namespacemusx_1_1dom.html#a7f27f66bcae06e7ccf1173bfca211da2">Evpu</a>&#160;</td><td class="memItemRight" valign="bottom"><b>musicWidth</b> {}</td></tr>
-<tr class="memdesc:afb05a48dcf23991b57aec8bcf6745e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">The width of the music area, in Evpu. <br /></td></tr>
+<tr class="memdesc:afb05a48dcf23991b57aec8bcf6745e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available music width; may be nonpositive in a degenerate measure. <br /></td></tr>
 <tr class="separator:afb05a48dcf23991b57aec8bcf6745e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7de118110c11893e5ff2953199d8ce8a" id="r_a7de118110c11893e5ff2953199d8ce8a"><td class="memItemLeft" align="right" valign="top"><a id="a7de118110c11893e5ff2953199d8ce8a" name="a7de118110c11893e5ff2953199d8ce8a"></a>
-<a class="el" href="namespacemusx_1_1dom.html#a7f27f66bcae06e7ccf1173bfca211da2">Evpu</a>&#160;</td><td class="memItemRight" valign="bottom"><b>spacingWidth</b> {}</td></tr>
-<tr class="memdesc:a7de118110c11893e5ff2953199d8ce8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The unstretched width of the spacing, in Evpu. <br /></td></tr>
-<tr class="separator:a7de118110c11893e5ff2953199d8ce8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83138bc42022b6ed7478a4af105bde21" id="r_a83138bc42022b6ed7478a4af105bde21"><td class="memItemLeft" align="right" valign="top"><a id="a83138bc42022b6ed7478a4af105bde21" name="a83138bc42022b6ed7478a4af105bde21"></a>
 <a class="el" href="namespacemusx_1_1dom.html#a907ef641c247f1a5dbe75bbc972661f5">Edu</a>&#160;</td><td class="memItemRight" valign="bottom"><b>endEdu</b> {}</td></tr>
-<tr class="memdesc:a83138bc42022b6ed7478a4af105bde21"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Edu position at the end of the spacing (the measure's duration). <br /></td></tr>
+<tr class="memdesc:a83138bc42022b6ed7478a4af105bde21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global measure duration and final interpolation endpoint. <br /></td></tr>
 <tr class="separator:a83138bc42022b6ed7478a4af105bde21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19672fe2073136b7a7db24ffdd27c39b" id="r_a19672fe2073136b7a7db24ffdd27c39b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a907ef641c247f1a5dbe75bbc972661f5">Edu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#a19672fe2073136b7a7db24ffdd27c39b">chartDuration</a> {}</td></tr>
+<tr class="separator:a19672fe2073136b7a7db24ffdd27c39b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2cc278826f99bc2ff0c89ba9b9d1897" id="r_af2cc278826f99bc2ff0c89ba9b9d1897"><td class="memItemLeft" align="right" valign="top"><a id="af2cc278826f99bc2ff0c89ba9b9d1897" name="af2cc278826f99bc2ff0c89ba9b9d1897"></a>
 std::vector&lt; <a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1SpacingSlot.html">SpacingSlot</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>slots</b></td></tr>
-<tr class="memdesc:af2cc278826f99bc2ff0c89ba9b9d1897"><td class="mdescLeft">&#160;</td><td class="mdescRight">The slots in increasing order. There is always at least one. <br /></td></tr>
+<tr class="memdesc:af2cc278826f99bc2ff0c89ba9b9d1897"><td class="mdescLeft">&#160;</td><td class="mdescRight">Justified spans in chart order. Always contains at least one span. <br /></td></tr>
 <tr class="separator:af2cc278826f99bc2ff0c89ba9b9d1897"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A measure's horizontal spacing as Finale uses it to place metric positions. </p>
-<p>The music area runs from <a class="el" href="classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a5ec575c9e39bd7f246e5aa5ec1cfccec">options::MusicSpacingOptions::musFront</a> plus <a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#a809fb9908533a86729c984a0267bb526" title="Extra space at front of bar.">frontSpaceExtra</a> to <a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#a1902e527f91f6a490c30d41c69ad5aa8" title="&quot;Ideal&quot; measure width in Evpu. Page layout determines actual width.">width</a> less <a class="el" href="classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a872c74fb4fc6c7a736e6af846cc75ef5">options::MusicSpacingOptions::musBack</a>. With a <a class="el" href="classmusx_1_1dom_1_1others_1_1BeatChartElement.html">BeatChartElement</a> array, each element is a slot, and the chart is laid out at whichever is wider, its ideal or its minimum positions. When <a class="el" href="classmusx_1_1dom_1_1others_1_1BeatChartElement_1_1Control.html#a2bee9f5e1825430d709d3ebd75dc2da5">BeatChartElement::Control::minWidth</a> exceeds <a class="el" href="classmusx_1_1dom_1_1others_1_1BeatChartElement_1_1Control.html#a9e2af813f74ce68636942766dd7925c7">BeatChartElement::Control::totalWidth</a>, each slot is at the first element's <a class="el" href="classmusx_1_1dom_1_1others_1_1BeatChartElement.html#af69d5f923aadb6d68965c41134bc892f">BeatChartElement::pos</a> plus the element's <a class="el" href="classmusx_1_1dom_1_1others_1_1BeatChartElement.html#aca748dda37340ca9cccfb4b835caa1b3">BeatChartElement::minPos</a>, and the spacing ends at the first element's position plus the minimum width. Otherwise each slot is at its own position plus the first element's minimum position, and the spacing ends at the total width plus that minimum position. A manually edited chart (minimum width 1) and one from before Finale 3.0 (no minimum width) always use their positions. Without a beat chart there is one slot, at the start of the music area.</p>
-<p>Finale stretches the spacing uniformly to fill the music area, so a slot is drawn at <a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#a914295a942e51a4ba5505cf2027002a3" title="Where the music area begins, in Evpu from the measure&#39;s left edge.">musicStart</a> plus its offset times <a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#afb05a48dcf23991b57aec8bcf6745e51" title="The width of the music area, in Evpu.">musicWidth</a> / <a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#a7de118110c11893e5ff2953199d8ce8a" title="The unstretched width of the spacing, in Evpu.">spacingWidth</a>. Either width can be zero or negative in a malformed or degenerate measure. </p>
-</div></div><!-- contents -->
+<div class="textblock"><p>Justified horizontal beat spacing for the measure's current width and positioning mode. </p>
+<p>Coordinates include integer rounding and need no further stretching. Add <a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#a914295a942e51a4ba5505cf2027002a3" title="Music-area origin, from the measure&#39;s left edge.">musicStart</a> to a slot's offset or endOffset to obtain its position from the measure's left edge. The music area excludes both front/back spacing options and measure extras. Gaps between spans retain their separate endpoints. For proportional spacing there is one span from zero to <a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#afb05a48dcf23991b57aec8bcf6745e51" title="Available music width; may be nonpositive in a degenerate measure.">musicWidth</a>. A chart's final span end may differ from <a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#afb05a48dcf23991b57aec8bcf6745e51" title="Available music width; may be nonpositive in a degenerate measure.">musicWidth</a>; coordinate conversion uses that span end until it is reached, then uses <a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#afb05a48dcf23991b57aec8bcf6745e51" title="Available music width; may be nonpositive in a degenerate measure.">musicWidth</a> for extrapolation. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a19672fe2073136b7a7db24ffdd27c39b" name="a19672fe2073136b7a7db24ffdd27c39b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19672fe2073136b7a7db24ffdd27c39b">&#9670;&#160;</a></span>chartDuration</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#a907ef641c247f1a5dbe75bbc972661f5">Edu</a> musx::dom::others::Measure::Spacing::chartDuration {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Chart duration, or zero for proportional spacing. Positive interpolated chart positions are rounded after multiplication by endEdu / chartDuration. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

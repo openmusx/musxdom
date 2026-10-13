@@ -33,7 +33,7 @@ var searchData=
   ['uphorzadjust_30',['upHorzAdjust',['../classmusx_1_1dom_1_1details_1_1StemAlterations.html#a73d9fec7321177a9e1bea9cb4757779d',1,'musx::dom::details::StemAlterations']]],
   ['upperdotvpos_31',['upperDotVPos',['../classmusx_1_1dom_1_1options_1_1RepeatOptions.html#acc1bac6c6fb48edefd2114ffea76ec9c',1,'musx::dom::options::RepeatOptions']]],
   ['upsplitstem_32',['upSplitStem',['../classmusx_1_1dom_1_1Note.html#a6b58cec57f700722e1488a82f28dcc24',1,'musx::dom::Note']]],
-  ['upstem_33',['upstem',['../classmusx_1_1dom_1_1EntryDetailsBase.html#a91249025ef9184270efb1e8a749727caa5deef8e71f8782a0ad03157838cf6b56',1,'musx::dom::EntryDetailsBase::UpStem'],['../classmusx_1_1dom_1_1details_1_1EntryPartFieldDetail.html#a006c571293e344c3a31d1eb21c69f373',1,'musx::dom::details::EntryPartFieldDetail::upStem']]],
+  ['upstem_33',['upstem',['../classmusx_1_1dom_1_1details_1_1EntryPartFieldDetail.html#a006c571293e344c3a31d1eb21c69f373',1,'musx::dom::details::EntryPartFieldDetail::upStem'],['../classmusx_1_1dom_1_1EntryDetailsBase.html#a91249025ef9184270efb1e8a749727caa5deef8e71f8782a0ad03157838cf6b56',1,'musx::dom::EntryDetailsBase::UpStem']]],
   ['upstemhorz_34',['upStemHorz',['../classmusx_1_1dom_1_1options_1_1StemOptions_1_1StemConnection.html#a2a25fb62a3fd8b72ed5e86ad0f85afe2',1,'musx::dom::options::StemOptions::StemConnection']]],
   ['upstemscore_35',['upStemScore',['../classmusx_1_1dom_1_1Entry.html#a1734bd1b4c1a66e366de2129ca87b3f6',1,'musx::dom::Entry']]],
   ['upstemsecond_36',['upStemSecond',['../classmusx_1_1dom_1_1Note.html#a250d2ca7df9eda392d0860ac6c67534f',1,'musx::dom::Note']]],

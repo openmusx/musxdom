@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('structmusx_1_1dom_1_1others_1_1Measure
 </div><!--header-->
 <div class="contents">
 
-<p>One beat position in a measure's unstretched spacing. See #Spacing.  
+<p>A justified beat span. Coordinates are integral Evpu relative to <a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#a914295a942e51a4ba5505cf2027002a3" title="Music-area origin, from the measure&#39;s left edge.">Spacing::musicStart</a>.  
  <a href="structmusx_1_1dom_1_1others_1_1Measure_1_1SpacingSlot.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Others_8h_source.html">Others.h</a>&gt;</code></p>
@@ -108,15 +108,19 @@ $(document).ready(function(){initNavTree('structmusx_1_1dom_1_1others_1_1Measure
 Public Attributes</h2></td></tr>
 <tr class="memitem:af64b3a15faa0eb2d4316ab9954e5b92f" id="r_af64b3a15faa0eb2d4316ab9954e5b92f"><td class="memItemLeft" align="right" valign="top"><a id="af64b3a15faa0eb2d4316ab9954e5b92f" name="af64b3a15faa0eb2d4316ab9954e5b92f"></a>
 <a class="el" href="namespacemusx_1_1dom.html#a7f27f66bcae06e7ccf1173bfca211da2">Evpu</a>&#160;</td><td class="memItemRight" valign="bottom"><b>offset</b> {}</td></tr>
-<tr class="memdesc:af64b3a15faa0eb2d4316ab9954e5b92f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The slot's offset in the unstretched spacing, in Evpu from the start of the music area. <br /></td></tr>
+<tr class="memdesc:af64b3a15faa0eb2d4316ab9954e5b92f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start of the justified span. <br /></td></tr>
 <tr class="separator:af64b3a15faa0eb2d4316ab9954e5b92f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4efa40cef1a3a6e0f9e4a6afcc1d8f67" id="r_a4efa40cef1a3a6e0f9e4a6afcc1d8f67"><td class="memItemLeft" align="right" valign="top"><a id="a4efa40cef1a3a6e0f9e4a6afcc1d8f67" name="a4efa40cef1a3a6e0f9e4a6afcc1d8f67"></a>
+<a class="el" href="namespacemusx_1_1dom.html#a7f27f66bcae06e7ccf1173bfca211da2">Evpu</a>&#160;</td><td class="memItemRight" valign="bottom"><b>endOffset</b> {}</td></tr>
+<tr class="memdesc:a4efa40cef1a3a6e0f9e4a6afcc1d8f67"><td class="mdescLeft">&#160;</td><td class="mdescRight">End of the span, which may precede the following start. <br /></td></tr>
+<tr class="separator:a4efa40cef1a3a6e0f9e4a6afcc1d8f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abafee8d3f26f0ee7346f15a00d6c5b30" id="r_abafee8d3f26f0ee7346f15a00d6c5b30"><td class="memItemLeft" align="right" valign="top"><a id="abafee8d3f26f0ee7346f15a00d6c5b30" name="abafee8d3f26f0ee7346f15a00d6c5b30"></a>
 <a class="el" href="namespacemusx_1_1dom.html#a907ef641c247f1a5dbe75bbc972661f5">Edu</a>&#160;</td><td class="memItemRight" valign="bottom"><b>edu</b> {}</td></tr>
-<tr class="memdesc:abafee8d3f26f0ee7346f15a00d6c5b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">The slot's global Edu position in the measure. <br /></td></tr>
+<tr class="memdesc:abafee8d3f26f0ee7346f15a00d6c5b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stored chart Edu at the start; zero for proportional spacing. <br /></td></tr>
 <tr class="separator:abafee8d3f26f0ee7346f15a00d6c5b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>One beat position in a measure's unstretched spacing. See #Spacing. </p>
+<div class="textblock"><p>A justified beat span. Coordinates are integral Evpu relative to <a class="el" href="structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html#a914295a942e51a4ba5505cf2027002a3" title="Music-area origin, from the measure&#39;s left edge.">Spacing::musicStart</a>. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

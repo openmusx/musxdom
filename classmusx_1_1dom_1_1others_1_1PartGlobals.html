@@ -126,6 +126,10 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PartGlobals</b> (const <a class="el" href="namespacemusx_1_1dom.html#aa76356b1ad3580081294898c79615c4d">DocumentWeakPtr</a> &amp;document, <a class="el" href="namespacemusx_1_1dom.html#a849c0fb091707be060d840e877486f65">Cmper</a> partId, <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#ac655bdce0724d5e32cfcd6203c9a5d1f">ShareMode</a> shareMode, <a class="el" href="namespacemusx_1_1dom.html#a849c0fb091707be060d840e877486f65">Cmper</a> cmper)</td></tr>
 <tr class="memdesc:a9fda0354c0f4d372aa9f5af33787d678"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor function. <br /></td></tr>
 <tr class="separator:a9fda0354c0f4d372aa9f5af33787d678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9d5622205516d900e440d43fb29e306" id="r_ad9d5622205516d900e440d43fb29e306"><td class="memItemLeft" align="right" valign="top"><a id="ad9d5622205516d900e440d43fb29e306" name="ad9d5622205516d900e440d43fb29e306"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isSpecialPartExtraction</b> () const</td></tr>
+<tr class="memdesc:ad9d5622205516d900e440d43fb29e306"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether Special Part Extraction is enabled for this part. <br /></td></tr>
+<tr class="separator:ad9d5622205516d900e440d43fb29e306"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7c62dc22722d608acc3383ee706b8f6" id="r_ab7c62dc22722d608acc3383ee706b8f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a849c0fb091707be060d840e877486f65">Cmper</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1PartGlobals.html#ab7c62dc22722d608acc3383ee706b8f6">calcScrollViewCmper</a> () const</td></tr>
 <tr class="memdesc:ab7c62dc22722d608acc3383ee706b8f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffUsed.html">StaffUsed</a> cmper for Scroll View for this part.  <br /></td></tr>
 <tr class="separator:ab7c62dc22722d608acc3383ee706b8f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -198,7 +202,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>showTransposed</b> {}
 <tr class="memdesc:ad1ac188b8ddd50ec8d5d8eb7b42f5c00"><td class="mdescLeft">&#160;</td><td class="mdescRight">The iuList <a class="el" href="namespacemusx_1_1dom.html#a849c0fb091707be060d840e877486f65">Cmper</a> for Studio View. <br /></td></tr>
 <tr class="separator:ad1ac188b8ddd50ec8d5d8eb7b42f5c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d1a52c48b402278588db0ff50ebff91" id="r_a2d1a52c48b402278588db0ff50ebff91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a849c0fb091707be060d840e877486f65">Cmper</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1PartGlobals.html#a2d1a52c48b402278588db0ff50ebff91">specialPartExtractionIUList</a> {}</td></tr>
-<tr class="memdesc:a2d1a52c48b402278588db0ff50ebff91"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-zero, Special Part Extraction is enabled and this is the <a class="el" href="namespacemusx_1_1dom.html#a849c0fb091707be060d840e877486f65">Cmper</a> for its legacy <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffUsed.html">StaffUsed</a> array.  <br /></td></tr>
+<tr class="memdesc:a2d1a52c48b402278588db0ff50ebff91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Special Part Extraction is enabled when this equals <a class="el" href="namespacemusx_1_1dom.html#af126d786c0d562de2e24d358782dea9e">SPECIAL_PART_EXTRACTION_SYSTEM_ID</a>, the <a class="el" href="namespacemusx_1_1dom.html#a849c0fb091707be060d840e877486f65">Cmper</a> for its legacy <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffUsed.html">StaffUsed</a> array.  <br /></td></tr>
 <tr class="separator:a2d1a52c48b402278588db0ff50ebff91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
@@ -291,7 +295,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return the <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffUsed.html">StaffUsed</a> cmper for Scroll View for this part. </p>
-<dl class="section return"><dt>Returns</dt><dd>Either <a class="el" href="namespacemusx_1_1dom.html#ac87f0744ae26e5eb9f08d9615fc15bc5">BASE_SYSTEM_ID</a> or the <a class="el" href="classmusx_1_1dom_1_1others_1_1PartGlobals.html#a2d1a52c48b402278588db0ff50ebff91" title="If non-zero, Special Part Extraction is enabled and this is the Cmper for its legacy StaffUsed array.">specialPartExtractionIUList</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Either <a class="el" href="namespacemusx_1_1dom.html#ac87f0744ae26e5eb9f08d9615fc15bc5">BASE_SYSTEM_ID</a> or the <a class="el" href="classmusx_1_1dom_1_1others_1_1PartGlobals.html#a2d1a52c48b402278588db0ff50ebff91" title="Special Part Extraction is enabled when this equals SPECIAL_PART_EXTRACTION_SYSTEM_ID,...">specialPartExtractionIUList</a>. </dd></dl>
 
 </div>
 </div>
@@ -308,7 +312,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>If non-zero, Special Part Extraction is enabled and this is the <a class="el" href="namespacemusx_1_1dom.html#a849c0fb091707be060d840e877486f65">Cmper</a> for its legacy <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffUsed.html">StaffUsed</a> array. </p>
+<p>Special Part Extraction is enabled when this equals <a class="el" href="namespacemusx_1_1dom.html#af126d786c0d562de2e24d358782dea9e">SPECIAL_PART_EXTRACTION_SYSTEM_ID</a>, the <a class="el" href="namespacemusx_1_1dom.html#a849c0fb091707be060d840e877486f65">Cmper</a> for its legacy <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffUsed.html">StaffUsed</a> array. </p>
 <p>In older (pre-optimization) Finale files, this Cmper identified the staff list used for <a class="el" href="classmusx_1_1dom_1_1others_1_1Page.html" title="Represents the attributes of a page in the page layout.">Page</a> View layout of an extracted part. In modern Finale, including all versions that produce <code>musx</code> rather than legacy <code>mus</code>, every system is fully optimized and maintains its own system-level staff list. As a result, this value is no longer consulted when constructing <a class="el" href="classmusx_1_1dom_1_1others_1_1Page.html" title="Represents the attributes of a page in the page layout.">Page</a> View systems.</p>
 <p>Its only remaining purpose is as a flag that Special Part Extraction is active, and as a filter for the Finale UI. It limits which staves may be added to a <a class="el" href="classmusx_1_1dom_1_1others_1_1Page.html" title="Represents the attributes of a page in the page layout.">Page</a> View system when the user is working in the extracted-part layout.</p>
 <p>(xml node is <code>&lt;pageViewIUlist&gt;</code>) </p>

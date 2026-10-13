@@ -5,7 +5,7 @@ var searchData=
   ['xadd_2',['xadd',['../classmusx_1_1dom_1_1others_1_1TextBlock.html#ac0ed1e3643a5816ce0955fa3437d6a04',1,'musx::dom::others::TextBlock::xAdd'],['../classmusx_1_1dom_1_1others_1_1Enclosure.html#afd61ead692f5b54d3cf25ea05f07f175',1,'musx::dom::others::Enclosure::xAdd']]],
   ['xalam_3',['Xalam',['../namespacemusx_1_1dom_1_1uuid.html#a8cb863a064e8d60c6111614f8167f3e7',1,'musx::dom::uuid']]],
   ['xaphoon_4',['Xaphoon',['../namespacemusx_1_1dom_1_1uuid.html#a513163eee5ee317ee9cd8316177563ba',1,'musx::dom::uuid']]],
-  ['xdisp_5',['xdisp',['../classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a4b664687723f16a1dcf90e1d9faf1551',1,'musx::dom::others::ChordSuffixElement::xdisp'],['../classmusx_1_1dom_1_1others_1_1PageTextAssign.html#acad33acff070efc7e82e6ac5bdde9a48',1,'musx::dom::others::PageTextAssign::xDisp']]],
+  ['xdisp_5',['xdisp',['../classmusx_1_1dom_1_1others_1_1PageTextAssign.html#acad33acff070efc7e82e6ac5bdde9a48',1,'musx::dom::others::PageTextAssign::xDisp'],['../classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a4b664687723f16a1dcf90e1d9faf1551',1,'musx::dom::others::ChordSuffixElement::xdisp']]],
   ['xdispedu_6',['xDispEdu',['../classmusx_1_1dom_1_1details_1_1MeasureTextAssign.html#aed0494c96e8234ea3164c5553e23d322',1,'musx::dom::details::MeasureTextAssign']]],
   ['xdispevpu_7',['xDispEvpu',['../classmusx_1_1dom_1_1details_1_1MeasureTextAssign.html#a864b8f4883bb4c45b9ef26fe413ec8e1',1,'musx::dom::details::MeasureTextAssign']]],
   ['xedupos_8',['xEduPos',['../classmusx_1_1dom_1_1others_1_1ClefList.html#a2eefe1ec89a0a0227dbbc949e71dd85e',1,'musx::dom::others::ClefList']]],

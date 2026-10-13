@@ -13,6 +13,10 @@ var classmusx_1_1dom_1_1others_1_1Measure =
       [ "Tick", "classmusx_1_1dom_1_1others_1_1Measure.html#a6d4c0949f42ef1f337f8e2ae0ee0c117a0b3516a5bbb77566f904f9d3877f4710", null ],
       [ "Custom", "classmusx_1_1dom_1_1others_1_1Measure.html#a6d4c0949f42ef1f337f8e2ae0ee0c117a90589c47f06eb971d548591f23c285af", null ]
     ] ],
+    [ "BeatChartJustification", "classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08", [
+      [ "Legacy", "classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08a0cc0a0507cf3d31e5089f420a4cf8b4b", null ],
+      [ "Modern", "classmusx_1_1dom_1_1others_1_1Measure.html#afb2ed58b3b12a5f12b79e0506f13ce08aad1c9cd3e7b07e2c364c985f73188054", null ]
+    ] ],
     [ "PositioningType", "classmusx_1_1dom_1_1others_1_1Measure.html#a1a2145e4dfc1cbddbb720b384c2fd88f", [
       [ "Manual", "classmusx_1_1dom_1_1others_1_1Measure.html#a1a2145e4dfc1cbddbb720b384c2fd88fae1ba155a9f2e8c3be94020eef32a0301", null ],
       [ "TimeSignature", "classmusx_1_1dom_1_1others_1_1Measure.html#a1a2145e4dfc1cbddbb720b384c2fd88fab257862f6113a65ca9c23ad50d8676a6", null ],
@@ -35,12 +39,12 @@ var classmusx_1_1dom_1_1others_1_1Measure =
     [ "calcDisplayNumber", "classmusx_1_1dom_1_1others_1_1Measure.html#a3a0f5d6105af79216d3eb85fb4eabf89", null ],
     [ "calcDisplayNumberText", "classmusx_1_1dom_1_1others_1_1Measure.html#a02b718c5a179e31ace1a8122066bfc94", null ],
     [ "calcDuration", "classmusx_1_1dom_1_1others_1_1Measure.html#acae376781db54c20039e5a6c6626f17b", null ],
-    [ "calcEduFromEvpu", "classmusx_1_1dom_1_1others_1_1Measure.html#a1fa06bfafb05e7bccbc95efa2946d94e", null ],
-    [ "calcFirstBeatEvpu", "classmusx_1_1dom_1_1others_1_1Measure.html#af44bc969121ffda2bf7283fbc27470b0", null ],
+    [ "calcEduFromEvpu", "classmusx_1_1dom_1_1others_1_1Measure.html#a32b70c0bf56007e087e3440f976aef63", null ],
+    [ "calcFirstBeatEvpu", "classmusx_1_1dom_1_1others_1_1Measure.html#a1a8b17431b7859448ef4060f96bf60e7", null ],
     [ "calcMinLegacyPickupSpacer", "classmusx_1_1dom_1_1others_1_1Measure.html#a53580a7769b31e9aa51fee60790865c4", null ],
     [ "calcMinLegacyPickupSpacer", "classmusx_1_1dom_1_1others_1_1Measure.html#a7292509dd15a52901b8b7e27b1c0fa1e", null ],
     [ "calcShouldShowFullNames", "classmusx_1_1dom_1_1others_1_1Measure.html#a9ff1882e9350038250970527105eebc1", null ],
-    [ "calcSpacing", "classmusx_1_1dom_1_1others_1_1Measure.html#acc382fd3592b0376f733e2ba14a4e7ba", null ],
+    [ "calcSpacing", "classmusx_1_1dom_1_1others_1_1Measure.html#a1cb7eb5091039098364cfdfe50ec22e2", null ],
     [ "calcTimeStretch", "classmusx_1_1dom_1_1others_1_1Measure.html#af967a7eb6a48dbd1c5515884e593382f", null ],
     [ "createDisplayTimeSignature", "classmusx_1_1dom_1_1others_1_1Measure.html#af87c40eb79db6e09ac99b05c46e8bedb", null ],
     [ "createKeySignature", "classmusx_1_1dom_1_1others_1_1Measure.html#a03099d87e8e56693e6451f03c7b717cc", null ],
