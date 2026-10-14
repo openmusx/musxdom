@@ -1045,3 +1045,98 @@ TEST(GFrameHoldTest, MissingMeasureOrStaffSkipsEntryFrame)
         EXPECT_FALSE(visited);
     }
 }
+
+namespace {
+
+struct ExpectedTuplet
+{
+    int displayNumber;
+    size_t startIndex;
+    size_t endIndex;
+    Fraction startDura;
+    Fraction endDura;
+};
+
+void checkTupletCompletion(const DocumentPtr& doc, MeasCmper measureId, const std::vector<Fraction>& expectedActuals,
+    const std::vector<Fraction>& expectedUntruncated, const std::vector<ExpectedTuplet>& expectedTuplets)
+{
+    SCOPED_TRACE("measure " + std::to_string(measureId));
+    auto gfhold = details::GFrameHoldContext(doc, SCORE_PARTID, 1, measureId);
+    ASSERT_TRUE(gfhold);
+    auto frame = gfhold.createEntryFrame(0);
+    ASSERT_TRUE(frame);
+    ASSERT_EQ(frame->getEntries().size(), expectedActuals.size());
+    Fraction elapsed = 0;
+    for (size_t x = 0; x < expectedActuals.size(); x++) {
+        EntryInfoPtr entryInfo(frame, x);
+        EXPECT_EQ(entryInfo->elapsedDuration, elapsed) << "entry index " << x;
+        EXPECT_EQ(entryInfo->actualDuration, expectedActuals[x]) << "entry index " << x;
+        EXPECT_EQ(entryInfo->untruncatedActualDuration, expectedUntruncated[x]) << "entry index " << x;
+        elapsed += expectedActuals[x];
+    }
+    EXPECT_EQ(frame->maxElapsedStaffDuration, elapsed);
+    ASSERT_EQ(frame->tupletInfo.size(), expectedTuplets.size());
+    for (size_t y = 0; y < expectedTuplets.size(); y++) {
+        const auto& tuplInf = frame->tupletInfo[y];
+        const auto& expected = expectedTuplets[y];
+        EXPECT_EQ(tuplInf.tuplet->displayNumber, expected.displayNumber) << "tuplet index " << y;
+        EXPECT_EQ(tuplInf.startIndex, expected.startIndex) << "tuplet index " << y;
+        EXPECT_EQ(tuplInf.endIndex, expected.endIndex) << "tuplet index " << y;
+        EXPECT_EQ(tuplInf.startDura, expected.startDura) << "tuplet index " << y;
+        EXPECT_EQ(tuplInf.endDura, expected.endDura) << "tuplet index " << y;
+    }
+}
+
+} // namespace
+
+TEST(GFrameHold, TupletCompletionTruncatesEntry)
+{
+    std::vector<char> xml;
+    musxtest::readFile(musxtest::getInputPath() / "tuplet_completion.enigmaxml", xml);
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::pugi::Document>(xml);
+    ASSERT_TRUE(doc);
+
+    // 5:4 eighths: two eighths and a dotted half. The dotted half ends at the tuplet's endpoint.
+    checkTupletCompletion(doc, 1,
+        { Fraction(1, 10), Fraction(1, 10), Fraction(3, 10), Fraction(1, 4), Fraction(1, 4) },
+        { Fraction(1, 10), Fraction(1, 10), Fraction(3, 5), Fraction(1, 4), Fraction(1, 4) },
+        { { 5, 0, 2, Fraction(0), Fraction(1, 2) } });
+
+    // Triplet nested in 5:4. The overfilled triplet ends at its endpoint, and the 5:4 consumes exactly its reference duration.
+    checkTupletCompletion(doc, 2,
+        { Fraction(1, 15), Fraction(1, 15), Fraction(1, 15), Fraction(1, 10), Fraction(1, 10), Fraction(1, 10), Fraction(1, 4), Fraction(1, 4) },
+        { Fraction(1, 15), Fraction(1, 15), Fraction(2, 15), Fraction(1, 10), Fraction(1, 10), Fraction(1, 10), Fraction(1, 4), Fraction(1, 4) },
+        { { 5, 0, 5, Fraction(0), Fraction(1, 2) }, { 3, 0, 2, Fraction(0), Fraction(1, 5) } });
+
+    // One entry completes both the inner and outer tuplets.
+    checkTupletCompletion(doc, 3,
+        { Fraction(1, 3), Fraction(1, 18), Fraction(1, 18), Fraction(1, 18), Fraction(1, 4), Fraction(1, 4) },
+        { Fraction(1, 3), Fraction(1, 18), Fraction(1, 18), Fraction(1, 9), Fraction(1, 4), Fraction(1, 4) },
+        { { 3, 0, 3, Fraction(0), Fraction(1, 2) }, { 3, 1, 3, Fraction(1, 3), Fraction(1, 2) } });
+
+    // Two tuplets start on one entry. The one with the larger display duration is outermost.
+    checkTupletCompletion(doc, 4,
+        { Fraction(1, 8), Fraction(1, 8), Fraction(1, 8), Fraction(1, 4), Fraction(1, 4), Fraction(1, 8) },
+        { Fraction(1, 8), Fraction(1, 8), Fraction(1, 8), Fraction(1, 4), Fraction(1, 4), Fraction(1, 8) },
+        { { 4, 0, 2, Fraction(0), Fraction(3, 8) }, { 3, 0, 2, Fraction(0), Fraction(3, 8) } });
+
+    // A hidden tremolo-shaped tuplet whose second entry is truncated.
+    checkTupletCompletion(doc, 5,
+        { Fraction(2, 3), Fraction(1, 3) },
+        { Fraction(2, 3), Fraction(2, 3) },
+        { { 3, 0, 1, Fraction(0), Fraction(1) } });
+    auto frame = details::GFrameHoldContext(doc, SCORE_PARTID, 1, 5).createEntryFrame(0);
+    ASSERT_TRUE(frame);
+    ASSERT_EQ(frame->tupletInfo.size(), 1u);
+    EXPECT_FALSE(frame->tupletInfo[0].calcIsTremolo());
+
+    // The same tremolo shape filled exactly by its entries.
+    checkTupletCompletion(doc, 6,
+        { Fraction(1, 2), Fraction(1, 2) },
+        { Fraction(1, 2), Fraction(1, 2) },
+        { { 2, 0, 1, Fraction(0), Fraction(1) } });
+    frame = details::GFrameHoldContext(doc, SCORE_PARTID, 1, 6).createEntryFrame(0);
+    ASSERT_TRUE(frame);
+    ASSERT_EQ(frame->tupletInfo.size(), 1u);
+    EXPECT_TRUE(frame->tupletInfo[0].calcIsTremolo());
+}

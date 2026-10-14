@@ -1308,7 +1308,9 @@ public:
         size_t startIndex;                              ///< the index of the first entry in the tuplet
         size_t endIndex;                                ///< the index of the last entry in the tuplet
         util::Fraction startDura;                       ///< the actual duration where the tuplet starts
-        util::Fraction endDura;                         ///< the actual duration where the tuplet ends
+        util::Fraction endDura;                         ///< the actual duration where the tuplet ends. For a completed tuplet, this is #startDura plus
+                                                        ///< the tuplet's reference duration scaled by the ratios of any enclosing tuplets.
+                                                        ///< For an incomplete tuplet, it is the end of its last entry.
         bool voice2;                                    ///< whether this tuplet is for voice2
 
         /// @brief Constructor
@@ -1629,6 +1631,12 @@ public:
                                         ///< This is a staff-level position and must be scaled for the global value. (Use #EntryInfoPtr::calcGlobalElapsedDuration.)
     util::Fraction actualDuration{};    ///< the actual duration of entry (in fractions of a whole note), taking into account tuplets and grace notes
                                         ///< This is a staff-level value and must be scaled for the global value. (Use #EntryInfoPtr::calcGlobalActualDuration.)
+                                        ///< When this entry completes one or more tuplets, it ends at the actual endpoint of the outermost completed tuplet.
+                                        ///< The value may then differ from #untruncatedActualDuration.
+    util::Fraction untruncatedActualDuration{}; ///< the actual duration of the entry before any adjustment for tuplet completion: its symbolic
+                                        ///< duration times the active tuplet ratios, or zero for grace notes and entries in zero-length tuplets.
+                                        ///< This is a staff-level value. It differs from #actualDuration only for an entry that completes a tuplet
+                                        ///< without exactly filling it.
     util::Fraction cumulativeRatio{};   ///< the cumulative tuplet ratio in effect at the time of this entry. This value allows a tuplet to discover the
                                         ///< ratio of all the *other* active tuplets by backing out its own ratio.
     unsigned graceIndex{};              ///< the Finale grace note index, counting from 1 starting from the leftmost grace note counting rightward.

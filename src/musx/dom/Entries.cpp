@@ -1940,8 +1940,8 @@ bool EntryInfoPtr::calcBeamStubIsLeft() const
         if (isSecondaryTerminator(calcLowestBeamEnd(), next)) return true;      // end of 2ndary beam points left
     }
 
-    auto prevDots = calcDurationInfoFromEdu(prev->actualDuration.calcEduDuration()).second;
-    auto nextDots = calcDurationInfoFromEdu(next->actualDuration.calcEduDuration()).second;
+    auto prevDots = calcDurationInfoFromEdu(prev->untruncatedActualDuration.calcEduDuration()).second;
+    auto nextDots = calcDurationInfoFromEdu(next->untruncatedActualDuration.calcEduDuration()).second;
 
     if (prevDots || nextDots) {
         return prevDots >= nextDots;
@@ -2546,22 +2546,23 @@ details::GFrameHoldContext::GFrameHoldContext(const MusxInstance<GFrameHold>& gf
 #ifndef DOXYGEN_SHOULD_IGNORE_THIS
 struct TupletState
 {
-    util::Fraction remainingSymbolicDuration;         // The remaining symbolic duration
-    util::Fraction ratio;             // The remaining actual duration
     MusxInstance<details::TupletDef> tuplet; // The tuplet.
-    size_t infoIndex;               // the index of this tuplet in EntryFrame::tupletInfo
+    size_t infoIndex;                       // The index of this tuplet in EntryFrame::tupletInfo.
+    util::Fraction ratio;                   // The tuplet's own ratio.
+    util::Fraction symbolicTotal;           // The tuplet's display duration.
+    util::Fraction symbolicConsumed;        // The symbolic duration consumed at this nesting level only.
+    util::Fraction actualStart;             // The staff-level elapsed duration where the tuplet starts.
+    util::Fraction actualSpan;              // The actual duration the tuplet occupies, including enclosing tuplet ratios.
+    util::Fraction actualAccumulated;       // The unadjusted actual duration of all entries contained in the tuplet.
 
-    void accountFor(util::Fraction actual)
+    TupletState(const MusxInstance<details::TupletDef>& t, size_t i, util::Fraction start, util::Fraction enclosingRatio)
+        : tuplet(t), infoIndex(i), ratio(t->calcRatio()), symbolicTotal(t->calcDisplayDuration()),
+        actualStart(start), actualSpan(t->calcReferenceDuration() * enclosingRatio)
     {
-        remainingSymbolicDuration -= (actual / ratio);
     }
 
-    TupletState(const MusxInstance<details::TupletDef>& t, size_t i)
-        : remainingSymbolicDuration(t->displayNumber* t->displayDuration, int(NoteType::Whole)),
-        ratio(t->referenceNumber * t->referenceDuration, t->displayNumber * t->displayDuration),
-        tuplet(t), infoIndex(i)
-    {
-    }
+    bool calcIsComplete() const
+    { return symbolicConsumed >= symbolicTotal || actualAccumulated >= actualSpan; }
 };
 #endif // DOXYGEN_SHOULD_IGNORE_THIS
 
@@ -2640,13 +2641,24 @@ std::shared_ptr<const EntryFrame> details::GFrameHoldContext::createEntryFrame(L
                 graceIndex = 0;
                 if (entry->tupletStart) {
                     auto tuplets = document->getDetails()->getArray<details::TupletDef>(getRequestedPartId(), entry->getEntryNumber());
-                    std::sort(tuplets.begin(), tuplets.end(), [](const auto& a, const auto& b) {
-                        return a->calcReferenceDuration() > b->calcReferenceDuration(); // Sort descending by reference duration
+                    // Sort descending by display duration, then descending by reference duration.
+                    std::stable_sort(tuplets.begin(), tuplets.end(), [](const auto& a, const auto& b) {
+                        const auto aDisplay = a->calcDisplayDuration();
+                        const auto bDisplay = b->calcDisplayDuration();
+                        if (aDisplay != bDisplay) {
+                            return aDisplay > bDisplay;
+                        }
+                        return a->calcReferenceDuration() > b->calcReferenceDuration();
                     });
                     for (const auto& tuplet : tuplets) {
+                        // A tuplet's actual span is its reference duration scaled by every enclosing tuplet's ratio.
+                        util::Fraction enclosingRatio = 1;
+                        for (const auto& t : activeTuplets) {
+                            enclosingRatio *= t.ratio;
+                        }
                         size_t index = entryFrame->tupletInfo.size();
                         entryFrame->tupletInfo.emplace_back(entryFrame, tuplet, entryIndex, actualElapsedDuration, entry->voice2);
-                        activeTuplets.emplace_back(tuplet, index);
+                        activeTuplets.emplace_back(tuplet, index, actualElapsedDuration, enclosingRatio);
                     }
                 }
 
@@ -2662,6 +2674,7 @@ std::shared_ptr<const EntryFrame> details::GFrameHoldContext::createEntryFrame(L
                 }
                 util::Fraction actualDuration = zeroLengthTuplet ? 0 : entry->calcFraction() * cumulativeRatio;
                 entryInfo->actualDuration = actualDuration;
+                entryInfo->untruncatedActualDuration = actualDuration;
                 entryInfo->cumulativeRatio = cumulativeRatio;
             } else {
                 entryInfo->graceIndex = ++graceIndex;
@@ -2669,29 +2682,43 @@ std::shared_ptr<const EntryFrame> details::GFrameHoldContext::createEntryFrame(L
 
             entryFrame->addEntry(entryInfo);
 
-            actualElapsedDuration += entryInfo->actualDuration;
-            if (!entry->graceNote) {
-                for (auto it = activeTuplets.rbegin(); it != activeTuplets.rend(); ++it) {
-                    if (it->ratio != 0) {
-                        it->remainingSymbolicDuration -= entryInfo->actualDuration / cumulativeRatio;
-                        cumulativeRatio /= it->ratio;
+            if (!entry->graceNote && !activeTuplets.empty()) {
+                for (auto& t : activeTuplets) {
+                    t.actualAccumulated += entryInfo->actualDuration;
+                }
+                activeTuplets.back().symbolicConsumed += entry->calcFraction();
+                // Close completed tuplets from the innermost outward. A completed tuplet ends the entry at the
+                // tuplet's actual endpoint, and its enclosing tuplet consumes exactly its reference duration.
+                util::Fraction entryEnd = actualElapsedDuration + entryInfo->actualDuration;
+                while (!activeTuplets.empty() && activeTuplets.back().calcIsComplete()) {
+                    const auto completed = activeTuplets.back();
+                    activeTuplets.pop_back();
+                    entryEnd = completed.actualStart + completed.actualSpan;
+                    auto& tuplInf = entryFrame->tupletInfo[completed.infoIndex];
+                    tuplInf.endIndex = entryIndex;
+                    tuplInf.endDura = entryEnd;
+                    if (!activeTuplets.empty()) {
+                        activeTuplets.back().symbolicConsumed += completed.tuplet->calcReferenceDuration();
                     }
                 }
-                // always update all end positions, in case we run out of notes before the actual end
+                if (entryEnd < actualElapsedDuration) {
+                    util::Logger::log(util::Logger::LogLevel::Warning,
+                        "Entry " + std::to_string(entry->getEntryNumber()) + " in frame " + std::to_string(frame->getCmper())
+                        + " completes a tuplet that ends before the entry starts. Its actual duration is set to zero.");
+                    entryEnd = actualElapsedDuration;
+                }
+                entryInfo->actualDuration = entryEnd - actualElapsedDuration;
+                // Always update the end positions of open tuplets, in case we run out of notes before the actual end.
                 // WARNING: Finale handles incomplete v2 tuplets in a different and buggy manner.
                 //          It appears that Finale extends incomplete v2 tuplets to the end of the bar in many cases.
                 //          This code only extends them to the end of the v2 sequence. This is by design.
                 for (const auto& tuplet : activeTuplets) {
                     auto& tuplInf = entryFrame->tupletInfo[tuplet.infoIndex];
                     tuplInf.endIndex = entryIndex;
-                    tuplInf.endDura = actualElapsedDuration;
+                    tuplInf.endDura = entryEnd;
                 }
-                activeTuplets.erase(
-                    std::remove_if(activeTuplets.begin(), activeTuplets.end(),
-                        [](const TupletState& t) { return t.remainingSymbolicDuration <= 0 || t.ratio == 0; }),
-                    activeTuplets.end()
-                );
             }
+            actualElapsedDuration += entryInfo->actualDuration;
         }
         if (entryFrame) {
             entryFrame->maxElapsedStaffDuration = (std::max)(v1ActualElapsedDuration, v2ActualElapsedDuration);
