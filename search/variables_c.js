@@ -103,7 +103,7 @@ var searchData=
   ['multiplejustify_100',['multipleJustify',['../classmusx_1_1dom_1_1others_1_1MeasureNumberRegion_1_1ScorePartData.html#a4e6e247716cd5ab0259cbe9563cf43dd',1,'musx::dom::others::MeasureNumberRegion::ScorePartData']]],
   ['multiplexdisp_101',['multipleXdisp',['../classmusx_1_1dom_1_1others_1_1MeasureNumberRegion_1_1ScorePartData.html#a1b95011cef5e69deab03d79ec7956f61',1,'musx::dom::others::MeasureNumberRegion::ScorePartData']]],
   ['multipleydisp_102',['multipleYdisp',['../classmusx_1_1dom_1_1others_1_1MeasureNumberRegion_1_1ScorePartData.html#aa67582dc31dc569314b872745cc7516b',1,'musx::dom::others::MeasureNumberRegion::ScorePartData']]],
-  ['multistaffgroupid_103',['multistaffgroupid',['../classmusx_1_1dom_1_1details_1_1StaffGroup.html#a0db3d25fd1ae0701499bb3ec899cdee0',1,'musx::dom::details::StaffGroup::multiStaffGroupId'],['../classmusx_1_1dom_1_1InstrumentInfo.html#a23d79d297b88cf05185184d30dfc86cd',1,'musx::dom::InstrumentInfo::multistaffGroupId']]],
+  ['multistaffgroupid_103',['multistaffgroupid',['../classmusx_1_1dom_1_1InstrumentInfo.html#a23d79d297b88cf05185184d30dfc86cd',1,'musx::dom::InstrumentInfo::multistaffGroupId'],['../classmusx_1_1dom_1_1details_1_1StaffGroup.html#a0db3d25fd1ae0701499bb3ec899cdee0',1,'musx::dom::details::StaffGroup::multiStaffGroupId']]],
   ['multistaffinstid_104',['multiStaffInstId',['../classmusx_1_1dom_1_1others_1_1Staff.html#a1be91c741b22c61b0184d8f255733764',1,'musx::dom::others::Staff']]],
   ['murchang_105',['Murchang',['../namespacemusx_1_1dom_1_1uuid.html#a33a60ef19230e7b84220dd9d4e6f117c',1,'musx::dom::uuid']]],
   ['musback_106',['musBack',['../classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a872c74fb4fc6c7a736e6af846cc75ef5',1,'musx::dom::options::MusicSpacingOptions']]],

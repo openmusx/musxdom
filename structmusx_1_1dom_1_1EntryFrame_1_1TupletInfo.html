@@ -149,9 +149,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>endIndex</b></td></
 <a class="el" href="classmusx_1_1util_1_1Fraction.html">util::Fraction</a>&#160;</td><td class="memItemRight" valign="bottom"><b>startDura</b></td></tr>
 <tr class="memdesc:a93565de828240b684eb6114a42221cde"><td class="mdescLeft">&#160;</td><td class="mdescRight">the actual duration where the tuplet starts <br /></td></tr>
 <tr class="separator:a93565de828240b684eb6114a42221cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cc361a243e8b23fd5dcd39edc570a00" id="r_a4cc361a243e8b23fd5dcd39edc570a00"><td class="memItemLeft" align="right" valign="top"><a id="a4cc361a243e8b23fd5dcd39edc570a00" name="a4cc361a243e8b23fd5dcd39edc570a00"></a>
-<a class="el" href="classmusx_1_1util_1_1Fraction.html">util::Fraction</a>&#160;</td><td class="memItemRight" valign="bottom"><b>endDura</b></td></tr>
-<tr class="memdesc:a4cc361a243e8b23fd5dcd39edc570a00"><td class="mdescLeft">&#160;</td><td class="mdescRight">the actual duration where the tuplet ends <br /></td></tr>
+<tr class="memitem:a4cc361a243e8b23fd5dcd39edc570a00" id="r_a4cc361a243e8b23fd5dcd39edc570a00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1util_1_1Fraction.html">util::Fraction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmusx_1_1dom_1_1EntryFrame_1_1TupletInfo.html#a4cc361a243e8b23fd5dcd39edc570a00">endDura</a></td></tr>
 <tr class="separator:a4cc361a243e8b23fd5dcd39edc570a00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad296b9cbfc35e51318fd4fb9a22831c8" id="r_ad296b9cbfc35e51318fd4fb9a22831c8"><td class="memItemLeft" align="right" valign="top"><a id="ad296b9cbfc35e51318fd4fb9a22831c8" name="ad296b9cbfc35e51318fd4fb9a22831c8"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>voice2</b></td></tr>
@@ -312,6 +310,22 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>voice2</b></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4cc361a243e8b23fd5dcd39edc570a00" name="a4cc361a243e8b23fd5dcd39edc570a00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cc361a243e8b23fd5dcd39edc570a00">&#9670;&#160;</a></span>endDura</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmusx_1_1util_1_1Fraction.html">util::Fraction</a> musx::dom::EntryFrame::TupletInfo::endDura</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>the actual duration where the tuplet ends. For a completed tuplet, this is <a class="el" href="structmusx_1_1dom_1_1EntryFrame_1_1TupletInfo.html#a93565de828240b684eb6114a42221cde" title="the actual duration where the tuplet starts">startDura</a> plus the tuplet's reference duration scaled by the ratios of any enclosing tuplets. For an incomplete tuplet, it is the end of its last entry. </p>
 
 </div>
 </div>

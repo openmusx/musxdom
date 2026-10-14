@@ -7,5 +7,6 @@ var classmusx_1_1dom_1_1EntryInfo =
     [ "clefIndexConcert", "classmusx_1_1dom_1_1EntryInfo.html#acb5d625531ade5cb554a43ea9a2fba73", null ],
     [ "cumulativeRatio", "classmusx_1_1dom_1_1EntryInfo.html#a882904bb0af49dbd57f73811bc3720db", null ],
     [ "elapsedDuration", "classmusx_1_1dom_1_1EntryInfo.html#ab303dd9c1df64ca0920cd62e1d84eb80", null ],
-    [ "graceIndex", "classmusx_1_1dom_1_1EntryInfo.html#a203cd7f4d48cd1fab5ac01e9787a0c6e", null ]
+    [ "graceIndex", "classmusx_1_1dom_1_1EntryInfo.html#a203cd7f4d48cd1fab5ac01e9787a0c6e", null ],
+    [ "untruncatedActualDuration", "classmusx_1_1dom_1_1EntryInfo.html#a2a1b7702a5c17748db8d6cc2ea6381ba", null ]
 ];

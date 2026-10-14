@@ -121,6 +121,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ab303dd9c1df64ca0920cd62e1d84eb80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb06eec5ee188c8840d9ed4f794a3951" id="r_adb06eec5ee188c8840d9ed4f794a3951"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1util_1_1Fraction.html">util::Fraction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EntryInfo.html#adb06eec5ee188c8840d9ed4f794a3951">actualDuration</a> {}</td></tr>
 <tr class="separator:adb06eec5ee188c8840d9ed4f794a3951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a1b7702a5c17748db8d6cc2ea6381ba" id="r_a2a1b7702a5c17748db8d6cc2ea6381ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1util_1_1Fraction.html">util::Fraction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EntryInfo.html#a2a1b7702a5c17748db8d6cc2ea6381ba">untruncatedActualDuration</a> {}</td></tr>
+<tr class="separator:a2a1b7702a5c17748db8d6cc2ea6381ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a882904bb0af49dbd57f73811bc3720db" id="r_a882904bb0af49dbd57f73811bc3720db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1util_1_1Fraction.html">util::Fraction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EntryInfo.html#a882904bb0af49dbd57f73811bc3720db">cumulativeRatio</a> {}</td></tr>
 <tr class="separator:a882904bb0af49dbd57f73811bc3720db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a203cd7f4d48cd1fab5ac01e9787a0c6e" id="r_a203cd7f4d48cd1fab5ac01e9787a0c6e"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EntryInfo.html#a203cd7f4d48cd1fab5ac01e9787a0c6e">graceIndex</a> {}</td></tr>
@@ -184,7 +186,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the actual duration of entry (in fractions of a whole note), taking into account tuplets and grace notes This is a staff-level value and must be scaled for the global value. (Use <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#aefab62e48990cb691af5a4975e102989" title="Calculates the actual duration in global edu, removing any time stretch due to independent time signa...">EntryInfoPtr::calcGlobalActualDuration</a>.) </p>
+<p>the actual duration of entry (in fractions of a whole note), taking into account tuplets and grace notes This is a staff-level value and must be scaled for the global value. (Use <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#aefab62e48990cb691af5a4975e102989" title="Calculates the actual duration in global edu, removing any time stretch due to independent time signa...">EntryInfoPtr::calcGlobalActualDuration</a>.) When this entry completes one or more tuplets, it ends at the actual endpoint of the outermost completed tuplet. The value may then differ from <a class="el" href="classmusx_1_1dom_1_1EntryInfo.html#a2a1b7702a5c17748db8d6cc2ea6381ba">untruncatedActualDuration</a>. </p>
 
 </div>
 </div>
@@ -230,6 +232,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>the Finale grace note index, counting from 1 starting from the leftmost grace note counting rightward. the main note has a grace index of zero. </p>
+
+</div>
+</div>
+<a id="a2a1b7702a5c17748db8d6cc2ea6381ba" name="a2a1b7702a5c17748db8d6cc2ea6381ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a1b7702a5c17748db8d6cc2ea6381ba">&#9670;&#160;</a></span>untruncatedActualDuration</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmusx_1_1util_1_1Fraction.html">util::Fraction</a> musx::dom::EntryInfo::untruncatedActualDuration {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>the actual duration of the entry before any adjustment for tuplet completion: its symbolic duration times the active tuplet ratios, or zero for grace notes and entries in zero-length tuplets. This is a staff-level value. It differs from <a class="el" href="classmusx_1_1dom_1_1EntryInfo.html#adb06eec5ee188c8840d9ed4f794a3951">actualDuration</a> only for an entry that completes a tuplet without exactly filling it. </p>
 
 </div>
 </div>

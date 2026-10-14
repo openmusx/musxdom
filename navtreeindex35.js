@@ -1,5 +1,7 @@
 var NAVTREEINDEX35 =
 {
+"structmusic__theory_1_1Pitch.html#a4f6043243691e1a652b488ebc855a742":[1,0,0,0,0],
+"structmusic__theory_1_1Pitch.html#a4f6043243691e1a652b488ebc855a742":[2,0,0,0,0],
 "structmusic__theory_1_1Pitch.html#a59d9a25515c9b894481fb111524147d1":[2,0,0,0,4],
 "structmusic__theory_1_1Pitch.html#a59d9a25515c9b894481fb111524147d1":[1,0,0,0,4],
 "structmusic__theory_1_1Pitch.html#a75dd7e1355d0f4dfb8bea60195ce4727":[1,0,0,0,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX35 =
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html":[1,0,1,0,54,3],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html":[2,0,1,0,55,3],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html#a81dd4cc6815244168741fce5ce27e83f":[1,0,1,0,54,3,1],
-"structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html#a81dd4cc6815244168741fce5ce27e83f":[2,0,1,0,55,3,1],
-"structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html#ad2324993a03e5b8dcf3da1bbbbd4ee2d":[2,0,1,0,55,3,0],
-"structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html#ad2324993a03e5b8dcf3da1bbbbd4ee2d":[1,0,1,0,54,3,0]
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html#a81dd4cc6815244168741fce5ce27e83f":[2,0,1,0,55,3,1]
 };
