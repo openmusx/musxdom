@@ -373,6 +373,37 @@ TEST(StaffGroupTest, DiagnosticPartNameDoesNotRequireInstrumentMap)
     EXPECT_NO_THROW((void)doc->getInstruments());
 }
 
+TEST(StaffGroupTest, MeasureRangeDiagnostic)
+{
+    auto previousLogger = musx::util::Logger::getCallback();
+    struct LoggerRestorer {
+        musx::util::Logger::LogCallback callback;
+        ~LoggerRestorer() { musx::util::Logger::setCallback(std::move(callback)); }
+    } loggerRestorer{previousLogger};
+
+    std::vector<std::string> diagnostics;
+    musx::util::Logger::setCallback([&](musx::util::Logger::LogLevel, const std::string& message) {
+        if (message.find("starts at measure") != std::string::npos) {
+            diagnostics.push_back(message);
+        }
+    });
+
+    const auto withRange = [](const std::string& start, const std::string& end) {
+        std::string xml(staffGroupXml);
+        const auto group = xml.find("<staffGroup");
+        xml.replace(xml.find("<startMeas>1<", group), 13, "<startMeas>" + start + "<");
+        xml.replace(xml.find("<endMeas>32767<", group), 15, "<endMeas>" + end + "<");
+        return xml;
+    };
+
+    // The end measure is inclusive, so a group may span a single measure.
+    ASSERT_TRUE(musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(withRange("3", "3")));
+    EXPECT_TRUE(diagnostics.empty());
+
+    ASSERT_TRUE(musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(withRange("3", "2")));
+    EXPECT_EQ(diagnostics.size(), 1);
+}
+
 TEST(StaffGroupTest, CalcIsSingleInstrumentSection)
 {
     auto doc = musx::factory::DocumentFactory::create<musx::xml::pugi::Document>(singleInstrumentSectionXml);

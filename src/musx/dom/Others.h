@@ -2964,14 +2964,9 @@ public:
     {
         this->OthersBase::integrityCheck(ptrToThis);
         if (startMeas == 0 || endMeas == 0) {
-            if (getSourcePartId() == SCORE_PARTID) {
-                util::Logger::log(util::Logger::LogLevel::Info, "Layout for system " + std::to_string(getCmper())
-                    + " of part " + std::to_string(getSourcePartId()) + " has not been calculated.");
-            } else {
-                // Finale can retain zero-valued system placeholders until a linked-part layout is updated.
-                util::Logger::log(util::Logger::LogLevel::Verbose, "Layout for system " + std::to_string(getCmper())
-                    + " of part " + std::to_string(getSourcePartId()) + " has not been calculated.");
-            }
+            // Page::calcSystemInfo reports an uncalculated score layout once at Info.
+            util::Logger::log(util::Logger::LogLevel::Verbose, "Layout for system " + std::to_string(getCmper())
+                + " of part " + std::to_string(getSourcePartId()) + " has not been calculated.");
         }
     }
 

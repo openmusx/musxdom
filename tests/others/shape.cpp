@@ -899,3 +899,31 @@ TEST(ShapeTest, NextFreeCmperIsPerType)
     // An empty pool starts at 1, leaving 0 for whatever sentinel meaning the type gives it.
     EXPECT_EQ(others->nextFreeCmper<others::TextExpressionDef>(SCORE_PARTID), std::optional<Cmper>(Cmper(1)));
 }
+
+TEST(ShapeTest, NextFreeCmperReusesTheLowestGapOnlyWhenTheTopIsTaken)
+{
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(shapeImportTargetXml);
+    auto others = doc->getOthers();
+    const auto addDefinition = [&](Cmper cmper) {
+        others->add(others::TextExpressionDef::XmlNodeName,
+            std::make_shared<others::TextExpressionDef>(doc, SCORE_PARTID, EnigmaBase::ShareMode::All, cmper));
+    };
+
+    // A gap below the highest identifier is not reused while the space above it is free.
+    addDefinition(1);
+    addDefinition(3);
+    EXPECT_EQ(others->nextFreeCmper<others::TextExpressionDef>(SCORE_PARTID), std::optional<Cmper>(Cmper(4)));
+
+    // With the highest possible identifier taken, the lowest unused one above zero is returned.
+    constexpr Cmper maxCmper = (std::numeric_limits<Cmper>::max)();
+    addDefinition(maxCmper);
+    EXPECT_EQ(others->nextFreeCmper<others::TextExpressionDef>(SCORE_PARTID), std::optional<Cmper>(Cmper(2)));
+    addDefinition(2);
+    EXPECT_EQ(others->nextFreeCmper<others::TextExpressionDef>(SCORE_PARTID), std::optional<Cmper>(Cmper(4)));
+
+    // With every identifier above zero in use, none is free.
+    for (Cmper cmper = 4; cmper < maxCmper; ++cmper) {
+        addDefinition(cmper);
+    }
+    EXPECT_EQ(others->nextFreeCmper<others::TextExpressionDef>(SCORE_PARTID), std::nullopt);
+}

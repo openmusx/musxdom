@@ -209,7 +209,7 @@ TEST(PageTest, UncalculatedLinkedPartLayoutIsVerbose)
     }
     EXPECT_NE(diagnostics[0].second.find("system 2"), std::string::npos);
     EXPECT_NE(diagnostics[0].second.find("has not been calculated"), std::string::npos);
-    EXPECT_NE(diagnostics[1].second.find("cannot be determined"), std::string::npos);
+    EXPECT_NE(diagnostics[1].second.find("of part 1 cannot be determined"), std::string::npos);
     EXPECT_NE(diagnostics[2].second.find("has not been calculated"), std::string::npos);
 }
 
@@ -243,9 +243,13 @@ TEST(PageTest, UncalculatedScoreLayoutIsInformational)
     EXPECT_EQ(doc->calcPageFromMeasure(SCORE_PARTID, 1), nullptr);
     EXPECT_EQ(doc->calcSystemFromMeasure(SCORE_PARTID, 1), nullptr);
 
-    ASSERT_EQ(diagnostics.size(), 2);
+    // Each uncalculated system is verbose; the score's state is reported once at Info.
+    ASSERT_EQ(diagnostics.size(), 3);
+    EXPECT_EQ(diagnostics.back().first, musx::util::Logger::LogLevel::Info);
+    EXPECT_EQ(diagnostics.back().second, "The score's layout has not been fully calculated.");
+    diagnostics.pop_back();
     for (const auto& [level, message] : diagnostics) {
-        EXPECT_EQ(level, musx::util::Logger::LogLevel::Info) << message;
+        EXPECT_EQ(level, musx::util::Logger::LogLevel::Verbose) << message;
         EXPECT_NE(message.find("has not been calculated"), std::string::npos);
     }
 }
@@ -292,10 +296,15 @@ TEST(PageTest, SystemHoldingOnlySplitMeasureStart)
     EXPECT_EQ(page->firstMeasureId, 1);
     EXPECT_EQ(page->lastMeasureId, 2);
 
-    // Without the split point, the same range is invalid.
+    // Without the split point, the same range is a stale layout, so the page is not linked.
     std::string unsplitXml(splitMeasureSystemXml);
     const auto splitStart = unsplitXml.find("<splitMeas");
     const auto splitEnd = unsplitXml.find("</splitMeas>") + std::string("</splitMeas>").size();
     unsplitXml.erase(splitStart, splitEnd - splitStart);
-    EXPECT_THROW((void)musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(unsplitXml), musx::dom::integrity_error);
+    auto unsplit = musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(unsplitXml);
+    ASSERT_TRUE(unsplit);
+    auto unsplitPage = unsplit->getOthers()->get<others::Page>(SCORE_PARTID, 1);
+    ASSERT_TRUE(unsplitPage);
+    EXPECT_FALSE(unsplitPage->firstMeasureId);
+    EXPECT_FALSE(unsplitPage->isLayoutCalculated());
 }

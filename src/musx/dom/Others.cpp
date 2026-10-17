@@ -1226,17 +1226,13 @@ void Page::calcSystemInfo(const DocumentPtr& document)
     for (const auto& part : linkedParts) {
         auto pages = document->getOthers()->getArray<Page>(part->getCmper());
         auto systems = document->getOthers()->getArray<StaffSystem>(part->getCmper());
-        const auto reportStructuralLayoutProblem = [&](const std::string& message) {
-            if (part->isScore()) {
-                MUSX_INTEGRITY_ERROR(message);
-            } else {
-                util::Logger::log(util::Logger::LogLevel::Verbose, message);
-            }
-        };
+        // Finale can save an uncalculated or stale layout for any part, though it is much more common
+        // for linked parts, and recalculates it on open. Each instance is verbose; the score's state
+        // is reported once below.
+        bool layoutUncalculated = false;
         const auto reportUncalculatedLayout = [&](const std::string& message) {
-            // Finale can save an uncalculated layout for any part, though it is much more common
-            // for linked parts. This state is informational for the score and verbose for parts.
-            util::Logger::log(part->isScore() ? util::Logger::LogLevel::Info : util::Logger::LogLevel::Verbose, message);
+            util::Logger::log(util::Logger::LogLevel::Verbose, message);
+            layoutUncalculated = true;
         };
         for (const auto& system : systems) {
             StaffSystem* mutableSystem = const_cast<StaffSystem*>(system.get());
@@ -1275,18 +1271,8 @@ void Page::calcSystemInfo(const DocumentPtr& document)
                     lastSystemId = systems.back()->getCmper();
                 }
             }
-            if (!lastSystemId) {
-                const auto message = "The systems on page " + std::to_string(page->getCmper()) + " of part " + part->getName()
-                    + " cannot be determined.";
-                if (foundFollowingNonBlankPage) {
-                    reportUncalculatedLayout(message);
-                } else {
-                    reportStructuralLayoutProblem(message);
-                }
-                continue;
-            }
-            if (lastSystemId.value() < page->firstSystemId) {
-                reportStructuralLayoutProblem("The systems on page " + std::to_string(page->getCmper()) + " of part " + part->getName()
+            if (!lastSystemId || lastSystemId.value() < page->firstSystemId) {
+                reportUncalculatedLayout("The systems on page " + std::to_string(page->getCmper()) + " of part " + std::to_string(part->getCmper())
                     + " cannot be determined.");
                 continue;
             }
@@ -1296,7 +1282,7 @@ void Page::calcSystemInfo(const DocumentPtr& document)
             for (SystemCmper systemId = page->firstSystemId; systemId <= lastSystemId.value(); ++systemId) {
                 auto system = document->getOthers()->get<StaffSystem>(part->getCmper(), systemId);
                 if (!system) {
-                    reportStructuralLayoutProblem("Page " + std::to_string(page->getCmper()) + " of part " + part->getName()
+                    reportUncalculatedLayout("Page " + std::to_string(page->getCmper()) + " of part " + std::to_string(part->getCmper())
                         + " has no system instance for system " + std::to_string(systemId) + ".");
                     hasInvalidSystem = true;
                     break;
@@ -1312,7 +1298,7 @@ void Page::calcSystemInfo(const DocumentPtr& document)
                 const bool holdsOnlySplitStart = system->endMeas == system->startMeas
                     && document->getOthers()->get<SplitMeasure>(part->getCmper(), system->startMeas);
                 if (system->endMeas < system->startMeas || (system->endMeas == system->startMeas && !holdsOnlySplitStart)) {
-                    reportStructuralLayoutProblem("Page " + std::to_string(page->getCmper()) + " of part " + part->getName()
+                    reportUncalculatedLayout("Page " + std::to_string(page->getCmper()) + " of part " + std::to_string(part->getCmper())
                         + " has an invalid measure range for system " + std::to_string(systemId) + ".");
                     hasInvalidSystem = true;
                     break;
@@ -1330,6 +1316,9 @@ void Page::calcSystemInfo(const DocumentPtr& document)
                 StaffSystem* mutableSystem = const_cast<StaffSystem*>(system.get());
                 mutableSystem->pageId = PageCmper(page->getCmper());
             }
+        }
+        if (layoutUncalculated && part->isScore()) {
+            util::Logger::log(util::Logger::LogLevel::Info, "The score's layout has not been fully calculated.");
         }
     }
 }

@@ -468,24 +468,44 @@ public:
         return bindWithPartId<T>(getEffectiveSourceForPart<T>(key), key.partId);
     }
 
-    /// @brief Returns the identifier one past the highest currently used in @p items.
+    /// @brief Returns an identifier not currently used in @p items.
+    /// @details The identifier is one past the highest in use. When the highest possible identifier
+    /// is in use, it is instead the lowest unused identifier above zero.
     /// @tparam T The type stored in @p items.
     /// @tparam IdGetter A callable that returns an item's @ref Cmper identifier.
-    /// @param items The items whose identifiers are being counted.
+    /// @param items The items whose identifiers are being counted, in ascending identifier order,
+    /// as a pool's @c getArray returns them. An identifier may repeat.
     /// @param getId The callable used to obtain each identifier.
-    /// @return The next free identifier, or std::nullopt when the identifier space is exhausted.
+    /// @return The next free identifier, or std::nullopt when every identifier above zero is in use.
     template <typename T, typename IdGetter>
     static std::optional<Cmper> nextFreeCmper(
         const MusxInstanceList<T>& items, IdGetter getId)
     {
-        Cmper highest = 0;
+        constexpr Cmper maxCmper = (std::numeric_limits<Cmper>::max)();
+        if (items.empty()) {
+            return Cmper(1);
+        }
+        const Cmper highest = std::invoke(getId, *items.back());
+        if (highest != maxCmper) {
+            return Cmper(highest + 1);
+        }
+        // A gap may be an identifier a stale reference still names, so gaps are reused only once
+        // the top of the space is taken. The items are in order, so the first skipped identifier
+        // is the lowest free one.
+        Cmper expected = 1;
         for (const auto& item : items) {
-            highest = (std::max)(highest, std::invoke(getId, *item));
+            const Cmper id = std::invoke(getId, *item);
+            if (id > expected) {
+                return expected;
+            }
+            if (id == expected) {
+                if (expected == maxCmper) {
+                    return std::nullopt;
+                }
+                ++expected;
+            }
         }
-        if (highest == (std::numeric_limits<Cmper>::max)()) {
-            return std::nullopt;
-        }
-        return Cmper(highest + 1);
+        return expected;
     }
 
     /// @brief Constructs the object pool
