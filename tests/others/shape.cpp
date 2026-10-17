@@ -920,4 +920,10 @@ TEST(ShapeTest, NextFreeCmperReusesTheLowestGapOnlyWhenTheTopIsTaken)
     EXPECT_EQ(others->nextFreeCmper<others::TextExpressionDef>(SCORE_PARTID), std::optional<Cmper>(Cmper(2)));
     addDefinition(2);
     EXPECT_EQ(others->nextFreeCmper<others::TextExpressionDef>(SCORE_PARTID), std::optional<Cmper>(Cmper(4)));
+
+    // With every identifier above zero in use, none is free.
+    for (Cmper cmper = 4; cmper < maxCmper; ++cmper) {
+        addDefinition(cmper);
+    }
+    EXPECT_EQ(others->nextFreeCmper<others::TextExpressionDef>(SCORE_PARTID), std::nullopt);
 }
