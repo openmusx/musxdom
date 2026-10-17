@@ -181,7 +181,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ObjectPool</b> ()
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a43274c9d9562ef3b5e8d1b2bd2a80cda" id="r_a43274c9d9562ef3b5e8d1b2bd2a80cda"><td class="memTemplParams" colspan="2">template&lt;typename T , typename IdGetter &gt; </td></tr>
 <tr class="memitem:a43274c9d9562ef3b5e8d1b2bd2a80cda"><td class="memTemplItemLeft" align="right" valign="top">static std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a849c0fb091707be060d840e877486f65">Cmper</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1ObjectPool.html#a43274c9d9562ef3b5e8d1b2bd2a80cda">nextFreeCmper</a> (const <a class="el" href="classmusx_1_1dom_1_1MusxInstanceList.html">MusxInstanceList</a>&lt; T &gt; &amp;items, IdGetter getId)</td></tr>
-<tr class="memdesc:a43274c9d9562ef3b5e8d1b2bd2a80cda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the identifier one past the highest currently used in <code>items</code>.  <br /></td></tr>
+<tr class="memdesc:a43274c9d9562ef3b5e8d1b2bd2a80cda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an identifier not currently used in <code>items</code>.  <br /></td></tr>
 <tr class="separator:a43274c9d9562ef3b5e8d1b2bd2a80cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -664,8 +664,8 @@ template&lt;typename T , typename IdGetter &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the identifier one past the highest currently used in <code>items</code>. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>Returns an identifier not currently used in <code>items</code>. </p>
+<p>The identifier is one past the highest in use. When the highest possible identifier is in use, it is instead the lowest unused identifier above zero. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The type stored in <code>items</code>. </td></tr>
     <tr><td class="paramname">IdGetter</td><td>A callable that returns an item's <a class="el" href="namespacemusx_1_1dom.html#a849c0fb091707be060d840e877486f65">Cmper</a> identifier. </td></tr>
@@ -674,12 +674,12 @@ template&lt;typename T , typename IdGetter &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">items</td><td>The items whose identifiers are being counted. </td></tr>
+    <tr><td class="paramname">items</td><td>The items whose identifiers are being counted, in ascending identifier order, as a pool's <code>getArray</code> returns them. An identifier may repeat. </td></tr>
     <tr><td class="paramname">getId</td><td>The callable used to obtain each identifier. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The next free identifier, or std::nullopt when the identifier space is exhausted. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The next free identifier, or std::nullopt when every identifier above zero is in use. </dd></dl>
 
 </div>
 </div>
