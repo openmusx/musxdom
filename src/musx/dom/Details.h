@@ -1930,7 +1930,7 @@ public:
     void integrityCheck(const std::shared_ptr<EnigmaBase>& ptrToThis) override
     {
         this->DetailsBase::integrityCheck(ptrToThis);
-        if (endMeas <= startMeas || startMeas <= 0) {
+        if (endMeas < startMeas || startMeas <= 0) {
             // Especially when a file was upgraded from pre-modern group settings,
             // the staff groups can get a bit squirrelly. Groups like this should just
             // be ignored.                

@@ -468,24 +468,38 @@ public:
         return bindWithPartId<T>(getEffectiveSourceForPart<T>(key), key.partId);
     }
 
-    /// @brief Returns the identifier one past the highest currently used in @p items.
+    /// @brief Returns an identifier not currently used in @p items.
+    /// @details The identifier is one past the highest in use. When the highest possible identifier
+    /// is in use, it is instead the lowest unused identifier above zero.
     /// @tparam T The type stored in @p items.
     /// @tparam IdGetter A callable that returns an item's @ref Cmper identifier.
     /// @param items The items whose identifiers are being counted.
     /// @param getId The callable used to obtain each identifier.
-    /// @return The next free identifier, or std::nullopt when the identifier space is exhausted.
+    /// @return The next free identifier, or std::nullopt when every identifier above zero is in use.
     template <typename T, typename IdGetter>
     static std::optional<Cmper> nextFreeCmper(
         const MusxInstanceList<T>& items, IdGetter getId)
     {
+        constexpr Cmper maxCmper = (std::numeric_limits<Cmper>::max)();
         Cmper highest = 0;
         for (const auto& item : items) {
             highest = (std::max)(highest, std::invoke(getId, *item));
         }
-        if (highest == (std::numeric_limits<Cmper>::max)()) {
-            return std::nullopt;
+        if (highest != maxCmper) {
+            return Cmper(highest + 1);
         }
-        return Cmper(highest + 1);
+        // A gap may be an identifier a stale reference still names, so gaps are reused only once
+        // the top of the space is taken.
+        std::vector<bool> used(std::size_t(maxCmper) + 1);
+        for (const auto& item : items) {
+            used[std::invoke(getId, *item)] = true;
+        }
+        for (std::size_t candidate = 1; candidate < used.size(); ++candidate) {
+            if (!used[candidate]) {
+                return Cmper(candidate);
+            }
+        }
+        return std::nullopt;
     }
 
     /// @brief Constructs the object pool
