@@ -313,13 +313,13 @@ TEST(BeatChartElement, EduFromEvpuWithAutomaticBeatChart)
     EXPECT_EQ(spacing.musicWidth, 315);
     EXPECT_EQ(spacing.chartDuration, 4096);
     EXPECT_EQ(spacing.endEdu, 4096);
-    ASSERT_EQ(spacing.slots.size(), 2u);
-    EXPECT_EQ(spacing.slots[0].offset, 3);
-    EXPECT_EQ(spacing.slots[0].edu, 0);
-    EXPECT_EQ(spacing.slots[0].endOffset, 99);
-    EXPECT_EQ(spacing.slots[1].offset, 99);
-    EXPECT_EQ(spacing.slots[1].edu, 2048);
-    EXPECT_EQ(spacing.slots[1].endOffset, 195);
+    ASSERT_EQ(spacing.spacingSlots.size(), 2u);
+    EXPECT_EQ(spacing.spacingSlots[0].offset, 3);
+    EXPECT_EQ(spacing.spacingSlots[0].edu, 0);
+    EXPECT_EQ(spacing.spacingSlots[0].endOffset, 99);
+    EXPECT_EQ(spacing.spacingSlots[1].offset, 99);
+    EXPECT_EQ(spacing.spacingSlots[1].edu, 2048);
+    EXPECT_EQ(spacing.spacingSlots[1].endOffset, 195);
 
     EXPECT_DOUBLE_EQ(measure->calcFirstBeatEvpu(), 39.0);
     EXPECT_DOUBLE_EQ(measure->calcEduFromEvpu(87), 1024.0);
@@ -369,19 +369,19 @@ TEST(BeatChartElement, EduFromEvpuJustificationBranches)
     auto measure = std::const_pointer_cast<others::Measure>(doc->getOthers()->get<others::Measure>(SCORE_PARTID, 1));
     using Justification = others::Measure::BeatChartJustification;
     const auto spacing = measure->calcSpacing();
-    ASSERT_EQ(spacing.slots.size(), 3u);
+    ASSERT_EQ(spacing.spacingSlots.size(), 3u);
     EXPECT_EQ(spacing.musicStart, 0);
     EXPECT_EQ(spacing.musicWidth, 90);
-    EXPECT_EQ(spacing.slots[0].offset, 10);
-    EXPECT_EQ(spacing.slots[0].endOffset, 45);
-    EXPECT_EQ(spacing.slots[1].offset, 50);
-    EXPECT_EQ(spacing.slots[1].endOffset, 73);
-    EXPECT_EQ(spacing.slots[2].offset, 78);
-    EXPECT_EQ(spacing.slots[2].endOffset, 90);
+    EXPECT_EQ(spacing.spacingSlots[0].offset, 10);
+    EXPECT_EQ(spacing.spacingSlots[0].endOffset, 45);
+    EXPECT_EQ(spacing.spacingSlots[1].offset, 50);
+    EXPECT_EQ(spacing.spacingSlots[1].endOffset, 73);
+    EXPECT_EQ(spacing.spacingSlots[2].offset, 78);
+    EXPECT_EQ(spacing.spacingSlots[2].endOffset, 90);
     EXPECT_EQ(measure->calcFirstBeatEvpu(), 10);
     const auto legacy = measure->calcSpacing(Justification::Legacy);
-    EXPECT_EQ(legacy.slots[1].offset, 54);
-    EXPECT_EQ(legacy.slots[1].endOffset, 74);
+    EXPECT_EQ(legacy.spacingSlots[1].offset, 54);
+    EXPECT_EQ(legacy.spacingSlots[1].endOffset, 74);
     // Minimum and natural layouts at width 90 produce spans [10,45], [50,73], [78,90].
     EXPECT_EQ(measure->calcEduFromEvpu(45), 1024);
     EXPECT_EQ(measure->calcEduFromEvpu(48), 1024); // gap before the next span

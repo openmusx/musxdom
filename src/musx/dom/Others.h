@@ -1338,7 +1338,7 @@ public:
         Edu endEdu{};      ///< Global measure duration and final interpolation endpoint.
         Edu chartDuration{}; ///< Chart duration, or zero for proportional spacing. Positive interpolated chart
                              ///< positions are rounded after multiplication by endEdu / chartDuration.
-        std::vector<SpacingSlot> slots; ///< Justified spans in chart order. Always contains at least one span.
+        std::vector<SpacingSlot> spacingSlots; ///< Justified spans in chart order. Always contains at least one span.
     };
 
     /// @brief Calculates justified horizontal beat spans, respecting the measure's positioning mode.
