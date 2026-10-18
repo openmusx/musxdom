@@ -441,7 +441,7 @@ Measure::Spacing Measure::calcSpacing(BeatChartJustification justification) cons
     const bool usesChart = positioningMode == PositioningType::BeatChart
         || positioningMode == PositioningType::BeatChartPlusPositioning;
     if (duration == 0 || !usesChart || chart.size() < 2 || !chart.front()->control || chart.front()->control->totalDur == 0) {
-        spacing.slots.push_back({0, musicWidth, 0});
+        spacing.spacingSlots.push_back({0, musicWidth, 0});
         return spacing;
     }
     using Span = SpacingSlot;
@@ -453,7 +453,7 @@ Measure::Spacing Measure::calcSpacing(BeatChartJustification justification) cons
     const bool legacy = justification == BeatChartJustification::Legacy;
     const double durationRatio = double(control.totalDur) / duration;
     const size_t count = chart.size() - 1;
-    auto& spans = spacing.slots;
+    auto& spans = spacing.spacingSlots;
     spans.resize(count);
     auto rounded = [](double value) { return static_cast<Evpu>(std::lround(value)); };
     auto blend = [&](Span a, Span b, double fraction) {
@@ -523,7 +523,7 @@ Measure::Spacing Measure::calcSpacing(BeatChartJustification justification) cons
     }
 
     for (size_t i = 0; i < count; ++i) {
-        spacing.slots[i].edu = chart[i + 1]->dur;
+        spacing.spacingSlots[i].edu = chart[i + 1]->dur;
     }
     spacing.chartDuration = control.totalDur;
     return spacing;
@@ -532,7 +532,7 @@ Measure::Spacing Measure::calcSpacing(BeatChartJustification justification) cons
 EvpuFloat Measure::calcFirstBeatEvpu(BeatChartJustification justification) const
 {
     const auto spacing = calcSpacing(justification);
-    return spacing.musicStart + spacing.slots.front().offset;
+    return spacing.musicStart + spacing.spacingSlots.front().offset;
 }
 
 Edu Measure::calcEduFromEvpu(Evpu evpuFromLeftEdge, BeatChartJustification justification, bool allowNegative) const
@@ -550,16 +550,16 @@ Edu Measure::calcEduFromEvpu(Evpu evpuFromLeftEdge, BeatChartJustification justi
         return offset <= 0 || spacing.musicWidth == 0 ? offset
             : static_cast<Edu>(std::lround(double(offset) * duration / spacing.musicWidth));
     }
-    const auto& slots = spacing.slots;
+    const auto& spacingSlots = spacing.spacingSlots;
     size_t index = 0;
-    while (index + 1 < slots.size() && offset >= slots[index].endOffset) {
+    while (index + 1 < spacingSlots.size() && offset >= spacingSlots[index].endOffset) {
         ++index;
     }
-    Edu result = slots[index].edu;
-    const Evpu start = slots[index].offset;
+    Edu result = spacingSlots[index].edu;
+    const Evpu start = spacingSlots[index].offset;
     // Use the stored span end until it is reached, then extrapolate to the available width.
-    const Evpu end = offset < slots[index].endOffset ? slots[index].endOffset : spacing.musicWidth;
-    const Edu nextEdu = index + 1 < slots.size() ? slots[index + 1].edu : duration;
+    const Evpu end = offset < spacingSlots[index].endOffset ? spacingSlots[index].endOffset : spacing.musicWidth;
+    const Edu nextEdu = index + 1 < spacingSlots.size() ? spacingSlots[index + 1].edu : duration;
     if (offset < start) {
         const auto miscOptions = getDocument()->getOptions()->get<options::MiscOptions>();
         const Edu pickup = getCmper() == 1 && miscOptions ? miscOptions->pickupValue : 0;
