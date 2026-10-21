@@ -1347,9 +1347,28 @@ public:
     util::EnigmaParsingContext getRawTextCtx() const;
 
     /// @brief Calculate the entry to which an automatic word extension extends.
-    /// @return The terminating entry of the word extension, or null if no word extension or if the document
-    /// uses legacy word extensions.
+    ///
+    /// With smart word extensions, the endpoint is the one stored in the word extension SmartShape. When that shape
+    /// cannot be found or its end names no entry, and with legacy word extensions, whose #wext is only a drawn
+    /// length, it is #calcInferredWordExtensionEndpoint.
+    /// @return The terminating entry of the word extension, which may be the syllable's own entry, or null if the
+    /// syllable has no word extension.
     EntryInfoPtr calcWordExtensionEndpoint() const;
+
+    /// @brief Infer the entry to which a word extension on this syllable extends, the way Finale builds smart word
+    /// extensions.
+    ///
+    /// The extension runs through the following entries of the same layer, in either voice, and ends on the last note
+    /// before the next syllable of the same lyric line, a rest, an empty measure, or the end of the document. A
+    /// syllable of a lyric line of another type counts as the next syllable when its baseline and vertical offset both
+    /// equal this syllable's. The extension ends on the last entry of a measure whose barline ends word extensions
+    /// (others::Measure::breakWordExt). Grace notes never become the endpoint. A syllable followed by a hyphen and
+    /// (when options::LyricOptions::wordExtNeedUnderscore is set) a syllable without an underscore have no extension.
+    ///
+    /// Finale does not recompute every stored shape this way; see others::SmartShape::endLyricNum.
+    /// @return The inferred terminating entry, which may be the syllable's own entry, or null if the syllable can
+    /// have no word extension. The result does not depend on #wext.
+    EntryInfoPtr calcInferredWordExtensionEndpoint() const;
 
     /// @brief Calculate the verse/chorus/section number to display to the left of this
     /// assignment's syllable, if any.

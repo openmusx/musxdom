@@ -86,19 +86,28 @@ TEST(LyricsTest, WordExtensions)
     }
 }
 
-TEST(LyricsTest, WordExtensionEndpointFollowsSmartWordExtensionOption)
+namespace {
+
+std::shared_ptr<Document> createWordExtDocument(std::string_view removedOption = {})
 {
     std::vector<char> xml;
     musxtest::readFile(musxtest::getInputPath() / "wordext.enigmaxml", xml);
     std::string text(xml.begin(), xml.end());
-
-    auto endpointWithOptions = [&](std::string_view removedOption) {
-        std::string modified = text;
-        const auto pos = modified.find(removedOption);
+    if (!removedOption.empty()) {
+        const auto pos = text.find(removedOption);
         EXPECT_NE(pos, std::string::npos) << removedOption;
-        modified.erase(pos, removedOption.size());
-        std::vector<char> modifiedXml(modified.begin(), modified.end());
-        auto doc = musx::factory::DocumentFactory::create<musx::xml::tinyxml2::Document>(modifiedXml);
+        text.erase(pos, removedOption.size());
+    }
+    std::vector<char> modifiedXml(text.begin(), text.end());
+    return musx::factory::DocumentFactory::create<musx::xml::tinyxml2::Document>(modifiedXml);
+}
+
+} // namespace
+
+TEST(LyricsTest, WordExtensionEndpointFollowsSmartWordExtensionOption)
+{
+    auto endpointWithOptions = [&](std::string_view removedOption) {
+        auto doc = createWordExtDocument(removedOption);
         EXPECT_TRUE(doc);
         auto staff = others::StaffComposite::createCurrent(doc, SCORE_PARTID, 1, 1, 0);
         EXPECT_TRUE(staff);
@@ -109,7 +118,78 @@ TEST(LyricsTest, WordExtensionEndpointFollowsSmartWordExtensionOption)
 
     // Smart hyphens do not decide whether a word extension has a shape; smart word extensions do.
     EXPECT_TRUE(endpointWithOptions("<useSmartHyphens/>"));
-    EXPECT_FALSE(endpointWithOptions("<useSmartWordExtensions/>"));
+    // Without smart word extensions, the endpoint is inferred from the music instead of read from a shape.
+    EXPECT_TRUE(endpointWithOptions("<useSmartWordExtensions/>"));
+}
+
+TEST(LyricsTest, LegacyWordExtensionEndpointMatchesSmartShapes)
+{
+    // The same music with smart word extensions turned off: every inferred endpoint must be the one
+    // Finale stored in the corresponding smart shape.
+    auto smartDoc = createWordExtDocument();
+    auto legacyDoc = createWordExtDocument("<useSmartWordExtensions/>");
+    ASSERT_TRUE(smartDoc);
+    ASSERT_TRUE(legacyDoc);
+
+    const auto smartAssignments = smartDoc->getDetails()->getAllSources<details::LyricAssignVerse>();
+    const auto legacyAssignments = legacyDoc->getDetails()->getAllSources<details::LyricAssignVerse>();
+    ASSERT_EQ(smartAssignments.size(), legacyAssignments.size());
+    size_t extensionCount = 0;
+    for (size_t x = 0; x < smartAssignments.size(); x++) {
+        const auto& smart = smartAssignments[x];
+        const auto& legacy = legacyAssignments[x];
+        ASSERT_EQ(smart->getEntryNumber(), legacy->getEntryNumber());
+        const auto smartEndpoint = smart->calcWordExtensionEndpoint();
+        const auto legacyEndpoint = legacy->calcWordExtensionEndpoint();
+        ASSERT_EQ(bool(smartEndpoint), bool(legacyEndpoint)) << "entry " << smart->getEntryNumber();
+        if (smartEndpoint) {
+            extensionCount++;
+            EXPECT_EQ(smartEndpoint->getEntry()->getEntryNumber(), legacyEndpoint->getEntry()->getEntryNumber())
+                << "word extension on entry " << smart->getEntryNumber() << " verse " << smart->lyricNumber;
+        }
+    }
+    EXPECT_EQ(extensionCount, 5);
+}
+
+TEST(LyricsTest, SmartWordExtensionWithoutEntryAssignmentIsInferred)
+{
+    // Finale does not always save the entry assignment that leads to a word extension shape. Without any of them,
+    // every endpoint must still be the one the shape stores.
+    std::vector<char> xml;
+    musxtest::readFile(musxtest::getInputPath() / "wordext.enigmaxml", xml);
+    std::string text(xml.begin(), xml.end());
+    const std::string openTag = "<smartShapeEntryMark ";
+    const std::string closeTag = "</smartShapeEntryMark>";
+    size_t removed = 0;
+    for (auto pos = text.find(openTag); pos != std::string::npos; pos = text.find(openTag, pos)) {
+        const auto end = text.find(closeTag, pos);
+        ASSERT_NE(end, std::string::npos);
+        text.erase(pos, end + closeTag.size() - pos);
+        removed++;
+    }
+    ASSERT_GT(removed, 0u);
+    std::vector<char> strippedXml(text.begin(), text.end());
+    auto strippedDoc = musx::factory::DocumentFactory::create<musx::xml::tinyxml2::Document>(strippedXml);
+    auto smartDoc = createWordExtDocument();
+    ASSERT_TRUE(strippedDoc);
+    ASSERT_TRUE(smartDoc);
+    EXPECT_TRUE(strippedDoc->getDetails()->getAllSources<details::SmartShapeEntryAssign>().empty());
+
+    const auto smartAssignments = smartDoc->getDetails()->getAllSources<details::LyricAssignVerse>();
+    const auto strippedAssignments = strippedDoc->getDetails()->getAllSources<details::LyricAssignVerse>();
+    ASSERT_EQ(smartAssignments.size(), strippedAssignments.size());
+    size_t extensionCount = 0;
+    for (size_t x = 0; x < smartAssignments.size(); x++) {
+        const auto smartEndpoint = smartAssignments[x]->calcWordExtensionEndpoint();
+        const auto strippedEndpoint = strippedAssignments[x]->calcWordExtensionEndpoint();
+        ASSERT_EQ(bool(smartEndpoint), bool(strippedEndpoint)) << "entry " << smartAssignments[x]->getEntryNumber();
+        if (smartEndpoint) {
+            extensionCount++;
+            EXPECT_EQ(smartEndpoint->getEntry()->getEntryNumber(), strippedEndpoint->getEntry()->getEntryNumber())
+                << "word extension on entry " << smartAssignments[x]->getEntryNumber();
+        }
+    }
+    EXPECT_EQ(extensionCount, 5u);
 }
 
 constexpr static musxtest::string_view displayNumberXml = R"xml(

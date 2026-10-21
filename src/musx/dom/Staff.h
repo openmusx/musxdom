@@ -710,8 +710,8 @@ public:
     Cmper styleId{};        ///< The cmper of the assigned @ref StaffStyle.
 
     /// @brief Returns the @ref StaffStyle instance for this assignment
-    /// @return Can return nullptr only in the case when there is an itegrity error
-    /// @throws musx::dom::integrity_error if compiled to throw integrity errors
+    /// @return The assigned staff style, or nullptr when #styleId names a staff style that does not exist.
+    /// Finale ignores such an assignment, and the factory reports it once when the document is created.
     MusxInstance<StaffStyle> getStaffStyle() const;
 
     void integrityCheck(const std::shared_ptr<EnigmaBase>& ptrToThis) override

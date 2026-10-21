@@ -19,6 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+#include <algorithm>
+
 #include "gtest/gtest.h"
 #include "musx/musx.h"
 #include "test_utils.h"
@@ -307,4 +309,85 @@ TEST(PageTest, SystemHoldingOnlySplitMeasureStart)
     ASSERT_TRUE(unsplitPage);
     EXPECT_FALSE(unsplitPage->firstMeasureId);
     EXPECT_FALSE(unsplitPage->isLayoutCalculated());
+}
+
+constexpr static musxtest::string_view systemsBeyondPieceXml = R"xml(
+<?xml version="1.0" encoding="UTF-8"?>
+<finale>
+  <others>
+    <measSpec cmper="1">
+      <width>600</width>
+    </measSpec>
+    <measSpec cmper="2">
+      <width>600</width>
+    </measSpec>
+    <measSpec cmper="3">
+      <width>600</width>
+    </measSpec>
+    <pageSpec cmper="1">
+      <firstSystem>1</firstSystem>
+    </pageSpec>
+    <staffSystemSpec cmper="1">
+      <startMeas>1</startMeas>
+      <endMeas>3</endMeas>
+    </staffSystemSpec>
+    <staffSystemSpec cmper="2">
+      <startMeas>3</startMeas>
+      <endMeas>4</endMeas>
+    </staffSystemSpec>
+    <staffSystemSpec cmper="3">
+      <startMeas>5</startMeas>
+      <endMeas>7</endMeas>
+    </staffSystemSpec>
+    <staffSystemSpec cmper="4">
+      <startMeas>7</startMeas>
+      <endMeas>9</endMeas>
+    </staffSystemSpec>
+    <partDef cmper="0"/>
+    <partGlobals cmper="65534"/>
+  </others>
+</finale>
+)xml";
+
+TEST(PageTest, LayoutStopsAtFirstSystemBeyondThePiece)
+{
+    auto previousLogger = musx::util::Logger::getCallback();
+    struct LoggerRestorer {
+        musx::util::Logger::LogCallback callback;
+        ~LoggerRestorer() { musx::util::Logger::setCallback(std::move(callback)); }
+    } loggerRestorer{previousLogger};
+
+    std::vector<std::pair<musx::util::Logger::LogLevel, std::string>> diagnostics;
+    musx::util::Logger::setCallback([&](musx::util::Logger::LogLevel level, const std::string& message) {
+        diagnostics.emplace_back(level, message);
+    });
+
+    // The piece ends at measure 3, but systems 3 and 4 were kept from a longer version of it.
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(systemsBeyondPieceXml);
+    ASSERT_TRUE(doc);
+
+    auto page = doc->getOthers()->get<others::Page>(SCORE_PARTID, 1);
+    ASSERT_TRUE(page);
+    EXPECT_EQ(page->lastSystemId, 2);
+    EXPECT_EQ(page->firstMeasureId, 1);
+    EXPECT_EQ(page->lastMeasureId, 3);
+    EXPECT_TRUE(page->isLayoutCalculated());
+    auto part = doc->getOthers()->get<others::PartDefinition>(SCORE_PARTID, SCORE_PARTID);
+    ASSERT_TRUE(part);
+    EXPECT_TRUE(part->isLayoutCalculated());
+
+    for (SystemCmper systemId = 1; systemId <= 4; ++systemId) {
+        auto system = doc->getOthers()->get<others::StaffSystem>(SCORE_PARTID, systemId);
+        ASSERT_TRUE(system);
+        EXPECT_EQ(system->pageId, systemId <= 2 ? 1 : 0) << "system " << systemId;
+    }
+
+    const auto report = std::find_if(diagnostics.begin(), diagnostics.end(),
+        [](const auto& diagnostic) { return diagnostic.second.find("starts after the last measure") != std::string::npos; });
+    ASSERT_NE(report, diagnostics.end());
+    EXPECT_EQ(report->first, musx::util::Logger::LogLevel::Verbose);
+    EXPECT_NE(report->second.find("System 3"), std::string::npos) << report->second;
+    EXPECT_EQ(std::count_if(diagnostics.begin(), diagnostics.end(),
+                  [](const auto& diagnostic) { return diagnostic.first != musx::util::Logger::LogLevel::Verbose; }),
+        0);
 }

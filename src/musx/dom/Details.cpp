@@ -19,6 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+#include <algorithm>
 #include <string>
 #include <vector>
 #include <cstdlib>
@@ -647,26 +648,137 @@ util::EnigmaParsingContext LyricAssign::getRawTextCtx() const
     return {};
 }
 
+/// @brief Calculates a lyric line's baseline on a staff.
+static Evpu calcLyricBaseline(const others::StaffComposite& staff, SystemCmper systemId, LyricTextType lyricType, Cmper lyricNumber)
+{
+    switch (lyricType) {
+        case LyricTextType::Verse: return staff.calcBaselinePosition<BaselineLyricsVerse>(systemId, lyricNumber);
+        case LyricTextType::Chorus: return staff.calcBaselinePosition<BaselineLyricsChorus>(systemId, lyricNumber);
+        case LyricTextType::Section: return staff.calcBaselinePosition<BaselineLyricsSection>(systemId, lyricNumber);
+    }
+    return 0;
+}
+
+/// @brief Whether the entry carries a syllable that ends a word extension on @p assignment's lyric line, as Finale
+/// decides it: a syllable of the same line, or a syllable of a lyric line of another type whose baseline and vertical
+/// offset both equal those of @p assignment.
+static bool entryEndsWordExtension(const EntryInfoPtr& entryInfo, const LyricAssign& assignment)
+{
+    const auto doc = assignment.getDocument();
+    const Cmper partId = assignment.getRequestedPartId();
+    const EntryNumber entryNumber = entryInfo->getEntry()->getEntryNumber();
+    const LyricTextType lyricType = assignment.getLyricTextType();
+    const auto verses = doc->getDetails()->getArray<LyricAssignVerse>(partId, entryNumber);
+    const auto choruses = doc->getDetails()->getArray<LyricAssignChorus>(partId, entryNumber);
+    const auto sections = doc->getDetails()->getArray<LyricAssignSection>(partId, entryNumber);
+    const auto sameLine = [&](const auto& candidates) {
+        return std::any_of(candidates.begin(), candidates.end(), [&](const auto& candidate) {
+            return candidate->getLyricTextType() == lyricType && candidate->lyricNumber == assignment.lyricNumber;
+        });
+    };
+    if (sameLine(verses) || sameLine(choruses) || sameLine(sections)) {
+        return true;
+    }
+    const auto hasOtherType = [&](const auto& candidates) {
+        return !candidates.empty() && candidates.front()->getLyricTextType() != lyricType;
+    };
+    if (!hasOtherType(verses) && !hasOtherType(choruses) && !hasOtherType(sections)) {
+        return false;
+    }
+    const auto staff = others::StaffComposite::createCurrent(doc, partId, entryInfo.getStaff(), entryInfo.getMeasure(), 0);
+    if (!staff) {
+        return false;
+    }
+    // Lyric baselines may be adjusted per system. Without a calculated layout no system holds the measure.
+    SystemCmper systemId = 0;
+    for (const auto& system : doc->getOthers()->getArray<others::StaffSystem>(partId)) {
+        if (entryInfo.getMeasure() >= system->startMeas && entryInfo.getMeasure() < system->endMeas) {
+            systemId = system->getCmper();
+            break;
+        }
+    }
+    const Evpu baseline = calcLyricBaseline(*staff, systemId, lyricType, assignment.lyricNumber);
+    const auto atSameHeight = [&](const auto& candidates) {
+        return std::any_of(candidates.begin(), candidates.end(), [&](const auto& candidate) {
+            return candidate->getLyricTextType() != lyricType && candidate->vertOffset == assignment.vertOffset
+                && calcLyricBaseline(*staff, systemId, candidate->getLyricTextType(), candidate->lyricNumber) == baseline;
+        });
+    };
+    return atSameHeight(verses) || atSameHeight(choruses) || atSameHeight(sections);
+}
+
+EntryInfoPtr LyricAssign::calcInferredWordExtensionEndpoint() const
+{
+    const auto doc = getDocument();
+    const auto lyricOptions = doc->getOptions()->get<options::LyricOptions>();
+    const auto lyricText = getLyricText();
+    if (!lyricText || syllable == 0 || syllable > lyricText->syllables.size()) {
+        return {};
+    }
+    // Finale's eligibility rules for a word extension.
+    const auto& syllableInfo = lyricText->syllables[syllable - 1];
+    if (syllableInfo->hasHyphenAfter) {
+        return {};
+    }
+    const bool hasUnderscore = syllableInfo->strippedUnderscores > 0 || syllableInfo->syllable.find('_') != std::string::npos;
+    if (lyricOptions && lyricOptions->wordExtNeedUnderscore && !hasUnderscore) {
+        return {};
+    }
+
+    const auto start = EntryInfoPtr::fromEntryNumber(doc, getRequestedPartId(), getEntryNumber());
+    if (!start) {
+        return {};
+    }
+    const auto endsWordExtensions = [&](const EntryInfoPtr& entryInfo) {
+        if (entryInfo.getNextInFrame()) {
+            return false;
+        }
+        const auto measure = doc->getOthers()->get<others::Measure>(getRequestedPartId(), entryInfo.getMeasure());
+        return measure && measure->breakWordExt;
+    };
+    if (endsWordExtensions(start)) {
+        return start;
+    }
+    EntryInfoPtr endpoint = start;
+    for (auto next = start.getNextInLayer(); next; next = next.getNextInLayer()) {
+        const auto entry = next->getEntry();
+        if (entryEndsWordExtension(next, *this) || !entry->isNote) {
+            break;
+        }
+        if (!entry->graceNote) {
+            endpoint = next;
+        }
+        if (endsWordExtensions(next)) {
+            return next;
+        }
+    }
+    return endpoint;
+}
+
 EntryInfoPtr LyricAssign::calcWordExtensionEndpoint() const
 {
     if (!wext) {
         return {};
     }
     const auto doc = getDocument();
-    if (auto lyricOptions = doc->getOptions()->get<options::LyricOptions>()) {
-        if (!lyricOptions->useSmartWordExtensions) {
-            return {};
-        }
+    const auto lyricOptions = doc->getOptions()->get<options::LyricOptions>();
+    if (!lyricOptions || !lyricOptions->useSmartWordExtensions) {
+        return calcInferredWordExtensionEndpoint();
     }
     auto wordExtShapeAssigns = doc->getDetails()->getArray<SmartShapeEntryAssign>(getRequestedPartId(), getEntryNumber());
     for (const auto& assign : wordExtShapeAssigns) {
         if (auto shape = doc->getOthers()->get<others::SmartShape>(getRequestedPartId(), assign->shapeNum)) {
             if (shape->shapeType == others::SmartShape::ShapeType::WordExtension && shape->startLyricType == getLyricTextType() && shape->startLyricNum == lyricNumber) {
-                return shape->endTermSeg->endPoint->calcAssociatedEntry();
+                if (auto endpoint = shape->endTermSeg->endPoint->calcAssociatedEntry()) {
+                    return endpoint;
+                }
+                break;
             }
         }
     }
-    return {};
+    // The shape is unreachable without its entry assignment, which Finale does not always save, or its end names an
+    // entry that no longer exists. The inference agrees with Finale's stored shapes wherever Finale recomputes them.
+    return calcInferredWordExtensionEndpoint();
 }
 
 std::optional<std::string> LyricAssign::calcDisplayNumberText() const

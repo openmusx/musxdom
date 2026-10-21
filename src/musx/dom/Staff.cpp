@@ -1282,14 +1282,7 @@ MusxInstanceList<StaffStyle> StaffStyle::findAllOverlappingStyles(const Document
 
 MusxInstance<others::StaffStyle> others::StaffStyleAssign::getStaffStyle() const
 {
-    auto result = getDocument()->getOthers()->get<others::StaffStyle>(getRequestedPartId(), styleId);
-    if (!result) {
-        MUSX_INTEGRITY_ERROR("Staff style assignment has invalid staff style ID " + std::to_string(styleId)
-            + ": Part " + std::to_string(getRequestedPartId())
-            + " Staff " + std::to_string(getCmper())
-        );
-    }
-    return result;
+    return getDocument()->getOthers()->get<others::StaffStyle>(getRequestedPartId(), styleId);
 }
 
 } // namespace others
