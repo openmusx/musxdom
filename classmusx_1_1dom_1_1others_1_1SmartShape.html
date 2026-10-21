@@ -1042,7 +1042,7 @@ Over System Break" in the Finale U.I. </p>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This value appears to be meaningless. It is often zero for word extensions or the same value as <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a4572610d46004f8e2a30ad71800bd8ad" title="The text block of the lyrics text if this is a word extension or hyphen smart shape.">startLyricNum</a> for hyphens. It can also have an apparent nonsense value (.e.g, "-2"). The meaning of this is not known. The Finale U.I. does not appear to allow hyphen or word extensions between syllables from two different lyric blocks, so the need for start and end blocks is unclear. </p>
+<p>For word extensions, a marker rather than a text block. Finale stores -1 (65535 as a <a class="el" href="namespacemusx_1_1dom.html#a849c0fb091707be060d840e877486f65" title="Enigma &quot;comperator&quot; key type.">Cmper</a>) on a shape its automatic update of word extensions leaves unchanged, and -2 (65534) on a shape that ends on its own syllable. Other word extensions store zero. For hyphens it is often the same value as <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a4572610d46004f8e2a30ad71800bd8ad" title="The text block of the lyrics text if this is a word extension or hyphen smart shape.">startLyricNum</a>. The Finale U.I. does not appear to allow hyphen or word extensions between syllables from two different lyric blocks, so the need for start and end blocks is unclear. </p>
 
 </div>
 </div>
@@ -1057,7 +1057,7 @@ Over System Break" in the Finale U.I. </p>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The type of lyrics block for <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a8788a59bf45fc907bdc16daa4d3d639d">endLyricNum</a>. The speculative comments at <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a8788a59bf45fc907bdc16daa4d3d639d">endLyricNum</a> also apply here. This value has never been seen to be different than <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a4572610d46004f8e2a30ad71800bd8ad" title="The text block of the lyrics text if this is a word extension or hyphen smart shape.">startLyricNum</a> unless endLyricNum is zero. (xml node is <code>&lt;endLyricTag&gt;</code>) </p>
+<p>The type of lyrics block for <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a8788a59bf45fc907bdc16daa4d3d639d">endLyricNum</a>. This value has never been seen to be different than <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a4572610d46004f8e2a30ad71800bd8ad" title="The text block of the lyrics text if this is a word extension or hyphen smart shape.">startLyricNum</a> unless endLyricNum is zero. (xml node is <code>&lt;endLyricTag&gt;</code>) </p>
 
 </div>
 </div>

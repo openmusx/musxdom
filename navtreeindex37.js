@@ -1,5 +1,7 @@
 var NAVTREEINDEX37 =
 {
+"structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html#a417aa35fc45185b38ceae08cd0f2dda4":[2,0,1,0,2,21,0,0],
+"structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html#a417aa35fc45185b38ceae08cd0f2dda4":[1,0,1,0,2,21,0,0],
 "structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html#af37f3c3ec09100589d212a51191e7711":[2,0,1,0,2,21,0,2],
 "structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html#af37f3c3ec09100589d212a51191e7711":[1,0,1,0,2,21,0,2],
 "structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html#aff61ec5c750794f0c6e27d1db23d6417":[2,0,1,0,2,21,0,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX37 =
 "structmusx_1_1util_1_1Tie_1_1ContourMetrics.html#a6b083789389be7e28f8686bbe6aa49d4":[2,0,1,2,19,3,0],
 "structmusx_1_1util_1_1Tie_1_1ContourMetrics.html#aa3ce370963a4b713c3c2edb92cfb9a3a":[2,0,1,2,19,3,1],
 "structmusx_1_1util_1_1Tie_1_1ContourResult.html":[2,0,1,2,19,4],
-"structmusx_1_1util_1_1Tie_1_1ContourResult.html#a3816ca614060bcbe85fec7bec92f9b43":[2,0,1,2,19,4,1],
-"structmusx_1_1util_1_1Tie_1_1ContourResult.html#ac6bb4b2276cff6173c4854faf0cc9ab1":[2,0,1,2,19,4,0],
-"structmusx_1_1utils_1_1PseudoTieShapeInfo.html":[2,0,1,3,0]
+"structmusx_1_1util_1_1Tie_1_1ContourResult.html#a3816ca614060bcbe85fec7bec92f9b43":[2,0,1,2,19,4,1]
 };

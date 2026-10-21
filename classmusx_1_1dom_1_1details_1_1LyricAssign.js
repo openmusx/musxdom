@@ -2,6 +2,7 @@ var classmusx_1_1dom_1_1details_1_1LyricAssign =
 [
     [ "LyricAssign", "classmusx_1_1dom_1_1details_1_1LyricAssign.html#a4d818b89d0b749c698d7f53234e9df73", null ],
     [ "calcDisplayNumberText", "classmusx_1_1dom_1_1details_1_1LyricAssign.html#a6bc89d182b474397ba3e2767b76e8351", null ],
+    [ "calcInferredWordExtensionEndpoint", "classmusx_1_1dom_1_1details_1_1LyricAssign.html#a7407ea2f8161ef18c17208727850587f", null ],
     [ "calcWordExtensionEndpoint", "classmusx_1_1dom_1_1details_1_1LyricAssign.html#ad883a6ef4d3eb0ee61262df38581573c", null ],
     [ "getLyricText", "classmusx_1_1dom_1_1details_1_1LyricAssign.html#abafbd47ad0c89dd492d36a5c7c101772", null ],
     [ "getLyricTextType", "classmusx_1_1dom_1_1details_1_1LyricAssign.html#a35a3173080c718c28146f03dc1790153", null ],

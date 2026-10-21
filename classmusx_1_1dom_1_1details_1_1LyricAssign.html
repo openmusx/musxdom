@@ -140,6 +140,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad883a6ef4d3eb0ee61262df38581573c" id="r_ad883a6ef4d3eb0ee61262df38581573c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1details_1_1LyricAssign.html#ad883a6ef4d3eb0ee61262df38581573c">calcWordExtensionEndpoint</a> () const</td></tr>
 <tr class="memdesc:ad883a6ef4d3eb0ee61262df38581573c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the entry to which an automatic word extension extends.  <br /></td></tr>
 <tr class="separator:ad883a6ef4d3eb0ee61262df38581573c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7407ea2f8161ef18c17208727850587f" id="r_a7407ea2f8161ef18c17208727850587f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1details_1_1LyricAssign.html#a7407ea2f8161ef18c17208727850587f">calcInferredWordExtensionEndpoint</a> () const</td></tr>
+<tr class="memdesc:a7407ea2f8161ef18c17208727850587f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Infer the entry to which a word extension on this syllable extends, the way Finale builds smart word extensions.  <br /></td></tr>
+<tr class="separator:a7407ea2f8161ef18c17208727850587f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bc89d182b474397ba3e2767b76e8351" id="r_a6bc89d182b474397ba3e2767b76e8351"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1details_1_1LyricAssign.html#a6bc89d182b474397ba3e2767b76e8351">calcDisplayNumberText</a> () const</td></tr>
 <tr class="memdesc:a6bc89d182b474397ba3e2767b76e8351"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the verse/chorus/section number to display to the left of this assignment's syllable, if any.  <br /></td></tr>
 <tr class="separator:a6bc89d182b474397ba3e2767b76e8351"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -406,6 +409,27 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a7407ea2f8161ef18c17208727850587f" name="a7407ea2f8161ef18c17208727850587f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7407ea2f8161ef18c17208727850587f">&#9670;&#160;</a></span>calcInferredWordExtensionEndpoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> musx::dom::details::LyricAssign::calcInferredWordExtensionEndpoint </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Infer the entry to which a word extension on this syllable extends, the way Finale builds smart word extensions. </p>
+<p>The extension runs through the following entries of the same layer, in either voice, and ends on the last note before the next syllable of the same lyric line, a rest, an empty measure, or the end of the document. A syllable of a lyric line of another type counts as the next syllable when its baseline and vertical offset both equal this syllable's. The extension ends on the last entry of a measure whose barline ends word extensions (<a class="el" href="classmusx_1_1dom_1_1others_1_1Measure.html#aeb614cef216dd886141f0f40e38db835" title="Barline ends word extensions on lyrics.">others::Measure::breakWordExt</a>). Grace notes never become the endpoint. A syllable followed by a hyphen and (when <a class="el" href="classmusx_1_1dom_1_1options_1_1LyricOptions.html#a9d49c585dcc2b2496671f3b0f20517d6" title="&quot;Only Create on Lyrics With Underscores&quot;">options::LyricOptions::wordExtNeedUnderscore</a> is set) a syllable without an underscore have no extension.</p>
+<p>Finale does not recompute every stored shape this way; see <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a8788a59bf45fc907bdc16daa4d3d639d">others::SmartShape::endLyricNum</a>. </p><dl class="section return"><dt>Returns</dt><dd>The inferred terminating entry, which may be the syllable's own entry, or null if the syllable can have no word extension. The result does not depend on <a class="el" href="classmusx_1_1dom_1_1details_1_1LyricAssign.html#a37f022824f5ba80f15d49ad1a31e7ef6">wext</a>. </dd></dl>
+
+</div>
+</div>
 <a id="ad883a6ef4d3eb0ee61262df38581573c" name="ad883a6ef4d3eb0ee61262df38581573c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad883a6ef4d3eb0ee61262df38581573c">&#9670;&#160;</a></span>calcWordExtensionEndpoint()</h2>
 
@@ -422,7 +446,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculate the entry to which an automatic word extension extends. </p>
-<dl class="section return"><dt>Returns</dt><dd>The terminating entry of the word extension, or null if no word extension or if the document uses legacy word extensions. </dd></dl>
+<p>With smart word extensions, the endpoint is the one stored in the word extension SmartShape. When that shape cannot be found or its end names no entry, and with legacy word extensions, whose <a class="el" href="classmusx_1_1dom_1_1details_1_1LyricAssign.html#a37f022824f5ba80f15d49ad1a31e7ef6">wext</a> is only a drawn length, it is <a class="el" href="classmusx_1_1dom_1_1details_1_1LyricAssign.html#a7407ea2f8161ef18c17208727850587f" title="Infer the entry to which a word extension on this syllable extends, the way Finale builds smart word ...">calcInferredWordExtensionEndpoint</a>. </p><dl class="section return"><dt>Returns</dt><dd>The terminating entry of the word extension, which may be the syllable's own entry, or null if the syllable has no word extension. </dd></dl>
 
 </div>
 </div>

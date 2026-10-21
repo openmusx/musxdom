@@ -1,5 +1,7 @@
 var NAVTREEINDEX36 =
 {
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html#a81dd4cc6815244168741fce5ce27e83f":[1,0,1,0,54,3,1],
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html#a81dd4cc6815244168741fce5ce27e83f":[2,0,1,0,55,3,1],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html#ad2324993a03e5b8dcf3da1bbbbd4ee2d":[2,0,1,0,55,3,0],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html#ad2324993a03e5b8dcf3da1bbbbd4ee2d":[1,0,1,0,54,3,0],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html#ad46f8542ff9cb7ce5628fe6909ca6ff8":[2,0,1,0,55,3,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX36 =
 "structmusx_1_1dom_1_1options_1_1LyricOptions_1_1WordExtConnectStyle.html#a87ca78d35d360e0d7435fb9abcecbb69":[1,0,1,0,2,12,1,1],
 "structmusx_1_1dom_1_1options_1_1LyricOptions_1_1WordExtConnectStyle.html#a87ca78d35d360e0d7435fb9abcecbb69":[2,0,1,0,2,12,1,1],
 "structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html":[1,0,1,0,2,21,0],
-"structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html":[2,0,1,0,2,21,0],
-"structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html#a417aa35fc45185b38ceae08cd0f2dda4":[2,0,1,0,2,21,0,0],
-"structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html#a417aa35fc45185b38ceae08cd0f2dda4":[1,0,1,0,2,21,0,0]
+"structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html":[2,0,1,0,2,21,0]
 };

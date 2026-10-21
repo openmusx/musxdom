@@ -317,13 +317,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffStyle.html">StaffStyle</a> instance for this assignment. </p>
-<dl class="section return"><dt>Returns</dt><dd>Can return nullptr only in the case when there is an itegrity error </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classmusx_1_1dom_1_1integrity__error.html" title="Exception for integrity errors. (Used when MUSX_THROW_ON_INTEGRITY_CHECK_FAIL is defined....">musx::dom::integrity_error</a></td><td>if compiled to throw integrity errors </td></tr>
-  </table>
-  </dd>
-</dl>
+<dl class="section return"><dt>Returns</dt><dd>The assigned staff style, or nullptr when <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffStyleAssign.html#a27ac2d07077b4ca35aa224b44337fa5d" title="The cmper of the assigned StaffStyle.">styleId</a> names a staff style that does not exist. Finale ignores such an assignment, and the factory reports it once when the document is created. </dd></dl>
 
 </div>
 </div>
