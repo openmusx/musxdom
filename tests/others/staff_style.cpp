@@ -177,6 +177,52 @@ TEST(StaffStyleAssignTest, PopulateFields)
     EXPECT_EQ(staffStyleAssign->endEdu, (std::numeric_limits<Edu>::max)());
 }
 
+TEST(StaffStyleAssignTest, DanglingStyleIsReportedOnceAndIgnored)
+{
+    auto previousLogger = musx::util::Logger::getCallback();
+    struct LoggerRestorer {
+        musx::util::Logger::LogCallback callback;
+        ~LoggerRestorer() { musx::util::Logger::setCallback(std::move(callback)); }
+    } loggerRestorer{previousLogger};
+
+    std::vector<std::pair<musx::util::Logger::LogLevel, std::string>> diagnostics;
+    musx::util::Logger::setCallback([&](musx::util::Logger::LogLevel level, const std::string& message) {
+        if (message.find("staff style") != std::string::npos) {
+            diagnostics.emplace_back(level, message);
+        }
+    });
+
+    // Staff 6 has a second assignment over the same measures naming a staff style that does not exist.
+    std::string xml(staffStyleXml);
+    const std::string danglingAssign = R"(
+    <staffStyleAssign cmper="6" inci="1">
+      <style>17</style>
+      <startMeas>1</startMeas>
+      <endEdu>2147483647</endEdu>
+      <endMeas>4</endMeas>
+    </staffStyleAssign>)";
+    xml.insert(xml.find("</staffStyleAssign>") + std::string("</staffStyleAssign>").size(), danglingAssign);
+
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(xml);
+    ASSERT_TRUE(doc);
+    ASSERT_EQ(diagnostics.size(), 1);
+    EXPECT_EQ(diagnostics[0].first, musx::util::Logger::LogLevel::Verbose);
+    EXPECT_NE(diagnostics[0].second.find("staff 6"), std::string::npos) << diagnostics[0].second;
+    EXPECT_NE(diagnostics[0].second.find("staff style 17"), std::string::npos) << diagnostics[0].second;
+
+    auto dangling = doc->getOthers()->get<others::StaffStyleAssign>(SCORE_PARTID, 6, 1);
+    ASSERT_TRUE(dangling);
+    EXPECT_FALSE(dangling->getStaffStyle());
+
+    // Lookups skip the dangling assignment without reporting it again.
+    for (int pass = 0; pass < 2; ++pass) {
+        const auto styles = others::StaffStyle::findAllOverlappingStyles(doc, SCORE_PARTID, 6, 2, 0);
+        ASSERT_EQ(styles.size(), 1);
+        EXPECT_EQ(styles[0]->getCmper(), 1);
+    }
+    EXPECT_EQ(diagnostics.size(), 1);
+}
+
 TEST(StaffStyleInstrument, DetectInstrumentChange)
 {
     std::vector<char> xml;

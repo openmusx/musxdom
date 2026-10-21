@@ -390,12 +390,14 @@ public:
     NoteNumber endNoteId{};                         ///< If non-zero, the specific note with the entry that this shape ends on. (xml node is `<endNoteID>`)
     Cmper lineStyleId{};                            ///< If non-zero, the @ref SmartShapeCustomLine for this shape. Several #ShapeType values use it. (xml node is `<lineStyleID>`)
     Cmper startLyricNum{};                          ///< The text block of the lyrics text if this is a word extension or hyphen smart shape.
-    Cmper endLyricNum{};                            ///< This value appears to be meaningless. It is often zero for word extensions or the same value as #startLyricNum for hyphens.
-                                                    ///< It can also have an apparent nonsense value (.e.g, "-2"). The meaning of this is not known. The Finale U.I. does not appear
-                                                    ///< to allow hyphen or word extensions between syllables from two different lyric blocks, so the need for start and end blocks
-                                                    ///< is unclear.
+    Cmper endLyricNum{};                            ///< For word extensions, a marker rather than a text block. Finale stores -1 (65535 as a #Cmper)
+                                                    ///< on a shape its automatic update of word extensions leaves unchanged, and -2 (65534) on a shape
+                                                    ///< that ends on its own syllable. Other word extensions store zero. For hyphens it is often the
+                                                    ///< same value as #startLyricNum.
+                                                    ///< The Finale U.I. does not appear to allow hyphen or word extensions between syllables from two
+                                                    ///< different lyric blocks, so the need for start and end blocks is unclear.
     std::optional<LyricTextType> startLyricType;    ///< The type of lyrics block for #startLyricNum. (xml node is `<startLyricTag>`)
-    std::optional<LyricTextType> endLyricType;      ///< The type of lyrics block for #endLyricNum. The speculative comments at #endLyricNum also apply here.
+    std::optional<LyricTextType> endLyricType;      ///< The type of lyrics block for #endLyricNum.
                                                     ///< This value has never been seen to be different than #startLyricNum unless endLyricNum is zero. (xml node is `<endLyricTag>`)
 
     /// @brief Finale sometimes leaves dead smart shapes hanging around that it does not display. This

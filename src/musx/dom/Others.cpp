@@ -1222,6 +1222,8 @@ void MultiStaffInstrumentGroup::calcAllMultiStaffGroupIds(const DocumentPtr& doc
 
 void Page::calcSystemInfo(const DocumentPtr& document)
 {
+    const auto measures = document->getOthers()->getArray<Measure>(SCORE_PARTID);
+    const MeasCmper lastMeasureOfPiece = measures.empty() ? 0 : measures.back()->getCmper();
     auto linkedParts = document->getOthers()->getArray<PartDefinition>(SCORE_PARTID);
     for (const auto& part : linkedParts) {
         auto pages = document->getOthers()->getArray<Page>(part->getCmper());
@@ -1279,6 +1281,7 @@ void Page::calcSystemInfo(const DocumentPtr& document)
 
             std::vector<MusxInstance<StaffSystem>> pageSystems;
             bool hasInvalidSystem = false;
+            std::optional<SystemCmper> firstSystemBeyondPiece;
             for (SystemCmper systemId = page->firstSystemId; systemId <= lastSystemId.value(); ++systemId) {
                 auto system = document->getOthers()->get<StaffSystem>(part->getCmper(), systemId);
                 if (!system) {
@@ -1303,10 +1306,27 @@ void Page::calcSystemInfo(const DocumentPtr& document)
                     hasInvalidSystem = true;
                     break;
                 }
+                // A layout saved before measures were deleted keeps systems for the missing measures. The layout
+                // stops at the first of them, and the rest of the systems belong to no page.
+                if (lastMeasureOfPiece && system->startMeas > lastMeasureOfPiece) {
+                    firstSystemBeyondPiece = systemId;
+                    break;
+                }
                 pageSystems.emplace_back(std::move(system));
             }
             if (hasInvalidSystem) {
                 continue;
+            }
+            if (firstSystemBeyondPiece) {
+                util::Logger::log(util::Logger::LogLevel::Verbose, "System " + std::to_string(*firstSystemBeyondPiece)
+                    + " of part " + std::to_string(part->getCmper()) + " starts after the last measure ("
+                    + std::to_string(lastMeasureOfPiece) + "). It and the systems after it are ignored.");
+                if (pageSystems.empty()) {
+                    reportUncalculatedLayout("Page " + std::to_string(page->getCmper()) + " of part "
+                        + std::to_string(part->getCmper()) + " has no systems within the piece.");
+                    continue;
+                }
+                lastSystemId = pageSystems.back()->getCmper();
             }
 
             mutablePage->lastSystemId = lastSystemId;

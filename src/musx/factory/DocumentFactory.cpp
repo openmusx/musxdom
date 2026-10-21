@@ -279,6 +279,20 @@ void resolveStaffStyles(const dom::DocumentPtr& document)
     dom::others::Staff::calcAllRuntimeValues<dom::others::StaffStyle>(document);
 }
 
+void resolveStaffStyleAssigns(const dom::DocumentPtr& document)
+{
+    for (const auto& assign : document->getOthers()->getAllSources<dom::others::StaffStyleAssign>()) {
+        // A missing style ID is already an integrity error.
+        if (!assign->styleId) continue;
+        if (!document->getOthers()->get<dom::others::StaffStyle>(assign->getSourcePartId(), assign->styleId)) {
+            util::Logger::log(util::Logger::LogLevel::Verbose, "Staff style assignment on staff "
+                + std::to_string(assign->getCmper()) + " in part " + std::to_string(assign->getSourcePartId())
+                + " refers to staff style " + std::to_string(assign->styleId)
+                + ", which does not exist. The assignment is ignored.");
+        }
+    }
+}
+
 template <typename Function>
 Resolver makeResolver(Function function)
 {
@@ -315,6 +329,7 @@ const std::vector<std::pair<std::string_view, Resolver>>& resolvers()
         {dom::others::Staff::XmlNodeName, makeResolver(resolveStaff)},
         {dom::details::StaffGroup::XmlNodeName, makeResolver(resolveStaffGroups)},
         {dom::others::StaffStyle::XmlNodeName, makeResolver(resolveStaffStyles)},
+        {dom::others::StaffStyleAssign::XmlNodeName, makeResolver(resolveStaffStyleAssigns)},
         {dom::others::TextExpressionDef::XmlNodeName, makeResolver(resolveExpressions<dom::others::TextExpressionDef>)},
         // Keep resolveFontDefinitions last so every resolver has registered its font references first.
         {dom::others::FontDefinition::XmlNodeName, resolveFontDefinitions}
