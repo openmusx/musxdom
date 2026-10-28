@@ -136,6 +136,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1b8892fd7973325b94c5b5ba81272346" id="r_a1b8892fd7973325b94c5b5ba81272346"><td class="memItemLeft" align="right" valign="top">std::optional&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a1b8892fd7973325b94c5b5ba81272346">calcHandleStaffPosition</a> (const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;entryInfo) const</td></tr>
 <tr class="memdesc:a1b8892fd7973325b94c5b5ba81272346"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the primary handle's fractional staff position for a manually positioned articulation.  <br /></td></tr>
 <tr class="separator:a1b8892fd7973325b94c5b5ba81272346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19750d13da600568d4bef93a4913a703" id="r_a19750d13da600568d4bef93a4913a703"><td class="memItemLeft" align="right" valign="top">std::optional&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a19750d13da600568d4bef93a4913a703">calcHandleHorizontalOffset</a> (const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;entryInfo) const</td></tr>
+<tr class="memdesc:a19750d13da600568d4bef93a4913a703"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the primary handle's horizontal offset from the entry's drawing origin in EVPU, positive rightward.  <br /></td></tr>
+<tr class="separator:a19750d13da600568d4bef93a4913a703"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac539b3c2b381e0a2f50dc5324c00c49c" id="r_ac539b3c2b381e0a2f50dc5324c00c49c"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="structmusx_1_1utils_1_1PseudoTieShapeInfo.html">utils::PseudoTieShapeInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#ac539b3c2b381e0a2f50dc5324c00c49c">calcIsPseudoTie</a> (utils::PseudoTieMode mode, const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;forStartEntry) const</td></tr>
 <tr class="memdesc:ac539b3c2b381e0a2f50dc5324c00c49c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the pseudo-tie shape info if this articulation is acting as a pseudo tie for the specified mode.  <br /></td></tr>
 <tr class="separator:ac539b3c2b381e0a2f50dc5324c00c49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -411,6 +414,40 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a19750d13da600568d4bef93a4913a703" name="a19750d13da600568d4bef93a4913a703"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19750d13da600568d4bef93a4913a703">&#9670;&#160;</a></span>calcHandleHorizontalOffset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; double &gt; musx::dom::details::ArticulationAssign::calcHandleHorizontalOffset </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;&#160;</td>
+          <td class="paramname"><em>entryInfo</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the primary handle's horizontal offset from the entry's drawing origin in EVPU, positive rightward. </p>
+<p>Assignment and selected-symbol definition offsets are additive. The result is not a notehead center, a visible glyph edge, or an association with a note. No staff-space conversion or resizing is applied. Automatic vertical positioning is supported when the selected symbol is certain or both symbols have equal horizontal offsets. A returned coordinate does not certify the selected character; consult <a class="el" href="structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1SelectedSymbolContext.html#af99d15a3d0a4be0f782bf993624a6ebd" title="Whether layout-dependent positioning could change the selected symbol.">SelectedSymbolContext::symbolIsEstimate</a> separately when identifying symbols. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entryInfo</td><td>A non-null context for this assignment's entry, document, and requested part. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The handle offset, or std::nullopt for horizontal auto-positioning, stem centering, symbol copying, or uncertain symbol selection with unequal main and alternate horizontal offsets. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::logic_error</td><td>if <code>entryInfo</code> is null or does not match this assignment's context. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classmusx_1_1dom_1_1integrity__error.html" title="Exception for integrity errors. (Used when MUSX_THROW_ON_INTEGRITY_CHECK_FAIL is defined....">integrity_error</a></td><td>if the required definition is missing, when integrity exceptions are enabled. Otherwise the missing definition is logged and returns std::nullopt. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a1b8892fd7973325b94c5b5ba81272346" name="a1b8892fd7973325b94c5b5ba81272346"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b8892fd7973325b94c5b5ba81272346">&#9670;&#160;</a></span>calcHandleStaffPosition()</h2>
 

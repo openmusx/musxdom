@@ -2,6 +2,7 @@ var classmusx_1_1dom_1_1details_1_1ArticulationAssign =
 [
     [ "SelectedSymbolContext", "structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1SelectedSymbolContext.html", "structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1SelectedSymbolContext" ],
     [ "ArticulationAssign", "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a045264b0f6ff881411fddbb01e546fa6", null ],
+    [ "calcHandleHorizontalOffset", "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a19750d13da600568d4bef93a4913a703", null ],
     [ "calcHandleStaffPosition", "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a1b8892fd7973325b94c5b5ba81272346", null ],
     [ "calcIsPseudoTie", "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#ac539b3c2b381e0a2f50dc5324c00c49c", null ],
     [ "calcSelectedSymbolContext", "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a7600ca41593fd85d9b396b3cdadf8cee", null ],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX38 =
 {
+"structmusx_1_1util_1_1Tie_1_1ContourMetrics.html#a6b083789389be7e28f8686bbe6aa49d4":[2,0,1,2,19,3,0],
+"structmusx_1_1util_1_1Tie_1_1ContourMetrics.html#aa3ce370963a4b713c3c2edb92cfb9a3a":[2,0,1,2,19,3,1],
 "structmusx_1_1util_1_1Tie_1_1ContourResult.html":[2,0,1,2,19,4],
 "structmusx_1_1util_1_1Tie_1_1ContourResult.html#a3816ca614060bcbe85fec7bec92f9b43":[2,0,1,2,19,4,1],
 "structmusx_1_1util_1_1Tie_1_1ContourResult.html#ac6bb4b2276cff6173c4854faf0cc9ab1":[2,0,1,2,19,4,0],

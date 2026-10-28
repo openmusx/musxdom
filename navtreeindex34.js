@@ -1,5 +1,7 @@
 var NAVTREEINDEX34 =
 {
+"namespacemusx_1_1dom_1_1uuid.html#ab4c92cbd6c63310a2e0742e5baef556c":[1,0,1,0,5,223],
+"namespacemusx_1_1dom_1_1uuid.html#ab51f4e3a0ab5446e52ed484965713085":[1,0,1,0,5,165],
 "namespacemusx_1_1dom_1_1uuid.html#ab52fbe04a58ee43014558cb4d23b4524":[1,0,1,0,5,34],
 "namespacemusx_1_1dom_1_1uuid.html#ab5881d55ea45d3597874906cfc849b41":[1,0,1,0,5,247],
 "namespacemusx_1_1dom_1_1uuid.html#ab588b5aea142feb669402767cba7218e":[1,0,1,0,5,258],
@@ -247,7 +249,5 @@ var NAVTREEINDEX34 =
 "namespaces.html":[1,0],
 "namespacesmufl__glyph.html":[1,0,2],
 "namespacesymbol__glyph.html":[1,0,3],
-"pages.html":[],
-"structmusic__theory_1_1Pitch.html":[2,0,0,0],
-"structmusic__theory_1_1Pitch.html":[1,0,0,0]
+"pages.html":[]
 };
