@@ -196,43 +196,44 @@ std::optional<double> details::ArticulationAssign::calcHandleStaffPosition(const
         || entryInfo.getFrame()->getRequestedPartId() != getRequestedPartId()) {
         throw std::logic_error("ArticulationAssign::calcHandleStaffPosition called with a mismatched entry context.");
     }
-    const auto definition = document->getOthers()->get<others::ArticulationDef>(getRequestedPartId(), articDef);
-    if (!definition) {
-        MUSX_INTEGRITY_ERROR("Articulation assignment references missing definition " + std::to_string(articDef));
-        return std::nullopt;
-    }
-    using AD = others::ArticulationDef;
-    if (definition->autoVert || overridePlacement || definition->copyMode != AD::CopyMode::None
-        || definition->outsideStaff || definition->avoidStaffLines || avoidSlur || definition->insideSlur
-        || definition->slurInteractionMode != AD::SlurInteractionMode::Ignore
-        || !entry->isNote || entry->notes.empty() || entry->graceNote || entry->crossStaff
-        || entryInfo.getFrame()->getContext().getPolicyPartVoicing()) {
-        return std::nullopt;
-    }
-    const auto staff = entryInfo.createCurrentStaff();
-    if (!staff || staff->lineSpace <= 0) {
-        MUSX_INTEGRITY_ERROR("Articulation handle position requires a staff with positive line spacing.");
-        return std::nullopt;
-    }
-    if (staff->notationStyle != others::Staff::NotationStyle::Standard
-        || staff->altNotation != others::Staff::AlternateNotation::Normal) {
-        return std::nullopt;
-    }
-    for (size_t noteIndex = 0; noteIndex < entry->notes.size(); ++noteIndex) {
-        const NoteInfoPtr note(entryInfo, noteIndex);
-        if (note->crossStaff) {
+    std::optional<double> result{};
+    if (const auto definition = document->getOthers()->get<others::ArticulationDef>(getRequestedPartId(), articDef)) {
+        using AD = others::ArticulationDef;
+        if (definition->autoVert || overridePlacement || definition->copyMode != AD::CopyMode::None
+            || definition->outsideStaff || definition->avoidStaffLines || avoidSlur || definition->insideSlur
+            || definition->slurInteractionMode != AD::SlurInteractionMode::Ignore
+            || !entry->isNote || entry->notes.empty() || entry->graceNote || entry->crossStaff
+            || entryInfo.getFrame()->getContext().getPolicyPartVoicing()) {
             return std::nullopt;
         }
-        if (const auto alteration = document->getDetails()->getForNote<NoteAlterations>(note)) {
-            if (alteration->allowVertPos && alteration->nydisp != 0) {
+        const auto staff = entryInfo.createCurrentStaff();
+        if (staff && staff->lineSpace > 0) {
+            if (staff->notationStyle != others::Staff::NotationStyle::Standard
+                || staff->altNotation != others::Staff::AlternateNotation::Normal) {
                 return std::nullopt;
             }
+            for (size_t noteIndex = 0; noteIndex < entry->notes.size(); ++noteIndex) {
+                const NoteInfoPtr note(entryInfo, noteIndex);
+                if (note->crossStaff) {
+                    return std::nullopt;
+                }
+                if (const auto alteration = document->getDetails()->getForNote<NoteAlterations>(note)) {
+                    if (alteration->allowVertPos && alteration->nydisp != 0) {
+                        return std::nullopt;
+                    }
+                }
+            }
+            const auto [topPosition, bottomPosition] = entryInfo.calcTopBottomStaffPositions();
+            const auto symbol = definition->calcSelectedSymbol(vertOffset >= 0);
+            const double offset = static_cast<double>(vertOffset) + static_cast<double>(symbol.yOffset);
+            result = (definition->useTopNote ? topPosition : bottomPosition) + offset / (static_cast<double>(staff->lineSpace) / 2);
+        } else {
+            MUSX_INTEGRITY_ERROR("Articulation handle position requires a staff with positive line spacing.");
         }
+    } else {
+        MUSX_INTEGRITY_ERROR("Articulation assignment references missing definition " + std::to_string(articDef));
     }
-    const auto [topPosition, bottomPosition] = entryInfo.calcTopBottomStaffPositions();
-    const auto symbol = definition->calcSelectedSymbol(vertOffset >= 0);
-    const double offset = static_cast<double>(vertOffset) + static_cast<double>(symbol.yOffset);
-    return (definition->useTopNote ? topPosition : bottomPosition) + offset / (static_cast<double>(staff->lineSpace) / 2);
+    return result;
 }
 
 std::optional<details::ArticulationAssign::PseudoTieShapeContext>
