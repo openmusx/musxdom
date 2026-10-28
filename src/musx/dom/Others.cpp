@@ -96,9 +96,9 @@ static std::string formatMeasureNumberText(const MeasureNumberRegion& region, in
 // ***** ArticulationDef *****
 // ***************************
 
-ArticulationDef::SelectedSymbol ArticulationDef::calcSelectedSymbol(bool placeAbove) const
+ArticulationDef::SelectedSymbol ArticulationDef::calcSelectedSymbol(bool atOrAboveReference) const
 {
-    const bool usesAlternate = placeAbove ? aboveSymbolAlt : belowSymbolAlt;
+    const bool usesAlternate = atOrAboveReference ? aboveSymbolAlt : belowSymbolAlt;
 
     SelectedSymbol result;
     result.usesAlternate = usesAlternate;

@@ -291,7 +291,8 @@ public:
     std::shared_ptr<FontInfo> fontAlt;             ///< The font info for the alternate symbol. (xml nodes `<fontAlt>`, `<sizeAlt>`, and `<efxAlt>`)
     Evpu xOffsetMain{};                            ///< Horizontal offset for the main symbol.
     Evpu yOffsetMain{};                            ///< Vertical offset for the main symbol.
-    Evpu defVertPos{};                             ///< Default vertical position.
+    Evpu defVertPos{};                             ///< Default vertical position. For manual positioning, initializes the assignment offset;
+                                                   ///< it is not added to the offset of an existing assignment.
     bool avoidStaffLines{};                        ///< Whether to avoid staff lines.
     bool isStemSideWhenMultipleLayers{};           ///< "Place stem side when multiple layers are present"
                                                    ///< (Applicable only for #AutoVerticalMode::AboveEntry.)
@@ -317,9 +318,10 @@ public:
     Evpu distanceFromStemEnd{};                    ///< "On-stem distance from stem end/flag/beam"
 
     /// @brief Resolves which symbol data applies for the specified placement.
-    /// @param placeAbove True when the articulation is placed above the entry; false when below.
+    /// @param atOrAboveReference True when the position before symbol offsets is at or above the reference
+    /// selected by #useTopNote; false when below. This selects fields without evaluating assignment or copying rules.
     /// @return The selected main or alternate symbol data.
-    [[nodiscard]] SelectedSymbol calcSelectedSymbol(bool placeAbove) const;
+    [[nodiscard]] SelectedSymbol calcSelectedSymbol(bool atOrAboveReference) const;
 
     constexpr static std::string_view XmlNodeName = "articDef"; ///< The XML node name for this type.
     static const xml::XmlElementArray<ArticulationDef>& xmlMappingArray(); ///< Required for musx::factory::FieldPopulator.

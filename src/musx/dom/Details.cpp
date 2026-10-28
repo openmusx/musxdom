@@ -85,39 +85,40 @@ namespace details {
 bool details::ArticulationAssign::calcPlacementAbove(const MusxInstance<others::ArticulationDef>& definition,
     const EntryInfoPtr& entryInfo) const
 {
+    if (!definition->autoVert) {
+        return vertOffset >= 0;
+    }
     if (overridePlacement) {
         return aboveEntry;
     }
 
     const bool stemUp = entryInfo.calcUpStem();
-    if (!definition->autoVert) {
-        return vertOffset >= 0;
-    }
 
     using AD = others::ArticulationDef;
     switch (definition->autoVertMode) {
     case AD::AutoVerticalMode::AboveEntry: {
         const bool stemSideInMultiLayer = definition->isStemSideWhenMultipleLayers
             && entryInfo.getFrame()->getContext()->calcIsMultiLayer();
-        return stemSideInMultiLayer ? stemUp : true;
+        return !(stemSideInMultiLayer && entryInfo.calcStemDirectionForced() == StemDirection::AlwaysDown);
     }
     case AD::AutoVerticalMode::BelowEntry:
         return false;
     case AD::AutoVerticalMode::StemSide:
         return stemUp;
     case AD::AutoVerticalMode::AlwaysNoteheadSide:
+        return !stemUp;
+    case AD::AutoVerticalMode::AutoNoteStem:
         switch (entryInfo.calcStemDirectionForced()) {
         case StemDirection::AlwaysUp:
+            return true;
         case StemDirection::AlwaysDown:
-            return stemUp;
+            return false;
         case StemDirection::Default:
             return !stemUp;
         }
         assert(false && "invalid enum value");
         // defensive break should be unreachable
         break;
-    case AD::AutoVerticalMode::AutoNoteStem:
-        return stemUp;
     case AD::AutoVerticalMode::AlwaysOnStem:
         return stemUp;
     }
@@ -166,49 +167,72 @@ details::ArticulationAssign::calcSelectedSymbolContext(const EntryInfoPtr& entry
         return std::nullopt;
     }
 
-    result.symbol = result.definition->calcSelectedSymbol(calcPlacementAbove(result.definition, entryInfo));
+    const auto& definition = result.definition;
+    if (definition->copyMode != others::ArticulationDef::CopyMode::None) {
+        // Finale's repeated-character drawing path bypasses side-based symbol selection.
+        result.symbol.character = definition->charMain;
+        result.symbol.font = definition->fontMain;
+        result.symbol.xOffset = definition->xOffsetMain;
+        result.symbol.yOffset = definition->yOffsetMain;
+        result.symbolIsEstimate = false;
+    } else {
+        result.symbol = definition->calcSelectedSymbol(calcPlacementAbove(definition, entryInfo));
+        result.symbolIsEstimate = definition->aboveSymbolAlt != definition->belowSymbolAlt
+            && (definition->autoVert || definition->outsideStaff || definition->avoidStaffLines);
+    }
     result.placement = calcVerticalPlacement(result.definition, entryInfo);
 
     return result;
 }
 
-NoteInfoPtr details::ArticulationAssign::calcAssociatedNote(const EntryInfoPtr& entryInfo) const
+std::optional<double> details::ArticulationAssign::calcHandleStaffPosition(const EntryInfoPtr& entryInfo) const
 {
-    if (!entryInfo) {
-        return NoteInfoPtr();
+    MUSX_ASSERT_IF(!entryInfo) {
+        throw std::logic_error("ArticulationAssign::calcHandleStaffPosition requires an entry context.");
     }
     const auto entry = entryInfo->getEntry();
-    MUSX_ASSERT_IF(entry->getEntryNumber() != getEntryNumber()) {
-        throw std::logic_error("ArticulationAssign::calcAssociatedNote called with entry number "
-            + std::to_string(entry->getEntryNumber()) + " that does not match the assignment's entry number "
-            + std::to_string(getEntryNumber()) + ".");
+    const auto document = getDocument();
+    MUSX_ASSERT_IF(entry->getEntryNumber() != getEntryNumber() || entry->getDocument() != document
+        || entryInfo.getFrame()->getRequestedPartId() != getRequestedPartId()) {
+        throw std::logic_error("ArticulationAssign::calcHandleStaffPosition called with a mismatched entry context.");
     }
-    if (!entry->isNote || entry->notes.empty()) {
-        return NoteInfoPtr();
+    const auto definition = document->getOthers()->get<others::ArticulationDef>(getRequestedPartId(), articDef);
+    if (!definition) {
+        MUSX_INTEGRITY_ERROR("Articulation assignment references missing definition " + std::to_string(articDef));
+        return std::nullopt;
     }
-    const auto definition = getDocument()->getOthers()->get<others::ArticulationDef>(getRequestedPartId(), articDef);
-    if (!definition || definition->autoVert) {
-        return NoteInfoPtr();
+    using AD = others::ArticulationDef;
+    if (definition->autoVert || overridePlacement || definition->copyMode != AD::CopyMode::None
+        || definition->outsideStaff || definition->avoidStaffLines || avoidSlur || definition->insideSlur
+        || definition->slurInteractionMode != AD::SlurInteractionMode::Ignore
+        || !entry->isNote || entry->notes.empty() || entry->graceNote || entry->crossStaff
+        || entryInfo.getFrame()->getContext().getPolicyPartVoicing()) {
+        return std::nullopt;
     }
-
-    const auto staffPositionOf = [](const NoteInfoPtr& note) {
-        NotePropertiesOptions options;
-        options.alwaysUseEntryStaff = true;
-        return note.calcNoteProperties(options).staffPosition;
-    };
-
-    // A zero offset places the symbol at the staff position of the note furthest from the stem.
-    const NoteInfoPtr furthestFromStem(entryInfo, entryInfo.calcUpStem() ? 0 : entry->notes.size() - 1);
-    const int targetPosition = staffPositionOf(furthestFromStem)
-        + static_cast<int>(std::lround(static_cast<double>(vertOffset) / EVPU_PER_STAFF_POSITION));
-
+    const auto staff = entryInfo.createCurrentStaff();
+    if (!staff || staff->lineSpace <= 0) {
+        MUSX_INTEGRITY_ERROR("Articulation handle position requires a staff with positive line spacing.");
+        return std::nullopt;
+    }
+    if (staff->notationStyle != others::Staff::NotationStyle::Standard
+        || staff->altNotation != others::Staff::AlternateNotation::Normal) {
+        return std::nullopt;
+    }
     for (size_t noteIndex = 0; noteIndex < entry->notes.size(); ++noteIndex) {
         const NoteInfoPtr note(entryInfo, noteIndex);
-        if (staffPositionOf(note) == targetPosition) {
-            return note;
+        if (note->crossStaff) {
+            return std::nullopt;
+        }
+        if (const auto alteration = document->getDetails()->getForNote<NoteAlterations>(note)) {
+            if (alteration->allowVertPos && alteration->nydisp != 0) {
+                return std::nullopt;
+            }
         }
     }
-    return NoteInfoPtr();
+    const auto [topPosition, bottomPosition] = entryInfo.calcTopBottomStaffPositions();
+    const auto symbol = definition->calcSelectedSymbol(vertOffset >= 0);
+    const double offset = static_cast<double>(vertOffset) + static_cast<double>(symbol.yOffset);
+    return (definition->useTopNote ? topPosition : bottomPosition) + offset / (static_cast<double>(staff->lineSpace) / 2);
 }
 
 std::optional<details::ArticulationAssign::PseudoTieShapeContext>
