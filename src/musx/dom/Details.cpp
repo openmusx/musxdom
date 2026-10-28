@@ -199,9 +199,7 @@ std::optional<double> details::ArticulationAssign::calcHandleStaffPosition(const
     const auto definition = document->getOthers()->get<others::ArticulationDef>(getRequestedPartId(), articDef);
     if (!definition) {
         MUSX_INTEGRITY_ERROR("Articulation assignment references missing definition " + std::to_string(articDef));
-#ifndef MUSX_THROW_ON_INTEGRITY_CHECK_FAIL
         return std::nullopt;
-#endif
     }
     using AD = others::ArticulationDef;
     if (definition->autoVert || overridePlacement || definition->copyMode != AD::CopyMode::None
@@ -214,9 +212,7 @@ std::optional<double> details::ArticulationAssign::calcHandleStaffPosition(const
     const auto staff = entryInfo.createCurrentStaff();
     if (!staff || staff->lineSpace <= 0) {
         MUSX_INTEGRITY_ERROR("Articulation handle position requires a staff with positive line spacing.");
-#ifndef MUSX_THROW_ON_INTEGRITY_CHECK_FAIL
         return std::nullopt;
-#endif
     }
     if (staff->notationStyle != others::Staff::NotationStyle::Standard
         || staff->altNotation != others::Staff::AlternateNotation::Normal) {
