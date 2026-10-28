@@ -258,3 +258,116 @@ TEST(PartVoicing, DetectionWhileIgnored)
         }
     }
 }
+
+TEST(PartVoicing, StaffExtremaHonorPolicyAndDriveStemDirection)
+{
+    std::vector<char> xml;
+    musxtest::readFile(musxtest::getInputPath() / "voiced-parts.enigmaxml", xml);
+    constexpr Cmper staffId = 1;
+    constexpr MeasCmper measureId = 3;
+    constexpr int scoreTop = -3;    // C5 in treble clef.
+    constexpr int scoreBottom = -7; // F4 in treble clef.
+    struct PartExpectation { Cmper partId; int top; int bottom; bool upStem; };
+    constexpr PartExpectation expectations[] = {
+        {SCORE_PARTID, scoreTop, scoreBottom, true},
+        {1, scoreTop, scoreTop, false},
+        {2, scoreBottom, scoreBottom, true},
+        {3, -5, -5, true} // Selected middle note, A4.
+    };
+    for (auto policy : {PartVoicingPolicy::Ignore, PartVoicingPolicy::Apply}) {
+        const auto document = musx::factory::DocumentFactory::create<musx::xml::tinyxml2::Document>(xml, policy);
+        for (const auto& expected : expectations) {
+            SCOPED_TRACE(expected.partId);
+            SCOPED_TRACE(static_cast<int>(policy));
+            const details::GFrameHoldContext context(document, expected.partId, staffId, measureId);
+            const auto frame = context.createEntryFrame(0);
+            ASSERT_TRUE(frame);
+            const EntryInfoPtr entryInfo(frame, 0);
+            ASSERT_FALSE(entryInfo.calcDisplaysAsRest());
+            EXPECT_FALSE(entryInfo.calcIsZeroNote());
+            const bool apply = policy == PartVoicingPolicy::Apply;
+            EXPECT_EQ(entryInfo.calcTopBottomStaffPositions(),
+                std::make_pair(apply ? expected.top : scoreTop, apply ? expected.bottom : scoreBottom));
+            EXPECT_EQ(entryInfo.calcUpStemDefault(), apply ? expected.upStem : true);
+            const auto stemOptions = document->getOptions()->get<options::StemOptions>();
+            ASSERT_TRUE(stemOptions);
+            const int top = apply ? expected.top : scoreTop;
+            const int bottom = apply ? expected.bottom : scoreBottom;
+            const bool upStem = entryInfo.calcUpStem();
+            constexpr Evpu noteSidePadding = static_cast<Evpu>(EVPU_PER_STAFF_POSITION);
+            EXPECT_EQ(entryInfo.calcTopBottomExtent(), std::make_pair(
+                static_cast<Evpu>(top * EVPU_PER_STAFF_POSITION) + (upStem ? stemOptions->stemLength : noteSidePadding),
+                static_cast<Evpu>(bottom * EVPU_PER_STAFF_POSITION) - (upStem ? noteSidePadding : stemOptions->stemLength)));
+        }
+    }
+}
+
+TEST(PartVoicing, ExcludedChordUsesFloatingRestPosition)
+{
+    std::vector<char> xml;
+    musxtest::readFile(musxtest::getInputPath() / "voiced-parts.enigmaxml", xml);
+    const auto document = musx::factory::DocumentFactory::create<musx::xml::tinyxml2::Document>(xml, PartVoicingPolicy::Apply);
+    constexpr Cmper partId = 2;
+    constexpr Cmper staffId = 1;
+    constexpr MeasCmper measureId = 5;
+    constexpr LayerIndex layerIndex = 2;
+    constexpr size_t entryIndex = 1;
+    constexpr int defaultRestPosition = -4;
+    constexpr int layerOffset = 6;
+    const details::GFrameHoldContext context(document, partId, staffId, measureId);
+    const auto frame = context.createEntryFrame(layerIndex);
+    ASSERT_TRUE(frame);
+    const EntryInfoPtr entryInfo(frame, entryIndex);
+    ASSERT_TRUE(entryInfo->getEntry()->isNote);
+    ASSERT_FALSE(entryInfo->getEntry()->notes.empty());
+    ASSERT_TRUE(entryInfo.calcDisplaysAsRest());
+    EXPECT_TRUE(entryInfo.calcIsZeroNote());
+    EXPECT_EQ(entryInfo.calcZeroNotePosition(), defaultRestPosition);
+    EXPECT_EQ(entryInfo.calcTopBottomStaffPositions(), std::make_pair(defaultRestPosition, defaultRestPosition));
+
+    auto layer = std::const_pointer_cast<others::LayerAttributes>(frame->getLayerAttributes());
+    ASSERT_TRUE(layer);
+    layer->useRestOffset = true;
+    layer->onlyIfOtherLayersHaveNotes = false;
+    layer->restOffset = layerOffset;
+    auto misc = std::const_pointer_cast<options::MiscOptions>(document->getOptions()->get<options::MiscOptions>());
+    ASSERT_TRUE(misc);
+    misc->consolidateRestsAcrossLayers = false;
+    constexpr int displacedPosition = defaultRestPosition + layerOffset;
+    EXPECT_EQ(entryInfo.calcTopBottomStaffPositions(), std::make_pair(displacedPosition, displacedPosition));
+
+    // An actual floating rest at the same location follows the same positioning rules.
+    auto entry = std::const_pointer_cast<Entry>(entryInfo->getEntry());
+    entry->isNote = false;
+    entry->floatRest = true;
+    EXPECT_EQ(entryInfo.calcTopBottomStaffPositions(), std::make_pair(displacedPosition, displacedPosition));
+}
+
+TEST(PartVoicing, ExcludedUnbeamedChordDoesNotDetermineStemDirection)
+{
+    std::vector<char> xml;
+    musxtest::readFile(musxtest::getInputPath() / "voiced-parts.enigmaxml", xml);
+    const auto document = musx::factory::DocumentFactory::create<musx::xml::tinyxml2::Document>(xml, PartVoicingPolicy::Apply);
+    constexpr Cmper partId = 1;
+    constexpr Cmper staffId = 1;
+    constexpr MeasCmper measureId = 3;
+    auto voicing = std::const_pointer_cast<others::PartVoicing>(document->getOthers()->get<others::PartVoicing>(partId, staffId));
+    ASSERT_TRUE(voicing);
+    voicing->singleLayerVoiceType = others::PartVoicing::SingleLayerVoiceType::SelectedNotes;
+    voicing->select1st = voicing->select2nd = voicing->select3rd = voicing->select4th = voicing->select5th = false;
+    const details::GFrameHoldContext context(document, partId, staffId, measureId);
+    const auto frame = context.createEntryFrame(0);
+    ASSERT_TRUE(frame);
+    const EntryInfoPtr entryInfo(frame, 0);
+    ASSERT_TRUE(entryInfo.calcDisplaysAsRest());
+    ASSERT_TRUE(entryInfo.calcUnbeamed());
+    auto entry = std::const_pointer_cast<Entry>(entryInfo->getEntry());
+    for (bool upStem : {false, true}) {
+        entry->upStemScore = upStem;
+        if (const auto partData = entryInfo.getPartFieldData()) {
+            std::const_pointer_cast<details::EntryPartFieldDetail>(partData)->upStem = upStem;
+        }
+        const EntryInfoPtr freshEntry(frame, 0);
+        EXPECT_EQ(freshEntry.calcUpStemDefault(), upStem);
+    }
+}

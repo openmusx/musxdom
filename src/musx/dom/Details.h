@@ -112,15 +112,15 @@ class ArticulationAssign : public EntryDetailsBase
 {
 public:
     /// @class SelectedSymbolContext
-    /// @brief Provides information about the best analysis as to which articulation symbol in being used on this assignment.
-    /// @details The symbol may be the main or alternate symbol, and it may be either a codepoint or a shape id. For automatically
-    /// positioned articulations, see the caveats at #calcPlacementAbove.
+    /// @brief Provides the selected articulation symbol and its semantic placement.
+    /// @details Consult #symbolIsEstimate before relying on the symbol matching Finale's rendered selection.
     struct SelectedSymbolContext
     {
         MusxInstance<others::ArticulationDef> definition;   ///< The associated articulation definition.
         others::ArticulationDef::SelectedSymbol symbol;     ///< Information about the selected symbol.
-        /// @brief The resolved placement for the selected symbol.
+        /// @brief Semantic placement policy, independent of the final rendered side.
         VerticalPlacement placement = VerticalPlacement::NotApplicable;
+        bool symbolIsEstimate = true; ///< Whether layout-dependent positioning could change the selected symbol.
     };
 
 private:
@@ -155,20 +155,20 @@ public:
     bool avoidSlur{};               ///< Whether the articulation should avoid slurs.
     int numSlursAvoided{};          ///< Number of slurs avoided. Used internally by Finale's stacking algorithm.
 
-    /// @brief Heuristically finds the note in the entry that this articulation assignment appears to be associated with.
-    /// @details Finale cannot model an articulation attached to a specific note of a chord, but users approximate it by
-    /// giving the articulation definition manual vertical positioning and setting #vertOffset so that the symbol aligns
-    /// with the staff position of the target note, where zero is the staff position of the note furthest from the stem.
-    /// This function reverses that convention: it rounds #vertOffset to the nearest staff position and returns the note
-    /// (if any) at exactly that position. Definition-level offsets are ignored, since they orient the symbol relative
-    /// to the selected note rather than select it.
-    /// @note This is a heuristic classification aid. Combine it with other signals (such as the glyph) before concluding
-    /// that an articulation is note-associated.
-    /// @param entryInfo The entry to which this articulation is assigned. Its entry number must match this
-    /// assignment's entry number.
-    /// @return The associated note, or an empty NoteInfoPtr if the heuristic does not identify one.
-    /// @throws std::logic_error if @p entryInfo does not match this assignment's entry number.
-    [[nodiscard]] NoteInfoPtr calcAssociatedNote(const EntryInfoPtr& entryInfo) const;
+    /// @brief Calculates the primary handle's fractional staff position for a manually positioned articulation.
+    /// @details Positions are relative to the entry staff's reference line, positive upward; one unit is half
+    /// the current staff line spacing. The reference note is selected by #others::ArticulationDef::useTopNote.
+    /// Assignment and selected-symbol vertical offsets are additive. The definition's default vertical position
+    /// does not contribute. Staff and entry size percentages do not affect the result.
+    /// This is a handle coordinate, not a glyph center or an association with a note.
+    /// @param entryInfo A non-null context for this assignment's entry, document, and requested part.
+    /// @return The handle position, or std::nullopt for automatic placement, placement overrides, symbol copying,
+    /// outside-staff or staff-line avoidance, slur avoidance, rests, empty entries, grace notes, cross-staff notes,
+    /// nonstandard notation styles, alternate notation, active part voicing, or vertically displaced noteheads.
+    /// @throws std::logic_error if @p entryInfo is null or does not match this assignment's context.
+    /// @throws integrity_error if required definition/staff data is missing or staff line spacing is nonpositive,
+    /// when integrity exceptions are enabled. Otherwise these failures are logged and return std::nullopt.
+    [[nodiscard]] std::optional<double> calcHandleStaffPosition(const EntryInfoPtr& entryInfo) const;
 
     /// @brief Calculates the pseudo-tie shape info if this articulation is acting as a pseudo tie for the specified mode.
     /// @return The pseudo-tie shape info when a qualifying shape exists; otherwise std::nullopt.
@@ -176,10 +176,12 @@ public:
         const EntryInfoPtr& forStartEntry) const;
 
     /// @brief Resolves the symbol information used by this articulation assignment on the specified entry.
-    /// @details The returned symbol context reflects the assignment-level placement semantics used by this library. Manual placement
-    /// cases are evaluated exactly from the assignment data. Automatic placement cases use the best available policy-based
-    /// interpretation of Finale's settings and may differ from Finale's final rendered side after layout-dependent positioning
-    /// or manual dragging.
+    /// @details Copied articulations use the main character, font, and offsets. Otherwise selection is exact when
+    /// both sides select the same symbol, or for manual vertical positioning without outside-staff or staff-line
+    /// avoidance. Manual selection compares the assignment offset with zero, treating equality as above,
+    /// before applying symbol offsets; placement overrides do not change this comparison.
+    /// Other cases use a policy-based estimate and set SelectedSymbolContext::symbolIsEstimate.
+    /// Automatic positioning, avoidance, and dragging may change Finale's final selection.
     /// @return The resolved symbol context, or std::nullopt if the entry context or articulation definition cannot be resolved.
     [[nodiscard]] std::optional<SelectedSymbolContext> calcSelectedSymbolContext(const EntryInfoPtr& entryInfo) const;
 
@@ -187,11 +189,9 @@ public:
     constexpr static std::string_view XmlNodeName = "articAssign"; ///< The XML node name for this type.
 
 private:
-    /// @brief Calculates whether the articulation should be treated as placed above the entry.
-    /// @details This returns the semantic placement used for articulation behavior, not a guaranteed reconstruction of
-    /// Finale's final rendered position in every automatic-layout scenario. Manual placement cases are evaluated exactly
-    /// from the assignment data. Automatic placement cases use the best available policy-based interpretation of Finale's
-    /// settings and may differ from Finale's final rendered side after layout-dependent positioning or manual dragging.
+    /// @brief Predicts whether the articulation lies at or above its reference before symbol offsets.
+    /// @details Manual placement uses the assignment offset. Automatic placement uses the available stem and
+    /// layer policy; layout-dependent displacement may change the side used by Finale for symbol selection.
     [[nodiscard]] bool calcPlacementAbove(const MusxInstance<others::ArticulationDef>& definition,
         const EntryInfoPtr& entryInfo) const;
     /// @brief Resolves the placement semantics for this articulation assignment on the specified entry.

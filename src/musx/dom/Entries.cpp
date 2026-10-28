@@ -1037,7 +1037,8 @@ bool EntryInfoPtr::calcDisplaysAsRest() const
 bool EntryInfoPtr::calcIsZeroNote() const
 {
     const auto& entry = (*this)->getEntry();
-    return entry->notes.empty() || (!entry->isNote && entry->floatRest);
+    return entry->notes.empty() || (!entry->isNote && entry->floatRest)
+        || (entry->isNote && calcDisplaysAsRest());
 }
 
 int EntryInfoPtr::calcZeroNotePosition() const
@@ -1046,7 +1047,7 @@ int EntryInfoPtr::calcZeroNotePosition() const
     MUSX_ASSERT_IF(!calcIsZeroNote()) {
         throw std::logic_error("calcZeroNotePosition() called on an entry that is not a zero-note entry.");
     }
-    if (entry->isNote) {
+    if (entry->isNote && entry->notes.empty()) {
         return 0;
     }
 
@@ -1055,7 +1056,8 @@ int EntryInfoPtr::calcZeroNotePosition() const
         throw std::logic_error("calcZeroNotePosition() could not find the staff for entry " + std::to_string(entry->getEntryNumber()));
     }
 
-    if (!entry->floatRest) {
+    // A chord with all notes excluded by voicing uses floating-rest positioning.
+    if (!entry->floatRest && !entry->isNote) {
         return staff->calcRestOffset(entry->duration);
     }
 
@@ -1105,8 +1107,17 @@ std::pair<int, int> EntryInfoPtr::calcTopBottomStaffPositions() const
         }
     };
 
-    updateLines(NoteInfoPtr(*this, 0));
-    updateLines(NoteInfoPtr(*this, entry->notes.size() - 1));
+    if (const auto partVoicing = getFrame()->getContext().getPolicyPartVoicing(); partVoicing && entry->isNote) {
+        for (size_t noteIndex = 0; noteIndex < entry->notes.size(); ++noteIndex) {
+            const NoteInfoPtr note(*this, noteIndex);
+            if (partVoicing->calcShowsNote(note)) {
+                updateLines(note);
+            }
+        }
+    } else {
+        updateLines(NoteInfoPtr(*this, 0));
+        updateLines(NoteInfoPtr(*this, entry->notes.size() - 1));
+    }
 
     return std::make_pair(topLine, botLine);
 }
@@ -1158,7 +1169,7 @@ bool EntryInfoPtr::calcUpStemDefault() const
         const auto& entry = next->getEntry();
         if (!entry->graceNote) {
             gotNonGrace = true;
-            if (!entry->isNote && next.calcIsZeroNote()) {
+            if (next.calcIsZeroNote() && next.calcDisplaysAsRest()) {
                 continue;
             }
             gotPositionedEntry = true;
