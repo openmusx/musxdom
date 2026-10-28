@@ -262,7 +262,7 @@ std::optional&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"
 <tr class="memdesc:a91dd4f09e8c863732cfa52f13275995b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates if an entry displays as a rest.  <br /></td></tr>
 <tr class="separator:a91dd4f09e8c863732cfa52f13275995b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7cecd561c595a6685ab1204b919e442" id="r_aa7cecd561c595a6685ab1204b919e442"><td class="memItemLeft" align="right" valign="top">std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#aa7cecd561c595a6685ab1204b919e442">calcTopBottomStaffPositions</a> () const</td></tr>
-<tr class="memdesc:aa7cecd561c595a6685ab1204b919e442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the top and bottom staff positions of the entry, taking into account percussion notes. This function must not be called on a floating rest. It asserts and throws if so.  <br /></td></tr>
+<tr class="memdesc:aa7cecd561c595a6685ab1204b919e442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the top and bottom staff positions of the entry, taking into account percussion notes.  <br /></td></tr>
 <tr class="separator:aa7cecd561c595a6685ab1204b919e442"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b15081e804d4f3482ed2f4531dca0cd" id="r_a6b15081e804d4f3482ed2f4531dca0cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#a6b15081e804d4f3482ed2f4531dca0cd">calcIsZeroNote</a> () const</td></tr>
 <tr class="memdesc:a6b15081e804d4f3482ed2f4531dca0cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates if the entry is a zero-note entry, i.e., its staff position does not come from note data.  <br /></td></tr>
@@ -1116,7 +1116,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculates if the entry is a zero-note entry, i.e., its staff position does not come from note data. </p>
-<p>This is true for entries with no note data and for floating rests. Use this to determine whether <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#a0b974c77c6258f700c14a003d2790448" title="Calculates the staff position for a zero-note entry. (See calcIsZeroNote.)">calcZeroNotePosition</a> may be called on the entry. </p>
+<p>This is true for entries with no note data, floating rests, and entries whose notes are all excluded by the document's active part-voicing policy. Use this to determine whether <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#a0b974c77c6258f700c14a003d2790448" title="Calculates the staff position for a zero-note entry. (See calcIsZeroNote.)">calcZeroNotePosition</a> may be called. </p>
 
 </div>
 </div>
@@ -1301,8 +1301,8 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Calculates the top and bottom staff positions of the entry, taking into account percussion notes. This function must not be called on a floating rest. It asserts and throws if so. </p>
-<dl class="section return"><dt>Returns</dt><dd>A std::pair&lt;int, int&gt; with the first being the top staff position and the second being the bottom staff position. </dd></dl>
+<p>Calculates the top and bottom staff positions of the entry, taking into account percussion notes. </p>
+<p>Honors the document's <a class="el" href="namespacemusx_1_1dom.html#a8ff59967b46549e150ea4f524c00de95" title="Controls whether Finale-style part voicing is applied when iterating entries via musx::dom::details::...">PartVoicingPolicy</a>. Only included notes contribute when voicing applies. Floating rests and entries whose notes are all excluded use <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#a0b974c77c6258f700c14a003d2790448" title="Calculates the staff position for a zero-note entry. (See calcIsZeroNote.)">calcZeroNotePosition</a> for both positions. </p><dl class="section return"><dt>Returns</dt><dd>A std::pair&lt;int, int&gt; with the first being the top staff position and the second being the bottom staff position. </dd></dl>
 
 </div>
 </div>
@@ -1392,7 +1392,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculates the staff position for a zero-note entry. (See <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html#a6b15081e804d4f3482ed2f4531dca0cd" title="Calculates if the entry is a zero-note entry, i.e., its staff position does not come from note data.">calcIsZeroNote</a>.) </p>
-<p>Empty non-rest entries are positioned on the staff reference line. For rests, this applies the floating-rest and default-rest positioning rules. A non-floating rest with note data gets its staff position from its RESTID note through <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a4766cf96435ed81abdf8309f4e267b95" title="Calculates the note name, octave number, actual alteration, and staff position. The staff position ta...">NoteInfoPtr::calcNoteProperties</a>. </p><dl class="section return"><dt>Returns</dt><dd>The staff position used to place the entry. </dd></dl>
+<p>Empty non-rest entries are positioned on the staff reference line. For rests, this applies the floating-rest and default-rest positioning rules. Entries whose notes are all excluded by part voicing use floating-rest rules. A non-floating rest with note data gets its staff position from its RESTID note through <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a4766cf96435ed81abdf8309f4e267b95" title="Calculates the note name, octave number, actual alteration, and staff position. The staff position ta...">NoteInfoPtr::calcNoteProperties</a>. </p><dl class="section return"><dt>Returns</dt><dd>The staff position used to place the entry. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">std::logic_error</td><td>if the entry is not a zero-note entry, or if required positioning data is unavailable. </td></tr>

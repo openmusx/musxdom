@@ -94,8 +94,8 @@ var NAVTREEINDEX =
 "namespacemusx_1_1dom_1_1uuid.html#ab52fbe04a58ee43014558cb4d23b4524",
 "structmusic__theory_1_1Pitch.html#a417284fb2ecf0dea7193240c78b3e1d4",
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html#a81dd4cc6815244168741fce5ce27e83f",
-"structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html#a417aa35fc45185b38ceae08cd0f2dda4",
-"structmusx_1_1util_1_1Tie_1_1ContourResult.html#ac6bb4b2276cff6173c4854faf0cc9ab1"
+"structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html",
+"structmusx_1_1util_1_1Tie_1_1ContourResult.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

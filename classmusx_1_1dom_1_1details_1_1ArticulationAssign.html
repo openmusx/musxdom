@@ -125,7 +125,7 @@ $(document).ready(function(){initNavTree('classmusx_1_1dom_1_1details_1_1Articul
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1SelectedSymbolContext.html">SelectedSymbolContext</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides information about the best analysis as to which articulation symbol in being used on this assignment.  <a href="structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1SelectedSymbolContext.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides the selected articulation symbol and its semantic placement.  <a href="structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1SelectedSymbolContext.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -133,9 +133,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a045264b0f6ff881411fddbb01e546fa6" id="r_a045264b0f6ff881411fddbb01e546fa6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a045264b0f6ff881411fddbb01e546fa6">ArticulationAssign</a> (const <a class="el" href="namespacemusx_1_1dom.html#aa76356b1ad3580081294898c79615c4d">DocumentWeakPtr</a> &amp;document, <a class="el" href="namespacemusx_1_1dom.html#a849c0fb091707be060d840e877486f65">Cmper</a> partId, <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#ac655bdce0724d5e32cfcd6203c9a5d1f">ShareMode</a> shareMode, <a class="el" href="namespacemusx_1_1dom.html#aaf6ff3bd65d56ab74135ba5914f68f5b">EntryNumber</a> entnum, <a class="el" href="namespacemusx_1_1dom.html#a7e1523afa8705d91b1d694405c2feefb">Inci</a> inci)</td></tr>
 <tr class="memdesc:a045264b0f6ff881411fddbb01e546fa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor function.  <br /></td></tr>
 <tr class="separator:a045264b0f6ff881411fddbb01e546fa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1e1c80ba36d426b7c3dc6802c4863e8" id="r_ad1e1c80ba36d426b7c3dc6802c4863e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#ad1e1c80ba36d426b7c3dc6802c4863e8">calcAssociatedNote</a> (const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;entryInfo) const</td></tr>
-<tr class="memdesc:ad1e1c80ba36d426b7c3dc6802c4863e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Heuristically finds the note in the entry that this articulation assignment appears to be associated with.  <br /></td></tr>
-<tr class="separator:ad1e1c80ba36d426b7c3dc6802c4863e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b8892fd7973325b94c5b5ba81272346" id="r_a1b8892fd7973325b94c5b5ba81272346"><td class="memItemLeft" align="right" valign="top">std::optional&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a1b8892fd7973325b94c5b5ba81272346">calcHandleStaffPosition</a> (const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;entryInfo) const</td></tr>
+<tr class="memdesc:a1b8892fd7973325b94c5b5ba81272346"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the primary handle's fractional staff position for a manually positioned articulation.  <br /></td></tr>
+<tr class="separator:a1b8892fd7973325b94c5b5ba81272346"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac539b3c2b381e0a2f50dc5324c00c49c" id="r_ac539b3c2b381e0a2f50dc5324c00c49c"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="structmusx_1_1utils_1_1PseudoTieShapeInfo.html">utils::PseudoTieShapeInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#ac539b3c2b381e0a2f50dc5324c00c49c">calcIsPseudoTie</a> (utils::PseudoTieMode mode, const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;forStartEntry) const</td></tr>
 <tr class="memdesc:ac539b3c2b381e0a2f50dc5324c00c49c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the pseudo-tie shape info if this articulation is acting as a pseudo tie for the specified mode.  <br /></td></tr>
 <tr class="separator:ac539b3c2b381e0a2f50dc5324c00c49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -411,14 +411,14 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad1e1c80ba36d426b7c3dc6802c4863e8" name="ad1e1c80ba36d426b7c3dc6802c4863e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1e1c80ba36d426b7c3dc6802c4863e8">&#9670;&#160;</a></span>calcAssociatedNote()</h2>
+<a id="a1b8892fd7973325b94c5b5ba81272346" name="a1b8892fd7973325b94c5b5ba81272346"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b8892fd7973325b94c5b5ba81272346">&#9670;&#160;</a></span>calcHandleStaffPosition()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html">NoteInfoPtr</a> musx::dom::details::ArticulationAssign::calcAssociatedNote </td>
+          <td class="memname">std::optional&lt; double &gt; musx::dom::details::ArticulationAssign::calcHandleStaffPosition </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;&#160;</td>
           <td class="paramname"><em>entryInfo</em></td><td>)</td>
@@ -427,18 +427,18 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Heuristically finds the note in the entry that this articulation assignment appears to be associated with. </p>
-<p>Finale cannot model an articulation attached to a specific note of a chord, but users approximate it by giving the articulation definition manual vertical positioning and setting <a class="el" href="classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#ade0fedd3db760bfae1bceffdb1a57908" title="Vertical offset from the default position.">vertOffset</a> so that the symbol aligns with the staff position of the target note, where zero is the staff position of the note furthest from the stem. This function reverses that convention: it rounds <a class="el" href="classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#ade0fedd3db760bfae1bceffdb1a57908" title="Vertical offset from the default position.">vertOffset</a> to the nearest staff position and returns the note (if any) at exactly that position. Definition-level offsets are ignored, since they orient the symbol relative to the selected note rather than select it. </p><dl class="section note"><dt>Note</dt><dd>This is a heuristic classification aid. Combine it with other signals (such as the glyph) before concluding that an articulation is note-associated. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Calculates the primary handle's fractional staff position for a manually positioned articulation. </p>
+<p>Positions are relative to the entry staff's reference line, positive upward; one unit is half the current staff line spacing. The reference note is selected by <a class="el" href="classmusx_1_1dom_1_1others_1_1ArticulationDef.html#a047e1ab7e92dd4b6b781b5fa7bb79d27" title="&quot;Attach to top note&quot;">others::ArticulationDef::useTopNote</a>. Assignment and selected-symbol vertical offsets are additive. The definition's default vertical position does not contribute. Staff and entry size percentages do not affect the result. This is a handle coordinate, not a glyph center or an association with a note. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">entryInfo</td><td>The entry to which this articulation is assigned. Its entry number must match this assignment's entry number. </td></tr>
+    <tr><td class="paramname">entryInfo</td><td>A non-null context for this assignment's entry, document, and requested part. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The associated note, or an empty <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html" title="Wraps an EntryInfo instance and a note index.">NoteInfoPtr</a> if the heuristic does not identify one. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The handle position, or std::nullopt for automatic placement, placement overrides, symbol copying, outside-staff or staff-line avoidance, slur avoidance, rests, empty entries, grace notes, cross-staff notes, nonstandard notation styles, alternate notation, active part voicing, or vertically displaced noteheads. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::logic_error</td><td>if <code>entryInfo</code> does not match this assignment's entry number. </td></tr>
+    <tr><td class="paramname">std::logic_error</td><td>if <code>entryInfo</code> is null or does not match this assignment's context. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classmusx_1_1dom_1_1integrity__error.html" title="Exception for integrity errors. (Used when MUSX_THROW_ON_INTEGRITY_CHECK_FAIL is defined....">integrity_error</a></td><td>if required definition/staff data is missing or staff line spacing is nonpositive, when integrity exceptions are enabled. Otherwise these failures are logged and return std::nullopt. </td></tr>
   </table>
   </dd>
 </dl>
@@ -493,7 +493,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Resolves the symbol information used by this articulation assignment on the specified entry. </p>
-<p>The returned symbol context reflects the assignment-level placement semantics used by this library. Manual placement cases are evaluated exactly from the assignment data. Automatic placement cases use the best available policy-based interpretation of Finale's settings and may differ from Finale's final rendered side after layout-dependent positioning or manual dragging. </p><dl class="section return"><dt>Returns</dt><dd>The resolved symbol context, or std::nullopt if the entry context or articulation definition cannot be resolved. </dd></dl>
+<p>Copied articulations use the main character, font, and offsets. Otherwise selection is exact when both sides select the same symbol, or for manual vertical positioning without outside-staff or staff-line avoidance. Manual selection compares the assignment offset with zero, treating equality as above, before applying symbol offsets; placement overrides do not change this comparison. Other cases use a policy-based estimate and set <a class="el" href="structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1SelectedSymbolContext.html#af99d15a3d0a4be0f782bf993624a6ebd" title="Whether layout-dependent positioning could change the selected symbol.">SelectedSymbolContext::symbolIsEstimate</a>. Automatic positioning, avoidance, and dragging may change Finale's final selection. </p><dl class="section return"><dt>Returns</dt><dd>The resolved symbol context, or std::nullopt if the entry context or articulation definition cannot be resolved. </dd></dl>
 
 </div>
 </div>

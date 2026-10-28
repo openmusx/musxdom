@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('structmusx_1_1dom_1_1details_1_1Articu
 </div><!--header-->
 <div class="contents">
 
-<p>Provides information about the best analysis as to which articulation symbol in being used on this assignment.  
+<p>Provides the selected articulation symbol and its semantic placement.  
  <a href="structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1SelectedSymbolContext.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Details_8h_source.html">Details.h</a>&gt;</code></p>
@@ -114,12 +114,16 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a475a9a20c20f0c42e173f051bf8bed48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7d2e4ecf0fefaa61a2bc306f03843a3" id="r_af7d2e4ecf0fefaa61a2bc306f03843a3"><td class="memItemLeft" align="right" valign="top"><a id="af7d2e4ecf0fefaa61a2bc306f03843a3" name="af7d2e4ecf0fefaa61a2bc306f03843a3"></a>
 <a class="el" href="namespacemusx_1_1dom.html#a5f47ab5a8dd3f3cab33730ac7e178ad3">VerticalPlacement</a>&#160;</td><td class="memItemRight" valign="bottom"><b>placement</b> = <a class="el" href="namespacemusx_1_1dom.html#a5f47ab5a8dd3f3cab33730ac7e178ad3a7599922e28b6009660de5e67f8ce210c">VerticalPlacement::NotApplicable</a></td></tr>
-<tr class="memdesc:af7d2e4ecf0fefaa61a2bc306f03843a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The resolved placement for the selected symbol. <br /></td></tr>
+<tr class="memdesc:af7d2e4ecf0fefaa61a2bc306f03843a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Semantic placement policy, independent of the final rendered side. <br /></td></tr>
 <tr class="separator:af7d2e4ecf0fefaa61a2bc306f03843a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af99d15a3d0a4be0f782bf993624a6ebd" id="r_af99d15a3d0a4be0f782bf993624a6ebd"><td class="memItemLeft" align="right" valign="top"><a id="af99d15a3d0a4be0f782bf993624a6ebd" name="af99d15a3d0a4be0f782bf993624a6ebd"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>symbolIsEstimate</b> = true</td></tr>
+<tr class="memdesc:af99d15a3d0a4be0f782bf993624a6ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether layout-dependent positioning could change the selected symbol. <br /></td></tr>
+<tr class="separator:af99d15a3d0a4be0f782bf993624a6ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Provides information about the best analysis as to which articulation symbol in being used on this assignment. </p>
-<p>The symbol may be the main or alternate symbol, and it may be either a codepoint or a shape id. For automatically positioned articulations, see the caveats at calcPlacementAbove. </p>
+<div class="textblock"><p>Provides the selected articulation symbol and its semantic placement. </p>
+<p>Consult <a class="el" href="structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1SelectedSymbolContext.html#af99d15a3d0a4be0f782bf993624a6ebd" title="Whether layout-dependent positioning could change the selected symbol.">symbolIsEstimate</a> before relying on the symbol matching Finale's rendered selection. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a475a9a20c20f0c42e173f051bf8bed48" name="a475a9a20c20f0c42e173f051bf8bed48"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a475a9a20c20f0c42e173f051bf8bed48">&#9670;&#160;</a></span>symbol</h2>
