@@ -407,7 +407,7 @@ TEST_F(ArticulationHandlePositionTest, AddsHorizontalAssignmentAndDefinitionOffs
         }
     }
     // Conversion must precede addition, even when the stored values span the EVPU range.
-    constexpr Evpu maximumOffset = std::numeric_limits<Evpu>::max();
+    constexpr Evpu maximumOffset = (std::numeric_limits<Evpu>::max)();
     assignment->horzOffset = maximumOffset;
     definition->xOffsetMain = maximumOffset;
     expectHorizontalOffset(static_cast<double>(maximumOffset) + maximumOffset);
