@@ -67,6 +67,7 @@ callgrind.out.*
 mus_feasibility/private/
 
 # Local-only proprietary research assets; never commit or redistribute
+/private/
 /research/private/
 
 #Ignore doxygen generated files

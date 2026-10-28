@@ -27,6 +27,7 @@
 #include <type_traits>
 #include <unordered_set>
 
+#include "musx/dom/Fundamentals.h"
 #include "musx/musx.h"
 
 namespace musx {
@@ -158,7 +159,7 @@ std::optional<details::ArticulationAssign::SelectedSymbolContext>
 details::ArticulationAssign::calcSelectedSymbolContext(const EntryInfoPtr& entryInfo) const
 {
     SelectedSymbolContext result;
-    if (!entryInfo) {
+    MUSX_ASSERT_IF(!entryInfo) {
         return std::nullopt;
     }
 
@@ -197,7 +198,8 @@ std::optional<double> details::ArticulationAssign::calcHandleStaffPosition(const
         throw std::logic_error("ArticulationAssign::calcHandleStaffPosition called with a mismatched entry context.");
     }
     std::optional<double> result{};
-    if (const auto definition = document->getOthers()->get<others::ArticulationDef>(getRequestedPartId(), articDef)) {
+    if (const auto context = calcSelectedSymbolContext(entryInfo)) {
+        const auto& definition = context->definition;
         using AD = others::ArticulationDef;
         if (definition->autoVert || overridePlacement || definition->copyMode != AD::CopyMode::None
             || definition->outsideStaff || definition->avoidStaffLines || avoidSlur || definition->insideSlur
@@ -224,12 +226,39 @@ std::optional<double> details::ArticulationAssign::calcHandleStaffPosition(const
                 }
             }
             const auto [topPosition, bottomPosition] = entryInfo.calcTopBottomStaffPositions();
-            const auto symbol = definition->calcSelectedSymbol(vertOffset >= 0);
-            const double offset = static_cast<double>(vertOffset) + static_cast<double>(symbol.yOffset);
+            const double offset = static_cast<double>(vertOffset) + static_cast<double>(context->symbol.yOffset);
             result = (definition->useTopNote ? topPosition : bottomPosition) + offset / (static_cast<double>(staff->lineSpace) / 2);
         } else {
             MUSX_INTEGRITY_ERROR("Articulation handle position requires a staff with positive line spacing.");
         }
+    } else {
+        MUSX_INTEGRITY_ERROR("Articulation assignment references missing definition " + std::to_string(articDef));
+    }
+    return result;
+}
+
+std::optional<double> details::ArticulationAssign::calcHandleHorizontalOffset(const EntryInfoPtr& entryInfo) const
+{
+    MUSX_ASSERT_IF(!entryInfo) {
+        throw std::logic_error("ArticulationAssign::calcHandleHorizontalOffset requires an entry context.");
+    }
+    const auto entry = entryInfo->getEntry();
+    const auto document = getDocument();
+    MUSX_ASSERT_IF(entry->getEntryNumber() != getEntryNumber() || entry->getDocument() != document
+        || entryInfo.getFrame()->getRequestedPartId() != getRequestedPartId()) {
+        throw std::logic_error("ArticulationAssign::calcHandleHorizontalOffset called with a mismatched entry context.");
+    }
+    std::optional<double> result{};
+    if (const auto context = calcSelectedSymbolContext(entryInfo)) {
+        const auto& definition = context->definition;
+        if (definition->autoHorz || definition->centerOnStem
+            || definition->copyMode != others::ArticulationDef::CopyMode::None) {
+            return std::nullopt;
+        }
+        if (context->symbolIsEstimate && definition->xOffsetMain != definition->xOffsetAlt) {
+            return std::nullopt;
+        }
+        result = static_cast<double>(horzOffset) + static_cast<double>(context->symbol.xOffset);
     } else {
         MUSX_INTEGRITY_ERROR("Articulation assignment references missing definition " + std::to_string(articDef));
     }

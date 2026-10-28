@@ -170,6 +170,20 @@ public:
     /// when integrity exceptions are enabled. Otherwise these failures are logged and return std::nullopt.
     [[nodiscard]] std::optional<double> calcHandleStaffPosition(const EntryInfoPtr& entryInfo) const;
 
+    /// @brief Calculates the primary handle's horizontal offset from the entry's drawing origin in EVPU, positive rightward.
+    /// @details Assignment and selected-symbol definition offsets are additive. The result is not a notehead
+    /// center, a visible glyph edge, or an association with a note. No staff-space conversion or resizing is applied.
+    /// Automatic vertical positioning is supported when the selected symbol is certain or both symbols have
+    /// equal horizontal offsets. A returned coordinate does not certify the selected character; consult
+    /// SelectedSymbolContext::symbolIsEstimate separately when identifying symbols.
+    /// @param entryInfo A non-null context for this assignment's entry, document, and requested part.
+    /// @return The handle offset, or std::nullopt for horizontal auto-positioning, stem centering, symbol copying,
+    /// or uncertain symbol selection with unequal main and alternate horizontal offsets.
+    /// @throws std::logic_error if @p entryInfo is null or does not match this assignment's context.
+    /// @throws integrity_error if the required definition is missing, when integrity exceptions are enabled.
+    /// Otherwise the missing definition is logged and returns std::nullopt.
+    [[nodiscard]] std::optional<double> calcHandleHorizontalOffset(const EntryInfoPtr& entryInfo) const;
+
     /// @brief Calculates the pseudo-tie shape info if this articulation is acting as a pseudo tie for the specified mode.
     /// @return The pseudo-tie shape info when a qualifying shape exists; otherwise std::nullopt.
     [[nodiscard]] std::optional<utils::PseudoTieShapeInfo> calcIsPseudoTie(utils::PseudoTieMode mode,
