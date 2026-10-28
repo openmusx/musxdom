@@ -20,6 +20,8 @@
  * THE SOFTWARE.
 */
 
+#include <limits>
+
 #include "gtest/gtest.h"
 #include "musx/musx.h"
 #include "test_utils.h"
@@ -385,7 +387,176 @@ protected:
         ASSERT_TRUE(result);
         EXPECT_DOUBLE_EQ(*result, expected);
     }
+
+    void expectHorizontalOffset(double expected)
+    {
+        const auto result = assignment->calcHandleHorizontalOffset(entryInfo);
+        ASSERT_TRUE(result);
+        EXPECT_DOUBLE_EQ(*result, expected);
+    }
 };
+
+TEST_F(ArticulationHandlePositionTest, AddsHorizontalAssignmentAndDefinitionOffsets)
+{
+    constexpr Evpu displacement = 19;
+    for (Evpu assignmentOffset : {0, displacement, -displacement}) {
+        for (Evpu definitionOffset : {0, displacement, -displacement}) {
+            assignment->horzOffset = assignmentOffset;
+            definition->xOffsetMain = definitionOffset;
+            expectHorizontalOffset(static_cast<double>(assignmentOffset) + definitionOffset);
+        }
+    }
+    // Conversion must precede addition, even when the stored values span the EVPU range.
+    constexpr Evpu maximumOffset = std::numeric_limits<Evpu>::max();
+    assignment->horzOffset = maximumOffset;
+    definition->xOffsetMain = maximumOffset;
+    expectHorizontalOffset(static_cast<double>(maximumOffset) + maximumOffset);
+}
+
+TEST_F(ArticulationHandlePositionTest, HorizontalOffsetUsesSymbolSelectedBeforeDefinitionOffsets)
+{
+    constexpr Evpu mainOffset = -17;
+    constexpr Evpu alternateOffset = 23;
+    definition->xOffsetMain = mainOffset;
+    definition->xOffsetAlt = alternateOffset;
+    definition->aboveSymbolAlt = true;
+    definition->belowSymbolAlt = false;
+    definition->yOffsetAlt = -standardLineSpace;
+    definition->yOffsetMain = standardLineSpace;
+    assignment->overridePlacement = true;
+    for (bool aboveEntry : {false, true}) {
+        assignment->aboveEntry = aboveEntry;
+        for (Evpu verticalOffset : {-standardLineSpace, 0, standardLineSpace}) {
+            assignment->vertOffset = verticalOffset;
+            expectHorizontalOffset(verticalOffset >= 0 ? alternateOffset : mainOffset);
+        }
+    }
+}
+
+TEST_F(ArticulationHandlePositionTest, HorizontalOffsetDistinguishesCoordinateAndSymbolCertainty)
+{
+    constexpr Evpu mainOffset = 13;
+    constexpr Evpu alternateOffset = -21;
+    definition->aboveSymbolAlt = true;
+    definition->belowSymbolAlt = false;
+    definition->xOffsetMain = mainOffset;
+    for (bool* flag : {&definition->autoVert, &definition->outsideStaff, &definition->avoidStaffLines}) {
+        *flag = true;
+        definition->xOffsetAlt = mainOffset;
+        const auto context = assignment->calcSelectedSymbolContext(entryInfo);
+        ASSERT_TRUE(context);
+        EXPECT_TRUE(context->symbolIsEstimate);
+        expectHorizontalOffset(mainOffset);
+        definition->xOffsetAlt = alternateOffset;
+        EXPECT_FALSE(assignment->calcHandleHorizontalOffset(entryInfo));
+        *flag = false;
+    }
+    definition->autoVert = true;
+    definition->belowSymbolAlt = true;
+    expectHorizontalOffset(alternateOffset);
+    definition->aboveSymbolAlt = false;
+    definition->belowSymbolAlt = false;
+    expectHorizontalOffset(mainOffset);
+}
+
+TEST_F(ArticulationHandlePositionTest, HorizontalOffsetDeclinesCenteringAndCopying)
+{
+    for (bool* flag : {&definition->autoHorz, &definition->centerOnStem}) {
+        *flag = true;
+        EXPECT_FALSE(assignment->calcHandleHorizontalOffset(entryInfo));
+        *flag = false;
+    }
+    using AD = others::ArticulationDef;
+    for (auto mode : {AD::CopyMode::Vertical, AD::CopyMode::Horizontal}) {
+        definition->copyMode = mode;
+        EXPECT_FALSE(assignment->calcHandleHorizontalOffset(entryInfo));
+    }
+    definition->copyMode = AD::CopyMode::None;
+    expectHorizontalOffset(0);
+}
+
+TEST_F(ArticulationHandlePositionTest, HorizontalOffsetDoesNotRequireVerticalPositionSupport)
+{
+    constexpr Evpu displacement = -19;
+    assignment->horzOffset = displacement;
+    for (bool* flag : {&assignment->avoidSlur, &definition->insideSlur, &entry->graceNote, &entry->crossStaff}) {
+        *flag = true;
+        expectHorizontalOffset(displacement);
+        *flag = false;
+    }
+    definition->slurInteractionMode = others::ArticulationDef::SlurInteractionMode::AvoidSlur;
+    expectHorizontalOffset(displacement);
+    for (auto style : {others::Staff::NotationStyle::Percussion, others::Staff::NotationStyle::Tablature}) {
+        staff->notationStyle = style;
+        expectHorizontalOffset(displacement);
+    }
+    staff->altNotation = others::Staff::AlternateNotation::Rhythmic;
+    expectHorizontalOffset(displacement);
+    entry->isNote = false;
+    expectHorizontalOffset(displacement);
+    entry->notes.clear();
+    expectHorizontalOffset(displacement);
+}
+
+TEST_F(ArticulationHandlePositionTest, HorizontalOffsetIgnoresGlyphMetricsSpacingAndResizing)
+{
+    constexpr Evpu displacement = 19;
+    constexpr int largeFontSize = 72;
+    constexpr int reducedPercent = 65;
+    constexpr Cmper systemId = 1;
+    assignment->horzOffset = displacement;
+    auto entrySize = std::make_shared<details::EntrySize>(document, SCORE_PARTID,
+        EnigmaBase::ShareMode::All, entry->getEntryNumber());
+    entrySize->percent = reducedPercent;
+    document->getDetails()->add(details::EntrySize::XmlNodeName, entrySize);
+    auto staffSize = std::make_shared<details::StaffSize>(document, SCORE_PARTID,
+        EnigmaBase::ShareMode::None, systemId, staffId);
+    staffSize->staffPercent = reducedPercent;
+    document->getDetails()->add(details::StaffSize::XmlNodeName, staffSize);
+    auto noteAlteration = std::make_shared<details::NoteAlterations>(document, SCORE_PARTID,
+        EnigmaBase::ShareMode::All, entry->getEntryNumber(), 0);
+    noteAlteration->noteId = entry->notes.front()->getNoteId();
+    noteAlteration->percent = reducedPercent;
+    noteAlteration->nxdisp = displacement;
+    noteAlteration->allowVertPos = true;
+    noteAlteration->nydisp = displacement;
+    document->getDetails()->add(details::NoteAlterations::XmlNodeName, noteAlteration);
+    entry->noteDetail = true;
+    definition->fontMain->fontSize = largeFontSize;
+    definition->fontMain->absolute = true;
+    definition->defVertPos = displacement;
+    staff->lineSpace = 0;
+    expectHorizontalOffset(displacement);
+    definition->mainIsShape = true;
+    expectHorizontalOffset(displacement);
+}
+
+TEST_F(ArticulationHandlePositionTest, HorizontalOffsetRejectsInvalidContext)
+{
+    constexpr Cmper otherPartId = 2;
+    const details::ArticulationAssign wrongEntry(document, SCORE_PARTID, EnigmaBase::ShareMode::All, 0, 0);
+    const details::ArticulationAssign wrongPart(document, otherPartId, EnigmaBase::ShareMode::All,
+        entry->getEntryNumber(), 0);
+    std::vector<char> xml;
+    musxtest::readFile(musxtest::getInputPath() / "lvshapes.enigmaxml", xml);
+    const auto otherDocument = musx::factory::DocumentFactory::create<musx::xml::tinyxml2::Document>(xml);
+    ASSERT_TRUE(otherDocument);
+    const details::ArticulationAssign wrongDocument(otherDocument, SCORE_PARTID, EnigmaBase::ShareMode::All,
+        entry->getEntryNumber(), 0);
+#ifdef NDEBUG
+    EXPECT_THROW((void)assignment->calcHandleHorizontalOffset({}), std::logic_error);
+    for (const auto* invalid : {&wrongEntry, &wrongPart, &wrongDocument}) {
+        EXPECT_THROW((void)invalid->calcHandleHorizontalOffset(entryInfo), std::logic_error);
+    }
+#else
+    EXPECT_DEATH((void)assignment->calcHandleHorizontalOffset({}), "");
+    for (const auto* invalid : {&wrongEntry, &wrongPart, &wrongDocument}) {
+        EXPECT_DEATH((void)invalid->calcHandleHorizontalOffset(entryInfo), "");
+    }
+#endif
+    assignment->articDef = 0;
+    EXPECT_THROW((void)assignment->calcHandleHorizontalOffset(entryInfo), integrity_error);
+}
 
 TEST_F(ArticulationHandlePositionTest, SelectsManualSymbolBeforeOffsetsAndIgnoresPlacementOverride)
 {
@@ -552,7 +723,7 @@ TEST_F(ArticulationHandlePositionTest, MatchesMeasuredManualPositionsRegardlessO
         Evpu offset;
         Evpu handleY;
     };
-    // Independently reported Finale coordinates; see articulation-positioning.md.
+    // Independently reported Finale coordinates.
     constexpr Measurement measurements[] = {
         {false, 0, -96}, {true, 0, -48},
         {false, 24, -72}, {true, 24, -24},
