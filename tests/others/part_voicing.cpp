@@ -294,9 +294,10 @@ TEST(PartVoicing, StaffExtremaHonorPolicyAndDriveStemDirection)
             const int top = apply ? expected.top : scoreTop;
             const int bottom = apply ? expected.bottom : scoreBottom;
             const bool upStem = entryInfo.calcUpStem();
+            constexpr Evpu noteSidePadding = static_cast<Evpu>(EVPU_PER_STAFF_POSITION);
             EXPECT_EQ(entryInfo.calcTopBottomExtent(), std::make_pair(
-                static_cast<Evpu>(top * EVPU_PER_STAFF_POSITION) + (upStem ? stemOptions->stemLength : EVPU_PER_STAFF_POSITION),
-                static_cast<Evpu>(bottom * EVPU_PER_STAFF_POSITION) - (upStem ? EVPU_PER_STAFF_POSITION : stemOptions->stemLength)));
+                static_cast<Evpu>(top * EVPU_PER_STAFF_POSITION) + (upStem ? stemOptions->stemLength : noteSidePadding),
+                static_cast<Evpu>(bottom * EVPU_PER_STAFF_POSITION) - (upStem ? noteSidePadding : stemOptions->stemLength)));
         }
     }
 }
