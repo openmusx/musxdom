@@ -318,7 +318,7 @@ const std::vector<std::pair<std::string_view, Resolver>>& resolvers()
         {dom::others::MultiStaffGroupId::XmlNodeName, makeResolver(resolveMultiStaffGroupIds)},
         {dom::others::MultiStaffInstrumentGroup::XmlNodeName,
             makeResolver(resolveMultiStaffInstrumentGroups)},
-        {dom::others::Page::XmlNodeName, makeResolver(dom::others::Page::calcSystemInfo)},
+        {dom::others::Page::XmlNodeName, makeResolver(dom::Document::resolvePageLayout)},
         {dom::others::PartDefinition::XmlNodeName, makeResolver(resolvePartDefinitions)},
         {dom::details::SecondaryBeamAlterationsDownStem::XmlNodeName,
             makeResolver(resolveBeamAlterations<dom::details::SecondaryBeamAlterationsDownStem>)},

@@ -200,7 +200,10 @@ TEST(PageTest, UncalculatedLinkedPartLayoutIsVerbose)
         });
     EXPECT_EQ(totalPages, "2");
     EXPECT_EQ(doc->calcPageFromMeasure(1, 1), nullptr);
-    EXPECT_EQ(doc->calcSystemFromMeasure(1, 1), nullptr);
+    const auto resolvedPartSystem = doc->calcSystemFromMeasure(part->getCmper(), scoreSystem->startMeas);
+    ASSERT_TRUE(resolvedPartSystem);
+    EXPECT_EQ(resolvedPartSystem->getCmper(), scoreSystem->getCmper());
+    EXPECT_EQ(resolvedPartSystem->getRequestedPartId(), part->getCmper());
     auto partSystem = doc->getOthers()->get<others::StaffSystem>(1, 1);
     ASSERT_TRUE(partSystem);
     EXPECT_EQ(partSystem->getPage(), nullptr);
@@ -298,6 +301,10 @@ TEST(PageTest, SystemHoldingOnlySplitMeasureStart)
     EXPECT_EQ(page->firstMeasureId, 1);
     EXPECT_EQ(page->lastMeasureId, 2);
 
+    const auto splitSystem = doc->calcSystemFromMeasure(SCORE_PARTID, page->firstMeasureId.value());
+    ASSERT_TRUE(splitSystem);
+    EXPECT_EQ(splitSystem->getCmper(), page->lastSystemId.value());
+
     // Without the split point, the same range is a stale layout, so the page is not linked.
     std::string unsplitXml(splitMeasureSystemXml);
     const auto splitStart = unsplitXml.find("<splitMeas");
@@ -382,6 +389,15 @@ TEST(PageTest, LayoutStopsAtFirstSystemBeyondThePiece)
         EXPECT_EQ(system->pageId, systemId <= 2 ? 1 : 0) << "system " << systemId;
     }
 
+    const auto lastSystem = doc->calcSystemFromMeasure(SCORE_PARTID, page->lastMeasureId.value());
+    ASSERT_TRUE(lastSystem);
+    EXPECT_EQ(lastSystem->getCmper(), page->lastSystemId.value());
+    const auto staleSystems = doc->getOthers()->getArray<others::StaffSystem>(SCORE_PARTID);
+    const auto staleSystem = doc->calcSystemFromMeasure(SCORE_PARTID, staleSystems.back()->startMeas);
+    ASSERT_TRUE(staleSystem);
+    EXPECT_EQ(staleSystem->getCmper(), staleSystems.back()->getCmper());
+    EXPECT_EQ(staleSystem->pageId, 0);
+
     const auto report = std::find_if(diagnostics.begin(), diagnostics.end(),
         [](const auto& diagnostic) { return diagnostic.second.find("starts after the last measure") != std::string::npos; });
     ASSERT_NE(report, diagnostics.end());
@@ -390,4 +406,41 @@ TEST(PageTest, LayoutStopsAtFirstSystemBeyondThePiece)
     EXPECT_EQ(std::count_if(diagnostics.begin(), diagnostics.end(),
                   [](const auto& diagnostic) { return diagnostic.first != musx::util::Logger::LogLevel::Verbose; }),
         0);
+}
+
+TEST(PageTest, SystemIndexContinuesPastUnresolvedPage)
+{
+    constexpr musxtest::string_view xml = R"xml(
+<?xml version="1.0" encoding="UTF-8"?>
+<finale>
+  <others>
+    <pageSpec cmper="1"><firstSystem>1</firstSystem></pageSpec>
+    <pageSpec cmper="2"><firstSystem>2</firstSystem></pageSpec>
+    <staffSystemSpec cmper="1"><startMeas>1</startMeas></staffSystemSpec>
+    <staffSystemSpec cmper="2"><startMeas>4</startMeas><endMeas>7</endMeas></staffSystemSpec>
+    <partDef cmper="0"/>
+  </others>
+</finale>
+)xml";
+    constexpr PageCmper kFirstPageId = 1;
+    constexpr PageCmper kSecondPageId = 2;
+    constexpr MeasCmper kFirstMeasureId = 1;
+    constexpr MeasCmper kSecondSystemMeasureId = 4;
+    constexpr SystemCmper kFirstSystemId = 1;
+    constexpr SystemCmper kSecondSystemId = 2;
+    const auto doc = musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(xml);
+    const auto firstPage = doc->getOthers()->get<others::Page>(SCORE_PARTID, kFirstPageId);
+    const auto secondPage = doc->getOthers()->get<others::Page>(SCORE_PARTID, kSecondPageId);
+    ASSERT_TRUE(firstPage);
+    ASSERT_TRUE(secondPage);
+    EXPECT_FALSE(firstPage->isLayoutCalculated());
+    EXPECT_TRUE(secondPage->isLayoutCalculated());
+    const auto firstSystem = doc->calcSystemFromMeasure(SCORE_PARTID, kFirstMeasureId);
+    const auto secondSystem = doc->calcSystemFromMeasure(SCORE_PARTID, kSecondSystemMeasureId);
+    ASSERT_TRUE(firstSystem);
+    ASSERT_TRUE(secondSystem);
+    EXPECT_EQ(firstSystem->getCmper(), kFirstSystemId);
+    EXPECT_EQ(firstSystem->pageId, 0);
+    EXPECT_EQ(secondSystem->getCmper(), kSecondSystemId);
+    EXPECT_EQ(secondSystem->pageId, kSecondPageId);
 }

@@ -210,12 +210,21 @@ public:
     [[nodiscard]]
     MusxInstance<others::Page> calcPageFromMeasure(Cmper partId, MeasCmper measureId) const;
 
-    /// @brief Searches systems to find the system that contains the measure.
-    /// @return The system, or nullptr if the part's page layout is unavailable or the measure is not found.
+    /// @brief Returns the system with the greatest positive start measure at or below the requested measure.
+    /// @details Equal starts select the highest system ID. Uses factory-resolved system starts independently
+    /// of page layout and system end measures. The measure need not exist in the document.
+    /// @return The system, or nullptr if the part is unknown or no qualifying system exists.
+    /// @throws integrity_error If the indexed system is missing and integrity errors are configured to throw.
     /// @param partId the linked part to search
     /// @param measureId the measure to find
     [[nodiscard]]
     MusxInstance<others::StaffSystem> calcSystemFromMeasure(Cmper partId, MeasCmper measureId) const;
+
+    /// @brief Resolves page ranges, system page assignments, and the per-part system-start index.
+    /// @details Called by the document factory. Rebuilds derived layout data from the current pages and systems.
+    /// @param document The document whose layout data is resolved. Must not be null.
+    /// @throws std::invalid_argument If document is null.
+    static void resolvePageLayout(const DocumentPtr& document);
 
     /// @brief Returns the maximum number of blank pages in any part. This is calculated by #factory::DocumentFactory::create.
     [[nodiscard]]
