@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['todo_20list_0',['Todo List',['../todo.html',1,'']]]
+  ['model_0',['MUSX Document Model',['../index.html',1,'']]],
+  ['musx_20document_20model_1',['MUSX Document Model',['../index.html',1,'']]]
 ];

@@ -1,7 +1,7 @@
 var classmusx_1_1dom_1_1InstrumentInfo =
 [
-    [ "InstrumentChange", "structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentChange.html", "structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentChange" ],
     [ "InstrumentIdentity", "structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentIdentity.html", "structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentIdentity" ],
+    [ "InstrumentChange", "structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentChange.html", "structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentChange" ],
     [ "InstrumentChangeEvents", "classmusx_1_1dom_1_1InstrumentInfo.html#a30fa509679c4bc6bbb86d847bdc33a12", null ],
     [ "InstrumentInfo", "classmusx_1_1dom_1_1InstrumentInfo.html#a53ec4386aeb5fbd645cb1fec12b0fb33", null ],
     [ "getChanges", "classmusx_1_1dom_1_1InstrumentInfo.html#abaf44b280e3950ada1e974b5cdca3b1f", null ],

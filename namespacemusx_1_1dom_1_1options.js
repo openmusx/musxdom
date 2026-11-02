@@ -28,11 +28,5 @@ var namespacemusx_1_1dom_1_1options =
     [ "TieOptions", "classmusx_1_1dom_1_1options_1_1TieOptions.html", "classmusx_1_1dom_1_1options_1_1TieOptions" ],
     [ "TimeSignatureOptions", "classmusx_1_1dom_1_1options_1_1TimeSignatureOptions.html", "classmusx_1_1dom_1_1options_1_1TimeSignatureOptions" ],
     [ "TupletOptions", "classmusx_1_1dom_1_1options_1_1TupletOptions.html", "classmusx_1_1dom_1_1options_1_1TupletOptions" ],
-    [ "AccidentalInsertSymbolType", "namespacemusx_1_1dom_1_1options.html#a2f810e6fa570dd723959a6176e5f376c", [
-      [ "Sharp", "namespacemusx_1_1dom_1_1options.html#a2f810e6fa570dd723959a6176e5f376ca60c17eb98355db0fe5ce016db6c6f444", null ],
-      [ "Flat", "namespacemusx_1_1dom_1_1options.html#a2f810e6fa570dd723959a6176e5f376ca745e3db6a7ffd50e1a72b39482f0882d", null ],
-      [ "Natural", "namespacemusx_1_1dom_1_1options.html#a2f810e6fa570dd723959a6176e5f376ca2bd8ab451a35759c5737128e35c8011a", null ],
-      [ "DblSharp", "namespacemusx_1_1dom_1_1options.html#a2f810e6fa570dd723959a6176e5f376ca5b65b2d55674a31e21e38c91ede11139", null ],
-      [ "DblFlat", "namespacemusx_1_1dom_1_1options.html#a2f810e6fa570dd723959a6176e5f376cab6c369425d8fc3552382f73d1969ddef", null ]
-    ] ]
+    [ "AccidentalInsertSymbolType", "namespacemusx_1_1dom_1_1options.html#a2f810e6fa570dd723959a6176e5f376c", null ]
 ];

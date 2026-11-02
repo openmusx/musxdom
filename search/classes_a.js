@@ -2,7 +2,7 @@ var searchData=
 [
   ['layerattributes_0',['LayerAttributes',['../classmusx_1_1dom_1_1others_1_1LayerAttributes.html',1,'musx::dom::others']]],
   ['linecurveoptions_1',['LineCurveOptions',['../classmusx_1_1dom_1_1options_1_1LineCurveOptions.html',1,'musx::dom::options']]],
-  ['linewidth_2',['LineWidth',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1LineWidth.html',1,'musx::dom::ShapeDefInstruction']]],
+  ['linewidth_2',['LineWidth',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1LineWidth.html',1,'musx::dom::ShapeDefInstruction::LineWidth'],['../structmusx_1_1util_1_1ShapeDefInstruction_1_1LineWidth.html',1,'musx::util::ShapeDefInstruction::LineWidth']]],
   ['load_5ferror_3',['load_error',['../classmusx_1_1xml_1_1load__error.html',1,'musx::xml']]],
   ['logger_4',['Logger',['../classmusx_1_1util_1_1Logger.html',1,'musx::util']]],
   ['lyricassign_5',['LyricAssign',['../classmusx_1_1dom_1_1details_1_1LyricAssign.html',1,'musx::dom::details']]],

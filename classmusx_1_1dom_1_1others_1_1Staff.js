@@ -1,9 +1,9 @@
 var classmusx_1_1dom_1_1others_1_1Staff =
 [
-    [ "ChromaticTransposition", "classmusx_1_1dom_1_1others_1_1Staff_1_1ChromaticTransposition.html", "classmusx_1_1dom_1_1others_1_1Staff_1_1ChromaticTransposition" ],
-    [ "ClefChange", "structmusx_1_1dom_1_1others_1_1Staff_1_1ClefChange.html", "structmusx_1_1dom_1_1others_1_1Staff_1_1ClefChange" ],
     [ "KeySigTransposition", "classmusx_1_1dom_1_1others_1_1Staff_1_1KeySigTransposition.html", "classmusx_1_1dom_1_1others_1_1Staff_1_1KeySigTransposition" ],
+    [ "ChromaticTransposition", "classmusx_1_1dom_1_1others_1_1Staff_1_1ChromaticTransposition.html", "classmusx_1_1dom_1_1others_1_1Staff_1_1ChromaticTransposition" ],
     [ "Transposition", "classmusx_1_1dom_1_1others_1_1Staff_1_1Transposition.html", "classmusx_1_1dom_1_1others_1_1Staff_1_1Transposition" ],
+    [ "ClefChange", "structmusx_1_1dom_1_1others_1_1Staff_1_1ClefChange.html", "structmusx_1_1dom_1_1others_1_1Staff_1_1ClefChange" ],
     [ "AlternateNotation", "classmusx_1_1dom_1_1others_1_1Staff.html#a0a3bc01d0f78962930fc34ea6fb31bb9", [
       [ "Normal", "classmusx_1_1dom_1_1others_1_1Staff.html#a0a3bc01d0f78962930fc34ea6fb31bb9a960b44c579bc2f6818d2daaf9e4c16f0", null ],
       [ "SlashBeats", "classmusx_1_1dom_1_1others_1_1Staff.html#a0a3bc01d0f78962930fc34ea6fb31bb9ac2af9795625aa114ba1cf3c288ae6277", null ],
@@ -26,11 +26,7 @@ var classmusx_1_1dom_1_1others_1_1Staff =
       [ "ScoreParts", "classmusx_1_1dom_1_1others_1_1Staff.html#ab23c7e94e4782a34d7f06e54e6fed7d0a630aab72810a94e7a0cf5896f5d99aa4", null ],
       [ "Score", "classmusx_1_1dom_1_1others_1_1Staff.html#ab23c7e94e4782a34d7f06e54e6fed7d0a5dd135d1bcfa7f63c3b7f25425c2a4a1", null ]
     ] ],
-    [ "NotationStyle", "classmusx_1_1dom_1_1others_1_1Staff.html#a1e8b0e96deee5cbeb3f5bb82416d6cf6", [
-      [ "Standard", "classmusx_1_1dom_1_1others_1_1Staff.html#a1e8b0e96deee5cbeb3f5bb82416d6cf6aeb6d8ae6f20283755b339c0dc273988b", null ],
-      [ "Percussion", "classmusx_1_1dom_1_1others_1_1Staff.html#a1e8b0e96deee5cbeb3f5bb82416d6cf6acb5c10c0b488ed4f3826ba628d18ca6a", null ],
-      [ "Tablature", "classmusx_1_1dom_1_1others_1_1Staff.html#a1e8b0e96deee5cbeb3f5bb82416d6cf6a2bcbcf8fa5e77f260b3475e80c3f80d6", null ]
-    ] ],
+    [ "NotationStyle", "classmusx_1_1dom_1_1others_1_1Staff.html#a1e8b0e96deee5cbeb3f5bb82416d6cf6", null ],
     [ "Staff", "classmusx_1_1dom_1_1others_1_1Staff.html#a6b2463c519cd866520ed2116151334b5", null ],
     [ "addAutoNumbering", "classmusx_1_1dom_1_1others_1_1Staff.html#a428918fb57d8ff9b01b34f953b080904", null ],
     [ "calcAlternateNotationHidesEntries", "classmusx_1_1dom_1_1others_1_1Staff.html#a9d7c3b2be150114583a4bc3f1cfee5c6", null ],
@@ -52,6 +48,7 @@ var classmusx_1_1dom_1_1others_1_1Staff =
     [ "calcTopLineEvpu", "classmusx_1_1dom_1_1others_1_1Staff.html#a0df54c719a456529b8b0656066ac0dcd", null ],
     [ "calcTopLinePosition", "classmusx_1_1dom_1_1others_1_1Staff.html#a3c75047945694c8b8dac3cc2585664db", null ],
     [ "calcTranspositionInterval", "classmusx_1_1dom_1_1others_1_1Staff.html#a2b4355bbeb173d98e422c9adc27e717b", null ],
+    [ "calcUsesWrittenPitch", "classmusx_1_1dom_1_1others_1_1Staff.html#a6572c0a216fe1ab98b4e471dc20c55ef", null ],
     [ "createLyricsLineInfo", "classmusx_1_1dom_1_1others_1_1Staff.html#a14a61ff91e4056cc746a0afca35afa87", null ],
     [ "firstContainingPart", "classmusx_1_1dom_1_1others_1_1Staff.html#adcfe012e7e7d271bb328cb7f53141eae", null ],
     [ "getAbbreviatedInstrumentName", "classmusx_1_1dom_1_1others_1_1Staff.html#af1c317f8ad198ae1788ca7a565fbc4b7", null ],

@@ -1,9 +1,9 @@
 var namespacemusx_1_1dom_1_1header =
 [
-    [ "FileInfo", "structmusx_1_1dom_1_1header_1_1FileInfo.html", "structmusx_1_1dom_1_1header_1_1FileInfo" ],
     [ "FinaleVersion", "structmusx_1_1dom_1_1header_1_1FinaleVersion.html", "structmusx_1_1dom_1_1header_1_1FinaleVersion" ],
+    [ "FileInfo", "structmusx_1_1dom_1_1header_1_1FileInfo.html", "structmusx_1_1dom_1_1header_1_1FileInfo" ],
     [ "Header", "structmusx_1_1dom_1_1header_1_1Header.html", "structmusx_1_1dom_1_1header_1_1Header" ],
-    [ "HeaderPtr", "namespacemusx_1_1dom_1_1header.html#a4f1801be003176c751bd1069c50d6e19", null ],
+    [ "HeaderPtr", "namespacemusx_1_1dom_1_1header.html#aecbdedd5598c34560c3691e8229721df", null ],
     [ "Platform", "namespacemusx_1_1dom_1_1header.html#a4d9b0093d30e2cec54c60e346a0d8133", [
       [ "Mac", "namespacemusx_1_1dom_1_1header.html#a4d9b0093d30e2cec54c60e346a0d8133a1748c0644a50090814d3e170723ccc5c", null ],
       [ "Windows", "namespacemusx_1_1dom_1_1header.html#a4d9b0093d30e2cec54c60e346a0d8133aaea23489ce3aa9b6406ebb28e0cda430", null ],

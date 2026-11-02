@@ -1,17 +1,20 @@
 var hierarchy =
 [
     [ "musx::dom::NoteInfoPtr::ArpeggiatedTieInfo", "structmusx_1_1dom_1_1NoteInfoPtr_1_1ArpeggiatedTieInfo.html", null ],
+    [ "musx::util::NoteInfoPtr::ArpeggiatedTieInfo", "structmusx_1_1util_1_1NoteInfoPtr_1_1ArpeggiatedTieInfo.html", null ],
     [ "musx::util::ArpeggioSpanCandidate", "structmusx_1_1util_1_1ArpeggioSpanCandidate.html", null ],
     [ "musx::util::ArpeggioSpanOptions", "structmusx_1_1util_1_1ArpeggioSpanOptions.html", null ],
     [ "musx::util::ArrowheadPresetSpec", "structmusx_1_1util_1_1ArrowheadPresetSpec.html", null ],
     [ "musx::dom::details::FretboardDiagram::Barre", "classmusx_1_1dom_1_1details_1_1FretboardDiagram_1_1Barre.html", null ],
     [ "musx::util::FretboardDisplayData::Barre", "structmusx_1_1util_1_1FretboardDisplayData_1_1Barre.html", null ],
     [ "musx::dom::ShapeDefInstruction::Bracket", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Bracket.html", null ],
+    [ "musx::util::ShapeDefInstruction::Bracket", "structmusx_1_1util_1_1ShapeDefInstruction_1_1Bracket.html", null ],
     [ "musx::dom::details::FretboardDiagram::Cell", "classmusx_1_1dom_1_1details_1_1FretboardDiagram_1_1Cell.html", null ],
     [ "musx::util::FretboardDisplayData::Cell", "structmusx_1_1util_1_1FretboardDisplayData_1_1Cell.html", null ],
     [ "musx::dom::others::Staff::ChromaticTransposition", "classmusx_1_1dom_1_1others_1_1Staff_1_1ChromaticTransposition.html", null ],
     [ "musx::dom::others::Staff::ClefChange", "structmusx_1_1dom_1_1others_1_1Staff_1_1ClefChange.html", null ],
     [ "musx::dom::ShapeDefInstruction::CloneChar", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1CloneChar.html", null ],
+    [ "musx::util::ShapeDefInstruction::CloneChar", "structmusx_1_1util_1_1ShapeDefInstruction_1_1CloneChar.html", null ],
     [ "musx::dom::others::TimeCompositeLower::CompositeItem", "classmusx_1_1dom_1_1others_1_1TimeCompositeLower_1_1CompositeItem.html", null ],
     [ "musx::dom::others::TimeCompositeUpper::CompositeItem", "classmusx_1_1dom_1_1others_1_1TimeCompositeUpper_1_1CompositeItem.html", null ],
     [ "musx::dom::options::SmartShapeOptions::ConnectionStyle", "structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html", null ],
@@ -31,18 +34,25 @@ var hierarchy =
     [ "musx::factory::DocumentFactory::CreateOptions", "structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html", null ],
     [ "musx::util::Cue", "classmusx_1_1util_1_1Cue.html", null ],
     [ "musx::dom::ShapeDefInstruction::CurveTo", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1CurveTo.html", null ],
+    [ "musx::util::ShapeDefInstruction::CurveTo", "structmusx_1_1util_1_1ShapeDefInstruction_1_1CurveTo.html", null ],
     [ "musx::util::DateTime", "structmusx_1_1util_1_1DateTime.html", null ],
     [ "musx::dom::ShapeDefInstruction::Decoded", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Decoded.html", null ],
-    [ "musx::dom::DeferredReference< T >", "classmusx_1_1dom_1_1DeferredReference.html", null ],
+    [ "musx::util::ShapeDefInstruction::Decoded", "structmusx_1_1util_1_1ShapeDefInstruction_1_1Decoded.html", null ],
+    [ "musx::dom::DeferredReference&lt; T &gt;", "classmusx_1_1dom_1_1DeferredReference.html", null ],
     [ "musx::factory::DetailsFactory", "classmusx_1_1factory_1_1DetailsFactory.html", null ],
     [ "musx::dom::DetailsPool", "classmusx_1_1dom_1_1DetailsPool.html", null ],
     [ "musx::dom::Document", "classmusx_1_1dom_1_1Document.html", null ],
     [ "musx::dom::DocumentElement", "classmusx_1_1dom_1_1DocumentElement.html", [
       [ "musx::dom::MusxInstanceListBase< others::StaffUsed >", "classmusx_1_1dom_1_1MusxInstanceListBase.html", [
+        [ "musx::dom::MusxInstanceList< others::StaffUsed >", "classmusx_1_1dom_1_1MusxInstanceList_3_01others_1_1StaffUsed_01_4.html", null ],
         [ "musx::dom::MusxInstanceList< others::StaffUsed >", "classmusx_1_1dom_1_1MusxInstanceList_3_01others_1_1StaffUsed_01_4.html", null ]
       ] ],
-      [ "musx::dom::MusxInstanceListBase< musx::dom::details::LyricAssign >", "classmusx_1_1dom_1_1MusxInstanceListBase.html", null ],
-      [ "musx::dom::MusxInstanceListBase< musx::dom::others::StaffUsed >", "classmusx_1_1dom_1_1MusxInstanceListBase.html", null ],
+      [ "musx::dom::MusxInstanceListBase< musx::dom::details::LyricAssign >", "classmusx_1_1dom_1_1MusxInstanceListBase.html", [
+        [ "musx::dom::MusxInstanceList< musx::dom::details::LyricAssign >", "classmusx_1_1dom_1_1MusxInstanceList.html", null ]
+      ] ],
+      [ "musx::dom::MusxInstanceListBase< musx::dom::others::StaffUsed >", "classmusx_1_1dom_1_1MusxInstanceListBase.html", [
+        [ "musx::dom::MusxInstanceList< musx::dom::others::StaffUsed >", "classmusx_1_1dom_1_1MusxInstanceList.html", null ]
+      ] ],
       [ "musx::dom::DocumentElementNoPart", "classmusx_1_1dom_1_1DocumentElementNoPart.html", [
         [ "musx::dom::LyricsSyllableInfo", "classmusx_1_1dom_1_1LyricsSyllableInfo.html", null ],
         [ "musx::dom::MusicRange", "classmusx_1_1dom_1_1MusicRange.html", null ],
@@ -201,7 +211,8 @@ var hierarchy =
             [ "musx::dom::others::ChordSuffixPlayback", "classmusx_1_1dom_1_1others_1_1ChordSuffixPlayback.html", null ]
           ] ],
           [ "musx::dom::OthersArray< int >", "classmusx_1_1dom_1_1OthersArray.html", [
-            [ "musx::dom::others::RepeatPassList", "classmusx_1_1dom_1_1others_1_1RepeatPassList.html", null ]
+            [ "musx::dom::others::RepeatPassList", "classmusx_1_1dom_1_1others_1_1RepeatPassList.html", null ],
+            [ "musx::dom::others::ShapeData", "classmusx_1_1dom_1_1others_1_1ShapeData.html", null ]
           ] ],
           [ "musx::dom::OthersArray< Evpu >", "classmusx_1_1dom_1_1OthersArray.html", [
             [ "musx::dom::others::SplitMeasure", "classmusx_1_1dom_1_1others_1_1SplitMeasure.html", null ]
@@ -234,7 +245,6 @@ var hierarchy =
             [ "musx::dom::others::DrumStaffStyle", "classmusx_1_1dom_1_1others_1_1DrumStaffStyle.html", null ]
           ] ],
           [ "musx::dom::others::Enclosure", "classmusx_1_1dom_1_1others_1_1Enclosure.html", [
-            [ "musx::dom::others::TextExpressionEnclosure", "classmusx_1_1dom_1_1others_1_1TextExpressionEnclosure.html", null ],
             [ "musx::dom::others::TextRepeatEnclosure", "classmusx_1_1dom_1_1others_1_1TextRepeatEnclosure.html", null ]
           ] ],
           [ "musx::dom::others::EnigmaMusicRange", "classmusx_1_1dom_1_1others_1_1EnigmaMusicRange.html", [
@@ -288,8 +298,10 @@ var hierarchy =
             [ "musx::dom::others::RepeatEndingTextIndividualPositioning", "classmusx_1_1dom_1_1others_1_1RepeatEndingTextIndividualPositioning.html", null ],
             [ "musx::dom::others::TextRepeatIndividualPositioning", "classmusx_1_1dom_1_1others_1_1TextRepeatIndividualPositioning.html", null ]
           ] ],
+          [ "musx::dom::others::ShapeDef", "classmusx_1_1dom_1_1others_1_1ShapeDef.html", null ],
           [ "musx::dom::others::ShapeExpressionDef", "classmusx_1_1dom_1_1others_1_1ShapeExpressionDef.html", null ],
           [ "musx::dom::others::ShapeGraphicAssign", "classmusx_1_1dom_1_1others_1_1ShapeGraphicAssign.html", null ],
+          [ "musx::dom::others::ShapeInstructionList", "classmusx_1_1dom_1_1others_1_1ShapeInstructionList.html", null ],
           [ "musx::dom::others::SmartShape", "classmusx_1_1dom_1_1others_1_1SmartShape.html", null ],
           [ "musx::dom::others::SmartShapeCustomLine", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html", null ],
           [ "musx::dom::others::SmartShapeMeasureAssign", "classmusx_1_1dom_1_1others_1_1SmartShapeMeasureAssign.html", null ],
@@ -327,15 +339,15 @@ var hierarchy =
       [ "musx::dom::InstrumentInfo", "classmusx_1_1dom_1_1InstrumentInfo.html", null ],
       [ "musx::dom::InstrumentMap", "classmusx_1_1dom_1_1InstrumentMap.html", null ],
       [ "musx::dom::MusxInstanceListBase< T >", "classmusx_1_1dom_1_1MusxInstanceListBase.html", [
-        [ "musx::dom::MusxInstanceList< musx::dom::details::LyricAssign >", "classmusx_1_1dom_1_1MusxInstanceList.html", null ],
-        [ "musx::dom::MusxInstanceList< musx::dom::others::StaffUsed >", "classmusx_1_1dom_1_1MusxInstanceList.html", null ],
         [ "musx::dom::MusxInstanceList< T >", "classmusx_1_1dom_1_1MusxInstanceList.html", null ]
       ] ]
     ] ],
     [ "musx::factory::DocumentFactory", "classmusx_1_1factory_1_1DocumentFactory.html", null ],
     [ "musx::dom::ShapeDefInstruction::DrawChar", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1DrawChar.html", null ],
+    [ "musx::util::ShapeDefInstruction::DrawChar", "structmusx_1_1util_1_1ShapeDefInstruction_1_1DrawChar.html", null ],
     [ "musx::dom::LyricsSyllableInfo::ElisionRun", "classmusx_1_1dom_1_1LyricsSyllableInfo_1_1ElisionRun.html", null ],
     [ "musx::dom::ShapeDefInstruction::Ellipse", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Ellipse.html", null ],
+    [ "musx::util::ShapeDefInstruction::Ellipse", "structmusx_1_1util_1_1ShapeDefInstruction_1_1Ellipse.html", null ],
     [ "musx::dom::EmbeddedGraphicData", "structmusx_1_1dom_1_1EmbeddedGraphicData.html", null ],
     [ "musx::factory::DocumentFactory::CreateOptions::EmbeddedGraphicFile", "structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions_1_1EmbeddedGraphicFile.html", null ],
     [ "std::enable_shared_from_this", null, [
@@ -356,8 +368,14 @@ var hierarchy =
     [ "musx::dom::Entry::EntryLocation", "structmusx_1_1dom_1_1Entry_1_1EntryLocation.html", null ],
     [ "musx::dom::EntryPool", "classmusx_1_1dom_1_1EntryPool.html", null ],
     [ "musx::dom::ShapeDefInstruction::ExternalGraphic", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1ExternalGraphic.html", null ],
+    [ "musx::util::ShapeDefInstruction::ExternalGraphic", "structmusx_1_1util_1_1ShapeDefInstruction_1_1ExternalGraphic.html", null ],
     [ "musx::factory::FactoryBase", "classmusx_1_1factory_1_1FactoryBase.html", null ],
     [ "std::false_type", null, [
+      [ "musx::dom::is_pool_type< DetailsPool, T >", "structmusx_1_1dom_1_1is__pool__type_3_01DetailsPool_00_01T_01_4.html", null ],
+      [ "musx::dom::is_pool_type< EntryPool, T >", "structmusx_1_1dom_1_1is__pool__type_3_01EntryPool_00_01T_01_4.html", null ],
+      [ "musx::dom::is_pool_type< OptionsPool, T >", "structmusx_1_1dom_1_1is__pool__type_3_01OptionsPool_00_01T_01_4.html", null ],
+      [ "musx::dom::is_pool_type< OthersPool, T >", "structmusx_1_1dom_1_1is__pool__type_3_01OthersPool_00_01T_01_4.html", null ],
+      [ "musx::dom::is_pool_type< TextsPool, T >", "structmusx_1_1dom_1_1is__pool__type_3_01TextsPool_00_01T_01_4.html", null ],
       [ "musx::dom::is_pool_type< Pool, T >", "structmusx_1_1dom_1_1is__pool__type.html", null ]
     ] ],
     [ "musx::dom::header::FileInfo", "structmusx_1_1dom_1_1header_1_1FileInfo.html", null ],
@@ -399,20 +417,19 @@ var hierarchy =
     ] ],
     [ "musx::dom::others::Staff::KeySigTransposition", "classmusx_1_1dom_1_1others_1_1Staff_1_1KeySigTransposition.html", null ],
     [ "musx::dom::ShapeDefInstruction::LineWidth", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1LineWidth.html", null ],
+    [ "musx::util::ShapeDefInstruction::LineWidth", "structmusx_1_1util_1_1ShapeDefInstruction_1_1LineWidth.html", null ],
     [ "musx::util::Logger", "classmusx_1_1util_1_1Logger.html", null ],
     [ "musx::dom::MusicPoint", "classmusx_1_1dom_1_1MusicPoint.html", null ],
     [ "musx::dom::options::NoteRestOptions::NoteColor", "classmusx_1_1dom_1_1options_1_1NoteRestOptions_1_1NoteColor.html", null ],
     [ "musx::dom::NoteInfoPtr::NoteheadInfo", "structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html", null ],
+    [ "musx::util::NoteInfoPtr::NoteheadInfo", "structmusx_1_1util_1_1NoteInfoPtr_1_1NoteheadInfo.html", null ],
     [ "musx::dom::NoteInfoPtr", "classmusx_1_1dom_1_1NoteInfoPtr.html", null ],
+    [ "musx::util::NoteInfoPtr", "classmusx_1_1util_1_1NoteInfoPtr.html", null ],
     [ "musx::dom::Note::NoteProperties", "structmusx_1_1dom_1_1Note_1_1NoteProperties.html", null ],
     [ "musx::dom::NotePropertiesOptions", "structmusx_1_1dom_1_1NotePropertiesOptions.html", null ],
     [ "musx::dom::details::ShapeNoteBase::NoteShapes", "classmusx_1_1dom_1_1details_1_1ShapeNoteBase_1_1NoteShapes.html", null ],
-    [ "musx::dom::ObjectPool< ObjectBaseType >::ObjectKey", "structmusx_1_1dom_1_1ObjectPool_1_1ObjectKey.html", null ],
-    [ "musx::dom::ObjectPool< ObjectBaseType >", "classmusx_1_1dom_1_1ObjectPool.html", null ],
-    [ "musx::dom::ObjectPool< musx::dom::DetailsBase >", "classmusx_1_1dom_1_1ObjectPool.html", null ],
-    [ "musx::dom::ObjectPool< musx::dom::OptionsBase >", "classmusx_1_1dom_1_1ObjectPool.html", null ],
-    [ "musx::dom::ObjectPool< musx::dom::OthersBase >", "classmusx_1_1dom_1_1ObjectPool.html", null ],
-    [ "musx::dom::ObjectPool< musx::dom::TextsBase >", "classmusx_1_1dom_1_1ObjectPool.html", null ],
+    [ "musx::dom::ObjectPool&lt; ObjectBaseType &gt;::ObjectKey", "structmusx_1_1dom_1_1ObjectPool_1_1ObjectKey.html", null ],
+    [ "musx::dom::ObjectPool&lt; ObjectBaseType &gt;", "classmusx_1_1dom_1_1ObjectPool.html", null ],
     [ "musx::factory::OptionsFactory", "classmusx_1_1factory_1_1OptionsFactory.html", null ],
     [ "musx::dom::OptionsPool", "classmusx_1_1dom_1_1OptionsPool.html", null ],
     [ "musx::factory::OthersFactory", "classmusx_1_1factory_1_1OthersFactory.html", null ],
@@ -422,12 +439,16 @@ var hierarchy =
     [ "musx::dom::percussion::PercussionNoteType", "structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html", null ],
     [ "music_theory::Pitch", "structmusic__theory_1_1Pitch.html", null ],
     [ "musx::dom::NoteInfoPtr::PseudoTieInfo", "structmusx_1_1dom_1_1NoteInfoPtr_1_1PseudoTieInfo.html", null ],
+    [ "musx::util::NoteInfoPtr::PseudoTieInfo", "structmusx_1_1util_1_1NoteInfoPtr_1_1PseudoTieInfo.html", null ],
     [ "musx::utils::PseudoTieShapeInfo", "structmusx_1_1utils_1_1PseudoTieShapeInfo.html", null ],
     [ "musx::dom::ShapeDefInstruction::Rectangle", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Rectangle.html", null ],
+    [ "musx::util::ShapeDefInstruction::Rectangle", "structmusx_1_1util_1_1ShapeDefInstruction_1_1Rectangle.html", null ],
     [ "musx::dom::RehearsalMarkInfo", "structmusx_1_1dom_1_1RehearsalMarkInfo.html", null ],
     [ "musx::dom::ResolvedFontInfo", "structmusx_1_1dom_1_1ResolvedFontInfo.html", null ],
     [ "musx::dom::ShapeDefInstruction::RLineTo", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1RLineTo.html", null ],
+    [ "musx::util::ShapeDefInstruction::RLineTo", "structmusx_1_1util_1_1ShapeDefInstruction_1_1RLineTo.html", null ],
     [ "musx::dom::ShapeDefInstruction::RMoveTo", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1RMoveTo.html", null ],
+    [ "musx::util::ShapeDefInstruction::RMoveTo", "structmusx_1_1util_1_1ShapeDefInstruction_1_1RMoveTo.html", null ],
     [ "std::runtime_error", null, [
       [ "musx::dom::integrity_error", "classmusx_1_1dom_1_1integrity__error.html", null ],
       [ "musx::factory::unknown_xml_error", "classmusx_1_1factory_1_1unknown__xml__error.html", null ],
@@ -436,35 +457,46 @@ var hierarchy =
     [ "musx::dom::others::ArticulationDef::SelectedSymbol", "structmusx_1_1dom_1_1others_1_1ArticulationDef_1_1SelectedSymbol.html", null ],
     [ "musx::dom::details::ArticulationAssign::SelectedSymbolContext", "structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1SelectedSymbolContext.html", null ],
     [ "musx::dom::ShapeDefInstruction::SetArrowhead", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1SetArrowhead.html", null ],
+    [ "musx::util::ShapeDefInstruction::SetArrowhead", "structmusx_1_1util_1_1ShapeDefInstruction_1_1SetArrowhead.html", null ],
     [ "musx::dom::ShapeDefInstruction::SetDash", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1SetDash.html", null ],
+    [ "musx::util::ShapeDefInstruction::SetDash", "structmusx_1_1util_1_1ShapeDefInstruction_1_1SetDash.html", null ],
     [ "musx::dom::ShapeDefInstruction::SetFont", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1SetFont.html", null ],
+    [ "musx::util::ShapeDefInstruction::SetFont", "structmusx_1_1util_1_1ShapeDefInstruction_1_1SetFont.html", null ],
     [ "musx::dom::ShapeDefInstruction::SetGray", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1SetGray.html", null ],
+    [ "musx::util::ShapeDefInstruction::SetGray", "structmusx_1_1util_1_1ShapeDefInstruction_1_1SetGray.html", null ],
     [ "musx::dom::ShapeDefInstruction", "structmusx_1_1dom_1_1ShapeDefInstruction.html", null ],
+    [ "musx::util::ShapeDefInstruction", "structmusx_1_1util_1_1ShapeDefInstruction.html", null ],
     [ "musx::dom::ShapeDefInstruction::Slur", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Slur.html", null ],
+    [ "musx::util::ShapeDefInstruction::Slur", "structmusx_1_1util_1_1ShapeDefInstruction_1_1Slur.html", null ],
     [ "musx::dom::others::Measure::Spacing", "structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html", null ],
     [ "musx::dom::others::Measure::SpacingSlot", "structmusx_1_1dom_1_1others_1_1Measure_1_1SpacingSlot.html", null ],
     [ "musx::dom::details::StaffGroupInfo", "classmusx_1_1dom_1_1details_1_1StaffGroupInfo.html", null ],
-    [ "musx::dom::others::StaffListSet< ScoreList, PartsList, ScoreForcedList, PartsForcedList >", "classmusx_1_1dom_1_1others_1_1StaffListSet.html", null ],
+    [ "musx::dom::others::StaffListSet&lt; ScoreList, PartsList, ScoreForcedList, PartsForcedList &gt;", "classmusx_1_1dom_1_1others_1_1StaffListSet.html", null ],
     [ "musx::util::Cue::StaffMeasureAnalysis", "structmusx_1_1util_1_1Cue_1_1StaffMeasureAnalysis.html", null ],
     [ "musx::util::StaffOriginOffsetRequest", "structmusx_1_1util_1_1StaffOriginOffsetRequest.html", null ],
     [ "musx::util::StaffOriginOffsetResolverResult", "structmusx_1_1util_1_1StaffOriginOffsetResolverResult.html", null ],
     [ "musx::dom::StaffPositionPitchOptions", "structmusx_1_1dom_1_1StaffPositionPitchOptions.html", null ],
     [ "musx::dom::ShapeDefInstruction::StartGroup", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartGroup.html", null ],
+    [ "musx::util::ShapeDefInstruction::StartGroup", "structmusx_1_1util_1_1ShapeDefInstruction_1_1StartGroup.html", null ],
     [ "musx::dom::ShapeDefInstruction::StartObject", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartObject.html", null ],
+    [ "musx::util::ShapeDefInstruction::StartObject", "structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html", null ],
     [ "musx::dom::options::StemOptions::StemConnection", "classmusx_1_1dom_1_1options_1_1StemOptions_1_1StemConnection.html", null ],
     [ "musx::dom::others::KeyMapArray::StepElement", "classmusx_1_1dom_1_1others_1_1KeyMapArray_1_1StepElement.html", null ],
     [ "musx::dom::others::FretInstrument::StringInfo", "classmusx_1_1dom_1_1others_1_1FretInstrument_1_1StringInfo.html", null ],
     [ "musx::util::SvgConvert", "classmusx_1_1util_1_1SvgConvert.html", null ],
     [ "musx::dom::options::LyricOptions::SyllablePosStyle", "structmusx_1_1dom_1_1options_1_1LyricOptions_1_1SyllablePosStyle.html", null ],
     [ "musx::util::TestConfiguration", "classmusx_1_1util_1_1TestConfiguration.html", null ],
+    [ "TextExpressionEnclosure", "classTextExpressionEnclosure.html", null ],
     [ "musx::factory::TextsFactory", "classmusx_1_1factory_1_1TextsFactory.html", null ],
     [ "musx::dom::TextsPool", "classmusx_1_1dom_1_1TextsPool.html", null ],
     [ "musx::util::Tie", "classmusx_1_1util_1_1Tie.html", null ],
     [ "musx::dom::NoteInfoPtr::TieStandInSource", "structmusx_1_1dom_1_1NoteInfoPtr_1_1TieStandInSource.html", null ],
+    [ "musx::util::NoteInfoPtr::TieStandInSource", "structmusx_1_1util_1_1NoteInfoPtr_1_1TieStandInSource.html", null ],
     [ "musx::dom::TimeSignature::TimeSigComponent", "structmusx_1_1dom_1_1TimeSignature_1_1TimeSigComponent.html", null ],
     [ "music_theory::Transposer", "classmusic__theory_1_1Transposer.html", null ],
     [ "musx::dom::EntryFrame::TupletInfo", "structmusx_1_1dom_1_1EntryFrame_1_1TupletInfo.html", null ],
     [ "musx::dom::ShapeDefInstruction::Undocumented", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Undocumented.html", null ],
+    [ "musx::util::ShapeDefInstruction::Undocumented", "structmusx_1_1util_1_1ShapeDefInstruction_1_1Undocumented.html", null ],
     [ "std::unordered_map", null, [
       [ "musx::dom::InstrumentMap", "classmusx_1_1dom_1_1InstrumentMap.html", null ]
     ] ],
@@ -475,5 +507,6 @@ var hierarchy =
       [ "musx::dom::MusxInstanceListBase< T >", "classmusx_1_1dom_1_1MusxInstanceListBase.html", null ]
     ] ],
     [ "musx::dom::ShapeDefInstruction::VerticalMode", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1VerticalMode.html", null ],
+    [ "musx::util::ShapeDefInstruction::VerticalMode", "structmusx_1_1util_1_1ShapeDefInstruction_1_1VerticalMode.html", null ],
     [ "musx::dom::options::LyricOptions::WordExtConnectStyle", "structmusx_1_1dom_1_1options_1_1LyricOptions_1_1WordExtConnectStyle.html", null ]
 ];

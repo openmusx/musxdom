@@ -1,19 +1,10 @@
 var classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine =
 [
     [ "CharParams", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine_1_1CharParams.html", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine_1_1CharParams" ],
-    [ "DashedParams", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine_1_1DashedParams.html", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine_1_1DashedParams" ],
     [ "SolidParams", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine_1_1SolidParams.html", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine_1_1SolidParams" ],
-    [ "LineCapType", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#ae4bfda3bd035f612fde85a8932537e96", [
-      [ "None", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#ae4bfda3bd035f612fde85a8932537e96a6adf97f83acf6453d4a6a4b1070f3754", null ],
-      [ "Hook", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#ae4bfda3bd035f612fde85a8932537e96ab9b371458ab7c314f88b81c553f6ce51", null ],
-      [ "ArrowheadPreset", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#ae4bfda3bd035f612fde85a8932537e96a0d3e5af136256b9c196c0aa97c7c4985", null ],
-      [ "ArrowheadCustom", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#ae4bfda3bd035f612fde85a8932537e96a7a159da6c8d187426241d0003a724a80", null ]
-    ] ],
-    [ "LineStyle", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#aca34f5a13ec65af0f432d54f3a0bd2ce", [
-      [ "Char", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#aca34f5a13ec65af0f432d54f3a0bd2cea8e95e84813830072b7516cfaa7dbc1a9", null ],
-      [ "Solid", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#aca34f5a13ec65af0f432d54f3a0bd2ceae41480b6bbfbf7407974a88d3d34f4fa", null ],
-      [ "Dashed", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#aca34f5a13ec65af0f432d54f3a0bd2ceaeb656e41b6da91494775ecf47a51da91", null ]
-    ] ],
+    [ "DashedParams", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine_1_1DashedParams.html", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine_1_1DashedParams" ],
+    [ "LineCapType", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#ae4bfda3bd035f612fde85a8932537e96", null ],
+    [ "LineStyle", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#aca34f5a13ec65af0f432d54f3a0bd2ce", null ],
     [ "SmartShapeCustomLine", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#a18ab674e4b1221f5b1c6821b30984e87", null ],
     [ "getCenterAbbrRawTextCtx", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#ac43e7bd5b3d47b29f800854a77f5d722", null ],
     [ "getCenterFullRawTextCtx", "classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html#a5dfb8eee948f5ccb21ce561c94376fe7", null ],

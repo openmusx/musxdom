@@ -3,7 +3,7 @@ var classmusx_1_1dom_1_1details_1_1GFrameHold =
     [ "GFrameHold", "classmusx_1_1dom_1_1details_1_1GFrameHold.html#a19a1c72ba46de55a0b948bf3556f7803", null ],
     [ "calcContainsMusic", "classmusx_1_1dom_1_1details_1_1GFrameHold.html#ab1f92bd76d9afb1a7bfd0ea1b25305a0", null ],
     [ "calcIsMultiLayer", "classmusx_1_1dom_1_1details_1_1GFrameHold.html#ad9b682d6edc85d866ee40fc24a1ed5f2", null ],
-    [ "findLayerFrame", "classmusx_1_1dom_1_1details_1_1GFrameHold.html#aeb84e20ed507794f7b140810cf5438fd", null ],
+    [ "findLayerFrame", "classmusx_1_1dom_1_1details_1_1GFrameHold.html#aa5d86678b7bcdec6e6ed083e990cfe5e", null ],
     [ "getMeasure", "classmusx_1_1dom_1_1details_1_1GFrameHold.html#aafb1a25712ba546799697c43dbdf81ba", null ],
     [ "getStaff", "classmusx_1_1dom_1_1details_1_1GFrameHold.html#a0a7fb79250790ae14eaae17da0216cd7", null ],
     [ "integrityCheck", "classmusx_1_1dom_1_1details_1_1GFrameHold.html#a3090eadfa0a361d9b11f95fa07e29cfa", null ],

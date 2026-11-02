@@ -9,11 +9,7 @@ var classmusx_1_1dom_1_1options_1_1TextOptions =
       [ "Full", "classmusx_1_1dom_1_1options_1_1TextOptions.html#af6f614ae053143877dcf70e44023feb3abbd47109890259c0127154db1af26c75", null ],
       [ "ForcedFull", "classmusx_1_1dom_1_1options_1_1TextOptions.html#af6f614ae053143877dcf70e44023feb3ae7088e11a6c3015874fe3f28a5d75976", null ]
     ] ],
-    [ "VerticalAlignment", "classmusx_1_1dom_1_1options_1_1TextOptions.html#a7e1e7080f6cc6710d79429f7b7a83021", [
-      [ "Top", "classmusx_1_1dom_1_1options_1_1TextOptions.html#a7e1e7080f6cc6710d79429f7b7a83021aa4ffdcf0dc1f31b9acaf295d75b51d00", null ],
-      [ "Center", "classmusx_1_1dom_1_1options_1_1TextOptions.html#a7e1e7080f6cc6710d79429f7b7a83021a4f1f6016fc9f3f2353c0cc7c67b292bd", null ],
-      [ "Bottom", "classmusx_1_1dom_1_1options_1_1TextOptions.html#a7e1e7080f6cc6710d79429f7b7a83021a2ad9d63b69c4a10a5cc9cad923133bc4", null ]
-    ] ],
+    [ "VerticalAlignment", "classmusx_1_1dom_1_1options_1_1TextOptions.html#a7e1e7080f6cc6710d79429f7b7a83021", null ],
     [ "TextOptions", "classmusx_1_1dom_1_1options_1_1TextOptions.html#a2c785cf4704c1add23bdf6ddd9a6fd43", null ],
     [ "integrityCheck", "classmusx_1_1dom_1_1options_1_1TextOptions.html#abe350bb2b09acbd14f82deca8d344dac", null ],
     [ "dateFormat", "classmusx_1_1dom_1_1options_1_1TextOptions.html#adeb68132c83937c4952fd6afaee5f34b", null ],

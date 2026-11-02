@@ -1,7 +1,7 @@
 var classmusx_1_1dom_1_1others_1_1Measure =
 [
-    [ "Spacing", "structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html", "structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing" ],
     [ "SpacingSlot", "structmusx_1_1dom_1_1others_1_1Measure_1_1SpacingSlot.html", "structmusx_1_1dom_1_1others_1_1Measure_1_1SpacingSlot" ],
+    [ "Spacing", "structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html", "structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing" ],
     [ "BarlineType", "classmusx_1_1dom_1_1others_1_1Measure.html#a6d4c0949f42ef1f337f8e2ae0ee0c117", [
       [ "None", "classmusx_1_1dom_1_1others_1_1Measure.html#a6d4c0949f42ef1f337f8e2ae0ee0c117a6adf97f83acf6453d4a6a4b1070f3754", null ],
       [ "OptionsDefault", "classmusx_1_1dom_1_1others_1_1Measure.html#a6d4c0949f42ef1f337f8e2ae0ee0c117aa92deda61e5101f6c17e7fb660ff17a8", null ],

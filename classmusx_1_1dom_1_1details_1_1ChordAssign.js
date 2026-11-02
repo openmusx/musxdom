@@ -1,10 +1,6 @@
 var classmusx_1_1dom_1_1details_1_1ChordAssign =
 [
-    [ "BassPosition", "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a179be6cb886cae6fa2f5e24f87e084b5", [
-      [ "AfterRoot", "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a179be6cb886cae6fa2f5e24f87e084b5a64aaab8ad6bf36eca111768ec78a68f4", null ],
-      [ "UnderRoot", "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a179be6cb886cae6fa2f5e24f87e084b5a8a7a7da14f43c506c1a0637fd69eb8f0", null ],
-      [ "Subtext", "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a179be6cb886cae6fa2f5e24f87e084b5acaba28429fc284488fb7cd51772253ea", null ]
-    ] ],
+    [ "BassPosition", "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a179be6cb886cae6fa2f5e24f87e084b5", null ],
     [ "ChordAssign", "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a17e7f3ed2b61dc252ba5884b33641ed8", null ],
     [ "getChordSuffix", "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a33eb55dbb07ed875296304c01ee06ace", null ],
     [ "getFretboardGroup", "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a4dbdc2a49e0bbf181e0d7c4534c932f3", null ],

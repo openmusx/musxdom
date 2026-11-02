@@ -22,7 +22,7 @@ var searchData=
   ['short_19',['Short',['../namespacemusx_1_1dom.html#a6bd9f8875781e736128880418451040ba30bb747c98bccdd11b3f89e644c4d0ad',1,'musx::dom']]],
   ['show_20',['Show',['../classmusx_1_1dom_1_1details_1_1MeasureNumberIndividualPositioning.html#a04966342ce01f50af10ed114fa8e99a4a498f79c4c5bbde77f1bceb6c86fd0f6d',1,'musx::dom::details::MeasureNumberIndividualPositioning']]],
   ['slashbeats_21',['SlashBeats',['../classmusx_1_1dom_1_1others_1_1Staff.html#a0a3bc01d0f78962930fc34ea6fb31bb9ac2af9795625aa114ba1cf3c288ae6277',1,'musx::dom::others::Staff']]],
-  ['slur_22',['slur',['../classmusx_1_1dom_1_1options_1_1TupletOptions.html#a0520ad11e6b380aafe8a9be9ce72f0a5a76ddef8b6ba62064b651ebe9fc708332',1,'musx::dom::options::TupletOptions::Slur'],['../namespacemusx_1_1dom.html#a93764339b56e531ea37af5181b20b113a76ddef8b6ba62064b651ebe9fc708332',1,'musx::dom::Slur']]],
+  ['slur_22',['Slur',['../classmusx_1_1dom_1_1options_1_1TupletOptions.html#a0520ad11e6b380aafe8a9be9ce72f0a5a76ddef8b6ba62064b651ebe9fc708332',1,'musx::dom::options::TupletOptions::Slur'],['../namespacemusx_1_1dom.html#a93764339b56e531ea37af5181b20b113a76ddef8b6ba62064b651ebe9fc708332',1,'musx::dom::Slur']]],
   ['slurauto_23',['SlurAuto',['../classmusx_1_1dom_1_1others_1_1SmartShape.html#a7b869b52ed9d931b235b79d2c4ed1e6fa1c1a8e25361d255cbd1707bfae5b2ca3',1,'musx::dom::others::SmartShape']]],
   ['slurdown_24',['SlurDown',['../classmusx_1_1dom_1_1others_1_1SmartShape.html#a7b869b52ed9d931b235b79d2c4ed1e6fa3387fd3030fde215f2319c5d84b7cae3',1,'musx::dom::others::SmartShape']]],
   ['slurtiecurveleft_25',['SlurTieCurveLeft',['../namespacemusx_1_1dom.html#a16d85e8ed9439b9a2ef071d38ffa0fd7aced4f5dff90dcb0f3434fa6e12cedbaa',1,'musx::dom']]],
@@ -73,5 +73,5 @@ var searchData=
   ['swing_70',['Swing',['../namespacemusx_1_1dom_1_1others.html#a8ca1afe21691e4db1cdfd8b62344ecfea198b44a40aa77f2256886010c7526c0b',1,'musx::dom::others']]],
   ['systemboundary_71',['SystemBoundary',['../classmusx_1_1util_1_1Tie.html#a425309cf6ac4e529c1db478195440cefae0577adc1dafd348d398b0301e368a45',1,'musx::util::Tie']]],
   ['systemend_72',['SystemEnd',['../classmusx_1_1dom_1_1details_1_1TieAlterBase.html#a568325ed0d5aa2b159b889d25e8b3755a7140ce70e4bce02aebf36514786b916c',1,'musx::dom::details::TieAlterBase']]],
-  ['systemstart_73',['systemstart',['../classmusx_1_1dom_1_1details_1_1TieAlterBase.html#a568325ed0d5aa2b159b889d25e8b3755ab950514e762ca2def02ad5c01ef0b80c',1,'musx::dom::details::TieAlterBase::SystemStart'],['../classmusx_1_1dom_1_1options_1_1LyricOptions.html#af8f5c0bceb30383a2c1fa569c63192beab950514e762ca2def02ad5c01ef0b80c',1,'musx::dom::options::LyricOptions::SystemStart']]]
+  ['systemstart_73',['SystemStart',['../classmusx_1_1dom_1_1details_1_1TieAlterBase.html#a568325ed0d5aa2b159b889d25e8b3755ab950514e762ca2def02ad5c01ef0b80c',1,'musx::dom::details::TieAlterBase::SystemStart'],['../classmusx_1_1dom_1_1options_1_1LyricOptions.html#af8f5c0bceb30383a2c1fa569c63192beab950514e762ca2def02ad5c01ef0b80c',1,'musx::dom::options::LyricOptions::SystemStart']]]
 ];

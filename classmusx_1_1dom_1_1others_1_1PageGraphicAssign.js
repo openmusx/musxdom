@@ -2,12 +2,7 @@ var classmusx_1_1dom_1_1others_1_1PageGraphicAssign =
 [
     [ "HorizontalAlignment", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#ab647210e09f07abf12718e152859c64e", null ],
     [ "VerticalAlignment", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#a7483447fc5e2ad7e1138de514c2e43fe", null ],
-    [ "PageAssignType", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#aa8cfdb1044328430af397b7642a55657", [
-      [ "AllPages", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#aa8cfdb1044328430af397b7642a55657a2de75620cd2a59b38e262156d6abe818", null ],
-      [ "Even", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#aa8cfdb1044328430af397b7642a55657a35537fbc25d87ffe59e4f35fefcd34b7", null ],
-      [ "Odd", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#aa8cfdb1044328430af397b7642a55657a37b6bd7fe61d651735cec3d3b0356c66", null ],
-      [ "One", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#aa8cfdb1044328430af397b7642a55657a06c2cea18679d64399783748fa367bdd", null ]
-    ] ],
+    [ "PageAssignType", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#aa8cfdb1044328430af397b7642a55657", null ],
     [ "PositionFrom", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#a86dbc04a484fc61c46f3d39f0a84ee56", [
       [ "Margins", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#a86dbc04a484fc61c46f3d39f0a84ee56abd32648160fec8b96d24f7f2e1d4f1f1", null ],
       [ "PageEdge", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#a86dbc04a484fc61c46f3d39f0a84ee56adc1391f0c771b7d9e9a965427fc71008", null ]

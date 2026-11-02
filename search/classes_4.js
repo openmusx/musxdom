@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['element_0',['element',['../classmusx_1_1xml_1_1rapidxml_1_1Element.html',1,'musx::xml::rapidxml::Element'],['../classmusx_1_1xml_1_1pugi_1_1Element.html',1,'musx::xml::pugi::Element'],['../classmusx_1_1xml_1_1tinyxml2_1_1Element.html',1,'musx::xml::tinyxml2::Element']]],
+  ['element_0',['Element',['../classmusx_1_1xml_1_1pugi_1_1Element.html',1,'musx::xml::pugi::Element'],['../classmusx_1_1xml_1_1rapidxml_1_1Element.html',1,'musx::xml::rapidxml::Element'],['../classmusx_1_1xml_1_1tinyxml2_1_1Element.html',1,'musx::xml::tinyxml2::Element']]],
   ['elisionrun_1',['ElisionRun',['../classmusx_1_1dom_1_1LyricsSyllableInfo_1_1ElisionRun.html',1,'musx::dom::LyricsSyllableInfo']]],
-  ['ellipse_2',['Ellipse',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1Ellipse.html',1,'musx::dom::ShapeDefInstruction']]],
+  ['ellipse_2',['Ellipse',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1Ellipse.html',1,'musx::dom::ShapeDefInstruction::Ellipse'],['../structmusx_1_1util_1_1ShapeDefInstruction_1_1Ellipse.html',1,'musx::util::ShapeDefInstruction::Ellipse']]],
   ['embeddedgraphicdata_3',['EmbeddedGraphicData',['../structmusx_1_1dom_1_1EmbeddedGraphicData.html',1,'musx::dom']]],
   ['embeddedgraphicfile_4',['EmbeddedGraphicFile',['../structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions_1_1EmbeddedGraphicFile.html',1,'musx::factory::DocumentFactory::CreateOptions']]],
   ['enclosure_5',['Enclosure',['../classmusx_1_1dom_1_1others_1_1Enclosure.html',1,'musx::dom::others']]],
@@ -30,5 +30,5 @@ var searchData=
   ['entrypool_27',['EntryPool',['../classmusx_1_1dom_1_1EntryPool.html',1,'musx::dom']]],
   ['entrysize_28',['EntrySize',['../classmusx_1_1dom_1_1details_1_1EntrySize.html',1,'musx::dom::details']]],
   ['expressiontext_29',['ExpressionText',['../classmusx_1_1dom_1_1texts_1_1ExpressionText.html',1,'musx::dom::texts']]],
-  ['externalgraphic_30',['ExternalGraphic',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1ExternalGraphic.html',1,'musx::dom::ShapeDefInstruction']]]
+  ['externalgraphic_30',['ExternalGraphic',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1ExternalGraphic.html',1,'musx::dom::ShapeDefInstruction::ExternalGraphic'],['../structmusx_1_1util_1_1ShapeDefInstruction_1_1ExternalGraphic.html',1,'musx::util::ShapeDefInstruction::ExternalGraphic']]]
 ];

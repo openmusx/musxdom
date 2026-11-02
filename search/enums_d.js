@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['pageassigntype_0',['pageassigntype',['../classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#aa8cfdb1044328430af397b7642a55657',1,'musx::dom::others::PageGraphicAssign::PageAssignType'],['../classmusx_1_1dom_1_1others_1_1PageTextAssign.html#a90487371e41dab00c3cd1d60c0d9be9e',1,'musx::dom::others::PageTextAssign::PageAssignType']]],
+  ['pageassigntype_0',['PageAssignType',['../classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#aa8cfdb1044328430af397b7642a55657',1,'musx::dom::others::PageGraphicAssign::PageAssignType'],['../classmusx_1_1dom_1_1others_1_1PageTextAssign.html#a90487371e41dab00c3cd1d60c0d9be9e',1,'musx::dom::others::PageTextAssign::PageAssignType']]],
   ['partvoicingpolicy_1',['PartVoicingPolicy',['../namespacemusx_1_1dom.html#a8ff59967b46549e150ea4f524c00de95',1,'musx::dom']]],
   ['pathtype_2',['PathType',['../classmusx_1_1dom_1_1others_1_1FileDescription.html#a8d9d0ade14e9072cd17e2e3707c6b9f2',1,'musx::dom::others::FileDescription']]],
   ['pitchmode_3',['PitchMode',['../namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398',1,'musx::dom']]],

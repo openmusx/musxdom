@@ -15,9 +15,7 @@ var classmusx_1_1dom_1_1others_1_1ArticulationDef =
       [ "Horizontal", "classmusx_1_1dom_1_1others_1_1ArticulationDef.html#abf40637f5c0f246bfdfe40603bf9a5ccac1b5fa03ecdb95d4a45dd1c40b02527f", null ]
     ] ],
     [ "SlurInteractionMode", "classmusx_1_1dom_1_1others_1_1ArticulationDef.html#a49310a914cbb3b992e53028b19643e42", [
-      [ "Ignore", "classmusx_1_1dom_1_1others_1_1ArticulationDef.html#a49310a914cbb3b992e53028b19643e42afd038fc7f319e48f3115d92bf5bdbef9", null ],
-      [ "InsideSlur", "classmusx_1_1dom_1_1others_1_1ArticulationDef.html#a49310a914cbb3b992e53028b19643e42a8065c46cedbabee7b1c87093fad99300", null ],
-      [ "AvoidSlur", "classmusx_1_1dom_1_1others_1_1ArticulationDef.html#a49310a914cbb3b992e53028b19643e42a3145c961006e88ed0e022828a37c242e", null ]
+      [ "Ignore", "classmusx_1_1dom_1_1others_1_1ArticulationDef.html#a49310a914cbb3b992e53028b19643e42afd038fc7f319e48f3115d92bf5bdbef9", null ]
     ] ],
     [ "ArticulationDef", "classmusx_1_1dom_1_1others_1_1ArticulationDef.html#ade0b281eb1f5ee1edf75b2ef527681f3", null ],
     [ "calcSelectedSymbol", "classmusx_1_1dom_1_1others_1_1ArticulationDef.html#ab9b40ac5c318b2fd475dc9fa57356f15", null ],

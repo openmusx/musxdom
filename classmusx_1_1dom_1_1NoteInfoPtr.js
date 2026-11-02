@@ -1,9 +1,9 @@
 var classmusx_1_1dom_1_1NoteInfoPtr =
 [
-    [ "ArpeggiatedTieInfo", "structmusx_1_1dom_1_1NoteInfoPtr_1_1ArpeggiatedTieInfo.html", "structmusx_1_1dom_1_1NoteInfoPtr_1_1ArpeggiatedTieInfo" ],
     [ "NoteheadInfo", "structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html", "structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo" ],
-    [ "PseudoTieInfo", "structmusx_1_1dom_1_1NoteInfoPtr_1_1PseudoTieInfo.html", "structmusx_1_1dom_1_1NoteInfoPtr_1_1PseudoTieInfo" ],
     [ "TieStandInSource", "structmusx_1_1dom_1_1NoteInfoPtr_1_1TieStandInSource.html", "structmusx_1_1dom_1_1NoteInfoPtr_1_1TieStandInSource" ],
+    [ "ArpeggiatedTieInfo", "structmusx_1_1dom_1_1NoteInfoPtr_1_1ArpeggiatedTieInfo.html", "structmusx_1_1dom_1_1NoteInfoPtr_1_1ArpeggiatedTieInfo" ],
+    [ "PseudoTieInfo", "structmusx_1_1dom_1_1NoteInfoPtr_1_1PseudoTieInfo.html", "structmusx_1_1dom_1_1NoteInfoPtr_1_1PseudoTieInfo" ],
     [ "NoteInfoPtr", "classmusx_1_1dom_1_1NoteInfoPtr.html#af96307ed369138a67d004695055e894d", null ],
     [ "NoteInfoPtr", "classmusx_1_1dom_1_1NoteInfoPtr.html#abafc8ded0db6f072316ecfee838eaa38", null ],
     [ "calcArpeggiatedTieInfo", "classmusx_1_1dom_1_1NoteInfoPtr.html#ac0840cb71f2d973958c389c2a806aca0", null ],

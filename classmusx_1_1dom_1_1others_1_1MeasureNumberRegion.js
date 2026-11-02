@@ -2,10 +2,7 @@ var classmusx_1_1dom_1_1others_1_1MeasureNumberRegion =
 [
     [ "ScorePartData", "classmusx_1_1dom_1_1others_1_1MeasureNumberRegion_1_1ScorePartData.html", "classmusx_1_1dom_1_1others_1_1MeasureNumberRegion_1_1ScorePartData" ],
     [ "TimePrecision", "classmusx_1_1dom_1_1others_1_1MeasureNumberRegion.html#a7f9e41dc1e40505990951abfcf894cd1", [
-      [ "WholeSeconds", "classmusx_1_1dom_1_1others_1_1MeasureNumberRegion.html#a7f9e41dc1e40505990951abfcf894cd1ae4c12a21d171cc5d2ce906a4e3344fcc", null ],
-      [ "Tenths", "classmusx_1_1dom_1_1others_1_1MeasureNumberRegion.html#a7f9e41dc1e40505990951abfcf894cd1a3e12e72830031de22a8580ec21c09cd3", null ],
-      [ "Hundredths", "classmusx_1_1dom_1_1others_1_1MeasureNumberRegion.html#a7f9e41dc1e40505990951abfcf894cd1a139d4e6c7fbe647f29d37401738c8e26", null ],
-      [ "Thousandths", "classmusx_1_1dom_1_1others_1_1MeasureNumberRegion.html#a7f9e41dc1e40505990951abfcf894cd1a9ab57991468e3c81f060017179c661bf", null ]
+      [ "WholeSeconds", "classmusx_1_1dom_1_1others_1_1MeasureNumberRegion.html#a7f9e41dc1e40505990951abfcf894cd1ae4c12a21d171cc5d2ce906a4e3344fcc", null ]
     ] ],
     [ "MeasureNumberRegion", "classmusx_1_1dom_1_1others_1_1MeasureNumberRegion.html#a57dfd3a9dce3b9ce49a76aa75813f04f", null ],
     [ "calcDisplayNumberFor", "classmusx_1_1dom_1_1others_1_1MeasureNumberRegion.html#a76433272f0465a9bb5a9ae61fd3c54c2", null ],

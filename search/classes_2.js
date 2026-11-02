@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['cell_0',['cell',['../structmusx_1_1util_1_1FretboardDisplayData_1_1Cell.html',1,'musx::util::FretboardDisplayData::Cell'],['../classmusx_1_1dom_1_1details_1_1FretboardDiagram_1_1Cell.html',1,'musx::dom::details::FretboardDiagram::Cell']]],
+  ['cell_0',['Cell',['../classmusx_1_1dom_1_1details_1_1FretboardDiagram_1_1Cell.html',1,'musx::dom::details::FretboardDiagram::Cell'],['../structmusx_1_1util_1_1FretboardDisplayData_1_1Cell.html',1,'musx::util::FretboardDisplayData::Cell']]],
   ['centershape_1',['CenterShape',['../classmusx_1_1dom_1_1details_1_1CenterShape.html',1,'musx::dom::details']]],
   ['charparams_2',['CharParams',['../classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine_1_1CharParams.html',1,'musx::dom::others::SmartShapeCustomLine']]],
   ['chordassign_3',['ChordAssign',['../classmusx_1_1dom_1_1details_1_1ChordAssign.html',1,'musx::dom::details']]],
@@ -14,9 +14,9 @@ var searchData=
   ['clefoctaveflats_11',['ClefOctaveFlats',['../classmusx_1_1dom_1_1details_1_1ClefOctaveFlats.html',1,'musx::dom::details']]],
   ['clefoctavesharps_12',['ClefOctaveSharps',['../classmusx_1_1dom_1_1details_1_1ClefOctaveSharps.html',1,'musx::dom::details']]],
   ['clefoptions_13',['ClefOptions',['../classmusx_1_1dom_1_1options_1_1ClefOptions.html',1,'musx::dom::options']]],
-  ['clonechar_14',['CloneChar',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1CloneChar.html',1,'musx::dom::ShapeDefInstruction']]],
+  ['clonechar_14',['CloneChar',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1CloneChar.html',1,'musx::dom::ShapeDefInstruction::CloneChar'],['../structmusx_1_1util_1_1ShapeDefInstruction_1_1CloneChar.html',1,'musx::util::ShapeDefInstruction::CloneChar']]],
   ['commonclassbase_15',['CommonClassBase',['../classmusx_1_1dom_1_1CommonClassBase.html',1,'musx::dom']]],
-  ['compositeitem_16',['compositeitem',['../classmusx_1_1dom_1_1others_1_1TimeCompositeLower_1_1CompositeItem.html',1,'musx::dom::others::TimeCompositeLower::CompositeItem'],['../classmusx_1_1dom_1_1others_1_1TimeCompositeUpper_1_1CompositeItem.html',1,'musx::dom::others::TimeCompositeUpper::CompositeItem']]],
+  ['compositeitem_16',['CompositeItem',['../classmusx_1_1dom_1_1others_1_1TimeCompositeLower_1_1CompositeItem.html',1,'musx::dom::others::TimeCompositeLower::CompositeItem'],['../classmusx_1_1dom_1_1others_1_1TimeCompositeUpper_1_1CompositeItem.html',1,'musx::dom::others::TimeCompositeUpper::CompositeItem']]],
   ['connectionstyle_17',['ConnectionStyle',['../structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ConnectionStyle.html',1,'musx::dom::options::SmartShapeOptions']]],
   ['connectstyle_18',['ConnectStyle',['../structmusx_1_1dom_1_1options_1_1TieOptions_1_1ConnectStyle.html',1,'musx::dom::options::TieOptions']]],
   ['constructioncontext_19',['ConstructionContext',['../classmusx_1_1factory_1_1ConstructionContext.html',1,'musx::factory']]],
@@ -31,11 +31,11 @@ var searchData=
   ['control_28',['Control',['../classmusx_1_1dom_1_1others_1_1BeatChartElement_1_1Control.html',1,'musx::dom::others::BeatChartElement']]],
   ['controlpoint_29',['ControlPoint',['../structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlPoint.html',1,'musx::dom::options::TieOptions']]],
   ['controlpointadjustment_30',['ControlPointAdjustment',['../classmusx_1_1dom_1_1smartshape_1_1ControlPointAdjustment.html',1,'musx::dom::smartshape']]],
-  ['controlstyle_31',['controlstyle',['../structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ControlStyle.html',1,'musx::dom::options::SmartShapeOptions::ControlStyle'],['../structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlStyle.html',1,'musx::dom::options::TieOptions::ControlStyle']]],
+  ['controlstyle_31',['ControlStyle',['../structmusx_1_1dom_1_1options_1_1SmartShapeOptions_1_1ControlStyle.html',1,'musx::dom::options::SmartShapeOptions::ControlStyle'],['../structmusx_1_1dom_1_1options_1_1TieOptions_1_1ControlStyle.html',1,'musx::dom::options::TieOptions::ControlStyle']]],
   ['createoptions_32',['CreateOptions',['../structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html',1,'musx::factory::DocumentFactory']]],
   ['crossstaff_33',['CrossStaff',['../classmusx_1_1dom_1_1details_1_1CrossStaff.html',1,'musx::dom::details']]],
   ['cue_34',['Cue',['../classmusx_1_1util_1_1Cue.html',1,'musx::util']]],
-  ['curveto_35',['CurveTo',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1CurveTo.html',1,'musx::dom::ShapeDefInstruction']]],
+  ['curveto_35',['CurveTo',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1CurveTo.html',1,'musx::dom::ShapeDefInstruction::CurveTo'],['../structmusx_1_1util_1_1ShapeDefInstruction_1_1CurveTo.html',1,'musx::util::ShapeDefInstruction::CurveTo']]],
   ['customdownstem_36',['CustomDownStem',['../classmusx_1_1dom_1_1details_1_1CustomDownStem.html',1,'musx::dom::details']]],
   ['customstem_37',['CustomStem',['../classmusx_1_1dom_1_1details_1_1CustomStem.html',1,'musx::dom::details']]],
   ['customupstem_38',['CustomUpStem',['../classmusx_1_1dom_1_1details_1_1CustomUpStem.html',1,'musx::dom::details']]]

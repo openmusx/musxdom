@@ -1,16 +1,7 @@
 var classmusx_1_1dom_1_1options_1_1RepeatOptions =
 [
-    [ "BackToBackStyle", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#a371657b833569796518bf7f6dc8be94a", [
-      [ "Thin", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#a371657b833569796518bf7f6dc8be94aaaedfcbf06fc92bafadf4527a2fcccc69", null ],
-      [ "Mixed", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#a371657b833569796518bf7f6dc8be94aa699b4f79215d191584653efebf156e52", null ],
-      [ "Thick", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#a371657b833569796518bf7f6dc8be94aa0a908b7941c6bfd50ba866821e83cd2b", null ]
-    ] ],
-    [ "WingStyle", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#aade2b37305fa0dfe3e3c3567f812182e", [
-      [ "None", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#aade2b37305fa0dfe3e3c3567f812182ea6adf97f83acf6453d4a6a4b1070f3754", null ],
-      [ "Curved", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#aade2b37305fa0dfe3e3c3567f812182ea1e0e0b1e4554e27d30a562a079215f33", null ],
-      [ "SingleLine", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#aade2b37305fa0dfe3e3c3567f812182ea3e5c1fb76b6543ac61af54b185f02af9", null ],
-      [ "DoubleLine", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#aade2b37305fa0dfe3e3c3567f812182ea1c04022695adb55f4e8f4562df1c46d6", null ]
-    ] ],
+    [ "BackToBackStyle", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#a371657b833569796518bf7f6dc8be94a", null ],
+    [ "WingStyle", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#aade2b37305fa0dfe3e3c3567f812182e", null ],
     [ "RepeatOptions", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#ad85ca866a6a81ee9bf587601526e67b1", null ],
     [ "addPeriod", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#a7e97132fb6deb21611d58f8ddbf88235", null ],
     [ "afterClefSpace", "classmusx_1_1dom_1_1options_1_1RepeatOptions.html#a4474a7f1428da171b7c83fd1c83b67fd", null ],

@@ -1,8 +1,8 @@
 var searchData=
 [
   ['dateformat_0',['DateFormat',['../structmusx_1_1util_1_1DateTime.html#a89f7e590d321c8479cd10ca1f993522d',1,'musx::util::DateTime']]],
-  ['detailspoolptr_1',['DetailsPoolPtr',['../namespacemusx_1_1dom.html#a74491ac3ff15cd1edb203e46e4d04cf1',1,'musx::dom']]],
-  ['documentptr_2',['DocumentPtr',['../namespacemusx_1_1dom.html#ac52edbaa60f81ba3df76ee77b37e95fd',1,'musx::dom']]],
-  ['documentweakptr_3',['DocumentWeakPtr',['../namespacemusx_1_1dom.html#aa76356b1ad3580081294898c79615c4d',1,'musx::dom']]],
-  ['duration_4',['Duration',['../namespacemusx_1_1dom.html#a9fd6f660a4f7c02787b6bbe3307a15af',1,'musx::dom']]]
+  ['detailspoolptr_1',['DetailsPoolPtr',['../namespacemusx_1_1dom.html#aab53660002617f8abb56503f3c6faec6',1,'musx::dom']]],
+  ['documentptr_2',['DocumentPtr',['../namespacemusx_1_1dom.html#a95f727f6ac0878e2a4d15618c0fa0651',1,'musx::dom']]],
+  ['documentweakptr_3',['DocumentWeakPtr',['../namespacemusx_1_1dom.html#ae1f1255569ce031b780170ce99232f05',1,'musx::dom']]],
+  ['duration_4',['Duration',['../namespacemusx_1_1dom.html#a17f0b4c93fded55ccb105db39225dc4f',1,'musx::dom']]]
 ];

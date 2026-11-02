@@ -1,7 +1,7 @@
 var classmusx_1_1dom_1_1details_1_1FretboardDiagram =
 [
-    [ "Barre", "classmusx_1_1dom_1_1details_1_1FretboardDiagram_1_1Barre.html", "classmusx_1_1dom_1_1details_1_1FretboardDiagram_1_1Barre" ],
     [ "Cell", "classmusx_1_1dom_1_1details_1_1FretboardDiagram_1_1Cell.html", "classmusx_1_1dom_1_1details_1_1FretboardDiagram_1_1Cell" ],
+    [ "Barre", "classmusx_1_1dom_1_1details_1_1FretboardDiagram_1_1Barre.html", "classmusx_1_1dom_1_1details_1_1FretboardDiagram_1_1Barre" ],
     [ "Shape", "classmusx_1_1dom_1_1details_1_1FretboardDiagram.html#a6d4d2c889167564a58c02dcdc073f231", [
       [ "None", "classmusx_1_1dom_1_1details_1_1FretboardDiagram.html#a6d4d2c889167564a58c02dcdc073f231a6adf97f83acf6453d4a6a4b1070f3754", null ],
       [ "Closed", "classmusx_1_1dom_1_1details_1_1FretboardDiagram.html#a6d4d2c889167564a58c02dcdc073f231a03f4a47830f97377a35321051685071e", null ],

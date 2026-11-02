@@ -9,19 +9,11 @@ var classmusx_1_1dom_1_1options_1_1TieOptions =
       [ "SplitEvenly", "classmusx_1_1dom_1_1options_1_1TieOptions.html#a8e717bcfa8a196892b462c27ccb5084fab9e279a647b045b9b8046f152ce466e5", null ],
       [ "Unknown", "classmusx_1_1dom_1_1options_1_1TieOptions.html#a8e717bcfa8a196892b462c27ccb5084fa88183b946cc5f0e8c96b2e66e1c74a7e", null ]
     ] ],
-    [ "ControlStyleType", "classmusx_1_1dom_1_1options_1_1TieOptions.html#ac17e09ac7e1de61a6afa2b6638806555", [
-      [ "ShortSpan", "classmusx_1_1dom_1_1options_1_1TieOptions.html#ac17e09ac7e1de61a6afa2b6638806555a7b7ce44994a4a2997770c417296af75c", null ],
-      [ "MediumSpan", "classmusx_1_1dom_1_1options_1_1TieOptions.html#ac17e09ac7e1de61a6afa2b6638806555a80fdef3032cbe7ee9d0cb47d2bbbb4c4", null ],
-      [ "LongSpan", "classmusx_1_1dom_1_1options_1_1TieOptions.html#ac17e09ac7e1de61a6afa2b6638806555ab222f7580fc566de443a67912ded8c03", null ],
-      [ "TieEnds", "classmusx_1_1dom_1_1options_1_1TieOptions.html#ac17e09ac7e1de61a6afa2b6638806555a7715b8c2c0a76073c35608d310bdffc4", null ]
-    ] ],
+    [ "ControlStyleType", "classmusx_1_1dom_1_1options_1_1TieOptions.html#ac17e09ac7e1de61a6afa2b6638806555", null ],
     [ "InsetStyle", "classmusx_1_1dom_1_1options_1_1TieOptions.html#aa595700238a8bcb2327afec614f402cf", [
-      [ "Fixed", "classmusx_1_1dom_1_1options_1_1TieOptions.html#aa595700238a8bcb2327afec614f402cfa4457d440870ad6d42bab9082d9bf9b61", null ],
-      [ "Percent", "classmusx_1_1dom_1_1options_1_1TieOptions.html#aa595700238a8bcb2327afec614f402cfaadaaee4b22041c27198d410c68d952c9", null ]
+      [ "Fixed", "classmusx_1_1dom_1_1options_1_1TieOptions.html#aa595700238a8bcb2327afec614f402cfa4457d440870ad6d42bab9082d9bf9b61", null ]
     ] ],
     [ "MixedStemDirection", "classmusx_1_1dom_1_1options_1_1TieOptions.html#aaceacef983669122a11ea7986681a0ed", [
-      [ "Over", "classmusx_1_1dom_1_1options_1_1TieOptions.html#aaceacef983669122a11ea7986681a0edaef087651eb482bae4624478696f4ad4f", null ],
-      [ "Under", "classmusx_1_1dom_1_1options_1_1TieOptions.html#aaceacef983669122a11ea7986681a0eda02552d3c116b8a96f9ff0001b6ae661c", null ],
       [ "OppositeFirst", "classmusx_1_1dom_1_1options_1_1TieOptions.html#aaceacef983669122a11ea7986681a0edaf220fdef512b8e20c4b8fd6271b0dcc0", null ]
     ] ],
     [ "SecondsPlacement", "classmusx_1_1dom_1_1options_1_1TieOptions.html#a291f7a4f2892f12f8f77afbd030c1e58", [

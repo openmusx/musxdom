@@ -21,15 +21,7 @@ var namespacemusic__theory =
       [ "Aeolian", "namespacemusic__theory.html#a04ed1b374e50ea532b72ed1bb66683cea71c7913b150c35a82ad53ae6b3be4d21", null ],
       [ "Locrian", "namespacemusic__theory.html#a04ed1b374e50ea532b72ed1bb66683cea957b71824981a76ee8367e6684065f5d", null ]
     ] ],
-    [ "NoteName", "namespacemusic__theory.html#acb68e55d250cfd1ba7a7d5ca0bcbb869", [
-      [ "C", "namespacemusic__theory.html#acb68e55d250cfd1ba7a7d5ca0bcbb869a0d61f8370cad1d412f80b84d143e1257", null ],
-      [ "D", "namespacemusic__theory.html#acb68e55d250cfd1ba7a7d5ca0bcbb869af623e75af30e62bbd73d6df5b50bb7b5", null ],
-      [ "E", "namespacemusic__theory.html#acb68e55d250cfd1ba7a7d5ca0bcbb869a3a3ea00cfc35332cedf6e5e9a32e94da", null ],
-      [ "F", "namespacemusic__theory.html#acb68e55d250cfd1ba7a7d5ca0bcbb869a800618943025315f869e4e1f09471012", null ],
-      [ "G", "namespacemusic__theory.html#acb68e55d250cfd1ba7a7d5ca0bcbb869adfcf28d0734569a6a693bc8194de62bf", null ],
-      [ "A", "namespacemusic__theory.html#acb68e55d250cfd1ba7a7d5ca0bcbb869a7fc56270e7a70fa81a5935b72eacbe29", null ],
-      [ "B", "namespacemusic__theory.html#acb68e55d250cfd1ba7a7d5ca0bcbb869a9d5ed678fe57bcca610140957afab571", null ]
-    ] ],
+    [ "NoteName", "namespacemusic__theory.html#acb68e55d250cfd1ba7a7d5ca0bcbb869", null ],
     [ "calc12EdoHalfstepsInInterval", "namespacemusic__theory.html#acf8c49a568a6a6043714a796c4de89e4", null ],
     [ "calcAlterationFrom12EdoHalfsteps", "namespacemusic__theory.html#a5d580efb2fd53b410d55ecd25b268376", null ],
     [ "calcAlterationFromKeySigChange", "namespacemusic__theory.html#aa8135fae68fcafc7da27d3540d2a04b3", null ],

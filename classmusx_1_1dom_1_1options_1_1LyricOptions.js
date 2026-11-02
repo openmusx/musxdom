@@ -17,25 +17,8 @@ var classmusx_1_1dom_1_1options_1_1LyricOptions =
       [ "First", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#af8f5c0bceb30383a2c1fa569c63192bea7fb55ed0b7a30342ba6da306428cae04", null ],
       [ "SystemStart", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#af8f5c0bceb30383a2c1fa569c63192beab950514e762ca2def02ad5c01ef0b80c", null ]
     ] ],
-    [ "WordExtConnectIndex", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a6dc71c9c5df0dae534659ccdb5725254", [
-      [ "LyricRightBottom", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a6dc71c9c5df0dae534659ccdb5725254af85a0e71fc69665ab2cb876bd5722dec", null ],
-      [ "HeadRightLyrBaseline", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a6dc71c9c5df0dae534659ccdb5725254a15ef1c5c81b8522af33965dbdba98a24", null ],
-      [ "SystemLeft", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a6dc71c9c5df0dae534659ccdb5725254a53cccc81f6277d20fb0b1a928b20b18e", null ],
-      [ "SystemRight", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a6dc71c9c5df0dae534659ccdb5725254ad0704c6a6e2af2b875695751a6b8e0cd", null ],
-      [ "DotRightLyrBaseline", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a6dc71c9c5df0dae534659ccdb5725254aed6471f41158f83ff836463faf3efaf9", null ],
-      [ "DurationLyrBaseline", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a6dc71c9c5df0dae534659ccdb5725254a033499651262bec697f6dfcaadb6fbc7", null ]
-    ] ],
-    [ "WordExtConnectStyleType", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a52b101ad0e2b788521c8a88053f32b74", [
-      [ "DefaultStart", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a52b101ad0e2b788521c8a88053f32b74a18eb7db36373f1d600eb2eac8d51c822", null ],
-      [ "DefaultEnd", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a52b101ad0e2b788521c8a88053f32b74a3613a3232318cd676fa0dbe420acd430", null ],
-      [ "SystemStart", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a52b101ad0e2b788521c8a88053f32b74ab950514e762ca2def02ad5c01ef0b80c", null ],
-      [ "SystemEnd", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a52b101ad0e2b788521c8a88053f32b74a7140ce70e4bce02aebf36514786b916c", null ],
-      [ "DottedEnd", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a52b101ad0e2b788521c8a88053f32b74abbc61805153b37ff7ec9287ecdc3fc52", null ],
-      [ "DurationEnd", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a52b101ad0e2b788521c8a88053f32b74a048ec5089d516e7adb6b254e19719338", null ],
-      [ "OneEntryEnd", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a52b101ad0e2b788521c8a88053f32b74ad756402d9df7bba008367cd3cea29523", null ],
-      [ "ZeroLengthEnd", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a52b101ad0e2b788521c8a88053f32b74adf5827a1e821956066edfcfe673ed5b1", null ],
-      [ "ZeroOffset", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a52b101ad0e2b788521c8a88053f32b74a5224c06b53f2a3e82f1d010560d7b8d1", null ]
-    ] ],
+    [ "WordExtConnectIndex", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a6dc71c9c5df0dae534659ccdb5725254", null ],
+    [ "WordExtConnectStyleType", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a52b101ad0e2b788521c8a88053f32b74", null ],
     [ "LyricOptions", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#aeb25a95b12368e678c7b6876b10e094a", null ],
     [ "integrityCheck", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#ada215f40233f1e7132a36469634d345a", null ],
     [ "altHyphenFont", "classmusx_1_1dom_1_1options_1_1LyricOptions.html#a8183977300f8d9e2995acd64461806e4", null ],

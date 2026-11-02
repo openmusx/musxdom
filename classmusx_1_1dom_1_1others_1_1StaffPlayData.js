@@ -1,7 +1,7 @@
 var classmusx_1_1dom_1_1others_1_1StaffPlayData =
 [
-    [ "PlaybackSettings", "classmusx_1_1dom_1_1others_1_1StaffPlayData_1_1PlaybackSettings.html", "classmusx_1_1dom_1_1others_1_1StaffPlayData_1_1PlaybackSettings" ],
     [ "VelocityControl", "classmusx_1_1dom_1_1others_1_1StaffPlayData_1_1VelocityControl.html", "classmusx_1_1dom_1_1others_1_1StaffPlayData_1_1VelocityControl" ],
+    [ "PlaybackSettings", "classmusx_1_1dom_1_1others_1_1StaffPlayData_1_1PlaybackSettings.html", "classmusx_1_1dom_1_1others_1_1StaffPlayData_1_1PlaybackSettings" ],
     [ "VelocityControlFunction", "classmusx_1_1dom_1_1others_1_1StaffPlayData.html#ac91dcdc83724864a02e767c3252e684f", [
       [ "Absolute", "classmusx_1_1dom_1_1others_1_1StaffPlayData.html#ac91dcdc83724864a02e767c3252e684fab51ca26c6c89cfc9bec338f7a0d3e0c8", null ],
       [ "Relative", "classmusx_1_1dom_1_1others_1_1StaffPlayData.html#ac91dcdc83724864a02e767c3252e684fa2ca9469819fb0fb61ff98e914a7ccca0", null ]

@@ -1,7 +1,6 @@
 var classmusx_1_1dom_1_1others_1_1FontDefinition =
 [
     [ "CharacterSetBank", "classmusx_1_1dom_1_1others_1_1FontDefinition.html#a8b757b0c6d31a24943436399bc778cbd", [
-      [ "MacOS", "classmusx_1_1dom_1_1others_1_1FontDefinition.html#a8b757b0c6d31a24943436399bc778cbda0a5b7edb55b772c60bfa8af868b679cf", null ],
       [ "Windows", "classmusx_1_1dom_1_1others_1_1FontDefinition.html#a8b757b0c6d31a24943436399bc778cbdaaea23489ce3aa9b6406ebb28e0cda430", null ]
     ] ],
     [ "FontDefinition", "classmusx_1_1dom_1_1others_1_1FontDefinition.html#a5ab1f7c8015fbf95b296fdf824cacdb5", null ],
