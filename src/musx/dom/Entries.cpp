@@ -54,33 +54,17 @@ T selectByDuration(Edu duration, T quarterAndShorter, T half, T whole, T breveAn
 bool calcUsesWrittenPitch(const EntryInfoPtr& entryInfo, PitchMode pitchMode,
     const std::optional<StaffCmper>& forStaffId = std::nullopt)
 {
-    if (pitchMode == PitchMode::Written) {
-        return true;
+    if (const auto staff = entryInfo.createCurrentStaff(forStaffId)) {
+        return staff->calcUsesWrittenPitch(pitchMode);
     }
-    if (pitchMode == PitchMode::Concert) {
-        return false;
-    }
-
-    const auto frame = entryInfo.getFrame();
-    const auto document = frame->getDocument();
-    if (const auto partGlobals = document->getOthers()->get<others::PartGlobals>(
-            frame->getRequestedPartId(), MUSX_GLOBALS_CMPER)) {
-        if (partGlobals->showTransposed) {
-            return true;
+    if (pitchMode == PitchMode::CurrentView) {
+        const auto frame = entryInfo.getFrame();
+        if (const auto partGlobals = frame->getDocument()->getOthers()->get<others::PartGlobals>(
+                frame->getRequestedPartId(), MUSX_GLOBALS_CMPER)) {
+            return partGlobals->showTransposed;
         }
     }
-
-    const auto miscOptions = document->getOptions()->get<options::MiscOptions>();
-    if (!miscOptions || !miscOptions->keepWrittenOctaveInConcertPitch) {
-        return false;
-    }
-    const auto staff = entryInfo.createCurrentStaff(forStaffId);
-    if (!staff) {
-        return false;
-    }
-    const auto [displacement, alteration] = staff->calcTranspositionInterval();
-    return (displacement != 0 || alteration != 0)
-        && music_theory::calcTranspositionIsOctave(displacement, alteration);
+    return pitchMode == PitchMode::Written;
 }
 
 int calcVoiceRank(MatchVoice matchVoice, bool voice2)
