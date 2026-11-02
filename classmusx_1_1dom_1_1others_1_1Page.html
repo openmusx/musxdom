@@ -162,9 +162,6 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~DocumentElement</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a7bfc65ee853c40b9cf43bf4f737d1608" id="r_a7bfc65ee853c40b9cf43bf4f737d1608"><td class="memItemLeft" align="right" valign="top"><a id="a7bfc65ee853c40b9cf43bf4f737d1608" name="a7bfc65ee853c40b9cf43bf4f737d1608"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>calcSystemInfo</b> (const <a class="el" href="namespacemusx_1_1dom.html#a95f727f6ac0878e2a4d15618c0fa0651">DocumentPtr</a> &amp;document)</td></tr>
-<tr class="memdesc:a7bfc65ee853c40b9cf43bf4f737d1608"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolver function used by factory to compute system and measure information for all pages. <br /></td></tr>
 <tr class="memitem:a5a511715af21747dd74fb7299608e690" id="r_a5a511715af21747dd74fb7299608e690"><td class="memItemLeft" align="right" valign="top"><a id="a5a511715af21747dd74fb7299608e690" name="a5a511715af21747dd74fb7299608e690"></a>
 static const <a class="el" href="namespacemusx_1_1xml.html#abec9a9d80156f2ffbd894705d4fa332f">xml::XmlElementArray</a>&lt; <a class="el" href="#af8f0848db759b0fbb57d3c40e9e209e3">Page</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>xmlMappingArray</b> ()</td></tr>
 <tr class="memdesc:a5a511715af21747dd74fb7299608e690"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required for musx::factory::FieldPopulator. <br /></td></tr>
@@ -200,13 +197,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>holdMargins</b> {}</t
 <tr class="memdesc:a98a8a42119786d4da232495b1ffd7bbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Right margin in <a class="el" href="namespacemusx_1_1dom.html#a759a8f26320a6122a230b9b1fbb7c249" title="EVPU value (288 per inch).">Evpu</a>. (Sign reversed in Finale UI.). <br /></td></tr>
 <tr class="memitem:a16de516239dd119a60478eadabef5e65" id="r_a16de516239dd119a60478eadabef5e65"><td class="memItemLeft" align="right" valign="top"><a id="a16de516239dd119a60478eadabef5e65" name="a16de516239dd119a60478eadabef5e65"></a>
 std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a7ce20684f98d67b7a72e57740fbc5569">SystemCmper</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lastSystemId</b></td></tr>
-<tr class="memdesc:a16de516239dd119a60478eadabef5e65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computed by the Resolver function <a class="el" href="#a7bfc65ee853c40b9cf43bf4f737d1608" title="Resolver function used by factory to compute system and measure information for all pages.">calcSystemInfo</a>. This value is not in the xml. <br /></td></tr>
+<tr class="memdesc:a16de516239dd119a60478eadabef5e65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computed by the Resolver function #Document::resolvePageLayout. This value is not in the xml. <br /></td></tr>
 <tr class="memitem:a472a988bdcdbabaf5b24f133257b05d6" id="r_a472a988bdcdbabaf5b24f133257b05d6"><td class="memItemLeft" align="right" valign="top"><a id="a472a988bdcdbabaf5b24f133257b05d6" name="a472a988bdcdbabaf5b24f133257b05d6"></a>
 std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#afb1a720df5550a18a2f0fe9081afe927">MeasCmper</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>firstMeasureId</b></td></tr>
-<tr class="memdesc:a472a988bdcdbabaf5b24f133257b05d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computed by the Resolver function <a class="el" href="#a7bfc65ee853c40b9cf43bf4f737d1608" title="Resolver function used by factory to compute system and measure information for all pages.">calcSystemInfo</a>. This value is not in the xml. <br /></td></tr>
+<tr class="memdesc:a472a988bdcdbabaf5b24f133257b05d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computed by the Resolver function #Document::resolvePageLayout. This value is not in the xml. <br /></td></tr>
 <tr class="memitem:a7436d05058daab6168084dbf112356e5" id="r_a7436d05058daab6168084dbf112356e5"><td class="memItemLeft" align="right" valign="top"><a id="a7436d05058daab6168084dbf112356e5" name="a7436d05058daab6168084dbf112356e5"></a>
 std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#afb1a720df5550a18a2f0fe9081afe927">MeasCmper</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lastMeasureId</b></td></tr>
-<tr class="memdesc:a7436d05058daab6168084dbf112356e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computed by the Resolver function <a class="el" href="#a7bfc65ee853c40b9cf43bf4f737d1608" title="Resolver function used by factory to compute system and measure information for all pages.">calcSystemInfo</a>. This value is not in the xml. <br /></td></tr>
+<tr class="memdesc:a7436d05058daab6168084dbf112356e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computed by the Resolver function #Document::resolvePageLayout. This value is not in the xml. <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -290,7 +287,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns whether this page has a calculated layout. </p>
-<p>Blank pages are valid calculated pages. A nonblank page is calculated when its system range and corresponding measure range were resolved by <a class="el" href="#a7bfc65ee853c40b9cf43bf4f737d1608" title="Resolver function used by factory to compute system and measure information for all pages.">calcSystemInfo</a>. </p>
+<p>Blank pages are valid calculated pages. A nonblank page is calculated when its system range and corresponding measure range were resolved by #Document::resolvePageLayout. </p>
 
 </div>
 </div>

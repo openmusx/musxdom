@@ -11,5 +11,6 @@ var searchData=
   ['repeatoptions_8',['RepeatOptions',['../classmusx_1_1dom_1_1options_1_1RepeatOptions.html#ad85ca866a6a81ee9bf587601526e67b1',1,'musx::dom::options::RepeatOptions']]],
   ['requireallfields_9',['requireAllFields',['../classmusx_1_1dom_1_1EnigmaBase.html#a0766cc6a150c2335b4aa94bbad6d28b0',1,'musx::dom::EnigmaBase']]],
   ['resolve_10',['resolve',['../classmusx_1_1dom_1_1FontInfo.html#aca07d6654d28e72cf1c85655d3c90d70',1,'musx::dom::FontInfo::resolve()'],['../structmusx_1_1util_1_1EnigmaStyles.html#a20631d8d96de70fccae8e2c638897881',1,'musx::util::EnigmaStyles::resolve()'],['../structmusx_1_1util_1_1EnigmaTextChunk.html#a9f0c0afb059bc5183d26588fc22078d6',1,'musx::util::EnigmaTextChunk::resolve()']]],
-  ['resolveexternalgraphicpath_11',['resolveExternalGraphicPath',['../classmusx_1_1dom_1_1Document.html#a7faa5f48201ebde9262502435ece74d8',1,'musx::dom::Document']]]
+  ['resolveexternalgraphicpath_11',['resolveExternalGraphicPath',['../classmusx_1_1dom_1_1Document.html#a7faa5f48201ebde9262502435ece74d8',1,'musx::dom::Document']]],
+  ['resolvepagelayout_12',['resolvePageLayout',['../classmusx_1_1dom_1_1Document.html#a6dd25c60615f6d1970ac31b80f6e36aa',1,'musx::dom::Document']]]
 ];

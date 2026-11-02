@@ -1,5 +1,7 @@
 var NAVTREEINDEX27 =
 {
+"classmusx_1_1dom_1_1others_1_1TextRepeatDef.html#a4e0cf82565351e6b4959f9cf041686e1":[1,0,1,0,1,79,7],
+"classmusx_1_1dom_1_1others_1_1TextRepeatDef.html#a4e0cf82565351e6b4959f9cf041686e1":[2,0,1,0,1,79,7],
 "classmusx_1_1dom_1_1others_1_1TextRepeatDef.html#a5a09eb79a006f27b0f07695340ed4bba":[1,0,1,0,1,79,4],
 "classmusx_1_1dom_1_1others_1_1TextRepeatDef.html#a5a09eb79a006f27b0f07695340ed4bba":[2,0,1,0,1,79,4],
 "classmusx_1_1dom_1_1others_1_1TextRepeatDef.html#a6b3a6c982061e1ff69373ed57faea885":[1,0,1,0,1,79,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX27 =
 "classmusx_1_1util_1_1Fraction.html#aa08193955c7afeada1ceb82a199351bb":[2,0,1,3,12,15],
 "classmusx_1_1util_1_1Fraction.html#ab3a1097731acab882bcd033b6ca84df6":[2,0,1,3,12,1],
 "classmusx_1_1util_1_1Fraction.html#abba0e24603b829777d812314d1a9f112":[2,0,1,3,12,19],
-"classmusx_1_1util_1_1Fraction.html#acb703afdb9178045f99fa6b5496d20cb":[2,0,1,3,12,9],
-"classmusx_1_1util_1_1Fraction.html#acfade47536866a5100ec69486c7fcd17":[2,0,1,3,12,12],
-"classmusx_1_1util_1_1Fraction.html#ada796810cfe48b0fe6be5891bb1ed9bd":[2,0,1,3,12,11]
+"classmusx_1_1util_1_1Fraction.html#acb703afdb9178045f99fa6b5496d20cb":[2,0,1,3,12,9]
 };

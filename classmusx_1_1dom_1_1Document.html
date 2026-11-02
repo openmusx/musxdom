@@ -170,7 +170,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setCachedFontIsSMuFL<
 <tr class="memitem:a3b1cdc185b66bf8fa55be29d36280e66" id="r_a3b1cdc185b66bf8fa55be29d36280e66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1Page.html">others::Page</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b1cdc185b66bf8fa55be29d36280e66">calcPageFromMeasure</a> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, <a class="el" href="namespacemusx_1_1dom.html#afb1a720df5550a18a2f0fe9081afe927">MeasCmper</a> measureId) const</td></tr>
 <tr class="memdesc:a3b1cdc185b66bf8fa55be29d36280e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches pages to find the page that contains the measure.  <br /></td></tr>
 <tr class="memitem:a58c106af9d550b67ae51bafca0987a6c" id="r_a58c106af9d550b67ae51bafca0987a6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffSystem.html">others::StaffSystem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58c106af9d550b67ae51bafca0987a6c">calcSystemFromMeasure</a> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, <a class="el" href="namespacemusx_1_1dom.html#afb1a720df5550a18a2f0fe9081afe927">MeasCmper</a> measureId) const</td></tr>
-<tr class="memdesc:a58c106af9d550b67ae51bafca0987a6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches systems to find the system that contains the measure.  <br /></td></tr>
+<tr class="memdesc:a58c106af9d550b67ae51bafca0987a6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the system with the greatest positive start measure at or below the requested measure.  <br /></td></tr>
 <tr class="memitem:a5a4d0b7008895e9e59d721475331f6be" id="r_a5a4d0b7008895e9e59d721475331f6be"><td class="memItemLeft" align="right" valign="top"><a id="a5a4d0b7008895e9e59d721475331f6be" name="a5a4d0b7008895e9e59d721475331f6be"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>getMaxBlankPages</b> () const</td></tr>
 <tr class="memdesc:a5a4d0b7008895e9e59d721475331f6be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum number of blank pages in any part. This is calculated by #factory::DocumentFactory::create. <br /></td></tr>
@@ -201,6 +201,11 @@ const std::optional&lt; std::filesystem::path &gt; &amp;&#160;</td><td class="me
 <tr class="memdesc:a8380a5d30f4df6b6464e8898a7172e1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the measures from which playback jumped into <code class="param">currentMeasure</code>.  <br /></td></tr>
 <tr class="memitem:a284ebc5093ab40aaa65ba82696003160" id="r_a284ebc5093ab40aaa65ba82696003160"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a284ebc5093ab40aaa65ba82696003160">iterateEntries</a> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, std::function&lt; bool(const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;)&gt; iterator) const</td></tr>
 <tr class="memdesc:a284ebc5093ab40aaa65ba82696003160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterate all entries in the document by staff and then measure. This function wraps <a class="el" href="classmusx_1_1dom_1_1MusxInstanceList_3_01others_1_1StaffUsed_01_4.html#a61004e4a2717293fd10a76fba400b858" title="Iterates all the entries that start within the input MusicRange. It iterates by staff and then measur...">MusxInstanceList&lt;others::StaffUsed&gt;::iterateEntries</a>.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a6dd25c60615f6d1970ac31b80f6e36aa" id="r_a6dd25c60615f6d1970ac31b80f6e36aa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6dd25c60615f6d1970ac31b80f6e36aa">resolvePageLayout</a> (const <a class="el" href="namespacemusx_1_1dom.html#a95f727f6ac0878e2a4d15618c0fa0651">DocumentPtr</a> &amp;document)</td></tr>
+<tr class="memdesc:a6dd25c60615f6d1970ac31b80f6e36aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves page ranges, system page assignments, and the per-part system-start index.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
@@ -381,8 +386,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>musx::factory::Docum
 </table>
 </div><div class="memdoc">
 
-<p>Searches systems to find the system that contains the measure. </p>
-<dl class="section return"><dt>Returns</dt><dd>The system, or nullptr if the part's page layout is unavailable or the measure is not found. </dd></dl>
+<p>Returns the system with the greatest positive start measure at or below the requested measure. </p>
+<p>Equal starts select the highest system ID. Uses factory-resolved system starts independently of page layout and system end measures. The measure need not exist in the document. </p><dl class="section return"><dt>Returns</dt><dd>The system, or nullptr if the part is unknown or no qualifying system exists. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classmusx_1_1dom_1_1integrity__error.html" title="Exception for integrity errors. (Used when MUSX_THROW_ON_INTEGRITY_CHECK_FAIL is defined....">integrity_error</a></td><td>If the indexed system is missing and integrity errors are configured to throw. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">partId</td><td>the linked part to search </td></tr>
@@ -730,6 +741,45 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>musx::factory::Docum
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A resolved path if the file can be located, otherwise std::nullopt. </dd></dl>
+
+</div>
+</div>
+<a id="a6dd25c60615f6d1970ac31b80f6e36aa" name="a6dd25c60615f6d1970ac31b80f6e36aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dd25c60615f6d1970ac31b80f6e36aa">&#9670;&#160;</a></span>resolvePageLayout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void musx::dom::Document::resolvePageLayout </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacemusx_1_1dom.html#a95f727f6ac0878e2a4d15618c0fa0651">DocumentPtr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>document</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Resolves page ranges, system page assignments, and the per-part system-start index. </p>
+<p>Called by the document factory. Rebuilds derived layout data from the current pages and systems. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">document</td><td>The document whose layout data is resolved. Must not be null. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>If document is null. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

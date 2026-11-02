@@ -1,5 +1,7 @@
 var NAVTREEINDEX36 =
 {
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartObject.html#a2ee1f8421d77970b760b2e3d1f96fe28":[2,0,1,0,59,16,3],
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartObject.html#a3e2179fcccc6292963caff1f15cb74e3":[1,0,1,0,58,16,0],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartObject.html#a3e2179fcccc6292963caff1f15cb74e3":[2,0,1,0,59,16,0],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartObject.html#a428c85408d04cbe2278386be08651a3d":[1,0,1,0,58,16,7],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartObject.html#a428c85408d04cbe2278386be08651a3d":[2,0,1,0,59,16,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX36 =
 "structmusx_1_1factory_1_1DocumentFactory_1_1ConstructionOptions.html":[2,0,1,1,1,0],
 "structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html":[1,0,1,1,1,1],
 "structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html":[2,0,1,1,1,1],
-"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions_1_1EmbeddedGraphicFile.html":[1,0,1,1,1,1,0],
-"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions_1_1EmbeddedGraphicFile.html":[2,0,1,1,1,1,0],
-"structmusx_1_1util_1_1ArpeggioSpanCandidate.html":[2,0,1,3,0]
+"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions_1_1EmbeddedGraphicFile.html":[1,0,1,1,1,1,0]
 };

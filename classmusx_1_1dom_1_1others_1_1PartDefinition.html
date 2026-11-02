@@ -124,6 +124,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> (<
 <tr class="memdesc:adc5b21e3ca829c176bf419756232f65b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the part name if any. <br /></td></tr>
 <tr class="memitem:ae13967b639b0da58a9e9825a3afb6755" id="r_ae13967b639b0da58a9e9825a3afb6755"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae13967b639b0da58a9e9825a3afb6755">isLayoutCalculated</a> () const</td></tr>
 <tr class="memdesc:ae13967b639b0da58a9e9825a3afb6755"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this part has a calculated page layout.  <br /></td></tr>
+<tr class="memitem:af1bbb27902d1e5abaefcfd00d7d3a6bd" id="r_af1bbb27902d1e5abaefcfd00d7d3a6bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffSystem.html">StaffSystem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1bbb27902d1e5abaefcfd00d7d3a6bd">calcSystemFromMeasure</a> (<a class="el" href="namespacemusx_1_1dom.html#afb1a720df5550a18a2f0fe9081afe927">MeasCmper</a> measureId) const</td></tr>
+<tr class="memdesc:af1bbb27902d1e5abaefcfd00d7d3a6bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns this part's system with the greatest positive start measure at or below the requested measure.  <br /></td></tr>
 <tr class="memitem:aef38a46b8dbac91906cd353ea2ef2830" id="r_aef38a46b8dbac91906cd353ea2ef2830"><td class="memItemLeft" align="right" valign="top"><a id="aef38a46b8dbac91906cd353ea2ef2830" name="aef38a46b8dbac91906cd353ea2ef2830"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isScore</b> () const</td></tr>
 <tr class="memdesc:aef38a46b8dbac91906cd353ea2ef2830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if this part corresponds to the score. <br /></td></tr>
@@ -232,6 +234,11 @@ Static Public Attributes</h2></td></tr>
 static constexpr std::string_view&#160;</td><td class="memItemRight" valign="bottom"><b>XmlNodeName</b> = &quot;partDef&quot;</td></tr>
 <tr class="memdesc:a52a14446ade4b657c96b9f2f83da809f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The XML node name for this type. <br /></td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a0a9848bc9efdb8342a5bc20d4f65d994" id="r_a0a9848bc9efdb8342a5bc20d4f65d994"><td class="memItemLeft" align="right" valign="top"><a id="a0a9848bc9efdb8342a5bc20d4f65d994" name="a0a9848bc9efdb8342a5bc20d4f65d994"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>musx::dom::Document</b></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_types_classmusx_1_1dom_1_1EnigmaBase"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classmusx_1_1dom_1_1EnigmaBase')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Types inherited from <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html">musx::dom::EnigmaBase</a></td></tr>
@@ -333,6 +340,46 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classmusx_1_1dom_1_1others_1_1Page.html" title="Represents the attributes of a page in the page layout.">Page</a> number or potential page number (if greater than the part's number of pages). If the assignment is for a leading blank page the part does not have, returns std::nullopt. </dd></dl>
+
+</div>
+</div>
+<a id="af1bbb27902d1e5abaefcfd00d7d3a6bd" name="af1bbb27902d1e5abaefcfd00d7d3a6bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1bbb27902d1e5abaefcfd00d7d3a6bd">&#9670;&#160;</a></span>calcSystemFromMeasure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffSystem.html">StaffSystem</a> &gt; musx::dom::others::PartDefinition::calcSystemFromMeasure </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#afb1a720df5550a18a2f0fe9081afe927">MeasCmper</a></td>          <td class="paramname"><span class="paramname"><em>measureId</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns this part's system with the greatest positive start measure at or below the requested measure. </p>
+<p>Equal starts select the highest system ID. Uses factory-resolved system starts independently of page layout and system end measures. The measure need not exist in the document. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">measureId</td><td>The measure to find. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The system, or nullptr if no qualifying system exists. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classmusx_1_1dom_1_1integrity__error.html" title="Exception for integrity errors. (Used when MUSX_THROW_ON_INTEGRITY_CHECK_FAIL is defined....">integrity_error</a></td><td>If the indexed system is missing and integrity errors are configured to throw. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -1,5 +1,7 @@
 var NAVTREEINDEX37 =
 {
+"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions_1_1EmbeddedGraphicFile.html":[2,0,1,1,1,1,0],
+"structmusx_1_1util_1_1ArpeggioSpanCandidate.html":[2,0,1,3,0],
 "structmusx_1_1util_1_1ArpeggioSpanCandidate.html#a3424eb682133acf0e2578f3c9d4b04cb":[2,0,1,3,0,6],
 "structmusx_1_1util_1_1ArpeggioSpanCandidate.html#a8c3267839223b9ca0c6ec3d03b7f638b":[2,0,1,3,0,2],
 "structmusx_1_1util_1_1ArpeggioSpanCandidate.html#a91e3ef85d88d08591d7172450c1952f2":[2,0,1,3,0,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX37 =
 "structmusx_1_1util_1_1Tie_1_1ContourGeometry.html#a1a40fb159f4b3ff30548228b67453b8c":[2,0,1,3,19,0,4],
 "structmusx_1_1util_1_1Tie_1_1ContourGeometry.html#a2b9ca5953a5b79dc9cbb2536fb99afbf":[2,0,1,3,19,0,6],
 "structmusx_1_1util_1_1Tie_1_1ContourGeometry.html#a582a2ea9087f0a33cc031abaa1529076":[2,0,1,3,19,0,5],
-"structmusx_1_1util_1_1Tie_1_1ContourGeometry.html#a6ea8922e324cd85a811a58a0ea7decb6":[2,0,1,3,19,0,2],
-"structmusx_1_1util_1_1Tie_1_1ContourGeometry.html#ab06a57ee36034fb70d12c4ac227190eb":[2,0,1,3,19,0,0],
-"structmusx_1_1util_1_1Tie_1_1ContourGeometry.html#ae86a669b3d0a7b13e7514972105f4197":[2,0,1,3,19,0,1]
+"structmusx_1_1util_1_1Tie_1_1ContourGeometry.html#a6ea8922e324cd85a811a58a0ea7decb6":[2,0,1,3,19,0,2]
 };
