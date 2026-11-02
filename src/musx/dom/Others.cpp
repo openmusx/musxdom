@@ -1216,133 +1216,6 @@ void MultiStaffInstrumentGroup::calcAllMultiStaffGroupIds(const DocumentPtr& doc
     Staff::calcAllAutoNumberValues(document);
 }
 
-// ****************
-// ***** Page *****
-// ****************
-
-void Page::calcSystemInfo(const DocumentPtr& document)
-{
-    const auto measures = document->getOthers()->getArray<Measure>(SCORE_PARTID);
-    const MeasCmper lastMeasureOfPiece = measures.empty() ? 0 : measures.back()->getCmper();
-    auto linkedParts = document->getOthers()->getArray<PartDefinition>(SCORE_PARTID);
-    for (const auto& part : linkedParts) {
-        auto pages = document->getOthers()->getArray<Page>(part->getCmper());
-        auto systems = document->getOthers()->getArray<StaffSystem>(part->getCmper());
-        // Finale can save an uncalculated or stale layout for any part, though it is much more common
-        // for linked parts, and recalculates it on open. Each instance is verbose; the score's state
-        // is reported once below.
-        bool layoutUncalculated = false;
-        const auto reportUncalculatedLayout = [&](const std::string& message) {
-            util::Logger::log(util::Logger::LogLevel::Verbose, message);
-            layoutUncalculated = true;
-        };
-        for (const auto& system : systems) {
-            StaffSystem* mutableSystem = const_cast<StaffSystem*>(system.get());
-            mutableSystem->pageId = 0; // initialize
-        }
-        for (size_t x = 0; x < pages.size(); x++) {
-            auto page = pages[x];
-            Page* mutablePage = const_cast<Page*>(page.get());
-            mutablePage->lastSystemId = std::nullopt;
-            mutablePage->firstMeasureId = std::nullopt;
-            mutablePage->lastMeasureId = std::nullopt;
-            if (page->isBlank()) {
-                continue;
-            }
-            if (page->firstSystemId <= 0) {
-                reportUncalculatedLayout("Layout for page " + std::to_string(page->getCmper())
-                    + " of part " + std::to_string(part->getCmper()) + " has not been calculated.");
-                continue;
-            }
-
-            std::optional<SystemCmper> lastSystemId;
-            bool foundFollowingNonBlankPage = false;
-            size_t nextIndex = x + 1;
-            while (nextIndex < pages.size()) {
-                const auto& nextPage = pages[nextIndex++];
-                if (!nextPage->isBlank()) {
-                    foundFollowingNonBlankPage = true;
-                    if (nextPage->firstSystemId > 0) {
-                        lastSystemId = SystemCmper(nextPage->firstSystemId - 1);
-                    }
-                    break;
-                }
-            }
-            if (!lastSystemId && !foundFollowingNonBlankPage) {
-                if (!systems.empty()) {
-                    lastSystemId = systems.back()->getCmper();
-                }
-            }
-            if (!lastSystemId || lastSystemId.value() < page->firstSystemId) {
-                reportUncalculatedLayout("The systems on page " + std::to_string(page->getCmper()) + " of part " + std::to_string(part->getCmper())
-                    + " cannot be determined.");
-                continue;
-            }
-
-            std::vector<MusxInstance<StaffSystem>> pageSystems;
-            bool hasInvalidSystem = false;
-            std::optional<SystemCmper> firstSystemBeyondPiece;
-            for (SystemCmper systemId = page->firstSystemId; systemId <= lastSystemId.value(); ++systemId) {
-                auto system = document->getOthers()->get<StaffSystem>(part->getCmper(), systemId);
-                if (!system) {
-                    reportUncalculatedLayout("Page " + std::to_string(page->getCmper()) + " of part " + std::to_string(part->getCmper())
-                        + " has no system instance for system " + std::to_string(systemId) + ".");
-                    hasInvalidSystem = true;
-                    break;
-                }
-                if (system->startMeas == 0 || system->endMeas == 0) {
-                    reportUncalculatedLayout("Layout for system " + std::to_string(systemId) + " of part "
-                        + std::to_string(part->getCmper()) + " has not been calculated.");
-                    hasInvalidSystem = true;
-                    break;
-                }
-                // A system that holds only the first part of a split measure stores that measure as both its start
-                // and its end, since the end is the first measure of the next system.
-                const bool holdsOnlySplitStart = system->endMeas == system->startMeas
-                    && document->getOthers()->get<SplitMeasure>(part->getCmper(), system->startMeas);
-                if (system->endMeas < system->startMeas || (system->endMeas == system->startMeas && !holdsOnlySplitStart)) {
-                    reportUncalculatedLayout("Page " + std::to_string(page->getCmper()) + " of part " + std::to_string(part->getCmper())
-                        + " has an invalid measure range for system " + std::to_string(systemId) + ".");
-                    hasInvalidSystem = true;
-                    break;
-                }
-                // A layout saved before measures were deleted keeps systems for the missing measures. The layout
-                // stops at the first of them, and the rest of the systems belong to no page.
-                if (lastMeasureOfPiece && system->startMeas > lastMeasureOfPiece) {
-                    firstSystemBeyondPiece = systemId;
-                    break;
-                }
-                pageSystems.emplace_back(std::move(system));
-            }
-            if (hasInvalidSystem) {
-                continue;
-            }
-            if (firstSystemBeyondPiece) {
-                util::Logger::log(util::Logger::LogLevel::Verbose, "System " + std::to_string(*firstSystemBeyondPiece)
-                    + " of part " + std::to_string(part->getCmper()) + " starts after the last measure ("
-                    + std::to_string(lastMeasureOfPiece) + "). It and the systems after it are ignored.");
-                if (pageSystems.empty()) {
-                    reportUncalculatedLayout("Page " + std::to_string(page->getCmper()) + " of part "
-                        + std::to_string(part->getCmper()) + " has no systems within the piece.");
-                    continue;
-                }
-                lastSystemId = pageSystems.back()->getCmper();
-            }
-
-            mutablePage->lastSystemId = lastSystemId;
-            mutablePage->firstMeasureId = pageSystems.front()->startMeas;
-            mutablePage->lastMeasureId = pageSystems.back()->getLastMeasure();
-            for (const auto& system : pageSystems) {
-                StaffSystem* mutableSystem = const_cast<StaffSystem*>(system.get());
-                mutableSystem->pageId = PageCmper(page->getCmper());
-            }
-        }
-        if (layoutUncalculated && part->isScore()) {
-            util::Logger::log(util::Logger::LogLevel::Info, "The score's layout has not been fully calculated.");
-        }
-    }
-}
-
 // **************************
 // ***** PageTextAssign *****
 // **************************
@@ -1460,6 +1333,22 @@ bool PartDefinition::isLayoutCalculated() const
     return !pages.empty() && std::all_of(pages.begin(), pages.end(), [](const auto& page) {
         return page->isLayoutCalculated();
     });
+}
+
+MusxInstance<StaffSystem> PartDefinition::calcSystemFromMeasure(MeasCmper measureId) const
+{
+    auto systemIt = std::upper_bound(m_systemStartIndex.begin(), m_systemStartIndex.end(), measureId,
+        [](MeasCmper measureId, const auto& systemStart) { return measureId < systemStart.first; });
+    if (systemIt == m_systemStartIndex.begin()) {
+        return nullptr;
+    }
+    --systemIt;
+    auto result = getDocument()->getOthers()->get<StaffSystem>(getCmper(), systemIt->second);
+    if (!result) {
+        MUSX_INTEGRITY_ERROR("Unable to find indexed system ID " + std::to_string(systemIt->second)
+            + " for part ID " + std::to_string(getCmper()));
+    }
+    return result;
 }
 
 MusxInstance<PartDefinition> PartDefinition::getScore(const DocumentPtr& document)

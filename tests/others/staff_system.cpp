@@ -77,3 +77,113 @@ TEST(StaffSystemTest, PopulateFields)
     EXPECT_EQ(staffSystem->extraStartSystemSpace, 24);
     EXPECT_EQ(staffSystem->extraEndSystemSpace, 36);
 }
+
+constexpr static musxtest::string_view systemStartIndexXml = R"xml(
+<?xml version="1.0" encoding="UTF-8"?>
+<finale>
+  <others>
+    <measSpec cmper="1"/>
+    <measSpec cmper="2"/>
+    <staffSystemSpec cmper="1"><startMeas>2</startMeas></staffSystemSpec>
+    <staffSystemSpec cmper="2"><startMeas>7</startMeas><endMeas>0</endMeas></staffSystemSpec>
+    <staffSystemSpec cmper="3"><startMeas>4</startMeas><endMeas>2</endMeas></staffSystemSpec>
+    <staffSystemSpec cmper="4"><startMeas>7</startMeas><endMeas>9</endMeas></staffSystemSpec>
+    <staffSystemSpec cmper="5"/>
+    <staffSystemSpec cmper="1" part="1" shared="false"><startMeas>1</startMeas></staffSystemSpec>
+    <staffSystemSpec cmper="2" part="1" shared="false"><startMeas>4</startMeas></staffSystemSpec>
+    <partDef cmper="0"/>
+    <partDef cmper="1"/>
+    <partDef cmper="2"/>
+  </others>
+</finale>
+)xml";
+
+TEST(StaffSystemTest, SystemStartIndexWithoutPageLayout)
+{
+    const auto doc = musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(systemStartIndexXml);
+    constexpr MeasCmper kBeforeFirstMeasureId = 1;
+    constexpr MeasCmper kFirstMeasureId = 2;
+    constexpr MeasCmper kBetweenStartsMeasureId = 3;
+    constexpr MeasCmper kMiddleMeasureId = 4;
+    constexpr MeasCmper kLastMeasureId = 7;
+    constexpr MeasCmper kBeyondPieceMeasureId = 9;
+    constexpr SystemCmper kFirstSystemId = 1;
+    constexpr SystemCmper kMiddleSystemId = 3;
+    constexpr SystemCmper kLastSystemId = 4;
+    constexpr Cmper kUnknownPartId = 3;
+    constexpr Cmper kEmptyPartId = 2;
+
+    const auto score = doc->getOthers()->get<others::PartDefinition>(SCORE_PARTID, SCORE_PARTID);
+    ASSERT_TRUE(score);
+    EXPECT_FALSE(score->isLayoutCalculated());
+    EXPECT_EQ(doc->calcSystemFromMeasure(SCORE_PARTID, 0), nullptr);
+    EXPECT_EQ(doc->calcSystemFromMeasure(SCORE_PARTID, kBeforeFirstMeasureId), nullptr);
+    EXPECT_EQ(doc->calcSystemFromMeasure(kUnknownPartId, kFirstMeasureId), nullptr);
+    EXPECT_EQ(doc->calcSystemFromMeasure(kEmptyPartId, kFirstMeasureId), nullptr);
+    EXPECT_EQ(score->calcSystemFromMeasure(0), nullptr);
+    EXPECT_EQ(score->calcSystemFromMeasure(kBeforeFirstMeasureId), nullptr);
+    const auto emptyPart = doc->getOthers()->get<others::PartDefinition>(SCORE_PARTID, kEmptyPartId);
+    ASSERT_TRUE(emptyPart);
+    EXPECT_EQ(emptyPart->calcSystemFromMeasure(kFirstMeasureId), nullptr);
+
+    const std::pair<MeasCmper, SystemCmper> expected[] = {
+        {kFirstMeasureId, kFirstSystemId},
+        {kBetweenStartsMeasureId, kFirstSystemId},
+        {kMiddleMeasureId, kMiddleSystemId},
+        {kLastMeasureId, kLastSystemId},
+        {kBeyondPieceMeasureId, kLastSystemId}
+    };
+    for (const auto& [measureId, systemId] : expected) {
+        const auto system = doc->calcSystemFromMeasure(SCORE_PARTID, measureId);
+        ASSERT_TRUE(system) << "measure " << measureId;
+        EXPECT_EQ(system->getCmper(), systemId) << "measure " << measureId;
+        EXPECT_EQ(score->calcSystemFromMeasure(measureId), system);
+    }
+}
+
+TEST(StaffSystemTest, SystemStartIndexUsesRequestedPartWithSharedMeasures)
+{
+    const auto doc = musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(systemStartIndexXml);
+    constexpr Cmper kPartId = 1;
+    constexpr MeasCmper kMeasureId = 1;
+    constexpr MeasCmper kNextStartMeasureId = 4;
+    constexpr SystemCmper kFirstSystemId = 1;
+    constexpr SystemCmper kNextSystemId = 2;
+    const auto measure = doc->getOthers()->get<others::Measure>(kPartId, kMeasureId);
+    ASSERT_TRUE(measure);
+    EXPECT_EQ(measure->getSourcePartId(), SCORE_PARTID);
+    EXPECT_EQ(measure->getRequestedPartId(), kPartId);
+    EXPECT_EQ(doc->calcSystemFromMeasure(SCORE_PARTID, measure->getCmper()), nullptr);
+    const auto system = doc->calcSystemFromMeasure(measure->getRequestedPartId(), measure->getCmper());
+    ASSERT_TRUE(system);
+    EXPECT_EQ(system->getCmper(), kFirstSystemId);
+    EXPECT_EQ(system->getRequestedPartId(), kPartId);
+    const auto nextSystem = doc->calcSystemFromMeasure(kPartId, kNextStartMeasureId);
+    ASSERT_TRUE(nextSystem);
+    EXPECT_EQ(nextSystem->getCmper(), kNextSystemId);
+    EXPECT_EQ(nextSystem->getRequestedPartId(), kPartId);
+    const auto part = doc->getOthers()->get<others::PartDefinition>(SCORE_PARTID, kPartId);
+    ASSERT_TRUE(part);
+    EXPECT_EQ(part->getRequestedPartId(), SCORE_PARTID);
+    EXPECT_EQ(part->calcSystemFromMeasure(kMeasureId), system);
+    EXPECT_EQ(part->calcSystemFromMeasure(kNextStartMeasureId), nextSystem);
+}
+
+TEST(StaffSystemTest, SystemStartIndexDoesNotInheritScoreSystems)
+{
+    constexpr musxtest::string_view xml = R"xml(
+<?xml version="1.0" encoding="UTF-8"?>
+<finale>
+  <others>
+    <staffSystemSpec cmper="1"><startMeas>1</startMeas></staffSystemSpec>
+    <partDef cmper="0"/>
+    <partDef cmper="1"/>
+  </others>
+</finale>
+)xml";
+    constexpr Cmper kPartId = 1;
+    constexpr MeasCmper kMeasureId = 1;
+    const auto doc = musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(xml);
+    EXPECT_TRUE(doc->calcSystemFromMeasure(SCORE_PARTID, kMeasureId));
+    EXPECT_EQ(doc->calcSystemFromMeasure(kPartId, kMeasureId), nullptr);
+}

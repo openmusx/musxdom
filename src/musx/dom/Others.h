@@ -1937,16 +1937,16 @@ public:
     Evpu margBottom{};          ///< Bottom margin in Evpu.
     Evpu margRight{};           ///< Right margin in Evpu. (Sign reversed in Finale UI.)
 
-    std::optional<SystemCmper> lastSystemId;    ///< Computed by the Resolver function #calcSystemInfo. This value is not in the xml.
-    std::optional<MeasCmper> firstMeasureId;    ///< Computed by the Resolver function #calcSystemInfo. This value is not in the xml.
-    std::optional<MeasCmper> lastMeasureId;     ///< Computed by the Resolver function #calcSystemInfo. This value is not in the xml.
+    std::optional<SystemCmper> lastSystemId;    ///< Computed by the Resolver function #Document::resolvePageLayout. This value is not in the xml.
+    std::optional<MeasCmper> firstMeasureId;    ///< Computed by the Resolver function #Document::resolvePageLayout. This value is not in the xml.
+    std::optional<MeasCmper> lastMeasureId;     ///< Computed by the Resolver function #Document::resolvePageLayout. This value is not in the xml.
 
     /** @brief is this a blank page */
     bool isBlank() const { return firstSystemId == -1; }
 
     /// @brief Returns whether this page has a calculated layout.
     /// @details Blank pages are valid calculated pages. A nonblank page is calculated when its
-    /// system range and corresponding measure range were resolved by #calcSystemInfo.
+    /// system range and corresponding measure range were resolved by #Document::resolvePageLayout.
     bool isLayoutCalculated() const
     {
         return isBlank() || (firstSystemId > 0 && lastSystemId && firstMeasureId && lastMeasureId);
@@ -1955,9 +1955,6 @@ public:
     /// @brief Calculate the page scaling.
     util::Fraction calcPageScaling() const
     { return util::Fraction::fromPercent(percent); }
-
-    /// @brief Resolver function used by factory to compute system and measure information for all pages.
-    static void calcSystemInfo(const DocumentPtr& document);
 
     constexpr static std::string_view XmlNodeName = "pageSpec"; ///< The XML node name for this type.
     static const xml::XmlElementArray<Page>& xmlMappingArray(); ///< Required for musx::factory::FieldPopulator.
@@ -2091,6 +2088,8 @@ public:
     static const xml::XmlElementArray<PageTextAssign>& xmlMappingArray(); ///< Required for musx::factory::FieldPopulator.
 };
 
+class StaffSystem;
+
 /**
  * @class PartDefinition
  * @brief Represents the attributes of a Finale "partDef".
@@ -2132,6 +2131,15 @@ public:
     /// @details Returns false if the part has no pages or any page has unresolved layout information.
     bool isLayoutCalculated() const;
 
+    /// @brief Returns this part's system with the greatest positive start measure at or below the requested measure.
+    /// @details Equal starts select the highest system ID. Uses factory-resolved system starts independently
+    /// of page layout and system end measures. The measure need not exist in the document.
+    /// @param measureId The measure to find.
+    /// @return The system, or nullptr if no qualifying system exists.
+    /// @throws integrity_error If the indexed system is missing and integrity errors are configured to throw.
+    [[nodiscard]]
+    MusxInstance<StaffSystem> calcSystemFromMeasure(MeasCmper measureId) const;
+
     /** @brief Return true if this part corresponds to the score */
     bool isScore() const { return getCmper() == SCORE_PARTID; }
 
@@ -2159,6 +2167,11 @@ public:
 
     constexpr static std::string_view XmlNodeName = "partDef"; ///< The XML node name for this type.
     static const xml::XmlElementArray<PartDefinition>& xmlMappingArray(); ///< Required for musx::factory::FieldPopulator.
+
+private:
+    std::vector<std::pair<MeasCmper, SystemCmper>> m_systemStartIndex; ///< System starts sorted by start measure and system ID, computed by Document::resolvePageLayout.
+
+    friend class musx::dom::Document;
 };
 
 /**
@@ -2966,7 +2979,7 @@ public:
     {
         this->OthersBase::integrityCheck(ptrToThis);
         if (startMeas == 0 || endMeas == 0) {
-            // Page::calcSystemInfo reports an uncalculated score layout once at Info.
+            // Document::resolvePageLayout reports an uncalculated score layout once at Info.
             util::Logger::log(util::Logger::LogLevel::Verbose, "Layout for system " + std::to_string(getCmper())
                 + " of part " + std::to_string(getSourcePartId()) + " has not been calculated.");
         }
