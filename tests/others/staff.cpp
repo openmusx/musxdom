@@ -1033,7 +1033,9 @@ TEST(StaffTest, ConcertWithOctavePreference)
                     EXPECT_EQ(actual.noteName, strictConcert.noteName);
                     EXPECT_EQ(actual.octave, strictConcert.octave);
                     EXPECT_EQ(actual.alteration, strictConcert.alteration);
-                    if (retainOctaves) EXPECT_NE(actual.staffPosition, strictConcert.staffPosition);
+                    if (retainOctaves) {
+                        EXPECT_NE(actual.staffPosition, strictConcert.staffPosition);
+                    }
                 }
                 StaffPositionPitchOptions pitchOptions;
                 pitchOptions.pitchMode = PitchMode::ConcertWithOctavePreference;
