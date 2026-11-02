@@ -504,6 +504,11 @@ public:
     /// Downward intervals reverse the sign of the chromatic alteration.
     std::pair<int, int> calcTranspositionInterval() const;
 
+    /// @brief Returns whether pitch calculations use written pitch for this staff and mode.
+    /// @param pitchMode Selects the requested view, strict written or concert pitch, or concert pitch with the document's octave preference.
+    /// @note Use the current StaffComposite to include staff-style transposition changes at a musical location.
+    bool calcUsesWrittenPitch(PitchMode pitchMode = PitchMode::CurrentView) const;
+
     /// @brief Gets a list of all parts that contain this staff
     /// @param includeScore If true, include the score in the list. (Defaults to true)
     MusxInstanceList<PartDefinition> getContainingParts(bool includeScore = true) const;

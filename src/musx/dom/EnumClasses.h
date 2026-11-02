@@ -162,7 +162,8 @@ enum class PitchMode
 {
     CurrentView, ///< Use the pitch representation displayed in the requested Finale score or part.
     Written,     ///< Use written pitch regardless of the requested Finale view.
-    Concert      ///< Use concert pitch regardless of the requested Finale view.
+    Concert,     ///< Use concert pitch regardless of the requested Finale view.
+    ConcertWithOctavePreference ///< Use concert pitch, retaining written octave transpositions when the document preference enables it.
 };
 
 /// @enum ShapeDirection

@@ -972,6 +972,84 @@ TEST(StaffTest, Transposition)
     EXPECT_EQ(unretainedOctaveNote.calcNoteProperties(), unretainedOctaveNote.calcNoteProperties(unretainedConcertOptions));
 }
 
+TEST(StaffTest, ConcertWithOctavePreference)
+{
+    std::vector<char> input;
+    musxtest::readFile(musxtest::getInputPath() / "transpose.enigmaxml", input);
+    std::string source(input.begin(), input.end());
+    const auto replace = [&](const std::string& from, const std::string& to, size_t start = 0) {
+        const auto position = source.find(from, start);
+        EXPECT_NE(position, std::string::npos);
+        if (position != std::string::npos) source.replace(position, from.size(), to);
+    };
+    constexpr StaffCmper staffId = 1;
+    constexpr MeasCmper untransposedMeasure = 1;
+    constexpr MeasCmper chromaticMeasure = 2;
+    constexpr MeasCmper unisonMeasure = 3;
+    constexpr MeasCmper keySignatureMeasure = 4;
+    constexpr MeasCmper octaveMeasure = 5;
+    replace("<interval>8</interval>", "<interval>0</interval>");
+    replace("<adjust>2</adjust>", "<adjust>0</adjust>", source.find("<interval>0</interval>"));
+    replace("<interval>12</interval>", "<interval>7</interval>");
+    replace("<adjust>3</adjust>", "<adjust>0</adjust>", source.find("<interval>7</interval>"));
+    for (const bool showTransposed : {false, true}) {
+        for (const bool retainOctaves : {false, true}) {
+            SCOPED_TRACE(::testing::Message() << "showTransposed=" << showTransposed << ", retainOctaves=" << retainOctaves);
+            auto xml = source;
+            for (const auto& [element, keep] : std::array<std::pair<std::string, bool>, 2>{
+                    std::pair<std::string, bool>{"<showTransposed/>", showTransposed},
+                    std::pair<std::string, bool>{"<retainOctaveTransInConcertPitch/>", retainOctaves}}) {
+                const auto position = xml.find(element);
+                ASSERT_NE(position, std::string::npos);
+                if (!keep) xml.erase(position, element.size());
+            }
+            const auto document = musx::factory::DocumentFactory::create<musx::xml::pugi::Document>(xml);
+            ASSERT_TRUE(document);
+            for (const auto measureId : {untransposedMeasure, chromaticMeasure, unisonMeasure, keySignatureMeasure, octaveMeasure}) {
+                SCOPED_TRACE(measureId);
+                const auto frame = details::GFrameHoldContext(document, SCORE_PARTID, staffId, measureId).createEntryFrame(0);
+                ASSERT_TRUE(frame);
+                const EntryInfoPtr entry(frame, 0);
+                const NoteInfoPtr note(entry, 0);
+                const auto staff = entry.createCurrentStaff();
+                ASSERT_TRUE(staff);
+                const bool retained = retainOctaves
+                    && (measureId == untransposedMeasure || measureId == unisonMeasure || measureId == octaveMeasure);
+                if (measureId == unisonMeasure) {
+                    EXPECT_EQ(staff->calcTranspositionInterval(), std::make_pair(0, 0));
+                    EXPECT_NE(staff->calcClefIndex(true), staff->calcClefIndex(false));
+                }
+                EXPECT_EQ(staff->calcUsesWrittenPitch(PitchMode::ConcertWithOctavePreference), retained);
+                EXPECT_EQ(staff->calcUsesWrittenPitch(), showTransposed || retained);
+                EXPECT_TRUE(staff->calcUsesWrittenPitch(PitchMode::Written));
+                EXPECT_FALSE(staff->calcUsesWrittenPitch(PitchMode::Concert));
+                NotePropertiesOptions options;
+                options.pitchMode = PitchMode::ConcertWithOctavePreference;
+                const auto actual = note.calcNoteProperties(options);
+                options.pitchMode = retained ? PitchMode::Written : PitchMode::Concert;
+                EXPECT_EQ(actual, note.calcNoteProperties(options));
+                if (measureId == unisonMeasure) {
+                    const auto strictConcert = note.calcNoteProperties(NotePropertiesOptions{PitchMode::Concert});
+                    EXPECT_EQ(actual.noteName, strictConcert.noteName);
+                    EXPECT_EQ(actual.octave, strictConcert.octave);
+                    EXPECT_EQ(actual.alteration, strictConcert.alteration);
+                    if (retainOctaves) {
+                        EXPECT_NE(actual.staffPosition, strictConcert.staffPosition);
+                    }
+                }
+                StaffPositionPitchOptions pitchOptions;
+                pitchOptions.pitchMode = PitchMode::ConcertWithOctavePreference;
+                const auto actualPitch = entry.calcPitchFromStaffPosition(actual.staffPosition, pitchOptions);
+                pitchOptions.pitchMode = options.pitchMode;
+                const auto expectedPitch = entry.calcPitchFromStaffPosition(actual.staffPosition, pitchOptions);
+                EXPECT_EQ(actualPitch.noteName, expectedPitch.noteName);
+                EXPECT_EQ(actualPitch.octave, expectedPitch.octave);
+                EXPECT_EQ(actualPitch.alteration, expectedPitch.alteration);
+            }
+        }
+    }
+}
+
 TEST(StaffTest, Transposition31Edo)
 {
     std::vector<char> transposeXml;

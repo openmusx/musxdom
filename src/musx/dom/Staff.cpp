@@ -834,6 +834,32 @@ std::pair<int, int> Staff::calcTranspositionInterval() const
     return std::make_pair(0, 0);
 }
 
+bool Staff::calcUsesWrittenPitch(PitchMode pitchMode) const
+{
+    switch (pitchMode) {
+    case PitchMode::Written:
+        return true;
+    case PitchMode::Concert:
+        return false;
+    case PitchMode::CurrentView:
+        if (const auto partGlobals = getDocument()->getOthers()->get<PartGlobals>(getRequestedPartId(), MUSX_GLOBALS_CMPER)) {
+            if (partGlobals->showTransposed) {
+                return true;
+            }
+        }
+        break;
+    case PitchMode::ConcertWithOctavePreference:
+        break;
+    }
+    const auto miscOptions = getDocument()->getOptions()->get<options::MiscOptions>();
+    if (!miscOptions || !miscOptions->keepWrittenOctaveInConcertPitch) {
+        return false;
+    }
+    const auto [displacement, alteration] = calcTranspositionInterval();
+    // Finale includes unison in octave retention, activating a forced written clef even at a zero interval.
+    return music_theory::calcTranspositionIsOctave(displacement, alteration);
+}
+
 MusxInstanceList<PartDefinition> Staff::getContainingParts(bool includeScore) const
 {
     MusxInstanceList<PartDefinition> result(getDocument(), SCORE_PARTID);
