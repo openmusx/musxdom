@@ -3238,6 +3238,14 @@ NoteInfoPtr::NoteheadInfo NoteInfoPtr::calcNoteheadInfo() const
     const auto document = entry->getDocument();
     const auto currStaff = entryInfo.createCurrentStaff();
 
+    // The stored character is reported as the character its font draws.
+    const auto withDrawnCharacter = [](NoteheadInfo result) {
+        if (result.font) {
+            result.character = result.font->calcDrawnCharacter(result.character);
+        }
+        return result;
+    };
+
     const auto defaultFont = [&]() -> MusxInstance<FontInfo> {
         if (currStaff && currStaff->useNoteFont && currStaff->noteFont) {
             return currStaff->noteFont;
@@ -3259,7 +3267,7 @@ NoteInfoPtr::NoteheadInfo NoteInfoPtr::calcNoteheadInfo() const
                 result.percent = noteAlts->percent ? noteAlts->percent : 100;
                 result.horzOffset = noteAlts->nxdisp;
                 result.vertOffset = noteAlts->allowVertPos ? noteAlts->nydisp : 0;
-                return result;
+                return withDrawnCharacter(std::move(result));
             }
         }
     }
@@ -3273,7 +3281,7 @@ NoteInfoPtr::NoteheadInfo NoteInfoPtr::calcNoteheadInfo() const
         }
         result.character = selectByDuration(entry->duration,
             percNoteInfo->closedNotehead, percNoteInfo->halfNotehead, percNoteInfo->wholeNotehead, percNoteInfo->dwholeNotehead);
-        return result;
+        return withDrawnCharacter(std::move(result));
     }
 
     // Next: the staff's shape-note convention, if any is in effect.
@@ -3288,7 +3296,7 @@ NoteInfoPtr::NoteheadInfo NoteInfoPtr::calcNoteheadInfo() const
                 result.source = NoteheadInfo::Source::ShapeNotes;
                 result.font = defaultFont;
                 result.character = selectByDuration(entry->duration, shape->quarter, shape->half, shape->whole, shape->doubleWhole);
-                return result;
+                return withDrawnCharacter(std::move(result));
             }
         }
     }
@@ -3300,7 +3308,7 @@ NoteInfoPtr::NoteheadInfo NoteInfoPtr::calcNoteheadInfo() const
         result.character = selectByDuration(entry->duration,
             symbolOptions->noteheadQuarter, symbolOptions->noteheadHalf, symbolOptions->noteheadWhole, symbolOptions->noteheadDblWhole);
     }
-    return result;
+    return withDrawnCharacter(std::move(result));
 }
 
 std::unique_ptr<music_theory::Transposer> NoteInfoPtr::createTransposer() const

@@ -359,6 +359,21 @@ bool FontInfo::calcIsSymbolFont() const
     throw std::invalid_argument("font definition not found for font id " + std::to_string(fontId));
 }
 
+char32_t FontInfo::calcDrawnCharacter(char32_t character) const
+{
+    // Windows exposes the characters 0x20 through 0xFF of a symbol font at U+F020 through U+F0FF.
+    constexpr char32_t WINDOWS_SYMBOL_OFFSET = 0xF000;
+    constexpr char32_t WINDOWS_SYMBOL_FIRST = 0xF020;
+    constexpr char32_t WINDOWS_SYMBOL_LAST = 0xF0FF;
+    if (character < WINDOWS_SYMBOL_FIRST || character > WINDOWS_SYMBOL_LAST) {
+        return character;
+    }
+    if (calcIsSMuFL() || !calcIsSymbolFont()) {
+        return character;
+    }
+    return character - WINDOWS_SYMBOL_OFFSET;
+}
+
 std::vector<std::filesystem::path> FontInfo::calcSMuFLPaths()
 {
     if (const auto& testPath = util::TestConfiguration::getTestDataPath()) {
