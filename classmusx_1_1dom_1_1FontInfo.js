@@ -1,6 +1,7 @@
 var classmusx_1_1dom_1_1FontInfo =
 [
     [ "FontInfo", "classmusx_1_1dom_1_1FontInfo.html#a0b5a0f5843f363230f090f76325495ae", null ],
+    [ "calcDrawnCharacter", "classmusx_1_1dom_1_1FontInfo.html#a48ca4184261ec9307f28851a68cb6ab9", null ],
     [ "calcIsDefaultMusic", "classmusx_1_1dom_1_1FontInfo.html#adcb9621f9e84005074ce09382b7ee865", null ],
     [ "calcIsSameTypeface", "classmusx_1_1dom_1_1FontInfo.html#aae2a2b12926209beedbc813f7cec7fb0", null ],
     [ "calcIsSMuFL", "classmusx_1_1dom_1_1FontInfo.html#aa2673e6e95e16b3d5cf524dfa2ccc979", null ],

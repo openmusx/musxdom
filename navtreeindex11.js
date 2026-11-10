@@ -1,5 +1,7 @@
 var NAVTREEINDEX11 =
 {
+"classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aacb5c10c0b488ed4f3826ba628d18ca6a":[1,0,1,0,5,8,0,28],
+"classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aacb5c10c0b488ed4f3826ba628d18ca6a":[2,0,1,0,4,8,0,28],
 "classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aad6873827e9811f30be8dafd6617d6083":[1,0,1,0,5,8,0,33],
 "classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aad6873827e9811f30be8dafd6617d6083":[2,0,1,0,4,8,0,33],
 "classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aadf35c7ce0174982f2fe5a2a29e6177cc":[1,0,1,0,5,8,0,34],
@@ -247,7 +249,5 @@ var NAVTREEINDEX11 =
 "classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a6ab90e0c9e2e5b716b3270b7d67ad8d8":[1,0,1,0,5,15,3],
 "classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a6ab90e0c9e2e5b716b3270b7d67ad8d8":[2,0,1,0,4,15,3],
 "classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a6deb8bb09ee671ec405d190834f29d9e":[1,0,1,0,5,15,8],
-"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a6deb8bb09ee671ec405d190834f29d9e":[2,0,1,0,4,15,8],
-"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a75c8cd874ecb74c3e69505a28b23b776":[1,0,1,0,5,15,28],
-"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a75c8cd874ecb74c3e69505a28b23b776":[2,0,1,0,4,15,28]
+"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a6deb8bb09ee671ec405d190834f29d9e":[2,0,1,0,4,15,8]
 };

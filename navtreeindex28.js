@@ -1,5 +1,7 @@
 var NAVTREEINDEX28 =
 {
+"classmusx_1_1util_1_1Fraction.html#abba0e24603b829777d812314d1a9f112":[2,0,1,3,12,19],
+"classmusx_1_1util_1_1Fraction.html#acb703afdb9178045f99fa6b5496d20cb":[2,0,1,3,12,9],
 "classmusx_1_1util_1_1Fraction.html#acfade47536866a5100ec69486c7fcd17":[2,0,1,3,12,12],
 "classmusx_1_1util_1_1Fraction.html#ada796810cfe48b0fe6be5891bb1ed9bd":[2,0,1,3,12,11],
 "classmusx_1_1util_1_1Fraction.html#adae152da7f042ba42251b99979f74310":[2,0,1,3,12,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX28 =
 "classmusx_1_1xml_1_1pugi_1_1Document.html#a995291bf5741a0bf1b87a88cc60b1f84":[1,0,1,2,0,2,1],
 "classmusx_1_1xml_1_1pugi_1_1Document.html#a995291bf5741a0bf1b87a88cc60b1f84":[2,0,1,4,0,2,1],
 "classmusx_1_1xml_1_1pugi_1_1Document.html#acf01d7fd5e760e2f868c15499b761fa5":[1,0,1,2,0,2,0],
-"classmusx_1_1xml_1_1pugi_1_1Document.html#acf01d7fd5e760e2f868c15499b761fa5":[2,0,1,4,0,2,0],
-"classmusx_1_1xml_1_1pugi_1_1Element.html":[1,0,1,2,0,1],
-"classmusx_1_1xml_1_1pugi_1_1Element.html":[2,0,1,4,0,1]
+"classmusx_1_1xml_1_1pugi_1_1Document.html#acf01d7fd5e760e2f868c15499b761fa5":[2,0,1,4,0,2,0]
 };

@@ -138,6 +138,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsDefaultMusic</b
 <tr class="memitem:a276d28190fb869e1ef6dba4aa6d926c7" id="r_a276d28190fb869e1ef6dba4aa6d926c7"><td class="memItemLeft" align="right" valign="top"><a id="a276d28190fb869e1ef6dba4aa6d926c7" name="a276d28190fb869e1ef6dba4aa6d926c7"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsSymbolFont</b> () const</td></tr>
 <tr class="memdesc:a276d28190fb869e1ef6dba4aa6d926c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates if this is a symbol font. (See #others::FontDefinition::calcIsSymbolFont.). <br /></td></tr>
+<tr class="memitem:a48ca4184261ec9307f28851a68cb6ab9" id="r_a48ca4184261ec9307f28851a68cb6ab9"><td class="memItemLeft" align="right" valign="top">char32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48ca4184261ec9307f28851a68cb6ab9">calcDrawnCharacter</a> (char32_t character) const</td></tr>
+<tr class="memdesc:a48ca4184261ec9307f28851a68cb6ab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the character that <code class="param">character</code> draws in this font.  <br /></td></tr>
 <tr class="memitem:aeb50e62abf2e6c41d9717ab837299b46" id="r_aeb50e62abf2e6c41d9717ab837299b46"><td class="memItemLeft" align="right" valign="top"><a id="aeb50e62abf2e6c41d9717ab837299b46" name="aeb50e62abf2e6c41d9717ab837299b46"></a>
 std::optional&lt; std::filesystem::path &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>calcSMuFLMetaDataPath</b> () const</td></tr>
 <tr class="memdesc:aeb50e62abf2e6c41d9717ab837299b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the filepath of the SMuFL font's metadata json file, if any. <br /></td></tr>
@@ -317,6 +319,37 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a48ca4184261ec9307f28851a68cb6ab9" name="a48ca4184261ec9307f28851a68cb6ab9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48ca4184261ec9307f28851a68cb6ab9">&#9670;&#160;</a></span>calcDrawnCharacter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char32_t musx::dom::FontInfo::calcDrawnCharacter </td>
+          <td>(</td>
+          <td class="paramtype">char32_t</td>          <td class="paramname"><span class="paramname"><em>character</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the character that <code class="param">character</code> draws in this font. </p>
+<p>Finale can store a character of a non-SMuFL symbol font in Windows form, as the font's character plus 0xF000 (U+F020 through U+F0FF). This returns the font's own character for such a value, and returns <code class="param">character</code> unchanged otherwise, including for every character of a SMuFL font. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">character</td><td>A character as stored in the document. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if the font has no font definition in the document. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="aae2a2b12926209beedbc813f7cec7fb0" name="aae2a2b12926209beedbc813f7cec7fb0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aae2a2b12926209beedbc813f7cec7fb0">&#9670;&#160;</a></span>calcIsSameTypeface()</h2>
 

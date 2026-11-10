@@ -1,5 +1,7 @@
 var NAVTREEINDEX36 =
 {
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartObject.html#a04c140860c7feafb8d0cc8b8b050a3f6":[2,0,1,0,59,16,1],
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartObject.html#a2ee1f8421d77970b760b2e3d1f96fe28":[1,0,1,0,58,16,3],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartObject.html#a2ee1f8421d77970b760b2e3d1f96fe28":[2,0,1,0,59,16,3],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartObject.html#a3e2179fcccc6292963caff1f15cb74e3":[1,0,1,0,58,16,0],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartObject.html#a3e2179fcccc6292963caff1f15cb74e3":[2,0,1,0,59,16,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX36 =
 "structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#af78e0f2fa39e30ec81e60aad67b5197e":[2,0,1,0,5,0,1],
 "structmusx_1_1factory_1_1DocumentFactory_1_1ConstructionOptions.html":[1,0,1,1,1,0],
 "structmusx_1_1factory_1_1DocumentFactory_1_1ConstructionOptions.html":[2,0,1,1,1,0],
-"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html":[1,0,1,1,1,1],
-"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html":[2,0,1,1,1,1],
-"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions_1_1EmbeddedGraphicFile.html":[1,0,1,1,1,1,0]
+"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html":[1,0,1,1,1,1]
 };
