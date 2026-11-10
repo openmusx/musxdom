@@ -593,3 +593,66 @@ TEST(FontTest, GetFontInfoOrNullHandlesADocumentWithNoFontOptions)
     EXPECT_FALSE(doc->getOptions()->get<options::FontOptions>());
     EXPECT_FALSE(options::FontOptions::getFontInfoOrNull(doc, options::FontOptions::FontType::Music));
 }
+
+constexpr static musxtest::string_view drawnCharacterFontProperties = R"xml(
+<?xml version="1.0" encoding="UTF-8"?>
+<finale>
+  <others>
+    <fontName cmper="1">
+      <charsetBank>Mac</charsetBank>
+      <charsetVal>4095</charsetVal>
+      <pitch>0</pitch>
+      <family>0</family>
+      <name>Maestro</name>
+    </fontName>
+    <fontName cmper="2">
+      <charsetBank>Win</charsetBank>
+      <charsetVal>2</charsetVal>
+      <pitch>0</pitch>
+      <family>0</family>
+      <name>Jazz</name>
+    </fontName>
+    <fontName cmper="3">
+      <charsetBank>Mac</charsetBank>
+      <charsetVal>4095</charsetVal>
+      <pitch>0</pitch>
+      <family>0</family>
+      <name>Finale Maestro</name>
+    </fontName>
+    <fontName cmper="4">
+      <charsetBank>Mac</charsetBank>
+      <charsetVal>0</charsetVal>
+      <pitch>0</pitch>
+      <family>0</family>
+      <name>Times</name>
+    </fontName>
+  </others>
+</finale>
+)xml";
+
+TEST(FontTest, DrawnCharacterRemovesWindowsSymbolOffset)
+{
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(drawnCharacterFontProperties);
+    const auto fontWithId = [&](Cmper fontId) {
+        auto fontInfo = std::make_shared<FontInfo>(doc);
+        fontInfo->fontId = fontId;
+        return fontInfo;
+    };
+    constexpr char32_t windowsWhole = 0xF077;
+    constexpr char32_t windowsFirst = 0xF020;
+    constexpr char32_t windowsLast = 0xF0FF;
+
+    // A non-SMuFL symbol font draws the character without the offset, whichever platform recorded the font.
+    const auto macSymbolFont = fontWithId(1);
+    EXPECT_EQ(macSymbolFont->calcDrawnCharacter(windowsWhole), U'w');
+    EXPECT_EQ(macSymbolFont->calcDrawnCharacter(windowsFirst), U' ');
+    EXPECT_EQ(macSymbolFont->calcDrawnCharacter(windowsLast), char32_t(0xFF));
+    EXPECT_EQ(macSymbolFont->calcDrawnCharacter(U'w'), U'w');
+    EXPECT_EQ(macSymbolFont->calcDrawnCharacter(windowsFirst - 1), windowsFirst - 1);
+    EXPECT_EQ(macSymbolFont->calcDrawnCharacter(windowsLast + 1), windowsLast + 1);
+    EXPECT_EQ(fontWithId(2)->calcDrawnCharacter(windowsWhole), U'w');
+
+    // A SMuFL font and a text font keep every character as stored.
+    EXPECT_EQ(fontWithId(3)->calcDrawnCharacter(windowsWhole), windowsWhole);
+    EXPECT_EQ(fontWithId(4)->calcDrawnCharacter(windowsWhole), windowsWhole);
+}

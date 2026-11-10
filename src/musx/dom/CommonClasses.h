@@ -218,6 +218,16 @@ public:
     /// @brief Calculates if this is a symbol font. (See #others::FontDefinition::calcIsSymbolFont.)
     bool calcIsSymbolFont() const;
 
+    /**
+     * @brief Returns the character that @p character draws in this font.
+     * @details Finale can store a character of a non-SMuFL symbol font in Windows form, as the font's
+     * character plus 0xF000 (U+F020 through U+F0FF). This returns the font's own character for such a value,
+     * and returns @p character unchanged otherwise, including for every character of a SMuFL font.
+     * @param character A character as stored in the document.
+     * @throws std::invalid_argument if the font has no font definition in the document.
+     */
+    char32_t calcDrawnCharacter(char32_t character) const;
+
     /// @brief Returns the filepath of the SMuFL font's metadata json file, if any.
     /// @param fontName The font name to find.
     static std::optional<std::filesystem::path> calcSMuFLMetaDataPath(const std::string& fontName);

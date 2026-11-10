@@ -1750,7 +1750,7 @@ public:
 
         Source source{};               ///< The setting that supplied #character.
         MusxInstance<FontInfo> font;   ///< The font that #character is drawn from.
-        char32_t character{};          ///< The notehead character, interpreted in #font.
+        char32_t character{};          ///< The notehead character that #font draws. (See #FontInfo::calcDrawnCharacter.)
         int percent{100};              ///< Size percentage for the notehead. (100 means 100%.)
         Evpu horzOffset{};              ///< Horizontal notehead offset from the default position.
         Evpu vertOffset{};              ///< Vertical notehead offset from the default position. Zero unless the source of
