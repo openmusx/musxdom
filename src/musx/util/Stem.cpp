@@ -249,8 +249,8 @@ Stem::DirectionInfo Stem::calcDefaultDirection(const dom::EntryInfoPtr& entry, c
             below += y < positions.reversal;
         }
         if (!rest || beamOptions->oldFinaleRestBeams || entry.calcUnbeamed()) {
-            high = high ? std::max(*high, upper) : upper;
-            low = low ? std::min(*low, lower) : lower;
+            high = high ? (std::max)(*high, upper) : upper;
+            low = low ? (std::min)(*low, lower) : lower;
         }
     }
     if (!high || !low || !reversal) { result.resolution = Resolution::NoEligiblePositions; return result; }
