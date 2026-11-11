@@ -50,6 +50,7 @@ add_executable(musxdomtests
     entries/beam_detection.cpp
     entries/cross_staffs.cpp
     entries/entries.cpp
+    entries/layer_settings.cpp
     entries/keysigs.cpp
     entries/ties.cpp
     entries/tie_contours.cpp
