@@ -51,6 +51,7 @@ add_executable(musxdomtests
     entries/cross_staffs.cpp
     entries/entries.cpp
     entries/layer_settings.cpp
+    entries/slurs.cpp
     entries/keysigs.cpp
     entries/ties.cpp
     entries/tie_contours.cpp

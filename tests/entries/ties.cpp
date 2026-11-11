@@ -446,7 +446,8 @@ TEST(TieDetection, SlursAsLvTies)
         ASSERT_EQ(entryInfo->getEntry()->notes.size(), 1);
         CurveContourDirection tieDirection = CurveContourDirection::Up;
         EXPECT_TRUE(calcHasPseudoLvTie(NoteInfoPtr(entryInfo, 0), &tieDirection));
-        EXPECT_EQ(tieDirection, CurveContourDirection::Unspecified);
+        // The automatic slur follows the uniform upstem span with a downward contour.
+        EXPECT_EQ(tieDirection, CurveContourDirection::Down);
     }
     {
         auto gfhold = details::GFrameHoldContext(doc, SCORE_PARTID, 1, 3);

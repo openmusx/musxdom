@@ -3381,7 +3381,7 @@ std::optional<NoteInfoPtr::ArpeggiatedTieInfo> NoteInfoPtr::calcArpeggiatedTieIn
         ArpeggiatedTieInfo info;
         info.targetEntry = target.getEntryInfo();
         info.targetNoteIndex = target.getNoteIndex();
-        info.direction = shape->calcContourDirection();
+        info.direction = util::Slur::calcEffectiveDirection(*shape).direction;
         info.smartShapeId = shape->getCmper();
         result.emplace(std::move(info));
         return false;
@@ -3429,7 +3429,7 @@ NoteInfoPtr::PseudoTieInfo NoteInfoPtr::calcPseudoTieInfoInternal(utils::PseudoT
     // check smart slurs
     entryInfoPtr.iterateStartingSmartShapes([&](const MusxInstance<others::SmartShape>& shape) {
         if (shape->calcIsPseudoTie(mode, entryInfoPtr)) {
-            const CurveContourDirection nextContour = shape->calcContourDirection();
+            const CurveContourDirection nextContour = util::Slur::calcEffectiveDirection(*shape).direction;
             tieDirections.push_back(nextContour);
 
             TieStandInSource source;
