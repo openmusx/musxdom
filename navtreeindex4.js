@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"classmusx_1_1dom_1_1NoteInfoPtr.html#a0160d32691946e7c62db97e76f57fea3":[1,0,1,0,38,10],
+"classmusx_1_1dom_1_1NoteInfoPtr.html#a0160d32691946e7c62db97e76f57fea3":[2,0,1,0,39,10],
 "classmusx_1_1dom_1_1NoteInfoPtr.html#a160ca8678250695a224f1665b9c7a1c0":[1,0,1,0,38,33],
 "classmusx_1_1dom_1_1NoteInfoPtr.html#a160ca8678250695a224f1665b9c7a1c0":[2,0,1,0,39,33],
 "classmusx_1_1dom_1_1NoteInfoPtr.html#a16f03e5030d5d4995c87d9899341ce48":[1,0,1,0,38,21],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "classmusx_1_1dom_1_1details_1_1AccidentalAlterations.html#aebce0fec74a0c36e236291f5bc9b065c":[1,0,1,0,0,0,7],
 "classmusx_1_1dom_1_1details_1_1AccidentalAlterations.html#aebce0fec74a0c36e236291f5bc9b065c":[2,0,1,0,0,0,7],
 "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html":[1,0,1,0,0,1],
-"classmusx_1_1dom_1_1details_1_1ArticulationAssign.html":[2,0,1,0,0,1],
-"classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a045264b0f6ff881411fddbb01e546fa6":[1,0,1,0,0,1,1],
-"classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a045264b0f6ff881411fddbb01e546fa6":[2,0,1,0,0,1,1]
+"classmusx_1_1dom_1_1details_1_1ArticulationAssign.html":[2,0,1,0,0,1]
 };

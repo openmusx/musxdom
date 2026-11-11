@@ -23,12 +23,13 @@ var searchData=
   ['entrydetailsbase_20',['EntryDetailsBase',['../classmusx_1_1dom_1_1EntryDetailsBase.html',1,'musx::dom']]],
   ['entryfactory_21',['EntryFactory',['../classmusx_1_1factory_1_1EntryFactory.html',1,'musx::factory']]],
   ['entryframe_22',['EntryFrame',['../classmusx_1_1dom_1_1EntryFrame.html',1,'musx::dom']]],
-  ['entryinfo_23',['EntryInfo',['../classmusx_1_1dom_1_1EntryInfo.html',1,'musx::dom']]],
-  ['entryinfoptr_24',['EntryInfoPtr',['../classmusx_1_1dom_1_1EntryInfoPtr.html',1,'musx::dom']]],
-  ['entrylocation_25',['EntryLocation',['../structmusx_1_1dom_1_1Entry_1_1EntryLocation.html',1,'musx::dom::Entry']]],
-  ['entrypartfielddetail_26',['EntryPartFieldDetail',['../classmusx_1_1dom_1_1details_1_1EntryPartFieldDetail.html',1,'musx::dom::details']]],
-  ['entrypool_27',['EntryPool',['../classmusx_1_1dom_1_1EntryPool.html',1,'musx::dom']]],
-  ['entrysize_28',['EntrySize',['../classmusx_1_1dom_1_1details_1_1EntrySize.html',1,'musx::dom::details']]],
-  ['expressiontext_29',['ExpressionText',['../classmusx_1_1dom_1_1texts_1_1ExpressionText.html',1,'musx::dom::texts']]],
-  ['externalgraphic_30',['ExternalGraphic',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1ExternalGraphic.html',1,'musx::dom::ShapeDefInstruction::ExternalGraphic'],['../structmusx_1_1util_1_1ShapeDefInstruction_1_1ExternalGraphic.html',1,'musx::util::ShapeDefInstruction::ExternalGraphic']]]
+  ['entrygeometry_23',['EntryGeometry',['../classmusx_1_1util_1_1EntryGeometry.html',1,'musx::util']]],
+  ['entryinfo_24',['EntryInfo',['../classmusx_1_1dom_1_1EntryInfo.html',1,'musx::dom']]],
+  ['entryinfoptr_25',['EntryInfoPtr',['../classmusx_1_1dom_1_1EntryInfoPtr.html',1,'musx::dom']]],
+  ['entrylocation_26',['EntryLocation',['../structmusx_1_1dom_1_1Entry_1_1EntryLocation.html',1,'musx::dom::Entry']]],
+  ['entrypartfielddetail_27',['EntryPartFieldDetail',['../classmusx_1_1dom_1_1details_1_1EntryPartFieldDetail.html',1,'musx::dom::details']]],
+  ['entrypool_28',['EntryPool',['../classmusx_1_1dom_1_1EntryPool.html',1,'musx::dom']]],
+  ['entrysize_29',['EntrySize',['../classmusx_1_1dom_1_1details_1_1EntrySize.html',1,'musx::dom::details']]],
+  ['expressiontext_30',['ExpressionText',['../classmusx_1_1dom_1_1texts_1_1ExpressionText.html',1,'musx::dom::texts']]],
+  ['externalgraphic_31',['ExternalGraphic',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1ExternalGraphic.html',1,'musx::dom::ShapeDefInstruction::ExternalGraphic'],['../structmusx_1_1util_1_1ShapeDefInstruction_1_1ExternalGraphic.html',1,'musx::util::ShapeDefInstruction::ExternalGraphic']]]
 ];

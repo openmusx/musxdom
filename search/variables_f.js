@@ -88,10 +88,11 @@ var searchData=
   ['poundreplace_85',['poundReplace',['../classmusx_1_1dom_1_1others_1_1TextRepeatDef.html#a08147a3e5e7a5ccceaccde06cfc992c7',1,'musx::dom::others::TextRepeatDef']]],
   ['powwowdrum_86',['PowwowDrum',['../namespacemusx_1_1dom_1_1uuid.html#a0f0be86acb1ca8026ad3f0f61e09bc49',1,'musx::dom::uuid']]],
   ['prefix_87',['prefix',['../classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a96a097230716bbcda96c0653c425ce86',1,'musx::dom::others::ChordSuffixElement::prefix'],['../classmusx_1_1dom_1_1others_1_1MeasureNumberRegion.html#a40e1cb47a848d40286b94b7ed1c2f9ba',1,'musx::dom::others::MeasureNumberRegion::prefix']]],
-  ['printpart_88',['printPart',['../classmusx_1_1dom_1_1others_1_1PartDefinition.html#afc48be3da07b0fa0b0e8dd84faf87b9f',1,'musx::dom::others::PartDefinition']]],
-  ['psaltery_89',['Psaltery',['../namespacemusx_1_1dom_1_1uuid.html#a1d25c279ab9f952b29dc2fe8fab5383a',1,'musx::dom::uuid']]],
-  ['psuldepth_90',['psUlDepth',['../classmusx_1_1dom_1_1options_1_1LineCurveOptions.html#aa73f5b5b66b72438d9670504179fad69',1,'musx::dom::options::LineCurveOptions']]],
-  ['psulwidth_91',['psUlWidth',['../classmusx_1_1dom_1_1options_1_1LineCurveOptions.html#ae67127c98f19abfbbaf2cf4c1b33e495',1,'musx::dom::options::LineCurveOptions']]],
-  ['pueblodrum_92',['PuebloDrum',['../namespacemusx_1_1dom_1_1uuid.html#a2d4d9bae092c4df1c44ebeae5ba0cd21',1,'musx::dom::uuid']]],
-  ['pungisnakecharmer_93',['PungiSnakeCharmer',['../namespacemusx_1_1dom_1_1uuid.html#ac3e911a3306cb1b4a9b0e1c62a949c1f',1,'musx::dom::uuid']]]
+  ['primarydirection_88',['primaryDirection',['../structmusx_1_1util_1_1Stem_1_1DirectionInfo.html#abbd26fcd5dc6f7a0a82da5171a53521b',1,'musx::util::Stem::DirectionInfo']]],
+  ['printpart_89',['printPart',['../classmusx_1_1dom_1_1others_1_1PartDefinition.html#afc48be3da07b0fa0b0e8dd84faf87b9f',1,'musx::dom::others::PartDefinition']]],
+  ['psaltery_90',['Psaltery',['../namespacemusx_1_1dom_1_1uuid.html#a1d25c279ab9f952b29dc2fe8fab5383a',1,'musx::dom::uuid']]],
+  ['psuldepth_91',['psUlDepth',['../classmusx_1_1dom_1_1options_1_1LineCurveOptions.html#aa73f5b5b66b72438d9670504179fad69',1,'musx::dom::options::LineCurveOptions']]],
+  ['psulwidth_92',['psUlWidth',['../classmusx_1_1dom_1_1options_1_1LineCurveOptions.html#ae67127c98f19abfbbaf2cf4c1b33e495',1,'musx::dom::options::LineCurveOptions']]],
+  ['pueblodrum_93',['PuebloDrum',['../namespacemusx_1_1dom_1_1uuid.html#a2d4d9bae092c4df1c44ebeae5ba0cd21',1,'musx::dom::uuid']]],
+  ['pungisnakecharmer_94',['PungiSnakeCharmer',['../namespacemusx_1_1dom_1_1uuid.html#ac3e911a3306cb1b4a9b0e1c62a949c1f',1,'musx::dom::uuid']]]
 ];

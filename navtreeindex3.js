@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"classmusx_1_1dom_1_1FontInfo.html#ace55cebaa51ad5c68f5e177301938e2f":[1,0,1,0,19,19],
+"classmusx_1_1dom_1_1FontInfo.html#ace55cebaa51ad5c68f5e177301938e2f":[2,0,1,0,20,19],
 "classmusx_1_1dom_1_1FontInfo.html#adbc3f5da67f3aa51ca0717573b87bcee":[1,0,1,0,19,18],
 "classmusx_1_1dom_1_1FontInfo.html#adbc3f5da67f3aa51ca0717573b87bcee":[2,0,1,0,20,18],
 "classmusx_1_1dom_1_1FontInfo.html#adcb9621f9e84005074ce09382b7ee865":[1,0,1,0,19,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "classmusx_1_1dom_1_1NoteDetailsBase.html#af8d25667cf7935bb6329736e870b581c":[1,0,1,0,17,1],
 "classmusx_1_1dom_1_1NoteDetailsBase.html#af8d25667cf7935bb6329736e870b581c":[2,0,1,0,18,1],
 "classmusx_1_1dom_1_1NoteInfoPtr.html":[1,0,1,0,38],
-"classmusx_1_1dom_1_1NoteInfoPtr.html":[2,0,1,0,39],
-"classmusx_1_1dom_1_1NoteInfoPtr.html#a0160d32691946e7c62db97e76f57fea3":[1,0,1,0,38,10],
-"classmusx_1_1dom_1_1NoteInfoPtr.html#a0160d32691946e7c62db97e76f57fea3":[2,0,1,0,39,10]
+"classmusx_1_1dom_1_1NoteInfoPtr.html":[2,0,1,0,39]
 };

@@ -224,7 +224,7 @@ std::optional&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"
 <tr class="memitem:a1488efaf45f336465104bfb8f42349eb" id="r_a1488efaf45f336465104bfb8f42349eb"><td class="memItemLeft" align="right" valign="top">std::pair&lt; bool, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1488efaf45f336465104bfb8f42349eb">calcEntryStemSettings</a> () const</td></tr>
 <tr class="memdesc:a1488efaf45f336465104bfb8f42349eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classmusx_1_1dom_1_1Entry.html" title="Represents an entry containing metadata and notes.">Entry</a> stem settings for the current requested part. This function encapsulates handling of the case when the two booleans are unlinked and different in score and part(s).  <br /></td></tr>
 <tr class="memitem:a002aa6823c31b83897d351c3ba49f5a4" id="r_a002aa6823c31b83897d351c3ba49f5a4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a002aa6823c31b83897d351c3ba49f5a4">calcUpStemDefault</a> () const</td></tr>
-<tr class="memdesc:a002aa6823c31b83897d351c3ba49f5a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates if the entry is upstem by default, without considering voices, layers, staff options, cross-staffing, or manual overrides.  <br /></td></tr>
+<tr class="memdesc:a002aa6823c31b83897d351c3ba49f5a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates geometric stem direction, including cross-staff placement and beam-group context.  <br /></td></tr>
 <tr class="memitem:a8026e2b4d623b8b4ac1ee7f8402a890a" id="r_a8026e2b4d623b8b4ac1ee7f8402a890a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a85d511d77e60bbc95b83884133bd383f">StemDirection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8026e2b4d623b8b4ac1ee7f8402a890a">calcStemDirectionForced</a> () const</td></tr>
 <tr class="memdesc:a8026e2b4d623b8b4ac1ee7f8402a890a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the forced stem direction if any.  <br /></td></tr>
 <tr class="memitem:a87a183870482e7322a06c94d953a31aa" id="r_a87a183870482e7322a06c94d953a31aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87a183870482e7322a06c94d953a31aa">calcUpStem</a> () const</td></tr>
@@ -295,7 +295,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcBeamMustStartHere
 <tr class="memitem:afd810deb36d0bf21b99d27486533ba21" id="r_afd810deb36d0bf21b99d27486533ba21"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd810deb36d0bf21b99d27486533ba21">findTupletInfo</a> () const</td></tr>
 <tr class="memdesc:afd810deb36d0bf21b99d27486533ba21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the tuplet info for tuplets that include this entry.  <br /></td></tr>
 <tr class="memitem:a1b2399f12b3954defd1403ab7acc7b0b" id="r_a1b2399f12b3954defd1403ab7acc7b0b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b2399f12b3954defd1403ab7acc7b0b">calcIfLayerSettingsApply</a> () const</td></tr>
-<tr class="memdesc:a1b2399f12b3954defd1403ab7acc7b0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates whether the conditions are met for the layer attributes dependent on #others::LayerAttributes::onlyIfOtherLayersHaveNotes. This also takes into account #others::LayerAttributes::ignoreHiddenNotesOnly and #others::LayerAttributes::ignoreHiddenLayers.  <br /></td></tr>
+<tr class="memdesc:a1b2399f12b3954defd1403ab7acc7b0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates whether conditional layer stem, tie, and floating-rest settings apply.  <br /></td></tr>
 <tr class="memitem:ab3bc2e754d93395c71759df365142d8e" id="r_ab3bc2e754d93395c71759df365142d8e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3bc2e754d93395c71759df365142d8e">calcCrossStaffDirectionForAll</a> (<a class="el" href="classmusx_1_1dom_1_1DeferredReference.html">DeferredReference</a>&lt; <a class="el" href="classmusx_1_1dom_1_1MusxInstanceList.html">MusxInstanceList</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffUsed.html">others::StaffUsed</a> &gt; &gt; staffList={}) const</td></tr>
 <tr class="memdesc:ab3bc2e754d93395c71759df365142d8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates if this entry has cross-staffed notes all in a single direction.  <br /></td></tr>
 <tr class="memitem:ac7ca81e419c833fc4e3c896c9a430041" id="r_ac7ca81e419c833fc4e3c896c9a430041"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a4bd7b78830863b8e952adb9b160e31cd">StaffCmper</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7ca81e419c833fc4e3c896c9a430041">calcCrossedStaffForAll</a> () const</td></tr>
@@ -801,8 +801,15 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Calculates whether the conditions are met for the layer attributes dependent on #others::LayerAttributes::onlyIfOtherLayersHaveNotes. This also takes into account #others::LayerAttributes::ignoreHiddenNotesOnly and #others::LayerAttributes::ignoreHiddenLayers. </p>
-<dl class="section return"><dt>Returns</dt><dd>true if the layer settings dependent on #others::LayerAttributes::onlyIfOtherLayersHaveNotes are in effect. Otherwise false. </dd></dl>
+<p>Calculates whether conditional layer stem, tie, and floating-rest settings apply. </p>
+<p>Unconditional settings always apply. Conditional settings require another populated layer not marked hideLayer, regardless of ignoreHiddenLayers. If ignoreHiddenNotesOnly is enabled, another displayed layer must also contain a visible entry; rests count and rhythmic overlap is not required. The visibility test honors the part-voicing policy, the designated alternate-notation layer at this entry's staff-style range, and individual entry hidden flags. altHideOtherNotes and cutaway drawing suppression do not exclude additional entries from this test. Interactive active-layer overrides are not represented by this document-level calculation. </p><dl class="section return"><dt>Returns</dt><dd>True if the layer settings apply, otherwise false. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>If this entry pointer is invalid. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classmusx_1_1dom_1_1integrity__error.html" title="Exception for integrity errors. (Used when MUSX_THROW_ON_INTEGRITY_CHECK_FAIL is defined....">integrity_error</a></td><td>If required layer attributes or staff data are missing. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1354,7 +1361,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the forced stem direction if any. </p>
-<p>This uses the following precedence: rhythmic notation, manual freeze, layer override, staff override, and v1/v2 behavior. Cross-staff direction overrides are intentionally excluded. </p><dl class="section return"><dt>Returns</dt><dd>The forced direction, or #StemDirection::Default if none applies. </dd></dl>
+<p>Resolves local rhythmic, freeze, layer, staff and stored-direction settings in beam order. Geometric cross-staff decisions are excluded. </p><dl class="section return"><dt>Returns</dt><dd>The forced direction, or #StemDirection::Default if none applies. </dd></dl>
 
 </div>
 </div>
@@ -1496,8 +1503,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Calculates if the entry is upstem by default, without considering voices, layers, staff options, cross-staffing, or manual overrides. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if the entry is upstem barring any other factors that would override the stem direction. False if it is downstem. </dd></dl>
+<p>Calculates geometric stem direction, including cross-staff placement and beam-group context. </p>
+<p>Excludes rhythmic, entry-freeze, layer, staff-direction and voice forcing. Uses saved staff geometry. If geometry cannot resolve the direction, grace notes default up and other entries use their stored part-aware direction. </p><dl class="section return"><dt>Returns</dt><dd>True for up, false for down. </dd></dl>
 
 </div>
 </div>

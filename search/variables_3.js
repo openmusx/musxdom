@@ -28,7 +28,7 @@ var searchData=
   ['dblsharp_25',['dblSharp',['../classmusx_1_1dom_1_1options_1_1MusicSymbolOptions.html#ac4598efd992dae77fb6c35ac20d36939',1,'musx::dom::options::MusicSymbolOptions']]],
   ['dblwholeslash_26',['dblWholeSlash',['../classmusx_1_1dom_1_1options_1_1MusicSymbolOptions.html#ad64c84b4678e9c5bb6e5766b0ec37509',1,'musx::dom::options::MusicSymbolOptions']]],
   ['dblwholevertadjust_27',['dblWholeVertAdjust',['../classmusx_1_1dom_1_1options_1_1MiscOptions.html#a40f397ce7eb7c030878a34641e88a6d5',1,'musx::dom::options::MiscOptions']]],
-  ['decision_28',['decision',['../structmusx_1_1util_1_1StaffOriginOffsetResolverResult.html#a356e80eda2c6b660551b1ca4d9ca3357',1,'musx::util::StaffOriginOffsetResolverResult']]],
+  ['decision_28',['decision',['../structmusx_1_1util_1_1StaffOriginOffsetResolverResult.html#a356e80eda2c6b660551b1ca4d9ca3357',1,'musx::util::StaffOriginOffsetResolverResult::decision'],['../structmusx_1_1util_1_1Stem_1_1GeometryResult.html#ab5819d0a229bd83fc54f84de57fabed6',1,'musx::util::Stem::GeometryResult::decision']]],
   ['def_29',['Def',['../namespacemusx_1_1dom_1_1uuid.html#a9bf79fc4b60f6de6a64353ee95518df8',1,'musx::dom::uuid']]],
   ['default_5fmusic_5ffont_5fid_30',['DEFAULT_MUSIC_FONT_ID',['../namespacemusx_1_1dom.html#a571ac19b9f4b6d3053c9b88150813f9b',1,'musx::dom']]],
   ['defaultallotment_31',['defaultAllotment',['../classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a824ecc02dae0960f8003a482e45648bb',1,'musx::dom::options::MusicSpacingOptions']]],

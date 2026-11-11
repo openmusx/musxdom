@@ -9,12 +9,13 @@ var searchData=
   ['detailsbase_6',['DetailsBase',['../classmusx_1_1dom_1_1DetailsBase.html',1,'musx::dom']]],
   ['detailsfactory_7',['DetailsFactory',['../classmusx_1_1factory_1_1DetailsFactory.html',1,'musx::factory']]],
   ['detailspool_8',['DetailsPool',['../classmusx_1_1dom_1_1DetailsPool.html',1,'musx::dom']]],
-  ['document_9',['Document',['../classmusx_1_1dom_1_1Document.html',1,'musx::dom::Document'],['../classmusx_1_1xml_1_1pugi_1_1Document.html',1,'musx::xml::pugi::Document'],['../classmusx_1_1xml_1_1rapidxml_1_1Document.html',1,'musx::xml::rapidxml::Document'],['../classmusx_1_1xml_1_1tinyxml2_1_1Document.html',1,'musx::xml::tinyxml2::Document']]],
-  ['documentelement_10',['DocumentElement',['../classmusx_1_1dom_1_1DocumentElement.html',1,'musx::dom']]],
-  ['documentelementnopart_11',['DocumentElementNoPart',['../classmusx_1_1dom_1_1DocumentElementNoPart.html',1,'musx::dom']]],
-  ['documentfactory_12',['DocumentFactory',['../classmusx_1_1factory_1_1DocumentFactory.html',1,'musx::factory']]],
-  ['dotalterations_13',['DotAlterations',['../classmusx_1_1dom_1_1details_1_1DotAlterations.html',1,'musx::dom::details']]],
-  ['drawchar_14',['DrawChar',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1DrawChar.html',1,'musx::dom::ShapeDefInstruction::DrawChar'],['../structmusx_1_1util_1_1ShapeDefInstruction_1_1DrawChar.html',1,'musx::util::ShapeDefInstruction::DrawChar']]],
-  ['drumstaff_15',['DrumStaff',['../classmusx_1_1dom_1_1others_1_1DrumStaff.html',1,'musx::dom::others']]],
-  ['drumstaffstyle_16',['DrumStaffStyle',['../classmusx_1_1dom_1_1others_1_1DrumStaffStyle.html',1,'musx::dom::others']]]
+  ['directioninfo_9',['DirectionInfo',['../structmusx_1_1util_1_1Stem_1_1DirectionInfo.html',1,'musx::util::Stem']]],
+  ['document_10',['Document',['../classmusx_1_1dom_1_1Document.html',1,'musx::dom::Document'],['../classmusx_1_1xml_1_1pugi_1_1Document.html',1,'musx::xml::pugi::Document'],['../classmusx_1_1xml_1_1rapidxml_1_1Document.html',1,'musx::xml::rapidxml::Document'],['../classmusx_1_1xml_1_1tinyxml2_1_1Document.html',1,'musx::xml::tinyxml2::Document']]],
+  ['documentelement_11',['DocumentElement',['../classmusx_1_1dom_1_1DocumentElement.html',1,'musx::dom']]],
+  ['documentelementnopart_12',['DocumentElementNoPart',['../classmusx_1_1dom_1_1DocumentElementNoPart.html',1,'musx::dom']]],
+  ['documentfactory_13',['DocumentFactory',['../classmusx_1_1factory_1_1DocumentFactory.html',1,'musx::factory']]],
+  ['dotalterations_14',['DotAlterations',['../classmusx_1_1dom_1_1details_1_1DotAlterations.html',1,'musx::dom::details']]],
+  ['drawchar_15',['DrawChar',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1DrawChar.html',1,'musx::dom::ShapeDefInstruction::DrawChar'],['../structmusx_1_1util_1_1ShapeDefInstruction_1_1DrawChar.html',1,'musx::util::ShapeDefInstruction::DrawChar']]],
+  ['drumstaff_16',['DrumStaff',['../classmusx_1_1dom_1_1others_1_1DrumStaff.html',1,'musx::dom::others']]],
+  ['drumstaffstyle_17',['DrumStaffStyle',['../classmusx_1_1dom_1_1others_1_1DrumStaffStyle.html',1,'musx::dom::others']]]
 ];

@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"classmusx_1_1dom_1_1details_1_1SecondaryBeamAlterationsUpStem.html#ac54cd7518e7bd083db5a01289022564e":[1,0,1,0,0,50,0],
+"classmusx_1_1dom_1_1details_1_1SecondaryBeamAlterationsUpStem.html#ac54cd7518e7bd083db5a01289022564e":[2,0,1,0,0,50,0],
 "classmusx_1_1dom_1_1details_1_1SecondaryBeamBreak.html":[1,0,1,0,0,51],
 "classmusx_1_1dom_1_1details_1_1SecondaryBeamBreak.html":[2,0,1,0,0,51],
 "classmusx_1_1dom_1_1details_1_1SecondaryBeamBreak.html#a12da04ca45e002f747e2e6671ed0f549":[1,0,1,0,0,51,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "classmusx_1_1dom_1_1details_1_1TieAlterBase.html#a568325ed0d5aa2b159b889d25e8b3755a549449922e64c2bd8f65d7cb2e9e56ea":[1,0,1,0,0,61,0,6],
 "classmusx_1_1dom_1_1details_1_1TieAlterBase.html#a568325ed0d5aa2b159b889d25e8b3755a549449922e64c2bd8f65d7cb2e9e56ea":[2,0,1,0,0,61,0,6],
 "classmusx_1_1dom_1_1details_1_1TieAlterBase.html#a568325ed0d5aa2b159b889d25e8b3755a6adf97f83acf6453d4a6a4b1070f3754":[1,0,1,0,0,61,0,0],
-"classmusx_1_1dom_1_1details_1_1TieAlterBase.html#a568325ed0d5aa2b159b889d25e8b3755a6adf97f83acf6453d4a6a4b1070f3754":[2,0,1,0,0,61,0,0],
-"classmusx_1_1dom_1_1details_1_1TieAlterBase.html#a568325ed0d5aa2b159b889d25e8b3755a7140ce70e4bce02aebf36514786b916c":[1,0,1,0,0,61,0,15],
-"classmusx_1_1dom_1_1details_1_1TieAlterBase.html#a568325ed0d5aa2b159b889d25e8b3755a7140ce70e4bce02aebf36514786b916c":[2,0,1,0,0,61,0,15]
+"classmusx_1_1dom_1_1details_1_1TieAlterBase.html#a568325ed0d5aa2b159b889d25e8b3755a6adf97f83acf6453d4a6a4b1070f3754":[2,0,1,0,0,61,0,0]
 };

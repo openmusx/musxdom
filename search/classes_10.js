@@ -59,13 +59,14 @@ var searchData=
   ['staffused_56',['StaffUsed',['../classmusx_1_1dom_1_1others_1_1StaffUsed.html',1,'musx::dom::others']]],
   ['startgroup_57',['StartGroup',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartGroup.html',1,'musx::dom::ShapeDefInstruction::StartGroup'],['../structmusx_1_1util_1_1ShapeDefInstruction_1_1StartGroup.html',1,'musx::util::ShapeDefInstruction::StartGroup']]],
   ['startobject_58',['StartObject',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1StartObject.html',1,'musx::dom::ShapeDefInstruction::StartObject'],['../structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html',1,'musx::util::ShapeDefInstruction::StartObject']]],
-  ['stemalterations_59',['StemAlterations',['../classmusx_1_1dom_1_1details_1_1StemAlterations.html',1,'musx::dom::details']]],
-  ['stemalterationsunderbeam_60',['StemAlterationsUnderBeam',['../classmusx_1_1dom_1_1details_1_1StemAlterationsUnderBeam.html',1,'musx::dom::details']]],
-  ['stemconnection_61',['StemConnection',['../classmusx_1_1dom_1_1options_1_1StemOptions_1_1StemConnection.html',1,'musx::dom::options::StemOptions']]],
-  ['stemoptions_62',['StemOptions',['../classmusx_1_1dom_1_1options_1_1StemOptions.html',1,'musx::dom::options']]],
-  ['stepelement_63',['StepElement',['../classmusx_1_1dom_1_1others_1_1KeyMapArray_1_1StepElement.html',1,'musx::dom::others::KeyMapArray']]],
-  ['stringinfo_64',['StringInfo',['../classmusx_1_1dom_1_1others_1_1FretInstrument_1_1StringInfo.html',1,'musx::dom::others::FretInstrument']]],
-  ['svgconvert_65',['SvgConvert',['../classmusx_1_1util_1_1SvgConvert.html',1,'musx::util']]],
-  ['syllableposstyle_66',['SyllablePosStyle',['../structmusx_1_1dom_1_1options_1_1LyricOptions_1_1SyllablePosStyle.html',1,'musx::dom::options::LyricOptions']]],
-  ['systemlock_67',['SystemLock',['../classmusx_1_1dom_1_1others_1_1SystemLock.html',1,'musx::dom::others']]]
+  ['stem_59',['Stem',['../classmusx_1_1util_1_1Stem.html',1,'musx::util']]],
+  ['stemalterations_60',['StemAlterations',['../classmusx_1_1dom_1_1details_1_1StemAlterations.html',1,'musx::dom::details']]],
+  ['stemalterationsunderbeam_61',['StemAlterationsUnderBeam',['../classmusx_1_1dom_1_1details_1_1StemAlterationsUnderBeam.html',1,'musx::dom::details']]],
+  ['stemconnection_62',['StemConnection',['../classmusx_1_1dom_1_1options_1_1StemOptions_1_1StemConnection.html',1,'musx::dom::options::StemOptions']]],
+  ['stemoptions_63',['StemOptions',['../classmusx_1_1dom_1_1options_1_1StemOptions.html',1,'musx::dom::options']]],
+  ['stepelement_64',['StepElement',['../classmusx_1_1dom_1_1others_1_1KeyMapArray_1_1StepElement.html',1,'musx::dom::others::KeyMapArray']]],
+  ['stringinfo_65',['StringInfo',['../classmusx_1_1dom_1_1others_1_1FretInstrument_1_1StringInfo.html',1,'musx::dom::others::FretInstrument']]],
+  ['svgconvert_66',['SvgConvert',['../classmusx_1_1util_1_1SvgConvert.html',1,'musx::util']]],
+  ['syllableposstyle_67',['SyllablePosStyle',['../structmusx_1_1dom_1_1options_1_1LyricOptions_1_1SyllablePosStyle.html',1,'musx::dom::options::LyricOptions']]],
+  ['systemlock_68',['SystemLock',['../classmusx_1_1dom_1_1others_1_1SystemLock.html',1,'musx::dom::others']]]
 ];

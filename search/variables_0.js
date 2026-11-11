@@ -125,7 +125,7 @@ var searchData=
   ['articdetail_122',['articDetail',['../classmusx_1_1dom_1_1Entry.html#a0e99f4aa18165386218038d02a013b0f',1,'musx::dom::Entry']]],
   ['ascent_123',['ascent',['../structmusx_1_1util_1_1SvgConvert_1_1GlyphMetrics.html#a7813d342404d6d14094628f393984140',1,'musx::util::SvgConvert::GlyphMetrics']]],
   ['ashiko_124',['Ashiko',['../namespacemusx_1_1dom_1_1uuid.html#afe7599c5e1c92f6d1e02086ce3b80598',1,'musx::dom::uuid']]],
-  ['assignments_125',['assignments',['../classmusx_1_1dom_1_1LyricsLineInfo.html#a4474556a235e12c4a3257c0494fd43bf',1,'musx::dom::LyricsLineInfo']]],
+  ['assignments_125',['assignments',['../classmusx_1_1dom_1_1LyricsLineInfo.html#a4474556a235e12c4a3257c0494fd43bf',1,'musx::dom::LyricsLineInfo::assignments'],['../structmusx_1_1util_1_1Stem_1_1DirectionInfo.html#ad5969580749a967c88ed27268f11cece',1,'musx::util::Stem::DirectionInfo::assignments']]],
   ['atabaque_126',['Atabaque',['../namespacemusx_1_1dom_1_1uuid.html#a17737e9ae01a4ee8d7de124918d3ee00',1,'musx::dom::uuid']]],
   ['augdot_127',['augDot',['../classmusx_1_1dom_1_1options_1_1MusicSymbolOptions.html#a6fc7a5fb3025ca3c6f8b4d46355841f3',1,'musx::dom::options::MusicSymbolOptions']]],
   ['aulochrome_128',['Aulochrome',['../namespacemusx_1_1dom_1_1uuid.html#a7819267522a2effc288f1563ab99f9f0',1,'musx::dom::uuid']]],

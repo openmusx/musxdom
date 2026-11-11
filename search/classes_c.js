@@ -11,8 +11,9 @@ var searchData=
   ['notedetailsbase_8',['NoteDetailsBase',['../classmusx_1_1dom_1_1NoteDetailsBase.html',1,'musx::dom']]],
   ['noteheadinfo_9',['NoteheadInfo',['../structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html',1,'musx::dom::NoteInfoPtr::NoteheadInfo'],['../structmusx_1_1util_1_1NoteInfoPtr_1_1NoteheadInfo.html',1,'musx::util::NoteInfoPtr::NoteheadInfo']]],
   ['noteinfoptr_10',['NoteInfoPtr',['../classmusx_1_1dom_1_1NoteInfoPtr.html',1,'musx::dom::NoteInfoPtr'],['../classmusx_1_1util_1_1NoteInfoPtr.html',1,'musx::util::NoteInfoPtr']]],
-  ['noteproperties_11',['NoteProperties',['../structmusx_1_1dom_1_1Note_1_1NoteProperties.html',1,'musx::dom::Note']]],
-  ['notepropertiesoptions_12',['NotePropertiesOptions',['../structmusx_1_1dom_1_1NotePropertiesOptions.html',1,'musx::dom']]],
-  ['noterestoptions_13',['NoteRestOptions',['../classmusx_1_1dom_1_1options_1_1NoteRestOptions.html',1,'musx::dom::options']]],
-  ['noteshapes_14',['NoteShapes',['../classmusx_1_1dom_1_1details_1_1ShapeNoteBase_1_1NoteShapes.html',1,'musx::dom::details::ShapeNoteBase']]]
+  ['noteposition_11',['NotePosition',['../structmusx_1_1util_1_1EntryGeometry_1_1NotePosition.html',1,'musx::util::EntryGeometry']]],
+  ['noteproperties_12',['NoteProperties',['../structmusx_1_1dom_1_1Note_1_1NoteProperties.html',1,'musx::dom::Note']]],
+  ['notepropertiesoptions_13',['NotePropertiesOptions',['../structmusx_1_1dom_1_1NotePropertiesOptions.html',1,'musx::dom']]],
+  ['noterestoptions_14',['NoteRestOptions',['../classmusx_1_1dom_1_1options_1_1NoteRestOptions.html',1,'musx::dom::options']]],
+  ['noteshapes_15',['NoteShapes',['../classmusx_1_1dom_1_1details_1_1ShapeNoteBase_1_1NoteShapes.html',1,'musx::dom::details::ShapeNoteBase']]]
 ];

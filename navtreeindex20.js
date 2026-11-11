@@ -1,5 +1,7 @@
 var NAVTREEINDEX20 =
 {
+"classmusx_1_1dom_1_1others_1_1OssiaMusic.html#aa6fb550fffde70a487f5acafb8df1240":[1,0,1,0,1,11,3],
+"classmusx_1_1dom_1_1others_1_1OssiaMusic.html#aa6fb550fffde70a487f5acafb8df1240":[2,0,1,0,1,11,3],
 "classmusx_1_1dom_1_1others_1_1OssiaMusic.html#ab7d76b32407381a203c54e422db45e31":[1,0,1,0,1,11,10],
 "classmusx_1_1dom_1_1others_1_1OssiaMusic.html#ab7d76b32407381a203c54e422db45e31":[2,0,1,0,1,11,10],
 "classmusx_1_1dom_1_1others_1_1OssiaMusic.html#ae461e35ae13939b670683bfa1ee7a659":[1,0,1,0,1,11,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX20 =
 "classmusx_1_1dom_1_1others_1_1PartGlobals.html#ab7c62dc22722d608acc3383ee706b8f6":[1,0,1,0,1,49,1],
 "classmusx_1_1dom_1_1others_1_1PartGlobals.html#ab7c62dc22722d608acc3383ee706b8f6":[2,0,1,0,1,49,1],
 "classmusx_1_1dom_1_1others_1_1PartGlobals.html#ad1ac188b8ddd50ec8d5d8eb7b42f5c00":[1,0,1,0,1,49,6],
-"classmusx_1_1dom_1_1others_1_1PartGlobals.html#ad1ac188b8ddd50ec8d5d8eb7b42f5c00":[2,0,1,0,1,49,6],
-"classmusx_1_1dom_1_1others_1_1PartGlobals.html#ad9d5622205516d900e440d43fb29e306":[1,0,1,0,1,49,2],
-"classmusx_1_1dom_1_1others_1_1PartGlobals.html#ad9d5622205516d900e440d43fb29e306":[2,0,1,0,1,49,2]
+"classmusx_1_1dom_1_1others_1_1PartGlobals.html#ad1ac188b8ddd50ec8d5d8eb7b42f5c00":[2,0,1,0,1,49,6]
 };

@@ -26,7 +26,7 @@ var searchData=
   ['dospath_23',['DosPath',['../classmusx_1_1dom_1_1others_1_1FileDescription.html#a8d9d0ade14e9072cd17e2e3707c6b9f2a8ebe746732424e7b54959e5286fe8548',1,'musx::dom::others::FileDescription']]],
   ['dotrightnotecenter_24',['DotRightNoteCenter',['../classmusx_1_1dom_1_1details_1_1TieAlterBase.html#a568325ed0d5aa2b159b889d25e8b3755a228bd02149cbef6ba244348d17e2efc6',1,'musx::dom::details::TieAlterBase']]],
   ['double_25',['Double',['../classmusx_1_1dom_1_1others_1_1Measure.html#a6d4c0949f42ef1f337f8e2ae0ee0c117ad909d38d705ce75386dd86e611a82f5b',1,'musx::dom::others::Measure']]],
-  ['down_26',['Down',['../namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55a08a38277b0309070706f6652eeae9a53',1,'musx::dom']]],
+  ['down_26',['Down',['../classmusx_1_1util_1_1Stem.html#a0d616808b068a2094bc3235c1a94d0cca08a38277b0309070706f6652eeae9a53',1,'musx::util::Stem::Down'],['../classmusx_1_1util_1_1Stem.html#a597071dff374667c6fd9998609a7c2c9a08a38277b0309070706f6652eeae9a53',1,'musx::util::Stem::Down'],['../namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55a08a38277b0309070706f6652eeae9a53',1,'musx::dom::Down']]],
   ['downstem_27',['DownStem',['../classmusx_1_1dom_1_1EntryDetailsBase.html#a91249025ef9184270efb1e8a749727caa0ab2dc28b79b3fe3b3664fa1a8a11480',1,'musx::dom::EntryDetailsBase']]],
   ['drawchar_28',['DrawChar',['../namespacemusx_1_1dom.html#a93764339b56e531ea37af5181b20b113ade9a94c8c7949a8fc462d3bdf33a76cc',1,'musx::dom']]],
   ['dump_29',['Dump',['../namespacemusx_1_1dom_1_1others.html#a8ca1afe21691e4db1cdfd8b62344ecfeaeba2f52f64e17ff27e6c5cfefd7e32fa',1,'musx::dom::others']]],
