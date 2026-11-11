@@ -96,8 +96,6 @@ protected:
     }
 };
 
-} // namespace
-
 TEST_F(LayerSettingsApplicabilityTest, UnconditionalAndSingleLayer)
 {
     using namespace musx::dom;
@@ -225,3 +223,5 @@ TEST_F(LayerSettingsApplicabilityTest, StemForcingAndRestOffsetsUseSameGate)
     EXPECT_NE(Stem::calcForcedDirection(entry()).reason, Stem::Reason::LayerFreeze);
     EXPECT_EQ(entry(restIndex).calcZeroNotePosition(), shiftedRest - restOffset);
 }
+
+} // namespace
