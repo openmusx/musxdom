@@ -50,6 +50,7 @@ add_executable(musxdomtests
     entries/beam_detection.cpp
     entries/cross_staffs.cpp
     entries/entries.cpp
+    entries/layer_settings.cpp
     entries/keysigs.cpp
     entries/ties.cpp
     entries/tie_contours.cpp
@@ -131,6 +132,7 @@ add_executable(musxdomtests
     # util
     util/arpeggio.cpp
     util/cue.cpp
+    util/entry_geometry.cpp
     util/fraction.cpp
     util/fretboard.cpp
     util/svg_arrowheads.cpp

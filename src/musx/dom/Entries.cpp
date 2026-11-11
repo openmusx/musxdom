@@ -1138,137 +1138,35 @@ std::pair<Evpu, Evpu> EntryInfoPtr::calcTopBottomExtent() const
 
 bool EntryInfoPtr::calcUpStemDefault() const
 {
-    //stem direction is determined by the beam a note or rest is part of, if any, so
-    //we must always look for a beam to calculate direction.
-    auto beamStart = findBeamStartOrCurrent();
-
-    int maxTopDiff = (std::numeric_limits<int>::min)();
-    int minBotDiff = (std::numeric_limits<int>::max)();
-    int numAbove = 0;
-    int numBelow = 0;
-    bool gotNonGrace = false;
-    bool gotPositionedEntry = false;
-
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        const auto& entry = next->getEntry();
-        if (!entry->graceNote) {
-            gotNonGrace = true;
-            if (next.calcIsZeroNote() && next.calcDisplaysAsRest()) {
-                continue;
-            }
-            gotPositionedEntry = true;
-            auto staff = next.createCurrentStaff();
-            auto [topLine, botLine] = next.calcTopBottomStaffPositions();
-            const int currTopDiff = topLine - staff->stemReversal;
-            if (maxTopDiff < currTopDiff) {
-                maxTopDiff = currTopDiff;
-            }
-            const int currBotDiff = botLine - staff->stemReversal;
-            if (minBotDiff > currBotDiff) {
-                minBotDiff = currBotDiff;
-            }
-            const int valForStem = std::abs(currBotDiff) > std::abs(currTopDiff) ? currBotDiff : currTopDiff;
-            if (valForStem > 0) {
-                numAbove++;
-            } else if (valForStem < 0) {
-                numBelow++;
-            }
-        }
+    const auto result = util::Stem::calcDefaultDirection(*this);
+    if (result.primaryDirection) {
+        return *result.primaryDirection == util::Stem::Direction::Up;
     }
-
-    if (!gotNonGrace) {
+    if ((*this)->getEntry()->graceNote) {
         return true;
     }
-
-    if (!gotPositionedEntry) {
-        return std::get<1>(calcEntryStemSettings()); // Use whatever Finale last calculated.
-    }
-
-    // for beams, if the diffs don't determine it, then the number above & below do
-    // (Function calcUnBeamed is false for beamed groups.)
-    if (minBotDiff < 0 && minBotDiff == -maxTopDiff && !calcUnbeamed()) {
-        return numBelow > numAbove;
-    }
-
-    const int valForBeam = std::abs(minBotDiff) > std::abs(maxTopDiff) ? minBotDiff : maxTopDiff;
-
-    return valForBeam < 0;
+    return std::get<1>(calcEntryStemSettings());
 }
 
 bool EntryInfoPtr::calcUpStemImpl() const
 {
-    switch (calcStemDirectionForced()) {
-    case StemDirection::AlwaysUp:
-        return true;
-    case StemDirection::AlwaysDown:
-        return false;
-    case StemDirection::Default:
-        break;
+    const auto result = util::Stem::calcEffectiveDirection(*this);
+    if (result.primaryDirection) {
+        return *result.primaryDirection == util::Stem::Direction::Up;
     }
-
-    //stem direction is determined by the beam a note or rest is part of, if any, so
-    //we must always look for a beam to calculate direction.
-    auto beamStart = findBeamStartOrCurrent();
-    // cross-staff direction was not part of the 2001 testing, but this seems the right place for it for now.
-    const auto scrollViewStaves = getFrame()->getDocument()->getScrollViewStaves(getFrame()->getRequestedPartId());
-    int foundCrossDirection = 0;
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        const int currDirection = next.calcCrossStaffDirectionForAll(scrollViewStaves);
-        if (currDirection != 0) {
-            if (foundCrossDirection == 0) {
-                foundCrossDirection = currDirection;
-            } else if (currDirection != foundCrossDirection) {
-                foundCrossDirection = 0;
-                break;
-            }
-        }
-    }
-    if (foundCrossDirection != 0) {
-        return foundCrossDirection < 0; // stem direction is opposite the cross direction, so cross down means stem up.
-    }
-
-    return calcUpStemDefault();
+    util::Logger::log(util::Logger::LogLevel::Info,
+        "Stem direction unavailable for entry " + std::to_string((*this)->getEntry()->getEntryNumber())
+        + "; using stored entry direction.");
+    return std::get<1>(calcEntryStemSettings());
 }
 
 StemDirection EntryInfoPtr::calcStemDirectionForced() const
 {
-    auto beamStart = findBeamStartOrCurrent();
-    const auto frame = getFrame();
-
-    // This is the precedence as tested by RGP in ~2001.
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        auto staff = next.createCurrentStaff();
-        if (staff->altNotation == others::Staff::AlternateNotation::Rhythmic) {
-            return staff->altRhythmStemsUp ? StemDirection::AlwaysUp : StemDirection::AlwaysDown;
-        }
+    const auto result = util::Stem::calcForcedDirection(*this);
+    if (!result.primaryDirection) {
+        return StemDirection::Default;
     }
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        const auto [freezeStem, upStem] = next.calcEntryStemSettings();
-        if (freezeStem) {
-            return upStem ? StemDirection::AlwaysUp : StemDirection::AlwaysDown;
-        }
-    }
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        if (auto layerAtts = frame->getLayerAttributes()) {
-            if (layerAtts->freezeLayer && calcIfLayerSettingsApply()) {
-                return layerAtts->freezeStemsUp ? StemDirection::AlwaysUp : StemDirection::AlwaysDown;
-            }
-        }
-    }
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        auto staff = next.createCurrentStaff();
-        if (staff->stemDirection == StemDirection::AlwaysUp || staff->stemDirection == StemDirection::AlwaysDown) {
-            return staff->stemDirection;
-        }
-    }
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        const auto& entry = next->getEntry();
-        if (entry->v2Launch || entry->voice2) {
-            return std::get<1>(next.calcEntryStemSettings()) ? StemDirection::AlwaysUp : StemDirection::AlwaysDown;
-        }
-    }
-
-    return StemDirection::Default;
+    return *result.primaryDirection == util::Stem::Direction::Up ? StemDirection::AlwaysUp : StemDirection::AlwaysDown;
 }
 
 bool EntryInfoPtr::calcGraceNoteSlash(const MusxInstance<options::GraceNoteOptions> graceOptions) const
@@ -2196,41 +2094,64 @@ std::vector<size_t> EntryInfoPtr::findTupletInfo() const
 
 bool EntryInfoPtr::calcIfLayerSettingsApply() const
 {
+    MUSX_ASSERT_IF(!*this) {
+        throw std::invalid_argument("Layer settings require an entry.");
+    }
     const auto frame = getFrame();
     const auto layerAtts = frame->getLayerAttributes();
+    MUSX_ASSERT_IF(!layerAtts) {
+        throw integrity_error("Layer attributes for layer " + std::to_string(frame->getLayerIndex()) + " do not exist.");
+    }
     if (!layerAtts->onlyIfOtherLayersHaveNotes) {
         return true;
     }
     const auto context = frame->getContext();
-    if (!context->calcIsMultiLayer()) {
-        return false;
-    }
     const LayerIndex layerIndex = frame->getLayerIndex();
-    const auto startStaff = frame->getStartStaffInstance();
+    std::vector<LayerIndex> otherLayers;
     for (LayerIndex nextLayerIndex = 0; nextLayerIndex < static_cast<LayerIndex>(context->frames.size()); nextLayerIndex++) {
         if (nextLayerIndex == layerIndex || context->frames[nextLayerIndex] == 0) {
             continue;
         }
-        const auto nextLayerAtts = frame->getDocument()->getOthers()->get<others::LayerAttributes>(frame->getRequestedPartId(), static_cast<Cmper>(nextLayerIndex));
+        const auto nextLayerAtts = frame->getDocument()->getOthers()->get<others::LayerAttributes>(
+            frame->getRequestedPartId(), static_cast<Cmper>(nextLayerIndex));
         MUSX_ASSERT_IF(!nextLayerAtts) {
             throw integrity_error("Layer attributes for layer " + std::to_string(nextLayerIndex) + " do not exist.");
         }
-        if (layerAtts->ignoreHiddenLayers && nextLayerAtts->hideLayer) {
+        if (!nextLayerAtts->hideLayer) {
+            otherLayers.push_back(nextLayerIndex);
+        }
+    }
+    if (otherLayers.empty()) {
+        return false;
+    }
+    if (!layerAtts->ignoreHiddenNotesOnly) {
+        return true;
+    }
+
+    const auto staff = createCurrentStaff();
+    MUSX_ASSERT_IF(!staff) {
+        throw integrity_error("Staff for layer settings is unavailable.");
+    }
+    const auto replacesLayerEntries = [](const others::Staff& staff, LayerIndex index) {
+        // Only the designated alternate-notation layer is excluded from this visibility test.
+        return staff.altLayer == index && staff.calcAlternateNotationHidesEntries(index);
+    };
+
+    for (const auto nextLayerIndex : otherLayers) {
+        if (replacesLayerEntries(*staff, nextLayerIndex)) {
             continue;
         }
-        if (layerAtts->ignoreHiddenNotesOnly) {
-            if (startStaff->calcAlternateNotationHidesEntries(nextLayerIndex)) {
-                continue; // layers are considered hidden if alternate notation at the beginning of the measure hides them, even if it doesn't go to the end.
-            }
-            if (auto layerFrame = context.createEntryFrame(nextLayerIndex)) {
-                if (layerFrame->calcAreAllEntriesHiddenInFrame()) {
-                    continue;
-                }
-            } else {
-                continue; // do not count non-existent layer frames as having notes
-            }
+        const auto layerFrame = context.createEntryFrame(nextLayerIndex);
+        if (!layerFrame) {
+            continue;
         }
-        return true;
+        for (size_t index = 0; index < layerFrame->getEntries().size(); ++index) {
+            const EntryInfoPtr otherEntry(layerFrame, index);
+            if (otherEntry->getEntry()->isHidden) {
+                continue;
+            }
+            return true; // Visible rests and chords reduced to rests by voicing also count.
+        }
     }
     return false;
 }

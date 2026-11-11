@@ -831,14 +831,15 @@ public:
     /// @return A std::pair<bool, bool> with the first being the freezeStem setting and the second being the upStem setting.
     [[nodiscard]] std::pair<bool, bool> calcEntryStemSettings() const;
 
-    /// @brief Calculates if the entry is upstem by default, without considering voices, layers, staff options, cross-staffing, or
-    /// manual overrides.
-    /// @return True if the entry is upstem barring any other factors that would override the stem direction. False if it is downstem.
+    /// @brief Calculates geometric stem direction, including cross-staff placement and beam-group context.
+    /// @details Excludes rhythmic, entry-freeze, layer, staff-direction and voice forcing. Uses saved staff geometry.
+    /// If geometry cannot resolve the direction, grace notes default up and other entries use their stored part-aware direction.
+    /// @return True for up, false for down.
     [[nodiscard]] bool calcUpStemDefault() const;
 
     /// @brief Returns the forced stem direction if any.
-    /// @details This uses the following precedence: rhythmic notation, manual freeze, layer override, staff override, 
-    /// and v1/v2 behavior. Cross-staff direction overrides are intentionally excluded.
+    /// @details Resolves local rhythmic, freeze, layer, staff and stored-direction settings in beam order.
+    /// Geometric cross-staff decisions are excluded.
     /// @return The forced direction, or #StemDirection::Default if none applies.
     [[nodiscard]] StemDirection calcStemDirectionForced() const;
 
@@ -1005,9 +1006,17 @@ public:
     /// @return A list of indices of TupletInfo records that include the entry.
     [[nodiscard]] std::vector<size_t> findTupletInfo() const;
 
-    /// @brief Calculates whether the conditions are met for the layer attributes dependent on #others::LayerAttributes::onlyIfOtherLayersHaveNotes.
-    /// This also takes into account #others::LayerAttributes::ignoreHiddenNotesOnly and #others::LayerAttributes::ignoreHiddenLayers.
-    /// @return true if the layer settings dependent on #others::LayerAttributes::onlyIfOtherLayersHaveNotes are in effect. Otherwise false.
+    /// @brief Calculates whether conditional layer stem, tie, and floating-rest settings apply.
+    /// @details Unconditional settings always apply. Conditional settings require another populated layer
+    /// not marked hideLayer, regardless of ignoreHiddenLayers. If ignoreHiddenNotesOnly is enabled, another
+    /// displayed layer must also contain a visible entry; rests count and rhythmic overlap is not required.
+    /// The visibility test honors the part-voicing policy, the designated alternate-notation layer at this
+    /// entry's staff-style range, and individual entry hidden flags. altHideOtherNotes and cutaway drawing
+    /// suppression do not exclude additional entries from this test. Interactive active-layer overrides
+    /// are not represented by this document-level calculation.
+    /// @return True if the layer settings apply, otherwise false.
+    /// @throws std::invalid_argument If this entry pointer is invalid.
+    /// @throws integrity_error If required layer attributes or staff data are missing.
     [[nodiscard]] bool calcIfLayerSettingsApply() const;
 
     /// @brief Calculates if this entry has cross-staffed notes all in a single direction.
@@ -1564,11 +1573,9 @@ public:
     [[nodiscard]]
     MusxInstance<others::Measure> getMeasureInstance() const;
 
-    /// @brief Calculates if this all notes in the frame are hidden.
-    /// This routine only checks that entries are individually hidden. The caller must separately check #others::Staff::calcAlternateNotationHidesEntries
-    /// according to its specific needs. For example, to determine if a layer is hidden for the purposes of checking validity of layer attributes,
-    /// only the staff at edu position 0 should be checked.
-    /// @return true if all entries in the frame are hidden.
+    /// @brief Calculates whether all entries in this frame have their individual hidden flag set.
+    /// @details Does not evaluate alternate notation, staff-style hiding, or part-voicing visibility.
+    /// @return True if every entry is individually hidden or the frame is empty.
     [[nodiscard]]
     bool calcAreAllEntriesHiddenInFrame() const;
 

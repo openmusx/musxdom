@@ -66,6 +66,8 @@ set(MUSX_SRC_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/util/SmartShapeRecognize.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/util/SvgConvert.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/util/TestSupport.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/util/EntryGeometry.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/util/Stem.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/util/Tie.cpp
 )
 
