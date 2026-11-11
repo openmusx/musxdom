@@ -79,7 +79,6 @@ protected:
         seg->endPoint->entryNumber = number;
     }
 };
-} // namespace
 
 TEST_F(SlurTest, DefinitionIsIndependentOfEndpoints)
 {
@@ -318,3 +317,5 @@ TEST_F(SlurTest, CrossStaffSpanUsesOnlyEndpoints)
     EXPECT_EQ(result.direction, Contour::Up);
     EXPECT_EQ(result.reason, Slur::Reason::MixedStems);
 }
+
+} // namespace
