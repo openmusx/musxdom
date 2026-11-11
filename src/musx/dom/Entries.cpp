@@ -1138,137 +1138,35 @@ std::pair<Evpu, Evpu> EntryInfoPtr::calcTopBottomExtent() const
 
 bool EntryInfoPtr::calcUpStemDefault() const
 {
-    //stem direction is determined by the beam a note or rest is part of, if any, so
-    //we must always look for a beam to calculate direction.
-    auto beamStart = findBeamStartOrCurrent();
-
-    int maxTopDiff = (std::numeric_limits<int>::min)();
-    int minBotDiff = (std::numeric_limits<int>::max)();
-    int numAbove = 0;
-    int numBelow = 0;
-    bool gotNonGrace = false;
-    bool gotPositionedEntry = false;
-
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        const auto& entry = next->getEntry();
-        if (!entry->graceNote) {
-            gotNonGrace = true;
-            if (next.calcIsZeroNote() && next.calcDisplaysAsRest()) {
-                continue;
-            }
-            gotPositionedEntry = true;
-            auto staff = next.createCurrentStaff();
-            auto [topLine, botLine] = next.calcTopBottomStaffPositions();
-            const int currTopDiff = topLine - staff->stemReversal;
-            if (maxTopDiff < currTopDiff) {
-                maxTopDiff = currTopDiff;
-            }
-            const int currBotDiff = botLine - staff->stemReversal;
-            if (minBotDiff > currBotDiff) {
-                minBotDiff = currBotDiff;
-            }
-            const int valForStem = std::abs(currBotDiff) > std::abs(currTopDiff) ? currBotDiff : currTopDiff;
-            if (valForStem > 0) {
-                numAbove++;
-            } else if (valForStem < 0) {
-                numBelow++;
-            }
-        }
+    const auto result = util::Stem::calcDefaultDirection(*this);
+    if (result.primaryDirection) {
+        return *result.primaryDirection == util::Stem::Direction::Up;
     }
-
-    if (!gotNonGrace) {
+    if ((*this)->getEntry()->graceNote) {
         return true;
     }
-
-    if (!gotPositionedEntry) {
-        return std::get<1>(calcEntryStemSettings()); // Use whatever Finale last calculated.
-    }
-
-    // for beams, if the diffs don't determine it, then the number above & below do
-    // (Function calcUnBeamed is false for beamed groups.)
-    if (minBotDiff < 0 && minBotDiff == -maxTopDiff && !calcUnbeamed()) {
-        return numBelow > numAbove;
-    }
-
-    const int valForBeam = std::abs(minBotDiff) > std::abs(maxTopDiff) ? minBotDiff : maxTopDiff;
-
-    return valForBeam < 0;
+    return std::get<1>(calcEntryStemSettings());
 }
 
 bool EntryInfoPtr::calcUpStemImpl() const
 {
-    switch (calcStemDirectionForced()) {
-    case StemDirection::AlwaysUp:
-        return true;
-    case StemDirection::AlwaysDown:
-        return false;
-    case StemDirection::Default:
-        break;
+    const auto result = util::Stem::calcEffectiveDirection(*this);
+    if (result.primaryDirection) {
+        return *result.primaryDirection == util::Stem::Direction::Up;
     }
-
-    //stem direction is determined by the beam a note or rest is part of, if any, so
-    //we must always look for a beam to calculate direction.
-    auto beamStart = findBeamStartOrCurrent();
-    // cross-staff direction was not part of the 2001 testing, but this seems the right place for it for now.
-    const auto scrollViewStaves = getFrame()->getDocument()->getScrollViewStaves(getFrame()->getRequestedPartId());
-    int foundCrossDirection = 0;
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        const int currDirection = next.calcCrossStaffDirectionForAll(scrollViewStaves);
-        if (currDirection != 0) {
-            if (foundCrossDirection == 0) {
-                foundCrossDirection = currDirection;
-            } else if (currDirection != foundCrossDirection) {
-                foundCrossDirection = 0;
-                break;
-            }
-        }
-    }
-    if (foundCrossDirection != 0) {
-        return foundCrossDirection < 0; // stem direction is opposite the cross direction, so cross down means stem up.
-    }
-
-    return calcUpStemDefault();
+    util::Logger::log(util::Logger::LogLevel::Info,
+        "Stem direction unavailable for entry " + std::to_string((*this)->getEntry()->getEntryNumber())
+        + "; using stored entry direction.");
+    return std::get<1>(calcEntryStemSettings());
 }
 
 StemDirection EntryInfoPtr::calcStemDirectionForced() const
 {
-    auto beamStart = findBeamStartOrCurrent();
-    const auto frame = getFrame();
-
-    // This is the precedence as tested by RGP in ~2001.
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        auto staff = next.createCurrentStaff();
-        if (staff->altNotation == others::Staff::AlternateNotation::Rhythmic) {
-            return staff->altRhythmStemsUp ? StemDirection::AlwaysUp : StemDirection::AlwaysDown;
-        }
+    const auto result = util::Stem::calcForcedDirection(*this);
+    if (!result.primaryDirection) {
+        return StemDirection::Default;
     }
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        const auto [freezeStem, upStem] = next.calcEntryStemSettings();
-        if (freezeStem) {
-            return upStem ? StemDirection::AlwaysUp : StemDirection::AlwaysDown;
-        }
-    }
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        if (auto layerAtts = frame->getLayerAttributes()) {
-            if (layerAtts->freezeLayer && calcIfLayerSettingsApply()) {
-                return layerAtts->freezeStemsUp ? StemDirection::AlwaysUp : StemDirection::AlwaysDown;
-            }
-        }
-    }
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        auto staff = next.createCurrentStaff();
-        if (staff->stemDirection == StemDirection::AlwaysUp || staff->stemDirection == StemDirection::AlwaysDown) {
-            return staff->stemDirection;
-        }
-    }
-    for (auto next = beamStart; next; next = next.getNextInBeamGroup()) {
-        const auto& entry = next->getEntry();
-        if (entry->v2Launch || entry->voice2) {
-            return std::get<1>(next.calcEntryStemSettings()) ? StemDirection::AlwaysUp : StemDirection::AlwaysDown;
-        }
-    }
-
-    return StemDirection::Default;
+    return *result.primaryDirection == util::Stem::Direction::Up ? StemDirection::AlwaysUp : StemDirection::AlwaysDown;
 }
 
 bool EntryInfoPtr::calcGraceNoteSlash(const MusxInstance<options::GraceNoteOptions> graceOptions) const

@@ -831,14 +831,15 @@ public:
     /// @return A std::pair<bool, bool> with the first being the freezeStem setting and the second being the upStem setting.
     [[nodiscard]] std::pair<bool, bool> calcEntryStemSettings() const;
 
-    /// @brief Calculates if the entry is upstem by default, without considering voices, layers, staff options, cross-staffing, or
-    /// manual overrides.
-    /// @return True if the entry is upstem barring any other factors that would override the stem direction. False if it is downstem.
+    /// @brief Calculates geometric stem direction, including cross-staff placement and beam-group context.
+    /// @details Excludes rhythmic, entry-freeze, layer, staff-direction and voice forcing. Uses saved staff geometry.
+    /// If geometry cannot resolve the direction, grace notes default up and other entries use their stored part-aware direction.
+    /// @return True for up, false for down.
     [[nodiscard]] bool calcUpStemDefault() const;
 
     /// @brief Returns the forced stem direction if any.
-    /// @details This uses the following precedence: rhythmic notation, manual freeze, layer override, staff override, 
-    /// and v1/v2 behavior. Cross-staff direction overrides are intentionally excluded.
+    /// @details Resolves local rhythmic, freeze, layer, staff and stored-direction settings in beam order.
+    /// Geometric cross-staff decisions are excluded.
     /// @return The forced direction, or #StemDirection::Default if none applies.
     [[nodiscard]] StemDirection calcStemDirectionForced() const;
 

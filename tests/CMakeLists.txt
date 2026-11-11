@@ -131,6 +131,7 @@ add_executable(musxdomtests
     # util
     util/arpeggio.cpp
     util/cue.cpp
+    util/entry_geometry.cpp
     util/fraction.cpp
     util/fretboard.cpp
     util/svg_arrowheads.cpp
