@@ -474,10 +474,9 @@ public:
     /// @return The NoteInfoPtr that is the tied-to note for this note, or null if none.
     [[nodiscard]] NoteInfoPtr calcArpeggiatedTieToNote(const EntryInfoPtr& forStartEntry) const;
 
-    /// @brief Determines whether the smart shape's contour runs up or down.
-    /// @return The contour direction, or `CurveContourDirection::Unspecified` when the direction is automatic.
-    [[nodiscard]]
-    CurveContourDirection calcContourDirection() const;
+    /// @brief Returns contour from shape type and direction settings only.
+    /// @return Explicit contour, or Unspecified for automatic settings; no endpoint lookup is performed.
+    [[nodiscard]] CurveContourDirection calcDefinitionContourDirection() const;
 
     /// @brief Calculates a vertical placement classification for beat-attached smart shapes.
     /// @returns Above if both endpoints are above the staff, Below if both endpoints are below the staff. Otherwise

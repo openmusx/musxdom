@@ -84,6 +84,7 @@
 #include "util/Tie.h"
 #include "util/EntryGeometry.h"
 #include "util/Stem.h"
+#include "util/Slur.h"
 #include "xml/XmlInterface.h"
 #include "dom/Graphics.h"
 #include "dom/Ossia.h"

@@ -479,7 +479,7 @@ bool others::SmartShape::calcIsLyricShape() const
     return shapeType == ShapeType::Hyphen || shapeType == ShapeType::WordExtension;
 }
 
-CurveContourDirection others::SmartShape::calcContourDirection() const
+CurveContourDirection others::SmartShape::calcDefinitionContourDirection() const
 {
     using ST = ShapeType;
     switch (shapeType) {
@@ -492,20 +492,6 @@ CurveContourDirection others::SmartShape::calcContourDirection() const
     case ST::DashSlurDown:
     case ST::DashContourSlurDown:
         return CurveContourDirection::Down;
-
-    case ST::SlurAuto:
-    case ST::DashContourSlurAuto:
-    case ST::DashSlurAuto:
-        if (entryBased) {
-            if (const auto startEntryInfoPtr = startTermSeg->endPoint->calcAssociatedEntry()) {
-                auto [freezeStem, upStem] = startEntryInfoPtr.calcEntryStemSettings();
-                if (freezeStem) {
-                    // Finale freezes slurs in the direction of a frozen stem on the launch entry.
-                    return upStem ? CurveContourDirection::Up : CurveContourDirection::Down;
-                }
-            }
-        }
-        break;
 
     default:
         break;
