@@ -19,7 +19,7 @@ var searchData=
   ['shapenote_16',['ShapeNote',['../classmusx_1_1dom_1_1details_1_1ShapeNote.html',1,'musx::dom::details']]],
   ['shapenotebase_17',['ShapeNoteBase',['../classmusx_1_1dom_1_1details_1_1ShapeNoteBase.html',1,'musx::dom::details']]],
   ['shapenotestyle_18',['ShapeNoteStyle',['../classmusx_1_1dom_1_1details_1_1ShapeNoteStyle.html',1,'musx::dom::details']]],
-  ['slur_19',['Slur',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1Slur.html',1,'musx::dom::ShapeDefInstruction::Slur'],['../structmusx_1_1util_1_1ShapeDefInstruction_1_1Slur.html',1,'musx::util::ShapeDefInstruction::Slur']]],
+  ['slur_19',['Slur',['../structmusx_1_1dom_1_1ShapeDefInstruction_1_1Slur.html',1,'musx::dom::ShapeDefInstruction::Slur'],['../structmusx_1_1util_1_1ShapeDefInstruction_1_1Slur.html',1,'musx::util::ShapeDefInstruction::Slur'],['../classmusx_1_1util_1_1Slur.html',1,'musx::util::Slur']]],
   ['smartshape_20',['SmartShape',['../classmusx_1_1dom_1_1others_1_1SmartShape.html',1,'musx::dom::others::SmartShape'],['../classmusx_1_1util_1_1SmartShape.html',1,'musx::util::SmartShape']]],
   ['smartshapecustomline_21',['SmartShapeCustomLine',['../classmusx_1_1dom_1_1others_1_1SmartShapeCustomLine.html',1,'musx::dom::others']]],
   ['smartshapeentryassign_22',['SmartShapeEntryAssign',['../classmusx_1_1dom_1_1details_1_1SmartShapeEntryAssign.html',1,'musx::dom::details']]],

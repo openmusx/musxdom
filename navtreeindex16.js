@@ -1,5 +1,6 @@
 var NAVTREEINDEX16 =
 {
+"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a96a097230716bbcda96c0653c425ce86":[2,0,1,0,1,20,4],
 "classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a97456d2f505490bd97c244cb13aae1bb":[1,0,1,0,1,20,3],
 "classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a97456d2f505490bd97c244cb13aae1bb":[2,0,1,0,1,20,3],
 "classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a9f631b709a62a19b229b860635f5dc85":[1,0,1,0,1,20,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX16 =
 "classmusx_1_1dom_1_1others_1_1FretboardStyle.html":[2,0,1,0,1,28],
 "classmusx_1_1dom_1_1others_1_1FretboardStyle.html#a071ade633f0bba9b11c3bed9abeeb108":[1,0,1,0,1,28,21],
 "classmusx_1_1dom_1_1others_1_1FretboardStyle.html#a071ade633f0bba9b11c3bed9abeeb108":[2,0,1,0,1,28,21],
-"classmusx_1_1dom_1_1others_1_1FretboardStyle.html#a07345e818ad91806eac9c117e58d638a":[1,0,1,0,1,28,11],
-"classmusx_1_1dom_1_1others_1_1FretboardStyle.html#a07345e818ad91806eac9c117e58d638a":[2,0,1,0,1,28,11]
+"classmusx_1_1dom_1_1others_1_1FretboardStyle.html#a07345e818ad91806eac9c117e58d638a":[1,0,1,0,1,28,11]
 };

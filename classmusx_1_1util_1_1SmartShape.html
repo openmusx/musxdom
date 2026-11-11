@@ -225,8 +225,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsLyricShape</b> 
 <tr class="memdesc:a5432484fa99017482fc80889f7d76e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the note this shape ends on.  <br /></td></tr>
 <tr class="memitem:afbbeca7ef4d9d32b9f2f4275bc62bdcd" id="r_afbbeca7ef4d9d32b9f2f4275bc62bdcd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1util_1_1NoteInfoPtr.html">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbbeca7ef4d9d32b9f2f4275bc62bdcd">calcArpeggiatedTieToNote</a> (const EntryInfoPtr &amp;forStartEntry) const</td></tr>
 <tr class="memdesc:afbbeca7ef4d9d32b9f2f4275bc62bdcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the tied-to note if this slur is being used as an arpeggiated tie on the specified entry.  <br /></td></tr>
-<tr class="memitem:a8e4270d6ae14b235f9df565782ee1e28" id="r_a8e4270d6ae14b235f9df565782ee1e28"><td class="memItemLeft" align="right" valign="top">CurveContourDirection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e4270d6ae14b235f9df565782ee1e28">calcContourDirection</a> () const</td></tr>
-<tr class="memdesc:a8e4270d6ae14b235f9df565782ee1e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether the smart shape's contour runs up or down.  <br /></td></tr>
+<tr class="memitem:a949d7e3eb7ea467a5a7f644eee8eeb02" id="r_a949d7e3eb7ea467a5a7f644eee8eeb02"><td class="memItemLeft" align="right" valign="top">CurveContourDirection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a949d7e3eb7ea467a5a7f644eee8eeb02">calcDefinitionContourDirection</a> () const</td></tr>
+<tr class="memdesc:a949d7e3eb7ea467a5a7f644eee8eeb02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns contour from shape type and direction settings only.  <br /></td></tr>
 <tr class="memitem:a5fe1a12dabd649547c603ba62bd8a585" id="r_a5fe1a12dabd649547c603ba62bd8a585"><td class="memItemLeft" align="right" valign="top">VerticalPlacement&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fe1a12dabd649547c603ba62bd8a585">calcVerticalPlacementForBeatAttached</a> () const</td></tr>
 <tr class="memdesc:a5fe1a12dabd649547c603ba62bd8a585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates a vertical placement classification for beat-attached smart shapes.  <br /></td></tr>
 <tr class="memitem:a27ec6e0d4e4d57258c9fe40aabd67870" id="r_a27ec6e0d4e4d57258c9fe40aabd67870"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27ec6e0d4e4d57258c9fe40aabd67870">calcIsDashed</a> () const</td></tr>
@@ -450,9 +450,9 @@ Additional Inherited Members</h2></td></tr>
 <p>All the smart shape types supported by Finale. </p>
 <p>The enum values match Finale's internal values. (Note that 24 is skipped.) However, they are saved in the xml as text values. These are camel case and otherwise match the enum names, except as noted. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7b869b52ed9d931b235b79d2c4ed1e6fa3387fd3030fde215f2319c5d84b7cae3" name="a7b869b52ed9d931b235b79d2c4ed1e6fa3387fd3030fde215f2319c5d84b7cae3"></a>SlurDown&#160;</td><td class="fielddoc"><p>Downward Slur (tips point up). This is the default and may not appear in the xml, but the text is in the Finale binary. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7b869b52ed9d931b235b79d2c4ed1e6fa3387fd3030fde215f2319c5d84b7cae3" name="a7b869b52ed9d931b235b79d2c4ed1e6fa3387fd3030fde215f2319c5d84b7cae3"></a>SlurDown&#160;</td><td class="fielddoc"><p>Downward <a class="el" href="classmusx_1_1util_1_1Slur.html" title="Logical contour for solid, dashed, and dashed-contour slurs, without curve layout.">Slur</a> (tips point up). This is the default and may not appear in the xml, but the text is in the Finale binary. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a7b869b52ed9d931b235b79d2c4ed1e6fadb43c8e054e0157befe80ccb8c127e72" name="a7b869b52ed9d931b235b79d2c4ed1e6fadb43c8e054e0157befe80ccb8c127e72"></a>SlurUp&#160;</td><td class="fielddoc"><p>Upward Slur (tips point down). </p>
+<tr><td class="fieldname"><a id="a7b869b52ed9d931b235b79d2c4ed1e6fadb43c8e054e0157befe80ccb8c127e72" name="a7b869b52ed9d931b235b79d2c4ed1e6fadb43c8e054e0157befe80ccb8c127e72"></a>SlurUp&#160;</td><td class="fielddoc"><p>Upward <a class="el" href="classmusx_1_1util_1_1Slur.html" title="Logical contour for solid, dashed, and dashed-contour slurs, without curve layout.">Slur</a> (tips point down). </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a7b869b52ed9d931b235b79d2c4ed1e6fa59c02eedfa6b40d7f0cca12e645e7c11" name="a7b869b52ed9d931b235b79d2c4ed1e6fa59c02eedfa6b40d7f0cca12e645e7c11"></a>Decrescendo&#160;</td><td class="fielddoc"><p>Decrescendo hairpin. (xml value is "decresc"). </p>
 </td></tr>
@@ -480,7 +480,7 @@ Additional Inherited Members</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a7b869b52ed9d931b235b79d2c4ed1e6fa2306a8f74f0204b3c514029a0f388701" name="a7b869b52ed9d931b235b79d2c4ed1e6fa2306a8f74f0204b3c514029a0f388701"></a>Trill&#160;</td><td class="fielddoc"><p>Trill (includes "tr" symbol at the beginning). == 14. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a7b869b52ed9d931b235b79d2c4ed1e6fa1c1a8e25361d255cbd1707bfae5b2ca3" name="a7b869b52ed9d931b235b79d2c4ed1e6fa1c1a8e25361d255cbd1707bfae5b2ca3"></a>SlurAuto&#160;</td><td class="fielddoc"><p>Slur with direction automatically determined. </p>
+<tr><td class="fieldname"><a id="a7b869b52ed9d931b235b79d2c4ed1e6fa1c1a8e25361d255cbd1707bfae5b2ca3" name="a7b869b52ed9d931b235b79d2c4ed1e6fa1c1a8e25361d255cbd1707bfae5b2ca3"></a>SlurAuto&#160;</td><td class="fielddoc"><p><a class="el" href="classmusx_1_1util_1_1Slur.html" title="Logical contour for solid, dashed, and dashed-contour slurs, without curve layout.">Slur</a> with direction automatically determined. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a7b869b52ed9d931b235b79d2c4ed1e6fac72cbd58bcee3f33a512a2f8801d7286" name="a7b869b52ed9d931b235b79d2c4ed1e6fac72cbd58bcee3f33a512a2f8801d7286"></a>DashSlurAuto&#160;</td><td class="fielddoc"><p>Thin line dashed slur with direction automatically determined. </p>
 </td></tr>
@@ -676,8 +676,8 @@ Over System Break" in the Finale U.I. </p>
 
 </div>
 </div>
-<a id="a8e4270d6ae14b235f9df565782ee1e28" name="a8e4270d6ae14b235f9df565782ee1e28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e4270d6ae14b235f9df565782ee1e28">&#9670;&#160;</a></span>calcContourDirection()</h2>
+<a id="a949d7e3eb7ea467a5a7f644eee8eeb02" name="a949d7e3eb7ea467a5a7f644eee8eeb02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a949d7e3eb7ea467a5a7f644eee8eeb02">&#9670;&#160;</a></span>calcDefinitionContourDirection()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -686,7 +686,7 @@ Over System Break" in the Finale U.I. </p>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">CurveContourDirection <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a8e4270d6ae14b235f9df565782ee1e28">musx::dom::others::SmartShape::calcContourDirection</a> </td>
+          <td class="memname">CurveContourDirection <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a949d7e3eb7ea467a5a7f644eee8eeb02">musx::dom::others::SmartShape::calcDefinitionContourDirection</a> </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -699,8 +699,8 @@ Over System Break" in the Finale U.I. </p>
 </table>
 </div><div class="memdoc">
 
-<p>Determines whether the smart shape's contour runs up or down. </p>
-<dl class="section return"><dt>Returns</dt><dd>The contour direction, or <span class="tt">CurveContourDirection::Unspecified</span> when the direction is automatic. </dd></dl>
+<p>Returns contour from shape type and direction settings only. </p>
+<dl class="section return"><dt>Returns</dt><dd>Explicit contour, or Unspecified for automatic settings; no endpoint lookup is performed. </dd></dl>
 
 </div>
 </div>

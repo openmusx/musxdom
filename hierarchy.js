@@ -41,6 +41,7 @@ var hierarchy =
     [ "musx::dom::DeferredReference&lt; T &gt;", "classmusx_1_1dom_1_1DeferredReference.html", null ],
     [ "musx::factory::DetailsFactory", "classmusx_1_1factory_1_1DetailsFactory.html", null ],
     [ "musx::dom::DetailsPool", "classmusx_1_1dom_1_1DetailsPool.html", null ],
+    [ "musx::util::Slur::DirectionInfo", "structmusx_1_1util_1_1Slur_1_1DirectionInfo.html", null ],
     [ "musx::util::Stem::DirectionInfo", "structmusx_1_1util_1_1Stem_1_1DirectionInfo.html", null ],
     [ "musx::dom::Document", "classmusx_1_1dom_1_1Document.html", null ],
     [ "musx::dom::DocumentElement", "classmusx_1_1dom_1_1DocumentElement.html", [
@@ -435,6 +436,7 @@ var hierarchy =
     [ "musx::dom::details::ShapeNoteBase::NoteShapes", "classmusx_1_1dom_1_1details_1_1ShapeNoteBase_1_1NoteShapes.html", null ],
     [ "musx::dom::ObjectPool&lt; ObjectBaseType &gt;::ObjectKey", "structmusx_1_1dom_1_1ObjectPool_1_1ObjectKey.html", null ],
     [ "musx::dom::ObjectPool&lt; ObjectBaseType &gt;", "classmusx_1_1dom_1_1ObjectPool.html", null ],
+    [ "musx::util::Slur::Options", "structmusx_1_1util_1_1Slur_1_1Options.html", null ],
     [ "musx::util::Stem::Options", "structmusx_1_1util_1_1Stem_1_1Options.html", null ],
     [ "musx::factory::OptionsFactory", "classmusx_1_1factory_1_1OptionsFactory.html", null ],
     [ "musx::dom::OptionsPool", "classmusx_1_1dom_1_1OptionsPool.html", null ],
@@ -475,6 +477,7 @@ var hierarchy =
     [ "musx::util::ShapeDefInstruction", "structmusx_1_1util_1_1ShapeDefInstruction.html", null ],
     [ "musx::dom::ShapeDefInstruction::Slur", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Slur.html", null ],
     [ "musx::util::ShapeDefInstruction::Slur", "structmusx_1_1util_1_1ShapeDefInstruction_1_1Slur.html", null ],
+    [ "musx::util::Slur", "classmusx_1_1util_1_1Slur.html", null ],
     [ "musx::dom::others::Measure::Spacing", "structmusx_1_1dom_1_1others_1_1Measure_1_1Spacing.html", null ],
     [ "musx::dom::others::Measure::SpacingSlot", "structmusx_1_1dom_1_1others_1_1Measure_1_1SpacingSlot.html", null ],
     [ "musx::dom::details::StaffGroupInfo", "classmusx_1_1dom_1_1details_1_1StaffGroupInfo.html", null ],

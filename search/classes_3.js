@@ -9,7 +9,7 @@ var searchData=
   ['detailsbase_6',['DetailsBase',['../classmusx_1_1dom_1_1DetailsBase.html',1,'musx::dom']]],
   ['detailsfactory_7',['DetailsFactory',['../classmusx_1_1factory_1_1DetailsFactory.html',1,'musx::factory']]],
   ['detailspool_8',['DetailsPool',['../classmusx_1_1dom_1_1DetailsPool.html',1,'musx::dom']]],
-  ['directioninfo_9',['DirectionInfo',['../structmusx_1_1util_1_1Stem_1_1DirectionInfo.html',1,'musx::util::Stem']]],
+  ['directioninfo_9',['DirectionInfo',['../structmusx_1_1util_1_1Slur_1_1DirectionInfo.html',1,'musx::util::Slur::DirectionInfo'],['../structmusx_1_1util_1_1Stem_1_1DirectionInfo.html',1,'musx::util::Stem::DirectionInfo']]],
   ['document_10',['Document',['../classmusx_1_1dom_1_1Document.html',1,'musx::dom::Document'],['../classmusx_1_1xml_1_1pugi_1_1Document.html',1,'musx::xml::pugi::Document'],['../classmusx_1_1xml_1_1rapidxml_1_1Document.html',1,'musx::xml::rapidxml::Document'],['../classmusx_1_1xml_1_1tinyxml2_1_1Document.html',1,'musx::xml::tinyxml2::Document']]],
   ['documentelement_11',['DocumentElement',['../classmusx_1_1dom_1_1DocumentElement.html',1,'musx::dom']]],
   ['documentelementnopart_12',['DocumentElementNoPart',['../classmusx_1_1dom_1_1DocumentElementNoPart.html',1,'musx::dom']]],

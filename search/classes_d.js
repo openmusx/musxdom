@@ -6,7 +6,7 @@ var searchData=
   ['objectpool_3c_20musx_3a_3adom_3a_3aoptionsbase_20_3e_3',['ObjectPool&lt; musx::dom::OptionsBase &gt;',['../classmusx_1_1dom_1_1ObjectPool.html',1,'musx::dom']]],
   ['objectpool_3c_20musx_3a_3adom_3a_3aothersbase_20_3e_4',['ObjectPool&lt; musx::dom::OthersBase &gt;',['../classmusx_1_1dom_1_1ObjectPool.html',1,'musx::dom']]],
   ['objectpool_3c_20musx_3a_3adom_3a_3atextsbase_20_3e_5',['ObjectPool&lt; musx::dom::TextsBase &gt;',['../classmusx_1_1dom_1_1ObjectPool.html',1,'musx::dom']]],
-  ['options_6',['Options',['../structmusx_1_1util_1_1Stem_1_1Options.html',1,'musx::util::Stem']]],
+  ['options_6',['Options',['../structmusx_1_1util_1_1Slur_1_1Options.html',1,'musx::util::Slur::Options'],['../structmusx_1_1util_1_1Stem_1_1Options.html',1,'musx::util::Stem::Options']]],
   ['optionsbase_7',['OptionsBase',['../classmusx_1_1dom_1_1OptionsBase.html',1,'musx::dom']]],
   ['optionsfactory_8',['OptionsFactory',['../classmusx_1_1factory_1_1OptionsFactory.html',1,'musx::factory']]],
   ['optionspool_9',['OptionsPool',['../classmusx_1_1dom_1_1OptionsPool.html',1,'musx::dom']]],

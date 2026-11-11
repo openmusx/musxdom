@@ -225,8 +225,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsLyricShape</b> 
 <tr class="memdesc:a5432484fa99017482fc80889f7d76e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the note this shape ends on.  <br /></td></tr>
 <tr class="memitem:afbbeca7ef4d9d32b9f2f4275bc62bdcd" id="r_afbbeca7ef4d9d32b9f2f4275bc62bdcd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbbeca7ef4d9d32b9f2f4275bc62bdcd">calcArpeggiatedTieToNote</a> (const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;forStartEntry) const</td></tr>
 <tr class="memdesc:afbbeca7ef4d9d32b9f2f4275bc62bdcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the tied-to note if this slur is being used as an arpeggiated tie on the specified entry.  <br /></td></tr>
-<tr class="memitem:a8e4270d6ae14b235f9df565782ee1e28" id="r_a8e4270d6ae14b235f9df565782ee1e28"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55">CurveContourDirection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e4270d6ae14b235f9df565782ee1e28">calcContourDirection</a> () const</td></tr>
-<tr class="memdesc:a8e4270d6ae14b235f9df565782ee1e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether the smart shape's contour runs up or down.  <br /></td></tr>
+<tr class="memitem:a949d7e3eb7ea467a5a7f644eee8eeb02" id="r_a949d7e3eb7ea467a5a7f644eee8eeb02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55">CurveContourDirection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a949d7e3eb7ea467a5a7f644eee8eeb02">calcDefinitionContourDirection</a> () const</td></tr>
+<tr class="memdesc:a949d7e3eb7ea467a5a7f644eee8eeb02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns contour from shape type and direction settings only.  <br /></td></tr>
 <tr class="memitem:a5fe1a12dabd649547c603ba62bd8a585" id="r_a5fe1a12dabd649547c603ba62bd8a585"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a5f47ab5a8dd3f3cab33730ac7e178ad3">VerticalPlacement</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fe1a12dabd649547c603ba62bd8a585">calcVerticalPlacementForBeatAttached</a> () const</td></tr>
 <tr class="memdesc:a5fe1a12dabd649547c603ba62bd8a585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates a vertical placement classification for beat-attached smart shapes.  <br /></td></tr>
 <tr class="memitem:a27ec6e0d4e4d57258c9fe40aabd67870" id="r_a27ec6e0d4e4d57258c9fe40aabd67870"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27ec6e0d4e4d57258c9fe40aabd67870">calcIsDashed</a> () const</td></tr>
@@ -674,8 +674,8 @@ Over System Break" in the Finale U.I. </p>
 
 </div>
 </div>
-<a id="a8e4270d6ae14b235f9df565782ee1e28" name="a8e4270d6ae14b235f9df565782ee1e28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e4270d6ae14b235f9df565782ee1e28">&#9670;&#160;</a></span>calcContourDirection()</h2>
+<a id="a949d7e3eb7ea467a5a7f644eee8eeb02" name="a949d7e3eb7ea467a5a7f644eee8eeb02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a949d7e3eb7ea467a5a7f644eee8eeb02">&#9670;&#160;</a></span>calcDefinitionContourDirection()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -684,7 +684,7 @@ Over System Break" in the Finale U.I. </p>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55">CurveContourDirection</a> musx::dom::others::SmartShape::calcContourDirection </td>
+          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55">CurveContourDirection</a> musx::dom::others::SmartShape::calcDefinitionContourDirection </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -697,8 +697,8 @@ Over System Break" in the Finale U.I. </p>
 </table>
 </div><div class="memdoc">
 
-<p>Determines whether the smart shape's contour runs up or down. </p>
-<dl class="section return"><dt>Returns</dt><dd>The contour direction, or <span class="tt"><a class="el" href="namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55a6fcdc090caeade09d0efd6253932b6f5" title="contour is automatic, indeterminate, or does not apply">CurveContourDirection::Unspecified</a></span> when the direction is automatic. </dd></dl>
+<p>Returns contour from shape type and direction settings only. </p>
+<dl class="section return"><dt>Returns</dt><dd>Explicit contour, or Unspecified for automatic settings; no endpoint lookup is performed. </dd></dl>
 
 </div>
 </div>

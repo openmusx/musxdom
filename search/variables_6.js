@@ -12,7 +12,7 @@ var searchData=
   ['gendergamelan_9',['GenderGamelan',['../namespacemusx_1_1dom_1_1uuid.html#a56c94e4759c23c395847395179a857e5',1,'musx::dom::uuid']]],
   ['generalmidi_10',['generalMidi',['../structmusx_1_1dom_1_1percussion_1_1PercussionNoteType.html#a215243cfba60d98d89b91dcdb9726f96',1,'musx::dom::percussion::PercussionNoteType']]],
   ['geometry_11',['geometry',['../structmusx_1_1util_1_1Stem_1_1GeometryResult.html#acad88f77b9671bcf03b9640ce98a7fff',1,'musx::util::Stem::GeometryResult']]],
-  ['geometryresolver_12',['geometryResolver',['../structmusx_1_1util_1_1Stem_1_1Options.html#a0f800a6b8198ee0bcc09df902f94e0a1',1,'musx::util::Stem::Options']]],
+  ['geometryresolver_12',['geometryResolver',['../structmusx_1_1util_1_1Slur_1_1Options.html#ab92fe6c0dc9d5276813ecb3c9754126b',1,'musx::util::Slur::Options::geometryResolver'],['../structmusx_1_1util_1_1Stem_1_1Options.html#a0f800a6b8198ee0bcc09df902f94e0a1',1,'musx::util::Stem::Options::geometryResolver']]],
   ['geometrysource_13',['geometrySource',['../structmusx_1_1util_1_1Stem_1_1DirectionInfo.html#af99b2517fcba93e5d469f60376e1cc63',1,'musx::util::Stem::DirectionInfo']]],
   ['geomungo_14',['Geomungo',['../namespacemusx_1_1dom_1_1uuid.html#ac93eee988a1d299397763fc108b451f7',1,'musx::dom::uuid']]],
   ['ghatam_15',['Ghatam',['../namespacemusx_1_1dom_1_1uuid.html#a7a2e0c0979cbafbe6a9755c5f4d3c360',1,'musx::dom::uuid']]],

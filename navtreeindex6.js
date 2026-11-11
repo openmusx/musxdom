@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a17e7f3ed2b61dc252ba5884b33641ed8":[2,0,1,0,0,26,1],
 "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a1bc0a383910d44272eb0a5cba1682a90":[1,0,1,0,0,26,24],
 "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a1bc0a383910d44272eb0a5cba1682a90":[2,0,1,0,0,26,24],
 "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a1c7cde7acf2b51a9cd7b66a39ccfb5e8":[1,0,1,0,0,26,14],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a161690e52240eada381afbacec5c2d1a":[2,0,1,0,0,38,15],
 "classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a1b886e89a411b137c1647e7102c934e0":[1,0,1,0,0,38,2],
 "classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a1b886e89a411b137c1647e7102c934e0":[2,0,1,0,0,38,2],
-"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a1d4cd1828172c3f9d6e9786e55b30593":[1,0,1,0,0,38,12],
-"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a1d4cd1828172c3f9d6e9786e55b30593":[2,0,1,0,0,38,12]
+"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a1d4cd1828172c3f9d6e9786e55b30593":[1,0,1,0,0,38,12]
 };

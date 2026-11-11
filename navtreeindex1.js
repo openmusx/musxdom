@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"classmusx_1_1dom_1_1DocumentElement.html":[2,0,1,0,30],
 "classmusx_1_1dom_1_1DocumentElement.html#a00405fc9d828e61f8a2a0556de77f250":[1,0,1,0,29,4],
 "classmusx_1_1dom_1_1DocumentElement.html#a00405fc9d828e61f8a2a0556de77f250":[2,0,1,0,30,4],
 "classmusx_1_1dom_1_1DocumentElement.html#a0ba8f85bbb7d798d4ce7f247810a299e":[1,0,1,0,29,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "classmusx_1_1dom_1_1EntryInfo.html#adb06eec5ee188c8840d9ed4f794a3951":[2,0,1,0,38,2],
 "classmusx_1_1dom_1_1EntryInfo.html#af94fa5a19a674a1d394b244a7a8b2ee3":[1,0,1,0,37,1],
 "classmusx_1_1dom_1_1EntryInfo.html#af94fa5a19a674a1d394b244a7a8b2ee3":[2,0,1,0,38,1],
-"classmusx_1_1dom_1_1EntryInfoPtr.html":[1,0,1,0,35],
-"classmusx_1_1dom_1_1EntryInfoPtr.html":[2,0,1,0,36]
+"classmusx_1_1dom_1_1EntryInfoPtr.html":[1,0,1,0,35]
 };

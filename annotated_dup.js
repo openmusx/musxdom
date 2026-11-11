@@ -322,6 +322,7 @@ var annotated_dup =
         [ "StaffOriginOffsetRequest", "structmusx_1_1util_1_1StaffOriginOffsetRequest.html", "structmusx_1_1util_1_1StaffOriginOffsetRequest" ],
         [ "StaffOriginOffsetResolverResult", "structmusx_1_1util_1_1StaffOriginOffsetResolverResult.html", "structmusx_1_1util_1_1StaffOriginOffsetResolverResult" ],
         [ "Logger", "classmusx_1_1util_1_1Logger.html", "classmusx_1_1util_1_1Logger" ],
+        [ "Slur", "classmusx_1_1util_1_1Slur.html", "classmusx_1_1util_1_1Slur" ],
         [ "Stem", "classmusx_1_1util_1_1Stem.html", "classmusx_1_1util_1_1Stem" ],
         [ "SvgConvert", "classmusx_1_1util_1_1SvgConvert.html", "classmusx_1_1util_1_1SvgConvert" ],
         [ "TestConfiguration", "classmusx_1_1util_1_1TestConfiguration.html", null ],

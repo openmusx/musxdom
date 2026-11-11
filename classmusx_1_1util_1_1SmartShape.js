@@ -63,7 +63,7 @@ var classmusx_1_1util_1_1SmartShape =
     [ "SmartShape", "classmusx_1_1util_1_1SmartShape.html#a20fcbbb1d0ad5796cbd5f9ffca84c82a", null ],
     [ "calcAppliesTo", "classmusx_1_1util_1_1SmartShape.html#a43ee2d11faa58c363117cc0cdd843b7c", null ],
     [ "calcArpeggiatedTieToNote", "classmusx_1_1util_1_1SmartShape.html#afbbeca7ef4d9d32b9f2f4275bc62bdcd", null ],
-    [ "calcContourDirection", "classmusx_1_1util_1_1SmartShape.html#a8e4270d6ae14b235f9df565782ee1e28", null ],
+    [ "calcDefinitionContourDirection", "classmusx_1_1util_1_1SmartShape.html#a949d7e3eb7ea467a5a7f644eee8eeb02", null ],
     [ "calcEndNote", "classmusx_1_1util_1_1SmartShape.html#a5432484fa99017482fc80889f7d76e70", null ],
     [ "calcIsBackwards", "classmusx_1_1util_1_1SmartShape.html#a98a2e9b517a03fd3eafbd59e39957ac4", null ],
     [ "calcIsDashed", "classmusx_1_1util_1_1SmartShape.html#a27ec6e0d4e4d57258c9fe40aabd67870", null ],

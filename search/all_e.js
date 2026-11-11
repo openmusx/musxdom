@@ -63,7 +63,7 @@ var searchData=
   ['ophicleide_60',['Ophicleide',['../namespacemusx_1_1dom_1_1uuid.html#ac59c64d424fd56814f0801c00c37db92',1,'musx::dom::uuid']]],
   ['opposite_61',['Opposite',['../classmusx_1_1dom_1_1others_1_1SmartShape.html#a32fe76ae46a68c0b50e282c7918bed54ad8d76e03141ed1cf0d5704df71efbfef',1,'musx::dom::others::SmartShape']]],
   ['oppositefirst_62',['OppositeFirst',['../classmusx_1_1dom_1_1options_1_1TieOptions.html#aaceacef983669122a11ea7986681a0edaf220fdef512b8e20c4b8fd6271b0dcc0',1,'musx::dom::options::TieOptions']]],
-  ['options_63',['Options',['../structmusx_1_1util_1_1Stem_1_1Options.html',1,'musx::util::Stem']]],
+  ['options_63',['Options',['../structmusx_1_1util_1_1Slur_1_1Options.html',1,'musx::util::Slur::Options'],['../structmusx_1_1util_1_1Stem_1_1Options.html',1,'musx::util::Stem::Options']]],
   ['optionsbase_64',['OptionsBase',['../classmusx_1_1dom_1_1OptionsBase.html',1,'musx::dom::OptionsBase'],['../classmusx_1_1dom_1_1OptionsBase.html#a3f20a190991af2bb152dd9ab1f573dba',1,'musx::dom::OptionsBase::OptionsBase()']]],
   ['optionsdefault_65',['OptionsDefault',['../classmusx_1_1dom_1_1others_1_1Measure.html#a6d4c0949f42ef1f337f8e2ae0ee0c117aa92deda61e5101f6c17e7fb660ff17a8',1,'musx::dom::others::Measure']]],
   ['optionsfactory_66',['OptionsFactory',['../classmusx_1_1factory_1_1OptionsFactory.html',1,'musx::factory']]],

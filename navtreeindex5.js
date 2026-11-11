@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"classmusx_1_1dom_1_1details_1_1ArticulationAssign.html":[2,0,1,0,0,1],
 "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a045264b0f6ff881411fddbb01e546fa6":[1,0,1,0,0,1,1],
 "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a045264b0f6ff881411fddbb01e546fa6":[2,0,1,0,0,1,1],
 "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a087facae355f20a8bbfa519f78d76b4b":[1,0,1,0,0,1,7],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a13c10345b0b6b211da8c95c4c6196576":[2,0,1,0,0,26,5],
 "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a179be6cb886cae6fa2f5e24f87e084b5":[1,0,1,0,0,26,0],
 "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a179be6cb886cae6fa2f5e24f87e084b5":[2,0,1,0,0,26,0],
-"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a17e7f3ed2b61dc252ba5884b33641ed8":[1,0,1,0,0,26,1],
-"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a17e7f3ed2b61dc252ba5884b33641ed8":[2,0,1,0,0,26,1]
+"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a17e7f3ed2b61dc252ba5884b33641ed8":[1,0,1,0,0,26,1]
 };

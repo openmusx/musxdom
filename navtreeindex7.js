@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a1d4cd1828172c3f9d6e9786e55b30593":[2,0,1,0,0,38,12],
 "classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a22ead68fc52417c81aea059002c1db85":[1,0,1,0,0,38,10],
 "classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a22ead68fc52417c81aea059002c1db85":[2,0,1,0,0,38,10],
 "classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a267c8cb2d1989eedcbfebd62fc9c6a13":[1,0,1,0,0,38,8],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "classmusx_1_1dom_1_1details_1_1SecondaryBeamAlterationsDownStem.html":[2,0,1,0,0,49],
 "classmusx_1_1dom_1_1details_1_1SecondaryBeamAlterationsDownStem.html#a353fdc6542d2aabdb41d5595456e17cb":[1,0,1,0,0,49,0],
 "classmusx_1_1dom_1_1details_1_1SecondaryBeamAlterationsDownStem.html#a353fdc6542d2aabdb41d5595456e17cb":[2,0,1,0,0,49,0],
-"classmusx_1_1dom_1_1details_1_1SecondaryBeamAlterationsUpStem.html":[1,0,1,0,0,50],
-"classmusx_1_1dom_1_1details_1_1SecondaryBeamAlterationsUpStem.html":[2,0,1,0,0,50]
+"classmusx_1_1dom_1_1details_1_1SecondaryBeamAlterationsUpStem.html":[1,0,1,0,0,50]
 };
