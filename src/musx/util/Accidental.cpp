@@ -319,7 +319,9 @@ bool Accidental::calcIsDisplayed(const dom::NoteInfoPtr& note, dom::PitchMode pi
             return false;
         }
         MUSX_INTEGRITY_ERROR("Accidental note was not found in its measure context.");
+#ifndef MUSX_THROW_ON_INTEGRITY_CHECK_FAIL
         throw std::logic_error("Accidental note was not found in its measure context.");
+#endif
     }
     return result->second;
 }
