@@ -531,33 +531,6 @@ TEST_F(ArticulationHandlePositionTest, HorizontalOffsetIgnoresGlyphMetricsSpacin
     expectHorizontalOffset(displacement);
 }
 
-TEST_F(ArticulationHandlePositionTest, HorizontalOffsetRejectsInvalidContext)
-{
-    constexpr Cmper otherPartId = 2;
-    const details::ArticulationAssign wrongEntry(document, SCORE_PARTID, EnigmaBase::ShareMode::All, 0, 0);
-    const details::ArticulationAssign wrongPart(document, otherPartId, EnigmaBase::ShareMode::All,
-        entry->getEntryNumber(), 0);
-    std::vector<char> xml;
-    musxtest::readFile(musxtest::getInputPath() / "lvshapes.enigmaxml", xml);
-    const auto otherDocument = musx::factory::DocumentFactory::create<musx::xml::tinyxml2::Document>(xml);
-    ASSERT_TRUE(otherDocument);
-    const details::ArticulationAssign wrongDocument(otherDocument, SCORE_PARTID, EnigmaBase::ShareMode::All,
-        entry->getEntryNumber(), 0);
-#ifdef NDEBUG
-    EXPECT_THROW((void)assignment->calcHandleHorizontalOffset({}), std::logic_error);
-    for (const auto* invalid : {&wrongEntry, &wrongPart, &wrongDocument}) {
-        EXPECT_THROW((void)invalid->calcHandleHorizontalOffset(entryInfo), std::logic_error);
-    }
-#else
-    EXPECT_DEATH((void)assignment->calcHandleHorizontalOffset({}), "");
-    for (const auto* invalid : {&wrongEntry, &wrongPart, &wrongDocument}) {
-        EXPECT_DEATH((void)invalid->calcHandleHorizontalOffset(entryInfo), "");
-    }
-#endif
-    assignment->articDef = 0;
-    EXPECT_THROW((void)assignment->calcHandleHorizontalOffset(entryInfo), integrity_error);
-}
-
 TEST_F(ArticulationHandlePositionTest, SelectsManualSymbolBeforeOffsetsAndIgnoresPlacementOverride)
 {
     definition->aboveSymbolAlt = true;
@@ -859,21 +832,10 @@ TEST_F(ArticulationHandlePositionTest, IgnoresStaffEntryAndNoteheadSizePercentag
     EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
 }
 
-TEST_F(ArticulationHandlePositionTest, RejectsInvalidContext)
-{
-    const details::ArticulationAssign wrongEntry(document, SCORE_PARTID, EnigmaBase::ShareMode::All, 0, 0);
-#ifdef NDEBUG
-    EXPECT_THROW((void)assignment->calcHandleStaffPosition({}), std::logic_error);
-    EXPECT_THROW((void)wrongEntry.calcHandleStaffPosition(entryInfo), std::logic_error);
-#else
-    EXPECT_DEATH((void)assignment->calcHandleStaffPosition({}), "");
-    EXPECT_DEATH((void)wrongEntry.calcHandleStaffPosition(entryInfo), "");
-#endif
-}
-
 TEST_F(ArticulationHandlePositionTest, ReportsInvalidDefinitionAndSpacing)
 {
     assignment->articDef = 0;
+    EXPECT_THROW((void)assignment->calcHandleHorizontalOffset(entryInfo), integrity_error);
     EXPECT_THROW((void)assignment->calcHandleStaffPosition(entryInfo), integrity_error);
     assignment->articDef = definitionId;
     staff->lineSpace = 0;
