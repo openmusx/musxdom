@@ -1,5 +1,14 @@
 var NAVTREEINDEX11 =
 {
+"classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aaacc48be35ed99a8ddcf5adc73ae950cd":[1,0,1,0,5,8,0,24],
+"classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aaacc48be35ed99a8ddcf5adc73ae950cd":[2,0,1,0,4,8,0,24],
+"classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aabb52f098e1017a99bf6fee165dbd2175":[1,0,1,0,5,8,0,25],
+"classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aabb52f098e1017a99bf6fee165dbd2175":[2,0,1,0,4,8,0,25],
+"classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aabc4bb2d2fad6e5a8adb545d18a300b78":[1,0,1,0,5,8,0,8],
+"classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aabc4bb2d2fad6e5a8adb545d18a300b78":[2,0,1,0,4,8,0,8],
+"classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aac19a0ac998185571f74ee5533c5a4c76":[1,0,1,0,5,8,0,27],
+"classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aac19a0ac998185571f74ee5533c5a4c76":[2,0,1,0,4,8,0,27],
+"classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aac22ec665cc8ccf9bbc6c59d1a4f72be0":[1,0,1,0,5,8,0,36],
 "classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aac22ec665cc8ccf9bbc6c59d1a4f72be0":[2,0,1,0,4,8,0,36],
 "classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aac597505b18dc52412c38199ab8999bec":[1,0,1,0,5,8,0,44],
 "classmusx_1_1dom_1_1options_1_1FontOptions.html#a794a0a1c04e4b92a27daee007bd5694aac597505b18dc52412c38199ab8999bec":[2,0,1,0,4,8,0,44],
@@ -240,14 +249,5 @@ var NAVTREEINDEX11 =
 "classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a3d5fb29e48c2b11a942457e49d5d9a8baac370eee763b357f18a45ae699fcfea9":[1,0,1,0,5,15,1,2],
 "classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a3d5fb29e48c2b11a942457e49d5d9a8baac370eee763b357f18a45ae699fcfea9":[2,0,1,0,4,15,1,2],
 "classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a4d253a142bd8561e6729f8be0c1bcb3c":[1,0,1,0,5,15,22],
-"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a4d253a142bd8561e6729f8be0c1bcb3c":[2,0,1,0,4,15,22],
-"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a4f6a67c5495d1a95bae40ec5ec0abf66":[1,0,1,0,5,15,7],
-"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a4f6a67c5495d1a95bae40ec5ec0abf66":[2,0,1,0,4,15,7],
-"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a5ec575c9e39bd7f246e5aa5ec1cfccec":[1,0,1,0,5,15,24],
-"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a5ec575c9e39bd7f246e5aa5ec1cfccec":[2,0,1,0,4,15,24],
-"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a632f80640ff44040bccd5c247229ef0d":[1,0,1,0,5,15,27],
-"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a632f80640ff44040bccd5c247229ef0d":[2,0,1,0,4,15,27],
-"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a667eb88da97beacfcb2d3006c294813e":[1,0,1,0,5,15,12],
-"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a667eb88da97beacfcb2d3006c294813e":[2,0,1,0,4,15,12],
-"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a6ab90e0c9e2e5b716b3270b7d67ad8d8":[1,0,1,0,5,15,3]
+"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a4d253a142bd8561e6729f8be0c1bcb3c":[2,0,1,0,4,15,22]
 };

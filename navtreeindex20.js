@@ -1,5 +1,14 @@
 var NAVTREEINDEX20 =
 {
+"classmusx_1_1dom_1_1others_1_1OssiaMusic.html#a2cb697425ed18c6525da016db0a2874b":[1,0,1,0,1,11,1],
+"classmusx_1_1dom_1_1others_1_1OssiaMusic.html#a2cb697425ed18c6525da016db0a2874b":[2,0,1,0,1,11,1],
+"classmusx_1_1dom_1_1others_1_1OssiaMusic.html#a31d90be8a5b874b5799297f3395c3e19":[1,0,1,0,1,11,4],
+"classmusx_1_1dom_1_1others_1_1OssiaMusic.html#a31d90be8a5b874b5799297f3395c3e19":[2,0,1,0,1,11,4],
+"classmusx_1_1dom_1_1others_1_1OssiaMusic.html#a61a2cc657e3f7630aa4e13152014c7ac":[1,0,1,0,1,11,8],
+"classmusx_1_1dom_1_1others_1_1OssiaMusic.html#a61a2cc657e3f7630aa4e13152014c7ac":[2,0,1,0,1,11,8],
+"classmusx_1_1dom_1_1others_1_1OssiaMusic.html#a840026f7ceb2c6e089e0826d26eccf50":[1,0,1,0,1,11,2],
+"classmusx_1_1dom_1_1others_1_1OssiaMusic.html#a840026f7ceb2c6e089e0826d26eccf50":[2,0,1,0,1,11,2],
+"classmusx_1_1dom_1_1others_1_1OssiaMusic.html#a9e553e991e9129951f851acadab69abe":[1,0,1,0,1,11,5],
 "classmusx_1_1dom_1_1others_1_1OssiaMusic.html#a9e553e991e9129951f851acadab69abe":[2,0,1,0,1,11,5],
 "classmusx_1_1dom_1_1others_1_1OssiaMusic.html#aa6fb550fffde70a487f5acafb8df1240":[1,0,1,0,1,11,3],
 "classmusx_1_1dom_1_1others_1_1OssiaMusic.html#aa6fb550fffde70a487f5acafb8df1240":[2,0,1,0,1,11,3],
@@ -240,14 +249,5 @@ var NAVTREEINDEX20 =
 "classmusx_1_1dom_1_1others_1_1PartGlobals.html":[1,0,1,0,1,49],
 "classmusx_1_1dom_1_1others_1_1PartGlobals.html":[2,0,1,0,1,49],
 "classmusx_1_1dom_1_1others_1_1PartGlobals.html#a02702f380544add9159ef5a3f79c9c59":[1,0,1,0,1,49,3],
-"classmusx_1_1dom_1_1others_1_1PartGlobals.html#a02702f380544add9159ef5a3f79c9c59":[2,0,1,0,1,49,3],
-"classmusx_1_1dom_1_1others_1_1PartGlobals.html#a22240b740213711bce7d3d09ab6ee3f0":[1,0,1,0,1,49,4],
-"classmusx_1_1dom_1_1others_1_1PartGlobals.html#a22240b740213711bce7d3d09ab6ee3f0":[2,0,1,0,1,49,4],
-"classmusx_1_1dom_1_1others_1_1PartGlobals.html#a2d1a52c48b402278588db0ff50ebff91":[1,0,1,0,1,49,5],
-"classmusx_1_1dom_1_1others_1_1PartGlobals.html#a2d1a52c48b402278588db0ff50ebff91":[2,0,1,0,1,49,5],
-"classmusx_1_1dom_1_1others_1_1PartGlobals.html#a9fda0354c0f4d372aa9f5af33787d678":[1,0,1,0,1,49,0],
-"classmusx_1_1dom_1_1others_1_1PartGlobals.html#a9fda0354c0f4d372aa9f5af33787d678":[2,0,1,0,1,49,0],
-"classmusx_1_1dom_1_1others_1_1PartGlobals.html#ab7c62dc22722d608acc3383ee706b8f6":[1,0,1,0,1,49,1],
-"classmusx_1_1dom_1_1others_1_1PartGlobals.html#ab7c62dc22722d608acc3383ee706b8f6":[2,0,1,0,1,49,1],
-"classmusx_1_1dom_1_1others_1_1PartGlobals.html#ad1ac188b8ddd50ec8d5d8eb7b42f5c00":[1,0,1,0,1,49,6]
+"classmusx_1_1dom_1_1others_1_1PartGlobals.html#a02702f380544add9159ef5a3f79c9c59":[2,0,1,0,1,49,3]
 };

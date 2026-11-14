@@ -1,5 +1,7 @@
 var hierarchy =
 [
+    [ "musx::util::Accidental", "classmusx_1_1util_1_1Accidental.html", null ],
+    [ "musx::util::AccidentalCache", "structmusx_1_1util_1_1AccidentalCache.html", null ],
     [ "musx::dom::NoteInfoPtr::ArpeggiatedTieInfo", "structmusx_1_1dom_1_1NoteInfoPtr_1_1ArpeggiatedTieInfo.html", null ],
     [ "musx::util::NoteInfoPtr::ArpeggiatedTieInfo", "structmusx_1_1util_1_1NoteInfoPtr_1_1ArpeggiatedTieInfo.html", null ],
     [ "musx::util::ArpeggioSpanCandidate", "structmusx_1_1util_1_1ArpeggioSpanCandidate.html", null ],
@@ -420,6 +422,7 @@ var hierarchy =
       [ "musx::xml::rapidxml::Element", "classmusx_1_1xml_1_1rapidxml_1_1Element.html", null ],
       [ "musx::xml::tinyxml2::Element", "classmusx_1_1xml_1_1tinyxml2_1_1Element.html", null ]
     ] ],
+    [ "musx::util::AccidentalCache::Key", "structmusx_1_1util_1_1AccidentalCache_1_1Key.html", null ],
     [ "musx::dom::others::Staff::KeySigTransposition", "classmusx_1_1dom_1_1others_1_1Staff_1_1KeySigTransposition.html", null ],
     [ "musx::dom::ShapeDefInstruction::LineWidth", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1LineWidth.html", null ],
     [ "musx::util::ShapeDefInstruction::LineWidth", "structmusx_1_1util_1_1ShapeDefInstruction_1_1LineWidth.html", null ],

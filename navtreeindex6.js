@@ -1,5 +1,14 @@
 var NAVTREEINDEX6 =
 {
+"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a0d5c3a36651310c32b63c7f63b447923":[1,0,1,0,0,26,20],
+"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a0d5c3a36651310c32b63c7f63b447923":[2,0,1,0,0,26,20],
+"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a12781953747f8e34b66ebd0287f49155":[1,0,1,0,0,26,27],
+"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a12781953747f8e34b66ebd0287f49155":[2,0,1,0,0,26,27],
+"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a13c10345b0b6b211da8c95c4c6196576":[1,0,1,0,0,26,5],
+"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a13c10345b0b6b211da8c95c4c6196576":[2,0,1,0,0,26,5],
+"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a179be6cb886cae6fa2f5e24f87e084b5":[1,0,1,0,0,26,0],
+"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a179be6cb886cae6fa2f5e24f87e084b5":[2,0,1,0,0,26,0],
+"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a17e7f3ed2b61dc252ba5884b33641ed8":[1,0,1,0,0,26,1],
 "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a17e7f3ed2b61dc252ba5884b33641ed8":[2,0,1,0,0,26,1],
 "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a1bc0a383910d44272eb0a5cba1682a90":[1,0,1,0,0,26,24],
 "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a1bc0a383910d44272eb0a5cba1682a90":[2,0,1,0,0,26,24],
@@ -240,14 +249,5 @@ var NAVTREEINDEX6 =
 "classmusx_1_1dom_1_1details_1_1GFrameHoldContext.html#acff7329c626f98038fffe6cfff7ee880":[1,0,1,0,0,65,13],
 "classmusx_1_1dom_1_1details_1_1GFrameHoldContext.html#acff7329c626f98038fffe6cfff7ee880":[2,0,1,0,0,65,13],
 "classmusx_1_1dom_1_1details_1_1GFrameHoldContext.html#af473e66f4ab01194143db805fba5f191":[1,0,1,0,0,65,5],
-"classmusx_1_1dom_1_1details_1_1GFrameHoldContext.html#af473e66f4ab01194143db805fba5f191":[2,0,1,0,0,65,5],
-"classmusx_1_1dom_1_1details_1_1GFrameHoldContext.html#af7dfee19597fcc58f5a0e518a9cb58d1":[1,0,1,0,0,65,2],
-"classmusx_1_1dom_1_1details_1_1GFrameHoldContext.html#af7dfee19597fcc58f5a0e518a9cb58d1":[2,0,1,0,0,65,2],
-"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html":[1,0,1,0,0,38],
-"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html":[2,0,1,0,0,38],
-"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a161690e52240eada381afbacec5c2d1a":[1,0,1,0,0,38,15],
-"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a161690e52240eada381afbacec5c2d1a":[2,0,1,0,0,38,15],
-"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a1b886e89a411b137c1647e7102c934e0":[1,0,1,0,0,38,2],
-"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a1b886e89a411b137c1647e7102c934e0":[2,0,1,0,0,38,2],
-"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a1d4cd1828172c3f9d6e9786e55b30593":[1,0,1,0,0,38,12]
+"classmusx_1_1dom_1_1details_1_1GFrameHoldContext.html#af473e66f4ab01194143db805fba5f191":[2,0,1,0,0,65,5]
 };

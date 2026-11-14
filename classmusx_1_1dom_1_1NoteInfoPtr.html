@@ -136,6 +136,8 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getNoteIndex</b> ()
 <tr class="memdesc:a160ca8678250695a224f1665b9c7a1c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the note index for this note. <br /></td></tr>
 <tr class="memitem:a4766cf96435ed81abdf8309f4e267b95" id="r_a4766cf96435ed81abdf8309f4e267b95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmusx_1_1dom_1_1Note_1_1NoteProperties.html">Note::NoteProperties</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4766cf96435ed81abdf8309f4e267b95">calcNoteProperties</a> (<a class="el" href="structmusx_1_1dom_1_1NotePropertiesOptions.html">NotePropertiesOptions</a> <a class="el" href="namespacemusx_1_1dom_1_1options.html">options</a>={}) const</td></tr>
 <tr class="memdesc:a4766cf96435ed81abdf8309f4e267b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the note name, octave number, actual alteration, and staff position. The staff position takes into account percussion notes and their staff position override.  <br /></td></tr>
+<tr class="memitem:ab85bfba4441f7a7a45cb2dfb1f61a729" id="r_ab85bfba4441f7a7a45cb2dfb1f61a729"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab85bfba4441f7a7a45cb2dfb1f61a729">calcAccidentalIsDisplayed</a> (<a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398">PitchMode</a> pitchMode=<a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398a0927f41ac54c89b52ea38691ce7e9696">PitchMode::CurrentView</a>) const</td></tr>
+<tr class="memdesc:ab85bfba4441f7a7a45cb2dfb1f61a729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this note displays an accidental in the requested pitch context.  <br /></td></tr>
 <tr class="memitem:a2c725e14e257f68e2c7600a8540b7457" id="r_a2c725e14e257f68e2c7600a8540b7457"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1PercussionNoteInfo.html">others::PercussionNoteInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c725e14e257f68e2c7600a8540b7457">calcPercussionNoteInfo</a> () const</td></tr>
 <tr class="memdesc:a2c725e14e257f68e2c7600a8540b7457"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the percussion note info for this note, if any.  <br /></td></tr>
 <tr class="memitem:a16f03e5030d5d4995c87d9899341ce48" id="r_a16f03e5030d5d4995c87d9899341ce48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmusx_1_1dom_1_1NoteInfoPtr_1_1NoteheadInfo.html">NoteheadInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16f03e5030d5d4995c87d9899341ce48">calcNoteheadInfo</a> () const</td></tr>
@@ -234,6 +236,47 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ab85bfba4441f7a7a45cb2dfb1f61a729" name="ab85bfba4441f7a7a45cb2dfb1f61a729"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab85bfba4441f7a7a45cb2dfb1f61a729">&#9670;&#160;</a></span>calcAccidentalIsDisplayed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool musx::dom::NoteInfoPtr::calcAccidentalIsDisplayed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398">PitchMode</a></td>          <td class="paramname"><span class="paramname"><em>pitchMode</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398a0927f41ac54c89b52ea38691ce7e9696">PitchMode::CurrentView</a></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns whether this note displays an accidental in the requested pitch context. </p>
+<p>The first query calculates and caches results for all participating layers in the staff-measure context. Results are shared across note wrappers and frames in this document. Call <a class="el" href="classmusx_1_1dom_1_1Document.html#aaa4cd29b0e4a7d56cc1871835eba8dd4" title="Discards all cached accidental-display results for this document.">Document::clearAccidentalCache</a> after editing inputs to the calculation. Glyph appearance, accidental positioning, staff-system visibility, and page clipping are excluded. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pitchMode</td><td>The pitch representation used for all notes in the calculation. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>False for rests, hidden entries, excluded part voices, and replacement notation. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>If this note or pitch mode is invalid. </td></tr>
+    <tr><td class="paramname">std::logic_error</td><td>If the note cannot be found in its measure context. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ac0840cb71f2d973958c389c2a806aca0" name="ac0840cb71f2d973958c389c2a806aca0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac0840cb71f2d973958c389c2a806aca0">&#9670;&#160;</a></span>calcArpeggiatedTieInfo()</h2>
 

@@ -119,7 +119,7 @@ constexpr Fraction&#160;</td><td class="memItemRight" valign="bottom"><b>recipro
 <tr class="memdesc:a47e1d2035b0fa6b7c26eade9cb992462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the reciprocal fraction. <br /></td></tr>
 <tr class="memitem:a7e647ecefdfbf2a02b25d16467393f3a" id="r_a7e647ecefdfbf2a02b25d16467393f3a"><td class="memItemLeft" align="right" valign="top"><a id="a7e647ecefdfbf2a02b25d16467393f3a" name="a7e647ecefdfbf2a02b25d16467393f3a"></a>
 constexpr <a class="el" href="namespacemusx_1_1dom.html#a4cd6856c83a6fc3f3b1c44ef02532c90">dom::Edu</a>&#160;</td><td class="memItemRight" valign="bottom"><b>calcEduDuration</b> () const</td></tr>
-<tr class="memdesc:a7e647ecefdfbf2a02b25d16467393f3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates duration as a fraction of a whole note. The result is rounded to the nearest integer Edu value, with 0.5 rounded away from zero, and saturated to the numeric range of <a class="el" href="namespacemusx_1_1dom.html#a4cd6856c83a6fc3f3b1c44ef02532c90" title="&quot;Enigma Durational Units&quot; value (1024 per quarter note)">dom::Edu</a>. <br /></td></tr>
+<tr class="memdesc:a7e647ecefdfbf2a02b25d16467393f3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates duration as a fraction of a whole note. The result is rounded to the nearest integer <a class="el" href="namespacemusx_1_1dom.html#a4cd6856c83a6fc3f3b1c44ef02532c90" title="&quot;Enigma Durational Units&quot; value (1024 per quarter note)">Edu</a> value, with 0.5 rounded away from zero, and saturated to the numeric range of <a class="el" href="namespacemusx_1_1dom.html#a4cd6856c83a6fc3f3b1c44ef02532c90" title="&quot;Enigma Durational Units&quot; value (1024 per quarter note)">dom::Edu</a>. <br /></td></tr>
 <tr class="memitem:a848234ceadb9f10f10ed314b2d450dd9" id="r_a848234ceadb9f10f10ed314b2d450dd9"><td class="memItemLeft" align="right" valign="top"><a id="a848234ceadb9f10f10ed314b2d450dd9" name="a848234ceadb9f10f10ed314b2d450dd9"></a>
 constexpr Fraction&#160;</td><td class="memItemRight" valign="bottom"><b>abs</b> () const</td></tr>
 <tr class="memdesc:a848234ceadb9f10f10ed314b2d450dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the absolute value of a <a class="el" href="classmusx_1_1util_1_1Fraction.html" title="A class to represent fractions with integer m_numerator and m_denominator, automatically reduced to s...">Fraction</a>. <br /></td></tr>
@@ -314,7 +314,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>std::numeric_limits&
 <p>Constructs a <a class="el" href="classmusx_1_1util_1_1Fraction.html" title="A class to represent fractions with integer m_numerator and m_denominator, automatically reduced to s...">Fraction</a> from edu. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">edu</td><td>The Edu value to convert. It is converted to a fraction of a whole note, so 1024 is constructed as Fraction(1, 4). </td></tr>
+    <tr><td class="paramname">edu</td><td>The <a class="el" href="namespacemusx_1_1dom.html#a4cd6856c83a6fc3f3b1c44ef02532c90" title="&quot;Enigma Durational Units&quot; value (1024 per quarter note)">Edu</a> value to convert. It is converted to a fraction of a whole note, so 1024 is constructed as Fraction(1, 4). </td></tr>
   </table>
   </dd>
 </dl>

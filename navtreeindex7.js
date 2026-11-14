@@ -1,5 +1,14 @@
 var NAVTREEINDEX7 =
 {
+"classmusx_1_1dom_1_1details_1_1GFrameHoldContext.html#af7dfee19597fcc58f5a0e518a9cb58d1":[1,0,1,0,0,65,2],
+"classmusx_1_1dom_1_1details_1_1GFrameHoldContext.html#af7dfee19597fcc58f5a0e518a9cb58d1":[2,0,1,0,0,65,2],
+"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html":[1,0,1,0,0,38],
+"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html":[2,0,1,0,0,38],
+"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a161690e52240eada381afbacec5c2d1a":[1,0,1,0,0,38,15],
+"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a161690e52240eada381afbacec5c2d1a":[2,0,1,0,0,38,15],
+"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a1b886e89a411b137c1647e7102c934e0":[1,0,1,0,0,38,2],
+"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a1b886e89a411b137c1647e7102c934e0":[2,0,1,0,0,38,2],
+"classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a1d4cd1828172c3f9d6e9786e55b30593":[1,0,1,0,0,38,12],
 "classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a1d4cd1828172c3f9d6e9786e55b30593":[2,0,1,0,0,38,12],
 "classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a22ead68fc52417c81aea059002c1db85":[1,0,1,0,0,38,10],
 "classmusx_1_1dom_1_1details_1_1IndependentStaffDetails.html#a22ead68fc52417c81aea059002c1db85":[2,0,1,0,0,38,10],
@@ -240,14 +249,5 @@ var NAVTREEINDEX7 =
 "classmusx_1_1dom_1_1details_1_1PercussionNoteCode.html#a097c4a4be87247707e1d8168ad05c765":[1,0,1,0,0,48,1],
 "classmusx_1_1dom_1_1details_1_1PercussionNoteCode.html#a097c4a4be87247707e1d8168ad05c765":[2,0,1,0,0,48,1],
 "classmusx_1_1dom_1_1details_1_1PercussionNoteCode.html#a29fd3c07659f601f41c23d27ffcc9ef8":[1,0,1,0,0,48,3],
-"classmusx_1_1dom_1_1details_1_1PercussionNoteCode.html#a29fd3c07659f601f41c23d27ffcc9ef8":[2,0,1,0,0,48,3],
-"classmusx_1_1dom_1_1details_1_1PercussionNoteCode.html#a951eded442696264e567b4c8aec918c1":[1,0,1,0,0,48,2],
-"classmusx_1_1dom_1_1details_1_1PercussionNoteCode.html#a951eded442696264e567b4c8aec918c1":[2,0,1,0,0,48,2],
-"classmusx_1_1dom_1_1details_1_1PercussionNoteCode.html#abf678c0b5d37f36e1361a4899333121b":[1,0,1,0,0,48,0],
-"classmusx_1_1dom_1_1details_1_1PercussionNoteCode.html#abf678c0b5d37f36e1361a4899333121b":[2,0,1,0,0,48,0],
-"classmusx_1_1dom_1_1details_1_1SecondaryBeamAlterationsDownStem.html":[1,0,1,0,0,49],
-"classmusx_1_1dom_1_1details_1_1SecondaryBeamAlterationsDownStem.html":[2,0,1,0,0,49],
-"classmusx_1_1dom_1_1details_1_1SecondaryBeamAlterationsDownStem.html#a353fdc6542d2aabdb41d5595456e17cb":[1,0,1,0,0,49,0],
-"classmusx_1_1dom_1_1details_1_1SecondaryBeamAlterationsDownStem.html#a353fdc6542d2aabdb41d5595456e17cb":[2,0,1,0,0,49,0],
-"classmusx_1_1dom_1_1details_1_1SecondaryBeamAlterationsUpStem.html":[1,0,1,0,0,50]
+"classmusx_1_1dom_1_1details_1_1PercussionNoteCode.html#a29fd3c07659f601f41c23d27ffcc9ef8":[2,0,1,0,0,48,3]
 };

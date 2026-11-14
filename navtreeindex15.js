@@ -1,5 +1,14 @@
 var NAVTREEINDEX15 =
 {
+"classmusx_1_1dom_1_1options_1_1TupletOptions.html#a07f9dcf4a252cd8a45df30e4f9d95ec6a26272dc97a576e94273b7bc1e494b8af":[1,0,1,0,5,27,3,2],
+"classmusx_1_1dom_1_1options_1_1TupletOptions.html#a07f9dcf4a252cd8a45df30e4f9d95ec6a26272dc97a576e94273b7bc1e494b8af":[2,0,1,0,4,27,3,2],
+"classmusx_1_1dom_1_1options_1_1TupletOptions.html#a07f9dcf4a252cd8a45df30e4f9d95ec6a5b469fd01889ec12f1e84c6e66829fc1":[1,0,1,0,5,27,3,3],
+"classmusx_1_1dom_1_1options_1_1TupletOptions.html#a07f9dcf4a252cd8a45df30e4f9d95ec6a5b469fd01889ec12f1e84c6e66829fc1":[2,0,1,0,4,27,3,3],
+"classmusx_1_1dom_1_1options_1_1TupletOptions.html#a07f9dcf4a252cd8a45df30e4f9d95ec6a8a4c05d86c5e99d4a18a859b97ebeb65":[1,0,1,0,5,27,3,1],
+"classmusx_1_1dom_1_1options_1_1TupletOptions.html#a07f9dcf4a252cd8a45df30e4f9d95ec6a8a4c05d86c5e99d4a18a859b97ebeb65":[2,0,1,0,4,27,3,1],
+"classmusx_1_1dom_1_1options_1_1TupletOptions.html#a07f9dcf4a252cd8a45df30e4f9d95ec6ae1ba155a9f2e8c3be94020eef32a0301":[1,0,1,0,5,27,3,0],
+"classmusx_1_1dom_1_1options_1_1TupletOptions.html#a07f9dcf4a252cd8a45df30e4f9d95ec6ae1ba155a9f2e8c3be94020eef32a0301":[2,0,1,0,4,27,3,0],
+"classmusx_1_1dom_1_1options_1_1TupletOptions.html#a07f9dcf4a252cd8a45df30e4f9d95ec6ae59dd8d25c0b6bb6697eac0617ccd412":[1,0,1,0,5,27,3,4],
 "classmusx_1_1dom_1_1options_1_1TupletOptions.html#a07f9dcf4a252cd8a45df30e4f9d95ec6ae59dd8d25c0b6bb6697eac0617ccd412":[2,0,1,0,4,27,3,4],
 "classmusx_1_1dom_1_1options_1_1TupletOptions.html#a08036f450cd2446dd6a0cd68b42f658f":[1,0,1,0,5,27,9],
 "classmusx_1_1dom_1_1options_1_1TupletOptions.html#a08036f450cd2446dd6a0cd68b42f658f":[2,0,1,0,4,27,9],
@@ -240,14 +249,5 @@ var NAVTREEINDEX15 =
 "classmusx_1_1dom_1_1others_1_1BeatChartElement_1_1Control.html#a2bee9f5e1825430d709d3ebd75dc2da5":[1,0,1,0,1,19,0,1],
 "classmusx_1_1dom_1_1others_1_1BeatChartElement_1_1Control.html#a2bee9f5e1825430d709d3ebd75dc2da5":[2,0,1,0,1,19,0,1],
 "classmusx_1_1dom_1_1others_1_1BeatChartElement_1_1Control.html#a9e2af813f74ce68636942766dd7925c7":[1,0,1,0,1,19,0,3],
-"classmusx_1_1dom_1_1others_1_1BeatChartElement_1_1Control.html#a9e2af813f74ce68636942766dd7925c7":[2,0,1,0,1,19,0,3],
-"classmusx_1_1dom_1_1others_1_1BeatChartElement_1_1Control.html#afdc999252a3a5207c86fbf3afdc9ab59":[1,0,1,0,1,19,0,0],
-"classmusx_1_1dom_1_1others_1_1BeatChartElement_1_1Control.html#afdc999252a3a5207c86fbf3afdc9ab59":[2,0,1,0,1,19,0,0],
-"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html":[1,0,1,0,1,20],
-"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html":[2,0,1,0,1,20],
-"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a44e3c8663fb2b97ea2318caf1bd5453e":[1,0,1,0,1,20,2],
-"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a44e3c8663fb2b97ea2318caf1bd5453e":[2,0,1,0,1,20,2],
-"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a4b664687723f16a1dcf90e1d9faf1551":[1,0,1,0,1,20,6],
-"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a4b664687723f16a1dcf90e1d9faf1551":[2,0,1,0,1,20,6],
-"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a96a097230716bbcda96c0653c425ce86":[1,0,1,0,1,20,4]
+"classmusx_1_1dom_1_1others_1_1BeatChartElement_1_1Control.html#a9e2af813f74ce68636942766dd7925c7":[2,0,1,0,1,19,0,3]
 };

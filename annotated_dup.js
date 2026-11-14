@@ -304,6 +304,8 @@ var annotated_dup =
         [ "PseudoTieShapeInfo", "structmusx_1_1utils_1_1PseudoTieShapeInfo.html", "structmusx_1_1utils_1_1PseudoTieShapeInfo" ]
       ] ],
       [ "util", null, [
+        [ "AccidentalCache", "structmusx_1_1util_1_1AccidentalCache.html", "structmusx_1_1util_1_1AccidentalCache" ],
+        [ "Accidental", "classmusx_1_1util_1_1Accidental.html", null ],
         [ "ArpeggioSpanCandidate", "structmusx_1_1util_1_1ArpeggioSpanCandidate.html", "structmusx_1_1util_1_1ArpeggioSpanCandidate" ],
         [ "ArpeggioSpanOptions", "structmusx_1_1util_1_1ArpeggioSpanOptions.html", "structmusx_1_1util_1_1ArpeggioSpanOptions" ],
         [ "ArrowheadPresetSpec", "structmusx_1_1util_1_1ArrowheadPresetSpec.html", "structmusx_1_1util_1_1ArrowheadPresetSpec" ],

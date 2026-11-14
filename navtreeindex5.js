@@ -1,5 +1,14 @@
 var NAVTREEINDEX5 =
 {
+"classmusx_1_1dom_1_1details_1_1AccidentalAlterations.html#ae57fab895f67ab47c6f441454efcdaa9":[1,0,1,0,0,0,9],
+"classmusx_1_1dom_1_1details_1_1AccidentalAlterations.html#ae57fab895f67ab47c6f441454efcdaa9":[2,0,1,0,0,0,9],
+"classmusx_1_1dom_1_1details_1_1AccidentalAlterations.html#ae965de8e3c0557140664c59cd78d6e30":[1,0,1,0,0,0,3],
+"classmusx_1_1dom_1_1details_1_1AccidentalAlterations.html#ae965de8e3c0557140664c59cd78d6e30":[2,0,1,0,0,0,3],
+"classmusx_1_1dom_1_1details_1_1AccidentalAlterations.html#aea70c9ddaade748fbde44f3e5e89148d":[1,0,1,0,0,0,2],
+"classmusx_1_1dom_1_1details_1_1AccidentalAlterations.html#aea70c9ddaade748fbde44f3e5e89148d":[2,0,1,0,0,0,2],
+"classmusx_1_1dom_1_1details_1_1AccidentalAlterations.html#aebce0fec74a0c36e236291f5bc9b065c":[1,0,1,0,0,0,7],
+"classmusx_1_1dom_1_1details_1_1AccidentalAlterations.html#aebce0fec74a0c36e236291f5bc9b065c":[2,0,1,0,0,0,7],
+"classmusx_1_1dom_1_1details_1_1ArticulationAssign.html":[1,0,1,0,0,1],
 "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html":[2,0,1,0,0,1],
 "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a045264b0f6ff881411fddbb01e546fa6":[1,0,1,0,0,1,1],
 "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a045264b0f6ff881411fddbb01e546fa6":[2,0,1,0,0,1,1],
@@ -240,14 +249,5 @@ var NAVTREEINDEX5 =
 "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a0c7d488316d5ca51e046d852ed40d872":[1,0,1,0,0,26,26],
 "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a0c7d488316d5ca51e046d852ed40d872":[2,0,1,0,0,26,26],
 "classmusx_1_1dom_1_1details_1_1ChordAssign.html#a0cbeece266e5e392633fac468fd89d30":[1,0,1,0,0,26,23],
-"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a0cbeece266e5e392633fac468fd89d30":[2,0,1,0,0,26,23],
-"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a0d5c3a36651310c32b63c7f63b447923":[1,0,1,0,0,26,20],
-"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a0d5c3a36651310c32b63c7f63b447923":[2,0,1,0,0,26,20],
-"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a12781953747f8e34b66ebd0287f49155":[1,0,1,0,0,26,27],
-"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a12781953747f8e34b66ebd0287f49155":[2,0,1,0,0,26,27],
-"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a13c10345b0b6b211da8c95c4c6196576":[1,0,1,0,0,26,5],
-"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a13c10345b0b6b211da8c95c4c6196576":[2,0,1,0,0,26,5],
-"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a179be6cb886cae6fa2f5e24f87e084b5":[1,0,1,0,0,26,0],
-"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a179be6cb886cae6fa2f5e24f87e084b5":[2,0,1,0,0,26,0],
-"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a17e7f3ed2b61dc252ba5884b33641ed8":[1,0,1,0,0,26,1]
+"classmusx_1_1dom_1_1details_1_1ChordAssign.html#a0cbeece266e5e392633fac468fd89d30":[2,0,1,0,0,26,23]
 };

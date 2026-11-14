@@ -167,6 +167,12 @@ std::optional&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <tr class="memitem:ac679b119f955e0548323d0d20edbb1f3" id="r_ac679b119f955e0548323d0d20edbb1f3"><td class="memItemLeft" align="right" valign="top"><a id="ac679b119f955e0548323d0d20edbb1f3" name="ac679b119f955e0548323d0d20edbb1f3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setCachedFontIsSMuFL</b> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> fontId, bool isSmufl) const</td></tr>
 <tr class="memdesc:ac679b119f955e0548323d0d20edbb1f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores a SMuFL font recognition result in the cache. <br /></td></tr>
+<tr class="memitem:a7da8fb365ca3beb3e5501028525de384" id="r_a7da8fb365ca3beb3e5501028525de384"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structmusx_1_1util_1_1AccidentalCache.html">util::AccidentalCache</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7da8fb365ca3beb3e5501028525de384">getAccidentalCache</a> () const</td></tr>
+<tr class="memdesc:a7da8fb365ca3beb3e5501028525de384"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the document's accidental-display cache without copying it.  <br /></td></tr>
+<tr class="memitem:aea91e375adecfa0b5041f3f03308ff9e" id="r_aea91e375adecfa0b5041f3f03308ff9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea91e375adecfa0b5041f3f03308ff9e">addToAccidentalCache</a> (const <a class="el" href="structmusx_1_1util_1_1AccidentalCache_1_1Key.html">util::AccidentalCache::Key</a> &amp;key, <a class="el" href="structmusx_1_1util_1_1AccidentalCache.html#a301685b538a872897e74690d1838ecfd">util::AccidentalCache::MeasureResult</a> &amp;&amp;result) const</td></tr>
+<tr class="memdesc:aea91e375adecfa0b5041f3f03308ff9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves completed measure results into the accidental-display cache.  <br /></td></tr>
+<tr class="memitem:aaa4cd29b0e4a7d56cc1871835eba8dd4" id="r_aaa4cd29b0e4a7d56cc1871835eba8dd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa4cd29b0e4a7d56cc1871835eba8dd4">clearAccidentalCache</a> () const</td></tr>
+<tr class="memdesc:aaa4cd29b0e4a7d56cc1871835eba8dd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discards all cached accidental-display results for this document.  <br /></td></tr>
 <tr class="memitem:a3b1cdc185b66bf8fa55be29d36280e66" id="r_a3b1cdc185b66bf8fa55be29d36280e66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1Page.html">others::Page</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b1cdc185b66bf8fa55be29d36280e66">calcPageFromMeasure</a> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, <a class="el" href="namespacemusx_1_1dom.html#afb1a720df5550a18a2f0fe9081afe927">MeasCmper</a> measureId) const</td></tr>
 <tr class="memdesc:a3b1cdc185b66bf8fa55be29d36280e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches pages to find the page that contains the measure.  <br /></td></tr>
 <tr class="memitem:a58c106af9d550b67ae51bafca0987a6c" id="r_a58c106af9d550b67ae51bafca0987a6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffSystem.html">others::StaffSystem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58c106af9d550b67ae51bafca0987a6c">calcSystemFromMeasure</a> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, <a class="el" href="namespacemusx_1_1dom.html#afb1a720df5550a18a2f0fe9081afe927">MeasCmper</a> measureId) const</td></tr>
@@ -215,6 +221,36 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>musx::factory::Docum
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a document object that encapsulates the entire EnigmaXML structure. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="aea91e375adecfa0b5041f3f03308ff9e" name="aea91e375adecfa0b5041f3f03308ff9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea91e375adecfa0b5041f3f03308ff9e">&#9670;&#160;</a></span>addToAccidentalCache()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void musx::dom::Document::addToAccidentalCache </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structmusx_1_1util_1_1AccidentalCache_1_1Key.html">util::AccidentalCache::Key</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmusx_1_1util_1_1AccidentalCache.html#a301685b538a872897e74690d1838ecfd">util::AccidentalCache::MeasureResult</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>result</em></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Moves completed measure results into the accidental-display cache. </p>
+<p>Existing results for the same key are preserved. Clear the cache before recalculating edited inputs. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>The measure context that produced the results. </td></tr>
+    <tr><td class="paramname">result</td><td>Completed accidental-display decisions for the measure context. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="abf79aabe5f131018df3561b9302b3585" name="abf79aabe5f131018df3561b9302b3585"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abf79aabe5f131018df3561b9302b3585">&#9670;&#160;</a></span>calcHasVaryingSystemStaves()</h2>
 
@@ -404,6 +440,34 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>musx::factory::Docum
 
 </div>
 </div>
+<a id="aaa4cd29b0e4a7d56cc1871835eba8dd4" name="aaa4cd29b0e4a7d56cc1871835eba8dd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa4cd29b0e4a7d56cc1871835eba8dd4">&#9670;&#160;</a></span>clearAccidentalCache()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void musx::dom::Document::clearAccidentalCache </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Discards all cached accidental-display results for this document. </p>
+<p>Call after editing notes, frames, staff settings, key signatures, part voicing, or pitch display settings. Subsequent queries through existing or new <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html" title="Wraps an EntryInfo instance and a note index.">NoteInfoPtr</a> wrappers recalculate their measure context. Other interpretation caches are unaffected. </p>
+
+</div>
+</div>
 <a id="ad7512a1daf902e8580a8b4418a31ded8" name="ad7512a1daf902e8580a8b4418a31ded8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad7512a1daf902e8580a8b4418a31ded8">&#9670;&#160;</a></span>createInstrumentMap()</h2>
 
@@ -440,6 +504,34 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>musx::factory::Docum
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a7da8fb365ca3beb3e5501028525de384" name="a7da8fb365ca3beb3e5501028525de384"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7da8fb365ca3beb3e5501028525de384">&#9670;&#160;</a></span>getAccidentalCache()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structmusx_1_1util_1_1AccidentalCache.html">util::AccidentalCache</a> &amp; musx::dom::Document::getAccidentalCache </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the document's accidental-display cache without copying it. </p>
+<dl class="section return"><dt>Returns</dt><dd>A reference valid for the lifetime of the document, including across cache clears. </dd></dl>
 
 </div>
 </div>

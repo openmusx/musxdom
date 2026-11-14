@@ -1,5 +1,14 @@
 var NAVTREEINDEX12 =
 {
+"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a4f6a67c5495d1a95bae40ec5ec0abf66":[1,0,1,0,5,15,7],
+"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a4f6a67c5495d1a95bae40ec5ec0abf66":[2,0,1,0,4,15,7],
+"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a5ec575c9e39bd7f246e5aa5ec1cfccec":[1,0,1,0,5,15,24],
+"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a5ec575c9e39bd7f246e5aa5ec1cfccec":[2,0,1,0,4,15,24],
+"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a632f80640ff44040bccd5c247229ef0d":[1,0,1,0,5,15,27],
+"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a632f80640ff44040bccd5c247229ef0d":[2,0,1,0,4,15,27],
+"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a667eb88da97beacfcb2d3006c294813e":[1,0,1,0,5,15,12],
+"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a667eb88da97beacfcb2d3006c294813e":[2,0,1,0,4,15,12],
+"classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a6ab90e0c9e2e5b716b3270b7d67ad8d8":[1,0,1,0,5,15,3],
 "classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a6ab90e0c9e2e5b716b3270b7d67ad8d8":[2,0,1,0,4,15,3],
 "classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a6deb8bb09ee671ec405d190834f29d9e":[1,0,1,0,5,15,8],
 "classmusx_1_1dom_1_1options_1_1MusicSpacingOptions.html#a6deb8bb09ee671ec405d190834f29d9e":[2,0,1,0,4,15,8],
@@ -240,14 +249,5 @@ var NAVTREEINDEX12 =
 "classmusx_1_1dom_1_1options_1_1PageFormatOptions.html#aa17c79218cebf6c01d00959a6eff87e2ab1c94ca2fbc3e78fc30069c8d0f01680":[1,0,1,0,5,18,1,1],
 "classmusx_1_1dom_1_1options_1_1PageFormatOptions.html#aa17c79218cebf6c01d00959a6eff87e2ab1c94ca2fbc3e78fc30069c8d0f01680":[2,0,1,0,4,18,1,1],
 "classmusx_1_1dom_1_1options_1_1PageFormatOptions.html#aa17c79218cebf6c01d00959a6eff87e2ae2019ef175492eabd5e3891c9a3d3398":[1,0,1,0,5,18,1,2],
-"classmusx_1_1dom_1_1options_1_1PageFormatOptions.html#aa17c79218cebf6c01d00959a6eff87e2ae2019ef175492eabd5e3891c9a3d3398":[2,0,1,0,4,18,1,2],
-"classmusx_1_1dom_1_1options_1_1PageFormatOptions.html#aefcd4f6b649f5ac24b1965eeea534fea":[1,0,1,0,5,18,2],
-"classmusx_1_1dom_1_1options_1_1PageFormatOptions.html#aefcd4f6b649f5ac24b1965eeea534fea":[2,0,1,0,4,18,2],
-"classmusx_1_1dom_1_1options_1_1PageFormatOptions_1_1PageFormat.html":[1,0,1,0,5,18,0],
-"classmusx_1_1dom_1_1options_1_1PageFormatOptions_1_1PageFormat.html":[2,0,1,0,4,18,0],
-"classmusx_1_1dom_1_1options_1_1PageFormatOptions_1_1PageFormat.html#a0219b36f3c7dcb0de57f8d0569447c6b":[1,0,1,0,5,18,0,27],
-"classmusx_1_1dom_1_1options_1_1PageFormatOptions_1_1PageFormat.html#a0219b36f3c7dcb0de57f8d0569447c6b":[2,0,1,0,4,18,0,27],
-"classmusx_1_1dom_1_1options_1_1PageFormatOptions_1_1PageFormat.html#a08743a3aad8f4c7eec307e3f1fd47397":[1,0,1,0,5,18,0,16],
-"classmusx_1_1dom_1_1options_1_1PageFormatOptions_1_1PageFormat.html#a08743a3aad8f4c7eec307e3f1fd47397":[2,0,1,0,4,18,0,16],
-"classmusx_1_1dom_1_1options_1_1PageFormatOptions_1_1PageFormat.html#a0ad87c8e68368d2a365d399bf96d3b8f":[1,0,1,0,5,18,0,26]
+"classmusx_1_1dom_1_1options_1_1PageFormatOptions.html#aa17c79218cebf6c01d00959a6eff87e2ae2019ef175492eabd5e3891c9a3d3398":[2,0,1,0,4,18,1,2]
 };

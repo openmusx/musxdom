@@ -1,5 +1,14 @@
 var NAVTREEINDEX16 =
 {
+"classmusx_1_1dom_1_1others_1_1BeatChartElement_1_1Control.html#afdc999252a3a5207c86fbf3afdc9ab59":[1,0,1,0,1,19,0,0],
+"classmusx_1_1dom_1_1others_1_1BeatChartElement_1_1Control.html#afdc999252a3a5207c86fbf3afdc9ab59":[2,0,1,0,1,19,0,0],
+"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html":[1,0,1,0,1,20],
+"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html":[2,0,1,0,1,20],
+"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a44e3c8663fb2b97ea2318caf1bd5453e":[1,0,1,0,1,20,2],
+"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a44e3c8663fb2b97ea2318caf1bd5453e":[2,0,1,0,1,20,2],
+"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a4b664687723f16a1dcf90e1d9faf1551":[1,0,1,0,1,20,6],
+"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a4b664687723f16a1dcf90e1d9faf1551":[2,0,1,0,1,20,6],
+"classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a96a097230716bbcda96c0653c425ce86":[1,0,1,0,1,20,4],
 "classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a96a097230716bbcda96c0653c425ce86":[2,0,1,0,1,20,4],
 "classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a97456d2f505490bd97c244cb13aae1bb":[1,0,1,0,1,20,3],
 "classmusx_1_1dom_1_1others_1_1ChordSuffixElement.html#a97456d2f505490bd97c244cb13aae1bb":[2,0,1,0,1,20,3],
@@ -240,14 +249,5 @@ var NAVTREEINDEX16 =
 "classmusx_1_1dom_1_1others_1_1FretboardGroup.html#a6b7d96760587f849d9ea45ec9f24758a":[1,0,1,0,1,27,2],
 "classmusx_1_1dom_1_1others_1_1FretboardGroup.html#a6b7d96760587f849d9ea45ec9f24758a":[2,0,1,0,1,27,2],
 "classmusx_1_1dom_1_1others_1_1FretboardGroup.html#aceebeaf57d971c9e6346f1ba318146d3":[1,0,1,0,1,27,1],
-"classmusx_1_1dom_1_1others_1_1FretboardGroup.html#aceebeaf57d971c9e6346f1ba318146d3":[2,0,1,0,1,27,1],
-"classmusx_1_1dom_1_1others_1_1FretboardGroup.html#ad4256ed3f569f6959c69075e8685c444":[1,0,1,0,1,27,0],
-"classmusx_1_1dom_1_1others_1_1FretboardGroup.html#ad4256ed3f569f6959c69075e8685c444":[2,0,1,0,1,27,0],
-"classmusx_1_1dom_1_1others_1_1FretboardGroup.html#ad67eb89167869bf3e09d6eff3798a1fd":[1,0,1,0,1,27,4],
-"classmusx_1_1dom_1_1others_1_1FretboardGroup.html#ad67eb89167869bf3e09d6eff3798a1fd":[2,0,1,0,1,27,4],
-"classmusx_1_1dom_1_1others_1_1FretboardStyle.html":[1,0,1,0,1,28],
-"classmusx_1_1dom_1_1others_1_1FretboardStyle.html":[2,0,1,0,1,28],
-"classmusx_1_1dom_1_1others_1_1FretboardStyle.html#a071ade633f0bba9b11c3bed9abeeb108":[1,0,1,0,1,28,21],
-"classmusx_1_1dom_1_1others_1_1FretboardStyle.html#a071ade633f0bba9b11c3bed9abeeb108":[2,0,1,0,1,28,21],
-"classmusx_1_1dom_1_1others_1_1FretboardStyle.html#a07345e818ad91806eac9c117e58d638a":[1,0,1,0,1,28,11]
+"classmusx_1_1dom_1_1others_1_1FretboardGroup.html#aceebeaf57d971c9e6346f1ba318146d3":[2,0,1,0,1,27,1]
 };

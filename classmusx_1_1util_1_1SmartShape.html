@@ -201,7 +201,7 @@ Over System Break" in the Finale U.I.  <a href="#a32fe76ae46a68c0b50e282c7918bed
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a20fcbbb1d0ad5796cbd5f9ffca84c82a" id="r_a20fcbbb1d0ad5796cbd5f9ffca84c82a"><td class="memItemLeft" align="right" valign="top"><a id="a20fcbbb1d0ad5796cbd5f9ffca84c82a" name="a20fcbbb1d0ad5796cbd5f9ffca84c82a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SmartShape</b> (const DocumentWeakPtr &amp;document, Cmper partId, <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#ac655bdce0724d5e32cfcd6203c9a5d1f">ShareMode</a> shareMode, Cmper cmper)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SmartShape</b> (const <a class="el" href="namespacemusx_1_1dom.html#ae1f1255569ce031b780170ce99232f05">DocumentWeakPtr</a> &amp;document, <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#ac655bdce0724d5e32cfcd6203c9a5d1f">ShareMode</a> shareMode, <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> cmper)</td></tr>
 <tr class="memdesc:a20fcbbb1d0ad5796cbd5f9ffca84c82a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor function. <br /></td></tr>
 <tr class="memitem:a0172bfe19cda7c8bc4cee9725bdacb46" id="r_a0172bfe19cda7c8bc4cee9725bdacb46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0172bfe19cda7c8bc4cee9725bdacb46">calcIsValid</a> () const</td></tr>
 <tr class="memdesc:a0172bfe19cda7c8bc4cee9725bdacb46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finale sometimes leaves dead smart shapes hanging around that it does not display. This function tells you if you should process the smart shape.  <br /></td></tr>
@@ -213,30 +213,30 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsSlur</b> () con
 <tr class="memitem:a66bf07d1514e5ee479cf11e226a5c83a" id="r_a66bf07d1514e5ee479cf11e226a5c83a"><td class="memItemLeft" align="right" valign="top"><a id="a66bf07d1514e5ee479cf11e226a5c83a" name="a66bf07d1514e5ee479cf11e226a5c83a"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsLyricShape</b> () const</td></tr>
 <tr class="memdesc:a66bf07d1514e5ee479cf11e226a5c83a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if this smart shape is a lyric hyphen or word extension, which Finale creates for lyric assignments rather than through the Smart Shape tool. <br /></td></tr>
-<tr class="memitem:a43ee2d11faa58c363117cc0cdd843b7c" id="r_a43ee2d11faa58c363117cc0cdd843b7c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43ee2d11faa58c363117cc0cdd843b7c">calcAppliesTo</a> (const EntryInfoPtr &amp;entryInfo) const</td></tr>
+<tr class="memitem:a43ee2d11faa58c363117cc0cdd843b7c" id="r_a43ee2d11faa58c363117cc0cdd843b7c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43ee2d11faa58c363117cc0cdd843b7c">calcAppliesTo</a> (const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;entryInfo) const</td></tr>
 <tr class="memdesc:a43ee2d11faa58c363117cc0cdd843b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates if the smart shape applies to the specified entry.  <br /></td></tr>
-<tr class="memitem:a90603f232daf80405ea7bf56f840392a" id="r_a90603f232daf80405ea7bf56f840392a"><td class="memItemLeft" align="right" valign="top">MusicRange&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90603f232daf80405ea7bf56f840392a">createMusicRange</a> () const</td></tr>
+<tr class="memitem:a90603f232daf80405ea7bf56f840392a" id="r_a90603f232daf80405ea7bf56f840392a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1dom_1_1MusicRange.html">MusicRange</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90603f232daf80405ea7bf56f840392a">createMusicRange</a> () const</td></tr>
 <tr class="memdesc:a90603f232daf80405ea7bf56f840392a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a music range for the <a class="el" href="classmusx_1_1util_1_1SmartShape.html" title="Represents a Finale smart shape.">SmartShape</a> in staff EDUs. If the <a class="el" href="classmusx_1_1util_1_1SmartShape.html" title="Represents a Finale smart shape.">SmartShape</a> spans staves with different EDUs, the start endpoint uses the start staff's EDUs and the endpoint uses the end staff's EDUs.  <br /></td></tr>
-<tr class="memitem:ade57de9fbb397dcee362925c636d29bd" id="r_ade57de9fbb397dcee362925c636d29bd"><td class="memItemLeft" align="right" valign="top">MusicRange&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade57de9fbb397dcee362925c636d29bd">createGlobalMusicRange</a> () const</td></tr>
+<tr class="memitem:ade57de9fbb397dcee362925c636d29bd" id="r_ade57de9fbb397dcee362925c636d29bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1dom_1_1MusicRange.html">MusicRange</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade57de9fbb397dcee362925c636d29bd">createGlobalMusicRange</a> () const</td></tr>
 <tr class="memdesc:ade57de9fbb397dcee362925c636d29bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a music range for the <a class="el" href="classmusx_1_1util_1_1SmartShape.html" title="Represents a Finale smart shape.">SmartShape</a> in global EDUs.  <br /></td></tr>
-<tr class="memitem:a76fe61afd1cf1c9b4a52c3f7378c73c0" id="r_a76fe61afd1cf1c9b4a52c3f7378c73c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1util_1_1NoteInfoPtr.html">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76fe61afd1cf1c9b4a52c3f7378c73c0">calcStartNote</a> () const</td></tr>
+<tr class="memitem:a76fe61afd1cf1c9b4a52c3f7378c73c0" id="r_a76fe61afd1cf1c9b4a52c3f7378c73c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76fe61afd1cf1c9b4a52c3f7378c73c0">calcStartNote</a> () const</td></tr>
 <tr class="memdesc:a76fe61afd1cf1c9b4a52c3f7378c73c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the note this shape starts from.  <br /></td></tr>
-<tr class="memitem:a5432484fa99017482fc80889f7d76e70" id="r_a5432484fa99017482fc80889f7d76e70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1util_1_1NoteInfoPtr.html">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5432484fa99017482fc80889f7d76e70">calcEndNote</a> () const</td></tr>
+<tr class="memitem:a5432484fa99017482fc80889f7d76e70" id="r_a5432484fa99017482fc80889f7d76e70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5432484fa99017482fc80889f7d76e70">calcEndNote</a> () const</td></tr>
 <tr class="memdesc:a5432484fa99017482fc80889f7d76e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the note this shape ends on.  <br /></td></tr>
-<tr class="memitem:afbbeca7ef4d9d32b9f2f4275bc62bdcd" id="r_afbbeca7ef4d9d32b9f2f4275bc62bdcd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1util_1_1NoteInfoPtr.html">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbbeca7ef4d9d32b9f2f4275bc62bdcd">calcArpeggiatedTieToNote</a> (const EntryInfoPtr &amp;forStartEntry) const</td></tr>
+<tr class="memitem:afbbeca7ef4d9d32b9f2f4275bc62bdcd" id="r_afbbeca7ef4d9d32b9f2f4275bc62bdcd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbbeca7ef4d9d32b9f2f4275bc62bdcd">calcArpeggiatedTieToNote</a> (const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;forStartEntry) const</td></tr>
 <tr class="memdesc:afbbeca7ef4d9d32b9f2f4275bc62bdcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the tied-to note if this slur is being used as an arpeggiated tie on the specified entry.  <br /></td></tr>
-<tr class="memitem:a949d7e3eb7ea467a5a7f644eee8eeb02" id="r_a949d7e3eb7ea467a5a7f644eee8eeb02"><td class="memItemLeft" align="right" valign="top">CurveContourDirection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a949d7e3eb7ea467a5a7f644eee8eeb02">calcDefinitionContourDirection</a> () const</td></tr>
+<tr class="memitem:a949d7e3eb7ea467a5a7f644eee8eeb02" id="r_a949d7e3eb7ea467a5a7f644eee8eeb02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55">CurveContourDirection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a949d7e3eb7ea467a5a7f644eee8eeb02">calcDefinitionContourDirection</a> () const</td></tr>
 <tr class="memdesc:a949d7e3eb7ea467a5a7f644eee8eeb02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns contour from shape type and direction settings only.  <br /></td></tr>
-<tr class="memitem:a5fe1a12dabd649547c603ba62bd8a585" id="r_a5fe1a12dabd649547c603ba62bd8a585"><td class="memItemLeft" align="right" valign="top">VerticalPlacement&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fe1a12dabd649547c603ba62bd8a585">calcVerticalPlacementForBeatAttached</a> () const</td></tr>
+<tr class="memitem:a5fe1a12dabd649547c603ba62bd8a585" id="r_a5fe1a12dabd649547c603ba62bd8a585"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a5f47ab5a8dd3f3cab33730ac7e178ad3">VerticalPlacement</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fe1a12dabd649547c603ba62bd8a585">calcVerticalPlacementForBeatAttached</a> () const</td></tr>
 <tr class="memdesc:a5fe1a12dabd649547c603ba62bd8a585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates a vertical placement classification for beat-attached smart shapes.  <br /></td></tr>
 <tr class="memitem:a27ec6e0d4e4d57258c9fe40aabd67870" id="r_a27ec6e0d4e4d57258c9fe40aabd67870"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27ec6e0d4e4d57258c9fe40aabd67870">calcIsDashed</a> () const</td></tr>
 <tr class="memdesc:a27ec6e0d4e4d57258c9fe40aabd67870"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the smart shape's <a class="el" href="#a7b869b52ed9d931b235b79d2c4ed1e6f" title="All the smart shape types supported by Finale.">ShapeType</a> uses a dashed line style.  <br /></td></tr>
-<tr class="memitem:aa75e75e4e9fb874b087354ab4e15bf5a" id="r_aa75e75e4e9fb874b087354ab4e15bf5a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa75e75e4e9fb874b087354ab4e15bf5a">calcIsPseudoTie</a> (utils::PseudoTieMode mode, const EntryInfoPtr &amp;forStartEntry) const</td></tr>
+<tr class="memitem:aa75e75e4e9fb874b087354ab4e15bf5a" id="r_aa75e75e4e9fb874b087354ab4e15bf5a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa75e75e4e9fb874b087354ab4e15bf5a">calcIsPseudoTie</a> (utils::PseudoTieMode mode, const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;forStartEntry) const</td></tr>
 <tr class="memdesc:aa75e75e4e9fb874b087354ab4e15bf5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if this slur is being used as a pseudo tie for the specified mode. It is used by #NoteInfoPtr::calcPseudoTieInfoInternal, which imposes additional rules and checks.  <br /></td></tr>
-<tr class="memitem:a247e5ea76b94a8de228db134de7092c1" id="r_a247e5ea76b94a8de228db134de7092c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a247e5ea76b94a8de228db134de7092c1">iterateEntries</a> (std::function&lt; bool(const EntryInfoPtr &amp;)&gt; iterator, DeferredReference&lt; MusxInstanceList&lt; StaffUsed &gt; &gt; staffList={}) const</td></tr>
+<tr class="memitem:a247e5ea76b94a8de228db134de7092c1" id="r_a247e5ea76b94a8de228db134de7092c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a247e5ea76b94a8de228db134de7092c1">iterateEntries</a> (std::function&lt; bool(const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;)&gt; iterator, <a class="el" href="classmusx_1_1dom_1_1DeferredReference.html">DeferredReference</a>&lt; <a class="el" href="classmusx_1_1dom_1_1MusxInstanceList.html">MusxInstanceList</a>&lt; StaffUsed &gt; &gt; staffList={}) const</td></tr>
 <tr class="memdesc:a247e5ea76b94a8de228db134de7092c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterates all the entries that start within the staves and music range defined by the <a class="el" href="classmusx_1_1util_1_1SmartShape.html" title="Represents a Finale smart shape.">SmartShape</a>. It iterates by staff and then measure.  <br /></td></tr>
-<tr class="memitem:a7ad6f30fe7066c2dce90eb3db694d401" id="r_a7ad6f30fe7066c2dce90eb3db694d401"><td class="memItemLeft" align="right" valign="top"><a id="a7ad6f30fe7066c2dce90eb3db694d401" name="a7ad6f30fe7066c2dce90eb3db694d401"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>integrityCheck</b> (const std::shared_ptr&lt; <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#aafced670dd8a602bdb861337689f098f">EnigmaBase</a> &gt; &amp;ptrToThis) override</td></tr>
+<tr class="memitem:a7ad6f30fe7066c2dce90eb3db694d401" id="r_a7ad6f30fe7066c2dce90eb3db694d401"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ad6f30fe7066c2dce90eb3db694d401">integrityCheck</a> (const std::shared_ptr&lt; <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html">EnigmaBase</a> &gt; &amp;ptrToThis) override</td></tr>
+<tr class="memdesc:a7ad6f30fe7066c2dce90eb3db694d401"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a final consistency check after population.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classmusx_1_1dom_1_1OthersBase"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classmusx_1_1dom_1_1OthersBase')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classmusx_1_1dom_1_1OthersBase.html">musx::dom::OthersBase</a></td></tr>
 <tr class="memitem:aeea2dce2bc876010d075adcba280c1ab inherit pub_methods_classmusx_1_1dom_1_1OthersBase" id="r_aeea2dce2bc876010d075adcba280c1ab"><td class="memItemLeft" align="right" valign="top">
 &#160;</td><td class="memItemRight" valign="bottom"><b>OthersBase</b> (const OthersBase &amp;)=default</td></tr>
@@ -257,8 +257,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>integrityCheck</b> (c
 <tr class="memitem:a1bc1dc8fc8641844f013dd0b3e71a3a3 inherit pub_methods_classmusx_1_1dom_1_1EnigmaBase" id="r_a1bc1dc8fc8641844f013dd0b3e71a3a3"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#ac655bdce0724d5e32cfcd6203c9a5d1f">ShareMode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getShareMode</b> () const</td></tr>
 <tr class="memdesc:a1bc1dc8fc8641844f013dd0b3e71a3a3 inherit pub_methods_classmusx_1_1dom_1_1EnigmaBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the sharing mode for this instance. <br /></td></tr>
-<tr class="memitem:afe002b3162a9e31032d84196c80f6f74 inherit pub_methods_classmusx_1_1dom_1_1EnigmaBase" id="r_afe002b3162a9e31032d84196c80f6f74"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#afe002b3162a9e31032d84196c80f6f74">integrityCheck</a> (const std::shared_ptr&lt; <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#aafced670dd8a602bdb861337689f098f">EnigmaBase</a> &gt; &amp;ptrToThis)</td></tr>
-<tr class="memdesc:afe002b3162a9e31032d84196c80f6f74 inherit pub_methods_classmusx_1_1dom_1_1EnigmaBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a final consistency check after population.  <br /></td></tr>
 <tr class="memitem:a0766cc6a150c2335b4aa94bbad6d28b0 inherit pub_methods_classmusx_1_1dom_1_1EnigmaBase" id="r_a0766cc6a150c2335b4aa94bbad6d28b0"><td class="memItemLeft" align="right" valign="top">
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>requireAllFields</b> () const</td></tr>
 <tr class="memdesc:a0766cc6a150c2335b4aa94bbad6d28b0 inherit pub_methods_classmusx_1_1dom_1_1EnigmaBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if all fields are required for valid input. <br /></td></tr>
@@ -317,31 +315,31 @@ std::shared_ptr&lt; <a class="el" href="classmusx_1_1util_1_1SmartShape_1_1Termi
 std::shared_ptr&lt; <a class="el" href="classmusx_1_1util_1_1SmartShape_1_1TerminationSeg.html">TerminationSeg</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>endTermSeg</b></td></tr>
 <tr class="memdesc:a4e56b4c73aef844dcbdb8753768824a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">End termination segment. <br /></td></tr>
 <tr class="memitem:acd432de10457d60b45d3467362a7ae38" id="r_acd432de10457d60b45d3467362a7ae38"><td class="memItemLeft" align="right" valign="top"><a id="acd432de10457d60b45d3467362a7ae38" name="acd432de10457d60b45d3467362a7ae38"></a>
-std::shared_ptr&lt; smartshape::ControlPointAdjustment &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fullCtlPtAdj</b></td></tr>
+std::shared_ptr&lt; <a class="el" href="classmusx_1_1dom_1_1smartshape_1_1ControlPointAdjustment.html">smartshape::ControlPointAdjustment</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fullCtlPtAdj</b></td></tr>
 <tr class="memdesc:acd432de10457d60b45d3467362a7ae38"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the shape is only on one staff system, this is where the manual edits are. <br /></td></tr>
 <tr class="memitem:a60c90bf5763c866d6b83100db09e46cd" id="r_a60c90bf5763c866d6b83100db09e46cd"><td class="memItemLeft" align="right" valign="top"><a id="a60c90bf5763c866d6b83100db09e46cd" name="a60c90bf5763c866d6b83100db09e46cd"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>hidden</b> {}</td></tr>
 <tr class="memdesc:a60c90bf5763c866d6b83100db09e46cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverse of "Show" option. <br /></td></tr>
 <tr class="memitem:af3702df3d2d82001cc53eec1c58af73f" id="r_af3702df3d2d82001cc53eec1c58af73f"><td class="memItemLeft" align="right" valign="top"><a id="af3702df3d2d82001cc53eec1c58af73f" name="af3702df3d2d82001cc53eec1c58af73f"></a>
-ShapeDirection&#160;</td><td class="memItemRight" valign="bottom"><b>direction</b> {}</td></tr>
+<a class="el" href="namespacemusx_1_1dom.html#a5293597f9afe24c9bac919434bdeea44">ShapeDirection</a>&#160;</td><td class="memItemRight" valign="bottom"><b>direction</b> {}</td></tr>
 <tr class="memdesc:af3702df3d2d82001cc53eec1c58af73f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direction setting for this shape (xml node is <span class="tt">&lt;dir&gt;</span>). <br /></td></tr>
 <tr class="memitem:a2ea630f2e58899b51ec9d83b213defd7" id="r_a2ea630f2e58899b51ec9d83b213defd7"><td class="memItemLeft" align="right" valign="top"><a id="a2ea630f2e58899b51ec9d83b213defd7" name="a2ea630f2e58899b51ec9d83b213defd7"></a>
-NoteNumber&#160;</td><td class="memItemRight" valign="bottom"><b>startNoteId</b> {}</td></tr>
+<a class="el" href="namespacemusx_1_1dom.html#aeed9c267ed763d60a452b6de8b0749b7">NoteNumber</a>&#160;</td><td class="memItemRight" valign="bottom"><b>startNoteId</b> {}</td></tr>
 <tr class="memdesc:a2ea630f2e58899b51ec9d83b213defd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-zero, the specific note with the entry that this shape starts from. (xml node is <span class="tt">&lt;startNoteID&gt;</span>). <br /></td></tr>
 <tr class="memitem:a5fa83fc067c41f14b3cc56dc45af82dd" id="r_a5fa83fc067c41f14b3cc56dc45af82dd"><td class="memItemLeft" align="right" valign="top"><a id="a5fa83fc067c41f14b3cc56dc45af82dd" name="a5fa83fc067c41f14b3cc56dc45af82dd"></a>
-NoteNumber&#160;</td><td class="memItemRight" valign="bottom"><b>endNoteId</b> {}</td></tr>
+<a class="el" href="namespacemusx_1_1dom.html#aeed9c267ed763d60a452b6de8b0749b7">NoteNumber</a>&#160;</td><td class="memItemRight" valign="bottom"><b>endNoteId</b> {}</td></tr>
 <tr class="memdesc:a5fa83fc067c41f14b3cc56dc45af82dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-zero, the specific note with the entry that this shape ends on. (xml node is <span class="tt">&lt;endNoteID&gt;</span>). <br /></td></tr>
 <tr class="memitem:a23523cc7e83d6b1821d816590dadca45" id="r_a23523cc7e83d6b1821d816590dadca45"><td class="memItemLeft" align="right" valign="top"><a id="a23523cc7e83d6b1821d816590dadca45" name="a23523cc7e83d6b1821d816590dadca45"></a>
-Cmper&#160;</td><td class="memItemRight" valign="bottom"><b>lineStyleId</b> {}</td></tr>
+<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a>&#160;</td><td class="memItemRight" valign="bottom"><b>lineStyleId</b> {}</td></tr>
 <tr class="memdesc:a23523cc7e83d6b1821d816590dadca45"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-zero, the SmartShapeCustomLine for this shape. Several <a class="el" href="#a7b869b52ed9d931b235b79d2c4ed1e6f" title="All the smart shape types supported by Finale.">ShapeType</a> values use it. (xml node is <span class="tt">&lt;lineStyleID&gt;</span>). <br /></td></tr>
 <tr class="memitem:a4572610d46004f8e2a30ad71800bd8ad" id="r_a4572610d46004f8e2a30ad71800bd8ad"><td class="memItemLeft" align="right" valign="top"><a id="a4572610d46004f8e2a30ad71800bd8ad" name="a4572610d46004f8e2a30ad71800bd8ad"></a>
-Cmper&#160;</td><td class="memItemRight" valign="bottom"><b>startLyricNum</b> {}</td></tr>
+<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a>&#160;</td><td class="memItemRight" valign="bottom"><b>startLyricNum</b> {}</td></tr>
 <tr class="memdesc:a4572610d46004f8e2a30ad71800bd8ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">The text block of the lyrics text if this is a word extension or hyphen smart shape. <br /></td></tr>
-<tr class="memitem:a8788a59bf45fc907bdc16daa4d3d639d" id="r_a8788a59bf45fc907bdc16daa4d3d639d"><td class="memItemLeft" align="right" valign="top">Cmper&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8788a59bf45fc907bdc16daa4d3d639d">endLyricNum</a> {}</td></tr>
+<tr class="memitem:a8788a59bf45fc907bdc16daa4d3d639d" id="r_a8788a59bf45fc907bdc16daa4d3d639d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8788a59bf45fc907bdc16daa4d3d639d">endLyricNum</a> {}</td></tr>
 <tr class="memitem:a5aeeec46a2a4adbedf00ba04d0108ba5" id="r_a5aeeec46a2a4adbedf00ba04d0108ba5"><td class="memItemLeft" align="right" valign="top"><a id="a5aeeec46a2a4adbedf00ba04d0108ba5" name="a5aeeec46a2a4adbedf00ba04d0108ba5"></a>
-std::optional&lt; LyricTextType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>startLyricType</b></td></tr>
+std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a15ce5f78a9bdae32abc605711086c991">LyricTextType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>startLyricType</b></td></tr>
 <tr class="memdesc:a5aeeec46a2a4adbedf00ba04d0108ba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of lyrics block for <a class="el" href="#a4572610d46004f8e2a30ad71800bd8ad" title="The text block of the lyrics text if this is a word extension or hyphen smart shape.">startLyricNum</a>. (xml node is <span class="tt">&lt;startLyricTag&gt;</span>). <br /></td></tr>
-<tr class="memitem:a2c6f50d410ca198a830b429394844010" id="r_a2c6f50d410ca198a830b429394844010"><td class="memItemLeft" align="right" valign="top">std::optional&lt; LyricTextType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c6f50d410ca198a830b429394844010">endLyricType</a></td></tr>
+<tr class="memitem:a2c6f50d410ca198a830b429394844010" id="r_a2c6f50d410ca198a830b429394844010"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a15ce5f78a9bdae32abc605711086c991">LyricTextType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c6f50d410ca198a830b429394844010">endLyricType</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -448,7 +446,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>All the smart shape types supported by Finale. </p>
-<p>The enum values match Finale's internal values. (Note that 24 is skipped.) However, they are saved in the xml as text values. These are camel case and otherwise match the enum names, except as noted. </p>
+<p>The enum values match Finale's internal values. (<a class="el" href="classmusx_1_1dom_1_1Note.html" title="Represents a single note element in an entry.">Note</a> that 24 is skipped.) However, they are saved in the xml as text values. These are camel case and otherwise match the enum names, except as noted. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7b869b52ed9d931b235b79d2c4ed1e6fa3387fd3030fde215f2319c5d84b7cae3" name="a7b869b52ed9d931b235b79d2c4ed1e6fa3387fd3030fde215f2319c5d84b7cae3"></a>SlurDown&#160;</td><td class="fielddoc"><p>Downward <a class="el" href="classmusx_1_1util_1_1Slur.html" title="Logical contour for solid, dashed, and dashed-contour slurs, without curve layout.">Slur</a> (tips point up). This is the default and may not appear in the xml, but the text is in the Finale binary. </p>
 </td></tr>
@@ -617,7 +615,7 @@ Over System Break" in the Finale U.I. </p>
         <tr>
           <td class="memname">bool <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a43ee2d11faa58c363117cc0cdd843b7c">musx::dom::others::SmartShape::calcAppliesTo</a> </td>
           <td>(</td>
-          <td class="paramtype">const EntryInfoPtr &amp;</td>          <td class="paramname"><span class="paramname"><em>entryInfo</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>entryInfo</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -648,9 +646,9 @@ Over System Break" in the Finale U.I. </p>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmusx_1_1util_1_1NoteInfoPtr.html">NoteInfoPtr</a> <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#afbbeca7ef4d9d32b9f2f4275bc62bdcd">musx::dom::others::SmartShape::calcArpeggiatedTieToNote</a> </td>
+          <td class="memname"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html">NoteInfoPtr</a> <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#afbbeca7ef4d9d32b9f2f4275bc62bdcd">musx::dom::others::SmartShape::calcArpeggiatedTieToNote</a> </td>
           <td>(</td>
-          <td class="paramtype">const EntryInfoPtr &amp;</td>          <td class="paramname"><span class="paramname"><em>forStartEntry</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>forStartEntry</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -686,7 +684,7 @@ Over System Break" in the Finale U.I. </p>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">CurveContourDirection <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a949d7e3eb7ea467a5a7f644eee8eeb02">musx::dom::others::SmartShape::calcDefinitionContourDirection</a> </td>
+          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55">CurveContourDirection</a> <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a949d7e3eb7ea467a5a7f644eee8eeb02">musx::dom::others::SmartShape::calcDefinitionContourDirection</a> </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -714,7 +712,7 @@ Over System Break" in the Finale U.I. </p>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmusx_1_1util_1_1NoteInfoPtr.html">NoteInfoPtr</a> <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a5432484fa99017482fc80889f7d76e70">musx::dom::others::SmartShape::calcEndNote</a> </td>
+          <td class="memname"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html">NoteInfoPtr</a> <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a5432484fa99017482fc80889f7d76e70">musx::dom::others::SmartShape::calcEndNote</a> </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -806,7 +804,7 @@ Over System Break" in the Finale U.I. </p>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const EntryInfoPtr &amp;</td>          <td class="paramname"><span class="paramname"><em>forStartEntry</em></span>&#160;) const</td>
+          <td class="paramtype">const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>forStartEntry</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -851,7 +849,7 @@ Over System Break" in the Finale U.I. </p>
 </div><div class="memdoc">
 
 <p>Finale sometimes leaves dead smart shapes hanging around that it does not display. This function tells you if you should process the smart shape. </p>
-<p>A shape is invalid if either endpoint is invalid (see smartshape::EndPoint::calcIsValid). Finale also does not display a shape that runs backwards (see <a class="el" href="#a98a2e9b517a03fd3eafbd59e39957ac4" title="Returns true if the end endpoint comes before the start endpoint.">calcIsBackwards</a>) if it is <a class="el" href="#a25fe8a794c5dc038260311c2a7381683" title="Whether the shape is entry-based.">entryBased</a>, or if its end is in an earlier measure than its start. A beat-attached shape that runs backwards within a single measure is displayed, so it is valid. </p>
+<p>A shape is invalid if either endpoint is invalid (see <a class="el" href="classmusx_1_1dom_1_1smartshape_1_1EndPoint.html#ab5e145bf9b29cd720f41f226326b071f" title="Finale can leave dead smart shapes around. This function calculates if the endpoint&#39;s entry,...">smartshape::EndPoint::calcIsValid</a>). Finale also does not display a shape that runs backwards (see <a class="el" href="#a98a2e9b517a03fd3eafbd59e39957ac4" title="Returns true if the end endpoint comes before the start endpoint.">calcIsBackwards</a>) if it is <a class="el" href="#a25fe8a794c5dc038260311c2a7381683" title="Whether the shape is entry-based.">entryBased</a>, or if its end is in an earlier measure than its start. A beat-attached shape that runs backwards within a single measure is displayed, so it is valid. </p>
 
 </div>
 </div>
@@ -865,7 +863,7 @@ Over System Break" in the Finale U.I. </p>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmusx_1_1util_1_1NoteInfoPtr.html">NoteInfoPtr</a> <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a76fe61afd1cf1c9b4a52c3f7378c73c0">musx::dom::others::SmartShape::calcStartNote</a> </td>
+          <td class="memname"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html">NoteInfoPtr</a> <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a76fe61afd1cf1c9b4a52c3f7378c73c0">musx::dom::others::SmartShape::calcStartNote</a> </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -894,7 +892,7 @@ Over System Break" in the Finale U.I. </p>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">VerticalPlacement <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a5fe1a12dabd649547c603ba62bd8a585">musx::dom::others::SmartShape::calcVerticalPlacementForBeatAttached</a> </td>
+          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#a5f47ab5a8dd3f3cab33730ac7e178ad3">VerticalPlacement</a> <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a5fe1a12dabd649547c603ba62bd8a585">musx::dom::others::SmartShape::calcVerticalPlacementForBeatAttached</a> </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -924,7 +922,7 @@ Over System Break" in the Finale U.I. </p>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">MusicRange <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#ade57de9fbb397dcee362925c636d29bd">musx::dom::others::SmartShape::createGlobalMusicRange</a> </td>
+          <td class="memname"><a class="el" href="classmusx_1_1dom_1_1MusicRange.html">MusicRange</a> <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#ade57de9fbb397dcee362925c636d29bd">musx::dom::others::SmartShape::createGlobalMusicRange</a> </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -952,7 +950,7 @@ Over System Break" in the Finale U.I. </p>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">MusicRange <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a90603f232daf80405ea7bf56f840392a">musx::dom::others::SmartShape::createMusicRange</a> </td>
+          <td class="memname"><a class="el" href="classmusx_1_1dom_1_1MusicRange.html">MusicRange</a> <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a90603f232daf80405ea7bf56f840392a">musx::dom::others::SmartShape::createMusicRange</a> </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -970,6 +968,35 @@ Over System Break" in the Finale U.I. </p>
 
 </div>
 </div>
+<a id="a7ad6f30fe7066c2dce90eb3db694d401" name="a7ad6f30fe7066c2dce90eb3db694d401"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ad6f30fe7066c2dce90eb3db694d401">&#9670;&#160;</a></span>integrityCheck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a7ad6f30fe7066c2dce90eb3db694d401">musx::dom::others::SmartShape::integrityCheck</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html">EnigmaBase</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>ptrToThis</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs a final consistency check after population. </p>
+
+<p>Reimplemented from <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#afe002b3162a9e31032d84196c80f6f74">musx::dom::EnigmaBase</a>.</p>
+
+</div>
+</div>
 <a id="a247e5ea76b94a8de228db134de7092c1" name="a247e5ea76b94a8de228db134de7092c1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a247e5ea76b94a8de228db134de7092c1">&#9670;&#160;</a></span>iterateEntries()</h2>
 
@@ -979,12 +1006,12 @@ Over System Break" in the Finale U.I. </p>
         <tr>
           <td class="memname">bool <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a247e5ea76b94a8de228db134de7092c1">musx::dom::others::SmartShape::iterateEntries</a> </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; bool(const EntryInfoPtr &amp;)&gt;</td>          <td class="paramname"><span class="paramname"><em>iterator</em></span>, </td>
+          <td class="paramtype">std::function&lt; bool(const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;)&gt;</td>          <td class="paramname"><span class="paramname"><em>iterator</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">DeferredReference&lt; MusxInstanceList&lt; StaffUsed &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em>staffList</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;) const</td>
+          <td class="paramtype"><a class="el" href="classmusx_1_1dom_1_1DeferredReference.html">DeferredReference</a>&lt; <a class="el" href="classmusx_1_1dom_1_1MusxInstanceList.html">MusxInstanceList</a>&lt; StaffUsed &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em>staffList</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;) const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1009,11 +1036,11 @@ Over System Break" in the Finale U.I. </p>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Cmper <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a8788a59bf45fc907bdc16daa4d3d639d">musx::dom::others::SmartShape::endLyricNum</a> {}</td>
+          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a8788a59bf45fc907bdc16daa4d3d639d">musx::dom::others::SmartShape::endLyricNum</a> {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>For word extensions, a marker rather than a text block. Finale stores -1 (65535 as a #Cmper) on a shape its automatic update of word extensions leaves unchanged, and -2 (65534) on a shape that ends on its own syllable. Other word extensions store zero. For hyphens it is often the same value as <a class="el" href="#a4572610d46004f8e2a30ad71800bd8ad" title="The text block of the lyrics text if this is a word extension or hyphen smart shape.">startLyricNum</a>. The Finale U.I. does not appear to allow hyphen or word extensions between syllables from two different lyric blocks, so the need for start and end blocks is unclear. </p>
+<p>For word extensions, a marker rather than a text block. Finale stores -1 (65535 as a <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5" title="Enigma &quot;comperator&quot; key type.">Cmper</a>) on a shape its automatic update of word extensions leaves unchanged, and -2 (65534) on a shape that ends on its own syllable. Other word extensions store zero. For hyphens it is often the same value as <a class="el" href="#a4572610d46004f8e2a30ad71800bd8ad" title="The text block of the lyrics text if this is a word extension or hyphen smart shape.">startLyricNum</a>. The Finale U.I. does not appear to allow hyphen or word extensions between syllables from two different lyric blocks, so the need for start and end blocks is unclear. </p>
 
 </div>
 </div>
@@ -1024,7 +1051,7 @@ Over System Break" in the Finale U.I. </p>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt;LyricTextType&gt; <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a2c6f50d410ca198a830b429394844010">musx::dom::others::SmartShape::endLyricType</a></td>
+          <td class="memname">std::optional&lt;<a class="el" href="namespacemusx_1_1dom.html#a15ce5f78a9bdae32abc605711086c991">LyricTextType</a>&gt; <a class="el" href="classmusx_1_1dom_1_1others_1_1SmartShape.html#a2c6f50d410ca198a830b429394844010">musx::dom::others::SmartShape::endLyricType</a></td>
         </tr>
       </table>
 </div><div class="memdoc">

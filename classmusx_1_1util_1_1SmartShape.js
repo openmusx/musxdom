@@ -75,6 +75,7 @@ var classmusx_1_1util_1_1SmartShape =
     [ "calcVerticalPlacementForBeatAttached", "classmusx_1_1util_1_1SmartShape.html#a5fe1a12dabd649547c603ba62bd8a585", null ],
     [ "createGlobalMusicRange", "classmusx_1_1util_1_1SmartShape.html#ade57de9fbb397dcee362925c636d29bd", null ],
     [ "createMusicRange", "classmusx_1_1util_1_1SmartShape.html#a90603f232daf80405ea7bf56f840392a", null ],
+    [ "integrityCheck", "classmusx_1_1util_1_1SmartShape.html#a7ad6f30fe7066c2dce90eb3db694d401", null ],
     [ "iterateEntries", "classmusx_1_1util_1_1SmartShape.html#a247e5ea76b94a8de228db134de7092c1", null ],
     [ "direction", "classmusx_1_1util_1_1SmartShape.html#af3702df3d2d82001cc53eec1c58af73f", null ],
     [ "endLyricNum", "classmusx_1_1util_1_1SmartShape.html#a8788a59bf45fc907bdc16daa4d3d639d", null ],

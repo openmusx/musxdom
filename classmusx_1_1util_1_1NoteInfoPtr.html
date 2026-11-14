@@ -95,7 +95,7 @@ $(function(){initNavTree('classmusx_1_1util_1_1NoteInfoPtr.html','','classmusx_1
 </div><!--header-->
 <div class="contents">
 
-<p>Wraps an EntryInfo instance and a note index.  
+<p>Wraps an <a class="el" href="classmusx_1_1dom_1_1EntryInfo.html">EntryInfo</a> instance and a note index.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Entries_8h_source.html">Entries.h</a>&gt;</code></p>
@@ -116,27 +116,29 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af96307ed369138a67d004695055e894d" id="r_af96307ed369138a67d004695055e894d"><td class="memItemLeft" align="right" valign="top"><a id="af96307ed369138a67d004695055e894d" name="af96307ed369138a67d004695055e894d"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>NoteInfoPtr</b> ()</td></tr>
 <tr class="memdesc:af96307ed369138a67d004695055e894d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
-<tr class="memitem:abafc8ded0db6f072316ecfee838eaa38" id="r_abafc8ded0db6f072316ecfee838eaa38"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abafc8ded0db6f072316ecfee838eaa38">NoteInfoPtr</a> (const EntryInfoPtr &amp;entryInfo, size_t noteIndex)</td></tr>
+<tr class="memitem:abafc8ded0db6f072316ecfee838eaa38" id="r_abafc8ded0db6f072316ecfee838eaa38"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abafc8ded0db6f072316ecfee838eaa38">NoteInfoPtr</a> (const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;entryInfo, size_t noteIndex)</td></tr>
 <tr class="memdesc:abafc8ded0db6f072316ecfee838eaa38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
 <tr class="memitem:a6eff3d58782f2fcc81383758dc682ba9" id="r_a6eff3d58782f2fcc81383758dc682ba9"><td class="memItemLeft" align="right" valign="top"><a id="a6eff3d58782f2fcc81383758dc682ba9" name="a6eff3d58782f2fcc81383758dc682ba9"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>operator bool</b> () const noexcept</td></tr>
-<tr class="memdesc:a6eff3d58782f2fcc81383758dc682ba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a boolean conversion based on whether the EntryInfoPtr is valid and the note index is valid. <br /></td></tr>
+<tr class="memdesc:a6eff3d58782f2fcc81383758dc682ba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a boolean conversion based on whether the <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html" title="Wraps a frame of shared_ptr&lt;const EntryInfo&gt; and an index for per entry access. This class manages ow...">EntryInfoPtr</a> is valid and the note index is valid. <br /></td></tr>
 <tr class="memitem:a44670e047067bd603fdb709fa695e2a0" id="r_a44670e047067bd603fdb709fa695e2a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44670e047067bd603fdb709fa695e2a0">isSameNote</a> (const <a class="el" href="#af96307ed369138a67d004695055e894d">NoteInfoPtr</a> &amp;src) const</td></tr>
 <tr class="memdesc:a44670e047067bd603fdb709fa695e2a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the input and the current instance refer to the same note.  <br /></td></tr>
-<tr class="memitem:aed537f60968794044f42f4b6de7488c4" id="r_aed537f60968794044f42f4b6de7488c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#af96307ed369138a67d004695055e894d">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed537f60968794044f42f4b6de7488c4">findEqualPitch</a> (const EntryInfoPtr &amp;entry) const</td></tr>
+<tr class="memitem:aed537f60968794044f42f4b6de7488c4" id="r_aed537f60968794044f42f4b6de7488c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#af96307ed369138a67d004695055e894d">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed537f60968794044f42f4b6de7488c4">findEqualPitch</a> (const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;entry) const</td></tr>
 <tr class="memdesc:aed537f60968794044f42f4b6de7488c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a note with the same pitch in the supplied entry.  <br /></td></tr>
 <tr class="memitem:a2f0b18fc87b70d16c96b40cc97b87ee2" id="r_a2f0b18fc87b70d16c96b40cc97b87ee2"><td class="memItemLeft" align="right" valign="top"><a id="a2f0b18fc87b70d16c96b40cc97b87ee2" name="a2f0b18fc87b70d16c96b40cc97b87ee2"></a>
-MusxInstance&lt; Note &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-&gt;</b> () const</td></tr>
-<tr class="memdesc:a2f0b18fc87b70d16c96b40cc97b87ee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows <span class="tt">-&gt;</span> access to the underlying Note instance. <br /></td></tr>
+<a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1Note.html">Note</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-&gt;</b> () const</td></tr>
+<tr class="memdesc:a2f0b18fc87b70d16c96b40cc97b87ee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows <span class="tt">-&gt;</span> access to the underlying <a class="el" href="classmusx_1_1dom_1_1Note.html">Note</a> instance. <br /></td></tr>
 <tr class="memitem:a274b7e7410c033c60bc818731a9d8598" id="r_a274b7e7410c033c60bc818731a9d8598"><td class="memItemLeft" align="right" valign="top"><a id="a274b7e7410c033c60bc818731a9d8598" name="a274b7e7410c033c60bc818731a9d8598"></a>
-EntryInfoPtr&#160;</td><td class="memItemRight" valign="bottom"><b>getEntryInfo</b> () const</td></tr>
+<a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getEntryInfo</b> () const</td></tr>
 <tr class="memdesc:a274b7e7410c033c60bc818731a9d8598"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the entry info for this note. <br /></td></tr>
 <tr class="memitem:a160ca8678250695a224f1665b9c7a1c0" id="r_a160ca8678250695a224f1665b9c7a1c0"><td class="memItemLeft" align="right" valign="top"><a id="a160ca8678250695a224f1665b9c7a1c0" name="a160ca8678250695a224f1665b9c7a1c0"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getNoteIndex</b> () const</td></tr>
 <tr class="memdesc:a160ca8678250695a224f1665b9c7a1c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the note index for this note. <br /></td></tr>
-<tr class="memitem:a4766cf96435ed81abdf8309f4e267b95" id="r_a4766cf96435ed81abdf8309f4e267b95"><td class="memItemLeft" align="right" valign="top">Note::NoteProperties&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4766cf96435ed81abdf8309f4e267b95">calcNoteProperties</a> (NotePropertiesOptions options={}) const</td></tr>
+<tr class="memitem:a4766cf96435ed81abdf8309f4e267b95" id="r_a4766cf96435ed81abdf8309f4e267b95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmusx_1_1dom_1_1Note_1_1NoteProperties.html">Note::NoteProperties</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4766cf96435ed81abdf8309f4e267b95">calcNoteProperties</a> (<a class="el" href="structmusx_1_1dom_1_1NotePropertiesOptions.html">NotePropertiesOptions</a> <a class="el" href="namespacemusx_1_1dom_1_1options.html">options</a>={}) const</td></tr>
 <tr class="memdesc:a4766cf96435ed81abdf8309f4e267b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the note name, octave number, actual alteration, and staff position. The staff position takes into account percussion notes and their staff position override.  <br /></td></tr>
-<tr class="memitem:a2c725e14e257f68e2c7600a8540b7457" id="r_a2c725e14e257f68e2c7600a8540b7457"><td class="memItemLeft" align="right" valign="top">MusxInstance&lt; others::PercussionNoteInfo &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c725e14e257f68e2c7600a8540b7457">calcPercussionNoteInfo</a> () const</td></tr>
+<tr class="memitem:ab85bfba4441f7a7a45cb2dfb1f61a729" id="r_ab85bfba4441f7a7a45cb2dfb1f61a729"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab85bfba4441f7a7a45cb2dfb1f61a729">calcAccidentalIsDisplayed</a> (<a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398">PitchMode</a> pitchMode=<a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398a0927f41ac54c89b52ea38691ce7e9696">PitchMode::CurrentView</a>) const</td></tr>
+<tr class="memdesc:ab85bfba4441f7a7a45cb2dfb1f61a729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this note displays an accidental in the requested pitch context.  <br /></td></tr>
+<tr class="memitem:a2c725e14e257f68e2c7600a8540b7457" id="r_a2c725e14e257f68e2c7600a8540b7457"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1PercussionNoteInfo.html">others::PercussionNoteInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c725e14e257f68e2c7600a8540b7457">calcPercussionNoteInfo</a> () const</td></tr>
 <tr class="memdesc:a2c725e14e257f68e2c7600a8540b7457"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the percussion note info for this note, if any.  <br /></td></tr>
 <tr class="memitem:a16f03e5030d5d4995c87d9899341ce48" id="r_a16f03e5030d5d4995c87d9899341ce48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmusx_1_1util_1_1NoteInfoPtr_1_1NoteheadInfo.html">NoteheadInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16f03e5030d5d4995c87d9899341ce48">calcNoteheadInfo</a> () const</td></tr>
 <tr class="memdesc:a16f03e5030d5d4995c87d9899341ce48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves the effective font and character used to render this note's notehead, along with any size or position adjustments.  <br /></td></tr>
@@ -145,22 +147,22 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getNoteIndex</b> ()
 <tr class="memitem:ae4656faf7f4a1ea79cb3b3da6dd10fa0" id="r_ae4656faf7f4a1ea79cb3b3da6dd10fa0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4656faf7f4a1ea79cb3b3da6dd10fa0">calcHasTieEnd</a> () const</td></tr>
 <tr class="memdesc:ae4656faf7f4a1ea79cb3b3da6dd10fa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether a tie ends on this note, taking the singleton beam workaround into account.  <br /></td></tr>
 <tr class="memitem:ac535914f03c0ac61fe184134c1584d9b" id="r_ac535914f03c0ac61fe184134c1584d9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#af96307ed369138a67d004695055e894d">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac535914f03c0ac61fe184134c1584d9b">calcTieTo</a> () const</td></tr>
-<tr class="memdesc:ac535914f03c0ac61fe184134c1584d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the note that this note could tie to. Check the return value's <a class="el" href="#ae4656faf7f4a1ea79cb3b3da6dd10fa0" title="Returns whether a tie ends on this note, taking the singleton beam workaround into account.">calcHasTieEnd</a> to see if there is actually a tie end. (Note that Finale shows a tie whether there #Note::tieEnd is true or not.).  <br /></td></tr>
+<tr class="memdesc:ac535914f03c0ac61fe184134c1584d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the note that this note could tie to. Check the return value's <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#ae4656faf7f4a1ea79cb3b3da6dd10fa0" title="Returns whether a tie ends on this note, taking the singleton beam workaround into account.">calcHasTieEnd</a> to see if there is actually a tie end. (<a class="el" href="classmusx_1_1dom_1_1Note.html" title="Represents a single note element in an entry.">Note</a> that Finale shows a tie whether there #Note::tieEnd is true or not.).  <br /></td></tr>
 <tr class="memitem:a8d4472ff1bfd27358ea69f33a3e82d18" id="r_a8d4472ff1bfd27358ea69f33a3e82d18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#af96307ed369138a67d004695055e894d">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d4472ff1bfd27358ea69f33a3e82d18">calcTieFrom</a> (bool requireTie=true) const</td></tr>
 <tr class="memdesc:a8d4472ff1bfd27358ea69f33a3e82d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the note that this note could tie from.  <br /></td></tr>
-<tr class="memitem:a0160d32691946e7c62db97e76f57fea3" id="r_a0160d32691946e7c62db97e76f57fea3"><td class="memItemLeft" align="right" valign="top">CurveContourDirection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0160d32691946e7c62db97e76f57fea3">calcFreezeTieDirection</a> (bool forTieEnd=false) const</td></tr>
+<tr class="memitem:a0160d32691946e7c62db97e76f57fea3" id="r_a0160d32691946e7c62db97e76f57fea3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55">CurveContourDirection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0160d32691946e7c62db97e76f57fea3">calcFreezeTieDirection</a> (bool forTieEnd=false) const</td></tr>
 <tr class="memdesc:a0160d32691946e7c62db97e76f57fea3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the user-frozen tie direction for this note, if any.  <br /></td></tr>
-<tr class="memitem:a654c741b643fecacb1be670e79c729f1" id="r_a654c741b643fecacb1be670e79c729f1"><td class="memItemLeft" align="right" valign="top">CurveContourDirection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a654c741b643fecacb1be670e79c729f1">calcEffectiveTieDirection</a> (bool forTieEnd=false) const</td></tr>
+<tr class="memitem:a654c741b643fecacb1be670e79c729f1" id="r_a654c741b643fecacb1be670e79c729f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55">CurveContourDirection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a654c741b643fecacb1be670e79c729f1">calcEffectiveTieDirection</a> (bool forTieEnd=false) const</td></tr>
 <tr class="memdesc:a654c741b643fecacb1be670e79c729f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether this note has an outer tie at the specified endpoint.  <br /></td></tr>
 <tr class="memitem:aa8d4784bb1418f49c677a9e6d95b95de" id="r_aa8d4784bb1418f49c677a9e6d95b95de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8d4784bb1418f49c677a9e6d95b95de">calcHasOuterTie</a> (bool forTieEnd=false) const</td></tr>
 <tr class="memdesc:aa8d4784bb1418f49c677a9e6d95b95de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether this note has an outer tie at the specified endpoint.  <br /></td></tr>
 <tr class="memitem:a33fc628d0949601ef6f8cc6a083e9afe" id="r_a33fc628d0949601ef6f8cc6a083e9afe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33fc628d0949601ef6f8cc6a083e9afe">calcHasInnerTie</a> (bool forTieEnd=false) const</td></tr>
 <tr class="memdesc:a33fc628d0949601ef6f8cc6a083e9afe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether this note has an inner tie at the specified endpoint.  <br /></td></tr>
 <tr class="memitem:a47410cd12a40e392c789ffc3c265b264" id="r_a47410cd12a40e392c789ffc3c265b264"><td class="memItemLeft" align="right" valign="top"><a id="a47410cd12a40e392c789ffc3c265b264" name="a47410cd12a40e392c789ffc3c265b264"></a>
-StaffCmper&#160;</td><td class="memItemRight" valign="bottom"><b>calcStaff</b> () const</td></tr>
+<a class="el" href="namespacemusx_1_1dom.html#a4bd7b78830863b8e952adb9b160e31cd">StaffCmper</a>&#160;</td><td class="memItemRight" valign="bottom"><b>calcStaff</b> () const</td></tr>
 <tr class="memdesc:a47410cd12a40e392c789ffc3c265b264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the staff number, taking into account cross staffing. <br /></td></tr>
 <tr class="memitem:afc49802bc77032c3e6990acb8c3a9f9d" id="r_afc49802bc77032c3e6990acb8c3a9f9d"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classmusic__theory_1_1Transposer.html">music_theory::Transposer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc49802bc77032c3e6990acb8c3a9f9d">createTransposer</a> () const</td></tr>
-<tr class="memdesc:afc49802bc77032c3e6990acb8c3a9f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a transposer for this Note instance.  <br /></td></tr>
+<tr class="memdesc:afc49802bc77032c3e6990acb8c3a9f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a transposer for this <a class="el" href="classmusx_1_1dom_1_1Note.html" title="Represents a single note element in an entry.">Note</a> instance.  <br /></td></tr>
 <tr class="memitem:af5fcf2f36d580ace7c9c110e71b724fe" id="r_af5fcf2f36d580ace7c9c110e71b724fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#af96307ed369138a67d004695055e894d">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5fcf2f36d580ace7c9c110e71b724fe">getNext</a> () const</td></tr>
 <tr class="memdesc:af5fcf2f36d580ace7c9c110e71b724fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the next note in a chord on the same entry.  <br /></td></tr>
 <tr class="memitem:a76835b3c0d66d473c019835646744d5c" id="r_a76835b3c0d66d473c019835646744d5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#af96307ed369138a67d004695055e894d">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76835b3c0d66d473c019835646744d5c">getPrevious</a> () const</td></tr>
@@ -172,11 +174,11 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsEnharmonicRespe
 <tr class="memdesc:aabb32c50345e151d488956b4f61f99b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the default enharmonic equivalent of this note. This is the value that Finale uses when #details::NoteAlterations::enharmonic is true.  <br /></td></tr>
 <tr class="memitem:a84f3b5f320d4e1dd16a71d82a3db7a4a" id="r_a84f3b5f320d4e1dd16a71d82a3db7a4a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84f3b5f320d4e1dd16a71d82a3db7a4a">calcIsEnharmonicRespellInAnyPart</a> () const</td></tr>
 <tr class="memdesc:a84f3b5f320d4e1dd16a71d82a3db7a4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates if any linked part has this note enharmonically respelled.  <br /></td></tr>
-<tr class="memitem:aad11d0055ca42686bfb5d5f8dfa98247" id="r_aad11d0055ca42686bfb5d5f8dfa98247"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad11d0055ca42686bfb5d5f8dfa98247">calcCrossStaffDirection</a> (DeferredReference&lt; MusxInstanceList&lt; others::StaffUsed &gt; &gt; staffList={}) const</td></tr>
+<tr class="memitem:aad11d0055ca42686bfb5d5f8dfa98247" id="r_aad11d0055ca42686bfb5d5f8dfa98247"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad11d0055ca42686bfb5d5f8dfa98247">calcCrossStaffDirection</a> (<a class="el" href="classmusx_1_1dom_1_1DeferredReference.html">DeferredReference</a>&lt; <a class="el" href="classmusx_1_1dom_1_1MusxInstanceList.html">MusxInstanceList</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffUsed.html">others::StaffUsed</a> &gt; &gt; staffList={}) const</td></tr>
 <tr class="memdesc:aad11d0055ca42686bfb5d5f8dfa98247"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates if this note is cross-staffed and if so, which direction.  <br /></td></tr>
 <tr class="memitem:aa078714d4ad095bd9be5da204e9bc438" id="r_aa078714d4ad095bd9be5da204e9bc438"><td class="memItemLeft" align="right" valign="top"><a id="aa078714d4ad095bd9be5da204e9bc438" name="aa078714d4ad095bd9be5da204e9bc438"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoicing</b> () const</td></tr>
-<tr class="memdesc:aa078714d4ad095bd9be5da204e9bc438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if this note is included in the part voicing. This function returns the correct value even if the document's <span class="tt">PartVoicingPolicy</span> is to ignore part voicing. <br /></td></tr>
+<tr class="memdesc:aa078714d4ad095bd9be5da204e9bc438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if this note is included in the part voicing. This function returns the correct value even if the document's <span class="tt"><a class="el" href="namespacemusx_1_1dom.html#a8ff59967b46549e150ea4f524c00de95" title="Controls whether Finale-style part voicing is applied when iterating entries via musx::dom::details::...">PartVoicingPolicy</a></span> is to ignore part voicing. <br /></td></tr>
 <tr class="memitem:ae5c74d24751ea19781ea5c0b812b5b08" id="r_ae5c74d24751ea19781ea5c0b812b5b08"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5c74d24751ea19781ea5c0b812b5b08">calcIsTop</a> () const</td></tr>
 <tr class="memdesc:ae5c74d24751ea19781ea5c0b812b5b08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if this is the top note in the entry.  <br /></td></tr>
 <tr class="memitem:a6043bdd2ea1ce370c5d4d31acd455f73" id="r_a6043bdd2ea1ce370c5d4d31acd455f73"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6043bdd2ea1ce370c5d4d31acd455f73">calcIsBottom</a> () const</td></tr>
@@ -189,11 +191,11 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 <tr class="memitem:a8d7ea5877dcf0a6c3f69a5bd1fb75b86" id="r_a8d7ea5877dcf0a6c3f69a5bd1fb75b86"><td class="memItemLeft" align="right" valign="top"><a id="a8d7ea5877dcf0a6c3f69a5bd1fb75b86" name="a8d7ea5877dcf0a6c3f69a5bd1fb75b86"></a>
 <a class="el" href="structmusx_1_1util_1_1NoteInfoPtr_1_1PseudoTieInfo.html">PseudoTieInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>calcPseudoTieEndInfo</b> () const</td></tr>
 <tr class="memdesc:a8d7ea5877dcf0a6c3f69a5bd1fb75b86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates whether this note has a stand-in tie-end and returns tie metadata. For a match, the entry must have a number of qualifying stand-in items equal to the number of notes in the entry. <br /></td></tr>
-<tr class="memitem:a351043be4712ae30b3b2371ac0f05ce2" id="r_a351043be4712ae30b3b2371ac0f05ce2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; <a class="el" href="#af96307ed369138a67d004695055e894d">NoteInfoPtr</a>, CurveContourDirection &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a351043be4712ae30b3b2371ac0f05ce2">calcJumpTieContinuationsFrom</a> () const</td></tr>
+<tr class="memitem:a351043be4712ae30b3b2371ac0f05ce2" id="r_a351043be4712ae30b3b2371ac0f05ce2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; <a class="el" href="#af96307ed369138a67d004695055e894d">NoteInfoPtr</a>, <a class="el" href="namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55">CurveContourDirection</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a351043be4712ae30b3b2371ac0f05ce2">calcJumpTieContinuationsFrom</a> () const</td></tr>
 <tr class="memdesc:a351043be4712ae30b3b2371ac0f05ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the notes in prior measures that continue a "jump" tie into this note.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Wraps an EntryInfo instance and a note index. </p>
+<div class="textblock"><p>Wraps an <a class="el" href="classmusx_1_1dom_1_1EntryInfo.html">EntryInfo</a> instance and a note index. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="abafc8ded0db6f072316ecfee838eaa38" name="abafc8ded0db6f072316ecfee838eaa38"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abafc8ded0db6f072316ecfee838eaa38">&#9670;&#160;</a></span>NoteInfoPtr()</h2>
@@ -207,7 +209,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
         <tr>
           <td class="memname"><a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#af96307ed369138a67d004695055e894d">musx::dom::NoteInfoPtr::NoteInfoPtr</a> </td>
           <td>(</td>
-          <td class="paramtype">const EntryInfoPtr &amp;</td>          <td class="paramname"><span class="paramname"><em>entryInfo</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>entryInfo</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -234,6 +236,47 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ab85bfba4441f7a7a45cb2dfb1f61a729" name="ab85bfba4441f7a7a45cb2dfb1f61a729"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab85bfba4441f7a7a45cb2dfb1f61a729">&#9670;&#160;</a></span>calcAccidentalIsDisplayed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#ab85bfba4441f7a7a45cb2dfb1f61a729">musx::dom::NoteInfoPtr::calcAccidentalIsDisplayed</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398">PitchMode</a></td>          <td class="paramname"><span class="paramname"><em>pitchMode</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398a0927f41ac54c89b52ea38691ce7e9696">PitchMode::CurrentView</a></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns whether this note displays an accidental in the requested pitch context. </p>
+<p>The first query calculates and caches results for all participating layers in the staff-measure context. Results are shared across note wrappers and frames in this document. Call <a class="el" href="classmusx_1_1dom_1_1Document.html#aaa4cd29b0e4a7d56cc1871835eba8dd4" title="Discards all cached accidental-display results for this document.">Document::clearAccidentalCache</a> after editing inputs to the calculation. Glyph appearance, accidental positioning, staff-system visibility, and page clipping are excluded. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pitchMode</td><td>The pitch representation used for all notes in the calculation. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>False for rests, hidden entries, excluded part voices, and replacement notation. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>If this note or pitch mode is invalid. </td></tr>
+    <tr><td class="paramname">std::logic_error</td><td>If the note cannot be found in its measure context. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ac0840cb71f2d973958c389c2a806aca0" name="ac0840cb71f2d973958c389c2a806aca0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac0840cb71f2d973958c389c2a806aca0">&#9670;&#160;</a></span>calcArpeggiatedTieInfo()</h2>
 
@@ -274,7 +317,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
         <tr>
           <td class="memname">int <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#aad11d0055ca42686bfb5d5f8dfa98247">musx::dom::NoteInfoPtr::calcCrossStaffDirection</a> </td>
           <td>(</td>
-          <td class="paramtype">DeferredReference&lt; MusxInstanceList&lt; others::StaffUsed &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em>staffList</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classmusx_1_1dom_1_1DeferredReference.html">DeferredReference</a>&lt; <a class="el" href="classmusx_1_1dom_1_1MusxInstanceList.html">MusxInstanceList</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffUsed.html">others::StaffUsed</a> &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em>staffList</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -325,7 +368,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 </div><div class="memdoc">
 
 <p>Calculates the default enharmonic equivalent of this note. This is the value that Finale uses when #details::NoteAlterations::enharmonic is true. </p>
-<p>Normally you do not have to call this function directly. It is called inside <a class="el" href="#a4766cf96435ed81abdf8309f4e267b95" title="Calculates the note name, octave number, actual alteration, and staff position. The staff position ta...">calcNoteProperties</a>. But the function is available if you need it.</p>
+<p>Normally you do not have to call this function directly. It is called inside <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a4766cf96435ed81abdf8309f4e267b95" title="Calculates the note name, octave number, actual alteration, and staff position. The staff position ta...">calcNoteProperties</a>. But the function is available if you need it.</p>
 <dl class="section return"><dt>Returns</dt><dd>A std::pair containing<ul>
 <li>int: the enharmonic equivalent's displacement value relative to the tonic.</li>
 <li>int: the enharmonic equivalent's alteration value relative to the key signature. </li>
@@ -344,7 +387,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">CurveContourDirection <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a654c741b643fecacb1be670e79c729f1">musx::dom::NoteInfoPtr::calcEffectiveTieDirection</a> </td>
+          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55">CurveContourDirection</a> <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a654c741b643fecacb1be670e79c729f1">musx::dom::NoteInfoPtr::calcEffectiveTieDirection</a> </td>
           <td>(</td>
           <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>forTieEnd</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span></td><td>)</td>
           <td> const</td>
@@ -378,7 +421,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">CurveContourDirection <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a0160d32691946e7c62db97e76f57fea3">musx::dom::NoteInfoPtr::calcFreezeTieDirection</a> </td>
+          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55">CurveContourDirection</a> <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a0160d32691946e7c62db97e76f57fea3">musx::dom::NoteInfoPtr::calcFreezeTieDirection</a> </td>
           <td>(</td>
           <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>forTieEnd</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span></td><td>)</td>
           <td> const</td>
@@ -622,7 +665,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::pair&lt; <a class="el" href="#af96307ed369138a67d004695055e894d">NoteInfoPtr</a>, CurveContourDirection &gt; &gt; <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a351043be4712ae30b3b2371ac0f05ce2">musx::dom::NoteInfoPtr::calcJumpTieContinuationsFrom</a> </td>
+          <td class="memname">std::vector&lt; std::pair&lt; <a class="el" href="#af96307ed369138a67d004695055e894d">NoteInfoPtr</a>, <a class="el" href="namespacemusx_1_1dom.html#a0dc36a86e1ae0cadd7b7e4c624b07b55">CurveContourDirection</a> &gt; &gt; <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a351043be4712ae30b3b2371ac0f05ce2">musx::dom::NoteInfoPtr::calcJumpTieContinuationsFrom</a> </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -666,7 +709,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 <p>Resolves the effective font and character used to render this note's notehead, along with any size or position adjustments. </p>
 <p>Resolution is in order of precedence:</p><ul>
 <li>A per-note #details::NoteAlterations::altNhead override, if one is set for this note (with its own font override, if #details::NoteAlterations::useOwnFont is set).</li>
-<li>The percussion note's shape, if this note is on a percussion staff with a mapped percussion note. (See <a class="el" href="#a2c725e14e257f68e2c7600a8540b7457" title="Calculates the percussion note info for this note, if any.">calcPercussionNoteInfo</a>.)</li>
+<li>The percussion note's shape, if this note is on a percussion staff with a mapped percussion note. (See <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a2c725e14e257f68e2c7600a8540b7457" title="Calculates the percussion note info for this note, if any.">calcPercussionNoteInfo</a>.)</li>
 <li>The staff's shape-note convention, if shape notes are in effect for the staff. (See #others::Staff::getNoteShapes.)</li>
 <li>Otherwise, the document's default notehead codepoints for the note's duration category. (See #options::MusicSymbolOptions.)</li>
 </ul>
@@ -684,9 +727,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Note::NoteProperties <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a4766cf96435ed81abdf8309f4e267b95">musx::dom::NoteInfoPtr::calcNoteProperties</a> </td>
+          <td class="memname"><a class="el" href="structmusx_1_1dom_1_1Note_1_1NoteProperties.html">Note::NoteProperties</a> <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a4766cf96435ed81abdf8309f4e267b95">musx::dom::NoteInfoPtr::calcNoteProperties</a> </td>
           <td>(</td>
-          <td class="paramtype">NotePropertiesOptions</td>          <td class="paramname"><span class="paramname"><em>options</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structmusx_1_1dom_1_1NotePropertiesOptions.html">NotePropertiesOptions</a></td>          <td class="paramname"><span class="paramname"><em>options</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -698,7 +741,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 </div><div class="memdoc">
 
 <p>Calculates the note name, octave number, actual alteration, and staff position. The staff position takes into account percussion notes and their staff position override. </p>
-<dl class="section note"><dt>Note</dt><dd>In Finale, the default whole rest staff position is the middle staff line. Other music notation systems frequently expect the standard whole rest staff position to be the second line from the top. You may need to interpolate the staff position returned by <a class="el" href="#a4766cf96435ed81abdf8309f4e267b95" title="Calculates the note name, octave number, actual alteration, and staff position. The staff position ta...">calcNoteProperties</a> for whole rests. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>In Finale, the default whole rest staff position is the middle staff line. Other music notation systems frequently expect the standard whole rest staff position to be the second line from the top. You may need to interpolate the staff position returned by <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a4766cf96435ed81abdf8309f4e267b95" title="Calculates the note name, octave number, actual alteration, and staff position. The staff position ta...">calcNoteProperties</a> for whole rests. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">options</td><td>Calculation options, including pitch representation, enharmonic behavior, and cross-staff handling. </td></tr>
@@ -719,7 +762,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">MusxInstance&lt; others::PercussionNoteInfo &gt; <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a2c725e14e257f68e2c7600a8540b7457">musx::dom::NoteInfoPtr::calcPercussionNoteInfo</a> </td>
+          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1PercussionNoteInfo.html">others::PercussionNoteInfo</a> &gt; <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a2c725e14e257f68e2c7600a8540b7457">musx::dom::NoteInfoPtr::calcPercussionNoteInfo</a> </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -763,7 +806,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 <p>Calculates the note that this note could tie from. </p>
 <p>Entries the interpreted iterator skips are passed over, so the result is always a note on a kept entry. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">requireTie</td><td>If <code class="param">requireTie</code> is true, the returned value must have a tie start per <a class="el" href="#a7b7eac61cb13fa0bb409ee448070d288" title="Returns whether a tie starts on this note, taking the singleton beam workaround into account.">calcHasTieStart</a>. You can set <code class="param">requireTie</code> to false to find the <em>potential</em> note this note might be tied from. </td></tr>
+    <tr><td class="paramname">requireTie</td><td>If <code class="param">requireTie</code> is true, the returned value must have a tie start per <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a7b7eac61cb13fa0bb409ee448070d288" title="Returns whether a tie starts on this note, taking the singleton beam workaround into account.">calcHasTieStart</a>. You can set <code class="param">requireTie</code> to false to find the <em>potential</em> note this note might be tied from. </td></tr>
   </table>
   </dd>
 </dl>
@@ -794,7 +837,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 </table>
 </div><div class="memdoc">
 
-<p>Calculates the note that this note could tie to. Check the return value's <a class="el" href="#ae4656faf7f4a1ea79cb3b3da6dd10fa0" title="Returns whether a tie ends on this note, taking the singleton beam workaround into account.">calcHasTieEnd</a> to see if there is actually a tie end. (Note that Finale shows a tie whether there #Note::tieEnd is true or not.). </p>
+<p>Calculates the note that this note could tie to. Check the return value's <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#ae4656faf7f4a1ea79cb3b3da6dd10fa0" title="Returns whether a tie ends on this note, taking the singleton beam workaround into account.">calcHasTieEnd</a> to see if there is actually a tie end. (<a class="el" href="classmusx_1_1dom_1_1Note.html" title="Represents a single note element in an entry.">Note</a> that Finale shows a tie whether there #Note::tieEnd is true or not.). </p>
 <p>Entries the interpreted iterator skips are passed over, so the result is always a note on a kept entry. </p><dl class="section return"><dt>Returns</dt><dd>The candidate note or an empty <a class="el" href="classmusx_1_1util_1_1NoteInfoPtr.html" title="Wraps an EntryInfo instance and a note index.">NoteInfoPtr</a> if no candidate was found. </dd></dl>
 
 </div>
@@ -822,8 +865,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 </table>
 </div><div class="memdoc">
 
-<p>Creates a transposer for this Note instance. </p>
-<dl class="section return"><dt>Returns</dt><dd>A unique pointer to a transposer for this Note. </dd></dl>
+<p>Creates a transposer for this <a class="el" href="classmusx_1_1dom_1_1Note.html" title="Represents a single note element in an entry.">Note</a> instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>A unique pointer to a transposer for this <a class="el" href="classmusx_1_1dom_1_1Note.html" title="Represents a single note element in an entry.">Note</a>. </dd></dl>
 
 </div>
 </div>
@@ -839,7 +882,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
         <tr>
           <td class="memname"><a class="el" href="#af96307ed369138a67d004695055e894d">NoteInfoPtr</a> <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#aed537f60968794044f42f4b6de7488c4">musx::dom::NoteInfoPtr::findEqualPitch</a> </td>
           <td>(</td>
-          <td class="paramtype">const EntryInfoPtr &amp;</td>          <td class="paramname"><span class="paramname"><em>entry</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html">EntryInfoPtr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>entry</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -943,7 +986,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 <p>Returns whether the input and the current instance refer to the same note. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">src</td><td>The EntryInfoPtr to compare with. </td></tr>
+    <tr><td class="paramname">src</td><td>The <a class="el" href="classmusx_1_1dom_1_1EntryInfoPtr.html" title="Wraps a frame of shared_ptr&lt;const EntryInfo&gt; and an index for per entry access. This class manages ow...">EntryInfoPtr</a> to compare with. </td></tr>
   </table>
   </dd>
 </dl>

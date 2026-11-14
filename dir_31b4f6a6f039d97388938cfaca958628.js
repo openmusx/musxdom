@@ -1,5 +1,6 @@
 var dir_31b4f6a6f039d97388938cfaca958628 =
 [
+    [ "Accidental.h", "Accidental_8h_source.html", null ],
     [ "Arpeggio.h", "Arpeggio_8h_source.html", null ],
     [ "ArrowheadPresets.h", "ArrowheadPresets_8h_source.html", null ],
     [ "Cue.h", "Cue_8h_source.html", null ],
