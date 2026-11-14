@@ -129,12 +129,6 @@ unsigned calcEntryDots(const EntryInfoPtr& entryInfo)
     return entryInfo->getEntry()->calcDurationInfo().second;
 }
 
-bool calcNoteHasAccidental(const NoteInfoPtr& noteInfo)
-{
-    const auto note = noteInfo.operator->();
-    return note->showAcci;
-}
-
 bool calcUseAfterSingleDot(const NoteInfoPtr& noteInfo, bool forTieEnd, const NoteInfoPtr& contextNote)
 {
     const auto entryFrame = noteInfo.getEntryInfo().getFrame();
@@ -720,7 +714,7 @@ std::optional<details::TieAlterBase::ConnectionType> Tie::calcConnectionType(
     if (isInnerConnectStyle(connectStyle)) {
         if (forEndPoint) {
             if (calcUseBeforeSingleAcci(noteInfo, forTieEnd, tieAlterContext) && entry->notes.size() == 1
-                && calcNoteHasAccidental(noteInfo)) {
+                && noteInfo.calcAccidentalIsDisplayed()) {
                 return details::TieAlterBase::ConnectionType::AccidentalLeftNoteCenter;
             }
             if (shiftForSeconds && hasNonAligned) {

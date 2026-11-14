@@ -69,6 +69,7 @@
 
 #include "util/Fraction.h"
 #include "util/Layout.h"
+#include "util/Accidental.h"
 #include "util/Arpeggio.h"
 #include "util/ArrowheadPresets.h"
 #include "util/Cue.h"

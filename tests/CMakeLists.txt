@@ -47,6 +47,7 @@ add_executable(musxdomtests
     dom/instrument.cpp
     dom/pool.cpp
     # entries
+    entries/accidentals.cpp
     entries/beam_detection.cpp
     entries/cross_staffs.cpp
     entries/entries.cpp
