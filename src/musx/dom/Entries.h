@@ -1736,6 +1736,18 @@ public:
     [[nodiscard]]
     Note::NoteProperties calcNoteProperties(NotePropertiesOptions options = {}) const;
 
+    /// @brief Returns whether this note displays an accidental in the requested pitch context.
+    /// @details The first query calculates and caches results for all participating layers in the
+    /// staff-measure context. Results are shared across note wrappers and frames in this document.
+    /// Call Document::clearAccidentalCache after editing inputs to the calculation.
+    /// Glyph appearance, accidental positioning, staff-system visibility, and page clipping are excluded.
+    /// @param pitchMode The pitch representation used for all notes in the calculation.
+    /// @return False for rests, hidden entries, excluded part voices, and replacement notation.
+    /// @throws std::invalid_argument If this note or pitch mode is invalid.
+    /// @throws std::logic_error If the note cannot be found in its measure context.
+    [[nodiscard]]
+    bool calcAccidentalIsDisplayed(PitchMode pitchMode = PitchMode::CurrentView) const;
+
     /// @brief Calculates the percussion note info for this note, if any.
     /// @return If the note is on a percussion staff and has percussion note info assigned, returns it. Otherwise `nullptr`.
     [[nodiscard]]

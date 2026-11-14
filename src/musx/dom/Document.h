@@ -31,6 +31,8 @@
 #include <unordered_map>
 #include <vector>
 
+#include "musx/util/Accidental.h"
+
 #include "Header.h"
 #include "Instrument.h"
 #include "ObjectPool.h"
@@ -203,6 +205,24 @@ public:
     /// @brief Stores a SMuFL font recognition result in the cache.
     void setCachedFontIsSMuFL(Cmper fontId, bool isSmufl) const;
 
+    /// @brief Returns the document's accidental-display cache without copying it.
+    /// @return A reference valid for the lifetime of the document, including across cache clears.
+    [[nodiscard]]
+    const util::AccidentalCache& getAccidentalCache() const { return m_accidentalCache; }
+
+    /// @brief Moves completed measure results into the accidental-display cache.
+    /// @details Existing results for the same key are preserved. Clear the cache before recalculating edited inputs.
+    /// @param key The measure context that produced the results.
+    /// @param result Completed accidental-display decisions for the measure context.
+    void addToAccidentalCache(const util::AccidentalCache::Key& key,
+        util::AccidentalCache::MeasureResult&& result) const;
+
+    /// @brief Discards all cached accidental-display results for this document.
+    /// @details Call after editing notes, frames, staff settings, key signatures, part voicing, or
+    /// pitch display settings. Subsequent queries through existing or new NoteInfoPtr wrappers
+    /// recalculate their measure context. Other interpretation caches are unaffected.
+    void clearAccidentalCache() const { m_accidentalCache.measures.clear(); }
+
     /// @brief Searches pages to find the page that contains the measure.
     /// @return The page, or nullptr if the part's page layout is unavailable or the measure is not found.
     /// @param partId the linked part to search
@@ -347,6 +367,8 @@ private:
 
     mutable std::unordered_map<Cmper, KnownShapeDefType> m_shapeRecognitionCache; ///< Cache of ShapeDef recognitions.
     mutable std::unordered_map<Cmper, bool> m_isSmuflFontCache; ///< Cache of SMuFL font recognitions.
+
+    mutable util::AccidentalCache m_accidentalCache;
 
     // Grant the factory class access to the private constructor
     friend class musx::factory::DocumentFactory;

@@ -182,6 +182,12 @@ void Document::setCachedFontIsSMuFL(Cmper fontId, bool isSmufl) const
     m_isSmuflFontCache[fontId] = isSmufl;
 }
 
+void Document::addToAccidentalCache(const util::AccidentalCache::Key& key,
+    util::AccidentalCache::MeasureResult&& result) const
+{
+    m_accidentalCache.measures.try_emplace(key, std::move(result));
+}
+
 MusxInstance<others::Page> Document::calcPageFromMeasure(Cmper partId, MeasCmper measureId) const
 {
     const auto part = getOthers()->get<others::PartDefinition>(SCORE_PARTID, partId);

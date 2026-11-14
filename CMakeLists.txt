@@ -56,6 +56,7 @@ set(MUSX_SRC_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/factory/DocumentFactory.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/factory/HeaderFactory.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/factory/PoolFactory.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/util/Accidental.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/util/Arpeggio.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/util/Cue.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/util/EnigmaString.cpp

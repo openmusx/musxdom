@@ -3131,6 +3131,11 @@ Note::NoteProperties NoteInfoPtr::calcNoteProperties(NotePropertiesOptions optio
         forWrittenPitch ? staff : nullptr, respell);
 }
 
+bool NoteInfoPtr::calcAccidentalIsDisplayed(PitchMode pitchMode) const
+{
+    return util::Accidental::calcIsDisplayed(*this, pitchMode);
+}
+
 MusxInstance<others::PercussionNoteInfo> NoteInfoPtr::calcPercussionNoteInfo() const
 {
     auto entry = getEntryInfo()->getEntry();
