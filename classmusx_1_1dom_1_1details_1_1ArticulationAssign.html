@@ -410,13 +410,13 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculates the primary handle's fractional staff position for a manually positioned articulation. </p>
-<p>Positions are relative to the entry staff's reference line, positive upward; one unit is half the current staff line spacing. The reference note is selected by #others::ArticulationDef::useTopNote. Assignment and selected-symbol vertical offsets are additive. The definition's default vertical position does not contribute. Staff and entry size percentages do not affect the result. This is a handle coordinate, not a glyph center or an association with a note. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Positions are relative to the entry staff's reference line, positive upward; one unit is half the current staff line spacing. The reference note is selected by #others::ArticulationDef::useTopNote. Assignment and selected-symbol vertical offsets are additive. The definition's default vertical position does not contribute. Staff and entry size percentages, including the grace note size, do not affect the result. This is a handle coordinate, not a glyph center or an association with a note. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">entryInfo</td><td>A non-null context for this assignment's entry, document, and requested part. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The handle position, or std::nullopt for automatic placement, placement overrides, symbol copying, outside-staff or staff-line avoidance, slur avoidance, rests, empty entries, grace notes, cross-staff notes, nonstandard notation styles, alternate notation, active part voicing, or vertically displaced noteheads. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The handle position, or std::nullopt for automatic placement, placement overrides, symbol copying, outside-staff or staff-line avoidance, slur avoidance, rests, empty entries, cross-staff notes, nonstandard notation styles, alternate notation, active part voicing, or vertically displaced noteheads. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">std::logic_error</td><td>if <code class="param">entryInfo</code> is null or does not match this assignment's context. </td></tr>
