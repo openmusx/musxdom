@@ -767,8 +767,7 @@ TEST_F(ArticulationHandlePositionTest, IgnoresDefaultVerticalPositionAndFontSize
 TEST_F(ArticulationHandlePositionTest, DeclinesUnsupportedPlacement)
 {
     for (bool* flag : {&definition->autoVert, &definition->outsideStaff, &definition->avoidStaffLines,
-        &definition->insideSlur, &assignment->overridePlacement, &assignment->avoidSlur,
-        &entry->graceNote, &entry->crossStaff}) {
+        &definition->insideSlur, &assignment->overridePlacement, &assignment->avoidSlur, &entry->crossStaff}) {
         *flag = true;
         EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
         *flag = false;
@@ -830,6 +829,15 @@ TEST_F(ArticulationHandlePositionTest, IgnoresStaffEntryAndNoteheadSizePercentag
     noteAlteration->allowVertPos = true;
     noteAlteration->nydisp = standardLineSpace;
     EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
+}
+
+TEST_F(ArticulationHandlePositionTest, PositionsGraceNotesWithoutScalingOffsets)
+{
+    entry->graceNote = true;
+    assignment->vertOffset = 0;
+    expectPosition(bottomPosition);
+    assignment->vertOffset = standardLineSpace;
+    expectPosition(bottomPosition + 2);
 }
 
 TEST_F(ArticulationHandlePositionTest, ReportsInvalidDefinitionAndSpacing)

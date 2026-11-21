@@ -204,7 +204,7 @@ std::optional<double> details::ArticulationAssign::calcHandleStaffPosition(const
         if (definition->autoVert || overridePlacement || definition->copyMode != AD::CopyMode::None
             || definition->outsideStaff || definition->avoidStaffLines || avoidSlur || definition->insideSlur
             || definition->slurInteractionMode != AD::SlurInteractionMode::Ignore
-            || !entry->isNote || entry->notes.empty() || entry->graceNote || entry->crossStaff
+            || !entry->isNote || entry->notes.empty() || entry->crossStaff
             || entryInfo.getFrame()->getContext().getPolicyPartVoicing()) {
             return std::nullopt;
         }

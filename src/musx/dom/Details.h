@@ -159,11 +159,11 @@ public:
     /// @details Positions are relative to the entry staff's reference line, positive upward; one unit is half
     /// the current staff line spacing. The reference note is selected by #others::ArticulationDef::useTopNote.
     /// Assignment and selected-symbol vertical offsets are additive. The definition's default vertical position
-    /// does not contribute. Staff and entry size percentages do not affect the result.
+    /// does not contribute. Staff and entry size percentages, including the grace note size, do not affect the result.
     /// This is a handle coordinate, not a glyph center or an association with a note.
     /// @param entryInfo A non-null context for this assignment's entry, document, and requested part.
     /// @return The handle position, or std::nullopt for automatic placement, placement overrides, symbol copying,
-    /// outside-staff or staff-line avoidance, slur avoidance, rests, empty entries, grace notes, cross-staff notes,
+    /// outside-staff or staff-line avoidance, slur avoidance, rests, empty entries, cross-staff notes,
     /// nonstandard notation styles, alternate notation, active part voicing, or vertically displaced noteheads.
     /// @throws std::logic_error if @p entryInfo is null or does not match this assignment's context.
     /// @throws integrity_error if required definition/staff data is missing or staff line spacing is nonpositive,
