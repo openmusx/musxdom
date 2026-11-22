@@ -20,6 +20,7 @@
  * THE SOFTWARE.
 */
 
+#include <cmath>
 #include <limits>
 
 #include "gtest/gtest.h"
@@ -388,11 +389,14 @@ protected:
         EXPECT_DOUBLE_EQ(*result, expected);
     }
 
-    void expectHorizontalOffset(double expected)
+    using Anchor = details::ArticulationAssign::HorizontalOffset::Anchor;
+
+    void expectHorizontalOffset(double expected, Anchor anchor = Anchor::EntryOrigin)
     {
-        const auto result = assignment->calcHandleHorizontalOffset(entryInfo);
+        const auto result = assignment->calcHorizontalOffset(entryInfo);
         ASSERT_TRUE(result);
-        EXPECT_DOUBLE_EQ(*result, expected);
+        EXPECT_DOUBLE_EQ(result->offset, expected);
+        EXPECT_EQ(result->anchor, anchor);
     }
 };
 
@@ -440,6 +444,7 @@ TEST_F(ArticulationHandlePositionTest, HorizontalOffsetDistinguishesCoordinateAn
     definition->aboveSymbolAlt = true;
     definition->belowSymbolAlt = false;
     definition->xOffsetMain = mainOffset;
+    assignment->avoidSlur = true; // Slur avoidance keeps the vertical position, and thus the symbol, uncertain.
     for (bool* flag : {&definition->autoVert, &definition->outsideStaff, &definition->avoidStaffLines}) {
         *flag = true;
         definition->xOffsetAlt = mainOffset;
@@ -448,7 +453,7 @@ TEST_F(ArticulationHandlePositionTest, HorizontalOffsetDistinguishesCoordinateAn
         EXPECT_TRUE(context->symbolIsEstimate);
         expectHorizontalOffset(mainOffset);
         definition->xOffsetAlt = alternateOffset;
-        EXPECT_FALSE(assignment->calcHandleHorizontalOffset(entryInfo));
+        EXPECT_FALSE(assignment->calcHorizontalOffset(entryInfo));
         *flag = false;
     }
     definition->autoVert = true;
@@ -459,17 +464,23 @@ TEST_F(ArticulationHandlePositionTest, HorizontalOffsetDistinguishesCoordinateAn
     expectHorizontalOffset(mainOffset);
 }
 
-TEST_F(ArticulationHandlePositionTest, HorizontalOffsetDeclinesCenteringAndCopying)
+TEST_F(ArticulationHandlePositionTest, HorizontalOffsetCentersOnNoteheadsAndDeclinesStemCenteringAndCopying)
 {
-    for (bool* flag : {&definition->autoHorz, &definition->centerOnStem}) {
-        *flag = true;
-        EXPECT_FALSE(assignment->calcHandleHorizontalOffset(entryInfo));
-        *flag = false;
-    }
+    constexpr Evpu displacement = 19;
+    assignment->horzOffset = displacement;
+    definition->autoHorz = true;
+    expectHorizontalOffset(displacement, Anchor::NoteheadCenter);
+    // Stem centering is not supported, with or without automatic horizontal positioning.
+    definition->centerOnStem = true;
+    EXPECT_FALSE(assignment->calcHorizontalOffset(entryInfo));
+    definition->autoHorz = false;
+    EXPECT_FALSE(assignment->calcHorizontalOffset(entryInfo));
+    definition->centerOnStem = false;
+    assignment->horzOffset = 0;
     using AD = others::ArticulationDef;
     for (auto mode : {AD::CopyMode::Vertical, AD::CopyMode::Horizontal}) {
         definition->copyMode = mode;
-        EXPECT_FALSE(assignment->calcHandleHorizontalOffset(entryInfo));
+        EXPECT_FALSE(assignment->calcHorizontalOffset(entryInfo));
     }
     definition->copyMode = AD::CopyMode::None;
     expectHorizontalOffset(0);
@@ -561,6 +572,8 @@ TEST_F(ArticulationHandlePositionTest, MarksLayoutDependentSymbolSelectionAsEsti
         EXPECT_EQ(result->symbolIsEstimate, expected);
     };
     expectEstimate(false);
+    assignment->avoidSlur = true; // Slur avoidance depends on layout.
+    expectEstimate(false);
     definition->outsideStaff = true;
     expectEstimate(true);
     definition->outsideStaff = false;
@@ -610,6 +623,7 @@ TEST_F(ArticulationHandlePositionTest, PredictsAutomaticReferenceSideFromForcedS
     definition->autoVert = true;
     definition->aboveSymbolAlt = true;
     definition->belowSymbolAlt = false;
+    assignment->avoidSlur = true; // Slur avoidance makes every mode fall back to the placement policy.
     const auto frame = entryInfo.getFrame();
     for (bool forced : {false, true}) {
         for (bool stemUp : {false, true}) {
@@ -646,6 +660,7 @@ TEST_F(ArticulationHandlePositionTest, AboveEntryRequiresForcedDownStemForMultil
     definition->autoVertMode = Mode::AboveEntry;
     definition->aboveSymbolAlt = true;
     definition->belowSymbolAlt = false;
+    assignment->avoidSlur = true; // Slur avoidance makes every mode fall back to the placement policy.
     constexpr MeasCmper downstemMeasureId = 3;
     const details::GFrameHoldContext context(document, SCORE_PARTID, staffId, downstemMeasureId);
     const auto frame = context.createEntryFrame(0);
@@ -766,8 +781,7 @@ TEST_F(ArticulationHandlePositionTest, IgnoresDefaultVerticalPositionAndFontSize
 
 TEST_F(ArticulationHandlePositionTest, DeclinesUnsupportedPlacement)
 {
-    for (bool* flag : {&definition->autoVert, &definition->outsideStaff, &definition->avoidStaffLines,
-        &definition->insideSlur, &assignment->overridePlacement, &assignment->avoidSlur, &entry->crossStaff}) {
+    for (bool* flag : {&definition->insideSlur, &assignment->overridePlacement, &assignment->avoidSlur, &entry->crossStaff}) {
         *flag = true;
         EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
         *flag = false;
@@ -789,9 +803,6 @@ TEST_F(ArticulationHandlePositionTest, DeclinesUnsupportedPlacement)
     staff->altNotation = others::Staff::AlternateNotation::Rhythmic;
     EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
     staff->altNotation = others::Staff::AlternateNotation::Normal;
-    entry->isNote = false;
-    EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
-    entry->isNote = true;
     entry->notes.clear();
     EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
 }
@@ -843,11 +854,364 @@ TEST_F(ArticulationHandlePositionTest, PositionsGraceNotesWithoutScalingOffsets)
 TEST_F(ArticulationHandlePositionTest, ReportsInvalidDefinitionAndSpacing)
 {
     assignment->articDef = 0;
-    EXPECT_THROW((void)assignment->calcHandleHorizontalOffset(entryInfo), integrity_error);
+    EXPECT_THROW((void)assignment->calcHorizontalOffset(entryInfo), integrity_error);
     EXPECT_THROW((void)assignment->calcHandleStaffPosition(entryInfo), integrity_error);
     assignment->articDef = definitionId;
     staff->lineSpace = 0;
     EXPECT_THROW((void)assignment->calcHandleStaffPosition(entryInfo), integrity_error);
+}
+
+} // namespace
+
+namespace {
+
+class ArticulationAutomaticHandlePositionTest : public ArticulationHandlePositionTest
+{
+protected:
+    static constexpr int noteheadTop = topPosition + 1;
+    static constexpr int noteheadBottom = bottomPosition - 1;
+    static constexpr Evpu mainSymbolOffset = -21;
+    static constexpr Evpu alternateSymbolOffset = 3;
+
+    void SetUp() override
+    {
+        ArticulationHandlePositionTest::SetUp();
+        definition->defVertPos = 0;
+        definition->yOffsetMain = mainSymbolOffset;
+        definition->yOffsetAlt = alternateSymbolOffset;
+        definition->aboveSymbolAlt = false;
+        definition->belowSymbolAlt = true;
+    }
+
+    void setStem(bool stemUp)
+    {
+        entry->freezeStemScore = true;
+        entry->upStemScore = stemUp;
+        entryInfo = EntryInfoPtr(entryInfo.getFrame(), chordIndex);
+        ASSERT_EQ(entryInfo.calcUpStem(), stemUp);
+    }
+
+    static double toPositions(Evpu evpu)
+    {
+        return evpu / (static_cast<double>(standardLineSpace) / 2);
+    }
+
+    void expectSymbol(bool usesAlternate)
+    {
+        const auto context = assignment->calcSelectedSymbolContext(entryInfo);
+        ASSERT_TRUE(context);
+        EXPECT_FALSE(context->symbolIsEstimate);
+        EXPECT_EQ(context->symbol.usesAlternate, usesAlternate);
+    }
+};
+
+TEST_F(ArticulationAutomaticHandlePositionTest, MeasuresNoteheadSideFromNoteheadEdge)
+{
+    using Mode = others::ArticulationDef::AutoVerticalMode;
+    constexpr Evpu defaultOffset = 24;
+    constexpr Evpu assignmentOffset = 12;
+    definition->autoVert = true;
+    definition->defVertPos = defaultOffset;
+    assignment->vertOffset = assignmentOffset;
+    definition->autoVertMode = Mode::AlwaysNoteheadSide;
+    setStem(true);
+    expectSymbol(true);
+    expectPosition(noteheadBottom - toPositions(defaultOffset + assignmentOffset) + toPositions(alternateSymbolOffset));
+    setStem(false);
+    expectSymbol(false);
+    expectPosition(noteheadTop + toPositions(defaultOffset + assignmentOffset) + toPositions(mainSymbolOffset));
+    // Automatic notehead/stem placement uses the notehead side only when the stem direction is not forced.
+    definition->autoVertMode = Mode::AutoNoteStem;
+    entry->freezeStemScore = false;
+    entryInfo = EntryInfoPtr(entryInfo.getFrame(), chordIndex);
+    ASSERT_EQ(entryInfo.calcStemDirectionForced(), StemDirection::Default);
+    if (entryInfo.calcUpStem()) {
+        expectPosition(noteheadBottom - toPositions(defaultOffset + assignmentOffset) + toPositions(alternateSymbolOffset));
+    } else {
+        expectPosition(noteheadTop + toPositions(defaultOffset + assignmentOffset) + toPositions(mainSymbolOffset));
+    }
+    setStem(true);
+    EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo)); // A forced up-stem places it on the stem side.
+    definition->autoVertMode = Mode::BelowEntry;
+    setStem(true);
+    expectPosition(noteheadBottom - toPositions(defaultOffset + assignmentOffset) + toPositions(alternateSymbolOffset));
+    definition->autoVertMode = Mode::AboveEntry;
+    setStem(false);
+    expectPosition(noteheadTop + toPositions(defaultOffset + assignmentOffset) + toPositions(mainSymbolOffset));
+}
+
+TEST_F(ArticulationAutomaticHandlePositionTest, SelectsSymbolFromPositionRelativeToReferenceNote)
+{
+    // A below-placed articulation dragged above its reference note uses the above-side symbol.
+    constexpr Evpu raisedOffset = -48;
+    definition->autoVert = true;
+    assignment->vertOffset = raisedOffset;
+    setStem(true);
+    const double position = noteheadBottom - toPositions(raisedOffset);
+    ASSERT_GT(position, bottomPosition);
+    ASSERT_LT(position, topPosition);
+    definition->useTopNote = false;
+    expectSymbol(false);
+    expectPosition(position + toPositions(mainSymbolOffset));
+    definition->useTopNote = true;
+    expectSymbol(true);
+    expectPosition(position + toPositions(alternateSymbolOffset));
+}
+
+TEST_F(ArticulationAutomaticHandlePositionTest, HonorsPlacementOverrideOnNoteheadSide)
+{
+    definition->autoVert = true;
+    assignment->overridePlacement = true;
+    assignment->aboveEntry = true;
+    setStem(false);
+    expectPosition(noteheadTop + toPositions(mainSymbolOffset));
+    setStem(true);
+    EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
+    assignment->aboveEntry = false;
+    expectPosition(noteheadBottom + toPositions(alternateSymbolOffset));
+}
+
+TEST_F(ArticulationAutomaticHandlePositionTest, TreatsStemlessEntriesAsNoteheadSideBothWays)
+{
+    using Mode = others::ArticulationDef::AutoVerticalMode;
+    definition->autoVert = true;
+    entry->duration = Edu(NoteType::Whole);
+    for (bool stemUp : {false, true}) {
+        setStem(stemUp);
+        definition->autoVertMode = Mode::AboveEntry;
+        expectPosition(noteheadTop + toPositions(mainSymbolOffset));
+        definition->autoVertMode = Mode::BelowEntry;
+        expectPosition(noteheadBottom + toPositions(alternateSymbolOffset));
+    }
+}
+
+TEST_F(ArticulationAutomaticHandlePositionTest, DeclinesStemSidePlacementAndReverseStems)
+{
+    using Mode = others::ArticulationDef::AutoVerticalMode;
+    definition->autoVert = true;
+    setStem(true);
+    for (auto mode : {Mode::StemSide, Mode::AlwaysOnStem, Mode::AboveEntry}) {
+        definition->autoVertMode = mode;
+        EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
+        const auto context = assignment->calcSelectedSymbolContext(entryInfo);
+        ASSERT_TRUE(context);
+        EXPECT_TRUE(context->symbolIsEstimate);
+    }
+    definition->autoVertMode = Mode::AlwaysNoteheadSide;
+    ASSERT_TRUE(assignment->calcHandleStaffPosition(entryInfo));
+    for (bool* flag : {&entry->reverseUpStem, &entry->reverseDownStem}) {
+        *flag = true;
+        EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
+        *flag = false;
+    }
+}
+
+TEST_F(ArticulationAutomaticHandlePositionTest, ScalesNoteheadEdgesForGraceNotesAndResizedNoteheads)
+{
+    using Mode = others::ArticulationDef::AutoVerticalMode;
+    definition->autoVert = true;
+    definition->autoVertMode = Mode::AlwaysNoteheadSide;
+    setStem(true);
+    expectPosition(noteheadBottom + toPositions(alternateSymbolOffset));
+
+    // The edge moves with the notehead size; the articulation offsets are not scaled.
+    constexpr Evpu offset = 12;
+    assignment->vertOffset = offset;
+    const auto graceOptions = document->getOptions()->get<options::GraceNoteOptions>();
+    ASSERT_TRUE(graceOptions);
+    const double graceScale = static_cast<double>(graceOptions->gracePerc) / FULL_SIZE_PERCENT;
+    ASSERT_LT(graceScale, 1.0);
+    entry->graceNote = true;
+    expectPosition(bottomPosition - STAFF_POSITIONS_PER_HALF_SPACE * graceScale - toPositions(offset)
+        + toPositions(alternateSymbolOffset));
+    entry->graceNote = false;
+
+    constexpr int reducedPercent = 65;
+    const auto lowest = *std::min_element(entry->notes.begin(), entry->notes.end(),
+        [](const auto& a, const auto& b) { return a->harmLev < b->harmLev; });
+    auto noteAlteration = std::make_shared<details::NoteAlterations>(document, SCORE_PARTID,
+        EnigmaBase::ShareMode::All, entry->getEntryNumber(), 0);
+    noteAlteration->noteId = lowest->getNoteId();
+    noteAlteration->percent = reducedPercent;
+    document->getDetails()->add(details::NoteAlterations::XmlNodeName, noteAlteration);
+    entry->noteDetail = true;
+    const double noteScale = static_cast<double>(reducedPercent) / FULL_SIZE_PERCENT;
+    expectPosition(bottomPosition - STAFF_POSITIONS_PER_HALF_SPACE * noteScale - toPositions(offset)
+        + toPositions(alternateSymbolOffset));
+    entry->graceNote = true;
+    expectPosition(bottomPosition - STAFF_POSITIONS_PER_HALF_SPACE * noteScale * graceScale - toPositions(offset)
+        + toPositions(alternateSymbolOffset));
+}
+
+TEST_F(ArticulationAutomaticHandlePositionTest, DeclinesStackingWithOtherArticulations)
+{
+    definition->autoVert = true;
+    definition->autoStack = true;
+    setStem(true);
+    ASSERT_TRUE(document->getDetails()->getArray<details::ArticulationAssign>(SCORE_PARTID, entry->getEntryNumber()).empty());
+    expectPosition(noteheadBottom + toPositions(alternateSymbolOffset));
+    constexpr Inci assignmentInci = 1;
+    assignment = std::make_unique<details::ArticulationAssign>(document, SCORE_PARTID,
+        EnigmaBase::ShareMode::All, entry->getEntryNumber(), assignmentInci);
+    assignment->articDef = definitionId;
+    auto other = std::make_shared<details::ArticulationAssign>(document, SCORE_PARTID,
+        EnigmaBase::ShareMode::All, entry->getEntryNumber(), 0);
+    other->articDef = definitionId;
+    document->getDetails()->add(details::ArticulationAssign::XmlNodeName, other);
+    entry->articDetail = true;
+    EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
+    assignment->neverStack = true;
+    expectPosition(noteheadBottom + toPositions(alternateSymbolOffset));
+    assignment->neverStack = false;
+    definition->autoStack = false;
+    expectPosition(noteheadBottom + toPositions(alternateSymbolOffset));
+}
+
+TEST_F(ArticulationAutomaticHandlePositionTest, PlacesArticulationsOutsideStaffOnNoteheadSide)
+{
+    constexpr int staffTop = 0;
+    constexpr int staffBottom = -8;
+    constexpr Evpu raisedOffset = 72;
+    constexpr Evpu clearOffset = 120;
+    definition->outsideStaff = true;
+    definition->yOffsetAlt = 0;
+    definition->yOffsetMain = 0;
+    for (bool avoidStaffLines : {false, true}) {
+        definition->avoidStaffLines = avoidStaffLines;
+        setStem(true);
+        assignment->vertOffset = 0;
+        expectPosition(std::min(noteheadBottom, staffBottom) - 1);
+        expectSymbol(true);
+        assignment->vertOffset = raisedOffset;
+        EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
+        setStem(false);
+        expectPosition(std::max(noteheadTop, staffTop) + 1);
+        assignment->vertOffset = 0;
+        EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
+        assignment->vertOffset = clearOffset;
+        expectPosition(bottomPosition + toPositions(clearOffset));
+    }
+}
+
+TEST_F(ArticulationAutomaticHandlePositionTest, MovesArticulationsOffStaffLines)
+{
+    struct Case
+    {
+        Evpu offset;
+        double expected;
+    };
+    // Relative to the bottom note on the bottom line of a five-line staff.
+    constexpr Case cases[] = {
+        {6, -7},    // within a space
+        {0, -9},    // bottom line: away from the middle line
+        {24, -7},   // line below the middle line
+        {48, -3},   // middle line: the space above
+        {72, -1},   // line above the middle line
+        {96, 1},    // top line
+        {120, 2},   // more than half a space above the staff: unchanged
+        {-12, -9},  // already outside the staff: unchanged
+    };
+    definition->avoidStaffLines = true;
+    definition->yOffsetAlt = 0;
+    definition->yOffsetMain = 0;
+    for (const auto& testCase : cases) {
+        SCOPED_TRACE(testCase.offset);
+        assignment->vertOffset = testCase.offset;
+        expectPosition(testCase.expected);
+    }
+    assignment->vertOffset = 0;
+    expectSymbol(true); // The adjusted position is below the reference note.
+    constexpr Evpu middleLineOffset = 48;
+    assignment->vertOffset = middleLineOffset;
+    constexpr int evenLineCount = 4;
+    staff->staffLines = evenLineCount;
+    EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
+    staff->staffLines = 0;
+    EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
+}
+
+} // namespace
+
+namespace {
+
+using HorizontalAnchor = details::ArticulationAssign::HorizontalOffset::Anchor;
+
+TEST_F(ArticulationAutomaticHandlePositionTest, MeasuresManualPlacementOnRestsFromRestPosition)
+{
+    entry->isNote = false;
+    entry->floatRest = true;
+    entry->notes.clear();
+    const int restPosition = entryInfo.calcTopBottomStaffPositions().first;
+    definition->autoVert = false;
+    definition->outsideStaff = false;
+    definition->avoidStaffLines = false;
+    constexpr Evpu offset = 30;
+    assignment->vertOffset = offset;
+    expectPosition(restPosition + toPositions(offset) + toPositions(mainSymbolOffset));
+    expectSymbol(false);
+    assignment->vertOffset = -offset;
+    expectPosition(restPosition - toPositions(offset) + toPositions(alternateSymbolOffset));
+    expectSymbol(true);
+
+    assignment->vertOffset = 0;
+    definition->avoidStaffLines = true;
+    const auto avoided = assignment->calcHandleStaffPosition(entryInfo);
+    ASSERT_TRUE(avoided);
+    const double spaceCenter = *avoided - toPositions(mainSymbolOffset) - staff->calcMiddleStaffPosition();
+    EXPECT_DOUBLE_EQ(std::fmod(std::abs(spaceCenter), STAFF_POSITIONS_PER_SPACE), STAFF_POSITIONS_PER_HALF_SPACE);
+    definition->avoidStaffLines = false;
+
+    // Automatic placement is measured from the estimated rest extent: a quarter rest spans 1.5 spaces either side
+    // of its position, and a whole rest hangs between half a space and a space above it.
+    using Mode = others::ArticulationDef::AutoVerticalMode;
+    definition->autoVert = true;
+    assignment->vertOffset = offset;
+    entry->duration = Edu(NoteType::Quarter);
+    definition->autoVertMode = Mode::AboveEntry;
+    expectPosition(restPosition + 1.5 * STAFF_POSITIONS_PER_SPACE + toPositions(offset) + toPositions(mainSymbolOffset));
+    definition->autoVertMode = Mode::BelowEntry;
+    expectPosition(restPosition - 1.5 * STAFF_POSITIONS_PER_SPACE - toPositions(offset) + toPositions(alternateSymbolOffset));
+    entry->duration = Edu(NoteType::Whole);
+    const int wholeRestPosition = entryInfo.calcTopBottomStaffPositions().first;
+    definition->autoVertMode = Mode::AboveEntry;
+    expectPosition(wholeRestPosition + STAFF_POSITIONS_PER_SPACE + toPositions(offset) + toPositions(mainSymbolOffset));
+    definition->autoVertMode = Mode::BelowEntry;
+    expectPosition(wholeRestPosition + STAFF_POSITIONS_PER_HALF_SPACE - toPositions(offset)
+        + toPositions(alternateSymbolOffset));
+    // Rests have no stem, so placement is never on a stem side.
+    definition->autoVertMode = Mode::StemSide;
+    EXPECT_TRUE(assignment->calcHandleStaffPosition(entryInfo));
+
+    definition->autoHorz = true;
+    expectHorizontalOffset(0, HorizontalAnchor::NoteheadCenter);
+}
+
+TEST_F(ArticulationAutomaticHandlePositionTest, CentersOnPrimaryColumnRegardlessOfNoteLayout)
+{
+    constexpr Evpu displacement = -7;
+    assignment->horzOffset = displacement;
+    definition->autoHorz = true;
+    expectHorizontalOffset(displacement, HorizontalAnchor::NoteheadCenter);
+    // Move the highest note a second above the one below it.
+    std::vector<std::shared_ptr<Note>> notes = entry->notes;
+    ASSERT_GE(notes.size(), 2u);
+    std::sort(notes.begin(), notes.end(), [](const auto& a, const auto& b) { return a->harmLev < b->harmLev; });
+    const auto& upper = notes[notes.size() - 1];
+    const auto& lower = notes[notes.size() - 2];
+    upper->harmLev = lower->harmLev + 1;
+    upper->upStemSecond = true;
+    lower->downStemSecond = true;
+    for (bool stemUp : {false, true}) {
+        setStem(stemUp);
+        expectHorizontalOffset(displacement, HorizontalAnchor::NoteheadCenter);
+    }
+    for (bool* flag : {&entry->crossStaff, &entry->notes.front()->crossStaff, &entry->reverseUpStem}) {
+        *flag = true;
+        expectHorizontalOffset(displacement, HorizontalAnchor::NoteheadCenter);
+        *flag = false;
+    }
+    entry->duration = Edu(NoteType::Whole);
+    expectHorizontalOffset(displacement, HorizontalAnchor::NoteheadCenter);
 }
 
 } // namespace

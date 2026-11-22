@@ -1770,7 +1770,7 @@ public:
         Source source{};               ///< The setting that supplied #character.
         MusxInstance<FontInfo> font;   ///< The font that #character is drawn from.
         char32_t character{};          ///< The notehead character that #font draws. (See #FontInfo::calcDrawnCharacter.)
-        int percent{100};              ///< Size percentage for the notehead. (100 means 100%.)
+        int percent{FULL_SIZE_PERCENT}; ///< Size percentage for the notehead. (100 means 100%.)
         Evpu horzOffset{};              ///< Horizontal notehead offset from the default position.
         Evpu vertOffset{};              ///< Vertical notehead offset from the default position. Zero unless the source of
                                         ///< the notehead specifically allows vertical positioning.
@@ -1790,6 +1790,9 @@ public:
     ///          In every case except a custom-font #details::NoteAlterations override, the font is #others::Staff::noteFont
     ///          if the staff specifies a custom notehead font, or the document's default #options::FontOptions::FontType::Noteheads
     ///          font otherwise.
+    ///
+    ///          A #details::NoteAlterations record for the note supplies the size and offsets in every case, whether or
+    ///          not it overrides the character.
     /// @return The resolved notehead info. This function always returns a usable result.
     [[nodiscard]]
     NoteheadInfo calcNoteheadInfo() const;

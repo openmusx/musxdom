@@ -2002,7 +2002,7 @@ bool EntryInfoPtr::calcIsFeatheredBeamStart(Evpu& outLeftY, Evpu& outRightY) con
 
 int EntryInfoPtr::calcEntrySize() const
 {
-    int result = 100;
+    int result = FULL_SIZE_PERCENT;
     auto beamStart = findBeamStartOrCurrent();
     if (!beamStart || !beamStart->getEntry()->noteDetail) {
         return result;
@@ -3164,10 +3164,20 @@ NoteInfoPtr::NoteheadInfo NoteInfoPtr::calcNoteheadInfo() const
     const auto document = entry->getDocument();
     const auto currStaff = entryInfo.createCurrentStaff();
 
-    // The stored character is reported as the character its font draws.
-    const auto withDrawnCharacter = [](NoteheadInfo result) {
+    const auto noteAlts = entry->noteDetail
+        ? document->getDetails()->getForNote<details::NoteAlterations>(*this)
+        : MusxInstance<details::NoteAlterations>{};
+
+    // The stored character is reported as the character its font draws. A note alteration's size and offsets apply
+    // whichever setting supplies the character.
+    const auto withDrawnCharacter = [&](NoteheadInfo result) {
         if (result.font) {
             result.character = result.font->calcDrawnCharacter(result.character);
+        }
+        if (noteAlts) {
+            result.percent = noteAlts->percent ? noteAlts->percent : FULL_SIZE_PERCENT;
+            result.horzOffset = noteAlts->nxdisp;
+            result.vertOffset = noteAlts->allowVertPos ? noteAlts->nydisp : 0;
         }
         return result;
     };
@@ -3183,19 +3193,12 @@ NoteInfoPtr::NoteheadInfo NoteInfoPtr::calcNoteheadInfo() const
     }();
 
     // Highest precedence: an explicit per-note override.
-    if (entry->noteDetail) {
-        if (auto noteAlts = document->getDetails()->getForNote<details::NoteAlterations>(*this)) {
-            if (noteAlts->altNhead != char32_t{}) {
-                NoteheadInfo result;
-                result.source = NoteheadInfo::Source::NoteAlteration;
-                result.font = (noteAlts->useOwnFont && noteAlts->customFont) ? noteAlts->customFont : defaultFont;
-                result.character = noteAlts->altNhead;
-                result.percent = noteAlts->percent ? noteAlts->percent : 100;
-                result.horzOffset = noteAlts->nxdisp;
-                result.vertOffset = noteAlts->allowVertPos ? noteAlts->nydisp : 0;
-                return withDrawnCharacter(std::move(result));
-            }
-        }
+    if (noteAlts && noteAlts->altNhead != char32_t{}) {
+        NoteheadInfo result;
+        result.source = NoteheadInfo::Source::NoteAlteration;
+        result.font = (noteAlts->useOwnFont && noteAlts->customFont) ? noteAlts->customFont : defaultFont;
+        result.character = noteAlts->altNhead;
+        return withDrawnCharacter(std::move(result));
     }
 
     // Next: the note's percussion shape, if it is a mapped percussion note.

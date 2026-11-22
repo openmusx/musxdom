@@ -2,9 +2,7 @@
 
 Status: implemented in `GFrameHoldContext::createEntryFrame`. Tests are `GFrameHold.TupletCompletionTruncatesEntry` (`tests/details/gfhold.cpp`), with the `tests/data/tuplet_completion.enigmaxml` fixture.
 
-## Finale reference
-
-The rule comes from Finale 27.4.1 `LTGRAF::ComputeEduPositions` (`../finale-dec/recovered/Finale/arm64/classes/LTGRAF_867187d8.cpp`), plus `ReadTupletArray` / `TupCmpFunc` (`global/block_10075.cpp`) and `LTGRAF::UpdateTupletEnd`.
+## Finale behavior
 
 Finale keeps one tuplet stack per voice. For each slot it tracks:
 - symbolic total and reference total;

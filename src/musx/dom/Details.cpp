@@ -20,6 +20,8 @@
  * THE SOFTWARE.
  */
 #include <algorithm>
+#include <cmath>
+#include <limits>
 #include <string>
 #include <vector>
 #include <cstdlib>
@@ -155,10 +157,179 @@ VerticalPlacement details::ArticulationAssign::calcVerticalPlacement(
     }
 }
 
+/// @brief Estimates the vertical extent of a full-size rest glyph, in staff positions relative to the rest's staff position.
+/// @details Estimated from the glyph bounds typical of SMuFL music fonts, rounded to a quarter space. A rest's staff
+/// position coincides with its SMuFL glyph origin, except that a whole rest hangs one space above its staff position.
+/// @return The bottom and top of the rest.
+static std::pair<double, double> estimateRestExtent(NoteType restType)
+{
+    constexpr double space = STAFF_POSITIONS_PER_SPACE;
+    switch (restType) {
+    case NoteType::Maxima:
+    case NoteType::Longa:
+        return { -space, space };
+    case NoteType::Breve:
+        return { 0, space };
+    case NoteType::Whole:
+        return { space / 2, space };
+    case NoteType::Half:
+        return { 0, space / 2 };
+    case NoteType::Quarter:
+        return { -1.5 * space, 1.5 * space };
+    default: {
+        // An eighth rest spans a space either side of its position. Each further flag adds a space, alternately
+        // below and above.
+        int flags = 1;
+        for (auto edu = static_cast<Edu>(NoteType::Eighth); edu > static_cast<Edu>(restType) && edu > 1; edu /= 2) {
+            ++flags;
+        }
+        return { -(1 + flags / 2) * space, (1 + (flags - 1) / 2) * space };
+    }
+    }
+}
+
+std::optional<details::ArticulationAssign::VerticalHandleReference>
+details::ArticulationAssign::calcVerticalHandleReference(const MusxInstance<others::ArticulationDef>& definition,
+    const EntryInfoPtr& entryInfo) const
+{
+    using AD = others::ArticulationDef;
+    const auto entry = entryInfo->getEntry();
+    const auto document = getDocument();
+    if (definition->copyMode != AD::CopyMode::None || avoidSlur || definition->insideSlur
+        || definition->slurInteractionMode != AD::SlurInteractionMode::Ignore
+        || (entry->isNote && entry->notes.empty()) || entry->crossStaff
+        || entryInfo.getFrame()->getContext().getPolicyPartVoicing()) {
+        return std::nullopt;
+    }
+    const auto staff = entryInfo.createCurrentStaff();
+    if (!staff || staff->lineSpace <= 0 || staff->notationStyle != others::Staff::NotationStyle::Standard
+        || staff->altNotation != others::Staff::AlternateNotation::Normal) {
+        return std::nullopt;
+    }
+    // Grace note and entry reductions scale the entry's body but not the articulation offsets.
+    double entryScale = static_cast<double>(entryInfo.calcEntrySize()) / FULL_SIZE_PERCENT;
+    if (entry->graceNote) {
+        const auto graceOptions = document->getOptions()->get<options::GraceNoteOptions>();
+        if (!graceOptions) {
+            return std::nullopt;
+        }
+        entryScale *= static_cast<double>(graceOptions->gracePerc) / FULL_SIZE_PERCENT;
+    }
+
+    // The body edges are where automatic positioning is measured from. A notehead is approximated as one space tall
+    // at full size. A rest uses an estimate of its glyph's extent.
+    const auto [topPosition, bottomPosition] = entryInfo.calcTopBottomStaffPositions();
+    double noteheadTop = (std::numeric_limits<double>::lowest)();
+    double noteheadBottom = (std::numeric_limits<double>::max)();
+    if (!entry->isNote) {
+        const auto [restBottom, restTop] = estimateRestExtent(std::get<0>(entry->calcDurationInfo()));
+        noteheadTop = topPosition + restTop * entryScale;
+        noteheadBottom = topPosition + restBottom * entryScale;
+    }
+    for (size_t noteIndex = 0; noteIndex < entry->notes.size(); ++noteIndex) {
+        const NoteInfoPtr note(entryInfo, noteIndex);
+        if (note->crossStaff) {
+            return std::nullopt;
+        }
+        const auto notehead = note.calcNoteheadInfo();
+        if (notehead.vertOffset != 0) {
+            return std::nullopt;
+        }
+        const double noteScale = entryScale * static_cast<double>(notehead.percent) / FULL_SIZE_PERCENT;
+        if (entry->isNote) {
+            NotePropertiesOptions options;
+            options.alwaysUseEntryStaff = true;
+            const double position = note.calcNoteProperties(options).staffPosition;
+            noteheadTop = (std::max)(noteheadTop, position + STAFF_POSITIONS_PER_HALF_SPACE * noteScale);
+            noteheadBottom = (std::min)(noteheadBottom, position - STAFF_POSITIONS_PER_HALF_SPACE * noteScale);
+        }
+    }
+
+    // The entry's body on its stem side includes the stem, so only the side away from the stem is known without
+    // layout. A reversed stem may be on either side.
+    const bool hasStem = entry->isNote && entry->hasStem();
+    const bool stemUp = hasStem && entryInfo.calcUpStem();
+    const bool bodyEdgesAreKnown = !hasStem || (!entry->reverseUpStem && !entry->reverseDownStem);
+    const auto isNoteheadSide = [&](bool above) {
+        return bodyEdgesAreKnown && (!hasStem || above != stemUp);
+    };
+
+    const double evpuPerPosition = static_cast<double>(staff->lineSpace) / STAFF_POSITIONS_PER_SPACE;
+
+    VerticalHandleReference result;
+    result.referencePosition = definition->useTopNote ? topPosition : bottomPosition;
+    if (definition->autoVert) {
+        if (definition->autoVertMode == AD::AutoVerticalMode::AlwaysOnStem) {
+            return std::nullopt;
+        }
+        const bool above = calcPlacementAbove(definition, entryInfo);
+        if (!isNoteheadSide(above)) {
+            return std::nullopt;
+        }
+        if (definition->autoStack && !neverStack) {
+            // Stacked positions depend on the other articulations' glyph bounds.
+            const auto assignments = document->getDetails()->getArray<ArticulationAssign>(getRequestedPartId(), getEntryNumber());
+            if (std::any_of(assignments.begin(), assignments.end(),
+                    [&](const auto& assignment) { return assignment->getInci() != getInci(); })) {
+                return std::nullopt;
+            }
+        }
+        const double offset = (static_cast<double>(definition->defVertPos) + static_cast<double>(vertOffset)) / evpuPerPosition;
+        result.position = above ? noteheadTop + offset : noteheadBottom - offset;
+    } else {
+        if (overridePlacement) {
+            return std::nullopt;
+        }
+        result.position = result.referencePosition + static_cast<double>(vertOffset) / evpuPerPosition;
+    }
+
+    if (definition->outsideStaff || definition->avoidStaffLines) {
+        if (staff->calcNumberOfStafflines() == 0) {
+            return std::nullopt;
+        }
+        const int staffTop = staff->calcTopLinePosition();
+        const int staffBottom = staff->calcBottomLinePosition();
+        // Only positions closer than half a space beyond the outer staff lines are adjusted.
+        if (staffBottom - STAFF_POSITIONS_PER_HALF_SPACE < result.position && result.position < staffTop + STAFF_POSITIONS_PER_HALF_SPACE) {
+            if (definition->outsideStaff) {
+                // Comparing with the notehead midpoint is exact on the notehead side, where the stem cannot move
+                // the entry's midpoint across the position.
+                const bool above = result.position > (noteheadTop + noteheadBottom) / 2;
+                if (!isNoteheadSide(above)) {
+                    return std::nullopt;
+                }
+                result.position = above
+                    ? (std::max)(noteheadTop, static_cast<double>(staffTop)) + STAFF_POSITIONS_PER_HALF_SPACE
+                    : (std::min)(noteheadBottom, static_cast<double>(staffBottom)) - STAFF_POSITIONS_PER_HALF_SPACE;
+            } else {
+                const int middle = staff->calcMiddleStaffPosition();
+                if ((staffTop - middle) % static_cast<int>(STAFF_POSITIONS_PER_SPACE) != 0) {
+                    return std::nullopt;
+                }
+                // Move to the center of the containing space. A position on a line moves away from the middle
+                // line, or above it when on the middle line itself.
+                const double spaces = (result.position - middle) / STAFF_POSITIONS_PER_SPACE;
+                const double space = spaces >= 0 ? std::floor(spaces) : std::ceil(spaces) - 1;
+                result.position = middle + space * STAFF_POSITIONS_PER_SPACE + STAFF_POSITIONS_PER_HALF_SPACE;
+            }
+        }
+    }
+    return result;
+}
+
 std::optional<details::ArticulationAssign::SelectedSymbolContext>
 details::ArticulationAssign::calcSelectedSymbolContext(const EntryInfoPtr& entryInfo) const
 {
+    std::optional<VerticalHandleReference> handleReference;
+    return calcSelectedSymbolContext(entryInfo, handleReference);
+}
+
+std::optional<details::ArticulationAssign::SelectedSymbolContext>
+details::ArticulationAssign::calcSelectedSymbolContext(const EntryInfoPtr& entryInfo,
+    std::optional<VerticalHandleReference>& handleReference) const
+{
     SelectedSymbolContext result;
+    handleReference.reset();
     MUSX_ASSERT_IF(!entryInfo) {
         return std::nullopt;
     }
@@ -170,11 +341,14 @@ details::ArticulationAssign::calcSelectedSymbolContext(const EntryInfoPtr& entry
 
     const auto& definition = result.definition;
     if (definition->copyMode != others::ArticulationDef::CopyMode::None) {
-        // Finale's repeated-character drawing path bypasses side-based symbol selection.
+        // Copied symbols always use the main symbol, whichever side the articulation is on.
         result.symbol.character = definition->charMain;
         result.symbol.font = definition->fontMain;
         result.symbol.xOffset = definition->xOffsetMain;
         result.symbol.yOffset = definition->yOffsetMain;
+        result.symbolIsEstimate = false;
+    } else if ((handleReference = calcVerticalHandleReference(definition, entryInfo))) {
+        result.symbol = definition->calcSelectedSymbol(handleReference->position >= handleReference->referencePosition);
         result.symbolIsEstimate = false;
     } else {
         result.symbol = definition->calcSelectedSymbol(calcPlacementAbove(definition, entryInfo));
@@ -198,36 +372,14 @@ std::optional<double> details::ArticulationAssign::calcHandleStaffPosition(const
         throw std::logic_error("ArticulationAssign::calcHandleStaffPosition called with a mismatched entry context.");
     }
     std::optional<double> result{};
-    if (const auto context = calcSelectedSymbolContext(entryInfo)) {
-        const auto& definition = context->definition;
-        using AD = others::ArticulationDef;
-        if (definition->autoVert || overridePlacement || definition->copyMode != AD::CopyMode::None
-            || definition->outsideStaff || definition->avoidStaffLines || avoidSlur || definition->insideSlur
-            || definition->slurInteractionMode != AD::SlurInteractionMode::Ignore
-            || !entry->isNote || entry->notes.empty() || entry->crossStaff
-            || entryInfo.getFrame()->getContext().getPolicyPartVoicing()) {
-            return std::nullopt;
-        }
+    std::optional<VerticalHandleReference> handleReference;
+    if (const auto context = calcSelectedSymbolContext(entryInfo, handleReference)) {
         const auto staff = entryInfo.createCurrentStaff();
         if (staff && staff->lineSpace > 0) {
-            if (staff->notationStyle != others::Staff::NotationStyle::Standard
-                || staff->altNotation != others::Staff::AlternateNotation::Normal) {
-                return std::nullopt;
+            if (handleReference) {
+                const double evpuPerPosition = static_cast<double>(staff->lineSpace) / STAFF_POSITIONS_PER_SPACE;
+                result = handleReference->position + static_cast<double>(context->symbol.yOffset) / evpuPerPosition;
             }
-            for (size_t noteIndex = 0; noteIndex < entry->notes.size(); ++noteIndex) {
-                const NoteInfoPtr note(entryInfo, noteIndex);
-                if (note->crossStaff) {
-                    return std::nullopt;
-                }
-                if (const auto alteration = document->getDetails()->getForNote<NoteAlterations>(note)) {
-                    if (alteration->allowVertPos && alteration->nydisp != 0) {
-                        return std::nullopt;
-                    }
-                }
-            }
-            const auto [topPosition, bottomPosition] = entryInfo.calcTopBottomStaffPositions();
-            const double offset = static_cast<double>(vertOffset) + static_cast<double>(context->symbol.yOffset);
-            result = (definition->useTopNote ? topPosition : bottomPosition) + offset / (static_cast<double>(staff->lineSpace) / 2);
         } else {
             MUSX_INTEGRITY_ERROR("Articulation handle position requires a staff with positive line spacing.");
         }
@@ -237,28 +389,33 @@ std::optional<double> details::ArticulationAssign::calcHandleStaffPosition(const
     return result;
 }
 
-std::optional<double> details::ArticulationAssign::calcHandleHorizontalOffset(const EntryInfoPtr& entryInfo) const
+std::optional<details::ArticulationAssign::HorizontalOffset>
+details::ArticulationAssign::calcHorizontalOffset(const EntryInfoPtr& entryInfo) const
 {
     MUSX_ASSERT_IF(!entryInfo) {
-        throw std::logic_error("ArticulationAssign::calcHandleHorizontalOffset requires an entry context.");
+        throw std::logic_error("ArticulationAssign::calcHorizontalOffset requires an entry context.");
     }
     const auto entry = entryInfo->getEntry();
     const auto document = getDocument();
     MUSX_ASSERT_IF(entry->getEntryNumber() != getEntryNumber() || entry->getDocument() != document
         || entryInfo.getFrame()->getRequestedPartId() != getRequestedPartId()) {
-        throw std::logic_error("ArticulationAssign::calcHandleHorizontalOffset called with a mismatched entry context.");
+        throw std::logic_error("ArticulationAssign::calcHorizontalOffset called with a mismatched entry context.");
     }
-    std::optional<double> result{};
+    std::optional<HorizontalOffset> result{};
     if (const auto context = calcSelectedSymbolContext(entryInfo)) {
         const auto& definition = context->definition;
-        if (definition->autoHorz || definition->centerOnStem
-            || definition->copyMode != others::ArticulationDef::CopyMode::None) {
+        if (definition->copyMode != others::ArticulationDef::CopyMode::None || definition->centerOnStem) {
             return std::nullopt;
         }
         if (context->symbolIsEstimate && definition->xOffsetMain != definition->xOffsetAlt) {
             return std::nullopt;
         }
-        result = static_cast<double>(horzOffset) + static_cast<double>(context->symbol.xOffset);
+        HorizontalOffset horizontal;
+        horizontal.offset = static_cast<double>(horzOffset) + static_cast<double>(context->symbol.xOffset);
+        if (definition->autoHorz) {
+            horizontal.anchor = HorizontalOffset::Anchor::NoteheadCenter;
+        }
+        result = horizontal;
     } else {
         MUSX_INTEGRITY_ERROR("Articulation assignment references missing definition " + std::to_string(articDef));
     }

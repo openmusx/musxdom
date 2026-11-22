@@ -94,7 +94,7 @@ public:
 
     /// @brief Constructs a Fraction from a percent (where 100 is 100%)
     /// @param percent The integral percent value to convert.
-    static constexpr Fraction fromPercent(int percent) { return Fraction(percent, 100); }
+    static constexpr Fraction fromPercent(int percent) { return Fraction(percent, dom::FULL_SIZE_PERCENT); }
 
     /**
      * @brief Gets the m_numerator of the fraction.
