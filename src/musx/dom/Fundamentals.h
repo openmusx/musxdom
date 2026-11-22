@@ -89,7 +89,9 @@ constexpr double EVPU_PER_PX = EVPU_PER_INCH / 96.0; ///< Number of Evpu units p
 constexpr double EVPU_PER_PICA = EVPU_PER_POINT * 12.0; ///< Number of Evpu units per pica
 constexpr double EVPU_PER_SPACE = 24.0;         ///< Number of Evpu units per space (spatium)
 constexpr double EVPU_PER_STANDARD_STAFF = 4.0 * EVPU_PER_SPACE; ///< Number of Evpu units per standard 5-line staff.
-constexpr double EVPU_PER_STAFF_POSITION = EVPU_PER_SPACE / 2.0; ///< Number of Evpu units per half space.
+constexpr double STAFF_POSITIONS_PER_SPACE = 2.0; ///< Number of staff positions per space (staff positions are half spaces)
+constexpr double STAFF_POSITIONS_PER_HALF_SPACE = STAFF_POSITIONS_PER_SPACE / 2.0; ///< Number of staff positions per half space
+constexpr double EVPU_PER_STAFF_POSITION = EVPU_PER_SPACE / STAFF_POSITIONS_PER_SPACE; ///< Number of Evpu units per staff position (half space).
 constexpr double EFIX_PER_EVPU = 64.0;          ///< Number of Efix units per Evpu
 constexpr double EFIX_PER_SPACE = EVPU_PER_SPACE * EFIX_PER_EVPU; ///< Number of Efix units per space (spatium)
 
@@ -107,6 +109,7 @@ constexpr Cmper SPECIAL_PART_EXTRACTION_SYSTEM_ID = 65528;  ///< The system comp
 constexpr Cmper TEMP_SYSTEM_ID = 65529;     ///< This is a scratch value. Finale and/or plugins can use this systemId to aggregate an arbitary list
                                             ///< of staves for batch processing. It is possible that a plugin might have saved a file with it.
 
+constexpr int FULL_SIZE_PERCENT = 100; ///< Size percentage of notation drawn at full (unreduced) size.
 constexpr int MAX_CUE_PERCENTAGE = 90; ///< Arbitrary value that determines the max scaling value for cue notes. This could be configurable in the future.
 
 /**

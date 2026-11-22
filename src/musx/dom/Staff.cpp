@@ -542,7 +542,7 @@ bool Staff::iterateClefChangesAtMeasure(
                 ShowClefMode::WhenNeeded,
                 false,
                 0,
-                100,
+                FULL_SIZE_PERCENT,
                 0
             });
         }
@@ -558,7 +558,7 @@ bool Staff::iterateClefChangesAtMeasure(
                 ShowClefMode::WhenNeeded,
                 false,
                 0,
-                100,
+                FULL_SIZE_PERCENT,
                 0
             });
         }

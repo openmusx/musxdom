@@ -123,6 +123,25 @@ public:
         bool symbolIsEstimate = true; ///< Whether layout-dependent positioning could change the selected symbol.
     };
 
+    /// @struct HorizontalOffset
+    /// @brief A horizontal articulation offset together with the points it measures between.
+    struct HorizontalOffset
+    {
+        /// @enum Anchor
+        /// @brief Identifies the point on the symbol and the point on the entry that #offset measures between.
+        enum class Anchor
+        {
+            EntryOrigin,    ///< From the entry's drawing origin to the symbol's handle (its drawing origin).
+            NoteheadCenter  ///< From the horizontal center of the entry's primary notehead column to the horizontal
+                            ///< center of the symbol's visible bounds. Noteheads drawn on the opposite side of the
+                            ///< stem for a second (Note::upStemSecond, Note::downStemSecond) are not in the column.
+                            ///< For a rest, the anchor is the horizontal center of the rest.
+        };
+
+        double offset{};                        ///< The offset in EVPU, positive rightward.
+        Anchor anchor{Anchor::EntryOrigin};     ///< What #offset measures.
+    };
+
 private:
     struct PseudoTieShapeContext
     {
@@ -155,34 +174,30 @@ public:
     bool avoidSlur{};               ///< Whether the articulation should avoid slurs.
     int numSlursAvoided{};          ///< Number of slurs avoided. Used internally by Finale's stacking algorithm.
 
-    /// @brief Calculates the primary handle's fractional staff position for a manually positioned articulation.
+    /// @brief Calculates the primary handle's fractional staff position.
     /// @details Positions are relative to the entry staff's reference line, positive upward; one unit is half
-    /// the current staff line spacing. The reference note is selected by #others::ArticulationDef::useTopNote.
-    /// Assignment and selected-symbol vertical offsets are additive. The definition's default vertical position
-    /// does not contribute. Staff and entry size percentages, including the grace note size, do not affect the result.
-    /// This is a handle coordinate, not a glyph center or an association with a note.
+    /// the current staff line spacing. The result includes the selected symbol's vertical offset. This is a handle
+    /// coordinate, not a glyph center or an association with a note. Automatic positioning is measured from estimated
+    /// notehead or rest extents, so its result is approximate.
     /// @param entryInfo A non-null context for this assignment's entry, document, and requested part.
-    /// @return The handle position, or std::nullopt for automatic placement, placement overrides, symbol copying,
-    /// outside-staff or staff-line avoidance, slur avoidance, rests, empty entries, cross-staff notes,
-    /// nonstandard notation styles, alternate notation, active part voicing, or vertically displaced noteheads.
+    /// @return The handle position, or std::nullopt when it cannot be determined without layout information or the
+    /// placement is unsupported.
     /// @throws std::logic_error if @p entryInfo is null or does not match this assignment's context.
     /// @throws integrity_error if required definition/staff data is missing or staff line spacing is nonpositive,
     /// when integrity exceptions are enabled. Otherwise these failures are logged and return std::nullopt.
     [[nodiscard]] std::optional<double> calcHandleStaffPosition(const EntryInfoPtr& entryInfo) const;
 
-    /// @brief Calculates the primary handle's horizontal offset from the entry's drawing origin in EVPU, positive rightward.
-    /// @details Assignment and selected-symbol definition offsets are additive. The result is not a notehead
-    /// center, a visible glyph edge, or an association with a note. No staff-space conversion or resizing is applied.
-    /// Automatic vertical positioning is supported when the selected symbol is certain or both symbols have
-    /// equal horizontal offsets. A returned coordinate does not certify the selected character; consult
-    /// SelectedSymbolContext::symbolIsEstimate separately when identifying symbols.
+    /// @brief Calculates the articulation's horizontal offset in EVPU, positive rightward.
+    /// @details The offset includes the selected symbol's horizontal offset, and its anchor identifies what it is
+    /// measured between. No staff-space conversion or resizing is applied. A returned offset does not certify the
+    /// selected character; consult SelectedSymbolContext::symbolIsEstimate separately when identifying symbols.
     /// @param entryInfo A non-null context for this assignment's entry, document, and requested part.
-    /// @return The handle offset, or std::nullopt for horizontal auto-positioning, stem centering, symbol copying,
-    /// or uncertain symbol selection with unequal main and alternate horizontal offsets.
+    /// @return The offset, or std::nullopt when it cannot be determined without layout information or the
+    /// placement is unsupported.
     /// @throws std::logic_error if @p entryInfo is null or does not match this assignment's context.
     /// @throws integrity_error if the required definition is missing, when integrity exceptions are enabled.
     /// Otherwise the missing definition is logged and returns std::nullopt.
-    [[nodiscard]] std::optional<double> calcHandleHorizontalOffset(const EntryInfoPtr& entryInfo) const;
+    [[nodiscard]] std::optional<HorizontalOffset> calcHorizontalOffset(const EntryInfoPtr& entryInfo) const;
 
     /// @brief Calculates the pseudo-tie shape info if this articulation is acting as a pseudo tie for the specified mode.
     /// @return The pseudo-tie shape info when a qualifying shape exists; otherwise std::nullopt.
@@ -190,12 +205,8 @@ public:
         const EntryInfoPtr& forStartEntry) const;
 
     /// @brief Resolves the symbol information used by this articulation assignment on the specified entry.
-    /// @details Copied articulations use the main character, font, and offsets. Otherwise selection is exact when
-    /// both sides select the same symbol, or for manual vertical positioning without outside-staff or staff-line
-    /// avoidance. Manual selection compares the assignment offset with zero, treating equality as above,
-    /// before applying symbol offsets; placement overrides do not change this comparison.
-    /// Other cases use a policy-based estimate and set SelectedSymbolContext::symbolIsEstimate.
-    /// Automatic positioning, avoidance, and dragging may change Finale's final selection.
+    /// @details When the selection depends on layout information that is not available, the result is an estimate
+    /// and SelectedSymbolContext::symbolIsEstimate is set.
     /// @return The resolved symbol context, or std::nullopt if the entry context or articulation definition cannot be resolved.
     [[nodiscard]] std::optional<SelectedSymbolContext> calcSelectedSymbolContext(const EntryInfoPtr& entryInfo) const;
 
@@ -203,6 +214,20 @@ public:
     constexpr static std::string_view XmlNodeName = "articAssign"; ///< The XML node name for this type.
 
 private:
+    /// @brief Vertical handle geometry before symbol offsets, in staff positions.
+    struct VerticalHandleReference
+    {
+        double position{};          ///< The handle position before symbol offsets.
+        double referencePosition{}; ///< The staff position of the reference note, used for symbol selection.
+    };
+
+    /// @brief Calculates the vertical handle geometry before symbol offsets.
+    /// @return The geometry, or std::nullopt when it cannot be determined. Does not report integrity errors.
+    [[nodiscard]] std::optional<VerticalHandleReference> calcVerticalHandleReference(
+        const MusxInstance<others::ArticulationDef>& definition, const EntryInfoPtr& entryInfo) const;
+    /// @brief Resolves the selected symbol and the vertical handle geometry, when available, used to select it.
+    [[nodiscard]] std::optional<SelectedSymbolContext> calcSelectedSymbolContext(const EntryInfoPtr& entryInfo,
+        std::optional<VerticalHandleReference>& handleReference) const;
     /// @brief Predicts whether the articulation lies at or above its reference before symbol offsets.
     /// @details Manual placement uses the assignment offset. Automatic placement uses the available stem and
     /// layer policy; layout-dependent displacement may change the side used by Finale for symbol selection.

@@ -54,7 +54,7 @@ public:
         };
 
         Kind kind{Kind::None};              ///< Source-level cue classification.
-        int entrySizePercent{100};          ///< Effective entry size in the requested context.
+        int entrySizePercent{dom::FULL_SIZE_PERCENT}; ///< Effective entry size in the requested context.
         bool visibleInRequestedContext{};   ///< Whether the entry is visible in its EntryFrame's requested context.
         bool visibleInScore{};              ///< Whether the entry is visible in the score.
         bool visibleInAnyLinkedPart{};      ///< Whether the entry is visible in at least one linked part.

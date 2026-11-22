@@ -794,6 +794,47 @@ TEST(NoteheadInfoTest, DefaultByDuration)
     EXPECT_EQ(noteheadInfo.vertOffset, 0);
 }
 
+TEST(NoteheadInfoTest, NoteAlterationsResizeWithoutCharacterOverride)
+{
+    std::vector<char> xml;
+    musxtest::readFile(musxtest::getInputPath() / "enharmonic_unlinked.enigmaxml", xml);
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::pugi::Document>(xml);
+    ASSERT_TRUE(doc);
+    auto symbolOptions = doc->getOptions()->get<options::MusicSymbolOptions>();
+    ASSERT_TRUE(symbolOptions);
+
+    auto gfhold = details::GFrameHoldContext(doc, SCORE_PARTID, 1, 1);
+    ASSERT_TRUE(gfhold);
+    auto entryFrame = gfhold.createEntryFrame(0);
+    ASSERT_TRUE(entryFrame);
+    NoteInfoPtr noteInfo(EntryInfoPtr(entryFrame, 0), 0);
+    ASSERT_TRUE(noteInfo);
+    auto entry = std::const_pointer_cast<Entry>(noteInfo.getEntryInfo()->getEntry());
+
+    // An alteration that only resizes and offsets the notehead keeps the default character.
+    constexpr int reducedPercent = 65;
+    constexpr Evpu horzOffset = 9;
+    constexpr Evpu vertOffset = -6;
+    ASSERT_TRUE(entry->noteDetail);
+    auto noteAlteration = std::const_pointer_cast<details::NoteAlterations>(
+        doc->getDetails()->getForNote<details::NoteAlterations>(noteInfo));
+    ASSERT_TRUE(noteAlteration);
+    ASSERT_EQ(noteAlteration->altNhead, char32_t{});
+    noteAlteration->percent = reducedPercent;
+    noteAlteration->nxdisp = horzOffset;
+    noteAlteration->nydisp = vertOffset;
+    noteAlteration->allowVertPos = false;
+
+    auto noteheadInfo = noteInfo.calcNoteheadInfo();
+    EXPECT_EQ(noteheadInfo.source, NoteInfoPtr::NoteheadInfo::Source::Default);
+    EXPECT_EQ(noteheadInfo.character, symbolOptions->noteheadQuarter);
+    EXPECT_EQ(noteheadInfo.percent, reducedPercent);
+    EXPECT_EQ(noteheadInfo.horzOffset, horzOffset);
+    EXPECT_EQ(noteheadInfo.vertOffset, 0); // Vertical positioning is not enabled.
+    noteAlteration->allowVertPos = true;
+    EXPECT_EQ(noteInfo.calcNoteheadInfo().vertOffset, vertOffset);
+}
+
 TEST(NoteheadInfoTest, NoteAlterationsOverrideTakesPrecedence)
 {
     std::vector<char> xml;
