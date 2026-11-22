@@ -394,6 +394,7 @@ var hierarchy =
     [ "musx::util::SvgConvert::GlyphMetrics", "structmusx_1_1util_1_1SvgConvert_1_1GlyphMetrics.html", null ],
     [ "musx::dom::header::Header", "structmusx_1_1dom_1_1header_1_1Header.html", null ],
     [ "musx::factory::HeaderFactory", "classmusx_1_1factory_1_1HeaderFactory.html", null ],
+    [ "musx::dom::details::ArticulationAssign::HorizontalOffset", "structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1HorizontalOffset.html", null ],
     [ "musx::dom::others::ShapeInstructionList::InstructionInfo", "classmusx_1_1dom_1_1others_1_1ShapeInstructionList_1_1InstructionInfo.html", null ],
     [ "musx::dom::InstrumentInfo::InstrumentChange", "structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentChange.html", null ],
     [ "musx::dom::InstrumentInfo::InstrumentIdentity", "structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentIdentity.html", null ],

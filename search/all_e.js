@@ -21,7 +21,7 @@ var searchData=
   ['odaiko_18',['Odaiko',['../namespacemusx_1_1dom_1_1uuid.html#a6d9b22bc0a74feadf933117dc0650c6b',1,'musx::dom::uuid']]],
   ['oddeven_19',['oddEven',['../classmusx_1_1dom_1_1others_1_1PageTextAssign.html#a76d8da31ce8926dd0de1653738eabcf8',1,'musx::dom::others::PageTextAssign']]],
   ['off_20',['Off',['../classmusx_1_1dom_1_1others_1_1SmartShape.html#a401ee7c12c872ce9f039ab9994a6708bad15305d7a4e34e02489c74a5ef542f36',1,'musx::dom::others::SmartShape::Off'],['../classmusx_1_1dom_1_1others_1_1SmartShape.html#a20422aebb4bbb4adb8330aed4bf29d51ad15305d7a4e34e02489c74a5ef542f36',1,'musx::dom::others::SmartShape::Off']]],
-  ['offset_21',['offset',['../structmusx_1_1dom_1_1others_1_1Measure_1_1SpacingSlot.html#af64b3a15faa0eb2d4316ab9954e5b92f',1,'musx::dom::others::Measure::SpacingSlot']]],
+  ['offset_21',['offset',['../structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1HorizontalOffset.html#adcb54a7269b275fbe8433e06a2d6b36e',1,'musx::dom::details::ArticulationAssign::HorizontalOffset::offset'],['../structmusx_1_1dom_1_1others_1_1Measure_1_1SpacingSlot.html#af64b3a15faa0eb2d4316ab9954e5b92f',1,'musx::dom::others::Measure::SpacingSlot::offset']]],
   ['offsetx_22',['offsetX',['../structmusx_1_1dom_1_1options_1_1TieOptions_1_1ConnectStyle.html#ac7f9189d5a1f626f3cadc19984ba9093',1,'musx::dom::options::TieOptions::ConnectStyle']]],
   ['offsety_23',['offsetY',['../structmusx_1_1dom_1_1options_1_1TieOptions_1_1ConnectStyle.html#ac6eefffa4606f7d0d2dccd281c886ae2',1,'musx::dom::options::TieOptions::ConnectStyle']]],
   ['okawa_24',['Okawa',['../namespacemusx_1_1dom_1_1uuid.html#af576e52388e32f6aff7b0a0a9e75e5d4',1,'musx::dom::uuid']]],

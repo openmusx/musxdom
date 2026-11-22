@@ -713,7 +713,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 <li>The staff's shape-note convention, if shape notes are in effect for the staff. (See #others::Staff::getNoteShapes.)</li>
 <li>Otherwise, the document's default notehead codepoints for the note's duration category. (See #options::MusicSymbolOptions.)</li>
 </ul>
-<p>In every case except a custom-font #details::NoteAlterations override, the font is #others::Staff::noteFont if the staff specifies a custom notehead font, or the document's default #options::FontOptions::FontType::Noteheads font otherwise. </p><dl class="section return"><dt>Returns</dt><dd>The resolved notehead info. This function always returns a usable result. </dd></dl>
+<p>In every case except a custom-font #details::NoteAlterations override, the font is #others::Staff::noteFont if the staff specifies a custom notehead font, or the document's default #options::FontOptions::FontType::Noteheads font otherwise.</p>
+<p>A #details::NoteAlterations record for the note supplies the size and offsets in every case, whether or not it overrides the character. </p><dl class="section return"><dt>Returns</dt><dd>The resolved notehead info. This function always returns a usable result. </dd></dl>
 
 </div>
 </div>

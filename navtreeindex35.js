@@ -1,5 +1,8 @@
 var NAVTREEINDEX35 =
 {
+"structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentIdentity.html":[1,0,1,0,39,0],
+"structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentIdentity.html":[2,0,1,0,40,0],
+"structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentIdentity.html#a15c782837f06a1d9877f05f535f85762":[1,0,1,0,39,0,0],
 "structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentIdentity.html#a15c782837f06a1d9877f05f535f85762":[2,0,1,0,40,0,0],
 "structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentIdentity.html#a3b678dead586ea23a78e413f456ae535":[1,0,1,0,39,0,3],
 "structmusx_1_1dom_1_1InstrumentInfo_1_1InstrumentIdentity.html#a3b678dead586ea23a78e413f456ae535":[2,0,1,0,40,0,3],
@@ -246,8 +249,5 @@ var NAVTREEINDEX35 =
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1SetArrowhead.html#ac9aaf46693d454828f71547f82ad1459":[1,0,1,0,58,11,4],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1SetArrowhead.html#ac9aaf46693d454828f71547f82ad1459":[2,0,1,0,59,11,4],
 "structmusx_1_1dom_1_1ShapeDefInstruction_1_1SetDash.html":[1,0,1,0,58,12],
-"structmusx_1_1dom_1_1ShapeDefInstruction_1_1SetDash.html":[2,0,1,0,59,12],
-"structmusx_1_1dom_1_1ShapeDefInstruction_1_1SetDash.html#a517cb9c5cc98746cb4a7388c0cff7702":[1,0,1,0,58,12,1],
-"structmusx_1_1dom_1_1ShapeDefInstruction_1_1SetDash.html#a517cb9c5cc98746cb4a7388c0cff7702":[2,0,1,0,59,12,1],
-"structmusx_1_1dom_1_1ShapeDefInstruction_1_1SetDash.html#ad2d4857944bae7052f68b1360c112bc3":[1,0,1,0,58,12,0]
+"structmusx_1_1dom_1_1ShapeDefInstruction_1_1SetDash.html":[2,0,1,0,59,12]
 };

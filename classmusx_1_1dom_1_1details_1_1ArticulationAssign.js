@@ -1,9 +1,10 @@
 var classmusx_1_1dom_1_1details_1_1ArticulationAssign =
 [
     [ "SelectedSymbolContext", "structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1SelectedSymbolContext.html", "structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1SelectedSymbolContext" ],
+    [ "HorizontalOffset", "structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1HorizontalOffset.html", "structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1HorizontalOffset" ],
     [ "ArticulationAssign", "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a045264b0f6ff881411fddbb01e546fa6", null ],
-    [ "calcHandleHorizontalOffset", "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#acb10238bbeb800d5f13ce45f0ac04144", null ],
     [ "calcHandleStaffPosition", "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#ac7596370f6057203555ac0df54f8770a", null ],
+    [ "calcHorizontalOffset", "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a79f2d4d7d121987825ad2bb163f1f90e", null ],
     [ "calcIsPseudoTie", "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a5975d316fda7e5967b8cda5b6eb73aa9", null ],
     [ "calcSelectedSymbolContext", "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#ab1fc7acc0e323bf6a5a4a0a36db33089", null ],
     [ "aboveEntry", "classmusx_1_1dom_1_1details_1_1ArticulationAssign.html#a7f5a314ada71b48df64a52ec81f429ea", null ],
