@@ -1080,12 +1080,12 @@ TEST_F(ArticulationAutomaticHandlePositionTest, PlacesArticulationsOutsideStaffO
         definition->avoidStaffLines = avoidStaffLines;
         setStem(true);
         assignment->vertOffset = 0;
-        expectPosition(std::min(noteheadBottom, staffBottom) - 1);
+        expectPosition((std::min)(noteheadBottom, staffBottom) - 1);
         expectSymbol(true);
         assignment->vertOffset = raisedOffset;
         EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
         setStem(false);
-        expectPosition(std::max(noteheadTop, staffTop) + 1);
+        expectPosition((std::max)(noteheadTop, staffTop) + 1);
         assignment->vertOffset = 0;
         EXPECT_FALSE(assignment->calcHandleStaffPosition(entryInfo));
         assignment->vertOffset = clearOffset;
