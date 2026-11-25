@@ -244,3 +244,43 @@ TEST(KeySigs, PopulateKeySymbolList)
     EXPECT_EQ(keySymbols[14]->getAlterationValue(), -1);
     EXPECT_EQ(keySymbols[14]->accidentalString, "B");
 }
+
+TEST(KeySigs, StavesThatReadInC)
+{
+    std::vector<char> xml;
+    musxtest::readFile(musxtest::getInputPath() / "keysigs.enigmaxml", xml);
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::pugi::Document>(xml);
+    ASSERT_TRUE(doc);
+
+    // Measure 1 is in A-flat major.
+    auto measure = doc->getOthers()->get<others::Measure>(SCORE_PARTID, 1);
+    ASSERT_TRUE(measure);
+    auto staff = const_cast<others::Staff*>(doc->getOthers()->get<others::Staff>(SCORE_PARTID, 1).get());
+    ASSERT_TRUE(staff);
+    ASSERT_FALSE(staff->transposition);
+    EXPECT_EQ(measure->createKeySignature(1)->getAlteration(KeySignature::KeyContext::Concert), -4);
+
+    // Ignoring key signatures reads the staff in C major.
+    staff->noKey = true;
+    auto key = measure->createKeySignature(1);
+    EXPECT_EQ(key->getAlteration(KeySignature::KeyContext::Concert), 0);
+    EXPECT_TRUE(key->isMajor());
+    EXPECT_FALSE(key->keyless);
+    staff->noKey = false;
+
+    // Percussion notation alone keeps the measure's key.
+    staff->notationStyle = others::Staff::NotationStyle::Percussion;
+    staff->percussionMapId = Cmper(0);
+    EXPECT_EQ(measure->createKeySignature(1)->getAlteration(KeySignature::KeyContext::Concert), -4);
+
+    // A percussion map reads the staff in C major.
+    staff->percussionMapId = Cmper(1);
+    key = measure->createKeySignature(1);
+    EXPECT_EQ(key->getAlteration(KeySignature::KeyContext::Concert), 0);
+    EXPECT_TRUE(key->isMajor());
+    staff->notationStyle = others::Staff::NotationStyle::Standard;
+    staff->percussionMapId.reset();
+
+    // Without a staff the measure's own key applies.
+    EXPECT_EQ(measure->createKeySignature()->getAlteration(KeySignature::KeyContext::Concert), -4);
+}

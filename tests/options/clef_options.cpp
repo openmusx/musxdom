@@ -387,3 +387,119 @@ constexpr static musxtest::string_view legacyClefDefsXml = R"xml(
         }
     }
 }
+TEST(ClefOptionsTest, PercussionClefGlyphs)
+{
+    constexpr static musxtest::string_view xml = R"xml(
+<?xml version="1.0" encoding="UTF-8"?>
+<finale>
+  <options>
+    <clefOptions>
+      <clefDef index="0">
+        <adjust>-10</adjust>
+        <clefChar>38</clefChar>
+        <clefYDisp>-6</clefYDisp>
+      </clefDef>
+      <clefDef index="1">
+        <adjust>-10</adjust>
+        <clefChar>139</clefChar>
+        <clefYDisp>-6</clefYDisp>
+      </clefDef>
+      <clefDef index="2">
+        <adjust>-10</adjust>
+        <clefChar>47</clefChar>
+        <clefYDisp>-4</clefYDisp>
+      </clefDef>
+      <clefDef index="3">
+        <adjust>-3</adjust>
+        <clefChar>139</clefChar>
+        <clefYDisp>-6</clefYDisp>
+      </clefDef>
+      <clefDef index="4">
+        <adjust>-17</adjust>
+        <clefChar>214</clefChar>
+        <clefYDisp>-4</clefYDisp>
+      </clefDef>
+      <clefDef index="5">
+        <adjust>-10</adjust>
+        <clefChar>61487</clefChar>
+        <clefYDisp>-6</clefYDisp>
+      </clefDef>
+      <clefDef index="6">
+        <adjust>-10</adjust>
+        <clefChar>57449</clefChar>
+        <clefYDisp>-6</clefYDisp>
+        <useOwnFont/>
+        <font>
+          <fontID>1</fontID>
+          <fontSize>24</fontSize>
+        </font>
+      </clefDef>
+      <clefDef index="7">
+        <adjust>-3</adjust>
+        <clefChar>139</clefChar>
+        <clefYDisp>-4</clefYDisp>
+      </clefDef>
+      <clefDef index="8">
+        <adjust>-10</adjust>
+        <clefChar>139</clefChar>
+        <clefYDisp>-6</clefYDisp>
+        <useOwnFont/>
+        <font>
+          <fontID>2</fontID>
+          <fontSize>24</fontSize>
+        </font>
+      </clefDef>
+    </clefOptions>
+    <fontOptions>
+      <font type="clef">
+        <fontSize>24</fontSize>
+      </font>
+    </fontOptions>
+  </options>
+  <others>
+    <fontName cmper="0">
+      <charsetBank>Mac</charsetBank>
+      <charsetVal>4095</charsetVal>
+      <pitch>0</pitch>
+      <family>0</family>
+      <name>Maestro</name>
+    </fontName>
+    <fontName cmper="1">
+      <charsetBank>Mac</charsetBank>
+      <charsetVal>4095</charsetVal>
+      <pitch>0</pitch>
+      <family>0</family>
+      <name>Finale Maestro</name>
+    </fontName>
+    <fontName cmper="2">
+      <charsetBank>Mac</charsetBank>
+      <charsetVal>4095</charsetVal>
+      <pitch>0</pitch>
+      <family>0</family>
+      <name>Jazz</name>
+    </fontName>
+  </others>
+</finale>
+)xml";
+
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::tinyxml2::Document>(xml);
+    ASSERT_TRUE(doc);
+    auto clefOptions = doc->getOptions()->get<options::ClefOptions>();
+    ASSERT_TRUE(clefOptions);
+
+    static const std::vector<options::ClefOptions::ClefInfo> expectedValues = {
+        { music_theory::ClefType::G, 0 },           // treble glyph on the G line
+        { music_theory::ClefType::Percussion1, 0 }, // percussion glyph on the G line, middle C as for treble
+        { music_theory::ClefType::Percussion1, 0 }, // percussion glyph on the middle line, middle C as for treble
+        { music_theory::ClefType::Percussion1, -1 },// middle C an octave higher than for treble
+        { music_theory::ClefType::Percussion2, 1 }, // middle C an octave lower than for treble
+        { music_theory::ClefType::Percussion1, 0 }, // Windows symbol-font code point
+        { music_theory::ClefType::Percussion1, 0 }, // SMuFL glyph on the G line
+        { music_theory::ClefType::Percussion1, -1 },// middle line, middle C an octave higher than for treble
+        { music_theory::ClefType::Percussion1, 0 }, // a clef's character is trusted to be a clef glyph, even where Jazz has another glyph at 139
+    };
+    ASSERT_EQ(clefOptions->clefDefs.size(), expectedValues.size());
+    for (size_t x = 0; x < expectedValues.size(); x++) {
+        EXPECT_EQ(clefOptions->clefDefs[x]->calcInfo(), expectedValues[x]) << "clef index " << x;
+    }
+}

@@ -800,10 +800,22 @@ TEST(StaffText, StaffLines)
     }
     EXPECT_EQ(x, staves.size());
 
+    // Only staff 4 leaves lines out, lines 16 and 17 between 15 and 18.
+    const std::vector<std::vector<int>> expectedOmitted = { {}, {}, {}, { -10, -12 }, {}, {}, {} };
+    ASSERT_EQ(staves.size(), expectedOmitted.size());
+    for (size_t index = 0; index < staves.size(); index++) {
+      EXPECT_EQ(staves[index]->calcOmittedLinePositions(), expectedOmitted[index]) << "staff " << staves[index]->getCmper();
+    }
+
     auto emptyCustomStaff = const_cast<others::Staff*>(staves.back().get());
     emptyCustomStaff->staffLines.reset();
     emptyCustomStaff->customStaff.emplace();
     EXPECT_EQ(emptyCustomStaff->calcMiddleStaffPosition(), -4);
+    EXPECT_TRUE(emptyCustomStaff->calcOmittedLinePositions().empty());
+
+    // The outer lines of a standard staff omit the three between them.
+    emptyCustomStaff->customStaff = std::vector<int>{ 11, 15 };
+    EXPECT_EQ(emptyCustomStaff->calcOmittedLinePositions(), (std::vector<int>{ -2, -4, -6 }));
 }
 
 TEST(StaffTest, Transposition)

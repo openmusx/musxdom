@@ -321,6 +321,12 @@ MusxInstance<KeySignature> Measure::createKeySignature(const std::optional<Staff
     if (!result) {
         result = std::make_shared<KeySignature>(*globalKeySig);
     }
+    // A staff that ignores key signatures, or uses a percussion map, reads and plays its notes in C major.
+    if (staff && (staff->noKey || staff->percussionMapId.value_or(0) != 0)) {
+        result->key = 0;
+        result->keyless = false;
+        result->hideKeySigShowAccis = false;
+    }
     if (result && staff) {
         result->setTransposition(staff);
     }

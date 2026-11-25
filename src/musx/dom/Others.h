@@ -1270,6 +1270,10 @@ public:
     std::optional<std::string> calcDisplayNumberText() const;
 
     /// @brief Creates and returns a shared pointer to an instance of the @ref KeySignature for this measure and staff.
+    ///
+    /// A staff that ignores key signatures (@ref Staff::noKey) or uses a percussion map (@ref Staff::percussionMapId) reads its
+    /// notes in concert C major, so for such a staff the result is C major, transposed as the staff's transposition requires.
+    /// Percussion notation without a percussion map keeps the measure's key.
     /// @param forStaff If present, specifies the specific staff for which to create the key signature.
     /// @return A shared pointer to a new instance of KeySignature. The caller may modify it (*e.g.*, for transposition) without affecting the values in the document.
     MusxInstance<KeySignature> createKeySignature(const std::optional<StaffCmper>& forStaff = std::nullopt) const;
