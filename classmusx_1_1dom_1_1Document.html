@@ -147,6 +147,8 @@ std::optional&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"
 <tr class="memitem:ac11e47f85844df2aa302212a8e2329e7" id="r_ac11e47f85844df2aa302212a8e2329e7"><td class="memItemLeft" align="right" valign="top"><a id="ac11e47f85844df2aa302212a8e2329e7" name="ac11e47f85844df2aa302212a8e2329e7"></a>
 const <a class="el" href="namespacemusx_1_1dom.html#a211bff8f91362b9f64509edd74b0ab68">EmbeddedGraphicsMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getEmbeddedGraphics</b> () const</td></tr>
 <tr class="memdesc:ac11e47f85844df2aa302212a8e2329e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all embedded graphics keyed by graphic cmper. <br /></td></tr>
+<tr class="memitem:a14a8cc5d18c8384937160491d739a6f2" id="r_a14a8cc5d18c8384937160491d739a6f2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacemusx_1_1dom.html#a1dfc66ce1da8849b6d866b25fde72aa8">PlaybackResourcesPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14a8cc5d18c8384937160491d739a6f2">getPlaybackResources</a> () const</td></tr>
+<tr class="memdesc:a14a8cc5d18c8384937160491d739a6f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the playback resources supplied when the document was created.  <br /></td></tr>
 <tr class="memitem:ac8d1b2a9048dec847e81ef88b28997d8" id="r_ac8d1b2a9048dec847e81ef88b28997d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8d1b2a9048dec847e81ef88b28997d8">calcScrollViewCmper</a> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId) const noexcept</td></tr>
 <tr class="memdesc:ac8d1b2a9048dec847e81ef88b28997d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Scroll View <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5" title="Enigma &quot;comperator&quot; key type.">Cmper</a> for the given <code class="param">partId</code>.  <br /></td></tr>
 <tr class="memitem:a4308a3e9bb194af96a86e1e40316b8bf" id="r_a4308a3e9bb194af96a86e1e40316b8bf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4308a3e9bb194af96a86e1e40316b8bf">isScrollViewCmper</a> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> systemCmper) const noexcept</td></tr>
@@ -632,6 +634,34 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>musx::factory::Docum
 
 <p>Returns the optional instrument map, which is empty until the map has been constructed. </p>
 <p>This supports interpretation helpers that can provide a useful fallback while the document factory is still resolving relationships. Call <a class="el" href="#a5f737b924b967fc0cfe22d79c763c164" title="Returns the instrument map for this document. It is computed by the factory.">getInstruments</a> when the map is required. </p>
+
+</div>
+</div>
+<a id="a14a8cc5d18c8384937160491d739a6f2" name="a14a8cc5d18c8384937160491d739a6f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14a8cc5d18c8384937160491d739a6f2">&#9670;&#160;</a></span>getPlaybackResources()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="namespacemusx_1_1dom.html#a1dfc66ce1da8849b6d866b25fde72aa8">PlaybackResourcesPtr</a> &amp; musx::dom::Document::getPlaybackResources </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the playback resources supplied when the document was created. </p>
+<dl class="section return"><dt>Returns</dt><dd>The resources, or null if none were supplied. </dd></dl>
 
 </div>
 </div>

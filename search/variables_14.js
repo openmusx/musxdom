@@ -73,5 +73,6 @@ var searchData=
   ['usetabletters_70',['useTabLetters',['../classmusx_1_1dom_1_1others_1_1Staff.html#ae1db7c6cd84416164b2ddec5d5bc9bb1',1,'musx::dom::others::Staff']]],
   ['usethisfont_71',['useThisFont',['../classmusx_1_1dom_1_1others_1_1TextRepeatDef.html#a4e0cf82565351e6b4959f9cf041686e1',1,'musx::dom::others::TextRepeatDef']]],
   ['usetieendctlstyle_72',['useTieEndCtlStyle',['../classmusx_1_1dom_1_1options_1_1TieOptions.html#ad76523ff7c49b4504b4e9baff2140265',1,'musx::dom::options::TieOptions']]],
-  ['usetopnote_73',['useTopNote',['../classmusx_1_1dom_1_1others_1_1ArticulationDef.html#a047e1ab7e92dd4b6b781b5fa7bb79d27',1,'musx::dom::others::ArticulationDef']]]
+  ['usetopnote_73',['useTopNote',['../classmusx_1_1dom_1_1others_1_1ArticulationDef.html#a047e1ab7e92dd4b6b781b5fa7bb79d27',1,'musx::dom::others::ArticulationDef']]],
+  ['uuid_74',['uuid',['../structmusx_1_1dom_1_1SoundmapSound.html#ae53d7798819c19431b2821ea44b8543e',1,'musx::dom::SoundmapSound::uuid'],['../structmusx_1_1dom_1_1CatalogInstrument.html#a46b3d72de2744bf31918ad0cabfbac71',1,'musx::dom::CatalogInstrument::uuid']]]
 ];

@@ -25,6 +25,7 @@ var classmusx_1_1util_1_1NoteInfoPtr =
     [ "calcNoteheadInfo", "classmusx_1_1util_1_1NoteInfoPtr.html#a16f03e5030d5d4995c87d9899341ce48", null ],
     [ "calcNoteProperties", "classmusx_1_1util_1_1NoteInfoPtr.html#a4766cf96435ed81abdf8309f4e267b95", null ],
     [ "calcPercussionNoteInfo", "classmusx_1_1util_1_1NoteInfoPtr.html#a2c725e14e257f68e2c7600a8540b7457", null ],
+    [ "calcPercussionPlaybackKey", "classmusx_1_1util_1_1NoteInfoPtr.html#a63d5df50ef8820b5e585123ffa1fe5fd", null ],
     [ "calcPseudoLvTieInfo", "classmusx_1_1util_1_1NoteInfoPtr.html#ab6c73b9fc08738bb70bf615a29d0ae3f", null ],
     [ "calcPseudoTieEndInfo", "classmusx_1_1util_1_1NoteInfoPtr.html#a8d7ea5877dcf0a6c3f69a5bd1fb75b86", null ],
     [ "calcStaff", "classmusx_1_1util_1_1NoteInfoPtr.html#a47410cd12a40e392c789ffc3c265b264", null ],

@@ -18,7 +18,7 @@ var searchData=
   ['enigmastyles_15',['EnigmaStyles',['../structmusx_1_1util_1_1EnigmaStyles.html',1,'musx::util']]],
   ['enigmatextchunk_16',['EnigmaTextChunk',['../structmusx_1_1util_1_1EnigmaTextChunk.html',1,'musx::util']]],
   ['enigmatextinsert_17',['EnigmaTextInsert',['../structmusx_1_1util_1_1EnigmaTextInsert.html',1,'musx::util']]],
-  ['entry_18',['Entry',['../classmusx_1_1dom_1_1Entry.html',1,'musx::dom']]],
+  ['entry_18',['Entry',['../structmusx_1_1dom_1_1DeviceNoteList_1_1Entry.html',1,'musx::dom::DeviceNoteList::Entry'],['../classmusx_1_1dom_1_1Entry.html',1,'musx::dom::Entry']]],
   ['entryanalysis_19',['EntryAnalysis',['../structmusx_1_1util_1_1Cue_1_1EntryAnalysis.html',1,'musx::util::Cue']]],
   ['entrydetailsbase_20',['EntryDetailsBase',['../classmusx_1_1dom_1_1EntryDetailsBase.html',1,'musx::dom']]],
   ['entryfactory_21',['EntryFactory',['../classmusx_1_1factory_1_1EntryFactory.html',1,'musx::factory']]],

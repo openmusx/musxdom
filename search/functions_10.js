@@ -12,5 +12,7 @@ var searchData=
   ['requireallfields_9',['requireAllFields',['../classmusx_1_1dom_1_1EnigmaBase.html#a0766cc6a150c2335b4aa94bbad6d28b0',1,'musx::dom::EnigmaBase']]],
   ['resolve_10',['resolve',['../classmusx_1_1dom_1_1FontInfo.html#aca07d6654d28e72cf1c85655d3c90d70',1,'musx::dom::FontInfo::resolve()'],['../structmusx_1_1util_1_1EnigmaStyles.html#a20631d8d96de70fccae8e2c638897881',1,'musx::util::EnigmaStyles::resolve()'],['../structmusx_1_1util_1_1EnigmaTextChunk.html#a9f0c0afb059bc5183d26588fc22078d6',1,'musx::util::EnigmaTextChunk::resolve()']]],
   ['resolveexternalgraphicpath_11',['resolveExternalGraphicPath',['../classmusx_1_1dom_1_1Document.html#a7faa5f48201ebde9262502435ece74d8',1,'musx::dom::Document']]],
-  ['resolvepagelayout_12',['resolvePageLayout',['../classmusx_1_1dom_1_1Document.html#a6dd25c60615f6d1970ac31b80f6e36aa',1,'musx::dom::Document']]]
+  ['resolvenotelist_12',['resolveNoteList',['../classmusx_1_1dom_1_1PlaybackResources.html#a34c3ad945c0cce8e5c317b80c2adb821',1,'musx::dom::PlaybackResources']]],
+  ['resolvepagelayout_13',['resolvePageLayout',['../classmusx_1_1dom_1_1Document.html#a6dd25c60615f6d1970ac31b80f6e36aa',1,'musx::dom::Document']]],
+  ['resolvepercussionmidikey_14',['resolvePercussionMidiKey',['../classmusx_1_1dom_1_1PlaybackResources.html#ae5fa4470e75310d3425a9dc1673c9821',1,'musx::dom::PlaybackResources::resolvePercussionMidiKey(std::string_view soundUuid, PercussionNoteTypeId noteType, NoteTypeMatch match=NoteTypeMatch::ExactThenBase) const'],['../classmusx_1_1dom_1_1PlaybackResources.html#a96a1d43d770139fc011d7e8d1c7e268e',1,'musx::dom::PlaybackResources::resolvePercussionMidiKey(const DeviceNoteList &amp;noteList, PercussionNoteTypeId noteType, NoteTypeMatch match=NoteTypeMatch::ExactThenBase)']]]
 ];

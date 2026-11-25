@@ -29,6 +29,7 @@ var classmusx_1_1dom_1_1Document =
     [ "getOthers", "classmusx_1_1dom_1_1Document.html#a32f5bc74b654fdb67dbaa2508309cae5", null ],
     [ "getOthers", "classmusx_1_1dom_1_1Document.html#ad515ea56c2c7a1d8f10681bc84eff560", null ],
     [ "getPartVoicingPolicy", "classmusx_1_1dom_1_1Document.html#a5b93af4a8022dfce8ac7cc7a59d48041", null ],
+    [ "getPlaybackResources", "classmusx_1_1dom_1_1Document.html#a14a8cc5d18c8384937160491d739a6f2", null ],
     [ "getRehearsalMarkInfo", "classmusx_1_1dom_1_1Document.html#aa6fb1d13a5b205383fc88d19b0148343", null ],
     [ "getScoreDurationSeconds", "classmusx_1_1dom_1_1Document.html#a2704d8f219e493a359e31865b1c338ab", null ],
     [ "getScrollViewStaves", "classmusx_1_1dom_1_1Document.html#aaa777b3635d7f5c40c9dc99ccdedbac2", null ],

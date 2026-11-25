@@ -140,6 +140,8 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getNoteIndex</b> ()
 <tr class="memdesc:ab85bfba4441f7a7a45cb2dfb1f61a729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this note displays an accidental in the requested pitch context.  <br /></td></tr>
 <tr class="memitem:a2c725e14e257f68e2c7600a8540b7457" id="r_a2c725e14e257f68e2c7600a8540b7457"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1PercussionNoteInfo.html">others::PercussionNoteInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c725e14e257f68e2c7600a8540b7457">calcPercussionNoteInfo</a> () const</td></tr>
 <tr class="memdesc:a2c725e14e257f68e2c7600a8540b7457"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the percussion note info for this note, if any.  <br /></td></tr>
+<tr class="memitem:a63d5df50ef8820b5e585123ffa1fe5fd" id="r_a63d5df50ef8820b5e585123ffa1fe5fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmusx_1_1dom_1_1PercussionPlaybackKey.html">PercussionPlaybackKey</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63d5df50ef8820b5e585123ffa1fe5fd">calcPercussionPlaybackKey</a> () const</td></tr>
+<tr class="memdesc:a63d5df50ef8820b5e585123ffa1fe5fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the MIDI key that plays this percussion note, using the document's playback resources.  <br /></td></tr>
 <tr class="memitem:a16f03e5030d5d4995c87d9899341ce48" id="r_a16f03e5030d5d4995c87d9899341ce48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmusx_1_1util_1_1NoteInfoPtr_1_1NoteheadInfo.html">NoteheadInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16f03e5030d5d4995c87d9899341ce48">calcNoteheadInfo</a> () const</td></tr>
 <tr class="memdesc:a16f03e5030d5d4995c87d9899341ce48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves the effective font and character used to render this note's notehead, along with any size or position adjustments.  <br /></td></tr>
 <tr class="memitem:a7b7eac61cb13fa0bb409ee448070d288" id="r_a7b7eac61cb13fa0bb409ee448070d288"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b7eac61cb13fa0bb409ee448070d288">calcHasTieStart</a> () const</td></tr>
@@ -778,6 +780,34 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 
 <p>Calculates the percussion note info for this note, if any. </p>
 <dl class="section return"><dt>Returns</dt><dd>If the note is on a percussion staff and has percussion note info assigned, returns it. Otherwise <span class="tt">nullptr</span>. </dd></dl>
+
+</div>
+</div>
+<a id="a63d5df50ef8820b5e585123ffa1fe5fd" name="a63d5df50ef8820b5e585123ffa1fe5fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63d5df50ef8820b5e585123ffa1fe5fd">&#9670;&#160;</a></span>calcPercussionPlaybackKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmusx_1_1dom_1_1PercussionPlaybackKey.html">PercussionPlaybackKey</a> <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a63d5df50ef8820b5e585123ffa1fe5fd">musx::dom::NoteInfoPtr::calcPercussionPlaybackKey</a> </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the MIDI key that plays this percussion note, using the document's playback resources. </p>
+<p>The note's layer selects a playback route from the requested part's <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffPlayData.html">others::StaffPlayData</a>. The route's <a class="el" href="classmusx_1_1dom_1_1others_1_1PlaybackRoute.html#a285b1b56fef97c84c378608469165cdb">others::PlaybackRoute::soundUuid</a> selects a soundmap sound, whose note-name list gives the key for the note's percussion note type. The full note type is matched first, then its base type. See <a class="el" href="classmusx_1_1dom_1_1PlaybackResources.html#ae5fa4470e75310d3425a9dc1673c9821">PlaybackResources::resolvePercussionMidiKey</a>. </p><dl class="section return"><dt>Returns</dt><dd>The 0-based MIDI key, or the link that failed to resolve. </dd></dl>
 
 </div>
 </div>

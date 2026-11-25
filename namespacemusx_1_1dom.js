@@ -857,6 +857,14 @@ var namespacemusx_1_1dom =
     [ "DetailsPool", "classmusx_1_1dom_1_1DetailsPool.html", "classmusx_1_1dom_1_1DetailsPool" ],
     [ "EntryPool", "classmusx_1_1dom_1_1EntryPool.html", "classmusx_1_1dom_1_1EntryPool" ],
     [ "TextsPool", "classmusx_1_1dom_1_1TextsPool.html", "classmusx_1_1dom_1_1TextsPool" ],
+    [ "PlaybackLookupResult", "structmusx_1_1dom_1_1PlaybackLookupResult.html", "structmusx_1_1dom_1_1PlaybackLookupResult" ],
+    [ "SoundmapDescription", "structmusx_1_1dom_1_1SoundmapDescription.html", "structmusx_1_1dom_1_1SoundmapDescription" ],
+    [ "SoundmapSound", "structmusx_1_1dom_1_1SoundmapSound.html", "structmusx_1_1dom_1_1SoundmapSound" ],
+    [ "Soundmap", "classmusx_1_1dom_1_1Soundmap.html", "classmusx_1_1dom_1_1Soundmap" ],
+    [ "CatalogInstrument", "structmusx_1_1dom_1_1CatalogInstrument.html", "structmusx_1_1dom_1_1CatalogInstrument" ],
+    [ "DeviceNoteList", "classmusx_1_1dom_1_1DeviceNoteList.html", "classmusx_1_1dom_1_1DeviceNoteList" ],
+    [ "PercussionPlaybackKey", "structmusx_1_1dom_1_1PercussionPlaybackKey.html", "structmusx_1_1dom_1_1PercussionPlaybackKey" ],
+    [ "PlaybackResources", "classmusx_1_1dom_1_1PlaybackResources.html", "classmusx_1_1dom_1_1PlaybackResources" ],
     [ "ResolvedFontInfo", "structmusx_1_1dom_1_1ResolvedFontInfo.html", "structmusx_1_1dom_1_1ResolvedFontInfo" ],
     [ "ShapeDefInstruction", "structmusx_1_1dom_1_1ShapeDefInstruction.html", "structmusx_1_1dom_1_1ShapeDefInstruction" ],
     [ "BeamNumber", "namespacemusx_1_1dom.html#ade5e6c0e26e13e0d3ea97292c412c4e0", null ],
@@ -888,6 +896,7 @@ var namespacemusx_1_1dom =
     [ "OthersPoolPtr", "namespacemusx_1_1dom.html#a20f81ad376f722220002ed0bc26360d5", null ],
     [ "PageCmper", "namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a", null ],
     [ "PercussionNoteTypeId", "namespacemusx_1_1dom.html#aac6990111364c2683c7770843f131421", null ],
+    [ "PlaybackResourcesPtr", "namespacemusx_1_1dom.html#a1dfc66ce1da8849b6d866b25fde72aa8", null ],
     [ "RehearsalMarkKey", "namespacemusx_1_1dom.html#a9dcea668a276c20431568d684e76d5dc", null ],
     [ "RehearsalMarkMap", "namespacemusx_1_1dom.html#a6af62e7964c950950220a163b60e1f44", null ],
     [ "StaffCmper", "namespacemusx_1_1dom.html#a4bd7b78830863b8e952adb9b160e31cd", null ],
@@ -972,6 +981,10 @@ var namespacemusx_1_1dom =
       [ "Voice2", "namespacemusx_1_1dom.html#a2ce10a96e600e1368dd4b8cefdf12d5ba5fbff2c65b52ee38781d1d81ff11ecb5", null ]
     ] ],
     [ "NoteType", "namespacemusx_1_1dom.html#a3c91ee84b72cc27a2899191d6baee312", null ],
+    [ "NoteTypeMatch", "namespacemusx_1_1dom.html#a862319d25506d357fdb206e6f048223e", [
+      [ "Exact", "namespacemusx_1_1dom.html#a862319d25506d357fdb206e6f048223ea1649aed298f99d587e2eb30c1db5946b", null ],
+      [ "ExactThenBase", "namespacemusx_1_1dom.html#a862319d25506d357fdb206e6f048223ea84fd961f50f8113f6412cb04b968d318", null ]
+    ] ],
     [ "PartVoicingPolicy", "namespacemusx_1_1dom.html#a8ff59967b46549e150ea4f524c00de95", [
       [ "Ignore", "namespacemusx_1_1dom.html#a8ff59967b46549e150ea4f524c00de95afd038fc7f319e48f3115d92bf5bdbef9", null ],
       [ "Apply", "namespacemusx_1_1dom.html#a8ff59967b46549e150ea4f524c00de95a9639e32cab248434a17ab32237cb3b71", null ]
@@ -981,6 +994,18 @@ var namespacemusx_1_1dom =
       [ "Written", "namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398a685710b38fa0c2510fc1079843dec6b9", null ],
       [ "Concert", "namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398a6c8730a0f73d13d796f39d636d3623ae", null ],
       [ "ConcertWithOctavePreference", "namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398a1afe64d57c5b83a1561a43399096ecd7", null ]
+    ] ],
+    [ "PlaybackLookupFailure", "namespacemusx_1_1dom.html#aa4a7d7eef3d4329f61997d57728fd0c8", [
+      [ "ResourcesNotSupplied", "namespacemusx_1_1dom.html#aa4a7d7eef3d4329f61997d57728fd0c8a4a0707d2f5d5a262f69be7453d32ebd8", null ],
+      [ "NotPercussionNote", "namespacemusx_1_1dom.html#aa4a7d7eef3d4329f61997d57728fd0c8a5007d81c8a42590a9e752424ed612c20", null ],
+      [ "NoPlaybackRoute", "namespacemusx_1_1dom.html#aa4a7d7eef3d4329f61997d57728fd0c8a18fa609655f21c3cd794f87db18fb0b6", null ],
+      [ "NoSoundUuid", "namespacemusx_1_1dom.html#aa4a7d7eef3d4329f61997d57728fd0c8ae8dac0ac6d20168c5b5a4b1db510f972", null ],
+      [ "SoundNotFound", "namespacemusx_1_1dom.html#aa4a7d7eef3d4329f61997d57728fd0c8ad9f3a95f508e87533002e2344fdc536e", null ],
+      [ "SoundmapNotFound", "namespacemusx_1_1dom.html#aa4a7d7eef3d4329f61997d57728fd0c8a2e390309d55c2879b55b375afde6dae7", null ],
+      [ "NoPercussionMidiMap", "namespacemusx_1_1dom.html#aa4a7d7eef3d4329f61997d57728fd0c8a5dc46aa1c647861fd5d5d9e612def870", null ],
+      [ "DeviceFileNotSupplied", "namespacemusx_1_1dom.html#aa4a7d7eef3d4329f61997d57728fd0c8a507bdef881c3fb41859661194a170147", null ],
+      [ "NoteListNotFound", "namespacemusx_1_1dom.html#aa4a7d7eef3d4329f61997d57728fd0c8a6decafd88e38be141bc06d8d6566599a", null ],
+      [ "NoteTypeNotListed", "namespacemusx_1_1dom.html#aa4a7d7eef3d4329f61997d57728fd0c8a67487e88f4e58e3f7b508948c58ddbfa", null ]
     ] ],
     [ "ShapeDefInstructionType", "namespacemusx_1_1dom.html#a93764339b56e531ea37af5181b20b113", [
       [ "Undocumented", "namespacemusx_1_1dom.html#a93764339b56e531ea37af5181b20b113afcb2132b65cdd119b19be66fbc3622e2", null ],
@@ -1064,6 +1089,7 @@ var namespacemusx_1_1dom =
     [ "MAX_ALTERATIONS", "namespacemusx_1_1dom.html#a077fc40e1a52fb0aa59a78a138133ae5", null ],
     [ "MAX_CUE_PERCENTAGE", "namespacemusx_1_1dom.html#a31c92a4751443e096b5a99100828f6e0", null ],
     [ "MAX_LAYERS", "namespacemusx_1_1dom.html#a83d296c53df0e81b30707dfd6210b77b", null ],
+    [ "MAX_MIDI_KEY", "namespacemusx_1_1dom.html#acee3abf19df988af18f57df72d3af2fd", null ],
     [ "MUSX_GLOBALS_CMPER", "namespacemusx_1_1dom.html#a484882ede2c8bb64570f45fce4c0edef", null ],
     [ "SCORE_PARTID", "namespacemusx_1_1dom.html#a5dd453394b3375a5be17055a82ddd9f0", null ],
     [ "SPECIAL_PART_EXTRACTION_SYSTEM_ID", "namespacemusx_1_1dom.html#af126d786c0d562de2e24d358782dea9e", null ],
