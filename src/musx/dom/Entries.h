@@ -31,7 +31,7 @@
 #include "BaseClasses.h"
 #include "CommonClasses.h"
 #include "PlaybackResources.h"
- // do not add other dom class dependencies. Use Implementations.h for implementations that need total class access.
+ // do not add other dom class dependencies. Use Entries.cpp for implementations that need total class access.
 
 namespace music_theory {
 enum class NoteName : int;
@@ -557,6 +557,24 @@ struct StaffPositionPitchOptions
 {
     PitchMode pitchMode{ PitchMode::CurrentView }; ///< The pitch representation to calculate.
     std::optional<int> actualAlteration{}; ///< Optional alteration relative to the natural note name, in EDO divisions.
+    std::optional<StaffCmper> forStaffId{}; ///< Overrides the entry's staff, as for a cross-staffed rest.
+};
+
+/// @struct EffectiveClef
+/// @brief The clef in effect for an entry or note, and the staff it is drawn on.
+struct EffectiveClef
+{
+    MusxInstance<others::StaffComposite> staff; ///< The staff the entry or note is drawn on, at the entry's position.
+    ClefIndex clefIndex{};                      ///< The clef index for the requested pitch mode, at the entry's position.
+    bool forWrittenPitch{};                     ///< True if #clefIndex is the written (transposed) clef.
+
+    /// @brief Calculates the clef's type and octave as #staff reads it. (See @ref options::ClefOptions::ClefDef::calcInfo.)
+    /// @throws std::logic_error if #staff is null or the document has no clef options.
+    /// @throws std::out_of_range if #clefIndex has no clef definition.
+    [[nodiscard]] ClefInfo calcInfo() const;
+
+    /// @brief True if the staff was found.
+    explicit operator bool() const noexcept { return staff != nullptr; }
 };
 
 /// @struct NotePropertiesOptions
@@ -694,10 +712,21 @@ public:
     /// @brief Get the key signature of the entry
     [[nodiscard]] MusxInstance<KeySignature> getKeySignature() const;
 
+    /// @brief Calculates the clef in effect for the entry.
+    ///
+    /// Entries do not cross staves themselves. Use NoteInfoPtr::calcEffectiveClef for a note or a rest's note,
+    /// or pass #calcCrossedStaffForAll for an entry whose notes all cross to one staff.
+    /// @param pitchMode The pitch representation, which decides between the written and concert clef.
+    /// @param forStaffId Overrides the entry's staff, as when its notes are cross-staffed. A staff other than the entry's own
+    /// gives that staff's clef at the entry's position.
+    [[nodiscard]]
+    EffectiveClef calcEffectiveClef(PitchMode pitchMode = PitchMode::CurrentView, const std::optional<StaffCmper>& forStaffId = std::nullopt) const;
+
     /**
      * @brief Calculates the pitch at a staff position using the entry's effective key and clef.
      * @param staffPosition Staff position relative to the staff reference line.
-     * @param options Calculation options, including pitch representation and optional actual alteration.
+     * @param options Calculation options, including pitch representation, optional actual alteration, and an optional staff
+     * whose clef reads the position.
      * @return The spelled pitch at the staff position.
      */
     [[nodiscard]]
@@ -1876,6 +1905,12 @@ public:
     /// @brief Calculates the staff number, taking into account cross staffing
     [[nodiscard]]
     StaffCmper calcStaff() const;
+
+    /// @brief Calculates the clef in effect for the note, on the staff it is drawn on. (See #calcStaff.)
+    /// @param pitchMode The pitch representation, which decides between the written and concert clef.
+    /// @param alwaysUseEntryStaff If true, ignore cross-staffing and use the entry's staff.
+    [[nodiscard]]
+    EffectiveClef calcEffectiveClef(PitchMode pitchMode = PitchMode::CurrentView, bool alwaysUseEntryStaff = false) const;
 
     /// @brief Creates a transposer for this Note instance.
     /// @return A unique pointer to a transposer for this Note.
