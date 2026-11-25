@@ -261,6 +261,7 @@ var annotated_dup =
         [ "Note", "classmusx_1_1dom_1_1Note.html", "classmusx_1_1dom_1_1Note" ],
         [ "Entry", "classmusx_1_1dom_1_1Entry.html", "classmusx_1_1dom_1_1Entry" ],
         [ "StaffPositionPitchOptions", "structmusx_1_1dom_1_1StaffPositionPitchOptions.html", "structmusx_1_1dom_1_1StaffPositionPitchOptions" ],
+        [ "EffectiveClef", "structmusx_1_1dom_1_1EffectiveClef.html", "structmusx_1_1dom_1_1EffectiveClef" ],
         [ "NotePropertiesOptions", "structmusx_1_1dom_1_1NotePropertiesOptions.html", "structmusx_1_1dom_1_1NotePropertiesOptions" ],
         [ "EntryInfoPtr", "classmusx_1_1dom_1_1EntryInfoPtr.html", "classmusx_1_1dom_1_1EntryInfoPtr" ],
         [ "EntryFrame", "classmusx_1_1dom_1_1EntryFrame.html", "classmusx_1_1dom_1_1EntryFrame" ],

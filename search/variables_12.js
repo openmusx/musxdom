@@ -217,7 +217,7 @@ var searchData=
   ['sslinestylecmptabbendcurve_214',['ssLineStyleCmpTabBendCurve',['../classmusx_1_1dom_1_1options_1_1SmartShapeOptions.html#a6b7b745165be2ea8cd41f57581ebbe7e',1,'musx::dom::options::SmartShapeOptions']]],
   ['sslinestylecmptabslide_215',['ssLineStyleCmpTabSlide',['../classmusx_1_1dom_1_1options_1_1SmartShapeOptions.html#a195895e862b10ee978cf09f6262896a2',1,'musx::dom::options::SmartShapeOptions']]],
   ['ssyspercent_216',['ssysPercent',['../classmusx_1_1dom_1_1others_1_1StaffSystem.html#aec711ca381bda08d575d58f1bcfc77bf',1,'musx::dom::others::StaffSystem']]],
-  ['staff_217',['staff',['../classmusx_1_1dom_1_1details_1_1CrossStaff.html#aac57de188728a33e31b3f09a1320e30a',1,'musx::dom::details::CrossStaff']]],
+  ['staff_217',['staff',['../classmusx_1_1dom_1_1details_1_1CrossStaff.html#aac57de188728a33e31b3f09a1320e30a',1,'musx::dom::details::CrossStaff::staff'],['../structmusx_1_1dom_1_1EffectiveClef.html#a89bd31bd5c14ff976ecd8409a0b82232',1,'musx::dom::EffectiveClef::staff']]],
   ['staff_5fpositions_5fper_5fhalf_5fspace_218',['STAFF_POSITIONS_PER_HALF_SPACE',['../namespacemusx_1_1dom.html#ae2a20f4d56faebb52535a834b90eb540',1,'musx::dom']]],
   ['staff_5fpositions_5fper_5fspace_219',['STAFF_POSITIONS_PER_SPACE',['../namespacemusx_1_1dom.html#a966d0121d6b06e553e22ad6960df9b1b',1,'musx::dom']]],
   ['staff_5fset_5f1_5fsystem_5fid_220',['STAFF_SET_1_SYSTEM_ID',['../namespacemusx_1_1dom.html#a4b9366303184d73bffbde1123caeb358',1,'musx::dom']]],

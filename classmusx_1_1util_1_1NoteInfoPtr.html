@@ -163,6 +163,8 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getNoteIndex</b> ()
 <tr class="memitem:a47410cd12a40e392c789ffc3c265b264" id="r_a47410cd12a40e392c789ffc3c265b264"><td class="memItemLeft" align="right" valign="top"><a id="a47410cd12a40e392c789ffc3c265b264" name="a47410cd12a40e392c789ffc3c265b264"></a>
 <a class="el" href="namespacemusx_1_1dom.html#a4bd7b78830863b8e952adb9b160e31cd">StaffCmper</a>&#160;</td><td class="memItemRight" valign="bottom"><b>calcStaff</b> () const</td></tr>
 <tr class="memdesc:a47410cd12a40e392c789ffc3c265b264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the staff number, taking into account cross staffing. <br /></td></tr>
+<tr class="memitem:a2bbf410c2b25e170bfa6610724f12ac9" id="r_a2bbf410c2b25e170bfa6610724f12ac9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmusx_1_1dom_1_1EffectiveClef.html">EffectiveClef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2bbf410c2b25e170bfa6610724f12ac9">calcEffectiveClef</a> (<a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398">PitchMode</a> pitchMode=<a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398a0927f41ac54c89b52ea38691ce7e9696">PitchMode::CurrentView</a>, bool alwaysUseEntryStaff=false) const</td></tr>
+<tr class="memdesc:a2bbf410c2b25e170bfa6610724f12ac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the clef in effect for the note, on the staff it is drawn on. (See <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a47410cd12a40e392c789ffc3c265b264" title="Calculates the staff number, taking into account cross staffing.">calcStaff</a>.).  <br /></td></tr>
 <tr class="memitem:afc49802bc77032c3e6990acb8c3a9f9d" id="r_afc49802bc77032c3e6990acb8c3a9f9d"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classmusic__theory_1_1Transposer.html">music_theory::Transposer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc49802bc77032c3e6990acb8c3a9f9d">createTransposer</a> () const</td></tr>
 <tr class="memdesc:afc49802bc77032c3e6990acb8c3a9f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a transposer for this <a class="el" href="classmusx_1_1dom_1_1Note.html" title="Represents a single note element in an entry.">Note</a> instance.  <br /></td></tr>
 <tr class="memitem:af5fcf2f36d580ace7c9c110e71b724fe" id="r_af5fcf2f36d580ace7c9c110e71b724fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#af96307ed369138a67d004695055e894d">NoteInfoPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5fcf2f36d580ace7c9c110e71b724fe">getNext</a> () const</td></tr>
@@ -376,6 +378,44 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>calcIsIncludedInVoici
 <li>int: the enharmonic equivalent's alteration value relative to the key signature. </li>
 </ul>
 </dd></dl>
+
+</div>
+</div>
+<a id="a2bbf410c2b25e170bfa6610724f12ac9" name="a2bbf410c2b25e170bfa6610724f12ac9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bbf410c2b25e170bfa6610724f12ac9">&#9670;&#160;</a></span>calcEffectiveClef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmusx_1_1dom_1_1EffectiveClef.html">EffectiveClef</a> <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a2bbf410c2b25e170bfa6610724f12ac9">musx::dom::NoteInfoPtr::calcEffectiveClef</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398">PitchMode</a></td>          <td class="paramname"><span class="paramname"><em>pitchMode</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398a0927f41ac54c89b52ea38691ce7e9696">PitchMode::CurrentView</a></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>alwaysUseEntryStaff</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the clef in effect for the note, on the staff it is drawn on. (See <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a47410cd12a40e392c789ffc3c265b264" title="Calculates the staff number, taking into account cross staffing.">calcStaff</a>.). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pitchMode</td><td>The pitch representation, which decides between the written and concert clef. </td></tr>
+    <tr><td class="paramname">alwaysUseEntryStaff</td><td>If true, ignore cross-staffing and use the entry's staff. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

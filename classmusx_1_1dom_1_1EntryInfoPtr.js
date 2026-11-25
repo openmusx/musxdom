@@ -20,6 +20,7 @@ var classmusx_1_1dom_1_1EntryInfoPtr =
     [ "calcCrossedStaffForAll", "classmusx_1_1dom_1_1EntryInfoPtr.html#ac7ca81e419c833fc4e3c896c9a430041", null ],
     [ "calcCrossStaffDirectionForAll", "classmusx_1_1dom_1_1EntryInfoPtr.html#ab3bc2e754d93395c71759df365142d8e", null ],
     [ "calcDisplaysAsRest", "classmusx_1_1dom_1_1EntryInfoPtr.html#a91dd4f09e8c863732cfa52f13275995b", null ],
+    [ "calcEffectiveClef", "classmusx_1_1dom_1_1EntryInfoPtr.html#a9d42065ea4343490f3a6e23a30a6c734", null ],
     [ "calcEntrySize", "classmusx_1_1dom_1_1EntryInfoPtr.html#aad8efac3646d0cfc7b3c193691b003e7", null ],
     [ "calcEntryStemSettings", "classmusx_1_1dom_1_1EntryInfoPtr.html#a1488efaf45f336465104bfb8f42349eb", null ],
     [ "calcGlobalActualDuration", "classmusx_1_1dom_1_1EntryInfoPtr.html#aefab62e48990cb691af5a4975e102989", null ],

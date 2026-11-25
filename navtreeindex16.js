@@ -1,5 +1,9 @@
 var NAVTREEINDEX16 =
 {
+"classmusx_1_1dom_1_1others_1_1ArticulationDef.html#abf40637f5c0f246bfdfe40603bf9a5cc":[1,0,1,0,1,18,2],
+"classmusx_1_1dom_1_1others_1_1ArticulationDef.html#abf40637f5c0f246bfdfe40603bf9a5cc":[2,0,1,0,1,18,2],
+"classmusx_1_1dom_1_1others_1_1ArticulationDef.html#abf40637f5c0f246bfdfe40603bf9a5cca06ce2a25e5d12c166a36f654dbea6012":[1,0,1,0,1,18,2,1],
+"classmusx_1_1dom_1_1others_1_1ArticulationDef.html#abf40637f5c0f246bfdfe40603bf9a5cca06ce2a25e5d12c166a36f654dbea6012":[2,0,1,0,1,18,2,1],
 "classmusx_1_1dom_1_1others_1_1ArticulationDef.html#abf40637f5c0f246bfdfe40603bf9a5cca6adf97f83acf6453d4a6a4b1070f3754":[1,0,1,0,1,18,2,0],
 "classmusx_1_1dom_1_1others_1_1ArticulationDef.html#abf40637f5c0f246bfdfe40603bf9a5cca6adf97f83acf6453d4a6a4b1070f3754":[2,0,1,0,1,18,2,0],
 "classmusx_1_1dom_1_1others_1_1ArticulationDef.html#abf40637f5c0f246bfdfe40603bf9a5ccac1b5fa03ecdb95d4a45dd1c40b02527f":[1,0,1,0,1,18,2,2],
@@ -245,9 +249,5 @@ var NAVTREEINDEX16 =
 "classmusx_1_1dom_1_1others_1_1FontDefinition.html":[1,0,1,0,1,25],
 "classmusx_1_1dom_1_1others_1_1FontDefinition.html":[2,0,1,0,1,25],
 "classmusx_1_1dom_1_1others_1_1FontDefinition.html#a38921f40d000ea7597e1485f6726e0b7":[1,0,1,0,1,25,4],
-"classmusx_1_1dom_1_1others_1_1FontDefinition.html#a38921f40d000ea7597e1485f6726e0b7":[2,0,1,0,1,25,4],
-"classmusx_1_1dom_1_1others_1_1FontDefinition.html#a4370bbd2dead1871485c45ebc811f16b":[1,0,1,0,1,25,2],
-"classmusx_1_1dom_1_1others_1_1FontDefinition.html#a4370bbd2dead1871485c45ebc811f16b":[2,0,1,0,1,25,2],
-"classmusx_1_1dom_1_1others_1_1FontDefinition.html#a5ab1f7c8015fbf95b296fdf824cacdb5":[1,0,1,0,1,25,1],
-"classmusx_1_1dom_1_1others_1_1FontDefinition.html#a5ab1f7c8015fbf95b296fdf824cacdb5":[2,0,1,0,1,25,1]
+"classmusx_1_1dom_1_1others_1_1FontDefinition.html#a38921f40d000ea7597e1485f6726e0b7":[2,0,1,0,1,25,4]
 };

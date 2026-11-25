@@ -159,6 +159,8 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getIndexInFrame</b>
 <tr class="memitem:a91de76e696c547eccfe0bf49ae82c7ed" id="r_a91de76e696c547eccfe0bf49ae82c7ed"><td class="memItemLeft" align="right" valign="top"><a id="a91de76e696c547eccfe0bf49ae82c7ed" name="a91de76e696c547eccfe0bf49ae82c7ed"></a>
 <a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1KeySignature.html">KeySignature</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getKeySignature</b> () const</td></tr>
 <tr class="memdesc:a91de76e696c547eccfe0bf49ae82c7ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the key signature of the entry. <br /></td></tr>
+<tr class="memitem:a9d42065ea4343490f3a6e23a30a6c734" id="r_a9d42065ea4343490f3a6e23a30a6c734"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmusx_1_1dom_1_1EffectiveClef.html">EffectiveClef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d42065ea4343490f3a6e23a30a6c734">calcEffectiveClef</a> (<a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398">PitchMode</a> pitchMode=<a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398a0927f41ac54c89b52ea38691ce7e9696">PitchMode::CurrentView</a>, const std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a4bd7b78830863b8e952adb9b160e31cd">StaffCmper</a> &gt; &amp;forStaffId=std::nullopt) const</td></tr>
+<tr class="memdesc:a9d42065ea4343490f3a6e23a30a6c734"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the clef in effect for the entry.  <br /></td></tr>
 <tr class="memitem:a04fc99dfd301ecc9a196471f4903b9a2" id="r_a04fc99dfd301ecc9a196471f4903b9a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmusic__theory_1_1Pitch.html">music_theory::Pitch</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04fc99dfd301ecc9a196471f4903b9a2">calcPitchFromStaffPosition</a> (int staffPosition, <a class="el" href="structmusx_1_1dom_1_1StaffPositionPitchOptions.html">StaffPositionPitchOptions</a> <a class="el" href="namespacemusx_1_1dom_1_1options.html">options</a>={}) const</td></tr>
 <tr class="memdesc:a04fc99dfd301ecc9a196471f4903b9a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the pitch at a staff position using the entry's effective key and clef.  <br /></td></tr>
 <tr class="memitem:a2e66f9a4903c145849fd1d908ff14dab" id="r_a2e66f9a4903c145849fd1d908ff14dab"><td class="memItemLeft" align="right" valign="top"><a id="a2e66f9a4903c145849fd1d908ff14dab" name="a2e66f9a4903c145849fd1d908ff14dab"></a>
@@ -657,6 +659,44 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Calculates if an entry displays as a rest. </p>
 <p>This function takes voiced parts into account if the document's <a class="el" href="namespacemusx_1_1dom.html#a8ff59967b46549e150ea4f524c00de95" title="Controls whether Finale-style part voicing is applied when iterating entries via musx::dom::details::...">PartVoicingPolicy</a> applies part voicing. </p>
+
+</div>
+</div>
+<a id="a9d42065ea4343490f3a6e23a30a6c734" name="a9d42065ea4343490f3a6e23a30a6c734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d42065ea4343490f3a6e23a30a6c734">&#9670;&#160;</a></span>calcEffectiveClef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmusx_1_1dom_1_1EffectiveClef.html">EffectiveClef</a> musx::dom::EntryInfoPtr::calcEffectiveClef </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398">PitchMode</a></td>          <td class="paramname"><span class="paramname"><em>pitchMode</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacemusx_1_1dom.html#a652018b9275f7a37b1a022e5d3f3b398a0927f41ac54c89b52ea38691ce7e9696">PitchMode::CurrentView</a></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a4bd7b78830863b8e952adb9b160e31cd">StaffCmper</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>forStaffId</em></span><span class="paramdefsep"> = </span><span class="paramdefval">std::nullopt</span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the clef in effect for the entry. </p>
+<p>Entries do not cross staves themselves. Use <a class="el" href="classmusx_1_1dom_1_1NoteInfoPtr.html#a2bbf410c2b25e170bfa6610724f12ac9" title="Calculates the clef in effect for the note, on the staff it is drawn on. (See calcStaff....">NoteInfoPtr::calcEffectiveClef</a> for a note or a rest's note, or pass <a class="el" href="#ac7ca81e419c833fc4e3c896c9a430041" title="Calculates all the notes in this entry are crossed to the same staff.">calcCrossedStaffForAll</a> for an entry whose notes all cross to one staff. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pitchMode</td><td>The pitch representation, which decides between the written and concert clef. </td></tr>
+    <tr><td class="paramname">forStaffId</td><td>Overrides the entry's staff, as when its notes are cross-staffed. A staff other than the entry's own gives that staff's clef at the entry's position. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1329,7 +1369,7 @@ Static Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">staffPosition</td><td>Staff position relative to the staff reference line. </td></tr>
-    <tr><td class="paramname">options</td><td>Calculation options, including pitch representation and optional actual alteration. </td></tr>
+    <tr><td class="paramname">options</td><td>Calculation options, including pitch representation, optional actual alteration, and an optional staff whose clef reads the position. </td></tr>
   </table>
   </dd>
 </dl>

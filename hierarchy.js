@@ -351,6 +351,7 @@ var hierarchy =
     [ "musx::factory::DocumentFactory", "classmusx_1_1factory_1_1DocumentFactory.html", null ],
     [ "musx::dom::ShapeDefInstruction::DrawChar", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1DrawChar.html", null ],
     [ "musx::util::ShapeDefInstruction::DrawChar", "structmusx_1_1util_1_1ShapeDefInstruction_1_1DrawChar.html", null ],
+    [ "musx::dom::EffectiveClef", "structmusx_1_1dom_1_1EffectiveClef.html", null ],
     [ "musx::dom::LyricsSyllableInfo::ElisionRun", "classmusx_1_1dom_1_1LyricsSyllableInfo_1_1ElisionRun.html", null ],
     [ "musx::dom::ShapeDefInstruction::Ellipse", "structmusx_1_1dom_1_1ShapeDefInstruction_1_1Ellipse.html", null ],
     [ "musx::util::ShapeDefInstruction::Ellipse", "structmusx_1_1util_1_1ShapeDefInstruction_1_1Ellipse.html", null ],

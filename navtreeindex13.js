@@ -1,5 +1,9 @@
 var NAVTREEINDEX13 =
 {
+"classmusx_1_1dom_1_1options_1_1MusicSymbolOptions.html#aedcc17928eb5cedea10c8e4950dd5120":[1,0,1,0,5,16,46],
+"classmusx_1_1dom_1_1options_1_1MusicSymbolOptions.html#aedcc17928eb5cedea10c8e4950dd5120":[2,0,1,0,4,16,46],
+"classmusx_1_1dom_1_1options_1_1MusicSymbolOptions.html#af5ffb8353f5b483d4371ddce9221366e":[1,0,1,0,5,16,19],
+"classmusx_1_1dom_1_1options_1_1MusicSymbolOptions.html#af5ffb8353f5b483d4371ddce9221366e":[2,0,1,0,4,16,19],
 "classmusx_1_1dom_1_1options_1_1MusicSymbolOptions.html#afddd992fb9c4dda5bc88201a16096ba0":[1,0,1,0,5,16,24],
 "classmusx_1_1dom_1_1options_1_1MusicSymbolOptions.html#afddd992fb9c4dda5bc88201a16096ba0":[2,0,1,0,4,16,24],
 "classmusx_1_1dom_1_1options_1_1MusicSymbolOptions.html#afe6053d60bb4f6d250be90012e01b29a":[1,0,1,0,5,16,29],
@@ -245,9 +249,5 @@ var NAVTREEINDEX13 =
 "classmusx_1_1dom_1_1options_1_1SmartShapeOptions.html#a56cd4e97b860e30b3a8eaf383b972932":[1,0,1,0,5,21,8],
 "classmusx_1_1dom_1_1options_1_1SmartShapeOptions.html#a56cd4e97b860e30b3a8eaf383b972932":[2,0,1,0,4,21,8],
 "classmusx_1_1dom_1_1options_1_1SmartShapeOptions.html#a5c73f134a44ff04965bf758d6206e818":[1,0,1,0,5,21,17],
-"classmusx_1_1dom_1_1options_1_1SmartShapeOptions.html#a5c73f134a44ff04965bf758d6206e818":[2,0,1,0,4,21,17],
-"classmusx_1_1dom_1_1options_1_1SmartShapeOptions.html#a681d3730497338c19bfe884c91234a02":[1,0,1,0,5,21,49],
-"classmusx_1_1dom_1_1options_1_1SmartShapeOptions.html#a681d3730497338c19bfe884c91234a02":[2,0,1,0,4,21,49],
-"classmusx_1_1dom_1_1options_1_1SmartShapeOptions.html#a68617bb70576652cecd2ad4179a12751":[1,0,1,0,5,21,19],
-"classmusx_1_1dom_1_1options_1_1SmartShapeOptions.html#a68617bb70576652cecd2ad4179a12751":[2,0,1,0,4,21,19]
+"classmusx_1_1dom_1_1options_1_1SmartShapeOptions.html#a5c73f134a44ff04965bf758d6206e818":[2,0,1,0,4,21,17]
 };

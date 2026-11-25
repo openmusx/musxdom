@@ -341,7 +341,7 @@ var searchData=
   ['sslinestylecmptabslide_338',['ssLineStyleCmpTabSlide',['../classmusx_1_1dom_1_1options_1_1SmartShapeOptions.html#a195895e862b10ee978cf09f6262896a2',1,'musx::dom::options::SmartShapeOptions']]],
   ['ssyspercent_339',['ssysPercent',['../classmusx_1_1dom_1_1others_1_1StaffSystem.html#aec711ca381bda08d575d58f1bcfc77bf',1,'musx::dom::others::StaffSystem']]],
   ['staff_340',['Staff',['../classmusx_1_1dom_1_1others_1_1Staff.html',1,'musx::dom::others::Staff'],['../classmusx_1_1dom_1_1others_1_1Staff.html#a6b2463c519cd866520ed2116151334b5',1,'musx::dom::others::Staff::Staff()'],['../classmusx_1_1util_1_1Stem.html#ad5abaa9741932f4057cd10dac6caf33ca8f7f93630c366dc55aec88eb8e9640d0',1,'musx::util::Stem::Staff']]],
-  ['staff_341',['staff',['../classmusx_1_1dom_1_1details_1_1CrossStaff.html#aac57de188728a33e31b3f09a1320e30a',1,'musx::dom::details::CrossStaff']]],
+  ['staff_341',['staff',['../classmusx_1_1dom_1_1details_1_1CrossStaff.html#aac57de188728a33e31b3f09a1320e30a',1,'musx::dom::details::CrossStaff::staff'],['../structmusx_1_1dom_1_1EffectiveClef.html#a89bd31bd5c14ff976ecd8409a0b82232',1,'musx::dom::EffectiveClef::staff']]],
   ['staff_5fpositions_5fper_5fhalf_5fspace_342',['STAFF_POSITIONS_PER_HALF_SPACE',['../namespacemusx_1_1dom.html#ae2a20f4d56faebb52535a834b90eb540',1,'musx::dom']]],
   ['staff_5fpositions_5fper_5fspace_343',['STAFF_POSITIONS_PER_SPACE',['../namespacemusx_1_1dom.html#a966d0121d6b06e553e22ad6960df9b1b',1,'musx::dom']]],
   ['staff_5fset_5f1_5fsystem_5fid_344',['STAFF_SET_1_SYSTEM_ID',['../namespacemusx_1_1dom.html#a4b9366303184d73bffbde1123caeb358',1,'musx::dom']]],
