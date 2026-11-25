@@ -130,6 +130,46 @@ void collectNoteLists(const xml::XmlElementPtr& element, const std::string& file
     }
 }
 
+std::optional<int> parseInt(const std::string& text)
+{
+    const bool signedText = !text.empty() && (text.front() == '-' || text.front() == '+');
+    const auto digits = signedText ? text.substr(1) : text;
+    if (digits.empty() || digits.find_first_not_of("0123456789") != std::string::npos) {
+        return std::nullopt;
+    }
+    try {
+        return std::stoi(text);
+    } catch (const std::out_of_range&) {
+        return std::nullopt;
+    }
+}
+
+void collectInstruments(const xml::XmlElementPtr& root, const std::string& fileName, std::vector<dom::CatalogInstrument>& result)
+{
+    for (auto element = root->getFirstChildElement("Instrument"); element; element = element->getNextSibling("Instrument")) {
+        const auto required = [&](const char* name) {
+            auto value = attributeText(element, name);
+            if (value.empty()) {
+                throw std::invalid_argument("Instrument catalog file \"" + fileName + "\" has an <Instrument> without " + name + ".");
+            }
+            return value;
+        };
+        dom::CatalogInstrument instrument;
+        instrument.uuid = required("uuid");
+        instrument.name = required("name");
+        instrument.fullName = required("fullName");
+        instrument.clef = required("clef");
+        instrument.notation = required("notation");
+        const auto transposition = parseInt(required("transposition"));
+        if (!transposition) {
+            throw std::invalid_argument("Instrument catalog file \"" + fileName
+                + "\" has an <Instrument> whose transposition is not an integer.");
+        }
+        instrument.transposition = *transposition;
+        result.push_back(std::move(instrument));
+    }
+}
+
 } // namespace
 
 void PlaybackResourcesFactory::validateRoot(const xml::IXmlDocument& xmlDocument, const PlaybackResourceFile& file, const char* rootName)
@@ -140,22 +180,30 @@ void PlaybackResourcesFactory::validateRoot(const xml::IXmlDocument& xmlDocument
     }
 }
 
-dom::PlaybackResourcesPtr PlaybackResourcesFactory::createFromXml(const ParsedFiles& soundmaps, const ParsedFiles& deviceAnnotations)
+dom::PlaybackResourcesPtr PlaybackResourcesFactory::createFromXml(const ParsedFiles& soundmaps, const ParsedFiles& deviceAnnotations,
+    const ParsedFiles& instrumentCatalogs)
 {
     std::vector<dom::Soundmap> parsedSoundmaps;
     parsedSoundmaps.reserve(soundmaps.size());
     for (const auto& soundmap : soundmaps) {
         parsedSoundmaps.push_back(parseSoundmap(soundmap.second->getRootElement(), parsedSoundmaps.size()));
     }
+    std::vector<std::string> deviceFileNames;
     std::vector<dom::DeviceNoteList> noteLists;
     for (const auto& [fileName, xmlDocument] : deviceAnnotations) {
         const std::string deviceFileName(dom::PlaybackResources::getDeviceFileName(fileName));
         if (deviceFileName.empty()) {
             continue;
         }
+        deviceFileNames.push_back(deviceFileName);
         collectNoteLists(xmlDocument->getRootElement(), deviceFileName, noteLists);
     }
-    return dom::PlaybackResourcesPtr(new dom::PlaybackResources(std::move(parsedSoundmaps), std::move(noteLists)));
+    std::vector<dom::CatalogInstrument> instruments;
+    for (const auto& [fileName, xmlDocument] : instrumentCatalogs) {
+        collectInstruments(xmlDocument->getRootElement(), fileName, instruments);
+    }
+    return dom::PlaybackResourcesPtr(
+        new dom::PlaybackResources(std::move(parsedSoundmaps), std::move(deviceFileNames), std::move(noteLists), std::move(instruments)));
 }
 
 } // namespace factory

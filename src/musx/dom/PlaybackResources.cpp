@@ -21,6 +21,7 @@
  */
 #include <algorithm>
 #include <cctype>
+#include <stdexcept>
 
 #include "musx/musx.h"
 
@@ -62,7 +63,7 @@ Soundmap::Soundmap(SoundmapDescription description, std::vector<SoundmapSound> s
         m_soundsById.try_emplace(m_sounds[index].id, index);
     }
     for (const auto& [instrumentUuid, soundRef] : instrumentSoundRefs) {
-        m_soundRefsByInstrument.try_emplace(normalizeUuid(instrumentUuid), std::string(trimView(soundRef)));
+        m_soundRefsByInstrument[normalizeUuid(instrumentUuid)].emplace_back(trimView(soundRef));
     }
 }
 
@@ -74,8 +75,15 @@ const SoundmapSound* Soundmap::findSoundById(std::string_view soundId) const
 
 std::string_view Soundmap::findInstrumentSoundRef(std::string_view instrumentUuid) const
 {
+    const auto& refs = getInstrumentSoundRefs(instrumentUuid);
+    return refs.empty() ? std::string_view{} : std::string_view(refs.front());
+}
+
+const std::vector<std::string>& Soundmap::getInstrumentSoundRefs(std::string_view instrumentUuid) const
+{
+    static const std::vector<std::string> noRefs;
     const auto it = m_soundRefsByInstrument.find(normalizeUuid(instrumentUuid));
-    return it == m_soundRefsByInstrument.end() ? std::string_view{} : std::string_view(it->second);
+    return it == m_soundRefsByInstrument.end() ? noRefs : it->second;
 }
 
 // **************************
@@ -123,9 +131,13 @@ std::string_view PlaybackResources::getDeviceFileName(std::string_view path)
     return slash == std::string_view::npos ? path : path.substr(slash + 1);
 }
 
-PlaybackResources::PlaybackResources(std::vector<Soundmap> soundmaps, std::vector<DeviceNoteList> noteLists)
-    : m_soundmaps(std::move(soundmaps)), m_noteLists(std::move(noteLists))
+PlaybackResources::PlaybackResources(std::vector<Soundmap> soundmaps, std::vector<std::string> deviceFileNames,
+    std::vector<DeviceNoteList> noteLists, std::vector<CatalogInstrument> instruments)
+    : m_soundmaps(std::move(soundmaps)), m_noteLists(std::move(noteLists)), m_instruments(std::move(instruments))
 {
+    for (auto& fileName : deviceFileNames) {
+        m_deviceFileNames.insert(std::move(fileName));
+    }
     for (const auto& soundmap : m_soundmaps) {
         for (const auto& sound : soundmap.getSounds()) {
             if (auto uuid = normalizeUuid(sound.uuid); !uuid.empty()) {
@@ -135,7 +147,9 @@ PlaybackResources::PlaybackResources(std::vector<Soundmap> soundmaps, std::vecto
     }
     for (size_t index = 0; index < m_noteLists.size(); ++index) {
         const auto& list = m_noteLists[index];
-        m_deviceFileNames.insert(list.getFileName());
+        MUSX_ASSERT_IF(m_deviceFileNames.find(list.getFileName()) == m_deviceFileNames.end()) {
+            throw std::logic_error("Note-name list \"" + list.getListName() + "\" belongs to a device file that was not supplied.");
+        }
         m_noteListsByName.try_emplace({list.getFileName(), list.getListName()}, index);
     }
 }
@@ -158,19 +172,40 @@ PlaybackLookupResult<SoundmapSound> PlaybackResources::findMappedSound(std::stri
         return {nullptr, PlaybackLookupFailure::ResourcesNotSupplied};
     }
     const auto plugin = trimView(pluginId);
+    if (plugin.empty()) {
+        return {nullptr, PlaybackLookupFailure::SoundNotFound};
+    }
     for (const auto& soundmap : m_soundmaps) {
         if (soundmap.getDescription().pluginId != plugin) {
             continue;
         }
-        const auto soundRef = soundmap.findInstrumentSoundRef(instrumentUuid);
-        if (soundRef.empty()) {
-            continue;
-        }
-        if (const auto* sound = soundmap.findSoundById(soundRef)) {
-            return {sound, std::nullopt};
+        for (const auto& soundRef : soundmap.getInstrumentSoundRefs(instrumentUuid)) {
+            if (const auto* sound = soundmap.findSoundById(soundRef)) {
+                if (!sound->uuid.empty()) {
+                    return {sound, std::nullopt};
+                }
+                break;
+            }
         }
     }
     return {nullptr, PlaybackLookupFailure::SoundNotFound};
+}
+
+PlaybackLookupResult<Soundmap> PlaybackResources::findSoundmap(std::string_view pluginId) const
+{
+    if (isEmpty()) {
+        return {nullptr, PlaybackLookupFailure::ResourcesNotSupplied};
+    }
+    const auto plugin = trimView(pluginId);
+    if (plugin.empty()) {
+        return {nullptr, PlaybackLookupFailure::SoundmapNotFound};
+    }
+    for (const auto& soundmap : m_soundmaps) {
+        if (soundmap.getDescription().pluginId == plugin) {
+            return {&soundmap, std::nullopt};
+        }
+    }
+    return {nullptr, PlaybackLookupFailure::SoundmapNotFound};
 }
 
 PlaybackLookupResult<DeviceNoteList> PlaybackResources::findNoteList(std::string_view fileName, std::string_view listName) const

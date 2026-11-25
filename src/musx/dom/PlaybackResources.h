@@ -59,6 +59,7 @@ enum class PlaybackLookupFailure
     NoPlaybackRoute,        ///< The note's layer has no play data, or its play data names no playback route.
     NoSoundUuid,            ///< The playback route has no sound UUID.
     SoundNotFound,          ///< No supplied soundmap contains the requested sound.
+    SoundmapNotFound,       ///< No supplied soundmap has the requested plugin ID.
     NoPercussionMidiMap,    ///< The sound names no percussion MIDI map or no device file for it.
     DeviceFileNotSupplied,  ///< The device annotation file named by the sound was not supplied.
     NoteListNotFound,       ///< The device annotation file has no note-name list with the requested name.
@@ -143,11 +144,35 @@ public:
     /// @return The trimmed sound id, or empty if the soundmap does not map the instrument.
     [[nodiscard]] std::string_view findInstrumentSoundRef(std::string_view instrumentUuid) const;
 
+    /// @brief Returns every sound id that `<MapSounds>` assigns to an instrument.
+    ///
+    /// Each `<MapSounds>` naming the instrument contributes its first `<Sound ref>`, in file order.
+    /// The instrument UUID is matched as in #findInstrumentSoundRef.
+    /// @param instrumentUuid The instrument UUID.
+    /// @return The trimmed sound ids, or an empty list if the soundmap does not map the instrument.
+    [[nodiscard]] const std::vector<std::string>& getInstrumentSoundRefs(std::string_view instrumentUuid) const;
+
 private:
     SoundmapDescription m_description;
     std::vector<SoundmapSound> m_sounds;
     std::unordered_map<std::string, size_t> m_soundsById;
-    std::unordered_map<std::string, std::string> m_soundRefsByInstrument;
+    std::unordered_map<std::string, std::vector<std::string>> m_soundRefsByInstrument;
+};
+
+/**
+ * @struct CatalogInstrument
+ * @brief One `<Instrument>` in a supplied instrument catalog.
+ *
+ * All text values are trimmed.
+ */
+struct CatalogInstrument
+{
+    std::string uuid;           ///< The instrument's UUID, as spelled in the catalog. (xml attribute is `uuid`)
+    std::string name;           ///< The instrument's internal name. (xml attribute is `name`)
+    std::string fullName;       ///< The instrument's full display name. (xml attribute is `fullName`)
+    std::string clef;           ///< The instrument's clef name, such as `treble`. (xml attribute is `clef`)
+    std::string notation;       ///< The instrument's notation style name, such as `standard`. (xml attribute is `notation`)
+    int transposition{};        ///< Sounding pitch relative to written pitch, in semitones. (xml attribute is `transposition`)
 };
 
 /**
@@ -229,7 +254,7 @@ struct PercussionPlaybackKey
 
 /**
  * @class PlaybackResources
- * @brief Soundmaps and MIDI Device Annotation note-name lists supplied by the caller.
+ * @brief Soundmaps, MIDI Device Annotation note-name lists, and instrument catalog entries supplied by the caller.
  *
  * Create instances with @ref musx::factory::PlaybackResourcesFactory. An instance is immutable and
  * may be shared and used concurrently.
@@ -258,8 +283,18 @@ public:
     /// @brief Returns every supplied note-name list, in caller order and then file order.
     [[nodiscard]] const std::vector<DeviceNoteList>& getDeviceNoteLists() const { return m_noteLists; }
 
-    /// @brief Returns true if no soundmaps and no note-name lists were supplied.
-    [[nodiscard]] bool isEmpty() const { return m_soundmaps.empty() && m_noteLists.empty(); }
+    /// @brief Returns every supplied instrument catalog entry, in caller order and then file order.
+    [[nodiscard]] const std::vector<CatalogInstrument>& getInstruments() const { return m_instruments; }
+
+    /// @brief Returns true if no soundmaps, no device annotation files, and no instrument catalog entries were supplied.
+    [[nodiscard]] bool isEmpty() const
+    { return m_soundmaps.empty() && m_deviceFileNames.empty() && m_noteLists.empty() && m_instruments.empty(); }
+
+    /// @brief Finds the first soundmap, in caller order, whose plugin ID matches.
+    /// @param pluginId The plugin ID to match against @ref SoundmapDescription::pluginId. An empty
+    /// plugin ID matches no soundmap.
+    /// @return The soundmap, or @ref PlaybackLookupFailure::SoundmapNotFound.
+    [[nodiscard]] PlaybackLookupResult<Soundmap> findSoundmap(std::string_view pluginId) const;
 
     /// @brief Finds a sound by UUID across all soundmaps.
     /// @return The sound, or @ref PlaybackLookupFailure::SoundNotFound.
@@ -267,10 +302,12 @@ public:
 
     /// @brief Finds the sound that `<MapSounds>` assigns to an instrument for a playback plugin.
     ///
-    /// Soundmaps are searched in caller order. The first soundmap whose plugin ID matches
-    /// @p pluginId, and whose first `<Sound ref>` for the instrument names one of its sounds, supplies the result.
-    /// See @ref Soundmap::findInstrumentSoundRef.
-    /// @param pluginId The plugin ID to match against @ref SoundmapDescription::pluginId.
+    /// Soundmaps whose plugin ID matches @p pluginId are searched in caller order. Within each, the
+    /// instrument's sound refs are tried in file order (see @ref Soundmap::getInstrumentSoundRefs), and
+    /// the first ref that names one of the soundmap's sounds selects that sound. If the selected sound
+    /// has a non-empty UUID it is the result; otherwise the search continues with the next soundmap.
+    /// @param pluginId The plugin ID to match against @ref SoundmapDescription::pluginId. An empty
+    /// plugin ID matches no soundmap.
     /// @param instrumentUuid The instrument UUID.
     /// @return The sound, or @ref PlaybackLookupFailure::SoundNotFound.
     [[nodiscard]] PlaybackLookupResult<SoundmapSound> findMappedSound(std::string_view pluginId, std::string_view instrumentUuid) const;
@@ -306,10 +343,12 @@ public:
     [[nodiscard]] static std::string_view getDeviceFileName(std::string_view path);
 
 private:
-    PlaybackResources(std::vector<Soundmap> soundmaps, std::vector<DeviceNoteList> noteLists);
+    PlaybackResources(std::vector<Soundmap> soundmaps, std::vector<std::string> deviceFileNames, std::vector<DeviceNoteList> noteLists,
+        std::vector<CatalogInstrument> instruments);
 
     std::vector<Soundmap> m_soundmaps;
     std::vector<DeviceNoteList> m_noteLists;
+    std::vector<CatalogInstrument> m_instruments;
     std::unordered_map<std::string, const SoundmapSound*> m_soundsByUuid;
     std::unordered_set<std::string> m_deviceFileNames;
     std::map<std::pair<std::string, std::string>, size_t> m_noteListsByName;

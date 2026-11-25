@@ -210,7 +210,8 @@ TEST(PlaybackResourcesTest, InvalidInputsThrowWithFileName)
 {
     {
         PlaybackResourceInputs inputs;
-        inputs.soundmaps.emplace_back("broken.soundmap", std::string("<Soundmap><Sound></Soundmap>"));
+        const std::string broken = "<Soundmap><Sound></Soundmap>";
+        inputs.soundmaps.emplace_back("broken.soundmap", broken);
         const auto message = createErrorMessage(inputs);
         EXPECT_NE(message.find("broken.soundmap"), std::string::npos) << message;
     }
@@ -300,6 +301,135 @@ TEST(PlaybackResourcesTest, InstrumentToSound)
     EXPECT_EQ(resources->findMappedSound("TEST", "33333333-0000-4000-8000-000000000003").failure, PlaybackLookupFailure::SoundNotFound);
 }
 
+TEST(PlaybackResourcesTest, MappedSoundUsesFirstResolvedRef)
+{
+    constexpr musxtest::string_view firstMap = R"xml(<?xml version="1.0" encoding="UTF-8"?>
+<Soundmap>
+  <Description><Name>First</Name><PluginID>SKIP</PluginID></Description>
+  <Sound id="No Uuid"><Name>No Uuid</Name></Sound>
+  <Sound id="Usable" uuid="12121212-0000-4000-8000-000000000012"><Name>Usable</Name></Sound>
+  <MapSounds><FinInstrument uuid="11111111-0000-4000-8000-000000000001"/><Sound ref="Missing"/></MapSounds>
+  <MapSounds><FinInstrument uuid="11111111-0000-4000-8000-000000000001"/><Sound ref="Usable"/></MapSounds>
+  <MapSounds><FinInstrument uuid="22222222-0000-4000-8000-000000000002"/><Sound ref="No Uuid"/></MapSounds>
+  <MapSounds><FinInstrument uuid="22222222-0000-4000-8000-000000000002"/><Sound ref="Usable"/></MapSounds>
+</Soundmap>
+)xml";
+    constexpr musxtest::string_view secondMap = R"xml(<?xml version="1.0" encoding="UTF-8"?>
+<Soundmap>
+  <Description><Name>Second</Name><PluginID>SKIP</PluginID></Description>
+  <Sound id="Later" uuid="13131313-0000-4000-8000-000000000013"><Name>Later</Name></Sound>
+  <MapSounds><FinInstrument uuid="22222222-0000-4000-8000-000000000002"/><Sound ref="Later"/></MapSounds>
+</Soundmap>
+)xml";
+    PlaybackResourceInputs inputs;
+    inputs.soundmaps.emplace_back("first.soundmap", firstMap);
+    inputs.soundmaps.emplace_back("second.soundmap", secondMap);
+    const auto resources = PlaybackResourcesFactory::create<musx::xml::tinyxml2::Document>(inputs);
+    ASSERT_TRUE(resources);
+
+    const auto& firstSoundmapRead = resources->getSoundmaps()[0];
+    EXPECT_EQ(firstSoundmapRead.getInstrumentSoundRefs(drumsInstrumentUuid), (std::vector<std::string>{"Missing", "Usable"}));
+    EXPECT_EQ(firstSoundmapRead.findInstrumentSoundRef(drumsInstrumentUuid), "Missing");
+    EXPECT_TRUE(firstSoundmapRead.getInstrumentSoundRefs("33333333-0000-4000-8000-000000000003").empty());
+
+    // A ref naming no sound is passed over in favor of a later <MapSounds> for the instrument.
+    const auto usable = resources->findMappedSound("SKIP", drumsInstrumentUuid);
+    ASSERT_TRUE(usable);
+    EXPECT_EQ(usable.value->id, "Usable");
+
+    // The first resolved sound has no UUID, so the next soundmap for the plugin supplies the result.
+    const auto later = resources->findMappedSound("SKIP", fallbackInstrumentUuid);
+    ASSERT_TRUE(later);
+    EXPECT_EQ(later.value->id, "Later");
+    EXPECT_EQ(later.value->soundmapIndex, 1u);
+
+    EXPECT_EQ(resources->findMappedSound("", drumsInstrumentUuid).failure, PlaybackLookupFailure::SoundNotFound);
+}
+
+TEST(PlaybackResourcesTest, SoundmapByPlugin)
+{
+    const auto resources = createTestResources<musx::xml::tinyxml2::Document>();
+    ASSERT_TRUE(resources);
+
+    const auto first = resources->findSoundmap(" TEST ");
+    ASSERT_TRUE(first);
+    EXPECT_EQ(first.value, &resources->getSoundmaps()[0]);
+    EXPECT_EQ(first.value->getDescription().name, "Test Samples");
+
+    const auto missing = resources->findSoundmap("OTHR");
+    EXPECT_FALSE(missing);
+    EXPECT_EQ(missing.failure, PlaybackLookupFailure::SoundmapNotFound);
+
+    constexpr musxtest::string_view noPluginMap = R"xml(<Soundmap><Description><Name>No Plugin</Name></Description></Soundmap>)xml";
+    PlaybackResourceInputs noPluginInputs;
+    noPluginInputs.soundmaps.emplace_back("no-plugin.soundmap", noPluginMap);
+    const auto noPlugin = PlaybackResourcesFactory::create<musx::xml::tinyxml2::Document>(noPluginInputs);
+    EXPECT_EQ(noPlugin->findSoundmap("").failure, PlaybackLookupFailure::SoundmapNotFound);
+    EXPECT_EQ(noPlugin->findSoundmap("  ").failure, PlaybackLookupFailure::SoundmapNotFound);
+
+    const auto empty = PlaybackResourcesFactory::create<musx::xml::tinyxml2::Document>({});
+    EXPECT_EQ(empty->findSoundmap("TEST").failure, PlaybackLookupFailure::ResourcesNotSupplied);
+}
+
+TEST(PlaybackResourcesTest, InstrumentCatalog)
+{
+    constexpr musxtest::string_view firstCatalog = R"xml(<?xml version="1.0" encoding="UTF-8"?>
+<InstrumentCatalog>
+  <Instrument uuid=" 33333333-0000-4000-8000-000000000003 " name="Horn" fullName="Horn in F" clef="treble" notation="standard" transposition="-7"/>
+  <Instrument uuid="44444444-0000-4000-8000-000000000004" name="Flute" fullName="Flute" clef="treble" notation="standard" transposition="+0"/>
+</InstrumentCatalog>
+)xml";
+    constexpr musxtest::string_view secondCatalog = R"xml(<?xml version="1.0" encoding="UTF-8"?>
+<InstrumentCatalog>
+  <Instrument uuid="55555555-0000-4000-8000-000000000005" name="Drums" fullName="Drum Set" clef="percussion" notation="percussion" transposition="0"/>
+</InstrumentCatalog>
+)xml";
+    PlaybackResourceInputs inputs;
+    inputs.instrumentCatalogs.emplace_back("first.xml", firstCatalog);
+    inputs.instrumentCatalogs.emplace_back("empty.xml", std::string{});
+    inputs.instrumentCatalogs.emplace_back("second.xml", secondCatalog);
+    const auto resources = PlaybackResourcesFactory::create<musx::xml::pugi::Document>(inputs);
+    ASSERT_TRUE(resources);
+    EXPECT_FALSE(resources->isEmpty());
+    EXPECT_TRUE(resources->getSoundmaps().empty());
+
+    const auto& instruments = resources->getInstruments();
+    ASSERT_EQ(instruments.size(), 3u);
+    EXPECT_EQ(instruments[0].uuid, "33333333-0000-4000-8000-000000000003");
+    EXPECT_EQ(instruments[0].name, "Horn");
+    EXPECT_EQ(instruments[0].fullName, "Horn in F");
+    EXPECT_EQ(instruments[0].clef, "treble");
+    EXPECT_EQ(instruments[0].notation, "standard");
+    EXPECT_EQ(instruments[0].transposition, -7);
+    EXPECT_EQ(instruments[1].transposition, 0);
+    EXPECT_EQ(instruments[2].fullName, "Drum Set");
+    EXPECT_EQ(resources->findSoundByUuid(kitUuid).failure, PlaybackLookupFailure::SoundNotFound);
+
+    {
+        PlaybackResourceInputs invalid;
+        invalid.instrumentCatalogs.emplace_back("wrong-root.xml", firstDevice);
+        const auto message = createErrorMessage(invalid);
+        EXPECT_NE(message.find("wrong-root.xml"), std::string::npos) << message;
+        EXPECT_NE(message.find("<InstrumentCatalog>"), std::string::npos) << message;
+    }
+    {
+        PlaybackResourceInputs invalid;
+        const std::string catalog = R"(<InstrumentCatalog><Instrument uuid="x" name="n" clef="treble" notation="standard" transposition="0"/></InstrumentCatalog>)";
+        invalid.instrumentCatalogs.emplace_back("missing.xml", catalog);
+        const auto message = createErrorMessage(invalid);
+        EXPECT_NE(message.find("missing.xml"), std::string::npos) << message;
+        EXPECT_NE(message.find("fullName"), std::string::npos) << message;
+    }
+    {
+        PlaybackResourceInputs invalid;
+        const std::string catalog = R"(<InstrumentCatalog><Instrument uuid="x" name="n" fullName="f" clef="treble" notation="standard" transposition="up"/></InstrumentCatalog>)";
+        invalid.instrumentCatalogs.emplace_back("transposition.xml", catalog);
+        const auto message = createErrorMessage(invalid);
+        EXPECT_NE(message.find("transposition.xml"), std::string::npos) << message;
+        EXPECT_NE(message.find("transposition"), std::string::npos) << message;
+    }
+}
+
 TEST(PlaybackResourcesTest, DeviceNoteLists)
 {
     const auto resources = createTestResources<musx::xml::tinyxml2::Document>();
@@ -338,6 +468,15 @@ TEST(PlaybackResourcesTest, DeviceNoteLists)
     EXPECT_EQ(resources->findNoteList("test device.xml", "Test Kit").failure, PlaybackLookupFailure::DeviceFileNotSupplied);
     EXPECT_EQ(resources->findNoteList("Absent Device.xml", "Test Kit").failure, PlaybackLookupFailure::DeviceFileNotSupplied);
     EXPECT_EQ(resources->findNoteList("Test Device.xml", "No Such List").failure, PlaybackLookupFailure::NoteListNotFound);
+
+    constexpr musxtest::string_view noListsDevice = R"xml(<FinaleNameDocument><Author>Test</Author></FinaleNameDocument>)xml";
+    PlaybackResourceInputs noListsInputs;
+    noListsInputs.deviceAnnotations.emplace_back("Lists/No Lists.xml", noListsDevice);
+    const auto noLists = PlaybackResourcesFactory::create<musx::xml::tinyxml2::Document>(noListsInputs);
+    EXPECT_FALSE(noLists->isEmpty());
+    EXPECT_TRUE(noLists->getDeviceNoteLists().empty());
+    EXPECT_EQ(noLists->findNoteList("No Lists.xml", "Test Kit").failure, PlaybackLookupFailure::NoteListNotFound);
+    EXPECT_EQ(noLists->findNoteList("Other.xml", "Test Kit").failure, PlaybackLookupFailure::DeviceFileNotSupplied);
 }
 
 TEST(PlaybackResourcesTest, PercussionMidiKey)

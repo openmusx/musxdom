@@ -91,6 +91,41 @@ struct PlaybackResourceInputs
     /// `/Library/Application Support/MakeMusic/Finale 27/MIDI Device Annotation/Garritan Instruments for Finale.xml`
     /// matches the name `Garritan Instruments for Finale.xml`.
     std::vector<PlaybackResourceFile> deviceAnnotations;
+    /// @brief Instrument catalog XML files (root `<InstrumentCatalog>`), in priority order. Their names are used only in error messages.
+    ///
+    /// Finale does not ship a file in this form. It is an XML export of the instruments in one of Finale's
+    /// SQLite instrument databases, which a standard Finale 27 installation keeps in these locations. On macOS
+    /// they are inside the application bundle; earlier versions name the bundle `Finale [version].app`.
+    ///
+    /// | Database | macOS | Windows |
+    /// |---|---|---|
+    /// | Instruments used when converting older documents (`2012FileConverter.instruments`) | `/Applications/Finale.app/Contents/PlugIns/2012FileConverter.bundle/Contents/Resources/` | `C:\Program Files\MakeMusic\Finale\27\2012Converter\Resources\` |
+    /// | Instruments of the current version (`Finale.instruments`) | `/Applications/Finale.app/Contents/Resources/` | `C:\Program Files\MakeMusic\Finale\27\Resources\` |
+    ///
+    /// Each file has this layout:
+    ///
+    /// @code{.xml}
+    /// <?xml version="1.0" encoding="utf-8"?>
+    /// <InstrumentCatalog>
+    ///   <Instrument uuid="616b3bf9-58df-4b44-8339-9f66461ac910" name="Horn in F" fullName="Horn in F"
+    ///               clef="treble" notation="standard" transposition="-7"/>
+    ///   <!-- one <Instrument> per instrument -->
+    /// </InstrumentCatalog>
+    /// @endcode
+    ///
+    /// | Attribute | Required value |
+    /// |---|---|
+    /// | `uuid` | The instrument's UUID, the same value a soundmap's `<MapSounds><FinInstrument uuid>` names. @ref dom::PlaybackResources::findMappedSound matches it case-insensitively. |
+    /// | `name` | The instrument's internal name. |
+    /// | `fullName` | The instrument's full staff name. |
+    /// | `clef` | The clef name of the instrument's first staff, such as `treble`, `bass`, `alto`, `treble8vb`, `altpercussion`, `tab1`, or `blank`. |
+    /// | `notation` | The notation style name, such as `standard`, `percussion`, `tab`, or `colornotes`. |
+    /// | `transposition` | A signed decimal integer: sounding pitch minus written pitch, in semitones. For example, `-7` for Horn in F and `0` for a nontransposing instrument. |
+    ///
+    /// Every attribute is required and must be non-empty after trimming; a missing attribute or a
+    /// `transposition` that is not an integer throws. Other attributes and other child elements of the root are
+    /// ignored. Entries are retained in file order; see @ref dom::PlaybackResources::getInstruments.
+    std::vector<PlaybackResourceFile> instrumentCatalogs;
 };
 
 /** @brief Creates @ref dom::PlaybackResources from caller-supplied file contents. */
@@ -106,8 +141,8 @@ public:
      * @tparam XmlDocumentType The @ref xml::IXmlDocument implementation used to parse the files.
      * @param inputs The files to parse.
      * @return The immutable resources.
-     * @throws std::invalid_argument If a file is not well-formed XML or has the wrong root element.
-     * The message names the file.
+     * @throws std::invalid_argument If a file is not well-formed XML or has the wrong root element,
+     * or if an instrument catalog entry lacks a required attribute. The message names the file.
      */
     template <typename XmlDocumentType>
     [[nodiscard]] static dom::PlaybackResourcesPtr create(const PlaybackResourceInputs& inputs)
@@ -139,17 +174,25 @@ public:
                 deviceAnnotations.emplace_back(file.fileName, std::move(xmlDocument));
             }
         }
-        return createFromXml(soundmaps, deviceAnnotations);
+        ParsedFiles instrumentCatalogs;
+        for (const auto& file : inputs.instrumentCatalogs) {
+            if (auto xmlDocument = parse(file, INSTRUMENT_CATALOG_ROOT)) {
+                instrumentCatalogs.emplace_back(file.fileName, std::move(xmlDocument));
+            }
+        }
+        return createFromXml(soundmaps, deviceAnnotations, instrumentCatalogs);
     }
 
 private:
     static constexpr const char* SOUNDMAP_ROOT = "Soundmap";
     static constexpr const char* DEVICE_ANNOTATION_ROOT = "FinaleNameDocument";
+    static constexpr const char* INSTRUMENT_CATALOG_ROOT = "InstrumentCatalog";
 
     using ParsedFiles = std::vector<std::pair<std::string, std::unique_ptr<xml::IXmlDocument>>>;
 
     static void validateRoot(const xml::IXmlDocument& xmlDocument, const PlaybackResourceFile& file, const char* rootName);
-    static dom::PlaybackResourcesPtr createFromXml(const ParsedFiles& soundmaps, const ParsedFiles& deviceAnnotations);
+    static dom::PlaybackResourcesPtr createFromXml(const ParsedFiles& soundmaps, const ParsedFiles& deviceAnnotations,
+        const ParsedFiles& instrumentCatalogs);
 };
 
 } // namespace factory
