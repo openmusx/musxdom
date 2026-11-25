@@ -490,6 +490,14 @@ public:
     /// @brief Calculates the position of the top staff line, relative to the reference line.
     int calcBottomLinePosition() const;
 
+    /// @brief Calculates the positions of the lines a custom staff leaves out between its top and bottom lines.
+    ///
+    /// A custom staff (#customStaff) draws only the lines it lists, so it can omit lines between them. A staff with
+    /// a contiguous set of lines omits none. #hideStaffLines does not omit lines: it hides every line while keeping
+    /// their positions, and this function ignores it.
+    /// @return The staff positions of the omitted lines, relative to the reference line, from top to bottom.
+    [[nodiscard]] std::vector<int> calcOmittedLinePositions() const;
+
     /// @brief Calculates the Evpu position of the bottom staff line, relative to the reference line.
     Evpu calcBottomLineEvpu() const
     { return static_cast<Evpu>(calcBottomLinePosition() * static_cast<int>(EVPU_PER_STAFF_POSITION)); }

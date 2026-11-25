@@ -298,10 +298,17 @@ public:
         bool isBlank() const;
 
         /// @brief Calculates and returns the clef information.
-        /// @param currStaff For most accurate results, pass the current @ref others::StaffComposite instance. If you omit this parameter,
-        /// percussion and tab staves are identified based on the Finale SMuFL default file settings. If you supply it, staves with a notation style
-        /// of tablature always return a tab clef and staves with a notation style of percussion always return a percussion clef. Normal notation style
-        /// detects clefs as if @p currStaff had not been supplied.
+        ///
+        /// A clef whose glyph is a percussion clef is a percussion clef wherever the glyph sits. A clef's character is trusted to be
+        /// a clef glyph, so a character that some symbol fonts use for another glyph still identifies a percussion clef. Pitched notes
+        /// under a percussion clef sit where a clef would put them, and its octave is the octave of the glyph's position above middle C. For a glyph between the
+        /// treble clef's middle C and the middle staff line, that is the number of whole octaves between the clef's middle C and a
+        /// treble clef's.
+        ///
+        /// @param currStaff For most accurate results, pass the current @ref others::StaffComposite instance. If you supply it, staves with
+        /// a notation style of tablature always return a tab clef and staves with a notation style of percussion always return a percussion
+        /// clef, whatever the glyph. Otherwise, percussion clefs are identified by glyph, and clefs with other glyphs are identified by
+        /// position, with percussion and tab clefs at the positions of the Finale SMuFL default file settings.
         /// @return See #ClefInfo.
         ClefInfo calcInfo(const MusxInstance<others::Staff>& currStaff = nullptr) const;
 

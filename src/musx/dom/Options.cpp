@@ -23,6 +23,7 @@
 #include <vector>
 #include <cstdlib>
 #include <exception>
+#include <optional>
 #include <cwctype>
 
 #include "musx/musx.h"
@@ -49,19 +50,31 @@ bool ClefOptions::ClefDef::isBlank() const
 
 ClefOptions::ClefInfo ClefOptions::ClefDef::calcInfo(const MusxInstance<others::Staff>& currStaff) const
 {
-    auto calcPercType = [&]() -> music_theory::ClefType {
+    // The glyph identifies a percussion clef wherever it sits, because Finale draws it at any
+    // position without changing where pitched notes go. A clef's character is trusted to be a clef
+    // glyph: symbol fonts other than Maestro's family use 139 for glyphs no clef would show.
+    auto calcPercGlyphType = [&]() -> std::optional<music_theory::ClefType> {
+        if (isShape) {
+            return std::nullopt;
+        }
         if (auto clefFont = calcFont()) {
             if (clefFont->calcIsSMuFL()) {
-                if (clefChar == smufl_glyph::unpitchedPercussionClef2) {
-                    return music_theory::ClefType::Percussion2;
+                switch (clefChar) {
+                    case smufl_glyph::unpitchedPercussionClef1:
+                    case smufl_glyph::unpitchedPercussionClef1Alt: return music_theory::ClefType::Percussion1;
+                    case smufl_glyph::unpitchedPercussionClef2: return music_theory::ClefType::Percussion2;
+                    default: break;
                 }
             } else if (clefFont->calcIsSymbolFont()) {
-                if (clefChar == symbol_glyph::unpitchedPercussionClef2) {
-                    return music_theory::ClefType::Percussion2;
+                switch (clefFont->calcDrawnCharacter(clefChar)) {
+                    case symbol_glyph::unpitchedPercussionClef1:
+                    case symbol_glyph::unpitchedPercussionClef1Alt: return music_theory::ClefType::Percussion1;
+                    case symbol_glyph::unpitchedPercussionClef2: return music_theory::ClefType::Percussion2;
+                    default: break;
                 }
             }
         }
-        return music_theory::ClefType::Percussion1;
+        return std::nullopt;
     };
 
     auto calcTabType = [&]() -> music_theory::ClefType {
@@ -90,23 +103,28 @@ ClefOptions::ClefInfo ClefOptions::ClefDef::calcInfo(const MusxInstance<others::
     };
 
     if (currStaff) {
-        switch (currStaff->notationStyle) {
-            case others::Staff::NotationStyle::Tablature: return std::make_pair(calcTabType(), 0);
-            case others::Staff::NotationStyle::Percussion: return std::make_pair(calcPercType(), 0);
-            default: break;
+        if (currStaff->notationStyle == others::Staff::NotationStyle::Tablature) {
+            return std::make_pair(calcTabType(), 0);
         }
-    }
-    if (!currStaff && staffPosition == 0 && middleCPos == -10 && isShape) { // identify tab staves based on Finale default file settings
+    } else if (staffPosition == 0 && middleCPos == -10 && isShape) { // identify tab staves based on Finale default file settings
         return std::make_pair(calcTabType(), 0);
     }
-    music_theory::ClefType clefType = music_theory::ClefType::Unknown;
+
     int octave = 0;
-    auto clefPitch = music_theory::NoteName(music_theory::positiveModulus(staffPosition - middleCPos, music_theory::STANDARD_DIATONIC_STEPS, &octave));
+    const auto clefPitch = music_theory::NoteName(music_theory::positiveModulus(staffPosition - middleCPos, music_theory::STANDARD_DIATONIC_STEPS, &octave));
+    // Pitched notes under a percussion clef sit where a clef would put them, shifted by whole
+    // octaves when middle C is moved, so the octave of the glyph's position applies.
+    const auto percGlyphType = calcPercGlyphType();
+    if (percGlyphType || (currStaff && currStaff->notationStyle == others::Staff::NotationStyle::Percussion)) {
+        return std::make_pair(percGlyphType.value_or(music_theory::ClefType::Percussion1), octave);
+    }
+
+    music_theory::ClefType clefType = music_theory::ClefType::Unknown;
     switch (clefPitch) {
         case music_theory::NoteName::C: clefType = music_theory::ClefType::C; break;
         case music_theory::NoteName::F: clefType = music_theory::ClefType::F; break;
         case music_theory::NoteName::G: clefType = music_theory::ClefType::G; break;
-        case music_theory::NoteName::B: clefType = calcPercType(); break; // Finale SMuFL default file settings
+        case music_theory::NoteName::B: return std::make_pair(music_theory::ClefType::Percussion1, octave); // Finale SMuFL default file settings
         default: break;
     }
     if (clefType == music_theory::ClefType::F) {

@@ -118,12 +118,14 @@ constexpr int MAX_CUE_PERCENTAGE = 90; ///< Arbitrary value that determines the 
  */
 namespace smufl_glyph {
 // Use namespace instead of enum class due to comparison ugliness with enum class.
+constexpr char32_t unpitchedPercussionClef1 = 0xE069;   ///< glyph "unpitchedPercussionClef1" (standard)
 constexpr char32_t unpitchedPercussionClef2 = 0xE06A;   ///< glyph "unpitchedPercussionClef2" (standard)
 constexpr char32_t timeSigCommon = 0xE08A;              ///< glyph "timeSigCommon" (standard)
 constexpr char32_t timeSigCutCommon = 0xE08B;           ///< glyph "timeSigCutCommon" (standard)
 constexpr char32_t noteheadBlack = 0xE0A4;              ///< glyph "noteheadBlack" (standard)
 constexpr char32_t accidentalNatural = 0xE261;          ///< glyph "accidentalNatural" (standard)
 constexpr char32_t restQuarter = 0xE4E5;                ///< glyph "restQuarter" (standard)
+constexpr char32_t unpitchedPercussionClef1Alt = 0xF409; ///< glyph "unpitchedPercussionClef1Alt" (from Finale optional set)
 constexpr char32_t sixStringTabClefSerif = 0xF40B;      ///< glyph "6stringTabClefSerif" (from Finale optional set)
 constexpr char32_t fourStringTabClefSerif = 0xF40D;     ///< glyph "4stringTabClefSerif" (from Finale optional set)
 constexpr char32_t arpeggioVerticalSegment = 0xF700;    ///< glyph "arpeggioVerticalSegment" (from Finale optional set)
@@ -135,6 +137,8 @@ constexpr char32_t arpeggioVerticalSegment = 0xF700;    ///< glyph "arpeggioVert
  */
 namespace symbol_glyph {
 // Use namespace instead of enum class due to comparison ugliness with enum class.
+constexpr char32_t unpitchedPercussionClef1 = 47;       ///< equivalent symbol glyph for "unpitchedPercussionClef1"
+constexpr char32_t unpitchedPercussionClef1Alt = 139;   ///< alternate symbol glyph for "unpitchedPercussionClef1" (Maestro and fonts that follow its layout)
 constexpr char32_t unpitchedPercussionClef2 = 214;      ///< equivalent symbol glyph for "unpitchedPercussionClef2"
 } //namespace symbol_glyph
 

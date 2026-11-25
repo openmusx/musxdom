@@ -685,6 +685,23 @@ int Staff::calcBottomLinePosition() const
     return 0;
 }
 
+std::vector<int> Staff::calcOmittedLinePositions() const
+{
+    std::vector<int> result;
+    if (staffLines.has_value() || !customStaff.has_value()) {
+        return result;
+    }
+    // Custom staff line 11 is the reference line, and customStaff is sorted ascending, which is from the top line down.
+    constexpr int referenceLine = 11;
+    const auto& lines = customStaff.value();
+    for (size_t index = 1; index < lines.size(); ++index) {
+        for (int line = lines[index - 1] + 1; line < lines[index]; ++line) {
+            result.push_back(2 * (referenceLine - line));
+        }
+    }
+    return result;
+}
+
 Evpu Staff::calcBaselineZeroPosition() const
 {
     // Weird cases involving custom lines above the reference line may require additional logic, but
