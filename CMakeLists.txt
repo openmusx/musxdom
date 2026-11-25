@@ -44,6 +44,7 @@ set(MUSX_SRC_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/Others.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/Ossia.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/PercussionNoteType.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/PlaybackResources.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/ShapeDesigner.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/SmartShape.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/Staff.cpp
@@ -56,6 +57,7 @@ set(MUSX_SRC_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/factory/DocumentFactory.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/factory/HeaderFactory.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/factory/PoolFactory.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/factory/PlaybackResourcesFactory.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/util/Accidental.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/util/Arpeggio.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/util/Cue.cpp

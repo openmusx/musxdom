@@ -347,6 +347,7 @@ DocumentFactory::ConstructionSession DocumentFactory::begin(ConstructionOptions 
     document->m_scoreDurationSeconds = options.scoreDurationSeconds;
     document->m_embeddedGraphics = std::move(options.embeddedGraphics);
     document->m_sourcePath = std::move(options.sourcePath);
+    document->m_playbackResources = std::move(options.playbackResources);
     document->getHeader() = std::make_shared<dom::Header>();
     document->getOptions() = std::make_shared<dom::OptionsPool>(document);
     document->getOthers() = std::make_shared<dom::OthersPool>(document);

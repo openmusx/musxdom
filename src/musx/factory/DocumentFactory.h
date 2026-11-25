@@ -61,6 +61,7 @@ public:
         std::optional<double> scoreDurationSeconds;
         dom::EmbeddedGraphicsMap embeddedGraphics;
         std::optional<std::filesystem::path> sourcePath;
+        dom::PlaybackResourcesPtr playbackResources; ///< Playback resources retained by the document. May be null.
     };
 
     /** @brief Optional inputs accepted by the existing XML creation interface. */
@@ -86,6 +87,8 @@ public:
         {}
 
         dom::PartVoicingPolicy partVoicingPolicy = dom::PartVoicingPolicy::Ignore;
+        /// @brief Playback resources retained by the document. May be null. See @ref dom::Document::getPlaybackResources.
+        dom::PlaybackResourcesPtr playbackResources;
 
         [[nodiscard]] const std::vector<char>& getNotationMetadata() const { return m_notationMetadata; }
         [[nodiscard]] const dom::EmbeddedGraphicsMap& getEmbeddedGraphics() const { return m_embeddedGraphics; }
@@ -179,6 +182,7 @@ public:
             createOptions.getNotationMetadata());
         options.embeddedGraphics = createOptions.takeEmbeddedGraphics();
         options.sourcePath = createOptions.getSourcePath();
+        options.playbackResources = std::move(createOptions.playbackResources);
         return createFromXmlRoot(root, std::move(options));
     }
 
