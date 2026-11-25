@@ -1,5 +1,7 @@
 var NAVTREEINDEX38 =
 {
+"structmusx_1_1util_1_1ArpeggioSpanCandidate.html#aa36ceb8aff2f28d31f819d54668eb67d":[2,0,1,3,2,1],
+"structmusx_1_1util_1_1ArpeggioSpanCandidate.html#aa9379b643ebdce3cc213fbb6fc68c85f":[2,0,1,3,2,5],
 "structmusx_1_1util_1_1ArpeggioSpanCandidate.html#aac367b8de97dbae25da75a181fda3f8b":[2,0,1,3,2,0],
 "structmusx_1_1util_1_1ArpeggioSpanCandidate.html#af02062f7aa101644e21ff7b4ae853abe":[2,0,1,3,2,4],
 "structmusx_1_1util_1_1ArpeggioSpanOptions.html":[2,0,1,3,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX38 =
 "structmusx_1_1util_1_1Stem_1_1DirectionInfo.html":[2,0,1,3,21,3],
 "structmusx_1_1util_1_1Stem_1_1DirectionInfo.html#a39155ea639ffbed5fe16dc430007635a":[2,0,1,3,21,3,6],
 "structmusx_1_1util_1_1Stem_1_1DirectionInfo.html#a9904f99e6111a7478e42526f89075cdf":[2,0,1,3,21,3,4],
-"structmusx_1_1util_1_1Stem_1_1DirectionInfo.html#a9be93b1d5448cb27037fb2feda4a3188":[2,0,1,3,21,3,1],
-"structmusx_1_1util_1_1Stem_1_1DirectionInfo.html#abbd26fcd5dc6f7a0a82da5171a53521b":[2,0,1,3,21,3,3],
-"structmusx_1_1util_1_1Stem_1_1DirectionInfo.html#acb706d579e204a89e43f05ddb62c63c7":[2,0,1,3,21,3,5]
+"structmusx_1_1util_1_1Stem_1_1DirectionInfo.html#a9be93b1d5448cb27037fb2feda4a3188":[2,0,1,3,21,3,1]
 };

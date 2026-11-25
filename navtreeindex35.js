@@ -1,5 +1,7 @@
 var NAVTREEINDEX35 =
 {
+"namespacemusx_1_1dom_1_1uuid.html#afff56e7259e019905588649b28964199":[1,0,1,0,4,725],
+"namespacemusx_1_1factory.html":[1,0,1,1],
 "namespacemusx_1_1factory.html#ad2523cb0c5abeef0eef536f9c877a0bd":[1,0,1,1,14],
 "namespacemusx_1_1xml.html":[1,0,1,2],
 "namespacemusx_1_1xml.html#a0f2bfe09c0f7597c83f0a0814c77205e":[1,0,1,2,8],
@@ -247,7 +249,5 @@ var NAVTREEINDEX35 =
 "structmusx_1_1dom_1_1ResolvedFontInfo.html#a1b77e668e56b16f8e95f34e6da102f76":[2,0,1,0,66,1],
 "structmusx_1_1dom_1_1ResolvedFontInfo.html#a21164d3743a49662892316295c8af819":[1,0,1,0,65,10],
 "structmusx_1_1dom_1_1ResolvedFontInfo.html#a21164d3743a49662892316295c8af819":[2,0,1,0,66,10],
-"structmusx_1_1dom_1_1ResolvedFontInfo.html#a2b3c09ac4ee91ae67d03aaf473073e0d":[1,0,1,0,65,6],
-"structmusx_1_1dom_1_1ResolvedFontInfo.html#a2b3c09ac4ee91ae67d03aaf473073e0d":[2,0,1,0,66,6],
-"structmusx_1_1dom_1_1ResolvedFontInfo.html#a7eee3ae7ac204bcfb553db43332f3495":[1,0,1,0,65,8]
+"structmusx_1_1dom_1_1ResolvedFontInfo.html#a2b3c09ac4ee91ae67d03aaf473073e0d":[1,0,1,0,65,6]
 };

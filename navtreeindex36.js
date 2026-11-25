@@ -1,5 +1,7 @@
 var NAVTREEINDEX36 =
 {
+"structmusx_1_1dom_1_1ResolvedFontInfo.html#a2b3c09ac4ee91ae67d03aaf473073e0d":[2,0,1,0,66,6],
+"structmusx_1_1dom_1_1ResolvedFontInfo.html#a7eee3ae7ac204bcfb553db43332f3495":[1,0,1,0,65,8],
 "structmusx_1_1dom_1_1ResolvedFontInfo.html#a7eee3ae7ac204bcfb553db43332f3495":[2,0,1,0,66,8],
 "structmusx_1_1dom_1_1ResolvedFontInfo.html#a9788a5b03c09b4c840185d9de1c4cace":[1,0,1,0,65,7],
 "structmusx_1_1dom_1_1ResolvedFontInfo.html#a9788a5b03c09b4c840185d9de1c4cace":[2,0,1,0,66,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX36 =
 "structmusx_1_1dom_1_1TimeSignature_1_1TimeSigComponent.html#ac3c0ab58151df70b863a92c97bd69c78":[2,0,1,0,26,0,0],
 "structmusx_1_1dom_1_1TimeSignature_1_1TimeSigComponent.html#ad6741949876b88d061a2fc0656eca76c":[1,0,1,0,25,0,3],
 "structmusx_1_1dom_1_1TimeSignature_1_1TimeSigComponent.html#ad6741949876b88d061a2fc0656eca76c":[2,0,1,0,26,0,3],
-"structmusx_1_1dom_1_1TimeSignature_1_1TimeSigComponent.html#af1f390f711bf9fd8c715655bb2cb9b31":[1,0,1,0,25,0,1],
-"structmusx_1_1dom_1_1TimeSignature_1_1TimeSigComponent.html#af1f390f711bf9fd8c715655bb2cb9b31":[2,0,1,0,26,0,1],
-"structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1HorizontalOffset.html":[1,0,1,0,0,1,1]
+"structmusx_1_1dom_1_1TimeSignature_1_1TimeSigComponent.html#af1f390f711bf9fd8c715655bb2cb9b31":[1,0,1,0,25,0,1]
 };

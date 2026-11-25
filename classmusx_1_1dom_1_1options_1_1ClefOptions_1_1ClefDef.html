@@ -278,9 +278,10 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculates and returns the clef information. </p>
+<p>A clef whose glyph is a percussion clef is a percussion clef wherever the glyph sits. A clef's character is trusted to be a clef glyph, so a character that some symbol fonts use for another glyph still identifies a percussion clef. Pitched notes under a percussion clef sit where a clef would put them, and its octave is the octave of the glyph's position above middle C. For a glyph between the treble clef's middle C and the middle staff line, that is the number of whole octaves between the clef's middle C and a treble clef's.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">currStaff</td><td>For most accurate results, pass the current <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffComposite.html">others::StaffComposite</a> instance. If you omit this parameter, percussion and tab staves are identified based on the Finale SMuFL default file settings. If you supply it, staves with a notation style of tablature always return a tab clef and staves with a notation style of percussion always return a percussion clef. Normal notation style detects clefs as if <code class="param">currStaff</code> had not been supplied. </td></tr>
+    <tr><td class="paramname">currStaff</td><td>For most accurate results, pass the current <a class="el" href="classmusx_1_1dom_1_1others_1_1StaffComposite.html">others::StaffComposite</a> instance. If you supply it, staves with a notation style of tablature always return a tab clef and staves with a notation style of percussion always return a percussion clef, whatever the glyph. Otherwise, percussion clefs are identified by glyph, and clefs with other glyphs are identified by position, with percussion and tab clefs at the positions of the Finale SMuFL default file settings. </td></tr>
   </table>
   </dd>
 </dl>

@@ -1,5 +1,7 @@
 var NAVTREEINDEX37 =
 {
+"structmusx_1_1dom_1_1TimeSignature_1_1TimeSigComponent.html#af1f390f711bf9fd8c715655bb2cb9b31":[2,0,1,0,26,0,1],
+"structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1HorizontalOffset.html":[1,0,1,0,0,1,1],
 "structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1HorizontalOffset.html":[2,0,1,0,0,1,1],
 "structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1HorizontalOffset.html#a694446d3c85f996186761af04a5c06c3":[1,0,1,0,0,1,1,0],
 "structmusx_1_1dom_1_1details_1_1ArticulationAssign_1_1HorizontalOffset.html#a694446d3c85f996186761af04a5c06c3":[2,0,1,0,0,1,1,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX37 =
 "structmusx_1_1util_1_1ArpeggioSpanCandidate.html":[2,0,1,3,2],
 "structmusx_1_1util_1_1ArpeggioSpanCandidate.html#a3424eb682133acf0e2578f3c9d4b04cb":[2,0,1,3,2,6],
 "structmusx_1_1util_1_1ArpeggioSpanCandidate.html#a8c3267839223b9ca0c6ec3d03b7f638b":[2,0,1,3,2,2],
-"structmusx_1_1util_1_1ArpeggioSpanCandidate.html#a91e3ef85d88d08591d7172450c1952f2":[2,0,1,3,2,3],
-"structmusx_1_1util_1_1ArpeggioSpanCandidate.html#aa36ceb8aff2f28d31f819d54668eb67d":[2,0,1,3,2,1],
-"structmusx_1_1util_1_1ArpeggioSpanCandidate.html#aa9379b643ebdce3cc213fbb6fc68c85f":[2,0,1,3,2,5]
+"structmusx_1_1util_1_1ArpeggioSpanCandidate.html#a91e3ef85d88d08591d7172450c1952f2":[2,0,1,3,2,3]
 };

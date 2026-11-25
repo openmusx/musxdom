@@ -1,5 +1,7 @@
 var NAVTREEINDEX28 =
 {
+"classmusx_1_1factory_1_1DocumentFactory.html":[2,0,1,1,1],
+"classmusx_1_1factory_1_1DocumentFactory_1_1ConstructionSession.html":[1,0,1,1,1,2],
 "classmusx_1_1factory_1_1DocumentFactory_1_1ConstructionSession.html":[2,0,1,1,1,2],
 "classmusx_1_1factory_1_1EntryFactory.html":[1,0,1,1,12],
 "classmusx_1_1factory_1_1EntryFactory.html":[2,0,1,1,12],
@@ -247,7 +249,5 @@ var NAVTREEINDEX28 =
 "classmusx_1_1util_1_1SmartShape.html#aa35eca6bc03462305b8f55255d66fb80":[2,0,1,3,28,34],
 "classmusx_1_1util_1_1SmartShape.html#aa75e75e4e9fb874b087354ab4e15bf5a":[2,0,1,3,28,13],
 "classmusx_1_1util_1_1SmartShape.html#ab288f6a785575e9ac37e262fc30b7b3c":[2,0,1,3,28,35],
-"classmusx_1_1util_1_1SmartShape.html#ab62e70dfdcedccd6b9dcd12d755f3ff3":[2,0,1,3,28,36],
-"classmusx_1_1util_1_1SmartShape.html#acd432de10457d60b45d3467362a7ae38":[2,0,1,3,28,29],
-"classmusx_1_1util_1_1SmartShape.html#ad128b33128dddbd914ea29d96eac2514":[2,0,1,3,28,42]
+"classmusx_1_1util_1_1SmartShape.html#ab62e70dfdcedccd6b9dcd12d755f3ff3":[2,0,1,3,28,36]
 };

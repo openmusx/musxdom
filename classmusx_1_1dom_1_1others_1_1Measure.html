@@ -918,7 +918,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates and returns a shared pointer to an instance of the <a class="el" href="classmusx_1_1dom_1_1KeySignature.html">KeySignature</a> for this measure and staff. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>A staff that ignores key signatures (<a class="el" href="classmusx_1_1dom_1_1others_1_1Staff.html#a2392e4a4e58206156e19355ade47a860">Staff::noKey</a>) or uses a percussion map (<a class="el" href="classmusx_1_1dom_1_1others_1_1Staff.html#a8890d964eb4e4fa1036fc84beb840b92">Staff::percussionMapId</a>) reads its notes in concert C major, so for such a staff the result is C major, transposed as the staff's transposition requires. Percussion notation without a percussion map keeps the measure's key. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">forStaff</td><td>If present, specifies the specific staff for which to create the key signature. </td></tr>
   </table>

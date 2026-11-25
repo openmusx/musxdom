@@ -42,6 +42,7 @@ var classmusx_1_1dom_1_1others_1_1Staff =
     [ "calcIsSameNotationStyle", "classmusx_1_1dom_1_1others_1_1Staff.html#aaac62f45e50aa749bb26545223a98b7c", null ],
     [ "calcMiddleStaffPosition", "classmusx_1_1dom_1_1others_1_1Staff.html#a8a4e8f3326884d02be7b00d5b956748f", null ],
     [ "calcNumberOfStafflines", "classmusx_1_1dom_1_1others_1_1Staff.html#a2358db6269aa8601b023e5b1b93e4748", null ],
+    [ "calcOmittedLinePositions", "classmusx_1_1dom_1_1others_1_1Staff.html#af7841441c3717f32c8c24f996fa54ec6", null ],
     [ "calcRestOffset", "classmusx_1_1dom_1_1others_1_1Staff.html#a762f7f1eddd06acb4399dc032e601d67", null ],
     [ "calcShowInstrumentName", "classmusx_1_1dom_1_1others_1_1Staff.html#a5f5673a3186d7261bbc96dddd096114c", null ],
     [ "calcShowName", "classmusx_1_1dom_1_1others_1_1Staff.html#aacfe72f7240a1b3eb62862639ede7997", null ],
