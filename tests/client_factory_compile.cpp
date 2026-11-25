@@ -21,11 +21,13 @@
  */
 
 #include "musx/factory/DocumentFactory.h"
+#include "musx/factory/PlaybackResourcesFactory.h"
 #include "musx/factory/PoolFactory.h"
 
 int main()
 {
     auto session = musx::factory::DocumentFactory::begin();
     auto document = std::move(session).finish();
-    return document ? 0 : 1;
+    const musx::factory::PlaybackResourceInputs playbackInputs;
+    return (document && playbackInputs.soundmaps.empty() && !document->getPlaybackResources()) ? 0 : 1;
 }

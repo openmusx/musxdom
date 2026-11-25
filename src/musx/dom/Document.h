@@ -34,6 +34,7 @@
 #include "musx/util/Accidental.h"
 
 #include "Header.h"
+#include "PlaybackResources.h"
 #include "Instrument.h"
 #include "ObjectPool.h"
 #include "MusxInstance.h"
@@ -165,6 +166,11 @@ public:
     /// @brief Returns all embedded graphics keyed by graphic cmper.
     [[nodiscard]]
     const EmbeddedGraphicsMap& getEmbeddedGraphics() const { return m_embeddedGraphics; }
+
+    /// @brief Returns the playback resources supplied when the document was created.
+    /// @return The resources, or null if none were supplied.
+    [[nodiscard]]
+    const PlaybackResourcesPtr& getPlaybackResources() const { return m_playbackResources; }
 
     /// @brief Returns the Scroll View Cmper for the given @p partId.
     /// @param partId The linked part to check.
@@ -364,6 +370,7 @@ private:
     std::optional<double> m_scoreDurationSeconds; ///< Optional score duration in seconds from NotationMetadata.xml.
     EmbeddedGraphicsMap m_embeddedGraphics;     ///< Embedded graphics passed in by the caller (from musx container files).
     std::optional<std::filesystem::path> m_sourcePath; ///< Path to the musx (or EnigmaXML) file used to create this document.
+    PlaybackResourcesPtr m_playbackResources;   ///< Playback resources supplied by the caller, or null.
 
     mutable std::unordered_map<Cmper, KnownShapeDefType> m_shapeRecognitionCache; ///< Cache of ShapeDef recognitions.
     mutable std::unordered_map<Cmper, bool> m_isSmuflFontCache; ///< Cache of SMuFL font recognitions.

@@ -45,6 +45,7 @@ add_executable(musxdomtests
     dom/document_graphics.cpp
     dom/header.cpp
     dom/instrument.cpp
+    dom/playback_resources.cpp
     dom/pool.cpp
     # entries
     entries/accidentals.cpp
@@ -159,6 +160,19 @@ target_sources(musxdomtests PUBLIC "${MUSX_ROOT_DIR}/src/musx/musx.h")
 
 # Add the include paths
 target_include_directories(musxdomtests PRIVATE "${MUSX_ROOT_DIR}/tests")
+
+# Local-only playback resource tests read files that are not distributed with musxdom.
+set(MUSX_LOCAL_PLAYBACK_RESOURCES "" CACHE STRING
+    "Semicolon-separated .soundmap and MIDI Device Annotation .xml files for local-only playback resource tests. Relative paths resolve against the musxdom root.")
+set(MUSX_LOCAL_PLAYBACK_RESOURCE_COUNT 0)
+set(MUSX_LOCAL_PLAYBACK_RESOURCE_LINES "")
+foreach(resourcePath IN LISTS MUSX_LOCAL_PLAYBACK_RESOURCES)
+    get_filename_component(resourcePath "${resourcePath}" ABSOLUTE BASE_DIR "${MUSX_ROOT_DIR}")
+    string(APPEND MUSX_LOCAL_PLAYBACK_RESOURCE_LINES "    R\"musxpath(${resourcePath})musxpath\",\n")
+    math(EXPR MUSX_LOCAL_PLAYBACK_RESOURCE_COUNT "${MUSX_LOCAL_PLAYBACK_RESOURCE_COUNT} + 1")
+endforeach()
+configure_file(local_playback_resources.h.in "${CMAKE_CURRENT_BINARY_DIR}/generated/local_playback_resources.h" @ONLY)
+target_include_directories(musxdomtests PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
 target_include_directories(musxdomtests PRIVATE "${MUSX_ROOT_DIR}/third_party/rapidxml")
 
 # Link Google Test and the library to the test executable

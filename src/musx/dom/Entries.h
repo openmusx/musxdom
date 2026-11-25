@@ -30,6 +30,7 @@
 #include "musx/util/Fraction.h"
 #include "BaseClasses.h"
 #include "CommonClasses.h"
+#include "PlaybackResources.h"
  // do not add other dom class dependencies. Use Implementations.h for implementations that need total class access.
 
 namespace music_theory {
@@ -1752,6 +1753,16 @@ public:
     /// @return If the note is on a percussion staff and has percussion note info assigned, returns it. Otherwise `nullptr`.
     [[nodiscard]]
     MusxInstance<others::PercussionNoteInfo> calcPercussionNoteInfo() const;
+
+    /// @brief Calculates the MIDI key that plays this percussion note, using the document's playback resources.
+    ///
+    /// The note's layer selects a playback route from the requested part's @ref others::StaffPlayData.
+    /// The route's @ref others::PlaybackRoute::soundUuid selects a soundmap sound, whose note-name list
+    /// gives the key for the note's percussion note type. The full note type is matched first, then its base type.
+    /// See @ref PlaybackResources::resolvePercussionMidiKey.
+    /// @return The 0-based MIDI key, or the link that failed to resolve.
+    [[nodiscard]]
+    PercussionPlaybackKey calcPercussionPlaybackKey() const;
 
     /// @struct NoteheadInfo
     /// @brief The resolved font, character, size, and offset for a note's notehead.

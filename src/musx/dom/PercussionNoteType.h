@@ -29,6 +29,9 @@ namespace musx {
 namespace dom {
 namespace percussion {
 
+/// @brief Mask that extracts the base note type from a @ref PercussionNoteTypeId, removing its order ID.
+constexpr PercussionNoteTypeId BASE_NOTE_TYPE_MASK = 0x0fff;
+
 /**
  * @struct PercussionNoteType
  * @brief Represents a percussion note type mapping entry.

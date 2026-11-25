@@ -3157,6 +3157,39 @@ MusxInstance<others::PercussionNoteInfo> NoteInfoPtr::calcPercussionNoteInfo() c
     return nullptr;
 }
 
+PercussionPlaybackKey NoteInfoPtr::calcPercussionPlaybackKey() const
+{
+    const auto entryInfo = getEntryInfo();
+    const auto document = entryInfo->getEntry()->getDocument();
+    PercussionPlaybackKey result;
+    const auto& resources = document->getPlaybackResources();
+    if (!resources || resources->isEmpty()) {
+        result.failure = PlaybackLookupFailure::ResourcesNotSupplied;
+        return result;
+    }
+    const auto percNoteInfo = calcPercussionNoteInfo();
+    if (!percNoteInfo) {
+        result.failure = PlaybackLookupFailure::NotPercussionNote;
+        return result;
+    }
+    const Cmper partId = entryInfo.getFrame()->getRequestedPartId();
+    const auto playData = document->getOthers()->get<others::StaffPlayData>(partId, entryInfo.getStaff());
+    const auto layerIndex = entryInfo.getLayerIndex();
+    const auto settings = (playData && layerIndex < playData->layers.size()) ? playData->layers[layerIndex] : nullptr;
+    const auto route = (settings && settings->playbackRouteIndex >= 0)
+        ? document->getOthers()->get<others::PlaybackRoute>(partId, settings->getPlaybackRouteId())
+        : nullptr;
+    if (!route) {
+        result.failure = PlaybackLookupFailure::NoPlaybackRoute;
+        return result;
+    }
+    if (route->soundUuid.empty()) {
+        result.failure = PlaybackLookupFailure::NoSoundUuid;
+        return result;
+    }
+    return resources->resolvePercussionMidiKey(route->soundUuid, percNoteInfo->percNoteType, NoteTypeMatch::ExactThenBase);
+}
+
 NoteInfoPtr::NoteheadInfo NoteInfoPtr::calcNoteheadInfo() const
 {
     const auto entryInfo = getEntryInfo();
