@@ -51,10 +51,9 @@ T selectByDuration(Edu duration, T quarterAndShorter, T half, T whole, T breveAn
     return quarterAndShorter;
 }
 
-bool calcUsesWrittenPitch(const EntryInfoPtr& entryInfo, PitchMode pitchMode,
-    const std::optional<StaffCmper>& forStaffId = std::nullopt)
+bool calcUsesWrittenPitch(const EntryInfoPtr& entryInfo, const MusxInstance<others::StaffComposite>& staff, PitchMode pitchMode)
 {
-    if (const auto staff = entryInfo.createCurrentStaff(forStaffId)) {
+    if (staff) {
         return staff->calcUsesWrittenPitch(pitchMode);
     }
     if (pitchMode == PitchMode::CurrentView) {
@@ -206,6 +205,22 @@ void Entry::calcLocations(const DocumentPtr& document)
             return true;
         });
     }
+}
+
+// *************************
+// ***** EffectiveClef *****
+// *************************
+
+ClefInfo EffectiveClef::calcInfo() const
+{
+    if (!staff) {
+        throw std::logic_error("EffectiveClef::calcInfo() has no staff.");
+    }
+    const auto clefOptions = staff->getDocument()->getOptions()->get<options::ClefOptions>();
+    if (!clefOptions) {
+        throw std::logic_error("EffectiveClef::calcInfo() could not find the clef options.");
+    }
+    return clefOptions->getClefDef(clefIndex)->calcInfo(staff);
 }
 
 // **********************
@@ -731,12 +746,23 @@ MeasCmper EntryInfoPtr::getMeasure() const { return m_entryFrame->getMeasure(); 
 
 MusxInstance<KeySignature> EntryInfoPtr::getKeySignature() const { return m_entryFrame->keySignature; }
 
+EffectiveClef EntryInfoPtr::calcEffectiveClef(PitchMode pitchMode, const std::optional<StaffCmper>& forStaffId) const
+{
+    EffectiveClef result;
+    result.staff = createCurrentStaff(forStaffId);
+    result.forWrittenPitch = calcUsesWrittenPitch(*this, result.staff, pitchMode);
+    result.clefIndex = result.forWrittenPitch ? (*this)->clefIndex : (*this)->clefIndexConcert;
+    if (forStaffId && *forStaffId != getStaff() && result.staff) {
+        result.clefIndex = result.staff->calcClefIndex(result.forWrittenPitch);
+    }
+    return result;
+}
+
 music_theory::Pitch EntryInfoPtr::calcPitchFromStaffPosition(int staffPosition, StaffPositionPitchOptions options) const
 {
-    const bool forWrittenPitch = calcUsesWrittenPitch(*this, options.pitchMode);
-    const auto clefIndex = forWrittenPitch ? (*this)->clefIndex : (*this)->clefIndexConcert;
-    const auto keyContext = forWrittenPitch ? KeySignature::KeyContext::Written : KeySignature::KeyContext::Concert;
-    return getKeySignature()->calcPitchFromStaffPosition(staffPosition, clefIndex, keyContext, options.actualAlteration);
+    const auto clef = calcEffectiveClef(options.pitchMode, options.forStaffId);
+    const auto keyContext = clef.forWrittenPitch ? KeySignature::KeyContext::Written : KeySignature::KeyContext::Concert;
+    return getKeySignature()->calcPitchFromStaffPosition(staffPosition, clef.clefIndex, keyContext, options.actualAlteration);
 }
 
 MusxInstance<details::EntryPartFieldDetail> EntryInfoPtr::getPartFieldData() const
@@ -3103,18 +3129,24 @@ StaffCmper NoteInfoPtr::calcStaff() const
     return m_entry.getStaff();
 }
 
+EffectiveClef NoteInfoPtr::calcEffectiveClef(PitchMode pitchMode, bool alwaysUseEntryStaff) const
+{
+    if (alwaysUseEntryStaff) {
+        return m_entry.calcEffectiveClef(pitchMode);
+    }
+    return m_entry.calcEffectiveClef(pitchMode, calcStaff());
+}
+
 Note::NoteProperties NoteInfoPtr::calcNoteProperties(NotePropertiesOptions options) const
 {
     StaffCmper staffId = getEntryInfo().getStaff();
     if (!options.alwaysUseEntryStaff) {
         staffId = calcStaff();
     }
-    const bool forWrittenPitch = calcUsesWrittenPitch(m_entry, options.pitchMode, staffId);
-    ClefIndex clefIndex = forWrittenPitch ? getEntryInfo()->clefIndex : getEntryInfo()->clefIndexConcert;
-    const auto staff = m_entry.createCurrentStaff(staffId);
-    if (staffId != m_entry.getStaff() && staff) {
-        clefIndex = staff->calcClefIndex(forWrittenPitch);
-    }
+    const auto clef = m_entry.calcEffectiveClef(options.pitchMode, staffId);
+    const bool forWrittenPitch = clef.forWrittenPitch;
+    const ClefIndex clefIndex = clef.clefIndex;
+    const auto& staff = clef.staff;
     const bool respell = [&]() -> bool {
         switch (options.enharmonicOverride) {
         default:

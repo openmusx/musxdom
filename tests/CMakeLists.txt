@@ -51,6 +51,7 @@ add_executable(musxdomtests
     entries/accidentals.cpp
     entries/beam_detection.cpp
     entries/cross_staffs.cpp
+    entries/effective_clef.cpp
     entries/entries.cpp
     entries/layer_settings.cpp
     entries/slurs.cpp

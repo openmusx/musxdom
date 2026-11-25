@@ -38,6 +38,7 @@
 
 namespace music_theory {
 class Transposer;
+enum class ClefType;
 enum class DiatonicMode : int;
 struct Pitch;
 } // namespace music_theory
@@ -58,6 +59,11 @@ class Measure;
 class OssiaHeader;
 class Staff;
 } // namespace others
+
+/// @brief Information about a clef consisting of its clef type and octave transposition.
+/// For example, a treble clef for tenors (often shown with an 8 below the clef) is
+/// (#music_theory::ClefType::G, -1).
+using ClefInfo = std::pair<music_theory::ClefType, int>;
 
 /// @brief Expresses a duration as a #NoteType and a number of dots (unsigned)
 using Duration = std::pair<NoteType, unsigned>;
