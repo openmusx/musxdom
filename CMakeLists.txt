@@ -43,6 +43,7 @@ set(MUSX_SRC_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/Options.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/Others.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/Ossia.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/PageAssignBase.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/PercussionNoteType.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/PlaybackResources.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/musx/dom/ShapeDesigner.cpp

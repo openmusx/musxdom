@@ -146,17 +146,14 @@ public:
  * @class PageGraphicAssign
  * @brief Represents a page graphic assignment with positioning and page-range properties.
  *
- * Instances of #PageGraphicAssign use page assignment IDs rather than straightforward page numbers.
- * If the cmper is non-0, #startPage is not used and the cmper specifies a page assignment ID that
- * defines which page this graphic is assigned to. If the cmper is 0, #startPage specifies the first
- * page assignment ID to which the graphic is assigned (and #displayType governs whether it repeats
- * on odd/even/all pages thereafter).
+ * The pages it is on are a page assignment: see @ref PageAssignBase. #displayType governs whether a
+ * multi-page assignment repeats on odd, even or all pages.
  *
  * The inci value specifies a particular page graphic when more than one exists for a cmper value.
  *
  * This class is identified by the XML node name "pageGraphicAssign".
  */
-class PageGraphicAssign : public OthersBase
+class PageGraphicAssign : public PageAssignBase<PageGraphicAssign>
 {
 public:
 
@@ -187,7 +184,7 @@ public:
 
     /** @brief Constructor */
     explicit PageGraphicAssign(const DocumentWeakPtr& document, Cmper partId, ShareMode shareMode, Cmper cmper, Inci inci)
-        : OthersBase(document, partId, shareMode, cmper, inci)
+        : PageAssignBase(document, partId, shareMode, cmper, inci)
     {
     }
 
@@ -197,7 +194,8 @@ public:
     Evpu width{};                       ///< Display width of the placed graphic.
     Evpu height{};                      ///< Display height of the placed graphic.
     Cmper fDescId{};                    ///< The Cmper of the assigned @ref FileDescription. (xml tag is `<fDescID>`)
-    PageAssignType displayType{};       ///< Whether the assignment appears on all/even/odd pages.
+    PageAssignType displayType{};       ///< Whether the assignment appears on all/even/odd pages. It applies to single-page
+                                        ///< assignments as well, which otherwise store PageAssignType::One. See #calcMatchesOddEven.
     bool hidden{};                      ///< If true, the graphic does not display: inverse of "Show" context menu option. (xml tag is `<displayHidden>`)
     HorizontalAlignment hAlign{};       ///< Horizontal alignment for left/all pages. (xml tag is `<halign>`)
     VerticalAlignment vAlign{};         ///< Vertical alignment for left/all pages. (xml tag is `<valign>`)
@@ -221,51 +219,8 @@ public:
                                         ///< @c /graphics/ subdirectory of the musx zip archive, named using this cmper (for example,
                                         ///< @c 3.png when @c graphicCmper is 3).
 
-    /// @brief Return the starting page number, taking into account leading blank pages in all parts.
-    /// This calculation mimics observed behavior in Finale.
-    /// @return The first page in @p forPartId on which the page graphic appears. If it does not appear on the part,
-    /// the function returns std::nullopt.
-    std::optional<PageCmper> calcStartPageNumber(Cmper forPartId) const;
-
-    /// @brief Return the ending page number, taking into account leading blank pages in all parts
-    /// This calculation mimics observed behavior in Finale.
-    /// @return The first page in @p forPartId on which the page graphic appears. If it does not appear on the part,
-    /// the function returns std::nullopt.
-    std::optional<PageCmper> calcEndPageNumber(Cmper forPartId) const;
-
-    /// @brief Returns true if this is a multi-page assignment.
-    bool isMultiPage() const
-    { return getCmper() == 0 && startPage != endPage; }
-
-    /// @brief Returns true if this is a multi-page assignment that is assigned to through last page, no matter how many.
-    bool isMultiAssignedThruLastPage() const
-    { return isMultiPage() && endPage == 0; }
-
-    void integrityCheck(const std::shared_ptr<EnigmaBase>& ptrToThis) override
-    {
-        this->OthersBase::integrityCheck(ptrToThis);
-        if (getCmper() != 0) {
-            if (startPage != getCmper() || endPage != getCmper()) {
-                MUSX_INTEGRITY_ERROR("PageGraphicAssign " + std::to_string(getCmper()) + " inci " + std::to_string(getInci().value_or(0)) +
-                    " has startPage or endPage value that does not match.");
-            }
-        }
-    }
-
-    /// @brief Returns a specific page graphic assignment for a given page number in a given part.
-    /// This allows the caller not to have to know the conversion to page assignment IDs.
-    /// @param document The document to search.
-    /// @param partId The ID of the linked part to search.
-    /// @param pageId The page number to search for, or zero for multipage assignments.
-    /// @param inci The inci of the specific page text assignment to retrieve.
-    static MusxInstance<others::PageGraphicAssign> getForPageId(const DocumentPtr& document, Cmper partId, PageCmper pageId, Inci inci);
-
-    /// @brief Returns all the page graphic assignments for a given page number in a given part.
-    /// This allows the caller not to have to know the conversion to page assignment IDs.
-    /// @param document The document to search.
-    /// @param partId The ID of the linked part to search.
-    /// @param pageId The page number to search for, or zero for all multipage assignments.
-    static MusxInstanceList<others::PageGraphicAssign> getArrayForPageId(const DocumentPtr& document, Cmper partId, PageCmper pageId);
+    /// @brief The assignment's odd/even setting, #displayType. Required by @ref PageAssignBase.
+    PageAssignType getPageAssignType() const { return displayType; }
 
     constexpr static std::string_view XmlNodeName = "pageGraphicAssign"; ///< The XML node name for this type.
     static const xml::XmlElementArray<PageGraphicAssign>& xmlMappingArray(); ///< Required for musx::factory::FieldPopulator.

@@ -1964,29 +1964,113 @@ public:
     static const xml::XmlElementArray<Page>& xmlMappingArray(); ///< Required for musx::factory::FieldPopulator.
 };
 
+/**
+ * @class PageAssignBase
+ * @brief The page assignment shared by page texts and page graphics.
+ *
+ * A page assignment names its pages by page assignment IDs rather than by page numbers. This allows the
+ * assignment to shift based on how many leading blank pages exist in the current score or part view vs.
+ * all the others. If all score and parts have the same number of leading blank pages, then page
+ * assignment IDs are the same as page numbers.
+ *
+ * If the cmper is non-0, it is the page assignment ID of the one page the assignment is on, and the
+ * derived class's `startPage` and `endPage` should both equal it. If the cmper is 0, `startPage` and
+ * `endPage` specify the range of page assignment IDs the assignment is on, an `endPage` of 0 meaning the
+ * last page of the document.
+ *
+ * @tparam Derived The assignment class. It provides `startPage` and `endPage` fields, a `PageAssignType`
+ * enumeration with `Even` and `Odd` values, and a `getPageAssignType()` function returning its odd/even setting.
+ */
+template <typename Derived>
+class PageAssignBase : public OthersBase
+{
+public:
+    /// @brief Returns true if this is a multi-page assignment.
+    bool isMultiPage() const
+    { return getCmper() == 0 && derived().startPage != derived().endPage; }
+
+    /// @brief Returns true if this is a multi-page assignment that is assigned to through last page, no matter how many.
+    bool isMultiAssignedThruLastPage() const
+    { return isMultiPage() && derived().endPage == 0; }
+
+    /// @brief Return the starting page number, taking into account leading blank pages in all parts.
+    /// This calculation mimics observed behavior in Finale.
+    /// @return The first page in @p forPartId on which the assignment appears. If it does not appear on the part,
+    /// the function returns std::nullopt.
+    std::optional<PageCmper> calcStartPageNumber(Cmper forPartId) const;
+
+    /// @brief Return the ending page number, taking into account leading blank pages in all parts.
+    /// This calculation mimics observed behavior in Finale.
+    /// @return The last page in @p forPartId on which the assignment appears. If it does not appear on the part,
+    /// the function returns std::nullopt.
+    std::optional<PageCmper> calcEndPageNumber(Cmper forPartId) const;
+
+    /// @brief Returns true if page @p pageNumber is one that the assignment's odd/even setting admits: any page, an
+    /// even (left) page, or an odd (right) page. Any setting other than even or odd admits any page. This applies to
+    /// single-page assignments as well as to multi-page ones: Finale never shows a single-page assignment whose page
+    /// does not match.
+    /// @param pageNumber A page number (not a page assignment ID).
+    bool calcMatchesOddEven(PageCmper pageNumber) const;
+
+    /// @brief Returns true if the assignment appears on page @p pageNumber of @p forPartId: the page is within
+    /// #calcStartPageNumber and #calcEndPageNumber for the part, and #calcMatchesOddEven admits it. If the part has a
+    /// start page but no end page, the range is the start page alone.
+    /// @param forPartId The linked part (or the score) whose pages are meant.
+    /// @param pageNumber A page number (not a page assignment ID).
+    bool calcAppearsOnPage(Cmper forPartId, PageCmper pageNumber) const;
+
+    /// @brief Returns every page number of @p forPartId on which the assignment appears, in ascending order: the range
+    /// from #calcStartPageNumber to #calcEndPageNumber, filtered by #calcMatchesOddEven, or the start page alone if the
+    /// part has no end page. Empty if the assignment does not appear in the part.
+    /// @param forPartId The linked part (or the score) whose pages are meant.
+    std::vector<PageCmper> calcPageNumbers(Cmper forPartId) const;
+
+    /// @brief Returns a specific assignment for a given page number in a given part.
+    /// This allows the caller not to have to know the conversion to page assignment IDs.
+    /// @param document The document to search.
+    /// @param partId The ID of the linked part to search.
+    /// @param pageId The page number to search for, or zero for multipage assignments.
+    /// @param inci The inci of the specific assignment to retrieve.
+    static MusxInstance<Derived> getForPageId(const DocumentPtr& document, Cmper partId, PageCmper pageId, Inci inci);
+
+    /// @brief Returns all the assignments for a given page number in a given part.
+    /// This allows the caller not to have to know the conversion to page assignment IDs.
+    /// @param document The document to search.
+    /// @param partId The ID of the linked part to search.
+    /// @param pageId The page number to search for, or zero for all multipage assignments.
+    static MusxInstanceList<Derived> getArrayForPageId(const DocumentPtr& document, Cmper partId, PageCmper pageId);
+
+    void integrityCheck(const std::shared_ptr<EnigmaBase>& ptrToThis) override;
+
+protected:
+    /** @brief Constructor function */
+    PageAssignBase(const DocumentWeakPtr& document, Cmper partId, ShareMode shareMode, Cmper cmper, Inci inci)
+        : OthersBase(document, partId, shareMode, cmper, inci)
+    {
+    }
+
+private:
+    const Derived& derived() const { return static_cast<const Derived&>(*this); }
+};
+
+class PageTextAssign;
+class PageGraphicAssign;
+// Both instantiations are defined once, in PageAssignBase.cpp.
+extern template class PageAssignBase<PageTextAssign>;
+extern template class PageAssignBase<PageGraphicAssign>;
+
 class TextBlock;
 /**
  * @class PageTextAssign
  * @brief Represents a page text assignment with positioning and page range properties.
  *
- * Instances of #PageTextAssign use page assignment IDs rather than straightforward page numbers.
- * This allows their page assignments to shift based on how many leading blank pages exist in the
- * current score or part view vs. all the others. If all score and parts have the same number of
- * leading blank pages, then page assignment IDs are the same as page numbers.
- *
- * If the cmper is non-0, the #startPage and #endPage values are not used and the cmper
- * specifies a page assignment ID that defines which page this text is assigned to.
- *
- * If the cmper is 0, the #startPage and #endPage values specify the range of page assignment IDs to which
- * this text is assigned. An #endPage of 0 indicates the last page of the document.
- *
- * If cmper is non-zero, #startPage and #endPage should have the same value as the cmper.
+ * The pages it is on are a page assignment: see @ref PageAssignBase.
  *
  * The inci value specifies a particular page text when more than one exists for the cmper value.
  *
  * This class is identified by the XML node name "pageTextAssign".
  */
-class PageTextAssign : public OthersBase
+class PageTextAssign : public PageAssignBase<PageTextAssign>
 {
 public:
     /**
@@ -2005,7 +2089,7 @@ public:
 
     /** @brief Constructor function */
     explicit PageTextAssign(const DocumentWeakPtr& document, Cmper partId, ShareMode shareMode, Cmper cmper, Inci inci)
-        : OthersBase(document, partId, shareMode, cmper, inci)
+        : PageAssignBase(document, partId, shareMode, cmper, inci)
     {
     }
 
@@ -2017,7 +2101,8 @@ public:
     PageCmper endPage{};            ///< The last page assignment ID on which the text appears.
                                     ///< A value of zero indicates the last page in the document, whatever number it may be.
                                     ///< Note that the page assignment ID may be different than the page number. See #calcEndPageNumber.
-    PageAssignType oddEven{};       ///< Determines if a multipage assignment appears on all, even (left), or odd (right) pages
+    PageAssignType oddEven{};       ///< Determines if the assignment appears on all, even (left), or odd (right) pages.
+                                    ///< It applies to single-page assignments as well. See #calcMatchesOddEven.
     HorizontalAlignment hPosLp{};   ///< Horizontal alignment on left or all pages (depending on #indRpPos). (xml tag is `<hposLp>`)
     HorizontalAlignment hPosRp{};   ///< Horizontal alignment on right pages (if #indRpPos is true). (xml tag is `<hposRp>`)
     bool hidden{};                  ///< Indicates if the page text appears only on screen. (xml tag is `<postIt>`)
@@ -2033,18 +2118,6 @@ public:
     /** @brief Gets the TextBlock for this assignment, or nullptr if none. */
     MusxInstance<TextBlock> getTextBlock() const;
 
-    /// @brief Return the starting page number, taking into account leading blank pages in all parts.
-    /// This calculation mimics observed behavior in Finale.
-    /// @return The first page in @p forPartId on which the page text appears. If it does not appear on the part,
-    /// the function returns std::nullopt.
-    std::optional<PageCmper> calcStartPageNumber(Cmper forPartId) const;
-
-    /// @brief Return the ending page number, taking into account leading blank pages in all parts
-    /// This calculation mimics observed behavior in Finale.
-    /// @return The first page in @p forPartId on which the page text appears. If it does not appear on the part,
-    /// the function returns std::nullopt.
-    std::optional<PageCmper> calcEndPageNumber(Cmper forPartId) const;
-
     /**
      * @brief Gets the raw text for parsing this assignment, or nullptr if none.
      * @param forPartId The part to use for ^partname and ^totpages inserts.
@@ -2054,39 +2127,8 @@ public:
     */
     util::EnigmaParsingContext getRawTextCtx(Cmper forPartId, std::optional<Cmper> forPageId = std::nullopt) const;
 
-    /// @brief Returns true if this is a multi-page assignment.
-    bool isMultiPage() const
-    { return getCmper() == 0 && startPage != endPage; }
-
-    /// @brief Returns true if this is a multi-page assignment that is assigned to through last page, no matter how many.
-    bool isMultiAssignedThruLastPage() const
-    { return isMultiPage() && endPage == 0; }
-
-    void integrityCheck(const std::shared_ptr<EnigmaBase>& ptrToThis) override
-    {
-        this->OthersBase::integrityCheck(ptrToThis);
-        if (getCmper() != 0) {
-            if (startPage != getCmper() || endPage != getCmper()) {
-                MUSX_INTEGRITY_ERROR("PageTextAssign " + std::to_string(getCmper()) + " inci " + std::to_string(getInci().value_or(0)) +
-                    " has startPage or endPage value that does not match.");
-            }
-        }
-    }
-
-    /// @brief Returns a specific page text assignment for a given page number in a given part.
-    /// This allows the caller not to have to know the conversion to page assignment IDs.
-    /// @param document The document to search.
-    /// @param partId The ID of the linked part to search.
-    /// @param pageId The page number to search for, or zero for multipage assignments.
-    /// @param inci The inci of the specific page text assignment to retrieve.
-    static MusxInstance<others::PageTextAssign> getForPageId(const DocumentPtr& document, Cmper partId, PageCmper pageId, Inci inci);
-
-    /// @brief Returns all the page text assignments for a given page number in a given part.
-    /// This allows the caller not to have to know the conversion to page assignment IDs.
-    /// @param document The document to search.
-    /// @param partId The ID of the linked part to search.
-    /// @param pageId The page number to search for, or zero for all multipage assignments.
-    static MusxInstanceList<others::PageTextAssign> getArrayForPageId(const DocumentPtr& document, Cmper partId, PageCmper pageId);
+    /// @brief The assignment's odd/even setting, #oddEven. Required by @ref PageAssignBase.
+    PageAssignType getPageAssignType() const { return oddEven; }
 
     constexpr static std::string_view XmlNodeName = "pageTextAssign"; ///< The XML node name for this type.
     static const xml::XmlElementArray<PageTextAssign>& xmlMappingArray(); ///< Required for musx::factory::FieldPopulator.
