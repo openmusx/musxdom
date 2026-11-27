@@ -122,10 +122,11 @@ var NAVTREEINDEX38 =
 "structmusx_1_1util_1_1EntryGeometry_1_1Positions.html#ac1bee6b270f73227af32e63c210be8d4":[2,0,1,3,14,1,7],
 "structmusx_1_1util_1_1EntryGeometry_1_1Positions.html#ad17ea97e10686f7b92b014eb5506b70c":[2,0,1,3,14,1,5],
 "structmusx_1_1util_1_1FretboardDisplayData.html":[2,0,1,3,16],
-"structmusx_1_1util_1_1FretboardDisplayData.html#a25825a6b12c695e63ad41f988112427e":[2,0,1,3,16,8],
-"structmusx_1_1util_1_1FretboardDisplayData.html#a2ecfc67f3e052baf9c1e498b73b8b2b8":[2,0,1,3,16,6],
+"structmusx_1_1util_1_1FretboardDisplayData.html#a25825a6b12c695e63ad41f988112427e":[2,0,1,3,16,9],
+"structmusx_1_1util_1_1FretboardDisplayData.html#a2ecfc67f3e052baf9c1e498b73b8b2b8":[2,0,1,3,16,7],
+"structmusx_1_1util_1_1FretboardDisplayData.html#a3cacba415b4e3f16a5e47fee8d72e0b5":[2,0,1,3,16,6],
 "structmusx_1_1util_1_1FretboardDisplayData.html#a7d5b6c4e8030e3169345c5b5096a857c":[2,0,1,3,16,3],
-"structmusx_1_1util_1_1FretboardDisplayData.html#aa3c802a3b7d292a1bf6c08ff63a5780c":[2,0,1,3,16,7],
+"structmusx_1_1util_1_1FretboardDisplayData.html#aa3c802a3b7d292a1bf6c08ff63a5780c":[2,0,1,3,16,8],
 "structmusx_1_1util_1_1FretboardDisplayData.html#ab9ad870e44b6f6a58b74b9041cf118a6":[2,0,1,3,16,2],
 "structmusx_1_1util_1_1FretboardDisplayData.html#ad76a8a38fbf3e5acb80288b7a21dd45c":[2,0,1,3,16,4],
 "structmusx_1_1util_1_1FretboardDisplayData.html#af39ef87b47d8079ac877ee22163bc9ea":[2,0,1,3,16,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX38 =
 "structmusx_1_1util_1_1ShapeDefInstruction_1_1StartGroup.html#ac5dfae802652f2e6b1a98fe846f7562d":[2,0,1,3,25,17,10],
 "structmusx_1_1util_1_1ShapeDefInstruction_1_1StartGroup.html#accc26340dcf77e70f0a243936c5b29a8":[2,0,1,3,25,17,6],
 "structmusx_1_1util_1_1ShapeDefInstruction_1_1StartGroup.html#ad4b5789e669c516a041c7644d0f0da4a":[2,0,1,3,25,17,1],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartGroup.html#ae1f971f4f492a7e25870a16a880552af":[2,0,1,3,25,17,2],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html":[2,0,1,3,25,16]
+"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartGroup.html#ae1f971f4f492a7e25870a16a880552af":[2,0,1,3,25,17,2]
 };

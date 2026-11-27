@@ -96,7 +96,7 @@ var NAVTREEINDEX =
 "structmusx_1_1dom_1_1PercussionPlaybackKey.html#a4b62dfc6a40b78c661925d145a7fe506",
 "structmusx_1_1dom_1_1SoundmapSound.html#a5ab103610b013b575efaa49a3e689f94",
 "structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html#a4c98e12b244218cfe03160a668c4257f",
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#a04c140860c7feafb8d0cc8b8b050a3f6"
+"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
