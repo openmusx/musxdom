@@ -1,5 +1,13 @@
 var NAVTREEINDEX37 =
 {
+"structmusx_1_1dom_1_1SoundmapSound.html#a5ab103610b013b575efaa49a3e689f94":[2,0,1,0,61,2],
+"structmusx_1_1dom_1_1SoundmapSound.html#a6ef0c71d90f3b7877dfb17586f52cd25":[1,0,1,0,60,0],
+"structmusx_1_1dom_1_1SoundmapSound.html#a6ef0c71d90f3b7877dfb17586f52cd25":[2,0,1,0,61,0],
+"structmusx_1_1dom_1_1SoundmapSound.html#a71673d1d4283fbc3399588c87c6c6573":[1,0,1,0,60,1],
+"structmusx_1_1dom_1_1SoundmapSound.html#a71673d1d4283fbc3399588c87c6c6573":[2,0,1,0,61,1],
+"structmusx_1_1dom_1_1SoundmapSound.html#abfcc3d2c5e9ee9eb0473b70b8c82a1ed":[1,0,1,0,60,3],
+"structmusx_1_1dom_1_1SoundmapSound.html#abfcc3d2c5e9ee9eb0473b70b8c82a1ed":[2,0,1,0,61,3],
+"structmusx_1_1dom_1_1SoundmapSound.html#ac1973dea1e444f7a19c317d6d19837ad":[1,0,1,0,60,5],
 "structmusx_1_1dom_1_1SoundmapSound.html#ac1973dea1e444f7a19c317d6d19837ad":[2,0,1,0,61,5],
 "structmusx_1_1dom_1_1SoundmapSound.html#ae53d7798819c19431b2821ea44b8543e":[1,0,1,0,60,6],
 "structmusx_1_1dom_1_1SoundmapSound.html#ae53d7798819c19431b2821ea44b8543e":[2,0,1,0,61,6],
@@ -241,13 +249,5 @@ var NAVTREEINDEX37 =
 "structmusx_1_1factory_1_1DocumentFactory_1_1ConstructionOptions.html#a1bfca06137a48053fe4841f2fb7eb8c3":[2,0,1,1,1,0,0],
 "structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html":[1,0,1,1,1,1],
 "structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html":[2,0,1,1,1,1],
-"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html#a4c98e12b244218cfe03160a668c4257f":[1,0,1,1,1,1,1],
-"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html#a4c98e12b244218cfe03160a668c4257f":[2,0,1,1,1,1,1],
-"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions_1_1EmbeddedGraphicFile.html":[1,0,1,1,1,1,0],
-"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions_1_1EmbeddedGraphicFile.html":[2,0,1,1,1,1,0],
-"structmusx_1_1factory_1_1PlaybackResourceFile.html":[1,0,1,1,5],
-"structmusx_1_1factory_1_1PlaybackResourceFile.html":[2,0,1,1,5],
-"structmusx_1_1factory_1_1PlaybackResourceFile.html#a501655b5b3800013712dfa70a74d0d90":[1,0,1,1,5,3],
-"structmusx_1_1factory_1_1PlaybackResourceFile.html#a501655b5b3800013712dfa70a74d0d90":[2,0,1,1,5,3],
-"structmusx_1_1factory_1_1PlaybackResourceFile.html#a5f83b692b4e4879fdbc3aab053488d53":[1,0,1,1,5,2]
+"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html#a4c98e12b244218cfe03160a668c4257f":[1,0,1,1,1,1,1]
 };

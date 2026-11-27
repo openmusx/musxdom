@@ -1,5 +1,13 @@
 var NAVTREEINDEX35 =
 {
+"namespacemusx_1_1dom_1_1uuid.html#afbfbf1155d5b7caf5f6b58bdcc958f77":[1,0,1,0,4,539],
+"namespacemusx_1_1dom_1_1uuid.html#afc018f9ebaacf9526887a8c19d47e003":[1,0,1,0,4,775],
+"namespacemusx_1_1dom_1_1uuid.html#afc118670fce476514d9891e73753fe5f":[1,0,1,0,4,533],
+"namespacemusx_1_1dom_1_1uuid.html#afc49244a4847a8f1c5ba1950d039153f":[1,0,1,0,4,403],
+"namespacemusx_1_1dom_1_1uuid.html#afc5b1f9342f28749ea709e92d42721cb":[1,0,1,0,4,169],
+"namespacemusx_1_1dom_1_1uuid.html#afc6c21609d7038440f24982e18d59bf8":[1,0,1,0,4,353],
+"namespacemusx_1_1dom_1_1uuid.html#afc92d465f9f23484f9be1eae18b9f4ae":[1,0,1,0,4,262],
+"namespacemusx_1_1dom_1_1uuid.html#afcce850eecc84cc3bbb27f5fee66ce88":[1,0,1,0,4,321],
 "namespacemusx_1_1dom_1_1uuid.html#afd6a6b65b496bdccc1f4fe289f701c83":[1,0,1,0,4,385],
 "namespacemusx_1_1dom_1_1uuid.html#afdbf28432652af6c8b6318b87dce5c0a":[1,0,1,0,4,688],
 "namespacemusx_1_1dom_1_1uuid.html#afe2dcc988533403f44856a473f242297":[1,0,1,0,4,646],
@@ -241,13 +249,5 @@ var NAVTREEINDEX35 =
 "structmusx_1_1dom_1_1PercussionPlaybackKey.html":[2,0,1,0,65],
 "structmusx_1_1dom_1_1PercussionPlaybackKey.html#a359ecee4285ba0dc62dd60b6b1471e23":[1,0,1,0,64,1],
 "structmusx_1_1dom_1_1PercussionPlaybackKey.html#a359ecee4285ba0dc62dd60b6b1471e23":[2,0,1,0,65,1],
-"structmusx_1_1dom_1_1PercussionPlaybackKey.html#a4b62dfc6a40b78c661925d145a7fe506":[1,0,1,0,64,5],
-"structmusx_1_1dom_1_1PercussionPlaybackKey.html#a4b62dfc6a40b78c661925d145a7fe506":[2,0,1,0,65,5],
-"structmusx_1_1dom_1_1PercussionPlaybackKey.html#a558613f693087409ab07f7bf402e0e83":[1,0,1,0,64,0],
-"structmusx_1_1dom_1_1PercussionPlaybackKey.html#a558613f693087409ab07f7bf402e0e83":[2,0,1,0,65,0],
-"structmusx_1_1dom_1_1PercussionPlaybackKey.html#ac07f25e1b37f78f283e0468e3fa9cbfc":[1,0,1,0,64,4],
-"structmusx_1_1dom_1_1PercussionPlaybackKey.html#ac07f25e1b37f78f283e0468e3fa9cbfc":[2,0,1,0,65,4],
-"structmusx_1_1dom_1_1PercussionPlaybackKey.html#af0cfedd943048e92783f80fcc4a7aad2":[1,0,1,0,64,3],
-"structmusx_1_1dom_1_1PercussionPlaybackKey.html#af0cfedd943048e92783f80fcc4a7aad2":[2,0,1,0,65,3],
-"structmusx_1_1dom_1_1PercussionPlaybackKey.html#af5207635353000f2f66cb0efb4dfc5ea":[1,0,1,0,64,2]
+"structmusx_1_1dom_1_1PercussionPlaybackKey.html#a4b62dfc6a40b78c661925d145a7fe506":[1,0,1,0,64,5]
 };

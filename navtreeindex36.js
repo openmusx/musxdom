@@ -1,5 +1,13 @@
 var NAVTREEINDEX36 =
 {
+"structmusx_1_1dom_1_1PercussionPlaybackKey.html#a4b62dfc6a40b78c661925d145a7fe506":[2,0,1,0,65,5],
+"structmusx_1_1dom_1_1PercussionPlaybackKey.html#a558613f693087409ab07f7bf402e0e83":[1,0,1,0,64,0],
+"structmusx_1_1dom_1_1PercussionPlaybackKey.html#a558613f693087409ab07f7bf402e0e83":[2,0,1,0,65,0],
+"structmusx_1_1dom_1_1PercussionPlaybackKey.html#ac07f25e1b37f78f283e0468e3fa9cbfc":[1,0,1,0,64,4],
+"structmusx_1_1dom_1_1PercussionPlaybackKey.html#ac07f25e1b37f78f283e0468e3fa9cbfc":[2,0,1,0,65,4],
+"structmusx_1_1dom_1_1PercussionPlaybackKey.html#af0cfedd943048e92783f80fcc4a7aad2":[1,0,1,0,64,3],
+"structmusx_1_1dom_1_1PercussionPlaybackKey.html#af0cfedd943048e92783f80fcc4a7aad2":[2,0,1,0,65,3],
+"structmusx_1_1dom_1_1PercussionPlaybackKey.html#af5207635353000f2f66cb0efb4dfc5ea":[1,0,1,0,64,2],
 "structmusx_1_1dom_1_1PercussionPlaybackKey.html#af5207635353000f2f66cb0efb4dfc5ea":[2,0,1,0,65,2],
 "structmusx_1_1dom_1_1PlaybackLookupResult.html":[1,0,1,0,58],
 "structmusx_1_1dom_1_1PlaybackLookupResult.html":[2,0,1,0,59],
@@ -241,13 +249,5 @@ var NAVTREEINDEX36 =
 "structmusx_1_1dom_1_1SoundmapSound.html":[2,0,1,0,61],
 "structmusx_1_1dom_1_1SoundmapSound.html#a455ecdcac1b92f38852640b2a262e920":[1,0,1,0,60,4],
 "structmusx_1_1dom_1_1SoundmapSound.html#a455ecdcac1b92f38852640b2a262e920":[2,0,1,0,61,4],
-"structmusx_1_1dom_1_1SoundmapSound.html#a5ab103610b013b575efaa49a3e689f94":[1,0,1,0,60,2],
-"structmusx_1_1dom_1_1SoundmapSound.html#a5ab103610b013b575efaa49a3e689f94":[2,0,1,0,61,2],
-"structmusx_1_1dom_1_1SoundmapSound.html#a6ef0c71d90f3b7877dfb17586f52cd25":[1,0,1,0,60,0],
-"structmusx_1_1dom_1_1SoundmapSound.html#a6ef0c71d90f3b7877dfb17586f52cd25":[2,0,1,0,61,0],
-"structmusx_1_1dom_1_1SoundmapSound.html#a71673d1d4283fbc3399588c87c6c6573":[1,0,1,0,60,1],
-"structmusx_1_1dom_1_1SoundmapSound.html#a71673d1d4283fbc3399588c87c6c6573":[2,0,1,0,61,1],
-"structmusx_1_1dom_1_1SoundmapSound.html#abfcc3d2c5e9ee9eb0473b70b8c82a1ed":[1,0,1,0,60,3],
-"structmusx_1_1dom_1_1SoundmapSound.html#abfcc3d2c5e9ee9eb0473b70b8c82a1ed":[2,0,1,0,61,3],
-"structmusx_1_1dom_1_1SoundmapSound.html#ac1973dea1e444f7a19c317d6d19837ad":[1,0,1,0,60,5]
+"structmusx_1_1dom_1_1SoundmapSound.html#a5ab103610b013b575efaa49a3e689f94":[1,0,1,0,60,2]
 };

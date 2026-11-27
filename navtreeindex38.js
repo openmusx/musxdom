@@ -1,5 +1,13 @@
 var NAVTREEINDEX38 =
 {
+"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions.html#a4c98e12b244218cfe03160a668c4257f":[2,0,1,1,1,1,1],
+"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions_1_1EmbeddedGraphicFile.html":[1,0,1,1,1,1,0],
+"structmusx_1_1factory_1_1DocumentFactory_1_1CreateOptions_1_1EmbeddedGraphicFile.html":[2,0,1,1,1,1,0],
+"structmusx_1_1factory_1_1PlaybackResourceFile.html":[1,0,1,1,5],
+"structmusx_1_1factory_1_1PlaybackResourceFile.html":[2,0,1,1,5],
+"structmusx_1_1factory_1_1PlaybackResourceFile.html#a501655b5b3800013712dfa70a74d0d90":[1,0,1,1,5,3],
+"structmusx_1_1factory_1_1PlaybackResourceFile.html#a501655b5b3800013712dfa70a74d0d90":[2,0,1,1,5,3],
+"structmusx_1_1factory_1_1PlaybackResourceFile.html#a5f83b692b4e4879fdbc3aab053488d53":[1,0,1,1,5,2],
 "structmusx_1_1factory_1_1PlaybackResourceFile.html#a5f83b692b4e4879fdbc3aab053488d53":[2,0,1,1,5,2],
 "structmusx_1_1factory_1_1PlaybackResourceFile.html#a884a9e08cba1447b11c4b2b7dbbdff70":[1,0,1,1,5,4],
 "structmusx_1_1factory_1_1PlaybackResourceFile.html#a884a9e08cba1447b11c4b2b7dbbdff70":[2,0,1,1,5,4],
@@ -241,13 +249,5 @@ var NAVTREEINDEX38 =
 "structmusx_1_1util_1_1ShapeDefInstruction_1_1StartGroup.html#accc26340dcf77e70f0a243936c5b29a8":[2,0,1,3,25,17,6],
 "structmusx_1_1util_1_1ShapeDefInstruction_1_1StartGroup.html#ad4b5789e669c516a041c7644d0f0da4a":[2,0,1,3,25,17,1],
 "structmusx_1_1util_1_1ShapeDefInstruction_1_1StartGroup.html#ae1f971f4f492a7e25870a16a880552af":[2,0,1,3,25,17,2],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html":[2,0,1,3,25,16],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#a04c140860c7feafb8d0cc8b8b050a3f6":[2,0,1,3,25,16,1],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#a2ee1f8421d77970b760b2e3d1f96fe28":[2,0,1,3,25,16,3],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#a3e2179fcccc6292963caff1f15cb74e3":[2,0,1,3,25,16,0],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#a428c85408d04cbe2278386be08651a3d":[2,0,1,3,25,16,7],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#a5bcdedeb45e4b3d5026eec68f2ed32b3":[2,0,1,3,25,16,9],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#a8386cbd8112febe81e77f7fd932a95be":[2,0,1,3,25,16,6],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#a9815da31797f4e5caf6c71ec9a0128b7":[2,0,1,3,25,16,8],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#aa4c713e1d08ce60214871fa9ca862400":[2,0,1,3,25,16,10]
+"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html":[2,0,1,3,25,16]
 };

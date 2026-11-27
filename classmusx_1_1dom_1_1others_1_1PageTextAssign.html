@@ -146,6 +146,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1b5a9363d420b5416d59fa74f7bb75b5" id="r_a1b5a9363d420b5416d59fa74f7bb75b5"><td class="memItemLeft" align="right" valign="top"><a id="a1b5a9363d420b5416d59fa74f7bb75b5" name="a1b5a9363d420b5416d59fa74f7bb75b5"></a>
 <a class="el" href="#a90487371e41dab00c3cd1d60c0d9be9e">PageAssignType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getPageAssignType</b> () const</td></tr>
 <tr class="memdesc:a1b5a9363d420b5416d59fa74f7bb75b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The assignment's odd/even setting, <a class="el" href="#a76d8da31ce8926dd0de1653738eabcf8">oddEven</a>. Required by <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html">PageAssignBase</a>. <br /></td></tr>
+<tr class="memitem:ab8c7ec5c0a338dd6ca7ffd907adb3338" id="r_ab8c7ec5c0a338dd6ca7ffd907adb3338"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8c7ec5c0a338dd6ca7ffd907adb3338">calcUsesRightPageValues</a> (<a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> pageNumber) const</td></tr>
+<tr class="memdesc:ab8c7ec5c0a338dd6ca7ffd907adb3338"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if page <code class="param">pageNumber</code> uses the right-page values: <a class="el" href="#a24c18443b48e38a42d6fd4846cf0f1ac" title="Individual right page positioning indicator. (xml tag is &lt;indRpPos&gt;).">indRpPos</a> is set and the page is a right-hand page, which is an odd page.  <br /></td></tr>
+<tr class="memitem:ad2664405c2dce18502cc25e6787f5b0e" id="r_ad2664405c2dce18502cc25e6787f5b0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemusx_1_1dom.html#ae1cc711919158f264a344a6a966f5d4c">HorizontalAlignment</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2664405c2dce18502cc25e6787f5b0e">calcHorizontalAlignment</a> (<a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> pageNumber) const</td></tr>
+<tr class="memdesc:ad2664405c2dce18502cc25e6787f5b0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the horizontal alignment that applies on page <code class="param">pageNumber:</code> <a class="el" href="#aef1ea04c673be1ae50f8f196ebd05304" title="Horizontal alignment on right pages (if indRpPos is true). (xml tag is &lt;hposRp&gt;).">hPosRp</a> if the page uses the right-page values (see <a class="el" href="#ab8c7ec5c0a338dd6ca7ffd907adb3338" title="Returns true if page pageNumber uses the right-page values: indRpPos is set and the page is a right-h...">calcUsesRightPageValues</a>), otherwise <a class="el" href="#ac5281ee618530eb739a74a115df8b4dd" title="Horizontal alignment on left or all pages (depending on indRpPos). (xml tag is &lt;hposLp&gt;).">hPosLp</a>.  <br /></td></tr>
+<tr class="memitem:a00e78af120ddfe544eef22bb8a0b05a4" id="r_a00e78af120ddfe544eef22bb8a0b05a4"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="namespacemusx_1_1dom.html#a759a8f26320a6122a230b9b1fbb7c249">Evpu</a>, <a class="el" href="namespacemusx_1_1dom.html#a759a8f26320a6122a230b9b1fbb7c249">Evpu</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00e78af120ddfe544eef22bb8a0b05a4">calcDisplacement</a> (<a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> pageNumber) const</td></tr>
+<tr class="memdesc:a00e78af120ddfe544eef22bb8a0b05a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the horizontal and vertical displacements that apply on page <code class="param">pageNumber:</code> <a class="el" href="#a73322179c091469057ce21f3ce0691cc" title="Horizontal displacement for right pages (if indRpPos is true). (xml tag is &lt;rightPgXdisp&gt;).">rightPgXDisp</a> and <a class="el" href="#aa9249f26df6394f649b6eb16f43a4b21" title="Vertical displacement for right pages (if indRpPos is true). (xml tag is &lt;rightPgYdisp&gt;).">rightPgYDisp</a> if the page uses the right-page values (see <a class="el" href="#ab8c7ec5c0a338dd6ca7ffd907adb3338" title="Returns true if page pageNumber uses the right-page values: indRpPos is set and the page is a right-h...">calcUsesRightPageValues</a>), otherwise <a class="el" href="#acad33acff070efc7e82e6ac5bdde9a48" title="The horizontal displacement from the default position. (xml tag is &lt;xdisp&gt;).">xDisp</a> and <a class="el" href="#a0fbbbf5219734895f84e9a2f41b9fe58" title="The vertical displacement from the default position. (xml tag is &lt;ydisp&gt;).">yDisp</a>.  <br /></td></tr>
+<tr class="memitem:a3f5c57e949712624d760b36639ab057e" id="r_a3f5c57e949712624d760b36639ab057e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f5c57e949712624d760b36639ab057e">isPlacedLike</a> (const <a class="el" href="#a1e542085eaa10ae6cff1d776b09dc50c">PageTextAssign</a> &amp;other) const</td></tr>
+<tr class="memdesc:a3f5c57e949712624d760b36639ab057e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if <code class="param">other</code> places its text the same way as this assignment: the same <a class="el" href="#acad33acff070efc7e82e6ac5bdde9a48" title="The horizontal displacement from the default position. (xml tag is &lt;xdisp&gt;).">xDisp</a> and <a class="el" href="#a0fbbbf5219734895f84e9a2f41b9fe58" title="The vertical displacement from the default position. (xml tag is &lt;ydisp&gt;).">yDisp</a>, the same <a class="el" href="#a24c18443b48e38a42d6fd4846cf0f1ac" title="Individual right page positioning indicator. (xml tag is &lt;indRpPos&gt;).">indRpPos</a>, and, when <a class="el" href="#a24c18443b48e38a42d6fd4846cf0f1ac" title="Individual right page positioning indicator. (xml tag is &lt;indRpPos&gt;).">indRpPos</a> is set, the same <a class="el" href="#a73322179c091469057ce21f3ce0691cc" title="Horizontal displacement for right pages (if indRpPos is true). (xml tag is &lt;rightPgXdisp&gt;).">rightPgXDisp</a> and <a class="el" href="#aa9249f26df6394f649b6eb16f43a4b21" title="Vertical displacement for right pages (if indRpPos is true). (xml tag is &lt;rightPgYdisp&gt;).">rightPgYDisp</a>. These and visibility are the values a linked part can change; the alignment and page-edge values are not compared.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html">musx::dom::others::PageAssignBase&lt; PageTextAssign &gt;</a></td></tr>
 <tr class="memitem:a4946b40f59cc1d02f53b911e9c7205c5 inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase" id="r_a4946b40f59cc1d02f53b911e9c7205c5"><td class="memItemLeft" align="right" valign="top">
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isMultiPage</b> () const</td></tr>
@@ -334,6 +342,81 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a00e78af120ddfe544eef22bb8a0b05a4" name="a00e78af120ddfe544eef22bb8a0b05a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00e78af120ddfe544eef22bb8a0b05a4">&#9670;&#160;</a></span>calcDisplacement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; <a class="el" href="namespacemusx_1_1dom.html#a759a8f26320a6122a230b9b1fbb7c249">Evpu</a>, <a class="el" href="namespacemusx_1_1dom.html#a759a8f26320a6122a230b9b1fbb7c249">Evpu</a> &gt; musx::dom::others::PageTextAssign::calcDisplacement </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a></td>          <td class="paramname"><span class="paramname"><em>pageNumber</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the horizontal and vertical displacements that apply on page <code class="param">pageNumber:</code> <a class="el" href="#a73322179c091469057ce21f3ce0691cc" title="Horizontal displacement for right pages (if indRpPos is true). (xml tag is &lt;rightPgXdisp&gt;).">rightPgXDisp</a> and <a class="el" href="#aa9249f26df6394f649b6eb16f43a4b21" title="Vertical displacement for right pages (if indRpPos is true). (xml tag is &lt;rightPgYdisp&gt;).">rightPgYDisp</a> if the page uses the right-page values (see <a class="el" href="#ab8c7ec5c0a338dd6ca7ffd907adb3338" title="Returns true if page pageNumber uses the right-page values: indRpPos is set and the page is a right-h...">calcUsesRightPageValues</a>), otherwise <a class="el" href="#acad33acff070efc7e82e6ac5bdde9a48" title="The horizontal displacement from the default position. (xml tag is &lt;xdisp&gt;).">xDisp</a> and <a class="el" href="#a0fbbbf5219734895f84e9a2f41b9fe58" title="The vertical displacement from the default position. (xml tag is &lt;ydisp&gt;).">yDisp</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pageNumber</td><td>A page number (not a page assignment ID). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad2664405c2dce18502cc25e6787f5b0e" name="ad2664405c2dce18502cc25e6787f5b0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2664405c2dce18502cc25e6787f5b0e">&#9670;&#160;</a></span>calcHorizontalAlignment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#ae1cc711919158f264a344a6a966f5d4c">PageTextAssign::HorizontalAlignment</a> musx::dom::others::PageTextAssign::calcHorizontalAlignment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a></td>          <td class="paramname"><span class="paramname"><em>pageNumber</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the horizontal alignment that applies on page <code class="param">pageNumber:</code> <a class="el" href="#aef1ea04c673be1ae50f8f196ebd05304" title="Horizontal alignment on right pages (if indRpPos is true). (xml tag is &lt;hposRp&gt;).">hPosRp</a> if the page uses the right-page values (see <a class="el" href="#ab8c7ec5c0a338dd6ca7ffd907adb3338" title="Returns true if page pageNumber uses the right-page values: indRpPos is set and the page is a right-h...">calcUsesRightPageValues</a>), otherwise <a class="el" href="#ac5281ee618530eb739a74a115df8b4dd" title="Horizontal alignment on left or all pages (depending on indRpPos). (xml tag is &lt;hposLp&gt;).">hPosLp</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pageNumber</td><td>A page number (not a page assignment ID). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab8c7ec5c0a338dd6ca7ffd907adb3338" name="ab8c7ec5c0a338dd6ca7ffd907adb3338"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8c7ec5c0a338dd6ca7ffd907adb3338">&#9670;&#160;</a></span>calcUsesRightPageValues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool musx::dom::others::PageTextAssign::calcUsesRightPageValues </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a></td>          <td class="paramname"><span class="paramname"><em>pageNumber</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns true if page <code class="param">pageNumber</code> uses the right-page values: <a class="el" href="#a24c18443b48e38a42d6fd4846cf0f1ac" title="Individual right page positioning indicator. (xml tag is &lt;indRpPos&gt;).">indRpPos</a> is set and the page is a right-hand page, which is an odd page. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pageNumber</td><td>A page number (not a page assignment ID). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a7ad1815a48ef4a7c37a961ac4c4b7813" name="a7ad1815a48ef4a7c37a961ac4c4b7813"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7ad1815a48ef4a7c37a961ac4c4b7813">&#9670;&#160;</a></span>getRawTextCtx()</h2>
 
@@ -358,6 +441,31 @@ Additional Inherited Members</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">forPartId</td><td>The part to use for ^partname and ^totpages inserts. </td></tr>
     <tr><td class="paramname">forPageId</td><td>The page number to use for ^page inserts if this is a multipage instance. This value is ignored for single page instances. <a class="el" href="classmusx_1_1dom_1_1Note.html" title="Represents a single note element in an entry.">Note</a> that this is a page number and not a page ID. See <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#ab6ea634c098fa09fa9e65f5457b906a0">calcStartPageNumber</a> and <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#a1a4731e30d40c0c7180d39b54a453e55">calcEndPageNumber</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3f5c57e949712624d760b36639ab057e" name="a3f5c57e949712624d760b36639ab057e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f5c57e949712624d760b36639ab057e">&#9670;&#160;</a></span>isPlacedLike()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool musx::dom::others::PageTextAssign::isPlacedLike </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a1e542085eaa10ae6cff1d776b09dc50c">PageTextAssign</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns true if <code class="param">other</code> places its text the same way as this assignment: the same <a class="el" href="#acad33acff070efc7e82e6ac5bdde9a48" title="The horizontal displacement from the default position. (xml tag is &lt;xdisp&gt;).">xDisp</a> and <a class="el" href="#a0fbbbf5219734895f84e9a2f41b9fe58" title="The vertical displacement from the default position. (xml tag is &lt;ydisp&gt;).">yDisp</a>, the same <a class="el" href="#a24c18443b48e38a42d6fd4846cf0f1ac" title="Individual right page positioning indicator. (xml tag is &lt;indRpPos&gt;).">indRpPos</a>, and, when <a class="el" href="#a24c18443b48e38a42d6fd4846cf0f1ac" title="Individual right page positioning indicator. (xml tag is &lt;indRpPos&gt;).">indRpPos</a> is set, the same <a class="el" href="#a73322179c091469057ce21f3ce0691cc" title="Horizontal displacement for right pages (if indRpPos is true). (xml tag is &lt;rightPgXdisp&gt;).">rightPgXDisp</a> and <a class="el" href="#aa9249f26df6394f649b6eb16f43a4b21" title="Vertical displacement for right pages (if indRpPos is true). (xml tag is &lt;rightPgYdisp&gt;).">rightPgYDisp</a>. These and visibility are the values a linked part can change; the alignment and page-edge values are not compared. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The assignment to compare, typically the same assignment as another score or linked part has it. </td></tr>
   </table>
   </dd>
 </dl>

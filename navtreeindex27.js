@@ -1,5 +1,13 @@
 var NAVTREEINDEX27 =
 {
+"classmusx_1_1dom_1_1others_1_1TextExpressionDef.html#a4ef5de9791a40b3918b3e5a2e3686521":[1,0,1,0,1,78,15],
+"classmusx_1_1dom_1_1others_1_1TextExpressionDef.html#a4ef5de9791a40b3918b3e5a2e3686521":[2,0,1,0,1,78,15],
+"classmusx_1_1dom_1_1others_1_1TextExpressionDef.html#a518f6b45f5640e3972bc5571873d9a22":[1,0,1,0,1,78,17],
+"classmusx_1_1dom_1_1others_1_1TextExpressionDef.html#a518f6b45f5640e3972bc5571873d9a22":[2,0,1,0,1,78,17],
+"classmusx_1_1dom_1_1others_1_1TextExpressionDef.html#a611f58b7452e49f62494e5529b54b2c0":[1,0,1,0,1,78,4],
+"classmusx_1_1dom_1_1others_1_1TextExpressionDef.html#a611f58b7452e49f62494e5529b54b2c0":[2,0,1,0,1,78,4],
+"classmusx_1_1dom_1_1others_1_1TextExpressionDef.html#a65cacd58d4a195b576cc2a83d9061a80":[1,0,1,0,1,78,12],
+"classmusx_1_1dom_1_1others_1_1TextExpressionDef.html#a65cacd58d4a195b576cc2a83d9061a80":[2,0,1,0,1,78,12],
 "classmusx_1_1dom_1_1others_1_1TextExpressionDef.html#a760183a3d6e13d8fa84d7e4da65e7415":[1,0,1,0,1,78,3],
 "classmusx_1_1dom_1_1others_1_1TextExpressionDef.html#a760183a3d6e13d8fa84d7e4da65e7415":[2,0,1,0,1,78,3],
 "classmusx_1_1dom_1_1others_1_1TextExpressionDef.html#a7b242ea790f1dcfe8db605c7a9dbbc41":[1,0,1,0,1,78,21],
@@ -241,13 +249,5 @@ var NAVTREEINDEX27 =
 "classmusx_1_1dom_1_1texts_1_1LyricsTextBase.html#ad53b94532b92f2f6a9ddaa892c87f3e5":[2,0,1,0,2,1,0],
 "classmusx_1_1dom_1_1texts_1_1LyricsVerse.html":[1,0,1,0,2,2],
 "classmusx_1_1dom_1_1texts_1_1LyricsVerse.html":[2,0,1,0,2,2],
-"classmusx_1_1dom_1_1texts_1_1SmartShapeText.html":[1,0,1,0,2,6],
-"classmusx_1_1dom_1_1texts_1_1SmartShapeText.html":[2,0,1,0,2,6],
-"classmusx_1_1dom_1_1texts_1_1SmartShapeText.html#a26e020fc16821d78c3d478dc0b784b15":[1,0,1,0,2,6,2],
-"classmusx_1_1dom_1_1texts_1_1SmartShapeText.html#a26e020fc16821d78c3d478dc0b784b15":[2,0,1,0,2,6,2],
-"classmusx_1_1dom_1_1texts_1_1SmartShapeText.html#ab3337d65545c092828c6adf9861853b2":[1,0,1,0,2,6,1],
-"classmusx_1_1dom_1_1texts_1_1SmartShapeText.html#ab3337d65545c092828c6adf9861853b2":[2,0,1,0,2,6,1],
-"classmusx_1_1dom_1_1texts_1_1SmartShapeText.html#aba62017f8e8a23f2657322d1d245c1a1":[1,0,1,0,2,6,0],
-"classmusx_1_1dom_1_1texts_1_1SmartShapeText.html#aba62017f8e8a23f2657322d1d245c1a1":[2,0,1,0,2,6,0],
-"classmusx_1_1factory_1_1ConstructionContext.html":[1,0,1,1,0]
+"classmusx_1_1dom_1_1texts_1_1SmartShapeText.html":[1,0,1,0,2,6]
 };

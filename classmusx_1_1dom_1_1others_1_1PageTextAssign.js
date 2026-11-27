@@ -6,9 +6,13 @@ var classmusx_1_1dom_1_1others_1_1PageTextAssign =
       [ "AllPages", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html#a90487371e41dab00c3cd1d60c0d9be9ea2de75620cd2a59b38e262156d6abe818", null ]
     ] ],
     [ "PageTextAssign", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html#a1e542085eaa10ae6cff1d776b09dc50c", null ],
+    [ "calcDisplacement", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html#a00e78af120ddfe544eef22bb8a0b05a4", null ],
+    [ "calcHorizontalAlignment", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html#ad2664405c2dce18502cc25e6787f5b0e", null ],
+    [ "calcUsesRightPageValues", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html#ab8c7ec5c0a338dd6ca7ffd907adb3338", null ],
     [ "getPageAssignType", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html#a1b5a9363d420b5416d59fa74f7bb75b5", null ],
     [ "getRawTextCtx", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html#a7ad1815a48ef4a7c37a961ac4c4b7813", null ],
     [ "getTextBlock", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html#a8f188b8fdd37e44c2827dec56776e87f", null ],
+    [ "isPlacedLike", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html#a3f5c57e949712624d760b36639ab057e", null ],
     [ "block", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html#afa4a54eb6f683ab9729b50a595ee3da0", null ],
     [ "endPage", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html#a6fbd2ed37d0c77b92abb1587f9b16940", null ],
     [ "hidden", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html#a5b93962f67604f59fde8c714f65ddd7d", null ],
