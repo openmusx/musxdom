@@ -1,5 +1,9 @@
 var NAVTREEINDEX39 =
 {
+"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#aecfaa2fa5355e618b5a474c4a54e18f4":[2,0,1,3,25,16,2],
+"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#af4fc29aa1b51e1470f7d7810b75bc581":[2,0,1,3,25,16,5],
+"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#afc954ecdf2177593e2f37bcd26867b12":[2,0,1,3,25,16,4],
+"structmusx_1_1util_1_1ShapeDefInstruction_1_1Undocumented.html":[2,0,1,3,25,0],
 "structmusx_1_1util_1_1ShapeDefInstruction_1_1Undocumented.html#a91275c8060f02b2004977d74387b8480":[2,0,1,3,25,0,0],
 "structmusx_1_1util_1_1ShapeDefInstruction_1_1VerticalMode.html":[2,0,1,3,25,18],
 "structmusx_1_1util_1_1ShapeDefInstruction_1_1VerticalMode.html#a3d1ffcdf55d5e6e34e36ff8e9c0bd3a8":[2,0,1,3,25,18,0],

@@ -8,11 +8,7 @@ var classmusx_1_1dom_1_1others_1_1PageGraphicAssign =
       [ "PageEdge", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#a86dbc04a484fc61c46f3d39f0a84ee56adc1391f0c771b7d9e9a965427fc71008", null ]
     ] ],
     [ "PageGraphicAssign", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#a62d642d620e7183e14ad751a53f983de", null ],
-    [ "calcEndPageNumber", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#aa1ab1e29b8c9ecc037b2baafe4a31d76", null ],
-    [ "calcStartPageNumber", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#a97db257a44af11246a3c12003ab1e721", null ],
-    [ "integrityCheck", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#a18869141d19a07b681cc34605387aac4", null ],
-    [ "isMultiAssignedThruLastPage", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#a5fe956145972e6c0efd4b64bd535811f", null ],
-    [ "isMultiPage", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#a389eb7117b051124209d3b65f9916a16", null ],
+    [ "getPageAssignType", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#a54e2c92f36d09dc2f436fa78bec9a037", null ],
     [ "bottom", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#a5746ee7d089df9b840dfd00bee2da4be", null ],
     [ "displayType", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#a8cf44c6fdaa00d4fc81a7e26269d3664", null ],
     [ "endPage", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html#aef5c87fa064f8d2eaf1c7302d4592b37", null ],

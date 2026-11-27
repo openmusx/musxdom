@@ -106,9 +106,10 @@ $(function(){initNavTree('classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html',
  <div class="center">
   <img src="classmusx_1_1dom_1_1others_1_1PageGraphicAssign.png" usemap="#musx_3A_3Adom_3A_3Aothers_3A_3APageGraphicAssign_map" alt=""/>
   <map id="musx_3A_3Adom_3A_3Aothers_3A_3APageGraphicAssign_map" name="musx_3A_3Adom_3A_3Aothers_3A_3APageGraphicAssign_map">
-<area href="classmusx_1_1dom_1_1OthersBase.html" title="EnigmaBase class for all &quot;others&quot; types." alt="musx::dom::OthersBase" shape="rect" coords="0,112,228,136"/>
-<area href="classmusx_1_1dom_1_1EnigmaBase.html" title="Base for DOM classes that are represented in EnigmaData." alt="musx::dom::EnigmaBase" shape="rect" coords="0,56,228,80"/>
-<area href="classmusx_1_1dom_1_1DocumentElement.html" title="Base for DOM classes that belong to a Document." alt="musx::dom::DocumentElement" shape="rect" coords="0,0,228,24"/>
+<area href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html" alt="musx::dom::others::PageAssignBase&lt; PageGraphicAssign &gt;" shape="rect" coords="0,168,347,192"/>
+<area href="classmusx_1_1dom_1_1OthersBase.html" title="EnigmaBase class for all &quot;others&quot; types." alt="musx::dom::OthersBase" shape="rect" coords="0,112,347,136"/>
+<area href="classmusx_1_1dom_1_1EnigmaBase.html" title="Base for DOM classes that are represented in EnigmaData." alt="musx::dom::EnigmaBase" shape="rect" coords="0,56,347,80"/>
+<area href="classmusx_1_1dom_1_1DocumentElement.html" title="Base for DOM classes that belong to a Document." alt="musx::dom::DocumentElement" shape="rect" coords="0,0,347,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -142,18 +143,28 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a62d642d620e7183e14ad751a53f983de" id="r_a62d642d620e7183e14ad751a53f983de"><td class="memItemLeft" align="right" valign="top"><a id="a62d642d620e7183e14ad751a53f983de" name="a62d642d620e7183e14ad751a53f983de"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PageGraphicAssign</b> (const <a class="el" href="namespacemusx_1_1dom.html#ae1f1255569ce031b780170ce99232f05">DocumentWeakPtr</a> &amp;document, <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#ac655bdce0724d5e32cfcd6203c9a5d1f">ShareMode</a> shareMode, <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> cmper, <a class="el" href="namespacemusx_1_1dom.html#a59370f73998597d06d53ad925c37dc0d">Inci</a> inci)</td></tr>
 <tr class="memdesc:a62d642d620e7183e14ad751a53f983de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br /></td></tr>
-<tr class="memitem:a97db257a44af11246a3c12003ab1e721" id="r_a97db257a44af11246a3c12003ab1e721"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97db257a44af11246a3c12003ab1e721">calcStartPageNumber</a> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> forPartId) const</td></tr>
-<tr class="memdesc:a97db257a44af11246a3c12003ab1e721"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the starting page number, taking into account leading blank pages in all parts. This calculation mimics observed behavior in Finale.  <br /></td></tr>
-<tr class="memitem:aa1ab1e29b8c9ecc037b2baafe4a31d76" id="r_aa1ab1e29b8c9ecc037b2baafe4a31d76"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1ab1e29b8c9ecc037b2baafe4a31d76">calcEndPageNumber</a> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> forPartId) const</td></tr>
-<tr class="memdesc:aa1ab1e29b8c9ecc037b2baafe4a31d76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the ending page number, taking into account leading blank pages in all parts This calculation mimics observed behavior in Finale.  <br /></td></tr>
-<tr class="memitem:a389eb7117b051124209d3b65f9916a16" id="r_a389eb7117b051124209d3b65f9916a16"><td class="memItemLeft" align="right" valign="top"><a id="a389eb7117b051124209d3b65f9916a16" name="a389eb7117b051124209d3b65f9916a16"></a>
+<tr class="memitem:a54e2c92f36d09dc2f436fa78bec9a037" id="r_a54e2c92f36d09dc2f436fa78bec9a037"><td class="memItemLeft" align="right" valign="top"><a id="a54e2c92f36d09dc2f436fa78bec9a037" name="a54e2c92f36d09dc2f436fa78bec9a037"></a>
+<a class="el" href="#aa8cfdb1044328430af397b7642a55657">PageAssignType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getPageAssignType</b> () const</td></tr>
+<tr class="memdesc:a54e2c92f36d09dc2f436fa78bec9a037"><td class="mdescLeft">&#160;</td><td class="mdescRight">The assignment's odd/even setting, <a class="el" href="#a8cf44c6fdaa00d4fc81a7e26269d3664">displayType</a>. Required by <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html">PageAssignBase</a>. <br /></td></tr>
+<tr class="inherit_header pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html">musx::dom::others::PageAssignBase&lt; PageGraphicAssign &gt;</a></td></tr>
+<tr class="memitem:a4946b40f59cc1d02f53b911e9c7205c5 inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase" id="r_a4946b40f59cc1d02f53b911e9c7205c5"><td class="memItemLeft" align="right" valign="top">
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isMultiPage</b> () const</td></tr>
-<tr class="memdesc:a389eb7117b051124209d3b65f9916a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if this is a multi-page assignment. <br /></td></tr>
-<tr class="memitem:a5fe956145972e6c0efd4b64bd535811f" id="r_a5fe956145972e6c0efd4b64bd535811f"><td class="memItemLeft" align="right" valign="top"><a id="a5fe956145972e6c0efd4b64bd535811f" name="a5fe956145972e6c0efd4b64bd535811f"></a>
+<tr class="memdesc:a4946b40f59cc1d02f53b911e9c7205c5 inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if this is a multi-page assignment. <br /></td></tr>
+<tr class="memitem:a3e79083489dae65ca703dadf8963169b inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase" id="r_a3e79083489dae65ca703dadf8963169b"><td class="memItemLeft" align="right" valign="top">
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isMultiAssignedThruLastPage</b> () const</td></tr>
-<tr class="memdesc:a5fe956145972e6c0efd4b64bd535811f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if this is a multi-page assignment that is assigned to through last page, no matter how many. <br /></td></tr>
-<tr class="memitem:a18869141d19a07b681cc34605387aac4" id="r_a18869141d19a07b681cc34605387aac4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18869141d19a07b681cc34605387aac4">integrityCheck</a> (const std::shared_ptr&lt; <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#aafced670dd8a602bdb861337689f098f">EnigmaBase</a> &gt; &amp;ptrToThis) override</td></tr>
-<tr class="memdesc:a18869141d19a07b681cc34605387aac4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a final consistency check after population.  <br /></td></tr>
+<tr class="memdesc:a3e79083489dae65ca703dadf8963169b inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if this is a multi-page assignment that is assigned to through last page, no matter how many. <br /></td></tr>
+<tr class="memitem:ab6ea634c098fa09fa9e65f5457b906a0 inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase" id="r_ab6ea634c098fa09fa9e65f5457b906a0"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#ab6ea634c098fa09fa9e65f5457b906a0">calcStartPageNumber</a> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> forPartId) const</td></tr>
+<tr class="memdesc:ab6ea634c098fa09fa9e65f5457b906a0 inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the starting page number, taking into account leading blank pages in all parts. This calculation mimics observed behavior in Finale.  <br /></td></tr>
+<tr class="memitem:a1a4731e30d40c0c7180d39b54a453e55 inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase" id="r_a1a4731e30d40c0c7180d39b54a453e55"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#a1a4731e30d40c0c7180d39b54a453e55">calcEndPageNumber</a> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> forPartId) const</td></tr>
+<tr class="memdesc:a1a4731e30d40c0c7180d39b54a453e55 inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the ending page number, taking into account leading blank pages in all parts. This calculation mimics observed behavior in Finale.  <br /></td></tr>
+<tr class="memitem:a636b390f00f0a467b0a32a1ed4f733be inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase" id="r_a636b390f00f0a467b0a32a1ed4f733be"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#a636b390f00f0a467b0a32a1ed4f733be">calcMatchesOddEven</a> (<a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> pageNumber) const</td></tr>
+<tr class="memdesc:a636b390f00f0a467b0a32a1ed4f733be inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if page <code class="param">pageNumber</code> is one that the assignment's odd/even setting admits: any page, an even (left) page, or an odd (right) page. Any setting other than even or odd admits any page. This applies to single-page assignments as well as to multi-page ones: Finale never shows a single-page assignment whose page does not match.  <br /></td></tr>
+<tr class="memitem:a965040478c2b05a8498f1edfdd5956fc inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase" id="r_a965040478c2b05a8498f1edfdd5956fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#a965040478c2b05a8498f1edfdd5956fc">calcAppearsOnPage</a> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> forPartId, <a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> pageNumber) const</td></tr>
+<tr class="memdesc:a965040478c2b05a8498f1edfdd5956fc inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the assignment appears on page <code class="param">pageNumber</code> of <code class="param">forPartId:</code> the page is within <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#ab6ea634c098fa09fa9e65f5457b906a0">calcStartPageNumber</a> and <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#a1a4731e30d40c0c7180d39b54a453e55">calcEndPageNumber</a> for the part, and <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#a636b390f00f0a467b0a32a1ed4f733be">calcMatchesOddEven</a> admits it. If the part has a start page but no end page, the range is the start page alone.  <br /></td></tr>
+<tr class="memitem:a0ccb971000fef64d4e1f642bd4db9ff6 inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase" id="r_a0ccb971000fef64d4e1f642bd4db9ff6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#a0ccb971000fef64d4e1f642bd4db9ff6">calcPageNumbers</a> (<a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> forPartId) const</td></tr>
+<tr class="memdesc:a0ccb971000fef64d4e1f642bd4db9ff6 inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns every page number of <code class="param">forPartId</code> on which the assignment appears, in ascending order: the range from <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#ab6ea634c098fa09fa9e65f5457b906a0">calcStartPageNumber</a> to <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#a1a4731e30d40c0c7180d39b54a453e55">calcEndPageNumber</a>, filtered by <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#a636b390f00f0a467b0a32a1ed4f733be">calcMatchesOddEven</a>, or the start page alone if the part has no end page. Empty if the assignment does not appear in the part.  <br /></td></tr>
+<tr class="memitem:a303a7aec984f8cd741091a023667b937 inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase" id="r_a303a7aec984f8cd741091a023667b937"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#a303a7aec984f8cd741091a023667b937">integrityCheck</a> (const std::shared_ptr&lt; <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#aafced670dd8a602bdb861337689f098f">EnigmaBase</a> &gt; &amp;ptrToThis) override</td></tr>
+<tr class="memdesc:a303a7aec984f8cd741091a023667b937 inherit pub_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a final consistency check after population.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classmusx_1_1dom_1_1OthersBase"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classmusx_1_1dom_1_1OthersBase')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classmusx_1_1dom_1_1OthersBase.html">musx::dom::OthersBase</a></td></tr>
 <tr class="memitem:aeea2dce2bc876010d075adcba280c1ab inherit pub_methods_classmusx_1_1dom_1_1OthersBase" id="r_aeea2dce2bc876010d075adcba280c1ab"><td class="memItemLeft" align="right" valign="top">
 &#160;</td><td class="memItemRight" valign="bottom"><b>OthersBase</b> (const OthersBase &amp;)=default</td></tr>
@@ -189,13 +200,14 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~DocumentElement</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a7dd4da23b62dfd2daa7a384c160f35e5" id="r_a7dd4da23b62dfd2daa7a384c160f35e5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html">others::PageGraphicAssign</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7dd4da23b62dfd2daa7a384c160f35e5">getForPageId</a> (const <a class="el" href="namespacemusx_1_1dom.html#a95f727f6ac0878e2a4d15618c0fa0651">DocumentPtr</a> &amp;document, <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, <a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> pageId, <a class="el" href="namespacemusx_1_1dom.html#a59370f73998597d06d53ad925c37dc0d">Inci</a> inci)</td></tr>
-<tr class="memdesc:a7dd4da23b62dfd2daa7a384c160f35e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a specific page graphic assignment for a given page number in a given part. This allows the caller not to have to know the conversion to page assignment IDs.  <br /></td></tr>
-<tr class="memitem:a97634dece8a420ed7d460d587751c958" id="r_a97634dece8a420ed7d460d587751c958"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classmusx_1_1dom_1_1MusxInstanceList.html">MusxInstanceList</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html">others::PageGraphicAssign</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97634dece8a420ed7d460d587751c958">getArrayForPageId</a> (const <a class="el" href="namespacemusx_1_1dom.html#a95f727f6ac0878e2a4d15618c0fa0651">DocumentPtr</a> &amp;document, <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, <a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> pageId)</td></tr>
-<tr class="memdesc:a97634dece8a420ed7d460d587751c958"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all the page graphic assignments for a given page number in a given part. This allows the caller not to have to know the conversion to page assignment IDs.  <br /></td></tr>
 <tr class="memitem:abc45ea7ef2cb7ca6a530719162085672" id="r_abc45ea7ef2cb7ca6a530719162085672"><td class="memItemLeft" align="right" valign="top"><a id="abc45ea7ef2cb7ca6a530719162085672" name="abc45ea7ef2cb7ca6a530719162085672"></a>
 static const <a class="el" href="namespacemusx_1_1xml.html#abec9a9d80156f2ffbd894705d4fa332f">xml::XmlElementArray</a>&lt; <a class="el" href="#a62d642d620e7183e14ad751a53f983de">PageGraphicAssign</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>xmlMappingArray</b> ()</td></tr>
 <tr class="memdesc:abc45ea7ef2cb7ca6a530719162085672"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required for musx::factory::FieldPopulator. <br /></td></tr>
+<tr class="inherit_header pub_static_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Static Public Member Functions inherited from <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html">musx::dom::others::PageAssignBase&lt; PageGraphicAssign &gt;</a></td></tr>
+<tr class="memitem:ae92e300bc869401915e62620009eb2eb inherit pub_static_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase" id="r_ae92e300bc869401915e62620009eb2eb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html">PageGraphicAssign</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#ae92e300bc869401915e62620009eb2eb">getForPageId</a> (const <a class="el" href="namespacemusx_1_1dom.html#a95f727f6ac0878e2a4d15618c0fa0651">DocumentPtr</a> &amp;document, <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, <a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> pageId, <a class="el" href="namespacemusx_1_1dom.html#a59370f73998597d06d53ad925c37dc0d">Inci</a> inci)</td></tr>
+<tr class="memdesc:ae92e300bc869401915e62620009eb2eb inherit pub_static_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a specific assignment for a given page number in a given part. This allows the caller not to have to know the conversion to page assignment IDs.  <br /></td></tr>
+<tr class="memitem:a296a9e568dd0705a35615946ce427ade inherit pub_static_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase" id="r_a296a9e568dd0705a35615946ce427ade"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classmusx_1_1dom_1_1MusxInstanceList.html">MusxInstanceList</a>&lt; <a class="el" href="classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html">PageGraphicAssign</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#a296a9e568dd0705a35615946ce427ade">getArrayForPageId</a> (const <a class="el" href="namespacemusx_1_1dom.html#a95f727f6ac0878e2a4d15618c0fa0651">DocumentPtr</a> &amp;document, <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, <a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> pageId)</td></tr>
+<tr class="memdesc:a296a9e568dd0705a35615946ce427ade inherit pub_static_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all the assignments for a given page number in a given part. This allows the caller not to have to know the conversion to page assignment IDs.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -217,9 +229,7 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>version</b> {}</t
 <tr class="memitem:a92dbcdf67221be0e324653b707a17e94" id="r_a92dbcdf67221be0e324653b707a17e94"><td class="memItemLeft" align="right" valign="top"><a id="a92dbcdf67221be0e324653b707a17e94" name="a92dbcdf67221be0e324653b707a17e94"></a>
 <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fDescId</b> {}</td></tr>
 <tr class="memdesc:a92dbcdf67221be0e324653b707a17e94"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5" title="Enigma &quot;comperator&quot; key type.">Cmper</a> of the assigned <a class="el" href="classmusx_1_1dom_1_1others_1_1FileDescription.html">FileDescription</a>. (xml tag is <span class="tt">&lt;fDescID&gt;</span>). <br /></td></tr>
-<tr class="memitem:a8cf44c6fdaa00d4fc81a7e26269d3664" id="r_a8cf44c6fdaa00d4fc81a7e26269d3664"><td class="memItemLeft" align="right" valign="top"><a id="a8cf44c6fdaa00d4fc81a7e26269d3664" name="a8cf44c6fdaa00d4fc81a7e26269d3664"></a>
-<a class="el" href="#aa8cfdb1044328430af397b7642a55657">PageAssignType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>displayType</b> {}</td></tr>
-<tr class="memdesc:a8cf44c6fdaa00d4fc81a7e26269d3664"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the assignment appears on all/even/odd pages. <br /></td></tr>
+<tr class="memitem:a8cf44c6fdaa00d4fc81a7e26269d3664" id="r_a8cf44c6fdaa00d4fc81a7e26269d3664"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#aa8cfdb1044328430af397b7642a55657">PageAssignType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cf44c6fdaa00d4fc81a7e26269d3664">displayType</a> {}</td></tr>
 <tr class="memitem:a60637a8856c4635d2cb6f7e8fb82f12a" id="r_a60637a8856c4635d2cb6f7e8fb82f12a"><td class="memItemLeft" align="right" valign="top"><a id="a60637a8856c4635d2cb6f7e8fb82f12a" name="a60637a8856c4635d2cb6f7e8fb82f12a"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>hidden</b> {}</td></tr>
 <tr class="memdesc:a60637a8856c4635d2cb6f7e8fb82f12a"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the graphic does not display: inverse of "Show" context menu option. (xml tag is <span class="tt">&lt;displayHidden&gt;</span>). <br /></td></tr>
@@ -276,6 +286,10 @@ static constexpr std::string_view&#160;</td><td class="memItemRight" valign="bot
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Member Functions inherited from <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html">musx::dom::others::PageAssignBase&lt; PageGraphicAssign &gt;</a></td></tr>
+<tr class="memitem:aaf76f395d541199b4aa8644accb0f5f3 inherit pro_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase" id="r_aaf76f395d541199b4aa8644accb0f5f3"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>PageAssignBase</b> (const <a class="el" href="namespacemusx_1_1dom.html#ae1f1255569ce031b780170ce99232f05">DocumentWeakPtr</a> &amp;document, <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#ac655bdce0724d5e32cfcd6203c9a5d1f">ShareMode</a> shareMode, <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> cmper, <a class="el" href="namespacemusx_1_1dom.html#a59370f73998597d06d53ad925c37dc0d">Inci</a> inci)</td></tr>
+<tr class="memdesc:aaf76f395d541199b4aa8644accb0f5f3 inherit pro_methods_classmusx_1_1dom_1_1others_1_1PageAssignBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor function. <br /></td></tr>
 <tr class="inherit_header pro_methods_classmusx_1_1dom_1_1OthersBase"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classmusx_1_1dom_1_1OthersBase')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Member Functions inherited from <a class="el" href="classmusx_1_1dom_1_1OthersBase.html">musx::dom::OthersBase</a></td></tr>
 <tr class="memitem:a7e3b6d56599db00e0a7d19a40fcfe399 inherit pro_methods_classmusx_1_1dom_1_1OthersBase" id="r_a7e3b6d56599db00e0a7d19a40fcfe399"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmusx_1_1dom_1_1OthersBase.html#a7e3b6d56599db00e0a7d19a40fcfe399">OthersBase</a> (const <a class="el" href="namespacemusx_1_1dom.html#ae1f1255569ce031b780170ce99232f05">DocumentWeakPtr</a> &amp;document, <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> partId, <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#ac655bdce0724d5e32cfcd6203c9a5d1f">ShareMode</a> shareMode, <a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a> cmper, std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a59370f73998597d06d53ad925c37dc0d">Inci</a> &gt; inci=std::nullopt)</td></tr>
 <tr class="memdesc:a7e3b6d56599db00e0a7d19a40fcfe399 inherit pro_methods_classmusx_1_1dom_1_1OthersBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="classmusx_1_1dom_1_1OthersBase.html" title="EnigmaBase class for all &quot;others&quot; types.">OthersBase</a> object.  <br /></td></tr>
@@ -318,7 +332,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a page graphic assignment with positioning and page-range properties. </p>
-<p>Instances of <a class="el" href="#a62d642d620e7183e14ad751a53f983de" title="Constructor.">PageGraphicAssign</a> use page assignment IDs rather than straightforward page numbers. If the cmper is non-0, <a class="el" href="#aa0aa8bf81c74d6f54ff6115737f4d8ed" title="First page assignment ID where the graphic appears when cmper==0.">startPage</a> is not used and the cmper specifies a page assignment ID that defines which page this graphic is assigned to. If the cmper is 0, <a class="el" href="#aa0aa8bf81c74d6f54ff6115737f4d8ed" title="First page assignment ID where the graphic appears when cmper==0.">startPage</a> specifies the first page assignment ID to which the graphic is assigned (and <a class="el" href="#a8cf44c6fdaa00d4fc81a7e26269d3664" title="Whether the assignment appears on all/even/odd pages.">displayType</a> governs whether it repeats on odd/even/all pages thereafter).</p>
+<p>The pages it is on are a page assignment: see <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html">PageAssignBase</a>. <a class="el" href="#a8cf44c6fdaa00d4fc81a7e26269d3664">displayType</a> governs whether a multi-page assignment repeats on odd, even or all pages.</p>
 <p>The inci value specifies a particular page graphic when more than one exists for a cmper value.</p>
 <p>This class is identified by the XML node name "pageGraphicAssign". </p>
 </div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
@@ -352,171 +366,22 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="aa1ab1e29b8c9ecc037b2baafe4a31d76" name="aa1ab1e29b8c9ecc037b2baafe4a31d76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1ab1e29b8c9ecc037b2baafe4a31d76">&#9670;&#160;</a></span>calcEndPageNumber()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> &gt; musx::dom::others::PageGraphicAssign::calcEndPageNumber </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a></td>          <td class="paramname"><span class="paramname"><em>forPartId</em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return the ending page number, taking into account leading blank pages in all parts This calculation mimics observed behavior in Finale. </p>
-<dl class="section return"><dt>Returns</dt><dd>The first page in <code class="param">forPartId</code> on which the page graphic appears. If it does not appear on the part, the function returns std::nullopt. </dd></dl>
-
-</div>
-</div>
-<a id="a97db257a44af11246a3c12003ab1e721" name="a97db257a44af11246a3c12003ab1e721"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97db257a44af11246a3c12003ab1e721">&#9670;&#160;</a></span>calcStartPageNumber()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::optional&lt; <a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a> &gt; musx::dom::others::PageGraphicAssign::calcStartPageNumber </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a></td>          <td class="paramname"><span class="paramname"><em>forPartId</em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return the starting page number, taking into account leading blank pages in all parts. This calculation mimics observed behavior in Finale. </p>
-<dl class="section return"><dt>Returns</dt><dd>The first page in <code class="param">forPartId</code> on which the page graphic appears. If it does not appear on the part, the function returns std::nullopt. </dd></dl>
-
-</div>
-</div>
-<a id="a97634dece8a420ed7d460d587751c958" name="a97634dece8a420ed7d460d587751c958"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97634dece8a420ed7d460d587751c958">&#9670;&#160;</a></span>getArrayForPageId()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classmusx_1_1dom_1_1MusxInstanceList.html">MusxInstanceList</a>&lt; <a class="el" href="#a62d642d620e7183e14ad751a53f983de">PageGraphicAssign</a> &gt; musx::dom::others::PageGraphicAssign::getArrayForPageId </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacemusx_1_1dom.html#a95f727f6ac0878e2a4d15618c0fa0651">DocumentPtr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>document</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a></td>          <td class="paramname"><span class="paramname"><em>partId</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a></td>          <td class="paramname"><span class="paramname"><em>pageId</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns all the page graphic assignments for a given page number in a given part. This allows the caller not to have to know the conversion to page assignment IDs. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">document</td><td>The document to search. </td></tr>
-    <tr><td class="paramname">partId</td><td>The ID of the linked part to search. </td></tr>
-    <tr><td class="paramname">pageId</td><td>The page number to search for, or zero for all multipage assignments. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a7dd4da23b62dfd2daa7a384c160f35e5" name="a7dd4da23b62dfd2daa7a384c160f35e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7dd4da23b62dfd2daa7a384c160f35e5">&#9670;&#160;</a></span>getForPageId()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacemusx_1_1dom.html#aefac507e930a2b09628fb708f47ccf2d">MusxInstance</a>&lt; <a class="el" href="#a62d642d620e7183e14ad751a53f983de">PageGraphicAssign</a> &gt; musx::dom::others::PageGraphicAssign::getForPageId </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacemusx_1_1dom.html#a95f727f6ac0878e2a4d15618c0fa0651">DocumentPtr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>document</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a17ec176ab6c607928341c9b1852700a5">Cmper</a></td>          <td class="paramname"><span class="paramname"><em>partId</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a2e308dac500d55b89e5413e21cc77e2a">PageCmper</a></td>          <td class="paramname"><span class="paramname"><em>pageId</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacemusx_1_1dom.html#a59370f73998597d06d53ad925c37dc0d">Inci</a></td>          <td class="paramname"><span class="paramname"><em>inci</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns a specific page graphic assignment for a given page number in a given part. This allows the caller not to have to know the conversion to page assignment IDs. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">document</td><td>The document to search. </td></tr>
-    <tr><td class="paramname">partId</td><td>The ID of the linked part to search. </td></tr>
-    <tr><td class="paramname">pageId</td><td>The page number to search for, or zero for multipage assignments. </td></tr>
-    <tr><td class="paramname">inci</td><td>The inci of the specific page text assignment to retrieve. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a18869141d19a07b681cc34605387aac4" name="a18869141d19a07b681cc34605387aac4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18869141d19a07b681cc34605387aac4">&#9670;&#160;</a></span>integrityCheck()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void musx::dom::others::PageGraphicAssign::integrityCheck </td>
-          <td>(</td>
-          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#aafced670dd8a602bdb861337689f098f">EnigmaBase</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>ptrToThis</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Performs a final consistency check after population. </p>
-
-<p>Reimplemented from <a class="el" href="classmusx_1_1dom_1_1EnigmaBase.html#afe002b3162a9e31032d84196c80f6f74">musx::dom::EnigmaBase</a>.</p>
-
-</div>
-</div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="a8cf44c6fdaa00d4fc81a7e26269d3664" name="a8cf44c6fdaa00d4fc81a7e26269d3664"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cf44c6fdaa00d4fc81a7e26269d3664">&#9670;&#160;</a></span>displayType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#aa8cfdb1044328430af397b7642a55657">PageAssignType</a> musx::dom::others::PageGraphicAssign::displayType {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether the assignment appears on all/even/odd pages. It applies to single-page assignments as well, which otherwise store PageAssignType::One. See <a class="el" href="classmusx_1_1dom_1_1others_1_1PageAssignBase.html#a636b390f00f0a467b0a32a1ed4f733be">calcMatchesOddEven</a>. </p>
+
+</div>
+</div>
 <a id="a6d50d2dba40196c05bf990d629a48470" name="a6d50d2dba40196c05bf990d629a48470"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d50d2dba40196c05bf990d629a48470">&#9670;&#160;</a></span>graphicCmper</h2>
 

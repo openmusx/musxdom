@@ -1,5 +1,9 @@
 var NAVTREEINDEX36 =
 {
+"structmusx_1_1dom_1_1PercussionPlaybackKey.html#af5207635353000f2f66cb0efb4dfc5ea":[2,0,1,0,65,2],
+"structmusx_1_1dom_1_1PlaybackLookupResult.html":[1,0,1,0,58],
+"structmusx_1_1dom_1_1PlaybackLookupResult.html":[2,0,1,0,59],
+"structmusx_1_1dom_1_1PlaybackLookupResult.html#a144cf34c438ca9ccd392135152d21b4b":[1,0,1,0,58,1],
 "structmusx_1_1dom_1_1PlaybackLookupResult.html#a144cf34c438ca9ccd392135152d21b4b":[2,0,1,0,59,1],
 "structmusx_1_1dom_1_1PlaybackLookupResult.html#a6074eb6122209a21074338903ff73afc":[1,0,1,0,58,0],
 "structmusx_1_1dom_1_1PlaybackLookupResult.html#a6074eb6122209a21074338903ff73afc":[2,0,1,0,59,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX36 =
 "structmusx_1_1dom_1_1SoundmapSound.html#a71673d1d4283fbc3399588c87c6c6573":[2,0,1,0,61,1],
 "structmusx_1_1dom_1_1SoundmapSound.html#abfcc3d2c5e9ee9eb0473b70b8c82a1ed":[1,0,1,0,60,3],
 "structmusx_1_1dom_1_1SoundmapSound.html#abfcc3d2c5e9ee9eb0473b70b8c82a1ed":[2,0,1,0,61,3],
-"structmusx_1_1dom_1_1SoundmapSound.html#ac1973dea1e444f7a19c317d6d19837ad":[1,0,1,0,60,5],
-"structmusx_1_1dom_1_1SoundmapSound.html#ac1973dea1e444f7a19c317d6d19837ad":[2,0,1,0,61,5],
-"structmusx_1_1dom_1_1SoundmapSound.html#ae53d7798819c19431b2821ea44b8543e":[1,0,1,0,60,6],
-"structmusx_1_1dom_1_1SoundmapSound.html#ae53d7798819c19431b2821ea44b8543e":[2,0,1,0,61,6],
-"structmusx_1_1dom_1_1StaffPositionPitchOptions.html":[1,0,1,0,33]
+"structmusx_1_1dom_1_1SoundmapSound.html#ac1973dea1e444f7a19c317d6d19837ad":[1,0,1,0,60,5]
 };

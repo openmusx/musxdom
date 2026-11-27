@@ -1,5 +1,9 @@
 var NAVTREEINDEX35 =
 {
+"namespacemusx_1_1dom_1_1uuid.html#afd6a6b65b496bdccc1f4fe289f701c83":[1,0,1,0,4,385],
+"namespacemusx_1_1dom_1_1uuid.html#afdbf28432652af6c8b6318b87dce5c0a":[1,0,1,0,4,688],
+"namespacemusx_1_1dom_1_1uuid.html#afe2dcc988533403f44856a473f242297":[1,0,1,0,4,646],
+"namespacemusx_1_1dom_1_1uuid.html#afe7599c5e1c92f6d1e02086ce3b80598":[1,0,1,0,4,38],
 "namespacemusx_1_1dom_1_1uuid.html#afe7a00e5bebb9358491da2dae46d4dc0":[1,0,1,0,4,221],
 "namespacemusx_1_1dom_1_1uuid.html#afeb6c20a5af531969be91447b70e150a":[1,0,1,0,4,637],
 "namespacemusx_1_1dom_1_1uuid.html#afeede3dd6dc588e598c844597e243f47":[1,0,1,0,4,105],
@@ -245,9 +249,5 @@ var NAVTREEINDEX35 =
 "structmusx_1_1dom_1_1PercussionPlaybackKey.html#ac07f25e1b37f78f283e0468e3fa9cbfc":[2,0,1,0,65,4],
 "structmusx_1_1dom_1_1PercussionPlaybackKey.html#af0cfedd943048e92783f80fcc4a7aad2":[1,0,1,0,64,3],
 "structmusx_1_1dom_1_1PercussionPlaybackKey.html#af0cfedd943048e92783f80fcc4a7aad2":[2,0,1,0,65,3],
-"structmusx_1_1dom_1_1PercussionPlaybackKey.html#af5207635353000f2f66cb0efb4dfc5ea":[1,0,1,0,64,2],
-"structmusx_1_1dom_1_1PercussionPlaybackKey.html#af5207635353000f2f66cb0efb4dfc5ea":[2,0,1,0,65,2],
-"structmusx_1_1dom_1_1PlaybackLookupResult.html":[1,0,1,0,58],
-"structmusx_1_1dom_1_1PlaybackLookupResult.html":[2,0,1,0,59],
-"structmusx_1_1dom_1_1PlaybackLookupResult.html#a144cf34c438ca9ccd392135152d21b4b":[1,0,1,0,58,1]
+"structmusx_1_1dom_1_1PercussionPlaybackKey.html#af5207635353000f2f66cb0efb4dfc5ea":[1,0,1,0,64,2]
 };

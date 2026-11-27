@@ -1,5 +1,9 @@
 var NAVTREEINDEX38 =
 {
+"structmusx_1_1factory_1_1PlaybackResourceFile.html#a5f83b692b4e4879fdbc3aab053488d53":[2,0,1,1,5,2],
+"structmusx_1_1factory_1_1PlaybackResourceFile.html#a884a9e08cba1447b11c4b2b7dbbdff70":[1,0,1,1,5,4],
+"structmusx_1_1factory_1_1PlaybackResourceFile.html#a884a9e08cba1447b11c4b2b7dbbdff70":[2,0,1,1,5,4],
+"structmusx_1_1factory_1_1PlaybackResourceFile.html#a981612ab65b6190f515f7ff52e7d092b":[1,0,1,1,5,1],
 "structmusx_1_1factory_1_1PlaybackResourceFile.html#a981612ab65b6190f515f7ff52e7d092b":[2,0,1,1,5,1],
 "structmusx_1_1factory_1_1PlaybackResourceFile.html#ac56ed097207b5bcec376e0358a4e8ea2":[1,0,1,1,5,0],
 "structmusx_1_1factory_1_1PlaybackResourceFile.html#ac56ed097207b5bcec376e0358a4e8ea2":[2,0,1,1,5,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX38 =
 "structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#a5bcdedeb45e4b3d5026eec68f2ed32b3":[2,0,1,3,25,16,9],
 "structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#a8386cbd8112febe81e77f7fd932a95be":[2,0,1,3,25,16,6],
 "structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#a9815da31797f4e5caf6c71ec9a0128b7":[2,0,1,3,25,16,8],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#aa4c713e1d08ce60214871fa9ca862400":[2,0,1,3,25,16,10],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#aecfaa2fa5355e618b5a474c4a54e18f4":[2,0,1,3,25,16,2],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#af4fc29aa1b51e1470f7d7810b75bc581":[2,0,1,3,25,16,5],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#afc954ecdf2177593e2f37bcd26867b12":[2,0,1,3,25,16,4],
-"structmusx_1_1util_1_1ShapeDefInstruction_1_1Undocumented.html":[2,0,1,3,25,0]
+"structmusx_1_1util_1_1ShapeDefInstruction_1_1StartObject.html#aa4c713e1d08ce60214871fa9ca862400":[2,0,1,3,25,16,10]
 };

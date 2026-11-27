@@ -47,6 +47,7 @@ var namespacemusx_1_1dom_1_1others =
     [ "NamePositionFull", "classmusx_1_1dom_1_1others_1_1NamePositionFull.html", "classmusx_1_1dom_1_1others_1_1NamePositionFull" ],
     [ "NamePositionStyleFull", "classmusx_1_1dom_1_1others_1_1NamePositionStyleFull.html", "classmusx_1_1dom_1_1others_1_1NamePositionStyleFull" ],
     [ "Page", "classmusx_1_1dom_1_1others_1_1Page.html", "classmusx_1_1dom_1_1others_1_1Page" ],
+    [ "PageAssignBase", "classmusx_1_1dom_1_1others_1_1PageAssignBase.html", "classmusx_1_1dom_1_1others_1_1PageAssignBase" ],
     [ "PageTextAssign", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html", "classmusx_1_1dom_1_1others_1_1PageTextAssign" ],
     [ "PartDefinition", "classmusx_1_1dom_1_1others_1_1PartDefinition.html", "classmusx_1_1dom_1_1others_1_1PartDefinition" ],
     [ "PartGlobals", "classmusx_1_1dom_1_1others_1_1PartGlobals.html", "classmusx_1_1dom_1_1others_1_1PartGlobals" ],

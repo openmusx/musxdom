@@ -237,6 +237,12 @@ var hierarchy =
             [ "musx::dom::others::TonalCenterFlats", "classmusx_1_1dom_1_1others_1_1TonalCenterFlats.html", null ],
             [ "musx::dom::others::TonalCenterSharps", "classmusx_1_1dom_1_1others_1_1TonalCenterSharps.html", null ]
           ] ],
+          [ "musx::dom::others::PageAssignBase< PageGraphicAssign >", "classmusx_1_1dom_1_1others_1_1PageAssignBase.html", [
+            [ "musx::dom::others::PageGraphicAssign", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html", null ]
+          ] ],
+          [ "musx::dom::others::PageAssignBase< PageTextAssign >", "classmusx_1_1dom_1_1others_1_1PageAssignBase.html", [
+            [ "musx::dom::others::PageTextAssign", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html", null ]
+          ] ],
           [ "musx::dom::OthersArray< ElementType, REQUIRED_SIZE >", "classmusx_1_1dom_1_1OthersArray.html", null ],
           [ "musx::dom::OthersName", "classmusx_1_1dom_1_1OthersName.html", [
             [ "musx::dom::others::MarkingCategoryName", "classmusx_1_1dom_1_1others_1_1MarkingCategoryName.html", null ],
@@ -286,9 +292,8 @@ var hierarchy =
           [ "musx::dom::others::OssiaHeader", "classmusx_1_1dom_1_1others_1_1OssiaHeader.html", null ],
           [ "musx::dom::others::OssiaMusic", "classmusx_1_1dom_1_1others_1_1OssiaMusic.html", null ],
           [ "musx::dom::others::Page", "classmusx_1_1dom_1_1others_1_1Page.html", null ],
-          [ "musx::dom::others::PageGraphicAssign", "classmusx_1_1dom_1_1others_1_1PageGraphicAssign.html", null ],
+          [ "musx::dom::others::PageAssignBase< Derived >", "classmusx_1_1dom_1_1others_1_1PageAssignBase.html", null ],
           [ "musx::dom::others::PageOssiaAssign", "classmusx_1_1dom_1_1others_1_1PageOssiaAssign.html", null ],
-          [ "musx::dom::others::PageTextAssign", "classmusx_1_1dom_1_1others_1_1PageTextAssign.html", null ],
           [ "musx::dom::others::PartDefinition", "classmusx_1_1dom_1_1others_1_1PartDefinition.html", null ],
           [ "musx::dom::others::PartGlobals", "classmusx_1_1dom_1_1others_1_1PartGlobals.html", null ],
           [ "musx::dom::others::PartVoicing", "classmusx_1_1dom_1_1others_1_1PartVoicing.html", null ],
