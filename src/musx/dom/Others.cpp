@@ -1242,6 +1242,32 @@ util::EnigmaParsingContext PageTextAssign::getRawTextCtx(Cmper forPartId, std::o
     return {};
 }
 
+// These positioning helpers are page-text only for now. Page graphics have the same placement options in Finale,
+// but store them differently: they have no counterpart to indRpPos, because Finale keeps their right-page values
+// synced to the left-page values until the user positions right pages independently, and they store a vertical
+// alignment and a position reference for each side. If page graphics ever need these functions, migrate them to
+// PageAssignBase, with each derived class supplying its left- and right-page positioning values.
+bool PageTextAssign::calcUsesRightPageValues(PageCmper pageNumber) const
+{
+    return indRpPos && pageNumber % 2 != 0;
+}
+
+PageTextAssign::HorizontalAlignment PageTextAssign::calcHorizontalAlignment(PageCmper pageNumber) const
+{
+    return calcUsesRightPageValues(pageNumber) ? hPosRp : hPosLp;
+}
+
+std::pair<Evpu, Evpu> PageTextAssign::calcDisplacement(PageCmper pageNumber) const
+{
+    return calcUsesRightPageValues(pageNumber) ? std::pair{rightPgXDisp, rightPgYDisp} : std::pair{xDisp, yDisp};
+}
+
+bool PageTextAssign::isPlacedLike(const PageTextAssign& other) const
+{
+    return xDisp == other.xDisp && yDisp == other.yDisp && indRpPos == other.indRpPos
+           && (!indRpPos || (rightPgXDisp == other.rightPgXDisp && rightPgYDisp == other.rightPgYDisp));
+}
+
 // **************************
 // ***** PartDefinition *****
 // **************************

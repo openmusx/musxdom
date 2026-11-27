@@ -406,3 +406,25 @@ TEST(PageGraphicAssignTest, PageNumbersApplyOddEvenToEveryAssignment)
     EXPECT_TRUE(oddSinglePage->calcPageNumbers(SCORE_PARTID).empty());
     EXPECT_EQ(oddSinglePage->calcPageNumbers(1), std::vector<PageCmper>({3}));
 }
+
+TEST(PageGraphicAssignTest, PageGraphicFixture)
+{
+    std::vector<char> xml;
+    musxtest::readFile(musxtest::getInputPath() / "page_graphic.enigmaxml", xml);
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::pugi::Document>(xml);
+    ASSERT_TRUE(doc);
+
+    // One graphic on every page of a two-page score. Finale stores its right-page values even though
+    // they are not positioned independently.
+    const auto graphics = doc->getOthers()->getArray<others::PageGraphicAssign>(SCORE_PARTID);
+    ASSERT_EQ(graphics.size(), 1u);
+    const auto& graphic = graphics[0];
+    EXPECT_EQ(graphic->displayType, others::PageGraphicAssign::PageAssignType::AllPages);
+    EXPECT_TRUE(graphic->isMultiAssignedThruLastPage());
+    EXPECT_EQ(graphic->calcPageNumbers(SCORE_PARTID), std::vector<PageCmper>({1, 2}));
+    EXPECT_EQ(graphic->left, 1145);
+    EXPECT_EQ(graphic->bottom, -316);
+    EXPECT_EQ(graphic->rightPgLeft, 1143);
+    EXPECT_EQ(graphic->rightPgBottom, -315);
+    EXPECT_EQ(graphic->graphicCmper, 1);
+}
