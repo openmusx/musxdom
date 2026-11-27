@@ -22,6 +22,7 @@
 #pragma once
 
 #include <optional>
+#include <string>
 #include <vector>
 
 #include "musx/dom/Details.h"
@@ -63,6 +64,9 @@ struct FretboardDisplayData
     int fretCount{}; ///< Number of frets displayed by the diagram.
     int fretboardNumber{}; ///< Starting fret number stored by Finale.
     bool showFretboardNumber{}; ///< Whether Finale displays #fretboardNumber.
+    /// Text displayed after #fretboardNumber (for example "fr."), from the chord's
+    /// @ref dom::others::FretboardStyle. Absent when the chord assignment has no fretboard style.
+    std::optional<std::string> fretNumberText;
     UnplayedStringDisplay unplayedStringDisplay{UnplayedStringDisplay::None}; ///< Display state for strings without frame notes.
     std::vector<Cell> cells; ///< Diagram cells in Finale source order.
     std::vector<Barre> barres; ///< Diagram barres in Finale source order.

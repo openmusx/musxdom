@@ -39,6 +39,7 @@ struct ChordSetup
     bool showFretboard{true};       ///< details::ChordAssign::showFretboard
     bool useFretboardFont{false};   ///< details::ChordAssign::useFretboardFont
     int rootScaleNum{0};            ///< Selects which of the group's twelve diagrams is used.
+    bool useFretboardStyle{true};   ///< details::ChordAssign::fbStyleId names the style when true, or is zero.
 };
 
 /// @brief Emits one diagram, padding the group to the twelve that FretboardGroup requires.
@@ -96,6 +97,7 @@ std::string makeXml(const ChordSetup& setup)
         "<others>"
         "<staffSpec cmper=\"1\"><staffLines>5</staffLines>" + flag(setup.hideFretboards, "hideFretboards") + "</staffSpec>"
         "<measSpec cmper=\"1\"><beats>4</beats><divbeat>1024</divbeat></measSpec>"
+        "<fretStyle cmper=\"2\"><name>Test Style</name><fretNumText>fr.</fretNumText></fretStyle>"
         "<fretGroup cmper=\"10\" inci=\"0\"><fretInstID>1</fretInstID><name>Test Group</name></fretGroup>"
         "<fretInst cmper=\"1\"><numFrets>21</numFrets><numStrings>6</numStrings><name>Standard Guitar</name>"
         "<string><pitch>64</pitch></string><string><pitch>59</pitch></string><string><pitch>55</pitch></string>"
@@ -104,7 +106,7 @@ std::string makeXml(const ChordSetup& setup)
         "</others>"
         "<details>"
         "<chordAssign cmper1=\"1\" cmper2=\"1\" inci=\"0\">"
-        "<suffix>10</suffix><rootScaleNum>" + std::to_string(setup.rootScaleNum) + "</rootScaleNum>"
+        "<suffix>10</suffix>" + std::string(setup.useFretboardStyle ? "<fbStyleID>2</fbStyleID>" : "") + "<rootScaleNum>" + std::to_string(setup.rootScaleNum) + "</rootScaleNum>"
         + flag(setup.showFretboard, "showFretboard") + flag(setup.useFretboardFont, "useFretFont") +
         "</chordAssign>"
         + diagrams +
@@ -141,6 +143,7 @@ TEST(FretboardDisplayDataTest, ResolvesCellsAndBarresInDisplayFrets)
     EXPECT_EQ(fretboard->fretCount, 4);
     EXPECT_EQ(fretboard->fretboardNumber, 6);
     EXPECT_TRUE(fretboard->showFretboardNumber);
+    EXPECT_EQ(fretboard->fretNumberText, std::optional<std::string>("fr."));
     EXPECT_EQ(fretboard->unplayedStringDisplay, UnplayedStringDisplay::None);
 
     // Cells keep Finale's source order, shifted from the diagram-relative fret to the display fret.
@@ -211,4 +214,13 @@ TEST(FretboardDisplayDataTest, SuppressedByChordAssignment)
     setup = ChordSetup{};
     setup.useFretboardFont = true;
     EXPECT_FALSE(calcFor(setup));
+}
+
+TEST(FretboardDisplayDataTest, OmitsFretNumberTextWithoutStyle)
+{
+    auto setup = ChordSetup{};
+    setup.useFretboardStyle = false;
+    const auto fretboard = calcFor(setup);
+    ASSERT_TRUE(fretboard);
+    EXPECT_FALSE(fretboard->fretNumberText);
 }

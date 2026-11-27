@@ -103,6 +103,9 @@ std::optional<FretboardDisplayData> calcFretboardDisplayData(
     result.fretCount = (*diagram)->numFrets;
     result.fretboardNumber = (*diagram)->fretboardNum;
     result.showFretboardNumber = (*diagram)->showNum;
+    if (const auto style = chord->getFretboardStyle()) {
+        result.fretNumberText = style->fretNumText;
+    }
     result.cells.reserve((*diagram)->cells.size());
     for (const auto& cell : (*diagram)->cells) {
         result.cells.push_back({ cell->string, displayFret(cell->fret, (*diagram)->fretboardNum), cell->shape, cell->fingerNum });
