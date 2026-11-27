@@ -313,3 +313,119 @@ TEST(PageTextAssignText, ParseMultiPageAssignment2)
     testMultiPageAssignment(doc, 1, 1, 1, 1, "All Page Text - Page ", " of 1 Part 1");
     testMultiPageAssignment(doc, 2, 1, 1, 6, "All Page Text - Page ", " of 6 Part 2");
 }
+
+// The score has three pages and no leading blank page; the part has one leading blank page and three
+// more, so page assignment ID 2 is page 1 of the score and page 2 of the part.
+TEST(PageTextAssignTest, PageNumbersApplyOddEvenToEveryAssignment)
+{
+    constexpr static musxtest::string_view xml = R"xml(
+<?xml version="1.0" encoding="UTF-8"?>
+<finale>
+  <others>
+    <pageSpec cmper="1"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>1</firstSystem></pageSpec>
+    <pageSpec cmper="2"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>2</firstSystem></pageSpec>
+    <pageSpec cmper="3"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>3</firstSystem></pageSpec>
+    <pageSpec cmper="1" part="1" shared="false"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>-1</firstSystem></pageSpec>
+    <pageSpec cmper="2" part="1" shared="false"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>1</firstSystem></pageSpec>
+    <pageSpec cmper="3" part="1" shared="false"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>2</firstSystem></pageSpec>
+    <pageSpec cmper="4" part="1" shared="false"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>3</firstSystem></pageSpec>
+    <partDef cmper="0"><partOrder>0</partOrder><copies>1</copies></partDef>
+    <partDef cmper="1"><partOrder>1</partOrder><copies>1</copies></partDef>
+    <pageTextAssign cmper="0" inci="0">
+      <startPage>1</startPage>
+      <oddEven>odd</oddEven>
+    </pageTextAssign>
+    <pageTextAssign cmper="2" inci="0">
+      <startPage>2</startPage>
+      <endPage>2</endPage>
+    </pageTextAssign>
+    <pageTextAssign cmper="3" inci="0">
+      <startPage>3</startPage>
+      <endPage>3</endPage>
+      <oddEven>even</oddEven>
+    </pageTextAssign>
+  </others>
+</finale>
+    )xml";
+
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(xml);
+    ASSERT_TRUE(doc);
+    ASSERT_EQ(doc->getMaxBlankPages(), 1);
+    const auto others = doc->getOthers();
+
+    const auto oddPages = others->get<others::PageTextAssign>(SCORE_PARTID, 0, 0);
+    ASSERT_TRUE(oddPages);
+    EXPECT_TRUE(oddPages->calcMatchesOddEven(1));
+    EXPECT_FALSE(oddPages->calcMatchesOddEven(2));
+    EXPECT_EQ(oddPages->calcPageNumbers(SCORE_PARTID), std::vector<PageCmper>({1, 3}));
+    EXPECT_EQ(oddPages->calcPageNumbers(1), std::vector<PageCmper>({1, 3}));
+    EXPECT_TRUE(oddPages->calcAppearsOnPage(SCORE_PARTID, 3));
+    EXPECT_FALSE(oddPages->calcAppearsOnPage(SCORE_PARTID, 2));
+    EXPECT_FALSE(oddPages->calcAppearsOnPage(SCORE_PARTID, 5)) << "beyond the last page";
+
+    const auto singlePage = others->get<others::PageTextAssign>(SCORE_PARTID, 2, 0);
+    ASSERT_TRUE(singlePage);
+    EXPECT_EQ(singlePage->calcPageNumbers(SCORE_PARTID), std::vector<PageCmper>({1}));
+    EXPECT_EQ(singlePage->calcPageNumbers(1), std::vector<PageCmper>({2}));
+
+    // A single-page assignment obeys its odd/even setting too: page 2 of the score is even, but
+    // the same assignment ID is page 3 of the part, where it does not appear.
+    const auto evenSinglePage = others->get<others::PageTextAssign>(SCORE_PARTID, 3, 0);
+    ASSERT_TRUE(evenSinglePage);
+    EXPECT_EQ(evenSinglePage->calcPageNumbers(SCORE_PARTID), std::vector<PageCmper>({2}));
+    EXPECT_TRUE(evenSinglePage->calcPageNumbers(1).empty());
+    EXPECT_FALSE(evenSinglePage->calcAppearsOnPage(1, 3));
+}
+
+// Part 1 has one leading blank page and part 2 has two, so assignment IDs 1 and 2 are both
+// leading-blank slots. ID 2 names no page in part 1, which therefore has a start page but no end page.
+TEST(PageTextAssignTest, PageNumbersWithoutAnEndPageAreTheStartPage)
+{
+    constexpr static musxtest::string_view xml = R"xml(
+<?xml version="1.0" encoding="UTF-8"?>
+<finale>
+  <others>
+    <pageSpec cmper="1"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>1</firstSystem></pageSpec>
+    <pageSpec cmper="1" part="1" shared="false"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>-1</firstSystem></pageSpec>
+    <pageSpec cmper="2" part="1" shared="false"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>1</firstSystem></pageSpec>
+    <pageSpec cmper="1" part="2" shared="false"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>-1</firstSystem></pageSpec>
+    <pageSpec cmper="2" part="2" shared="false"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>-1</firstSystem></pageSpec>
+    <pageSpec cmper="3" part="2" shared="false"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>1</firstSystem></pageSpec>
+    <partDef cmper="0"><partOrder>0</partOrder><copies>1</copies></partDef>
+    <partDef cmper="1"><partOrder>1</partOrder><copies>1</copies></partDef>
+    <partDef cmper="2"><partOrder>2</partOrder><copies>1</copies></partDef>
+    <pageTextAssign cmper="0" inci="0">
+      <startPage>1</startPage>
+      <endPage>2</endPage>
+    </pageTextAssign>
+    <pageTextAssign cmper="0" inci="1">
+      <startPage>1</startPage>
+      <endPage>2</endPage>
+      <oddEven>even</oddEven>
+    </pageTextAssign>
+  </others>
+</finale>
+    )xml";
+
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(xml);
+    ASSERT_TRUE(doc);
+    ASSERT_EQ(doc->getMaxBlankPages(), 2);
+    const auto others = doc->getOthers();
+
+    const auto assignment = others->get<others::PageTextAssign>(SCORE_PARTID, 0, 0);
+    ASSERT_TRUE(assignment);
+    ASSERT_TRUE(assignment->calcStartPageNumber(1));
+    ASSERT_FALSE(assignment->calcEndPageNumber(1));
+    EXPECT_EQ(assignment->calcPageNumbers(1), std::vector<PageCmper>({1}));
+    EXPECT_TRUE(assignment->calcAppearsOnPage(1, 1));
+    EXPECT_FALSE(assignment->calcAppearsOnPage(1, 2));
+    EXPECT_EQ(assignment->calcPageNumbers(2), std::vector<PageCmper>({1, 2})) << "part 2 has both slots";
+    EXPECT_TRUE(assignment->calcPageNumbers(SCORE_PARTID).empty()) << "the score has neither slot";
+
+    // The start page alone still obeys the odd/even setting.
+    const auto evenPages = others->get<others::PageTextAssign>(SCORE_PARTID, 0, 1);
+    ASSERT_TRUE(evenPages);
+    EXPECT_TRUE(evenPages->calcPageNumbers(1).empty());
+    EXPECT_FALSE(evenPages->calcAppearsOnPage(1, 1));
+    EXPECT_EQ(evenPages->calcPageNumbers(2), std::vector<PageCmper>({2}));
+}

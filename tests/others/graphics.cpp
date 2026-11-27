@@ -347,3 +347,62 @@ TEST(ShapeGraphicAssignTest, PopulateFields)
     EXPECT_EQ(g->origHeight, 168);
     EXPECT_EQ(g->graphicCmper, 0);
 }
+
+// The score has three pages and no leading blank page; the part has one leading blank page and three
+// more, so page assignment ID 2 is page 1 of the score and page 2 of the part.
+TEST(PageGraphicAssignTest, PageNumbersApplyOddEvenToEveryAssignment)
+{
+    constexpr static musxtest::string_view xml = R"xml(
+<?xml version="1.0" encoding="UTF-8"?>
+<finale>
+  <others>
+    <pageSpec cmper="1"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>1</firstSystem></pageSpec>
+    <pageSpec cmper="2"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>2</firstSystem></pageSpec>
+    <pageSpec cmper="3"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>3</firstSystem></pageSpec>
+    <pageSpec cmper="1" part="1" shared="false"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>-1</firstSystem></pageSpec>
+    <pageSpec cmper="2" part="1" shared="false"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>1</firstSystem></pageSpec>
+    <pageSpec cmper="3" part="1" shared="false"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>2</firstSystem></pageSpec>
+    <pageSpec cmper="4" part="1" shared="false"><height>3168</height><width>2448</width><percent>100</percent><firstSystem>3</firstSystem></pageSpec>
+    <partDef cmper="0"><partOrder>0</partOrder><copies>1</copies></partDef>
+    <partDef cmper="1"><partOrder>1</partOrder><copies>1</copies></partDef>
+    <pageGraphicAssign cmper="0" inci="0">
+      <displayType>even</displayType>
+      <startPage>1</startPage>
+    </pageGraphicAssign>
+    <pageGraphicAssign cmper="2" inci="0">
+      <displayType>one</displayType>
+      <startPage>2</startPage>
+      <endPage>2</endPage>
+    </pageGraphicAssign>
+    <pageGraphicAssign cmper="3" inci="0">
+      <displayType>odd</displayType>
+      <startPage>3</startPage>
+      <endPage>3</endPage>
+    </pageGraphicAssign>
+  </others>
+</finale>
+    )xml";
+
+    auto doc = musx::factory::DocumentFactory::create<musx::xml::rapidxml::Document>(xml);
+    ASSERT_TRUE(doc);
+    const auto others = doc->getOthers();
+
+    const auto evenPages = others->get<others::PageGraphicAssign>(SCORE_PARTID, 0, 0);
+    ASSERT_TRUE(evenPages);
+    EXPECT_EQ(evenPages->calcPageNumbers(SCORE_PARTID), std::vector<PageCmper>({2}));
+    EXPECT_EQ(evenPages->calcPageNumbers(1), std::vector<PageCmper>({2, 4}));
+    EXPECT_TRUE(evenPages->calcAppearsOnPage(1, 4));
+
+    const auto singlePage = others->get<others::PageGraphicAssign>(SCORE_PARTID, 2, 0);
+    ASSERT_TRUE(singlePage);
+    EXPECT_TRUE(singlePage->calcMatchesOddEven(1)) << "a single-page graphic admits any page";
+    EXPECT_TRUE(singlePage->calcMatchesOddEven(2));
+    EXPECT_EQ(singlePage->calcPageNumbers(SCORE_PARTID), std::vector<PageCmper>({1}));
+    EXPECT_EQ(singlePage->calcPageNumbers(1), std::vector<PageCmper>({2}));
+
+    // The assignment ID is page 2 of the score, which is even, and page 3 of the part.
+    const auto oddSinglePage = others->get<others::PageGraphicAssign>(SCORE_PARTID, 3, 0);
+    ASSERT_TRUE(oddSinglePage);
+    EXPECT_TRUE(oddSinglePage->calcPageNumbers(SCORE_PARTID).empty());
+    EXPECT_EQ(oddSinglePage->calcPageNumbers(1), std::vector<PageCmper>({3}));
+}

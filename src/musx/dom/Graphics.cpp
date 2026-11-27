@@ -48,62 +48,6 @@ MusxInstance<ShapeGraphicAssign> ShapeGraphicAssign::findForGraphic(
     return {};
 }
 
-// *****************************
-// ***** PageGraphicAssign *****
-// *****************************
-
-MusxInstance<PageGraphicAssign> PageGraphicAssign::getForPageId(const DocumentPtr& document, Cmper partId, PageCmper pageId, Inci inci)
-{
-    if (auto part = document->getOthers()->get<PartDefinition>(SCORE_PARTID, partId)) {
-        const PageCmper pageAssignmentId = part->calcAssignmentIdFromPageNumber(pageId);
-        return document->getOthers()->get<PageGraphicAssign>(partId, pageAssignmentId, inci);
-    }
-    return nullptr;
-}
-
-MusxInstanceList<PageGraphicAssign> PageGraphicAssign::getArrayForPageId(const DocumentPtr& document, Cmper partId, PageCmper pageId)
-{
-    if (auto part = document->getOthers()->get<PartDefinition>(SCORE_PARTID, partId)) {
-        const PageCmper pageAssignmentId = part->calcAssignmentIdFromPageNumber(pageId);
-        return document->getOthers()->getArray<PageGraphicAssign>(partId, pageAssignmentId);
-    }
-    return MusxInstanceList<PageGraphicAssign>(document, partId);
-}
-
-std::optional<PageCmper> PageGraphicAssign::calcStartPageNumber(Cmper forPartId) const
-{
-    if (auto part = getDocument()->getOthers()->get<PartDefinition>(SCORE_PARTID, forPartId)) {
-        if (auto calcValue = part->calcPageNumberFromAssignmentId(getCmper() ? getCmper() : startPage)) {
-            if (calcValue.value() <= part->numberOfPages) {
-                return calcValue;
-            }
-        } else if (isMultiPage()) {
-            if (auto endPageNum = calcEndPageNumber(forPartId)) {
-                if (part->numberOfLeadingBlankPages < endPageNum.value()) {
-                    return PageCmper(part->numberOfLeadingBlankPages + 1);
-                }
-            }
-        }
-    }
-    return std::nullopt;
-}
-
-std::optional<PageCmper> PageGraphicAssign::calcEndPageNumber(Cmper forPartId) const
-{
-    if (auto part = getDocument()->getOthers()->get<PartDefinition>(SCORE_PARTID, forPartId)) {
-        if (isMultiAssignedThruLastPage()) {
-            return PageCmper(part->numberOfPages);
-        }
-        if (auto calcValue = part->calcPageNumberFromAssignmentId(getCmper() ? getCmper() : endPage)) {
-            if (calcValue.value() > part->numberOfPages) {
-                calcValue = PageCmper(part->numberOfPages);
-            }
-            return calcValue;
-        }
-    }
-    return std::nullopt;
-}
-
 } // namespace others
 } // namespace dom
 } // namespace musx

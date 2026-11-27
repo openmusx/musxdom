@@ -1242,58 +1242,6 @@ util::EnigmaParsingContext PageTextAssign::getRawTextCtx(Cmper forPartId, std::o
     return {};
 }
 
-MusxInstance<PageTextAssign> PageTextAssign::getForPageId(const DocumentPtr& document, Cmper partId, PageCmper pageId, Inci inci)
-{
-    if (auto part = document->getOthers()->get<PartDefinition>(SCORE_PARTID, partId)) {
-        const PageCmper pageAssignmentId = part->calcAssignmentIdFromPageNumber(pageId);
-        return document->getOthers()->get<PageTextAssign>(partId, pageAssignmentId, inci);
-    }
-    return nullptr;
-}
-
-MusxInstanceList<PageTextAssign> PageTextAssign::getArrayForPageId(const DocumentPtr& document, Cmper partId, PageCmper pageId)
-{
-    if (auto part = document->getOthers()->get<PartDefinition>(SCORE_PARTID, partId)) {
-        const PageCmper pageAssignmentId = part->calcAssignmentIdFromPageNumber(pageId);
-        return document->getOthers()->getArray<PageTextAssign>(partId, pageAssignmentId);
-    }
-    return MusxInstanceList<PageTextAssign>(document, partId);
-}
-
-std::optional<PageCmper> PageTextAssign::calcStartPageNumber(Cmper forPartId) const
-{
-    if (auto part = getDocument()->getOthers()->get<PartDefinition>(SCORE_PARTID, forPartId)) {
-        if (auto calcValue = part->calcPageNumberFromAssignmentId(getCmper() ? getCmper() : startPage)) {
-            if (calcValue.value() <= part->numberOfPages) {
-                return calcValue;
-            }
-        } else if (isMultiPage()) {
-            if (auto endPageNum = calcEndPageNumber(forPartId)) {
-                if (part->numberOfLeadingBlankPages < endPageNum.value()) {
-                    return PageCmper(part->numberOfLeadingBlankPages + 1);
-                }
-            }
-        }
-    }
-    return std::nullopt;
-}
-
-std::optional<PageCmper> PageTextAssign::calcEndPageNumber(Cmper forPartId) const
-{
-    if (auto part = getDocument()->getOthers()->get<PartDefinition>(SCORE_PARTID, forPartId)) {
-        if (isMultiAssignedThruLastPage()) {
-            return PageCmper(part->numberOfPages);
-        }
-        if (auto calcValue = part->calcPageNumberFromAssignmentId(getCmper() ? getCmper() : endPage)) {
-            if (calcValue.value() > part->numberOfPages) {
-                calcValue = PageCmper(part->numberOfPages);
-            }
-            return calcValue;
-        }
-    }
-    return std::nullopt;
-}
-
 // **************************
 // ***** PartDefinition *****
 // **************************
