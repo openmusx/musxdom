@@ -28,6 +28,7 @@
 #include <stdexcept>
 #include <map>
 #include <tuple>
+#include <utility>
 
 #include "musx/util/EnigmaString.h"
 #include "musx/util/Logger.h"
@@ -2129,6 +2130,27 @@ public:
 
     /// @brief The assignment's odd/even setting, #oddEven. Required by @ref PageAssignBase.
     PageAssignType getPageAssignType() const { return oddEven; }
+
+    /// @brief Returns true if page @p pageNumber uses the right-page values: #indRpPos is set and the page is a
+    /// right-hand page, which is an odd page.
+    /// @param pageNumber A page number (not a page assignment ID).
+    bool calcUsesRightPageValues(PageCmper pageNumber) const;
+
+    /// @brief Returns the horizontal alignment that applies on page @p pageNumber: #hPosRp if the page uses the
+    /// right-page values (see #calcUsesRightPageValues), otherwise #hPosLp.
+    /// @param pageNumber A page number (not a page assignment ID).
+    HorizontalAlignment calcHorizontalAlignment(PageCmper pageNumber) const;
+
+    /// @brief Returns the horizontal and vertical displacements that apply on page @p pageNumber: #rightPgXDisp and
+    /// #rightPgYDisp if the page uses the right-page values (see #calcUsesRightPageValues), otherwise #xDisp and #yDisp.
+    /// @param pageNumber A page number (not a page assignment ID).
+    std::pair<Evpu, Evpu> calcDisplacement(PageCmper pageNumber) const;
+
+    /// @brief Returns true if @p other places its text the same way as this assignment: the same #xDisp and #yDisp, the
+    /// same #indRpPos, and, when #indRpPos is set, the same #rightPgXDisp and #rightPgYDisp. These and visibility are the
+    /// values a linked part can change; the alignment and page-edge values are not compared.
+    /// @param other The assignment to compare, typically the same assignment as another score or linked part has it.
+    bool isPlacedLike(const PageTextAssign& other) const;
 
     constexpr static std::string_view XmlNodeName = "pageTextAssign"; ///< The XML node name for this type.
     static const xml::XmlElementArray<PageTextAssign>& xmlMappingArray(); ///< Required for musx::factory::FieldPopulator.

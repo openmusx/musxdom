@@ -429,3 +429,35 @@ TEST(PageTextAssignTest, PageNumbersWithoutAnEndPageAreTheStartPage)
     EXPECT_FALSE(evenPages->calcAppearsOnPage(1, 1));
     EXPECT_EQ(evenPages->calcPageNumbers(2), std::vector<PageCmper>({2}));
 }
+
+TEST(PageTextAssignTest, RightPagesUseTheirOwnValuesOnlyWhenIndependent)
+{
+    others::PageTextAssign assignment(DocumentWeakPtr{}, SCORE_PARTID, CommonClassBase::ShareMode::All, 0, 0);
+    assignment.hPosLp = others::PageTextAssign::HorizontalAlignment::Left;
+    assignment.hPosRp = others::PageTextAssign::HorizontalAlignment::Right;
+    assignment.xDisp = 10;
+    assignment.yDisp = 20;
+    assignment.rightPgXDisp = 30;
+    assignment.rightPgYDisp = 40;
+
+    EXPECT_FALSE(assignment.calcUsesRightPageValues(1));
+    EXPECT_EQ(assignment.calcHorizontalAlignment(1), others::PageTextAssign::HorizontalAlignment::Left);
+    EXPECT_EQ(assignment.calcDisplacement(1), std::pair(Evpu(10), Evpu(20)));
+    auto other = assignment;
+    other.rightPgXDisp = 99;
+    EXPECT_TRUE(assignment.isPlacedLike(other)) << "unused right-page displacements do not count";
+    other.yDisp = 21;
+    EXPECT_FALSE(assignment.isPlacedLike(other));
+
+    assignment.indRpPos = true;
+    EXPECT_TRUE(assignment.calcUsesRightPageValues(1));
+    EXPECT_FALSE(assignment.calcUsesRightPageValues(2)) << "even pages are left-hand pages";
+    EXPECT_EQ(assignment.calcHorizontalAlignment(1), others::PageTextAssign::HorizontalAlignment::Right);
+    EXPECT_EQ(assignment.calcHorizontalAlignment(2), others::PageTextAssign::HorizontalAlignment::Left);
+    EXPECT_EQ(assignment.calcDisplacement(1), std::pair(Evpu(30), Evpu(40)));
+    EXPECT_EQ(assignment.calcDisplacement(2), std::pair(Evpu(10), Evpu(20)));
+    other = assignment;
+    EXPECT_TRUE(assignment.isPlacedLike(other));
+    other.rightPgXDisp = 99;
+    EXPECT_FALSE(assignment.isPlacedLike(other));
+}
